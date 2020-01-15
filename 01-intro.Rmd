@@ -1,49 +1,47 @@
 # Introduction
 
-　  
+
+## Motivation
+この文章は [データ分析勉強会](https://sites.google.com/site/kantometrics/home){target="_blank"} で学んできた内容に基づいています。ソフトウェア品質に関わるデータ分析に必要となる [R](https://www.r-project.org/){target="_blank"} の基本的な知識を初学者に提供することを目的としています。
+
 
 ## データ分析とは
 データ分析とは
 
-何らかの目的を持って表現された文字や符号、数値などを収集し、分類、整理、成型、取捨選択したうえで解釈して、価値のある意味を見出すことといえるでしょう。（中略）そのために以下の3つを理解しておく必要があります。
+> 何らかの目的を持って表現された文字や符号、数値などを収集し、分類、整理、成型、取捨選択したうえで解釈して、価値のある意味を見出すことといえるでしょう。（中略）そのために以下の3つを理解しておく必要があります。  
+> 
+> 1)分析しようとする問題そのものについての理解  
+> 2)分析手法についての理解  
+> 3)分析結果に対する判断力
 
-1) 分析しようとする問題そのものについての理解
-1) 分析手法についての理解
-1) 分析結果に対する判断力
-
-<p align=right>出典：[データ分析とは <i class="fa fa-external-link"></i>](https://www.albert2005.co.jp/knowledge/statistics_analysis/statistics_basics/data_analysis){target="_blank" title="データ分析基礎知識"}</p>  
-
-データ分析を行うためは分析ツールが必要不可欠で、その使い方を知っているのと知らないのでは分析効率や**再現性確保に差**が生じます。特にソフトウェアメトリクス分析のようなアドホック分析ではその差が顕著になります。
-
+<p align=right>出典：[データ分析とは <i class="fa fa-external-link"></i>](https://www.albert2005.co.jp/knowledge/statistics_analysis/statistics_basics/data_analysis){target="_blank"}</p>
+　  
+データ分析を行うためは分析ツールは必要不可欠です。分析ツールの使い方を知らないと分析効率や再現性の確保に大きな差が生じます。ソフトウェアメトリクス分析のようなアドホック分析ではその差が顕著になります。
 　  
 
-### 参考）アドホック分析 {-}
-アドホック（ad hoc）は「特定の」、「限定された目的の」、「その場限り」というようなことを意味する言葉です。データ分析においてアドホック分析という場合
+#### アドホック分析 {-}
+アドホック（ad hoc）は「特定の」、「限定された目的の」、「その場限り」というようなことを意味する言葉です。データ分析におけるアドホック分析は
 
 <center>（分析から）**得られた知見に基づき改善提案などを行うための分析**</center>  
 　  
-というような良い意味で使われることが多いかな？。この場合、分析はオフラインで行われることが多くリアルタイムで処理する必要もありません。ソフトウェアメトリクス分析の場合、まさにこのアドホック分析といえます。  
+という良い意味で使われることが多いです。アドホック分析はオフラインで行われリアルタイムで処理する必要がありません。ソフトウェアメトリクス分析の場合、まさにこのアドホック分析といえます。一方、最近流行りのデータサイエンティストと言われる方々はAmazonやGoogleの例を見ても分かるようデータをオンライン、リアルタイムで処理するためのアルゴリズム開発・実装を行うのが主といえます。
 　  
-一方、最近流行りのデータサイエンティストと言われる方々はAmazonやGoogleの例を見ても分かるようデータをオンライン、リアルタイムで処理するためのアルゴリズム開発・実装を行うのが主といえます。  
-　  
-参考： [データサイエンティストは「アルゴリズム実装系」と「アドホック分析系」とに分けた方が良いかも](https://tjo.hatenablog.com/entry/2013/08/01/200702)
+参考： [データサイエンティストは「アルゴリズム実装系」と「アドホック分析系」とに分けた方が良いかも](https://tjo.hatenablog.com/entry/2013/08/01/200702){target="_blank"}
 
-　  
 
 ## なぜRを使うのか
-メトリクス分析のようなアドホック分析を行うのに適したツール（言語）に R言語（以降、R） があります。Rを使う理由を簡潔に説明しているのが ["Six Reasons To Learn R For Business", R Blogger](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank"} です。
+Rはメトリクス分析のようなアドホック分析を行うのに適したツール（言語）です。その理由を簡潔に説明しているのが ["Six Reasons To Learn R For Business", R Blogger](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank"} です。
 
-1. R Has The Best **Overall Qualities**
+> 1. R Has The Best **Overall Qualities**
 1. R Is Data Science **For Non-Computer Scientists**
 1. Learning R Is **Easy With The Tidyverse**
-    * Structured Programming Interface
 1. R Has **Brains, Muscle, And Heart**
-    * Cutting-edge algorithms and Powerful tools (packages)
 1. R Is Built **For Business**
-    * R Markdown
 1. R Community Support
 
+他の言語と比べて
 　  
 
-## RStudioを使おう
-[データ分析勉強会]() では、ながらく [R Commander（以降、Rcmdr）]() が利用されてきました。Rcmdrはコードを記載しなくても可視化や分析ができますので初学者にとっては便利な道具です。しかし、RcmdrはRのごく一部のコマンド（関数）をGUIで使えるようにしたラッパーですので、できることが非常に限られています。加えてGUI操作が記録に残りませんので分析再現性の観点からみても好ましいとは言えません。
+### RStudioを使おう
+データ分析勉強会では、ながらく [R Commander（以降、Rcmdr）](https://www.rcommander.com/){target="_blank"} が利用されています。Rcmdrはコードを記載しなくても可視化や分析ができますので初学者にとっては便利な道具です。しかし、RcmdrはRのごく一部のコマンド（関数）をGUIで使えるようにしたラッパーですので、できることが非常に限られています。加えてGUI操作が記録に残りませんので分析再現性の観点からみても好ましいとは言えません。  
+アドホック分析には

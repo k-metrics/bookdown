@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.3 Variables | Rのすゝめ</title>
   <meta name="description" content="4.3 Variables | Rのすゝめ" />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.3 Variables | Rのすゝめ" />
   <meta property="og:type" content="book" />
@@ -71,7 +71,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -132,11 +132,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this book</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="データ分析とは.html"><a href="データ分析とは.html"><i class="fa fa-check"></i><b>1.1</b> データ分析とは</a><ul>
+<li class="chapter" data-level="1.1" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>1.1</b> Motivation</a></li>
+<li class="chapter" data-level="1.2" data-path="データ分析とは.html"><a href="データ分析とは.html"><i class="fa fa-check"></i><b>1.2</b> データ分析とは</a><ul>
 <li class="chapter" data-level="" data-path="データ分析とは.html"><a href="データ分析とは.html#参考アドホック分析"><i class="fa fa-check"></i>参考）アドホック分析</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="なぜrを使うのか.html"><a href="なぜrを使うのか.html"><i class="fa fa-check"></i><b>1.2</b> なぜRを使うのか</a></li>
-<li class="chapter" data-level="1.3" data-path="rstudioを使おう.html"><a href="rstudioを使おう.html"><i class="fa fa-check"></i><b>1.3</b> RStudioを使おう</a></li>
+<li class="chapter" data-level="1.3" data-path="なぜrを使うのか.html"><a href="なぜrを使うのか.html"><i class="fa fa-check"></i><b>1.3</b> なぜRを使うのか</a></li>
+<li class="chapter" data-level="1.4" data-path="rstudioを使おう.html"><a href="rstudioを使おう.html"><i class="fa fa-check"></i><b>1.4</b> RStudioを使おう</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a><ul>
 <li class="chapter" data-level="2.1" data-path="environment.html"><a href="environment.html"><i class="fa fa-check"></i><b>2.1</b> Environment</a></li>
@@ -250,42 +251,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="variables" class="section level2">
 <h2><span class="header-section-number">4.3</span> Variables</h2>
 <p>Rで変数を作成する場合、変数の型宣言や変数定義は必要ありません。何らかの値を代入した時点で値に応じた型の変数が自動的に作成されます。変数名の大文字/小文字は自動的に区別されますが数字から始まる変数名は作成できません。</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">var_num &lt;-<span class="st"> </span><span class="dv">100</span>        <span class="co"># 実数型</span></a>
-<a class="sourceLine" id="cb49-2" title="2">var_NUM &lt;-<span class="st"> </span>7L         <span class="co"># 整数を明示的に指定したい場合は数字に`L`をつける</span></a>
-<a class="sourceLine" id="cb49-3" title="3">VAR_num &lt;-<span class="st"> </span><span class="fl">13.5</span>       <span class="co"># &quot;135e-1&quot;としても同じ</span></a>
-<a class="sourceLine" id="cb49-4" title="4">var_cmp &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>2i     <span class="co"># 複素数も扱えます</span></a>
-<a class="sourceLine" id="cb49-5" title="5"></a>
-<a class="sourceLine" id="cb49-6" title="6">var_str &lt;-<span class="st"> &quot;Strings&quot;</span>  <span class="co"># 文字列</span></a>
-<a class="sourceLine" id="cb49-7" title="7">var_STR &lt;-<span class="st"> &quot;TRUE&quot;</span>     <span class="co"># &quot;&quot;で囲っているのでこれも文字列</span></a>
-<a class="sourceLine" id="cb49-8" title="8"></a>
-<a class="sourceLine" id="cb49-9" title="9">var_bool &lt;-<span class="st"> </span><span class="ot">TRUE</span>      <span class="co"># 予約語として扱われるので論理型 </span></a>
-<a class="sourceLine" id="cb49-10" title="10">var_BOOL &lt;-<span class="st"> </span><span class="ot">TRUE</span>      <span class="co"># 変数の大文字小文字は一文字でも異なれば異なる変数</span></a>
-<a class="sourceLine" id="cb49-11" title="11">VAR_bool &lt;-<span class="st"> </span><span class="ot">FALSE</span>     <span class="co"># 同上</span></a>
-<a class="sourceLine" id="cb49-12" title="12"></a>
-<a class="sourceLine" id="cb49-13" title="13">var_date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2016/1/1&quot;</span>)</a>
-<a class="sourceLine" id="cb49-14" title="14">                      <span class="co"># 日付型も扱えます</span></a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">var_num &lt;-<span class="st"> </span><span class="dv">100</span>        <span class="co"># 実数型</span></a>
+<a class="sourceLine" id="cb49-2" data-line-number="2">var_NUM &lt;-<span class="st"> </span>7L         <span class="co"># 整数を明示的に指定したい場合は数字に`L`をつける</span></a>
+<a class="sourceLine" id="cb49-3" data-line-number="3">VAR_num &lt;-<span class="st"> </span><span class="fl">13.5</span>       <span class="co"># &quot;135e-1&quot;としても同じ</span></a>
+<a class="sourceLine" id="cb49-4" data-line-number="4">var_cmp &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span>2i     <span class="co"># 複素数も扱えます</span></a>
+<a class="sourceLine" id="cb49-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb49-6" data-line-number="6">var_str &lt;-<span class="st"> &quot;Strings&quot;</span>  <span class="co"># 文字列</span></a>
+<a class="sourceLine" id="cb49-7" data-line-number="7">var_STR &lt;-<span class="st"> &quot;TRUE&quot;</span>     <span class="co"># &quot;&quot;で囲っているのでこれも文字列</span></a>
+<a class="sourceLine" id="cb49-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb49-9" data-line-number="9">var_bool &lt;-<span class="st"> </span><span class="ot">TRUE</span>      <span class="co"># 予約語として扱われるので論理型 </span></a>
+<a class="sourceLine" id="cb49-10" data-line-number="10">var_BOOL &lt;-<span class="st"> </span><span class="ot">TRUE</span>      <span class="co"># 変数の大文字小文字は一文字でも異なれば異なる変数</span></a>
+<a class="sourceLine" id="cb49-11" data-line-number="11">VAR_bool &lt;-<span class="st"> </span><span class="ot">FALSE</span>     <span class="co"># 同上</span></a>
+<a class="sourceLine" id="cb49-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb49-13" data-line-number="13">var_date &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2016/1/1&quot;</span>)</a>
+<a class="sourceLine" id="cb49-14" data-line-number="14">                      <span class="co"># 日付型も扱えます</span></a></code></pre></div>
 <div id="データ型" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> データ型</h3>
 <p>前述のコードを見てもわかるように変数を作成した場合はエラーがない限り何も応答がありませんので、変数の型（変数に入っているデータの型）を知るための基本的な方法を覚えておいてください。 [RStudio <i class="fa fa-external-link"></i>][RS] を利用してる場合は［Environment］パネルで参照する方法ですが、コマンドラインで確認するには<code>base::class</code>関数を利用します。先程作成した変数を確認してみましょう。</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">class</span>(var_num)</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">class</span>(var_num)</a></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="kw">class</span>(var_NUM)</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">class</span>(var_NUM)</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="kw">class</span>(VAR_num)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">class</span>(VAR_num)</a></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="kw">class</span>(var_cmp)</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="kw">class</span>(var_cmp)</a></code></pre></div>
 <pre><code>## [1] &quot;complex&quot;</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">class</span>(var_str)</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="kw">class</span>(var_str)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">class</span>(var_STR)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">class</span>(var_STR)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="kw">class</span>(var_bool)</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">class</span>(var_bool)</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="kw">class</span>(var_BOOL)</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">class</span>(var_BOOL)</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="kw">class</span>(VAR_bool)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">class</span>(VAR_bool)</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">class</span>(var_date)</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">class</span>(var_date)</a></code></pre></div>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
 <p>　<br />
 表示されたものは型（クラス）名です。変数型との対応は以下の通りになります。数字を代入した場合は自動的に<code>numeric</code>クラスになりますので、明示的に整数<code>integer</code>として扱いたい場合は前述のように<code>nL</code>(n: 整数)と<code>L</code>を添えて代入するか後述の<code>base::as.intger</code>関数を用いてください。</p>
@@ -378,30 +379,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ベクトル型" class="section level3">
 <h3><span class="header-section-number">4.3.4</span> ベクトル型</h3>
 <p>ベクトル型は最も基本となる変数型（変数の構造）です。ベクトル型変数を作成するには<code>base::c</code>関数を利用します。</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">vec_num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)                <span class="co"># 連続した整数（1～10）として扱われます</span></a>
-<a class="sourceLine" id="cb70-2" title="2">vec_NUM &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)             <span class="co"># c(1:3)とはことなり実数値とした扱われます</span></a>
-<a class="sourceLine" id="cb70-3" title="3">vec_cmp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>0i, <span class="dv">2</span> <span class="op">+</span><span class="st"> </span>3i, <span class="dv">3</span> <span class="op">+</span><span class="st"> </span>5i)</a>
-<a class="sourceLine" id="cb70-4" title="4">                              <span class="co"># 複素数型</span></a>
-<a class="sourceLine" id="cb70-5" title="5"></a>
-<a class="sourceLine" id="cb70-6" title="6"></a>
-<a class="sourceLine" id="cb70-7" title="7">vec_str &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;TRUE&quot;</span>, <span class="st">&quot;FALSE&quot;</span>, <span class="st">&quot;VOID&quot;</span>)</a>
-<a class="sourceLine" id="cb70-8" title="8">                              <span class="co"># &quot;&quot;で囲んでいるので文字列</span></a>
-<a class="sourceLine" id="cb70-9" title="9"></a>
-<a class="sourceLine" id="cb70-10" title="10">vec_bool &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)      <span class="co"># 予約語として扱われる</span></a>
-<a class="sourceLine" id="cb70-11" title="11">vec_BOOL &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">vec_num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)                <span class="co"># 連続した整数（1～10）として扱われます</span></a>
+<a class="sourceLine" id="cb70-2" data-line-number="2">vec_NUM &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)             <span class="co"># c(1:3)とはことなり実数値とした扱われます</span></a>
+<a class="sourceLine" id="cb70-3" data-line-number="3">vec_cmp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>0i, <span class="dv">2</span> <span class="op">+</span><span class="st"> </span>3i, <span class="dv">3</span> <span class="op">+</span><span class="st"> </span>5i)</a>
+<a class="sourceLine" id="cb70-4" data-line-number="4">                              <span class="co"># 複素数型</span></a>
+<a class="sourceLine" id="cb70-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb70-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb70-7" data-line-number="7">vec_str &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;TRUE&quot;</span>, <span class="st">&quot;FALSE&quot;</span>, <span class="st">&quot;VOID&quot;</span>)</a>
+<a class="sourceLine" id="cb70-8" data-line-number="8">                              <span class="co"># &quot;&quot;で囲んでいるので文字列</span></a>
+<a class="sourceLine" id="cb70-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb70-10" data-line-number="10">vec_bool &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)      <span class="co"># 予約語として扱われる</span></a>
+<a class="sourceLine" id="cb70-11" data-line-number="11">vec_BOOL &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>　<br />
 作成した変数の変数型と変数の値を確認してみましょう。同時に確認するには<code>base::class</code>関数ではなく<code>base::str</code>関数を使います。</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">str</span>(vec_num)</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">str</span>(vec_num)</a></code></pre></div>
 <pre><code>##  int [1:10] 1 2 3 4 5 6 7 8 9 10</code></pre>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">str</span>(vec_NUM)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">str</span>(vec_NUM)</a></code></pre></div>
 <pre><code>##  num [1:3] 1 2 3</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">str</span>(vec_cmp)</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">str</span>(vec_cmp)</a></code></pre></div>
 <pre><code>##  cplx [1:3] 1+0i 2+3i 3+5i</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">str</span>(vec_str)</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="kw">str</span>(vec_str)</a></code></pre></div>
 <pre><code>##  chr [1:3] &quot;TRUE&quot; &quot;FALSE&quot; &quot;VOID&quot;</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="kw">str</span>(vec_bool)</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="kw">str</span>(vec_bool)</a></code></pre></div>
 <pre><code>##  logi [1:2] TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">str</span>(vec_BOOL)</a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="kw">str</span>(vec_BOOL)</a></code></pre></div>
 <pre><code>##  logi [1:3] TRUE FALSE TRUE</code></pre>
 <p>　<br />
 ベクトル型変数は単一のデータ型しか格納できない点に注意してください。データ型の異なる値を代入した場合は後述の<a href="variables.html#ForcedConversion">強制型変換</a>が行われます。
@@ -410,13 +411,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="マトリクス型" class="section level3">
 <h3><span class="header-section-number">4.3.5</span> マトリクス型</h3>
 <p>マトリクス型は二次元配列のベクトル型変数と言えます。作成するには<code>base::matrix</code>関数を利用します。関数によってはベクトル型でなくマトリクス型の変数を引数にする必要がある場合がありますので、覚えておいてください。</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1">mat_num &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>), <span class="dv">2</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb83-2" title="2">mat_num</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1">mat_num &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>), <span class="dv">2</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb83-2" data-line-number="2">mat_num</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   10   30   50
 ## [2,]   20   40   60</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">mat_str &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>), <span class="dv">2</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb85-2" title="2">mat_str</a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">mat_str &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>), <span class="dv">2</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb85-2" data-line-number="2">mat_str</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,] &quot;a&quot;  &quot;x&quot; 
 ## [2,] &quot;b&quot;  &quot;y&quot;</code></pre>
@@ -425,9 +426,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="アレイ型" class="section level3">
 <h3><span class="header-section-number">4.3.6</span> アレイ型</h3>
 <p>アレイ型は多次元配列を扱える変数です。作成するには<code>base::array</code>関数を利用します。</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="co"># アレイ型</span></a>
-<a class="sourceLine" id="cb87-2" title="2">ary_num &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb87-3" title="3">ary_num</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="co"># アレイ型</span></a>
+<a class="sourceLine" id="cb87-2" data-line-number="2">ary_num &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb87-3" data-line-number="3">ary_num</a></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3]
@@ -445,22 +446,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.3.7</span> データフレーム型</h3>
 <p>データフレーム型は [R <i class="fa fa-external-link"></i>][R] の特徴でもありベクトル型と並んで最も重要な変数型です。データフレーム型ではデータ数の同じ異なるデータ型のベクトル変数を複数まとめて格納できる変数型です。イメージとししてはスプレッドシートを用いたデータテーブルのようなものです。<br />
 データフレーム型を作成するには<code>base::data.frame</code>関数を用います。デフォルトでは文字型変数は後述の<a href="#Factor">因子型(Factor)</a>として扱われます。</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">dataset &lt;-<span class="st"> </span><span class="kw">data.frame</span>(vec_NUM, vec_str, vec_BOOL, vec_cmp)</a>
-<a class="sourceLine" id="cb89-2" title="2">dataset</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">dataset &lt;-<span class="st"> </span><span class="kw">data.frame</span>(vec_NUM, vec_str, vec_BOOL, vec_cmp)</a>
+<a class="sourceLine" id="cb89-2" data-line-number="2">dataset</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["vec_NUM"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["vec_str"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["vec_BOOL"],"name":[3],"type":["lgl"],"align":["right"]},{"label":["vec_cmp"],"name":[4],"type":["cplx"],"align":["right"]}],"data":[{"1":"1","2":"TRUE","3":"TRUE","4":"1+0i"},{"1":"2","2":"FALSE","3":"FALSE","4":"2+3i"},{"1":"3","2":"VOID","3":"TRUE","4":"3+5i"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>数の異なるデータからデータフレーム型を作るとどうなるでしょう？実際にご自分のコンソールで実行してみてください。</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">data_set &lt;-<span class="st"> </span><span class="kw">data.frame</span>(vec_num, vec_str, vec_bool) </a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1">data_set &lt;-<span class="st"> </span><span class="kw">data.frame</span>(vec_num, vec_str, vec_bool) </a></code></pre></div>
 <p>　</p>
 </div>
 <div id="リスト型" class="section level3">
 <h3><span class="header-section-number">4.3.8</span> リスト型</h3>
 <p>リスト型はデータフレーム型と異なりデータ数の異なるデータ型の変数を複数まとめて格納できる変数型です。格納できる変数型（構造）はベクトル型に限らずマトリクス型やデータフレーム型、またリスト型自身も格納可能な柔軟は変数型です。関数の返り値としてよく使われますので多少厄介ではありますがリスト型変数内のデータの参照方法だけでも覚えておきましょう。</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">lst_num &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="kw">c</span>(<span class="fl">0.5</span><span class="op">:</span><span class="fl">5.5</span>), <span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">0.2</span>))</a>
-<a class="sourceLine" id="cb91-2" title="2">lst_num</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">lst_num &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="kw">c</span>(<span class="fl">0.5</span><span class="op">:</span><span class="fl">5.5</span>), <span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">0.2</span>))</a>
+<a class="sourceLine" id="cb91-2" data-line-number="2">lst_num</a></code></pre></div>
 <pre><code>## [[1]]
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -469,8 +470,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[3]]
 ##  [1] 1.0 1.2 1.4 1.6 1.8 2.0 2.2 2.4 2.6 2.8 3.0 3.2 3.4 3.6 3.8 4.0</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1">lst_mix &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>))</a>
-<a class="sourceLine" id="cb93-2" title="2">lst_mix</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">lst_mix &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>))</a>
+<a class="sourceLine" id="cb93-2" data-line-number="2">lst_mix</a></code></pre></div>
 <pre><code>## [[1]]
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -500,31 +501,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">var_fac &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="st">&quot;Food&quot;</span>)</a>
-<a class="sourceLine" id="cb95-2" title="2">var_FAC &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb95-3" title="3"></a>
-<a class="sourceLine" id="cb95-4" title="4">vec_fac &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;Fruit&quot;</span>, <span class="st">&quot;Vegetable&quot;</span>, <span class="st">&quot;Fruit&quot;</span>))</a>
-<a class="sourceLine" id="cb95-5" title="5">vec_FAC &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">var_fac &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="st">&quot;Food&quot;</span>)</a>
+<a class="sourceLine" id="cb95-2" data-line-number="2">var_FAC &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb95-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb95-4" data-line-number="4">vec_fac &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;Fruit&quot;</span>, <span class="st">&quot;Vegetable&quot;</span>, <span class="st">&quot;Fruit&quot;</span>))</a>
+<a class="sourceLine" id="cb95-5" data-line-number="5">vec_FAC &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>))</a></code></pre></div>
 <p>作成した因子型の変数を確認してみましょう。　</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">str</span>(var_fac)</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="kw">str</span>(var_fac)</a></code></pre></div>
 <pre><code>##  Factor w/ 1 level &quot;Food&quot;: 1</code></pre>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="kw">str</span>(var_FAC)</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw">str</span>(var_FAC)</a></code></pre></div>
 <pre><code>##  Factor w/ 1 level &quot;10&quot;: 1</code></pre>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="kw">str</span>(vec_fac)</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="kw">str</span>(vec_fac)</a></code></pre></div>
 <pre><code>##  Factor w/ 2 levels &quot;Fruit&quot;,&quot;Vegetable&quot;: 1 2 1</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="kw">str</span>(vec_FAC)</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="kw">str</span>(vec_FAC)</a></code></pre></div>
 <pre><code>##  Factor w/ 5 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 2 3 4 5</code></pre>
 <p>このように同じ値は同じ因子とみなされていることが分かります。既に作成されている変数を因子型にすることも可能です。</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1">VEC_fac &lt;-<span class="st"> </span><span class="kw">factor</span>(vec_str)</a>
-<a class="sourceLine" id="cb104-2" title="2">VEC_fac</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">VEC_fac &lt;-<span class="st"> </span><span class="kw">factor</span>(vec_str)</a>
+<a class="sourceLine" id="cb104-2" data-line-number="2">VEC_fac</a></code></pre></div>
 <pre><code>## [1] TRUE  FALSE VOID 
 ## Levels: FALSE TRUE VOID</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1">vec_ord &lt;-<span class="st"> </span><span class="kw">ordered</span>(vec_str)</a>
-<a class="sourceLine" id="cb106-2" title="2">vec_ord</a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1">vec_ord &lt;-<span class="st"> </span><span class="kw">ordered</span>(vec_str)</a>
+<a class="sourceLine" id="cb106-2" data-line-number="2">vec_ord</a></code></pre></div>
 <pre><code>## [1] TRUE  FALSE VOID 
 ## Levels: FALSE &lt; TRUE &lt; VOID</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1">vec_ORD &lt;-<span class="st"> </span><span class="kw">factor</span>(vec_num, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb108-2" title="2">vec_ORD</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">vec_ORD &lt;-<span class="st"> </span><span class="kw">factor</span>(vec_num, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb108-2" data-line-number="2">vec_ORD</a></code></pre></div>
 <pre><code>##  [1] 1  2  3  4  5  6  7  8  9  10
 ## Levels: 1 &lt; 2 &lt; 3 &lt; 4 &lt; 5 &lt; 6 &lt; 7 &lt; 8 &lt; 9 &lt; 10</code></pre>
 <p>　</p>
@@ -559,19 +560,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>上記の特殊な定数を変数に代入してみましょう。</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">var_null &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb110-2" title="2">var_na &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb110-3" title="3">var_nan &lt;-<span class="st"> </span><span class="ot">NaN</span></a>
-<a class="sourceLine" id="cb110-4" title="4">var_inf &lt;-<span class="st"> </span><span class="ot">Inf</span></a></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1">var_null &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb110-2" data-line-number="2">var_na &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb110-3" data-line-number="3">var_nan &lt;-<span class="st"> </span><span class="ot">NaN</span></a>
+<a class="sourceLine" id="cb110-4" data-line-number="4">var_inf &lt;-<span class="st"> </span><span class="ot">Inf</span></a></code></pre></div>
 <p>　<br />
 作成した変数のクラスを確認してみます。</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="kw">class</span>(var_null)</a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="kw">class</span>(var_null)</a></code></pre></div>
 <pre><code>## [1] &quot;NULL&quot;</code></pre>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="kw">class</span>(var_na)</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="kw">class</span>(var_na)</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1"><span class="kw">class</span>(var_nan)</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="kw">class</span>(var_nan)</a></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1"><span class="kw">class</span>(var_inf)</a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="kw">class</span>(var_inf)</a></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>　<br />
 このように特殊な定数にも型（クラス）があることに留意しておいてください。<br />
@@ -612,23 +613,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ForcedConversion" class="section level3">
 <h3><span class="header-section-number">4.3.11</span> 強制型変換</h3>
 <p>さて、今までは変数を作成する際に常に同じデータ型のデータを指定してきましたが、データ型が混在するような変数を作成した場合どのようになるのでしょうか？まず、整数と実数が混在した場合の例を見てみます。データ型を確認するには<code>base::typeof</code>関数を使用します。</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1">vec_test_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 2L, 3L, 4L, 5L)</a>
-<a class="sourceLine" id="cb119-2" title="2"><span class="kw">typeof</span>(vec_test_<span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">vec_test_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">c</span>(1L, 2L, 3L, 4L, 5L)</a>
+<a class="sourceLine" id="cb119-2" data-line-number="2"><span class="kw">typeof</span>(vec_test_<span class="dv">0</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1">vec_test_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,  2L, <span class="fl">3.5</span>, <span class="dv">4</span>, 5L)</a>
-<a class="sourceLine" id="cb121-2" title="2"><span class="kw">typeof</span>(vec_test_<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">vec_test_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,  2L, <span class="fl">3.5</span>, <span class="dv">4</span>, 5L)</a>
+<a class="sourceLine" id="cb121-2" data-line-number="2"><span class="kw">typeof</span>(vec_test_<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <p>このように整数と実数が混在した場合は実数型として扱われます。次に実数と複素数が混在した場合はどのようになるのでしょうか？</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">vec_test_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span> <span class="op">+</span><span class="st"> </span>1i, <span class="dv">3</span>, <span class="dv">4</span> <span class="op">+</span><span class="st"> </span>3i)</a>
-<a class="sourceLine" id="cb123-2" title="2"><span class="kw">typeof</span>(vec_test_<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">vec_test_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span> <span class="op">+</span><span class="st"> </span>1i, <span class="dv">3</span>, <span class="dv">4</span> <span class="op">+</span><span class="st"> </span>3i)</a>
+<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="kw">typeof</span>(vec_test_<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;complex&quot;</code></pre>
 <p>整数と実数の混在のケースから容易に想像ができたとは思いますが、複素数型として扱われます。このように [R <i class="fa fa-external-link"></i>][R] では変数を最適なデータ型に変換してくれます。これはベクトル型の変数では常に一つのデータ型しか保持できませんので強制的に型を変換することで一つの型とします。これを強制型変換といいます。</p>
 <p>では、以下のような場合はどうなるでしょう。実際にやってみましょう。</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1">vec_test_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">c</span>(1L, <span class="ot">TRUE</span>, 0L, <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb125-2" title="2"><span class="kw">typeof</span>(vec_test_<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb125-3" title="3"></a>
-<a class="sourceLine" id="cb125-4" title="4">vec_test_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;String&quot;</span>, 1L, <span class="ot">TRUE</span>, <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb125-5" title="5"><span class="kw">typeof</span>(vec_test_<span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">vec_test_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">c</span>(1L, <span class="ot">TRUE</span>, 0L, <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb125-2" data-line-number="2"><span class="kw">typeof</span>(vec_test_<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb125-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb125-4" data-line-number="4">vec_test_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;String&quot;</span>, 1L, <span class="ot">TRUE</span>, <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb125-5" data-line-number="5"><span class="kw">typeof</span>(vec_test_<span class="dv">4</span>)</a></code></pre></div>
 <p>強制型変換は下表のように左から右の優先順位で（柔軟性の高い方へ）型変換されます。</p>
 <table>
 <thead>
@@ -655,27 +656,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="特殊な定数の型変換" class="section level3">
 <h3><span class="header-section-number">4.3.12</span> 特殊な定数の型変換</h3>
 <p>さて、特殊な定数である<code>NULL</code>、<code>NA</code>、<code>NaN</code>、<code>Inf</code>が強制型変換されるとどうなるのでしょう？</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="kw">typeof</span>(<span class="ot">NULL</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">NULL</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;NULL&quot;</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="kw">typeof</span>(<span class="ot">NA</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">NA</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="kw">typeof</span>(<span class="ot">NaN</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">NaN</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="kw">typeof</span>(<span class="ot">Inf</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="kw">typeof</span>(<span class="ot">Inf</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <p>　<br />
 <code>NULL</code>は文字通りNULLですからデータとして存在しませんので<code>NULL</code>自体の型変換は行われません。</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1">vec_test_<span class="dv">5</span> &lt;-<span class="st"> </span><span class="kw">c</span>(1L, <span class="dv">2</span>, <span class="dv">3</span> <span class="op">+</span><span class="st"> </span>4i, <span class="ot">NULL</span>, <span class="st">&quot;5&quot;</span>)</a>
-<a class="sourceLine" id="cb134-2" title="2"><span class="kw">typeof</span>(vec_test_<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1">vec_test_<span class="dv">5</span> &lt;-<span class="st"> </span><span class="kw">c</span>(1L, <span class="dv">2</span>, <span class="dv">3</span> <span class="op">+</span><span class="st"> </span>4i, <span class="ot">NULL</span>, <span class="st">&quot;5&quot;</span>)</a>
+<a class="sourceLine" id="cb134-2" data-line-number="2"><span class="kw">typeof</span>(vec_test_<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1">vec_test_<span class="dv">5</span></a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1">vec_test_<span class="dv">5</span></a></code></pre></div>
 <pre><code>## [1] &quot;1&quot;    &quot;2&quot;    &quot;3+4i&quot; &quot;5&quot;</code></pre>
 <p>　<br />
 一方、<code>NA</code>, <code>NaN</code>, <code>Inf</code>は上記の通りデータ型を持っていますので型変換が行われます。</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1">vec_test_<span class="dv">6</span> &lt;-<span class="st"> </span><span class="kw">c</span>(1L, <span class="dv">2</span>, <span class="dv">3</span> <span class="op">+</span><span class="st"> </span>4i, <span class="ot">NULL</span>, <span class="ot">NaN</span>, <span class="ot">NA</span>, <span class="ot">Inf</span>)</a>
-<a class="sourceLine" id="cb138-2" title="2"><span class="kw">typeof</span>(vec_test_<span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">vec_test_<span class="dv">6</span> &lt;-<span class="st"> </span><span class="kw">c</span>(1L, <span class="dv">2</span>, <span class="dv">3</span> <span class="op">+</span><span class="st"> </span>4i, <span class="ot">NULL</span>, <span class="ot">NaN</span>, <span class="ot">NA</span>, <span class="ot">Inf</span>)</a>
+<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="kw">typeof</span>(vec_test_<span class="dv">6</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;complex&quot;</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1">vec_test_<span class="dv">6</span></a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1">vec_test_<span class="dv">6</span></a></code></pre></div>
 <pre><code>## [1]   1+0i   2+0i   3+4i NaN+0i     NA Inf+0i</code></pre>
 <p>　<br />
 なぜ、このような事になるかはこちらの<a href="http://blog.hoxo-m.com/2017/04/24/hoxom01_vector_type_coerce/" target="_blank" title="R の強制型変換と NA の取り扱い">参考資料 <i class="fa fa-external-link"></i></a>にてご確認ください。
@@ -689,24 +690,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ベクトル型変数" class="section level3">
 <h3><span class="header-section-number">4.3.14</span> ベクトル型変数</h3>
 <p>ベクトル型、マトリクス型、アレイ型変数内のデータを参照する場合<code>[]</code>を利用します。</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1">vec_str</a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1">vec_str</a></code></pre></div>
 <pre><code>## [1] &quot;TRUE&quot;  &quot;FALSE&quot; &quot;VOID&quot;</code></pre>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1">vec_str[<span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1">vec_str[<span class="dv">3</span>]</a></code></pre></div>
 <pre><code>## [1] &quot;VOID&quot;</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1">mat_num</a></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1">mat_num</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   10   30   50
 ## [2,]   20   40   60</code></pre>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1">mat_num[<span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1">mat_num[<span class="dv">3</span>]</a></code></pre></div>
 <pre><code>## [1] 30</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1">mat_num[<span class="dv">1</span>, ]</a></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">mat_num[<span class="dv">1</span>, ]</a></code></pre></div>
 <pre><code>## [1] 10 30 50</code></pre>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1">mat_num[, <span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1">mat_num[, <span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1] 30 40</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1">mat_num[<span class="dv">2</span>, <span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">mat_num[<span class="dv">2</span>, <span class="dv">3</span>]</a></code></pre></div>
 <pre><code>## [1] 60</code></pre>
 <p><code>[n]</code>と指定した場合<code>n</code>番目のデータを参照し、<code>[n, ]</code>と指定場合<code>n</code>行のデータを参照し、<code>[, n]</code>と指定した場合<code>n</code>列のデータを参照します。アレイ型の場合は多次元配列ですので指定する数値が多くなる点に注意してください。</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" title="1">ary_num</a></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1">ary_num</a></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3]
@@ -718,30 +719,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##      [,1] [,2] [,3]
 ## [1,]    7    9   11
 ## [2,]    8   10   12</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1">ary_num[<span class="dv">8</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1">ary_num[<span class="dv">8</span>]</a></code></pre></div>
 <pre><code>## [1] 8</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" title="1">ary_num[, , <span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1">ary_num[, , <span class="dv">2</span>]</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    7    9   11
 ## [2,]    8   10   12</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1">ary_num[<span class="dv">1</span>, , <span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">ary_num[<span class="dv">1</span>, , <span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1]  7  9 11</code></pre>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1">ary_num[, <span class="dv">3</span>, <span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1">ary_num[, <span class="dv">3</span>, <span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1] 11 12</code></pre>
 <p>　</p>
 </div>
 <div id="データフレーム型変数" class="section level3">
 <h3><span class="header-section-number">4.3.15</span> データフレーム型変数</h3>
 <p>データフレーム型変数内のベクトル型変数を参照する場合は<code>$</code>を用います。更に参照したベクトル型変数内のデータを参照する場合には前述の<code>[]</code>を利用します。</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" title="1">dataset</a></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1">dataset</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["vec_NUM"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["vec_str"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["vec_BOOL"],"name":[3],"type":["lgl"],"align":["right"]},{"label":["vec_cmp"],"name":[4],"type":["cplx"],"align":["right"]}],"data":[{"1":"1","2":"TRUE","3":"TRUE","4":"1+0i"},{"1":"2","2":"FALSE","3":"FALSE","4":"2+3i"},{"1":"3","2":"VOID","3":"TRUE","4":"3+5i"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1">dataset<span class="op">$</span>vec_NUM</a></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1">dataset<span class="op">$</span>vec_NUM</a></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1">dataset<span class="op">$</span>vec_str[<span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1">dataset<span class="op">$</span>vec_str[<span class="dv">3</span>]</a></code></pre></div>
 <pre><code>## [1] VOID
 ## Levels: FALSE TRUE VOID</code></pre>
 <p>　</p>
@@ -749,7 +750,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="リスト型変数" class="section level3">
 <h3><span class="header-section-number">4.3.16</span> リスト型変数</h3>
 <p>リスト型変数を参照する場合は<code>[[]]</code>を用います。<code>names</code>属性がある場合はデータフレーム型と同様に<code>$</code>を用いることが可能です。</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1">lst_mix</a></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1">lst_mix</a></code></pre></div>
 <pre><code>## [[1]]
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -758,31 +759,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[3]]
 ## [1]  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1">lst_mix[[<span class="dv">2</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1">lst_mix[[<span class="dv">2</span>]]</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1">lst_mix[[<span class="dv">2</span>]][<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1">lst_mix[[<span class="dv">2</span>]][<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## [1] &quot;b&quot;</code></pre>
 <p>　</p>
 </div>
 <div id="変数の扱い方" class="section level3">
 <h3><span class="header-section-number">4.3.17</span> 変数の扱い方</h3>
 <p>[R <i class="fa fa-external-link"></i>][R] の変数で最も注意すべき点は、再代入により変数のデータ型は書き換えられてしまう場合があることです。例えば最初に整数型の変数として作成した<code>vec_num</code>ですが、以下のような代入を行うとデータ型が変わってしまうことがわかります。</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1"><span class="kw">str</span>(vec_num)</a></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" data-line-number="1"><span class="kw">str</span>(vec_num)</a></code></pre></div>
 <pre><code>##  int [1:10] 1 2 3 4 5 6 7 8 9 10</code></pre>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1">vec_num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;char&quot;</span>)</a>
-<a class="sourceLine" id="cb179-2" title="2"><span class="kw">str</span>(vec_num)</a></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1">vec_num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;char&quot;</span>)</a>
+<a class="sourceLine" id="cb179-2" data-line-number="2"><span class="kw">str</span>(vec_num)</a></code></pre></div>
 <pre><code>##  chr &quot;char&quot;</code></pre>
 <p>　</p>
 </div>
 <div id="変数型を確認する" class="section level3">
 <h3><span class="header-section-number">4.3.18</span> 変数型を確認する</h3>
 <p>前述のようなことを避けるには<code>base::is.*</code>関数を用いることでデータ型の検査（確認）をすることができます。</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1"><span class="kw">is.numeric</span>(vec_num)</a></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1"><span class="kw">is.numeric</span>(vec_num)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1">vec_num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb183-2" title="2"><span class="kw">is.numeric</span>(vec_num)</a></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1">vec_num &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb183-2" data-line-number="2"><span class="kw">is.numeric</span>(vec_num)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1"><span class="kw">is.integer</span>(vec_num)</a></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="kw">is.integer</span>(vec_num)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>　</p>
 <table>
