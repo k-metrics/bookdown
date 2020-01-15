@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8.3 gg’s | Rのすゝめ</title>
+  <meta name="description" content="8.3 gg’s | Rのすゝめ" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8.3 gg’s | Rのすゝめ" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="k-metrics/bookdown" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8.3 gg’s | Rのすゝめ" />
+  
+  
+  
+
+<meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
+
+
+<meta name="date" content="2020-01-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ggplot2.html"/>
+<link rel="next" href="communicate.html"/>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="assets/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="assets/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this book</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="データ分析とは.html"><a href="データ分析とは.html"><i class="fa fa-check"></i><b>1.1</b> データ分析とは</a><ul>
+<li class="chapter" data-level="" data-path="データ分析とは.html"><a href="データ分析とは.html#参考アドホック分析"><i class="fa fa-check"></i>参考）アドホック分析</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="なぜrを使うのか.html"><a href="なぜrを使うのか.html"><i class="fa fa-check"></i><b>1.2</b> なぜRを使うのか</a></li>
+<li class="chapter" data-level="1.3" data-path="rstudioを使おう.html"><a href="rstudioを使おう.html"><i class="fa fa-check"></i><b>1.3</b> RStudioを使おう</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a><ul>
+<li class="chapter" data-level="2.1" data-path="environment.html"><a href="environment.html"><i class="fa fa-check"></i><b>2.1</b> Environment</a></li>
+<li class="chapter" data-level="2.2" data-path="手順.html"><a href="手順.html"><i class="fa fa-check"></i><b>2.2</b> 手順</a></li>
+<li class="chapter" data-level="2.3" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>2.3</b> Install R</a></li>
+<li class="chapter" data-level="2.4" data-path="install-rtools-windows-only.html"><a href="install-rtools-windows-only.html"><i class="fa fa-check"></i><b>2.4</b> Install Rtools, Windows ONLY</a></li>
+<li class="chapter" data-level="2.5" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>2.5</b> Install RStudio Desktop</a></li>
+<li class="chapter" data-level="2.6" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>2.6</b> Install R packages</a></li>
+<li class="chapter" data-level="2.7" data-path="install-other-tools.html"><a href="install-other-tools.html"><i class="fa fa-check"></i><b>2.7</b> Install Other tools</a></li>
+<li class="chapter" data-level="2.8" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>2.8</b> RStudio Server</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="rstudio-server.html"><a href="rstudio-server.html#docker"><i class="fa fa-check"></i><b>2.8.1</b> Docker</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ide-basics.html"><a href="ide-basics.html"><i class="fa fa-check"></i><b>3</b> IDE Basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="rstudio-basics.html"><a href="rstudio-basics.html"><i class="fa fa-check"></i><b>3.1</b> RStudio Basics</a></li>
+<li class="chapter" data-level="3.2" data-path="r-markdown-basics.html"><a href="r-markdown-basics.html"><i class="fa fa-check"></i><b>3.2</b> R Markdown Basics</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="program-r-basics.html"><a href="program-r-basics.html"><i class="fa fa-check"></i><b>4</b> Program (R Basics)</a><ul>
+<li class="chapter" data-level="4.1" data-path="r-overview.html"><a href="r-overview.html"><i class="fa fa-check"></i><b>4.1</b> R Overview</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="r-overview.html"><a href="r-overview.html#四則演算"><i class="fa fa-check"></i><b>4.1.1</b> 四則演算</a></li>
+<li class="chapter" data-level="4.1.2" data-path="r-overview.html"><a href="r-overview.html#四則演算結果の代入"><i class="fa fa-check"></i><b>4.1.2</b> 四則演算結果の代入</a></li>
+<li class="chapter" data-level="4.1.3" data-path="r-overview.html"><a href="r-overview.html#変数同士の演算"><i class="fa fa-check"></i><b>4.1.3</b> 変数同士の演算</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="reserved-words.html"><a href="reserved-words.html"><i class="fa fa-check"></i><b>4.2</b> Reserved words</a></li>
+<li class="chapter" data-level="4.3" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>4.3</b> Variables</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="variables.html"><a href="variables.html#データ型"><i class="fa fa-check"></i><b>4.3.1</b> データ型</a></li>
+<li class="chapter" data-level="4.3.2" data-path="variables.html"><a href="variables.html#class"><i class="fa fa-check"></i><b>4.3.2</b> class</a></li>
+<li class="chapter" data-level="4.3.3" data-path="variables.html"><a href="variables.html#VarType"><i class="fa fa-check"></i><b>4.3.3</b> 変数型（変数の構造）</a></li>
+<li class="chapter" data-level="4.3.4" data-path="variables.html"><a href="variables.html#ベクトル型"><i class="fa fa-check"></i><b>4.3.4</b> ベクトル型</a></li>
+<li class="chapter" data-level="4.3.5" data-path="variables.html"><a href="variables.html#マトリクス型"><i class="fa fa-check"></i><b>4.3.5</b> マトリクス型</a></li>
+<li class="chapter" data-level="4.3.6" data-path="variables.html"><a href="variables.html#アレイ型"><i class="fa fa-check"></i><b>4.3.6</b> アレイ型</a></li>
+<li class="chapter" data-level="4.3.7" data-path="variables.html"><a href="variables.html#データフレーム型"><i class="fa fa-check"></i><b>4.3.7</b> データフレーム型</a></li>
+<li class="chapter" data-level="4.3.8" data-path="variables.html"><a href="variables.html#リスト型"><i class="fa fa-check"></i><b>4.3.8</b> リスト型</a></li>
+<li class="chapter" data-level="4.3.9" data-path="variables.html"><a href="variables.html#特殊な定数"><i class="fa fa-check"></i><b>4.3.9</b> 特殊な定数</a></li>
+<li class="chapter" data-level="4.3.10" data-path="variables.html"><a href="variables.html#型を持ったna"><i class="fa fa-check"></i><b>4.3.10</b> 型を持ったNA</a></li>
+<li class="chapter" data-level="4.3.11" data-path="variables.html"><a href="variables.html#ForcedConversion"><i class="fa fa-check"></i><b>4.3.11</b> 強制型変換</a></li>
+<li class="chapter" data-level="4.3.12" data-path="variables.html"><a href="variables.html#特殊な定数の型変換"><i class="fa fa-check"></i><b>4.3.12</b> 特殊な定数の型変換</a></li>
+<li class="chapter" data-level="4.3.13" data-path="variables.html"><a href="variables.html#変数の参照"><i class="fa fa-check"></i><b>4.3.13</b> 変数の参照</a></li>
+<li class="chapter" data-level="4.3.14" data-path="variables.html"><a href="variables.html#ベクトル型変数"><i class="fa fa-check"></i><b>4.3.14</b> ベクトル型変数</a></li>
+<li class="chapter" data-level="4.3.15" data-path="variables.html"><a href="variables.html#データフレーム型変数"><i class="fa fa-check"></i><b>4.3.15</b> データフレーム型変数</a></li>
+<li class="chapter" data-level="4.3.16" data-path="variables.html"><a href="variables.html#リスト型変数"><i class="fa fa-check"></i><b>4.3.16</b> リスト型変数</a></li>
+<li class="chapter" data-level="4.3.17" data-path="variables.html"><a href="variables.html#変数の扱い方"><i class="fa fa-check"></i><b>4.3.17</b> 変数の扱い方</a></li>
+<li class="chapter" data-level="4.3.18" data-path="variables.html"><a href="variables.html#変数型を確認する"><i class="fa fa-check"></i><b>4.3.18</b> 変数型を確認する</a></li>
+<li class="chapter" data-level="4.3.19" data-path="variables.html"><a href="variables.html#参考定数を確認する"><i class="fa fa-check"></i><b>4.3.19</b> 参考）定数を確認する</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="operator.html"><a href="operator.html"><i class="fa fa-check"></i><b>4.4</b> Operator</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="operator.html"><a href="operator.html#単項演算子"><i class="fa fa-check"></i><b>4.4.1</b> 単項演算子</a></li>
+<li class="chapter" data-level="4.4.2" data-path="operator.html"><a href="operator.html#算術演算子"><i class="fa fa-check"></i><b>4.4.2</b> 算術演算子</a></li>
+<li class="chapter" data-level="4.4.3" data-path="operator.html"><a href="operator.html#比較演算子"><i class="fa fa-check"></i><b>4.4.3</b> 比較演算子</a></li>
+<li class="chapter" data-level="4.4.4" data-path="operator.html"><a href="operator.html#論理演算子"><i class="fa fa-check"></i><b>4.4.4</b> 論理演算子</a></li>
+<li class="chapter" data-level="4.4.5" data-path="operator.html"><a href="operator.html#特殊演算子"><i class="fa fa-check"></i><b>4.4.5</b> 特殊演算子</a></li>
+<li class="chapter" data-level="4.4.6" data-path="operator.html"><a href="operator.html#演算子の優先順位"><i class="fa fa-check"></i><b>4.4.6</b> 演算子の優先順位</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="control-制御文.html"><a href="control-制御文.html"><i class="fa fa-check"></i><b>4.5</b> Control （制御文）</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="control-制御文.html"><a href="control-制御文.html#条件分岐"><i class="fa fa-check"></i><b>4.5.1</b> 条件分岐</a></li>
+<li class="chapter" data-level="4.5.2" data-path="control-制御文.html"><a href="control-制御文.html#if-else"><i class="fa fa-check"></i><b>4.5.2</b> if, else</a></li>
+<li class="chapter" data-level="4.5.3" data-path="control-制御文.html"><a href="control-制御文.html#switch"><i class="fa fa-check"></i><b>4.5.3</b> switch</a></li>
+<li class="chapter" data-level="4.5.4" data-path="control-制御文.html"><a href="control-制御文.html#ifelse"><i class="fa fa-check"></i><b>4.5.4</b> ifelse</a></li>
+<li class="chapter" data-level="4.5.5" data-path="control-制御文.html"><a href="control-制御文.html#繰り返し"><i class="fa fa-check"></i><b>4.5.5</b> 繰り返し</a></li>
+<li class="chapter" data-level="4.5.6" data-path="control-制御文.html"><a href="control-制御文.html#for"><i class="fa fa-check"></i><b>4.5.6</b> for</a></li>
+<li class="chapter" data-level="4.5.7" data-path="control-制御文.html"><a href="control-制御文.html#while-repeat"><i class="fa fa-check"></i><b>4.5.7</b> while, repeat</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>5</b> Import</a><ul>
+<li class="chapter" data-level="5.1" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>5.1</b> Base R</a></li>
+<li class="chapter" data-level="5.2" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>5.2</b> readr</a></li>
+<li class="chapter" data-level="5.3" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>5.3</b> readxl</a></li>
+<li class="chapter" data-level="5.4" data-path="pdftools.html"><a href="pdftools.html"><i class="fa fa-check"></i><b>5.4</b> pdftools</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>6</b> Tidy</a><ul>
+<li class="chapter" data-level="6.1" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>6.1</b> Tidy Data</a></li>
+<li class="chapter" data-level="6.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>6.2</b> longer</a></li>
+<li class="chapter" data-level="6.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>6.3</b> wider</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="transforme.html"><a href="transforme.html"><i class="fa fa-check"></i><b>7</b> Transforme</a><ul>
+<li class="chapter" data-level="7.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>7.1</b> filter</a></li>
+<li class="chapter" data-level="7.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>7.2</b> rename</a></li>
+<li class="chapter" data-level="7.3" data-path="select.html"><a href="select.html"><i class="fa fa-check"></i><b>7.3</b> select</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="select.html"><a href="select.html#select-helpers"><i class="fa fa-check"></i><b>7.3.1</b> select helpers</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="mutate.html"><a href="mutate.html"><i class="fa fa-check"></i><b>7.4</b> mutate</a></li>
+<li class="chapter" data-level="7.5" data-path="summarize.html"><a href="summarize.html"><i class="fa fa-check"></i><b>7.5</b> summarize</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="visualize.html"><a href="visualize.html"><i class="fa fa-check"></i><b>8</b> Visualize</a><ul>
+<li class="chapter" data-level="8.1" data-path="base-r-1.html"><a href="base-r-1.html"><i class="fa fa-check"></i><b>8.1</b> Base R</a></li>
+<li class="chapter" data-level="8.2" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>8.2</b> ggplot2</a></li>
+<li class="chapter" data-level="8.3" data-path="ggs.html"><a href="ggs.html"><i class="fa fa-check"></i><b>8.3</b> gg’s</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="communicate.html"><a href="communicate.html"><i class="fa fa-check"></i><b>9</b> Communicate</a><ul>
+<li class="chapter" data-level="9.1" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>9.1</b> R Markdown</a></li>
+<li class="chapter" data-level="9.2" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>9.2</b> Blogdown</a></li>
+<li class="chapter" data-level="9.3" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>9.3</b> Bookdown</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Rのすゝめ</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ggs" class="section level2">
+<h2><span class="header-section-number">8.3</span> gg’s</h2>
+
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="communicate.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

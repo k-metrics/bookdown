@@ -1,0 +1,32 @@
+---
+title: "Rのすゝめ"
+author: "Sampo Suzuki, CC 4.0 BY-NC-SA"
+date: "`r format(Sys.Date(), format = '%Y-%m-%d')`"
+site: bookdown::bookdown_site
+github-repo: k-metrics/bookdown
+description: ""
+output: 
+  bookdown::gitbook:
+    number_sections: TRUE
+---
+
+```{css, include=FALSE}
+# local CSS
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig_caption = TRUE, fig.align = 'center')
+
+require(tidyverse)
+```
+
+
+# About this book {-}
+
+
+本書は [bookdown]() で[R](https://www.r-project.org/) を用いたデータ分析に関するものです。
+
+```{r, fig.cap="plto"}
+plot(iris)
+```
+

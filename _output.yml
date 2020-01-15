@@ -1,0 +1,16 @@
+bookdown::gitbook:
+  css: style.css
+  df_print: paged
+  # highlight: tango
+  lib_dir: assets
+  md_extensions: -ascii_identifiers
+  split_by: "section"      # Select one of "chapter", "section", "rmd"
+  config:
+    toc:
+      collapse: section  # Select one of "subsection", "section", "none"
+      scroll_highlight: yes
+      before: null
+      after: null
+    toolbar:
+      position: static
+bookdown::epub_book:

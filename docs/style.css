@@ -1,0 +1,20 @@
+.level1 .header-section-number {
+  display: inline-block;
+  border-bottom: 3px solid;
+}
+
+.level1 h1 {
+  border-bottom: 1.5px solid;
+}
+
+.level2 h2 {
+  border-bottom: 1px solid;
+}
+
+.level3 h3 {
+  border-bottom: 1px solid;
+}
+
+.level4 h4 {
+  border-bottom: 1px solid;
+}
