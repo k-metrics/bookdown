@@ -146,7 +146,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.1" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html#動作確認"><i class="fa fa-check"></i><b>2.2.1</b> 動作確認</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>2.3</b> Install R packages</a></li>
-<li class="chapter" data-level="2.4" data-path="install-other-tools.html"><a href="install-other-tools.html"><i class="fa fa-check"></i><b>2.4</b> Install Other tools</a></li>
+<li class="chapter" data-level="2.4" data-path="install-other-tools.html"><a href="install-other-tools.html"><i class="fa fa-check"></i><b>2.4</b> Install Other tools</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="install-other-tools.html"><a href="install-other-tools.html#git"><i class="fa fa-check"></i><b>2.4.1</b> Git</a></li>
+<li class="chapter" data-level="2.4.2" data-path="install-other-tools.html"><a href="install-other-tools.html#git-client"><i class="fa fa-check"></i><b>2.4.2</b> Git Client</a></li>
+</ul></li>
 <li class="chapter" data-level="2.5" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>2.5</b> RStudio Server</a><ul>
 <li class="chapter" data-level="2.5.1" data-path="rstudio-server.html"><a href="rstudio-server.html#docker"><i class="fa fa-check"></i><b>2.5.1</b> Docker</a></li>
 </ul></li>
@@ -254,34 +257,34 @@ TRUE, FALSE, NULL, NA, NaN, Inf<br />
 NA_integer_, NA_real_, NA_complex_, NA_character_</p>
 </blockquote>
 <p><code>TRUE</code>と<code>FALSE</code>の省略形として<code>T</code>と<code>F</code>が使えますが、この省略形を使うことはおすすめできません。理由は以下のコードを実行して確認してください。</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">T             <span class="co"># Tの中身を確認する</span></a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">T             <span class="co"># Tの中身を確認する</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">F             <span class="co"># Fの中身を確認する</span></a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">F             <span class="co"># Fの中身を確認する</span></a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">class</span>(T)            <span class="co"># Tの型を確認する</span></a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">class</span>(T)            <span class="co"># Tの型を確認する</span></a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">find</span>(<span class="st">&quot;T&quot;</span>)           <span class="co"># 定義されている場所を確認する</span></a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">find</span>(<span class="st">&quot;T&quot;</span>)           <span class="co"># 定義されている場所を確認する</span></a></code></pre></div>
 <pre><code>## [1] &quot;package:base&quot;</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">T &lt;-<span class="st"> </span><span class="dv">0</span>              <span class="co"># Tに任意の値を代入する（数値でなく文字列でも可）</span></a>
-<a class="sourceLine" id="cb36-2" data-line-number="2">T             <span class="co"># 代入結果を確認する</span></a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">T &lt;-<span class="st"> </span><span class="dv">0</span>              <span class="co"># Tに任意の値を代入する（数値でなく文字列でも可）</span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">T             <span class="co"># 代入結果を確認する</span></a></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">class</span>(T)            <span class="co"># Tの型を確認する</span></a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">class</span>(T)            <span class="co"># Tの型を確認する</span></a></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">find</span>(<span class="st">&quot;T&quot;</span>)           <span class="co"># Tの定義を再確認する</span></a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">find</span>(<span class="st">&quot;T&quot;</span>)           <span class="co"># Tの定義を再確認する</span></a></code></pre></div>
 <pre><code>## [1] &quot;.GlobalEnv&quot;   &quot;package:base&quot;</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">base<span class="op">::</span>T         <span class="co"># 元の定義はどうなった？</span></a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">base<span class="op">::</span>T         <span class="co"># 元の定義はどうなった？</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>　<br />
 では、予約語である<code>TRUE</code>に対して同様のことをするとどうなるでしょう？</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="ot">TRUE</span></a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="ot">TRUE</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">class</span>(<span class="ot">TRUE</span>)     <span class="co"># 念の為に確認する</span></a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">class</span>(<span class="ot">TRUE</span>)     <span class="co"># 念の為に確認する</span></a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
 <p>　<br />
 以下は実際にご自分のコンソールで実行してみてください。</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="ot">TRUE</span> &lt;-<span class="st"> </span><span class="dv">1</span>         <span class="co"># 代入してみる</span></a></code></pre></div>
-<pre><code>## Error in TRUE &lt;- 1: invalid (do_set) left-hand side to assignment</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">rm</span>(T)         <span class="co"># 最後に掃除する</span></a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="ot">TRUE</span> &lt;-<span class="st"> </span><span class="dv">1</span>         <span class="co"># 代入してみる</span></a></code></pre></div>
+<pre><code>## Error in TRUE &lt;- 1:  代入の左辺が不正 (do_set) です</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">rm</span>(T)         <span class="co"># 最後に掃除する</span></a></code></pre></div>
 <p>　</p>
 </div>
             </section>
