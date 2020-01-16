@@ -1,0 +1,71 @@
+# Installing R and RStudio
+　R について学ぶ前に R が使えるように環境を構築しましょう。R/RStudio はマルチプラットフォーム対応ですので、Windows, macOS, Linux の各環境で利用可能です。ただし、RStudio は 32bit 環境のサポートが終了していますので必ず 64bit 環境を用意してください。
+
+インストール手順は以下のようになります。
+
+手順 | 実施内容                 | 備考
+:---:|--------------------------|------ 
+1    | Rのインストール          | 
+2    | Rtoolsのインストール     | Winodwsのみ
+3    | RStudioのインストール    | Desktop版
+4    | パッケージのインストール | 
+5    | Gitのインストール        | 
+
+[Git <i class="fa fa-external-link"></i>](https://git-scm.com/){target="_blank"} は VCS(Version Control System) と呼ばれるソースの版管理を行うシステムです。必要な場合のみインストールしてください。
+
+　  
+
+## Install R
+R は [CRAN (The Comprehensive R Archive Network)<i class="fa fa-external-link"></i>](https://cran.r-project.org/){target="_blank"} と呼ばれる公式リポジトリから入手してインストールします。
+
+
+### Windows
+Winodws では特段の理由がない限り [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/windows/){target="_blank"} から最新バージョンをインストールしてください。  
+　  
+
+#### Rtools
+Windows ではコンパイラなどの開発ツール類が標準装備されていませんので R のパッケージをインストールする際に必要となるツールキットを別途インストールしておく必要があります。 [Rtools <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/windows/){target="_blank"} からインストールした R のバージョン用の Rtools をダウンロードしてインストールしてください。  
+　  
+
+### macOS (OS X)
+macOS ではインストールできるバージョンが限られていますので [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/macosx/){target="_blank"} で確認の上、インストールしてください。  
+　  
+
+### Linux
+R がサポートしているディストリビューションは Debian, RedHat, Suse, Ubuntu のみです。Fedora を利用したい場合には [README <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/linux/redhat/README){target="_blank" title=""} を参照の上でRedHat Software のリポジトリからインストールしてください。  
+　  
+Linux の場合、ディストリビューションごと・バージョンごとにインストール方法が異なりますので [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/linux/){target="_blank"} を参考にインストールしてください。
+
+　  
+
+## Install RStudio Desktop
+R のインストールが完了したら RStudio をインストールします。 [Downloadページ <i class="fa fa-external-link"></i>](https://rstudio.com/products/rstudio/download/#download){target="_blank"} から使用している環境（OS）用の RStudio をダウンロードしてインストールしてください。 
+　  
+
+### 動作確認
+RStudio のインストールが完了したら RStudio を起動して動作確認を行います。下図のようなウィンドウが立ち上がり左側の Console に R のバージョンなどが表示されます。
+
+![RStudio Desktop](./fig/RStudio_Desktop.png)
+
+コンソールのキャレット（`>`表示）の部分に`2 * 3`と打ち込んで［Enter］キーを押して`[1] 6`と表示されれば
+```{r, comment=""}
+2 * 3
+```
+
+
+　  
+
+## Install R packages
+
+```{r, eval=FALSE}
+install.packages("tidyverse")
+```
+
+
+
+## Install Other tools
+
+
+## RStudio Server
+
+### Docker

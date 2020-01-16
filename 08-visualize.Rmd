@@ -1,9 +1,0 @@
-# Visualize
-
-
-## Base R
-
-## ggplot2
-
-## gg's
-

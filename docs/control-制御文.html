@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.5 Control （制御文） | Rのすゝめ</title>
   <meta name="description" content="4.5 Control （制御文） | Rのすゝめ" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.5 Control （制御文） | Rのすゝめ" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2020-01-15" />
+<meta name="date" content="2020-01-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -71,7 +71,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -130,32 +130,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>1.1</b> Motivation</a></li>
-<li class="chapter" data-level="1.2" data-path="データ分析とは.html"><a href="データ分析とは.html"><i class="fa fa-check"></i><b>1.2</b> データ分析とは</a><ul>
-<li class="chapter" data-level="" data-path="データ分析とは.html"><a href="データ分析とは.html#参考アドホック分析"><i class="fa fa-check"></i>参考）アドホック分析</a></li>
+<li class="chapter" data-level="1.1" data-path="なぜrを使うのか.html"><a href="なぜrを使うのか.html"><i class="fa fa-check"></i><b>1.1</b> なぜRを使うのか</a></li>
+<li class="chapter" data-level="1.2" data-path="rstudioを使おう.html"><a href="rstudioを使おう.html"><i class="fa fa-check"></i><b>1.2</b> RStudioを使おう</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="なぜrを使うのか.html"><a href="なぜrを使うのか.html"><i class="fa fa-check"></i><b>1.3</b> なぜRを使うのか</a></li>
-<li class="chapter" data-level="1.4" data-path="rstudioを使おう.html"><a href="rstudioを使おう.html"><i class="fa fa-check"></i><b>1.4</b> RStudioを使おう</a></li>
+<li class="part"><span><b>I Program</b></span></li>
+<li class="chapter" data-level="2" data-path="installing-r-and-rstudio.html"><a href="installing-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Installing R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>2.1</b> Install R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="install-r.html"><a href="install-r.html#windows"><i class="fa fa-check"></i><b>2.1.1</b> Windows</a></li>
+<li class="chapter" data-level="2.1.2" data-path="install-r.html"><a href="install-r.html#macos-os-x"><i class="fa fa-check"></i><b>2.1.2</b> macOS (OS X)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="install-r.html"><a href="install-r.html#linux"><i class="fa fa-check"></i><b>2.1.3</b> Linux</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a><ul>
-<li class="chapter" data-level="2.1" data-path="environment.html"><a href="environment.html"><i class="fa fa-check"></i><b>2.1</b> Environment</a></li>
-<li class="chapter" data-level="2.2" data-path="手順.html"><a href="手順.html"><i class="fa fa-check"></i><b>2.2</b> 手順</a></li>
-<li class="chapter" data-level="2.3" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>2.3</b> Install R</a></li>
-<li class="chapter" data-level="2.4" data-path="install-rtools-windows-only.html"><a href="install-rtools-windows-only.html"><i class="fa fa-check"></i><b>2.4</b> Install Rtools, Windows ONLY</a></li>
-<li class="chapter" data-level="2.5" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>2.5</b> Install RStudio Desktop</a></li>
-<li class="chapter" data-level="2.6" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>2.6</b> Install R packages</a></li>
-<li class="chapter" data-level="2.7" data-path="install-other-tools.html"><a href="install-other-tools.html"><i class="fa fa-check"></i><b>2.7</b> Install Other tools</a></li>
-<li class="chapter" data-level="2.8" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>2.8</b> RStudio Server</a><ul>
-<li class="chapter" data-level="2.8.1" data-path="rstudio-server.html"><a href="rstudio-server.html#docker"><i class="fa fa-check"></i><b>2.8.1</b> Docker</a></li>
+<li class="chapter" data-level="2.2" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>2.2</b> Install RStudio Desktop</a></li>
+<li class="chapter" data-level="2.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>2.3</b> Install R packages</a></li>
+<li class="chapter" data-level="2.4" data-path="install-other-tools.html"><a href="install-other-tools.html"><i class="fa fa-check"></i><b>2.4</b> Install Other tools</a></li>
+<li class="chapter" data-level="2.5" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>2.5</b> RStudio Server</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="rstudio-server.html"><a href="rstudio-server.html#docker"><i class="fa fa-check"></i><b>2.5.1</b> Docker</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="ide-basics.html"><a href="ide-basics.html"><i class="fa fa-check"></i><b>3</b> IDE Basics</a><ul>
 <li class="chapter" data-level="3.1" data-path="rstudio-basics.html"><a href="rstudio-basics.html"><i class="fa fa-check"></i><b>3.1</b> RStudio Basics</a></li>
 <li class="chapter" data-level="3.2" data-path="r-markdown-basics.html"><a href="r-markdown-basics.html"><i class="fa fa-check"></i><b>3.2</b> R Markdown Basics</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="program-r-basics.html"><a href="program-r-basics.html"><i class="fa fa-check"></i><b>4</b> Program (R Basics)</a><ul>
+<li class="chapter" data-level="4" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>4</b> R Basics</a><ul>
 <li class="chapter" data-level="4.1" data-path="r-overview.html"><a href="r-overview.html"><i class="fa fa-check"></i><b>4.1</b> R Overview</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="r-overview.html"><a href="r-overview.html#四則演算"><i class="fa fa-check"></i><b>4.1.1</b> 四則演算</a></li>
 <li class="chapter" data-level="4.1.2" data-path="r-overview.html"><a href="r-overview.html#四則演算結果の代入"><i class="fa fa-check"></i><b>4.1.2</b> 四則演算結果の代入</a></li>
@@ -201,18 +199,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5.7" data-path="control-制御文.html"><a href="control-制御文.html#while-repeat"><i class="fa fa-check"></i><b>4.5.7</b> while, repeat</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>II Wrangle</b></span></li>
 <li class="chapter" data-level="5" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>5</b> Import</a><ul>
-<li class="chapter" data-level="5.1" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>5.1</b> Base R</a></li>
-<li class="chapter" data-level="5.2" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>5.2</b> readr</a></li>
-<li class="chapter" data-level="5.3" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>5.3</b> readxl</a></li>
-<li class="chapter" data-level="5.4" data-path="pdftools.html"><a href="pdftools.html"><i class="fa fa-check"></i><b>5.4</b> pdftools</a></li>
+<li class="chapter" data-level="5.1" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>5.1</b> readr</a></li>
+<li class="chapter" data-level="5.2" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>5.2</b> readxl</a></li>
+<li class="chapter" data-level="5.3" data-path="pdftools.html"><a href="pdftools.html"><i class="fa fa-check"></i><b>5.3</b> pdftools</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>6</b> Tidy</a><ul>
 <li class="chapter" data-level="6.1" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>6.1</b> Tidy Data</a></li>
 <li class="chapter" data-level="6.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>6.2</b> longer</a></li>
 <li class="chapter" data-level="6.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>6.3</b> wider</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="transforme.html"><a href="transforme.html"><i class="fa fa-check"></i><b>7</b> Transforme</a><ul>
+<li class="chapter" data-level="7" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>7</b> Transform</a><ul>
 <li class="chapter" data-level="7.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>7.1</b> filter</a></li>
 <li class="chapter" data-level="7.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>7.2</b> rename</a></li>
 <li class="chapter" data-level="7.3" data-path="select.html"><a href="select.html"><i class="fa fa-check"></i><b>7.3</b> select</a><ul>
@@ -221,16 +219,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="mutate.html"><a href="mutate.html"><i class="fa fa-check"></i><b>7.4</b> mutate</a></li>
 <li class="chapter" data-level="7.5" data-path="summarize.html"><a href="summarize.html"><i class="fa fa-check"></i><b>7.5</b> summarize</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="visualize.html"><a href="visualize.html"><i class="fa fa-check"></i><b>8</b> Visualize</a><ul>
-<li class="chapter" data-level="8.1" data-path="base-r-1.html"><a href="base-r-1.html"><i class="fa fa-check"></i><b>8.1</b> Base R</a></li>
-<li class="chapter" data-level="8.2" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>8.2</b> ggplot2</a></li>
-<li class="chapter" data-level="8.3" data-path="ggs.html"><a href="ggs.html"><i class="fa fa-check"></i><b>8.3</b> gg’s</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="communicate.html"><a href="communicate.html"><i class="fa fa-check"></i><b>9</b> Communicate</a><ul>
-<li class="chapter" data-level="9.1" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>9.1</b> R Markdown</a></li>
-<li class="chapter" data-level="9.2" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>9.2</b> Blogdown</a></li>
-<li class="chapter" data-level="9.3" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>9.3</b> Bookdown</a></li>
-</ul></li>
+<li class="part"><span><b>III Visualize</b></span></li>
+<li class="chapter" data-level="8" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>8</b> Base R</a></li>
+<li class="chapter" data-level="9" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>9</b> ggplot2</a></li>
+<li class="part"><span><b>IV Model/Infer</b></span></li>
+<li class="part"><span><b>V Communicate</b></span></li>
+<li class="chapter" data-level="10" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>10</b> R Markdown</a></li>
+<li class="part"><span><b>VI Automate</b></span></li>
 </ul>
 
       </nav>
@@ -282,27 +277,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="if-else" class="section level3">
 <h3><span class="header-section-number">4.5.2</span> if, else</h3>
 <p><code>if</code>文と<code>else</code>文は最も基本的な条件分岐です。評価式には論理演算子または論理型変数を用います。コーディングスタイルとして以下のどちらも可能ですが、後者のスタイルの方を推奨します。</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1"><span class="cf">if</span> (var_bool <span class="op">!=</span><span class="st"> </span><span class="ot">TRUE</span>) <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>) <span class="cf">else</span> <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" title="1"><span class="cf">if</span> (var_bool <span class="op">!=</span><span class="st"> </span><span class="ot">TRUE</span>) <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>) <span class="cf">else</span> <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;FALSE&quot;</code></pre>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1"><span class="cf">if</span> (var_bool <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) {</a>
-<a class="sourceLine" id="cb245-2" data-line-number="2">  <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>)</a>
-<a class="sourceLine" id="cb245-3" data-line-number="3">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb245-4" data-line-number="4">  <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</a>
-<a class="sourceLine" id="cb245-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" title="1"><span class="cf">if</span> (var_bool <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) {</a>
+<a class="sourceLine" id="cb245-2" title="2">  <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>)</a>
+<a class="sourceLine" id="cb245-3" title="3">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb245-4" title="4">  <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</a>
+<a class="sourceLine" id="cb245-5" title="5">}</a></code></pre></div>
 <pre><code>## [1] &quot;TRUE&quot;</code></pre>
 <p><code>if</code>文は入れ子にしても<code>else if</code>文として組み合わせて使うことも可能ですが、評価式は必ず<code>TRUE</code>か<code>FALSE</code>が単一で返るようにしなければなりません。</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1"><span class="cf">if</span> (<span class="kw">is.logical</span>(var_bool)) {</a>
-<a class="sourceLine" id="cb247-2" data-line-number="2">  <span class="kw">print</span>(<span class="st">&quot;Logical variable&quot;</span>)</a>
-<a class="sourceLine" id="cb247-3" data-line-number="3">  <span class="cf">if</span> (var_bool <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) {</a>
-<a class="sourceLine" id="cb247-4" data-line-number="4">    <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>)</a>
-<a class="sourceLine" id="cb247-5" data-line-number="5">  } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb247-6" data-line-number="6">    <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</a>
-<a class="sourceLine" id="cb247-7" data-line-number="7">  }</a>
-<a class="sourceLine" id="cb247-8" data-line-number="8">} <span class="cf">else</span> <span class="cf">if</span> (<span class="kw">is.numeric</span>(var_bool)) {</a>
-<a class="sourceLine" id="cb247-9" data-line-number="9">  <span class="kw">print</span>(<span class="st">&quot;Numeric variable&quot;</span>)</a>
-<a class="sourceLine" id="cb247-10" data-line-number="10">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb247-11" data-line-number="11">  <span class="kw">print</span>(<span class="st">&quot;Unknown variable&quot;</span>)</a>
-<a class="sourceLine" id="cb247-12" data-line-number="12">}</a></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" title="1"><span class="cf">if</span> (<span class="kw">is.logical</span>(var_bool)) {</a>
+<a class="sourceLine" id="cb247-2" title="2">  <span class="kw">print</span>(<span class="st">&quot;Logical variable&quot;</span>)</a>
+<a class="sourceLine" id="cb247-3" title="3">  <span class="cf">if</span> (var_bool <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) {</a>
+<a class="sourceLine" id="cb247-4" title="4">    <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>)</a>
+<a class="sourceLine" id="cb247-5" title="5">  } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb247-6" title="6">    <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</a>
+<a class="sourceLine" id="cb247-7" title="7">  }</a>
+<a class="sourceLine" id="cb247-8" title="8">} <span class="cf">else</span> <span class="cf">if</span> (<span class="kw">is.numeric</span>(var_bool)) {</a>
+<a class="sourceLine" id="cb247-9" title="9">  <span class="kw">print</span>(<span class="st">&quot;Numeric variable&quot;</span>)</a>
+<a class="sourceLine" id="cb247-10" title="10">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb247-11" title="11">  <span class="kw">print</span>(<span class="st">&quot;Unknown variable&quot;</span>)</a>
+<a class="sourceLine" id="cb247-12" title="12">}</a></code></pre></div>
 <pre><code>## [1] &quot;Logical variable&quot;
 ## [1] &quot;TRUE&quot;</code></pre>
 <p>　</p>
@@ -310,21 +305,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="switch" class="section level3">
 <h3><span class="header-section-number">4.5.3</span> switch</h3>
 <p>分岐する条件の数が多い場合は<code>if</code>文でなく<code>switch</code>*文を利用するのが便利です。<code>if</code>文と同じで評価式は<code>TRUE</code>か<code>FALSE</code>が単一で返るようにしなければなりません。</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="cf">switch</span>(<span class="dv">1</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Error&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" title="1"><span class="cf">switch</span>(<span class="dv">1</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Error&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;A&quot;</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1"><span class="cf">switch</span>(<span class="dv">6</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Error&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" title="1"><span class="cf">switch</span>(<span class="dv">6</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Error&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;Error&quot;</code></pre>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1"><span class="cf">switch</span>(<span class="dv">8</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Error&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" title="1"><span class="cf">switch</span>(<span class="dv">8</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Error&quot;</span>)</a></code></pre></div>
 <p>　</p>
 </div>
 <div id="ifelse" class="section level3">
 <h3><span class="header-section-number">4.5.4</span> ifelse</h3>
 <p><code>base::ifelse</code>は予約語でなく関数です。<code>if</code>文と異なるのはベクトル型の評価が一度に行える点です。第一引数に<code>TRUE</code>か<code>FALSE</code>が返る評価式であればベクトル型でも構いません。</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1">vec_BOOL</a></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" title="1">vec_BOOL</a></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1"><span class="kw">ifelse</span>(vec_BOOL, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" title="1"><span class="kw">ifelse</span>(vec_BOOL, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot;</code></pre>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1"><span class="kw">ifelse</span>(<span class="kw">is.na</span>(vec_BOOL), <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" title="1"><span class="kw">ifelse</span>(<span class="kw">is.na</span>(vec_BOOL), <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;No&quot; &quot;No&quot; &quot;No&quot;</code></pre>
 <p>　</p>
 </div>
@@ -378,15 +373,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="for" class="section level3">
 <h3><span class="header-section-number">4.5.6</span> for</h3>
 <p><code>for</code>文は最も基本となる繰り返し処理で、条件式としてベクトルやリストを与える点が他の言語と異なる点です。</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span><span class="op">:</span><span class="dv">15</span>)) {</a>
-<a class="sourceLine" id="cb260-2" data-line-number="2">  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">4</span>) {</a>
-<a class="sourceLine" id="cb260-3" data-line-number="3">    <span class="cf">next</span></a>
-<a class="sourceLine" id="cb260-4" data-line-number="4">  } <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) {</a>
-<a class="sourceLine" id="cb260-5" data-line-number="5">    <span class="cf">break</span></a>
-<a class="sourceLine" id="cb260-6" data-line-number="6">  } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb260-7" data-line-number="7">    <span class="kw">print</span>(<span class="kw">as.character</span>(i))</a>
-<a class="sourceLine" id="cb260-8" data-line-number="8">  }</a>
-<a class="sourceLine" id="cb260-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span><span class="op">:</span><span class="dv">15</span>)) {</a>
+<a class="sourceLine" id="cb260-2" title="2">  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">4</span>) {</a>
+<a class="sourceLine" id="cb260-3" title="3">    <span class="cf">next</span></a>
+<a class="sourceLine" id="cb260-4" title="4">  } <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) {</a>
+<a class="sourceLine" id="cb260-5" title="5">    <span class="cf">break</span></a>
+<a class="sourceLine" id="cb260-6" title="6">  } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb260-7" title="7">    <span class="kw">print</span>(<span class="kw">as.character</span>(i))</a>
+<a class="sourceLine" id="cb260-8" title="8">  }</a>
+<a class="sourceLine" id="cb260-9" title="9">}</a></code></pre></div>
 <pre><code>## [1] &quot;1&quot;
 ## [1] &quot;2&quot;
 ## [1] &quot;3&quot;
@@ -403,6 +398,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <!-- </div> -->
+
+
+
+</div>
             </section>
 
           </div>

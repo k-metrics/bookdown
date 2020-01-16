@@ -1,8 +1,5 @@
 # Import
 
-
-## Base R
-
 ## readr
 
 ## readxl

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Import | Rのすゝめ</title>
   <meta name="description" content="Chapter 5 Import | Rのすゝめ" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Import | Rのすゝめ" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2020-01-15" />
+<meta name="date" content="2020-01-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="control-制御文.html"/>
-<link rel="next" href="base-r.html"/>
+<link rel="next" href="readr.html"/>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -71,7 +71,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -130,32 +130,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this book</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>1.1</b> Motivation</a></li>
-<li class="chapter" data-level="1.2" data-path="データ分析とは.html"><a href="データ分析とは.html"><i class="fa fa-check"></i><b>1.2</b> データ分析とは</a><ul>
-<li class="chapter" data-level="" data-path="データ分析とは.html"><a href="データ分析とは.html#参考アドホック分析"><i class="fa fa-check"></i>参考）アドホック分析</a></li>
+<li class="chapter" data-level="1.1" data-path="なぜrを使うのか.html"><a href="なぜrを使うのか.html"><i class="fa fa-check"></i><b>1.1</b> なぜRを使うのか</a></li>
+<li class="chapter" data-level="1.2" data-path="rstudioを使おう.html"><a href="rstudioを使おう.html"><i class="fa fa-check"></i><b>1.2</b> RStudioを使おう</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="なぜrを使うのか.html"><a href="なぜrを使うのか.html"><i class="fa fa-check"></i><b>1.3</b> なぜRを使うのか</a></li>
-<li class="chapter" data-level="1.4" data-path="rstudioを使おう.html"><a href="rstudioを使おう.html"><i class="fa fa-check"></i><b>1.4</b> RStudioを使おう</a></li>
+<li class="part"><span><b>I Program</b></span></li>
+<li class="chapter" data-level="2" data-path="installing-r-and-rstudio.html"><a href="installing-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Installing R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>2.1</b> Install R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="install-r.html"><a href="install-r.html#windows"><i class="fa fa-check"></i><b>2.1.1</b> Windows</a></li>
+<li class="chapter" data-level="2.1.2" data-path="install-r.html"><a href="install-r.html#macos-os-x"><i class="fa fa-check"></i><b>2.1.2</b> macOS (OS X)</a></li>
+<li class="chapter" data-level="2.1.3" data-path="install-r.html"><a href="install-r.html#linux"><i class="fa fa-check"></i><b>2.1.3</b> Linux</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a><ul>
-<li class="chapter" data-level="2.1" data-path="environment.html"><a href="environment.html"><i class="fa fa-check"></i><b>2.1</b> Environment</a></li>
-<li class="chapter" data-level="2.2" data-path="手順.html"><a href="手順.html"><i class="fa fa-check"></i><b>2.2</b> 手順</a></li>
-<li class="chapter" data-level="2.3" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>2.3</b> Install R</a></li>
-<li class="chapter" data-level="2.4" data-path="install-rtools-windows-only.html"><a href="install-rtools-windows-only.html"><i class="fa fa-check"></i><b>2.4</b> Install Rtools, Windows ONLY</a></li>
-<li class="chapter" data-level="2.5" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>2.5</b> Install RStudio Desktop</a></li>
-<li class="chapter" data-level="2.6" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>2.6</b> Install R packages</a></li>
-<li class="chapter" data-level="2.7" data-path="install-other-tools.html"><a href="install-other-tools.html"><i class="fa fa-check"></i><b>2.7</b> Install Other tools</a></li>
-<li class="chapter" data-level="2.8" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>2.8</b> RStudio Server</a><ul>
-<li class="chapter" data-level="2.8.1" data-path="rstudio-server.html"><a href="rstudio-server.html#docker"><i class="fa fa-check"></i><b>2.8.1</b> Docker</a></li>
+<li class="chapter" data-level="2.2" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>2.2</b> Install RStudio Desktop</a></li>
+<li class="chapter" data-level="2.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>2.3</b> Install R packages</a></li>
+<li class="chapter" data-level="2.4" data-path="install-other-tools.html"><a href="install-other-tools.html"><i class="fa fa-check"></i><b>2.4</b> Install Other tools</a></li>
+<li class="chapter" data-level="2.5" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>2.5</b> RStudio Server</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="rstudio-server.html"><a href="rstudio-server.html#docker"><i class="fa fa-check"></i><b>2.5.1</b> Docker</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="ide-basics.html"><a href="ide-basics.html"><i class="fa fa-check"></i><b>3</b> IDE Basics</a><ul>
 <li class="chapter" data-level="3.1" data-path="rstudio-basics.html"><a href="rstudio-basics.html"><i class="fa fa-check"></i><b>3.1</b> RStudio Basics</a></li>
 <li class="chapter" data-level="3.2" data-path="r-markdown-basics.html"><a href="r-markdown-basics.html"><i class="fa fa-check"></i><b>3.2</b> R Markdown Basics</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="program-r-basics.html"><a href="program-r-basics.html"><i class="fa fa-check"></i><b>4</b> Program (R Basics)</a><ul>
+<li class="chapter" data-level="4" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>4</b> R Basics</a><ul>
 <li class="chapter" data-level="4.1" data-path="r-overview.html"><a href="r-overview.html"><i class="fa fa-check"></i><b>4.1</b> R Overview</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="r-overview.html"><a href="r-overview.html#四則演算"><i class="fa fa-check"></i><b>4.1.1</b> 四則演算</a></li>
 <li class="chapter" data-level="4.1.2" data-path="r-overview.html"><a href="r-overview.html#四則演算結果の代入"><i class="fa fa-check"></i><b>4.1.2</b> 四則演算結果の代入</a></li>
@@ -201,18 +199,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5.7" data-path="control-制御文.html"><a href="control-制御文.html#while-repeat"><i class="fa fa-check"></i><b>4.5.7</b> while, repeat</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>II Wrangle</b></span></li>
 <li class="chapter" data-level="5" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>5</b> Import</a><ul>
-<li class="chapter" data-level="5.1" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>5.1</b> Base R</a></li>
-<li class="chapter" data-level="5.2" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>5.2</b> readr</a></li>
-<li class="chapter" data-level="5.3" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>5.3</b> readxl</a></li>
-<li class="chapter" data-level="5.4" data-path="pdftools.html"><a href="pdftools.html"><i class="fa fa-check"></i><b>5.4</b> pdftools</a></li>
+<li class="chapter" data-level="5.1" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>5.1</b> readr</a></li>
+<li class="chapter" data-level="5.2" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>5.2</b> readxl</a></li>
+<li class="chapter" data-level="5.3" data-path="pdftools.html"><a href="pdftools.html"><i class="fa fa-check"></i><b>5.3</b> pdftools</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>6</b> Tidy</a><ul>
 <li class="chapter" data-level="6.1" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>6.1</b> Tidy Data</a></li>
 <li class="chapter" data-level="6.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>6.2</b> longer</a></li>
 <li class="chapter" data-level="6.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>6.3</b> wider</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="transforme.html"><a href="transforme.html"><i class="fa fa-check"></i><b>7</b> Transforme</a><ul>
+<li class="chapter" data-level="7" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>7</b> Transform</a><ul>
 <li class="chapter" data-level="7.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>7.1</b> filter</a></li>
 <li class="chapter" data-level="7.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>7.2</b> rename</a></li>
 <li class="chapter" data-level="7.3" data-path="select.html"><a href="select.html"><i class="fa fa-check"></i><b>7.3</b> select</a><ul>
@@ -221,16 +219,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4" data-path="mutate.html"><a href="mutate.html"><i class="fa fa-check"></i><b>7.4</b> mutate</a></li>
 <li class="chapter" data-level="7.5" data-path="summarize.html"><a href="summarize.html"><i class="fa fa-check"></i><b>7.5</b> summarize</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="visualize.html"><a href="visualize.html"><i class="fa fa-check"></i><b>8</b> Visualize</a><ul>
-<li class="chapter" data-level="8.1" data-path="base-r-1.html"><a href="base-r-1.html"><i class="fa fa-check"></i><b>8.1</b> Base R</a></li>
-<li class="chapter" data-level="8.2" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>8.2</b> ggplot2</a></li>
-<li class="chapter" data-level="8.3" data-path="ggs.html"><a href="ggs.html"><i class="fa fa-check"></i><b>8.3</b> gg’s</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="communicate.html"><a href="communicate.html"><i class="fa fa-check"></i><b>9</b> Communicate</a><ul>
-<li class="chapter" data-level="9.1" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>9.1</b> R Markdown</a></li>
-<li class="chapter" data-level="9.2" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>9.2</b> Blogdown</a></li>
-<li class="chapter" data-level="9.3" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>9.3</b> Bookdown</a></li>
-</ul></li>
+<li class="part"><span><b>III Visualize</b></span></li>
+<li class="chapter" data-level="8" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>8</b> Base R</a></li>
+<li class="chapter" data-level="9" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>9</b> ggplot2</a></li>
+<li class="part"><span><b>IV Model/Infer</b></span></li>
+<li class="part"><span><b>V Communicate</b></span></li>
+<li class="chapter" data-level="10" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>10</b> R Markdown</a></li>
+<li class="part"><span><b>VI Automate</b></span></li>
 </ul>
 
       </nav>
@@ -257,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="control-制御文.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="base-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="readr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

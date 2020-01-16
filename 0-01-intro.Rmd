@@ -1,0 +1,40 @@
+# Introduction
+　データ分析とは
+
+> 何らかの目的を持って表現された文字や符号、数値などを収集し、分類、整理、成型、取捨選択したうえで解釈して、価値のある意味を見出すことといえるでしょう。（中略）そのために以下の3つを理解しておく必要があります。  
+> 
+> 1)分析しようとする問題そのものについての理解  
+> 2)分析手法についての理解  
+> 3)分析結果に対する判断力
+
+<p align=right>出典： [データ分析とは <i class="fa fa-external-link"></i>](https://www.albert2005.co.jp/knowledge/statistics_analysis/statistics_basics/data_analysis){target="_blank"}</p>
+
+　データ分析を行うためは分析ツールは必要不可欠です。分析ツールの使い方を知らないと分析効率や再現性の確保に大きな差が生じます。ソフトウェアメトリクス分析のようなアドホック分析では特にその差が顕著になります。  
+
+　  
+　アドホック（ad hoc）とは「特定の」、「限定された目的の」、「その場限り」というようなことを意味する言葉です。データ分析におけるアドホック分析は
+
+<center>（分析から）**得られた知見に基づき改善提案などを行うための分析**</center>  
+　  
+という良い意味で使われることが多いです。アドホック分析はオフラインで行われリアルタイムで処理する必要がありません。ソフトウェアメトリクス分析の場合、まさにこのアドホック分析といえます。
+
+## なぜRを使うのか
+　R はメトリクス分析のようなアドホック分析を行うのに適した統計解析に特化したツール（言語）です。その理由を簡潔に説明しているのが ["Six Reasons To Learn R For Business", R Blogger <i class="fa fa-external-link"></i>](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank"} です。
+
+> 1. R Has The Best **Overall Qualities**
+1. R Is Data Science **For Non-Computer Scientists**
+1. Learning R Is **Easy With The Tidyverse**
+1. R Has **Brains, Muscle, And Heart**
+1. R Is Built **For Business**
+1. R Community Support
+
+　コンピュータサイエンティスト（米国などではコンピュータの分野で修士号や博士号を取得した人を示すことが多い）でない人にとって学びやすい言語と言われていますので、日本のソフトウェア品質管理分野のように開発部門を経験していない人が多い部門での利用に向いていると考えます。また、他言語と比べてコミュニティがフレンドリーである点もデータ分析の初学者には向いていると言えます。
+　  
+　近年、データ分析分野、特に機械学習の分野では [Python <i class="fa fa-external-link"></i>](https://www.python.jp/){target="_blank"} の台頭が著しい傾向にありますが、R は Python とシームレスに連携できるような開発が順次進められています。
+
+　  
+
+## RStudioを使おう
+　データ分析勉強会ではながらく [R Commander（以降、Rcmdr） <i class="fa fa-external-link"></i>](https://www.rcommander.com/){target="_blank"} が利用されています。Rcmdr はコードを記述しなくてもデータの可視化や分析ができますのでデータ分析の初学者にとっては非常に便利な道具です。しかし、Rcmdr は R のごく一部のコマンド（関数）をGUIで使えるようにしたラッパーですので、できることが非常に限られています。加えてGUI操作が記録に残りませんので分析再現性の観点からみても好ましいとは言えません。  
+　  
+　本格的なアドホック分析を行うには Rcmdr から卒業して R のスクリプトを書く必要があります。R 本体にはエディタ機能などが備わっていませんので統合開発環境（IDE - Integrated Development Environment）を利用すべきです。R における統合開発環境のデファクトスタンダードと言えるのが RStudio社の [RStudio IDE （以降、RStudio）<i class="fa fa-external-link"></i>](https://rstudio.com/products/rstudio/) です。 Open Source Edition であれば基本的な機能は無償で利用できます。
