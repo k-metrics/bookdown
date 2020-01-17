@@ -1,5 +1,6 @@
 ---
 title: "Rのすゝめ"
+subtitle: "- Rを用いたデータ分析 -"
 author: "Sampo Suzuki, CC 4.0 BY-NC-SA"
 date: "`r format(Sys.Date(), format = '%Y-%m-%d')`"
 site: bookdown::bookdown_site
@@ -21,13 +22,11 @@ require(tidyverse)
 ```
 
 # Welcome {-}
-本書は [データ分析勉強会 <i class="fa fa-external-link"></i>](https://sites.google.com/site/kantometrics/home){target="_blank"} で学んできた内容に基づいており、ソフトウェア品質に関わるデータ分析に必要となる [R <i class="fa fa-external-link"></i>](https://www.r-project.org/){target="_blank"} の基本的な知識を初学者に提供することを目的としています。
-
-また、構成は [『RStartHere』 <i class="fa fa-external-link"></i>](https://github.com/rstudio/RStartHere){target="_blank"} で用いられてる下図の Data Science Workflow に基づいています。
+　本書は [データ分析勉強会 <i class="fa fa-external-link"></i>](https://sites.google.com/site/kantometrics/home){target="_blank"} で学んできた内容に基づいており、ソフトウェア品質に関わるデータ分析に必要となる [R <i class="fa fa-external-link"></i>](https://www.r-project.org/){target="_blank"} の基本的な知識を初学者に提供することを目的としています。なお、構成は [『RStartHere』 <i class="fa fa-external-link"></i>](https://github.com/rstudio/RStartHere){target="_blank"} で用いられてる下図の Data Science Workflow を参考にしています。
 ![Data Science Workflow, CC 4.0 BY RStudio, Inc.](./fig/data-science.png)
 <p align=right>図出典：[RStartHere, RStudio, inc. <i class="fa fa-external-link"></i>](https://github.com/rstudio/RStartHere){target="_blank"}</p>
 
-この Data Science Workflow は Hadley Wickham の著 [『R for Data Science』 <i class="fa fa-external-link"></i>](https://r4ds.had.co.nz/){target="_blank"} で提唱されているデータ分析のプロセスを一般化したものがベースになっていますので、 Data Science Workflow 自体についてはリンク先を参照してください。
+　Data Science Workflow は Hadley Wickham の著 [『R for Data Science』 <i class="fa fa-external-link"></i>](https://r4ds.had.co.nz/){target="_blank"} で提唱されているデータ分析のプロセスを抽象化したものです。Data Science Workflow 自体についてはリンク先を参照してください。
 
 ---
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />この作品は <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス</a> の下に提供されています。

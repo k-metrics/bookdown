@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.5 RStudio Server | Rのすゝめ</title>
   <meta name="description" content="2.5 RStudio Server | Rのすゝめ" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.5 RStudio Server | Rのすゝめ" />
   <meta property="og:type" content="book" />
@@ -24,14 +24,14 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2020-01-16" />
+<meta name="date" content="2020-01-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="install-other-tools.html"/>
+<link rel="prev" href="install-git.html"/>
 <link rel="next" href="ide-basics.html"/>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -71,7 +71,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -136,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="rstudioを使おう.html"><a href="rstudioを使おう.html"><i class="fa fa-check"></i><b>1.2</b> RStudioを使おう</a></li>
 </ul></li>
 <li class="part"><span><b>I Program</b></span></li>
-<li class="chapter" data-level="2" data-path="installing-r-and-rstudio.html"><a href="installing-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Installing R and RStudio</a><ul>
+<li class="chapter" data-level="2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>2</b> Install</a><ul>
 <li class="chapter" data-level="2.1" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>2.1</b> Install R</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="install-r.html"><a href="install-r.html#windows"><i class="fa fa-check"></i><b>2.1.1</b> Windows</a></li>
 <li class="chapter" data-level="2.1.2" data-path="install-r.html"><a href="install-r.html#macos-os-x"><i class="fa fa-check"></i><b>2.1.2</b> macOS (OS X)</a></li>
@@ -146,13 +146,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.1" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html#動作確認"><i class="fa fa-check"></i><b>2.2.1</b> 動作確認</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>2.3</b> Install R packages</a></li>
-<li class="chapter" data-level="2.4" data-path="install-other-tools.html"><a href="install-other-tools.html"><i class="fa fa-check"></i><b>2.4</b> Install Other tools</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="install-other-tools.html"><a href="install-other-tools.html#git"><i class="fa fa-check"></i><b>2.4.1</b> Git</a></li>
-<li class="chapter" data-level="2.4.2" data-path="install-other-tools.html"><a href="install-other-tools.html#git-client"><i class="fa fa-check"></i><b>2.4.2</b> Git Client</a></li>
+<li class="chapter" data-level="2.4" data-path="install-git.html"><a href="install-git.html"><i class="fa fa-check"></i><b>2.4</b> Install Git</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="install-git.html"><a href="install-git.html#git"><i class="fa fa-check"></i><b>2.4.1</b> Git</a></li>
+<li class="chapter" data-level="2.4.2" data-path="install-git.html"><a href="install-git.html#git-client"><i class="fa fa-check"></i><b>2.4.2</b> Git Client</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>2.5</b> RStudio Server</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="rstudio-server.html"><a href="rstudio-server.html#docker"><i class="fa fa-check"></i><b>2.5.1</b> Docker</a></li>
-</ul></li>
+<li class="chapter" data-level="2.5" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>2.5</b> RStudio Server</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="ide-basics.html"><a href="ide-basics.html"><i class="fa fa-check"></i><b>3</b> IDE Basics</a><ul>
 <li class="chapter" data-level="3.1" data-path="rstudio-basics.html"><a href="rstudio-basics.html"><i class="fa fa-check"></i><b>3.1</b> RStudio Basics</a></li>
@@ -251,10 +249,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="rstudio-server" class="section level2">
 <h2><span class="header-section-number">2.5</span> RStudio Server</h2>
-<div id="docker" class="section level3">
-<h3><span class="header-section-number">2.5.1</span> Docker</h3>
+<p>　R/Rstudio Desktop はマルチプラットフォーム対応ですがプラットフォーム（OS）ごとに以下のような制約があります。</p>
+<ul>
+<li>日本語版 Windows 環境では文字コード変換が原因で日本語を正しく処理できないことが多い</li>
+<li>18.04LTSより前の Ubuntu 環境では RStudio Desktop で日本語入力ができない
+* 有志による日本語入力パッチがリリースされている</li>
+</ul>
+<p>　特に日本語版 Windows 環境はシフト JIS
+（CP932） を使っているため日本語処理の問題は根本的な解決を期待できません。<br />
+　<br />
+　Web サーバベースで動作する RStudio Server を利用することで、このような日本語に関わる問題を一掃することができます。 <a href="https://www.docker.com/" target="_blank">Docker <i class="fa fa-external-link"></i></a> のコンテナ技術を利用することで、Windows（要 Hyper-V または WSL2）・ macOS ・ Linux の各プラットフォームで統一された環境として動作させることが可能です。</p>
 
-</div>
 </div>
 <!-- </div> -->
             </section>
@@ -262,7 +267,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="install-other-tools.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="install-git.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="ide-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

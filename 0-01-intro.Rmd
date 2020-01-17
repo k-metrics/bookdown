@@ -18,8 +18,10 @@
 　  
 という良い意味で使われることが多いです。アドホック分析はオフラインで行われリアルタイムで処理する必要がありません。ソフトウェアメトリクス分析の場合、まさにこのアドホック分析といえます。
 
+　  
+
 ## なぜRを使うのか
-　R はメトリクス分析のようなアドホック分析を行うのに適した統計解析に特化したツール（言語）です。その理由を簡潔に説明しているのが ["Six Reasons To Learn R For Business", R Blogger <i class="fa fa-external-link"></i>](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank"} です。
+　メトリクス分析のようなアドホック分析を行うのに適したツール（言語）が 統計解析に特化している R です。その理由を ["Six Reasons To Learn R For Business", R Blogger <i class="fa fa-external-link"></i>](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank"} が簡潔に説明しています。  
 
 > 1. R Has The Best **Overall Qualities**
 1. R Is Data Science **For Non-Computer Scientists**
@@ -28,9 +30,10 @@
 1. R Is Built **For Business**
 1. R Community Support
 
-　コンピュータサイエンティスト（米国などではコンピュータの分野で修士号や博士号を取得した人を示すことが多い）でない人にとって学びやすい言語と言われていますので、日本のソフトウェア品質管理分野のように開発部門を経験していない人が多い部門での利用に向いていると考えます。また、他言語と比べてコミュニティがフレンドリーである点もデータ分析の初学者には向いていると言えます。
 　  
-　近年、データ分析分野、特に機械学習の分野では [Python <i class="fa fa-external-link"></i>](https://www.python.jp/){target="_blank"} の台頭が著しい傾向にありますが、R は Python とシームレスに連携できるような開発が順次進められています。
+　コンピュータサイエンティスト（米国などではコンピュータの分野で修士号や博士号を取得した人を示すことが多い）でない人にとって学びやすい言語と言われていますので、日本のソフトウェア品質管理分野のように開発部門を経験していない人が多い部門での利用に向いていると考えます。また、他言語と比べてコミュニティがフレンドリーである点もデータ分析の初学者には向いていると言えます。  
+　  
+　近年、データ分析、特に機械学習の分野では [Python <i class="fa fa-external-link"></i>](https://www.python.jp/){target="_blank"} の台頭が著しい傾向にありますが、R は Python とシームレスに連携できるような開発が順次進められています。
 
 　  
 
