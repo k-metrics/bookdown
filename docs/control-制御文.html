@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2020-01-17" />
+<meta name="date" content="2020-01-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -71,7 +71,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -284,27 +284,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="if-else" class="section level3">
 <h3><span class="header-section-number">4.5.2</span> if, else</h3>
 <p><code>if</code>文と<code>else</code>文は最も基本的な条件分岐です。評価式には論理演算子または論理型変数を用います。コーディングスタイルとして以下のどちらも可能ですが、後者のスタイルの方を推奨します。</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" title="1"><span class="cf">if</span> (var_bool <span class="op">!=</span><span class="st"> </span><span class="ot">TRUE</span>) <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>) <span class="cf">else</span> <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="cf">if</span> (var_bool <span class="op">!=</span><span class="st"> </span><span class="ot">TRUE</span>) <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>) <span class="cf">else</span> <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;FALSE&quot;</code></pre>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" title="1"><span class="cf">if</span> (var_bool <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) {</a>
-<a class="sourceLine" id="cb244-2" title="2">  <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>)</a>
-<a class="sourceLine" id="cb244-3" title="3">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb244-4" title="4">  <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</a>
-<a class="sourceLine" id="cb244-5" title="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1"><span class="cf">if</span> (var_bool <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) {</a>
+<a class="sourceLine" id="cb251-2" data-line-number="2">  <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>)</a>
+<a class="sourceLine" id="cb251-3" data-line-number="3">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb251-4" data-line-number="4">  <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</a>
+<a class="sourceLine" id="cb251-5" data-line-number="5">}</a></code></pre></div>
 <pre><code>## [1] &quot;TRUE&quot;</code></pre>
 <p><code>if</code>文は入れ子にしても<code>else if</code>文として組み合わせて使うことも可能ですが、評価式は必ず<code>TRUE</code>か<code>FALSE</code>が単一で返るようにしなければなりません。</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" title="1"><span class="cf">if</span> (<span class="kw">is.logical</span>(var_bool)) {</a>
-<a class="sourceLine" id="cb246-2" title="2">  <span class="kw">print</span>(<span class="st">&quot;Logical variable&quot;</span>)</a>
-<a class="sourceLine" id="cb246-3" title="3">  <span class="cf">if</span> (var_bool <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) {</a>
-<a class="sourceLine" id="cb246-4" title="4">    <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>)</a>
-<a class="sourceLine" id="cb246-5" title="5">  } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb246-6" title="6">    <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</a>
-<a class="sourceLine" id="cb246-7" title="7">  }</a>
-<a class="sourceLine" id="cb246-8" title="8">} <span class="cf">else</span> <span class="cf">if</span> (<span class="kw">is.numeric</span>(var_bool)) {</a>
-<a class="sourceLine" id="cb246-9" title="9">  <span class="kw">print</span>(<span class="st">&quot;Numeric variable&quot;</span>)</a>
-<a class="sourceLine" id="cb246-10" title="10">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb246-11" title="11">  <span class="kw">print</span>(<span class="st">&quot;Unknown variable&quot;</span>)</a>
-<a class="sourceLine" id="cb246-12" title="12">}</a></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1"><span class="cf">if</span> (<span class="kw">is.logical</span>(var_bool)) {</a>
+<a class="sourceLine" id="cb253-2" data-line-number="2">  <span class="kw">print</span>(<span class="st">&quot;Logical variable&quot;</span>)</a>
+<a class="sourceLine" id="cb253-3" data-line-number="3">  <span class="cf">if</span> (var_bool <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) {</a>
+<a class="sourceLine" id="cb253-4" data-line-number="4">    <span class="kw">print</span>(<span class="st">&quot;TRUE&quot;</span>)</a>
+<a class="sourceLine" id="cb253-5" data-line-number="5">  } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb253-6" data-line-number="6">    <span class="kw">print</span>(<span class="st">&quot;FALSE&quot;</span>)</a>
+<a class="sourceLine" id="cb253-7" data-line-number="7">  }</a>
+<a class="sourceLine" id="cb253-8" data-line-number="8">} <span class="cf">else</span> <span class="cf">if</span> (<span class="kw">is.numeric</span>(var_bool)) {</a>
+<a class="sourceLine" id="cb253-9" data-line-number="9">  <span class="kw">print</span>(<span class="st">&quot;Numeric variable&quot;</span>)</a>
+<a class="sourceLine" id="cb253-10" data-line-number="10">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb253-11" data-line-number="11">  <span class="kw">print</span>(<span class="st">&quot;Unknown variable&quot;</span>)</a>
+<a class="sourceLine" id="cb253-12" data-line-number="12">}</a></code></pre></div>
 <pre><code>## [1] &quot;Logical variable&quot;
 ## [1] &quot;TRUE&quot;</code></pre>
 <p>　</p>
@@ -312,21 +312,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="switch" class="section level3">
 <h3><span class="header-section-number">4.5.3</span> switch</h3>
 <p>分岐する条件の数が多い場合は<code>if</code>文でなく<code>switch</code>*文を利用するのが便利です。<code>if</code>文と同じで評価式は<code>TRUE</code>か<code>FALSE</code>が単一で返るようにしなければなりません。</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" title="1"><span class="cf">switch</span>(<span class="dv">1</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Error&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1"><span class="cf">switch</span>(<span class="dv">1</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Error&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;A&quot;</code></pre>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" title="1"><span class="cf">switch</span>(<span class="dv">6</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Error&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1"><span class="cf">switch</span>(<span class="dv">6</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Error&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;Error&quot;</code></pre>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" title="1"><span class="cf">switch</span>(<span class="dv">8</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Error&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1"><span class="cf">switch</span>(<span class="dv">8</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;Error&quot;</span>)</a></code></pre></div>
 <p>　</p>
 </div>
 <div id="ifelse" class="section level3">
 <h3><span class="header-section-number">4.5.4</span> ifelse</h3>
 <p><code>base::ifelse</code>は予約語でなく関数です。<code>if</code>文と異なるのはベクトル型の評価が一度に行える点です。第一引数に<code>TRUE</code>か<code>FALSE</code>が返る評価式であればベクトル型でも構いません。</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" title="1">vec_BOOL</a></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1">vec_BOOL</a></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" title="1"><span class="kw">ifelse</span>(vec_BOOL, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1"><span class="kw">ifelse</span>(vec_BOOL, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;Yes&quot; &quot;No&quot;  &quot;Yes&quot;</code></pre>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" title="1"><span class="kw">ifelse</span>(<span class="kw">is.na</span>(vec_BOOL), <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1"><span class="kw">ifelse</span>(<span class="kw">is.na</span>(vec_BOOL), <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;No&quot; &quot;No&quot; &quot;No&quot;</code></pre>
 <p>　</p>
 </div>
@@ -380,15 +380,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="for" class="section level3">
 <h3><span class="header-section-number">4.5.6</span> for</h3>
 <p><code>for</code>文は最も基本となる繰り返し処理で、条件式としてベクトルやリストを与える点が他の言語と異なる点です。</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span><span class="op">:</span><span class="dv">15</span>)) {</a>
-<a class="sourceLine" id="cb259-2" title="2">  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">4</span>) {</a>
-<a class="sourceLine" id="cb259-3" title="3">    <span class="cf">next</span></a>
-<a class="sourceLine" id="cb259-4" title="4">  } <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) {</a>
-<a class="sourceLine" id="cb259-5" title="5">    <span class="cf">break</span></a>
-<a class="sourceLine" id="cb259-6" title="6">  } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb259-7" title="7">    <span class="kw">print</span>(<span class="kw">as.character</span>(i))</a>
-<a class="sourceLine" id="cb259-8" title="8">  }</a>
-<a class="sourceLine" id="cb259-9" title="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span><span class="op">:</span><span class="dv">15</span>)) {</a>
+<a class="sourceLine" id="cb266-2" data-line-number="2">  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">4</span>) {</a>
+<a class="sourceLine" id="cb266-3" data-line-number="3">    <span class="cf">next</span></a>
+<a class="sourceLine" id="cb266-4" data-line-number="4">  } <span class="cf">else</span> <span class="cf">if</span> (i <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>) {</a>
+<a class="sourceLine" id="cb266-5" data-line-number="5">    <span class="cf">break</span></a>
+<a class="sourceLine" id="cb266-6" data-line-number="6">  } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb266-7" data-line-number="7">    <span class="kw">print</span>(<span class="kw">as.character</span>(i))</a>
+<a class="sourceLine" id="cb266-8" data-line-number="8">  }</a>
+<a class="sourceLine" id="cb266-9" data-line-number="9">}</a></code></pre></div>
 <pre><code>## [1] &quot;1&quot;
 ## [1] &quot;2&quot;
 ## [1] &quot;3&quot;

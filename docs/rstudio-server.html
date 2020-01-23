@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2020-01-17" />
+<meta name="date" content="2020-01-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="install-git.html"/>
-<link rel="next" href="ide-basics.html"/>
+<link rel="next" href="rstudio-basics.html"/>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -71,7 +71,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -152,15 +152,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>2.5</b> RStudio Server</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ide-basics.html"><a href="ide-basics.html"><i class="fa fa-check"></i><b>3</b> IDE Basics</a><ul>
-<li class="chapter" data-level="3.1" data-path="rstudio-basics.html"><a href="rstudio-basics.html"><i class="fa fa-check"></i><b>3.1</b> RStudio Basics</a></li>
-<li class="chapter" data-level="3.2" data-path="r-markdown-basics.html"><a href="r-markdown-basics.html"><i class="fa fa-check"></i><b>3.2</b> R Markdown Basics</a></li>
+<li class="chapter" data-level="3" data-path="rstudio-basics.html"><a href="rstudio-basics.html"><i class="fa fa-check"></i><b>3</b> RStudio Basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="rstudio-overview.html"><a href="rstudio-overview.html"><i class="fa fa-check"></i><b>3.1</b> RStudio Overview</a></li>
+<li class="chapter" data-level="3.2" data-path="options.html"><a href="options.html"><i class="fa fa-check"></i><b>3.2</b> Options</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="options.html"><a href="options.html#global-options"><i class="fa fa-check"></i><b>3.2.1</b> Global Options</a></li>
+<li class="chapter" data-level="3.2.2" data-path="options.html"><a href="options.html#project-options"><i class="fa fa-check"></i><b>3.2.2</b> Project Options</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i><b>3.3</b> Keyboard Shortcuts</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>4</b> R Basics</a><ul>
-<li class="chapter" data-level="4.1" data-path="r-overview.html"><a href="r-overview.html"><i class="fa fa-check"></i><b>4.1</b> R Overview</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="r-overview.html"><a href="r-overview.html#四則演算"><i class="fa fa-check"></i><b>4.1.1</b> 四則演算</a></li>
-<li class="chapter" data-level="4.1.2" data-path="r-overview.html"><a href="r-overview.html#四則演算結果の代入"><i class="fa fa-check"></i><b>4.1.2</b> 四則演算結果の代入</a></li>
-<li class="chapter" data-level="4.1.3" data-path="r-overview.html"><a href="r-overview.html#変数同士の演算"><i class="fa fa-check"></i><b>4.1.3</b> 変数同士の演算</a></li>
+<li class="chapter" data-level="4.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>4.1</b> Overview</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="overview.html"><a href="overview.html#四則演算"><i class="fa fa-check"></i><b>4.1.1</b> 四則演算</a></li>
+<li class="chapter" data-level="4.1.2" data-path="overview.html"><a href="overview.html#四則演算結果の代入"><i class="fa fa-check"></i><b>4.1.2</b> 四則演算結果の代入</a></li>
+<li class="chapter" data-level="4.1.3" data-path="overview.html"><a href="overview.html#変数同士の演算"><i class="fa fa-check"></i><b>4.1.3</b> 変数同士の演算</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="reserved-words.html"><a href="reserved-words.html"><i class="fa fa-check"></i><b>4.2</b> Reserved words</a></li>
 <li class="chapter" data-level="4.3" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>4.3</b> Variables</a><ul>
@@ -172,18 +176,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.6" data-path="variables.html"><a href="variables.html#アレイ型"><i class="fa fa-check"></i><b>4.3.6</b> アレイ型</a></li>
 <li class="chapter" data-level="4.3.7" data-path="variables.html"><a href="variables.html#データフレーム型"><i class="fa fa-check"></i><b>4.3.7</b> データフレーム型</a></li>
 <li class="chapter" data-level="4.3.8" data-path="variables.html"><a href="variables.html#リスト型"><i class="fa fa-check"></i><b>4.3.8</b> リスト型</a></li>
-<li class="chapter" data-level="4.3.9" data-path="variables.html"><a href="variables.html#Factor"><i class="fa fa-check"></i><b>4.3.9</b> 因子型</a></li>
-<li class="chapter" data-level="4.3.10" data-path="variables.html"><a href="variables.html#特殊な定数"><i class="fa fa-check"></i><b>4.3.10</b> 特殊な定数</a></li>
-<li class="chapter" data-level="4.3.11" data-path="variables.html"><a href="variables.html#型を持ったna"><i class="fa fa-check"></i><b>4.3.11</b> 型を持ったNA</a></li>
-<li class="chapter" data-level="4.3.12" data-path="variables.html"><a href="variables.html#ForcedConversion"><i class="fa fa-check"></i><b>4.3.12</b> 強制型変換</a></li>
-<li class="chapter" data-level="4.3.13" data-path="variables.html"><a href="variables.html#特殊な定数の型変換"><i class="fa fa-check"></i><b>4.3.13</b> 特殊な定数の型変換</a></li>
-<li class="chapter" data-level="4.3.14" data-path="variables.html"><a href="variables.html#変数の参照"><i class="fa fa-check"></i><b>4.3.14</b> 変数の参照</a></li>
-<li class="chapter" data-level="4.3.15" data-path="variables.html"><a href="variables.html#ベクトル型変数"><i class="fa fa-check"></i><b>4.3.15</b> ベクトル型変数</a></li>
-<li class="chapter" data-level="4.3.16" data-path="variables.html"><a href="variables.html#データフレーム型変数"><i class="fa fa-check"></i><b>4.3.16</b> データフレーム型変数</a></li>
-<li class="chapter" data-level="4.3.17" data-path="variables.html"><a href="variables.html#リスト型変数"><i class="fa fa-check"></i><b>4.3.17</b> リスト型変数</a></li>
-<li class="chapter" data-level="4.3.18" data-path="variables.html"><a href="variables.html#変数の扱い方"><i class="fa fa-check"></i><b>4.3.18</b> 変数の扱い方</a></li>
-<li class="chapter" data-level="4.3.19" data-path="variables.html"><a href="variables.html#変数型を確認する"><i class="fa fa-check"></i><b>4.3.19</b> 変数型を確認する</a></li>
-<li class="chapter" data-level="4.3.20" data-path="variables.html"><a href="variables.html#参考定数を確認する"><i class="fa fa-check"></i><b>4.3.20</b> 参考）定数を確認する</a></li>
+<li class="chapter" data-level="4.3.9" data-path="variables.html"><a href="variables.html#特殊な定数"><i class="fa fa-check"></i><b>4.3.9</b> 特殊な定数</a></li>
+<li class="chapter" data-level="4.3.10" data-path="variables.html"><a href="variables.html#型を持ったna"><i class="fa fa-check"></i><b>4.3.10</b> 型を持ったNA</a></li>
+<li class="chapter" data-level="4.3.11" data-path="variables.html"><a href="variables.html#ForcedConversion"><i class="fa fa-check"></i><b>4.3.11</b> 強制型変換</a></li>
+<li class="chapter" data-level="4.3.12" data-path="variables.html"><a href="variables.html#特殊な定数の型変換"><i class="fa fa-check"></i><b>4.3.12</b> 特殊な定数の型変換</a></li>
+<li class="chapter" data-level="4.3.13" data-path="variables.html"><a href="variables.html#変数の参照"><i class="fa fa-check"></i><b>4.3.13</b> 変数の参照</a></li>
+<li class="chapter" data-level="4.3.14" data-path="variables.html"><a href="variables.html#ベクトル型変数"><i class="fa fa-check"></i><b>4.3.14</b> ベクトル型変数</a></li>
+<li class="chapter" data-level="4.3.15" data-path="variables.html"><a href="variables.html#データフレーム型変数"><i class="fa fa-check"></i><b>4.3.15</b> データフレーム型変数</a></li>
+<li class="chapter" data-level="4.3.16" data-path="variables.html"><a href="variables.html#リスト型変数"><i class="fa fa-check"></i><b>4.3.16</b> リスト型変数</a></li>
+<li class="chapter" data-level="4.3.17" data-path="variables.html"><a href="variables.html#変数の扱い方"><i class="fa fa-check"></i><b>4.3.17</b> 変数の扱い方</a></li>
+<li class="chapter" data-level="4.3.18" data-path="variables.html"><a href="variables.html#変数型を確認する"><i class="fa fa-check"></i><b>4.3.18</b> 変数型を確認する</a></li>
+<li class="chapter" data-level="4.3.19" data-path="variables.html"><a href="variables.html#参考定数を確認する"><i class="fa fa-check"></i><b>4.3.19</b> 参考）定数を確認する</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="operator.html"><a href="operator.html"><i class="fa fa-check"></i><b>4.4</b> Operator</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="operator.html"><a href="operator.html#単項演算子"><i class="fa fa-check"></i><b>4.4.1</b> 単項演算子</a></li>
@@ -268,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="install-git.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ide-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="rstudio-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
