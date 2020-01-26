@@ -1,3 +1,8 @@
+# RStudio IDE
+　データ分析勉強会ではながらく [R Commander（以降、Rcmdr） <i class="fa fa-external-link"></i>](https://www.rcommander.com/){target="_blank"} が利用されています。Rcmdr はコードを記述しなくてもデータの可視化や分析ができますのでデータ分析の初学者にとっては非常に便利な道具です。しかし、Rcmdr は R のごく一部のコマンド（関数）をGUIで使えるようにしたラッパーですので、できることが非常に限られています。加えてGUI操作が記録に残りませんので分析再現性の観点からみて好ましいとは言えません。  
+　  
+　本格的なアドホック分析を行うには Rcmdr から卒業して R のスクリプトを書く必要があります。R 本体にはエディタ機能などが備わっていませんので統合開発環境（IDE - Integrated Development Environment）を利用すべきです。R における統合開発環境のデファクトスタンダードと言えるのが RStudio社の [RStudio IDE （以降、RStudio）<i class="fa fa-external-link"></i>](https://rstudio.com/products/rstudio/) です。 Open Source Edition であれば基本的な機能は無償で利用できます。
+
 # RStudio Basics
 　RStudio は 前述のように RStudio, Inc. が開発・公開している 統合開発環境（IDE）で R 用 IDE のデファクトスタンダードといえます。近年のバージョンアップにより R だけでなく Python や Stan などの言語もサポートも充実してきており、 R と Python の併用といったことも可能です。  
 　  

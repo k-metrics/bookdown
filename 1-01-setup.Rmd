@@ -1,7 +1,8 @@
 # Install
-　R について学ぶ前に R が使えるように環境を構築しましょう。R/RStudio はマルチプラットフォーム対応ですので、Windows, macOS, Linux の各環境で利用可能です。ただし、RStudio は 32bit 環境のサポートが終了していますので必ず 64bit 環境を用意してください。
-
-インストール手順は以下のようになります。
+　R について学ぶ前に R が使えるように環境を整えます。本書は R, RStudio, [Tidyverse/ <i class="fa fa-external-link"></i>](https://www.tidyverse.org/){target="_blank"} パッケージならびに他のパッケージの利用を前提としています。
+　R ならびに RStudio はマルチプラットフォーム対応ですので、プラットフォームは Windows, macOS, Linux のどのプラットフォームでも構いませんが、日本語版 Windows ではプラットフォームが使用している文字コードに起因する不具合（日本語が表示されないなど）が発生する可能性があります。  
+　  
+　環境を整えるための手順は以下のようになります。  
 
 手順 | 実施内容                 | 備考
 :---:|--------------------------|------ 
@@ -11,43 +12,43 @@
 4    | パッケージのインストール | 
 5    | Gitのインストール        | 
 
-[Git <i class="fa fa-external-link"></i>](https://git-scm.com/){target="_blank"} は VCS(Version Control System) と呼ばれるソースの版管理を行うシステムです。必要な場合のみインストールしてください。
+　  
+　[Git <i class="fa fa-external-link"></i>](https://git-scm.com/){target="_blank"} は VCS(Version Control System) と呼ばれるソースの版管理を行うシステムです。必要な場合のみインストールしてください。
 
 　  
 
 ## Install R
-R は [CRAN (The Comprehensive R Archive Network)<i class="fa fa-external-link"></i>](https://cran.r-project.org/){target="_blank"} と呼ばれる公式リポジトリから入手してインストールします。
-
+　R は [CRAN (The Comprehensive R Archive Network)<i class="fa fa-external-link"></i>](https://cran.r-project.org/){target="_blank"} と呼ばれる公式リポジトリから入手してインストールします。  
+　  
 
 ### Windows
-Winodws では特段の理由がない限り [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/windows/){target="_blank"} から最新バージョンをインストールしてください。  
+　Winodws では特段の理由がない限り [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/windows/){target="_blank"} から最新バージョンをインストールしてください。  
 　  
 
 #### Rtools
-Windows ではコンパイラなどの開発ツール類が標準装備されていませんので R のパッケージをインストールする際に必要となるツールキットを別途インストールしておく必要があります。 [Rtools <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/windows/){target="_blank"} からインストールした R のバージョン用の Rtools をダウンロードしてインストールしてください。  
+　Windows ではコンパイラなどの開発ツール類が標準装備されていませんので R のパッケージをインストールする際に必要となるツールキットを別途インストールしておく必要があります。 [Rtools <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/windows/){target="_blank"} からインストールした R のバージョン用の Rtools をダウンロードしてインストールしてください。  
 　  
 
 ### macOS (OS X)
-macOS ではインストールできるバージョンが限られていますので [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/macosx/){target="_blank"} で確認の上、インストールしてください。  
+　macOS ではインストールできるバージョンが限られていますので [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/macosx/){target="_blank"} で確認の上、インストールしてください。  
 　  
 
 ### Linux
-R がサポートしているディストリビューションは Debian, RedHat, Suse, Ubuntu のみです。Fedora を利用したい場合には [README <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/linux/redhat/README){target="_blank" title=""} を参照の上でRedHat Software のリポジトリからインストールしてください。  
+　R がサポートしているディストリビューションは Debian, RedHat, Suse, Ubuntu のみです。Fedora を利用したい場合には [README <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/linux/redhat/README){target="_blank" title=""} を参照の上でRedHat Software のリポジトリからインストールしてください。  
 　  
-Linux の場合、ディストリビューションごと・バージョンごとにインストール方法が異なりますので [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/linux/){target="_blank"} を参考にインストールしてください。
+　Linux の場合、ディストリビューションごと・バージョンごとにインストール方法が異なりますので [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/linux/){target="_blank"} を参考にインストールしてください。  
 
-　  
 
 ## Install RStudio Desktop
-R のインストールが完了したら RStudio Desktop をインストールします。 [Downloadページ <i class="fa fa-external-link"></i>](https://rstudio.com/products/rstudio/download/#download){target="_blank"} から使用している環境（OS）用の RStudio をダウンロードしてインストールしてください。 
+　R のインストールが完了したら統合開発環境（IDR）である RStudio Desktop をインストールします。 [Downloadページ <i class="fa fa-external-link"></i>](https://rstudio.com/products/rstudio/download/#download){target="_blank"} から使用している環境（OS）用の RStudio をダウンロードしてインストールしてください。 
 　  
 
 ### 動作確認
-RStudio のインストールが完了したら RStudio を起動して動作確認を行います。下図のようなウィンドウが立ち上がり左側の Console に R のバージョンなどが表示されます。
-
+　RStudio のインストールが完了したら RStudio を起動します。下図のようなウィンドウが立ち上がり左側の **Console** ペインに R のバージョンなどが表示されます。  
+　  
 ![RStudio Desktop, Windows](./fig/RStudio_Desktop.png)
 
-コンソールのプロンプト（`>`表示）の部分に`2 * 3`と打ち込んで［Enter］キーを押し`[1] 6`と表示されることを確認してください。
+　**Console** ペインのプロンプト（`>`表示）の部分に`2 * 3`と打ち込んで［Enter］キーを押し`[1] 6`と表示されることを確認してください。
 
 ```{r, comment=""}
 2 * 3
@@ -56,18 +57,18 @@ RStudio のインストールが完了したら RStudio を起動して動作確
 　  
 
 ## Install R packages
-　R と RStudio のインストールと動作確認が終了しましたら、有用なパッケージをインストールします。利用環境がインターネットに接続されていることを確認の上で **Console** から以下のコマンド（関数）を実行します。
+　次に必要となるいくつかのパッケージをインストールします。パッケージをインストールする場合はインターネットに接続されている必要があります。 **Console** ペインのプロンプトに以下のコードを入力し [Enter]キーを押して実行します。
 
 ```{r, eval=FALSE}
 install.packages("tidyverse")
 ```
 
-　インストールが終わりましたらパッケージが正しくインストールされていることを確認するために **Console** から以下のコマンド（関数）を実行します。
+　インストールが終わりましたらパッケージが正しくインストールされていることを確認するために **Console** ペインに以下のコードを入力して実行します。
 ```{r, eval=FALSE}
 library(tidyverse)
 ```
 
-　以下のようなメッセージが表示されることを確認します。なお、インストール時期によってはバージョン表記などが下記と異なる場合があります。また、Windows 環境では一部の文字が化けします。
+　以下のようなメッセージが表示されることを確認します。インストール時期によってはバージョン表記などが下記と異なる場合があります。なお、日本語版 Windows 環境では一部の文字が化けします。
 ```{r, eval=FALSE}
 Loading required package: tidyverse
 ─ Attaching packages ─────────────────────────────── tidyverse 1.3.0 ─
@@ -81,6 +82,14 @@ Loading required package: tidyverse
 ```
 
 　  
+
+　続いて [rmarkdown <i class="fa fa-external-link"></i>](https://rmarkdown.rstudio.com/){target="_blank"} パッケージをインストールします。`tidyverse` パッケージのときと同様に以下のコードを **Console** ペインに入力して実行します。
+
+```{r, eval=FALSE}
+install.packages("rmarkdown")
+```
+
+
 
 ## Install Git
 　RStudio には版管理インタフェースが標準で用意されていますが、版管理システム（以降、VCS）自体は別途インストールする必要があります。RStudio で利用できる VCS は以下の二つです。 
