@@ -44,4 +44,6 @@
 　  
 **Communicate/Automate**  
 　分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で [再現可能性（Reproducible research） <i class="fa fa-external-link"></i>](){target="_blank"} が伴っていることも求められます。
+　
+　[3つの再現可能性 <i class="fa fa-external-link"></i>](http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03){target="_blank"} 
 
