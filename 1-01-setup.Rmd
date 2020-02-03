@@ -1,16 +1,16 @@
 # Install
-　R について学ぶ前に R が使えるように環境を整えます。本書は R, RStudio, [Tidyverse/ <i class="fa fa-external-link"></i>](https://www.tidyverse.org/){target="_blank"} パッケージならびに他のパッケージの利用を前提としています。
-　R ならびに RStudio はマルチプラットフォーム対応ですので、プラットフォームは Windows, macOS, Linux のどのプラットフォームでも構いませんが、日本語版 Windows ではプラットフォームが使用している文字コードに起因する不具合（日本語が表示されないなど）が発生する可能性があります。  
+　R について学ぶ前に R が使えるように環境を整えます。本書は R, RStudio, [tidyverse/ <i class="fa fa-external-link"></i>](https://www.tidyverse.org/){target="_blank"} パッケージならびにその他必要なパッケージの利用を前提としています。  
+　R ならびに RStudio はマルチプラットフォーム対応（マルチOS対応）ですので Windows, macOS, Linux のどのプラットフォームを選択しても構いません。ただし、64bit プラットフォームであることが条件です。なお、日本語版 Windows では Windows が利用してる文字コード（CP932, Shift JIS）に起因する不具合が散見されています。日本語版 Windows 環境を利用する場合はその点を認識の上で利用してください。  
 　  
 　環境を整えるための手順は以下のようになります。  
 
 手順 | 実施内容                 | 備考
 :---:|--------------------------|------ 
-1    | Rのインストール          | 
-2    | Rtoolsのインストール     | Winodwsのみ
-3    | RStudioのインストール    | Desktop版
-4    | パッケージのインストール | 
-5    | Gitのインストール        | 
+1    | Rのインストール          | 64bit プラットフォーム
+2    | Rtoolsのインストール     | Winodws のみ
+3    | RStudioのインストール    | Desktop 版
+4    | パッケージのインストール | tidyverse, rmarkdown
+5    | Gitのインストール        | 任意
 
 　  
 　[Git <i class="fa fa-external-link"></i>](https://git-scm.com/){target="_blank"} は VCS(Version Control System) と呼ばれるソースの版管理を行うシステムです。必要な場合のみインストールしてください。
@@ -18,29 +18,34 @@
 　  
 
 ## Install R
-　R は [CRAN (The Comprehensive R Archive Network)<i class="fa fa-external-link"></i>](https://cran.r-project.org/){target="_blank"} と呼ばれる公式リポジトリから入手してインストールします。  
+　R は [CRAN (The Comprehensive R Archive Network)<i class="fa fa-external-link"></i>](https://cran.r-project.org/){target="_blank"} と呼ばれる公式リポジトリから入手してインストールします。 CRAN には [ミラーサイト <i class="fa fa-external-link"></i>](https://cran.r-project.org/mirrors.html){target="_blank"} も多数ありますので、利用しているインターネット環境に応じて近いサイトからダウンロードしてください。  
+　よくある質問は [FAQ(Frequently Asked Questions) <i class="fa fa-external-link"></i>](https://cran.r-project.org/doc/FAQ/R-FAQ.html){target="_blank"} にまとめられています。  
 　  
 
 ### Windows
 　Winodws では特段の理由がない限り [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/windows/){target="_blank"} から最新バージョンをインストールしてください。  
+　旧バージョンをインストールしたい場合は　[Previous Releases of R for Windows <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/windows/base/old/){target="_blank"} 
+から当該バージョンをダウンロードしインストールしてください。  
+　  
+　日本語によるインストール方法が必要な場合は非公式ページですが [R初心者の館（RとRStudioのインストール、初期設定、基本的な記法など） <i class="fa fa-external-link"></i>](https://das-kino.hatenablog.com/entry/2019/11/07/125044){target="_blank"} などのサイトを参考にしてください。  
 　  
 
 #### Rtools
-　Windows ではコンパイラなどの開発ツール類が標準装備されていませんので R のパッケージをインストールする際に必要となるツールキットを別途インストールしておく必要があります。 [Rtools <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/windows/){target="_blank"} からインストールした R のバージョン用の Rtools をダウンロードしてインストールしてください。  
+　Windows ではコンパイラなどの開発ツール類が標準装備されていませんので、 R のパッケージをインストールする際に必要となる Rtools と呼ばれるツールキットをインストールしておきます。 [Building R for Windows <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/windows/){target="_blank"} のページからインストールした R のバージョン用の Rtools をダウンロードしてインストールしてください。なお、インストールの際はデフォルトオプションでインストールしてください。インストールディレクトリなどを変更すると正しく動かない場合があります。  
 　  
 
 ### macOS (OS X)
-　macOS ではインストールできるバージョンが限られていますので [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/macosx/){target="_blank"} で確認の上、インストールしてください。  
+　macOS ではインストールできるバージョンが限られていますので [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/macosx/){target="_blank"} で確認の上でインストールしてください。  
 　  
 
 ### Linux
-　R がサポートしているディストリビューションは Debian, RedHat, Suse, Ubuntu のみです。Fedora を利用したい場合には [README <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/linux/redhat/README){target="_blank" title=""} を参照の上でRedHat Software のリポジトリからインストールしてください。  
+　R がサポートしているディストリビューションは Debian, RedHat, Suse, Ubuntu のみです。Fedora を利用したい場合には [README <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/linux/redhat/README){target="_blank" title=""} を参照の上で RedHat Software のリポジトリからインストールしてください。  
 　  
-　Linux の場合、ディストリビューションごと・バージョンごとにインストール方法が異なりますので [CRAN <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/linux/){target="_blank"} を参考にインストールしてください。  
-
+　Linux の場合、ディストリビューションごと・バージョンごとにインストール方法が異なりますので各ディストリビューション用のディレクトリ内の README ファイルを参考にインストールしてください。  
+　  
 
 ## Install RStudio Desktop
-　R のインストールが完了したら統合開発環境（IDR）である RStudio Desktop をインストールします。 [Downloadページ <i class="fa fa-external-link"></i>](https://rstudio.com/products/rstudio/download/#download){target="_blank"} から使用している環境（OS）用の RStudio をダウンロードしてインストールしてください。 
+　R のインストールが完了しましたら統合開発環境（IDE）である RStudio Desktop をインストールします。 [Downloadページ <i class="fa fa-external-link"></i>](https://rstudio.com/products/rstudio/download/#download){target="_blank"} から使用している環境（OS）用の RStudio をダウンロードしてインストールしてください。 
 　  
 
 ### 動作確認
@@ -90,14 +95,30 @@ install.packages("rmarkdown")
 ```
 
 
+### Linux環境の場合
+　Linux環境ではプラットフォーム側のライブラリなどが足りずにパッケージのインストールが完了できない場合があります。その場合は [RStudio Package Manager, demo site <i class="fa fa-external-link"></i>](https://demo.rstudiopm.com/client/#/){target="_blank"} にてインストールしたいパッケージが必要とするライブラリなどを確認、インストールしてから再度パッケージをインストールしてください。  
+　例えば Ubuntu 18.04LTS で R に `tidyverse` パッケージをインストールする場合には以下のようなライブラリなどがOS側にインストールされている必要があります。  
+　  
+
+```{bash, eval=FALSE}
+apt-get install -y libicu-dev
+apt-get install -y make
+apt-get install -y libcurl4-openssl-dev
+apt-get install -y libssl-dev
+apt-get install -y pandoc
+apt-get install -y libxml2-dev
+```
+
+　  
 
 ## Install Git
-　RStudio には版管理インタフェースが標準で用意されていますが、版管理システム（以降、VCS）自体は別途インストールする必要があります。RStudio で利用できる VCS は以下の二つです。 
-　
+　RStudio にはソースコードの版管理を行うインタフェースが標準で用意されていますが、版管理システム（以降、VCS）を別途インストールする必要があります。RStudio で利用できる VCS は以下の二つです。  
+　  
+
 * [Git <i class="fa fa-external-link"></i>](https://git-scm.com/){target="_blank"} 
 * [Subversion(SVN) <i class="fa fa-external-link"></i>](https://subversion.apache.org/){target="_blank"}
 
-　Git の方が [GitHub <i class="fa fa-external-link"></i>](https://github.com/){target="_blank"} などのクラウドサービスが充実していますので、これから版管理を利用する場合は Git の利用をおすゝめします。  
+　どちらを利用しても構いませんが [GitHub <i class="fa fa-external-link"></i>](https://github.com/){target="_blank"} などのクラウドサービスが充実している Git の利用をおすゝめします。  
 　  
 
 ### Git
@@ -105,7 +126,8 @@ install.packages("rmarkdown")
 　  
 
 ### Git Client
-　RStudio には簡易的な Git のクライアント機能が標準で用意されていますが、きめ細かな操作を行いたい場合には Git の GUI クライアントをインストールしてください。
+　RStudio には簡易的な Git のクライアント機能が標準で用意されていますが、きめ細かな操作を行いたい場合には Git の GUI クライアントをインストールしてください。代表的な Git Client を以下に列挙しておきます。  
+　  
 
 Git GUI Client           | Ubuntu | Mac | Windows | Memo
 -------------------------|:---:|:---:|:---:|---------
@@ -117,16 +139,82 @@ Git GUI Client           | Ubuntu | Mac | Windows | Memo
 
 ^1^ : 非商用利用の場合  
 
+　  
 
 ## RStudio Server
-　R/Rstudio Desktop はマルチプラットフォーム対応ですがプラットフォーム（OS）ごとに以下のような制約があります。
-
-* 日本語版 Windows 環境では文字コード変換が原因で日本語を正しく処理できないことが多い
-* 18.04LTSより前の Ubuntu 環境では RStudio Desktop で日本語入力ができない
-      * 有志による日本語入力パッチがリリースされている
-
-　特に日本語版 Windows 環境はシフト JIS
-（CP932） を使っているため日本語処理の問題は根本的な解決を期待できません。  
+　R/Rstudio Desktop は前述のようにマルチプラットフォーム対応ですがプラットフォームごとに以下のような制約があります。  
 　  
-　Web サーバベースで動作する RStudio Server を利用することで、このような日本語に関わる問題を一掃することができます。 [Docker <i class="fa fa-external-link"></i>](https://www.docker.com/){target="_blank"} のコンテナ技術を利用することで、Windows（要 Hyper-V または WSL2）・ macOS ・ Linux の各プラットフォームで統一された環境として動作させることが可能です。
 
+* 日本語版 Windows 環境では文字コード（CP932, Shift JIS）が原因で日本語を正しく処理できない事例が散見される
+* 18.04LTSより前の Ubuntu 環境では RStudio Desktop で日本語入力ができない
+      * 有志による日本語入力パッチ（非公式パッチ）はあり
+* macOS 環境ではグラフの日本語が文字化けする
+      * いわゆる豆腐文字問題
+
+　  
+　特に日本語版 Windows 環境での問題は Windows が利用している文字コード（CP932, Shift JIS） に起因しているため問題は根本的な解決を期待できません。詳細については伝説とも言われている「Why are you using SJIS?」というキーワードで検索してみてください。  
+　  
+　日本語版 Windows 環境における文字コード問題を回避するためには、 [RStudio Server <i class="fa fa-external-link"></i>](https://rstudio.com/products/rstudio/download-server/){target="_blank"} を利用する方法が考えられます。
+　RStudio Server は Linux 環境で動作する Web サーバベースの IDE ですが、 [Docker <i class="fa fa-external-link"></i>](https://www.docker.com/){target="_blank"} のコンテナ技術を利用することで Windows や macOS 環境で動作させることが可能です。
+　  
+
+OS      | Docker app                 | System Requirements
+--------|----------------------------|--------------------
+macOS   | Docker Desktop for Mac     | [refer docker docs <i class="fa fa-external-link"></i>](https://docs.docker.com/docker-for-mac/install/){target="_blank"} 
+Windows | Docker Desktop for Windows | Hyper-V(Windows10 64bit Pro or Higher) or WSL2^1^
+
+　  
+^1^ WSL2 は Windows10 version 2004 から利用可能になる予定です
+
+　  
+
+### Setup RStudio Sever with Docker
+　Windows または macOS 環境で Docker を利用し RStudio Server を起動するためには以下の手順が必要です。  
+　  
+
+手順 | 実施内容                      | 備考
+:---:|-------------------------------|------ 
+1    | Hyper-V の有効化              | Windows のみ
+2    | Docker Desktop のインストール | 
+3    | Docker Image のダウンロード   | 
+4    | Docker Container の起動           | 
+
+　  
+　なお、Linux 環境での手順は割愛します。
+　
+
+#### Enable Hyper-V (Windows Only)
+　Windows 環境ではインストールする前に [Hyper-V を有効にする <i class="fa fa-external-link"></i>](https://docs.microsoft.com/ja-jp/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v){target="_blank"} 必要があります。  
+
+
+#### Download and Install Docker Desktop
+　利用している環境に応じた [Docker Desktop <i class="fa fa-external-link"></i>](https://www.docker.com/products/docker-desktop){target="_blank"} をダウンロードしてインストールします。なお、ダウンロードには [docker hub <i class="fa fa-external-link"></i>](https://hub.docker.com/){target="_blank"} でアカウント登録が必要です。  
+　  
+　詳細な手順や設定方法は [Docker docs <i class="fa fa-external-link"></i>](https://docs.docker.com/get-docker/){target="_blank"} を参照してください。  
+　  
+
+#### Download Docker Image
+　Docker Desktop をインストール・起動しましたら RStudio Server の Docker Image をダウンロードします。様々な方が RStudio Server の Docker Image を公開されていますが代表的な Docker Image には次のようなものがあります。  
+　  
+
+Image             | Description 
+------------------|------------------------------------------------------------
+[rocker/tidyverse <i class="fa fa-external-link"></i>](https://hub.docker.com/r/rocker/tidyverse){target="_blank"} | Version-stable base R and RStudio, tidyverse, devtools
+[rocker/verse <i class="fa fa-external-link"></i>](https://hub.docker.com/r/rocker/verse){target="_blank"} | Adds TeX and related packages to rocker/tidyverse
+[kmetrics/jverse <i class="fa fa-external-link"></i>](https://hub.docker.com/r/kmetrics/jverse){target="_blank"} | Japanized rocker/verse 
+
+　  
+　[rocker <i class="fa fa-external-link"></i>](https://github.com/rocker-org/rocker){target="_blank"} は準公式とも言えるような R に関連する Docker Image を継続的に提供しているプロジェクトです。様々なイメージを提供していますが残念ながら日本語フォントの追加などの日本語対応がなされていません。グラフで日本語を利用しない限りは rocker のイメージを利用しても何ら問題はありません（ソースなどの表示はブラウザに依存しているのでコードに日本語を記述することが可能です）。  
+　グラフで日本語を利用したい場合は著者が rocker/verse に日本語フォントなどを追加して日本語対応させた [kmetrics/jverse <i class="fa fa-external-link"></i>](https://hub.docker.com/r/kmetrics/jverse){target="_blank"} を利用するか rocker が公開している Dockerfile を改修して日本語対応させたイメージを利用してください。  
+　  
+　利用する Docker Image を決めたらコンソール（コマンドプロンプト）で以下のコマンドを実行してイメージをダウンロードしてください。  
+　  
+
+```{bash, eval=FALSE}
+docker pull rocker/tidyverse
+```
+
+
+　  
+
+#### Run Container

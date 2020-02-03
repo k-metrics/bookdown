@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2020-01-25" />
+<meta name="date" content="2020-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -73,7 +73,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -146,12 +146,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>2.2</b> Install RStudio Desktop</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html#動作確認"><i class="fa fa-check"></i><b>2.2.1</b> 動作確認</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>2.3</b> Install R packages</a></li>
+<li class="chapter" data-level="2.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>2.3</b> Install R packages</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="install-r-packages.html"><a href="install-r-packages.html#linux環境の場合"><i class="fa fa-check"></i><b>2.3.1</b> Linux環境の場合</a></li>
+</ul></li>
 <li class="chapter" data-level="2.4" data-path="install-git.html"><a href="install-git.html"><i class="fa fa-check"></i><b>2.4</b> Install Git</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="install-git.html"><a href="install-git.html#git"><i class="fa fa-check"></i><b>2.4.1</b> Git</a></li>
 <li class="chapter" data-level="2.4.2" data-path="install-git.html"><a href="install-git.html#git-client"><i class="fa fa-check"></i><b>2.4.2</b> Git Client</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>2.5</b> RStudio Server</a></li>
+<li class="chapter" data-level="2.5" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>2.5</b> RStudio Server</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="rstudio-server.html"><a href="rstudio-server.html#setup-rstudio-sever-with-docker"><i class="fa fa-check"></i><b>2.5.1</b> Setup RStudio Sever with Docker</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>3</b> RStudio IDE</a></li>
 <li class="chapter" data-level="4" data-path="rstudio-basics.html"><a href="rstudio-basics.html"><i class="fa fa-check"></i><b>4</b> RStudio Basics</a><ul>
@@ -254,8 +258,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="install" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Install</h1>
-<p>　R について学ぶ前に R が使えるように環境を整えます。本書は R, RStudio, <a href="https://www.tidyverse.org/" target="_blank">Tidyverse/ <i class="fa fa-external-link"></i></a> パッケージならびに他のパッケージの利用を前提としています。
-　R ならびに RStudio はマルチプラットフォーム対応ですので、プラットフォームは Windows, macOS, Linux のどのプラットフォームでも構いませんが、日本語版 Windows ではプラットフォームが使用している文字コードに起因する不具合（日本語が表示されないなど）が発生する可能性があります。<br />
+<p>　R について学ぶ前に R が使えるように環境を整えます。本書は R, RStudio, <a href="https://www.tidyverse.org/" target="_blank">tidyverse/ <i class="fa fa-external-link"></i></a> パッケージならびにその他必要なパッケージの利用を前提としています。<br />
+　R ならびに RStudio はマルチプラットフォーム対応（マルチOS対応）ですので Windows, macOS, Linux のどのプラットフォームを選択しても構いません。ただし、64bit プラットフォームであることが条件です。なお、日本語版 Windows では Windows が利用してる文字コード（CP932, Shift JIS）に起因する不具合が散見されています。日本語版 Windows 環境を利用する場合はその点を認識の上で利用してください。<br />
 　<br />
 　環境を整えるための手順は以下のようになります。</p>
 <table>
@@ -270,27 +274,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td align="center">1</td>
 <td>Rのインストール</td>
-<td></td>
+<td>64bit プラットフォーム</td>
 </tr>
 <tr class="even">
 <td align="center">2</td>
 <td>Rtoolsのインストール</td>
-<td>Winodwsのみ</td>
+<td>Winodws のみ</td>
 </tr>
 <tr class="odd">
 <td align="center">3</td>
 <td>RStudioのインストール</td>
-<td>Desktop版</td>
+<td>Desktop 版</td>
 </tr>
 <tr class="even">
 <td align="center">4</td>
 <td>パッケージのインストール</td>
-<td></td>
+<td>tidyverse, rmarkdown</td>
 </tr>
 <tr class="odd">
 <td align="center">5</td>
 <td>Gitのインストール</td>
-<td></td>
+<td>任意</td>
 </tr>
 </tbody>
 </table>
