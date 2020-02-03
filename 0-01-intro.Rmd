@@ -1,5 +1,5 @@
 # Introduction
-　データ分析を行うためには適切な分析ツールが必要不可欠です。 [R <i class="fa fa-external-link"></i>](https://www.r-project.org/){target="_blank"} は統計計算に特化しているオープンソースの言語でデータ分析に適切な分析ツールのひとつです。R がデータ分析に向いている理由をまとめているのが ["Six Reasons To Learn R For Business", R Blogger <i class="fa fa-external-link"></i>](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank"} です。  
+　データ分析を行うためには適切な分析ツールが必要不可欠です。 [R <i class="fa fa-external-link"></i>](https://www.r-project.org/){target="_blank"} は統計計算に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。R がデータ分析に向いている理由をまとめているのが ["Six Reasons To Learn R For Business", R Blogger <i class="fa fa-external-link"></i>](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank"} です。  
 　  
 
 > 1. R Has The Best **Overall Qualities**
@@ -16,6 +16,7 @@
 ## Data Science Workflow
 　データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
 
+![](./fig/data-science_r4ds.png)
 ![Data Science Workflow, CC 4.0 BY RStudio, Inc.](./fig/data-science.png)
 <p align=right>図出典：[RStartHere, RStudio, inc. <i class="fa fa-external-link"></i>](https://github.com/rstudio/RStartHere){target="_blank"}</p>
 
