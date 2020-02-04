@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.2 readxl | Rのすゝめ</title>
-  <meta name="description" content="5.2 readxl | Rのすゝめ" />
+  <title>12.1 Global Options | Rのすゝめ</title>
+  <meta name="description" content="12.1 Global Options | Rのすゝめ" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.2 readxl | Rのすゝめ" />
+  <meta property="og:title" content="12.1 Global Options | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.2 readxl | Rのすゝめ" />
+  <meta name="twitter:title" content="12.1 Global Options | Rのすゝめ" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="readr.html"/>
-<link rel="next" href="pdftools.html"/>
+<link rel="prev" href="options.html"/>
+<link rel="next" href="project-options.html"/>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -270,16 +270,433 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="readxl" class="section level2">
-<h2><span class="header-section-number">5.2</span> readxl</h2>
+<div id="global-options" class="section level2">
+<h2><span class="header-section-number">12.1</span> Global Options</h2>
+<p>　メニュー［<strong>Tools</strong>］-［<strong>Global Options…</strong>］を選択すると表示できます。以降に推奨設定項目を記載しておきますので参考にしてください。記載されていないオプションはお好みで設定してください。<br />
+　</p>
+<div id="general" class="section level3">
+<h3><span class="header-section-number">12.1.1</span> General</h3>
+<p>　Genelal オプションは RStudio の全般的な動作に関する設定です。 Basic と Advanced の二種類の設定がありますが、初学者の方は Basic のみ以下のように設定しておくと便利です。<br />
+　</p>
+<table>
+<thead>
+<tr class="header">
+<th>大項目(Tab)</th>
+<th>中項目(太文字)</th>
+<th>設定項目</th>
+<th>推奨設定</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Basic</td>
+<td>R Sessions</td>
+<td>R version</td>
+<td>Default（Windows only）</td>
+</tr>
+<tr class="even">
+<td>Basic</td>
+<td>R Sessions</td>
+<td>Default working directory</td>
+<td>任意のディレクトリ</td>
+</tr>
+<tr class="odd">
+<td>Basic</td>
+<td>R Sessions</td>
+<td>Restore most recently opened project at startup</td>
+<td>Unchecked</td>
+</tr>
+<tr class="even">
+<td>Basic</td>
+<td>Workspace</td>
+<td>Restore .RData into workspace at startup</td>
+<td>Checked</td>
+</tr>
+<tr class="odd">
+<td>Basic</td>
+<td>Wrokspace</td>
+<td>Save workspace to .RData on exit</td>
+<td>“Ask” or “Always”</td>
+</tr>
+<tr class="even">
+<td>Basic</td>
+<td>Ohter</td>
+<td>Automatically notify me of updates to RStudio</td>
+<td>Checked</td>
+</tr>
+</tbody>
+</table>
+<p>　<br />
+　特に “Default working directory” はプロジェクトを作成・管理するディレクトリに設定しておくと便利です。</p>
+<p>　</p>
+</div>
+<div id="code" class="section level3">
+<h3><span class="header-section-number">12.1.2</span> Code</h3>
+<p>　Code オプションはソースエディタの動作に関する設定です。ソースの記述は <a href="https://style.tidyverse.org/" target="_blank">スタイルガイド（The tidyverse style guide） <i class="fa fa-external-link"></i></a> に準拠することをおすゝめしますので、設定例もスタイルガイドに沿ったものになっています。なお、 Python などの他言語を併用する場合は適切な設定に変更してください。<br />
+　</p>
+<table>
+<thead>
+<tr class="header">
+<th>大項目(Tab)</th>
+<th>中項目(太文字)</th>
+<th>設定項目</th>
+<th>推奨設定</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Editing</td>
+<td>General</td>
+<td>Insert spaces for tab</td>
+<td>Checked</td>
+</tr>
+<tr class="even">
+<td>Editing</td>
+<td>General</td>
+<td>Tab width</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>Editing</td>
+<td>General</td>
+<td>Auto-detect code indentation</td>
+<td>Checked</td>
+</tr>
+<tr class="even">
+<td>Editing</td>
+<td>General</td>
+<td>Insert matching parens/quotes</td>
+<td>Checked</td>
+</tr>
+<tr class="odd">
+<td>Editing</td>
+<td>General</td>
+<td>Auto-indent code after paste</td>
+<td>Checked</td>
+</tr>
+<tr class="even">
+<td>Editing</td>
+<td>General</td>
+<td>Vertically align arguments in atuo-indent</td>
+<td>Checked</td>
+</tr>
+<tr class="odd">
+<td>Editing</td>
+<td>General</td>
+<td>Surround selection on text insertion</td>
+<td>“Quotes &amp; Brackets”</td>
+</tr>
+<tr class="even">
+<td>Editing</td>
+<td>Execution</td>
+<td>Always save R scripts before sourcing</td>
+<td>Checked</td>
+</tr>
+<tr class="odd">
+<td>Editing</td>
+<td>Execution</td>
+<td>Ctrl+Enter executes</td>
+<td>“Multi-line R statement”</td>
+</tr>
+<tr class="even">
+<td>Display</td>
+<td>General</td>
+<td>Highlight selected word</td>
+<td>Checked</td>
+</tr>
+<tr class="odd">
+<td>Display</td>
+<td>General</td>
+<td>Highlight selected line</td>
+<td>Checked</td>
+</tr>
+<tr class="even">
+<td>Display</td>
+<td>General</td>
+<td>Show line numbers</td>
+<td>Checked</td>
+</tr>
+<tr class="odd">
+<td>Display</td>
+<td>General</td>
+<td>Show margin</td>
+<td>Checked</td>
+</tr>
+<tr class="even">
+<td>Display</td>
+<td>General</td>
+<td>Margin coloumn</td>
+<td>80</td>
+</tr>
+<tr class="odd">
+<td>Display</td>
+<td>General</td>
+<td>Show whitespace characters</td>
+<td>Checked</td>
+</tr>
+<tr class="even">
+<td>Display</td>
+<td>General</td>
+<td>Show syntax highlighting in console input</td>
+<td>Checked</td>
+</tr>
+<tr class="odd">
+<td>Saving</td>
+<td>General</td>
+<td>Restore last cursor position when opening file</td>
+<td>Checked</td>
+</tr>
+<tr class="even">
+<td>Saving</td>
+<td>Serialization</td>
+<td>Line ending conversion</td>
+<td>“Posix (LF)”</td>
+</tr>
+<tr class="odd">
+<td>Saving</td>
+<td>Serialization</td>
+<td>Default text encoding</td>
+<td>“UTF-8”</td>
+</tr>
+</tbody>
+</table>
+<p>　</p>
+</div>
+<div id="appearance" class="section level3">
+<h3><span class="header-section-number">12.1.3</span> Appearance</h3>
+<p>　Appearance オプションは RStudio の見た目に関する設定です。フォント設定のみ日本語の固定ピッチフォントに変更し、その他はお好みでどうぞ。<br />
+　</p>
+<table>
+<thead>
+<tr class="header">
+<th>大項目(Tab)</th>
+<th>中項目(太文字)</th>
+<th>設定項目</th>
+<th>推奨設定</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>N/A</td>
+<td>N/A</td>
+<td>Editor font</td>
+<td>任意の日本語等幅フォント</td>
+</tr>
+</tbody>
+</table>
+<p>　<br />
+　日本語等幅フォントは好みで構いませんが、無償ダウンロード可能な以下のフォントがおすゝめです。</p>
+<ul>
+<li>BIZ UDゴシック（macOS, Windows） - MORISAWA PASSPORT</li>
+<li>Source Han Code JP（Linux, macOS） - SIL Open Font License</li>
+<li>IPAゴシック（Linux, macOS, Windows） - IPA フォントライセンス</li>
+</ul>
+<p>　なお、日本語版 Windows の RStudio では一部の日本語等幅フォントを正しく表示できないバグがあるようですので、フォントの選択には注意してください。</p>
+<p>　</p>
+</div>
+<div id="pane-layout" class="section level3">
+<h3><span class="header-section-number">12.1.4</span> Pane Layout</h3>
+<p>　Pane Layout オプションは前述のペインの表示場所や表示・非表示を変更するためのオプションですので、初学者はデフォルト設定のまま利用することをおすゝめします。</p>
+<p>　</p>
+</div>
+<div id="packages" class="section level3">
+<h3><span class="header-section-number">12.1.5</span> Packages</h3>
+<p>　Packages オプションはパッケージマネジメントに関する設定です。 Management と Development の二種類の設定がありますが、Development はパッケージ自体を開発するためのオプションですので Management のみ設定してください。<br />
+　</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="20%" />
+<col width="41%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>大項目(Tab)</th>
+<th>中項目(太文字)</th>
+<th>設定項目</th>
+<th>推奨設定</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Management</td>
+<td>Package Management</td>
+<td>Primary CRAN repository</td>
+<td>任意のhttpsサイト<sup>1</sup></td>
+</tr>
+<tr class="even">
+<td>Management</td>
+<td>Package Management</td>
+<td>Enable packages pane</td>
+<td>Checked</td>
+</tr>
+<tr class="odd">
+<td>Management</td>
+<td>Package Management</td>
+<td>Use secure download method for HTTP</td>
+<td>Checked</td>
+</tr>
+<tr class="even">
+<td>Management</td>
+<td>Package Management</td>
+<td>Use Internet Explorer library/proxy for HTTP</td>
+<td>Checked <sup>2</sup></td>
+</tr>
+</tbody>
+</table>
+<p>　</p>
+<p><sup>1</sup> ネットワーク的に最も速い（近い）サイトを選んでください
+<sup>2</sup> プロキシサーバーを利用している場合に設定してください</p>
+<p>　</p>
+</div>
+<div id="r-markdown-1" class="section level3">
+<h3><span class="header-section-number">12.1.6</span> R Markdown</h3>
+<p>　R Markdown オプションは R Markdown に関する設定です。</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="20%" />
+<col width="41%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>大項目(Tab)</th>
+<th>中項目(太文字)</th>
+<th>設定項目</th>
+<th>推奨設定</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>N/A</td>
+<td>R Markdown</td>
+<td>Show inline toolbar for R code chunk</td>
+<td>Checked</td>
+</tr>
+<tr class="even">
+<td>N/A</td>
+<td>R Markdown</td>
+<td>Enable chunk background highlight</td>
+<td>Checked</td>
+</tr>
+<tr class="odd">
+<td>N/A</td>
+<td>R Markdown</td>
+<td>Show output preview in</td>
+<td>“Viewer Pane”</td>
+</tr>
+<tr class="even">
+<td>N/A</td>
+<td>R Markdown</td>
+<td>Show output inline for all R Markdown documents</td>
+<td>Checked</td>
+</tr>
+<tr class="odd">
+<td>N/A</td>
+<td>R Markdown</td>
+<td>Show equation and image previews</td>
+<td>“Inline” or “In a popup”</td>
+</tr>
+<tr class="even">
+<td>N/A</td>
+<td>R Markdown</td>
+<td>Evaluate chunks in directory</td>
+<td>“Document”</td>
+</tr>
+<tr class="odd">
+<td>N/A</td>
+<td>R Notebooks</td>
+<td>Execute setup chunk automatically in notebooks</td>
+<td>Checked</td>
+</tr>
+<tr class="even">
+<td>N/A</td>
+<td>R Notebooks</td>
+<td>Hide console automatically when executing notebook chunks</td>
+<td>Checked</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="sweave" class="section level3">
+<h3><span class="header-section-number">12.1.7</span> Sweave</h3>
+<p>　Sweave オプションは R + <span class="math inline">\(\LaTeX\)</span> によるドキュメント作成に関する設定です。 Sweave を利用しない限り基本的に変更する必要はありませんが、 R Markdown で PDF ファイルを作成する場合は PDF ビューアに関する設定のみお好みのビューアを設定してください。<br />
+　</p>
+<table>
+<thead>
+<tr class="header">
+<th>大項目(Tab)</th>
+<th>中項目(太文字)</th>
+<th>設定項目</th>
+<th>推奨設定</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>N/A</td>
+<td>PDF Preview</td>
+<td>Preview PDF after compile using</td>
+<td>お好みのビューア</td>
+</tr>
+</tbody>
+</table>
+<p>　</p>
+</div>
+<div id="spelling" class="section level3">
+<h3><span class="header-section-number">12.1.8</span> Spelling</h3>
+<p>　Spelling オプションはスペルチェックのための設定です。UK または US の English を指定するのが無難です。</p>
+<p>　</p>
+</div>
+<div id="gitsvn" class="section level3">
+<h3><span class="header-section-number">12.1.9</span> Git/SVN</h3>
+<p>　Git/SVN オプションはバージョンコントロールシステム（VCS）に対する設定です。VCS を利用する場合のみ設定してください。</p>
+<p>　</p>
+</div>
+<div id="publishing" class="section level3">
+<h3><span class="header-section-number">12.1.10</span> Publishing</h3>
+<p>　Publishing オプションは　RStudio, Inc. が提供しているサービスへドキュメントを発行する場合に利用する設定ですので、当該のサービスを利用する場合のみ設定してください。</p>
+<p>　</p>
+</div>
+<div id="terminal" class="section level3">
+<h3><span class="header-section-number">12.1.11</span> Terminal</h3>
+<p>　Terminal オプションは OS のターミナルを RStudio の Terminal ペインから利用するための設定です。Terminal ペインを利用する場合のみ設定してください。<br />
+　</p>
+<table>
+<thead>
+<tr class="header">
+<th>大項目(Tab)</th>
+<th>中項目(太文字)</th>
+<th>設定項目</th>
+<th>推奨設定</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>N/A</td>
+<td>Shell</td>
+<td>New terminals open with</td>
+<td>任意のシェル</td>
+</tr>
+<tr class="even">
+<td>N/A</td>
+<td>Connection</td>
+<td>Connect with WebSockts</td>
+<td>Terminalが起動しない場合はチェックを外す</td>
+</tr>
+</tbody>
+</table>
+<p>　</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="readr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="pdftools.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="options.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="project-options.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

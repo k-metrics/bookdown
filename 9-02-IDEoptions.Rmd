@@ -1,0 +1,164 @@
+# Options
+　RStudio のオプション設定にはグローバルオプション（**Global Options**）とプロジェクトオプション（**Project Options**）の二つがあります。グローバルオプションは文字通り RStudio 全体（全てのプロジェクト）に有効なオプション設定で、プロジェクトオプションは開いているプロジェクトのみに有効なオプション設定です。 RStudio のバージョンにより多少異なります。
+　  
+
+## Global Options
+　メニュー［**Tools**］-［**Global Options...**］を選択すると表示できます。以降に推奨設定項目を記載しておきますので参考にしてください。記載されていないオプションはお好みで設定してください。  
+　  
+
+### General
+　Genelal オプションは RStudio の全般的な動作に関する設定です。 Basic と Advanced の二種類の設定がありますが、初学者の方は Basic のみ以下のように設定しておくと便利です。  
+　  
+
+大項目(Tab) | 中項目(太文字) | 設定項目                       | 推奨設定
+------------|----------------|--------------------------------|-----------------
+Basic       | R Sessions     | R version                      | Default（Windows only）
+Basic       | R Sessions     | Default working directory      | 任意のディレクトリ
+Basic       | R Sessions     | Restore most recently opened project at startup | Unchecked
+Basic       | Workspace      | Restore .RData into workspace at startup | Checked
+Basic       | Wrokspace      | Save workspace to .RData on exit | "Ask" or "Always"
+Basic       | Ohter          | Automatically notify me of updates to RStudio | Checked
+
+　  
+　特に "Default working directory" はプロジェクトを作成・管理するディレクトリに設定しておくと便利です。  
+
+　  
+
+### Code
+　Code オプションはソースエディタの動作に関する設定です。ソースの記述は [スタイルガイド（The tidyverse style guide） <i class="fa fa-external-link"></i>](https://style.tidyverse.org/){target="_blank"} に準拠することをおすゝめしますので、設定例もスタイルガイドに沿ったものになっています。なお、 Python などの他言語を併用する場合は適切な設定に変更してください。  
+　
+
+大項目(Tab) | 中項目(太文字) | 設定項目                       | 推奨設定
+------------|----------------|--------------------------------|-----------------
+Editing     | General        | Insert spaces for tab          | Checked
+Editing     | General        | Tab width                      | 2 
+Editing     | General        | Auto-detect code indentation   | Checked
+Editing     | General        | Insert matching parens/quotes  | Checked
+Editing     | General        | Auto-indent code after paste   | Checked
+Editing     | General        | Vertically align arguments in atuo-indent | Checked
+Editing     | General        | Surround selection on text insertion | "Quotes & Brackets"
+Editing     | Execution      | Always save R scripts before sourcing | Checked
+Editing     | Execution      | Ctrl+Enter executes            | "Multi-line R statement"
+Display     | General        | Highlight selected word        | Checked
+Display     | General        | Highlight selected line        | Checked
+Display     | General        | Show line numbers              | Checked
+Display     | General        | Show margin                    | Checked
+Display     | General        | Margin coloumn                 | 80
+Display     | General        | Show whitespace characters     | Checked
+Display     | General        | Show syntax highlighting in console input | Checked
+Saving      | General        | Restore last cursor position when opening file | Checked
+Saving      | Serialization  | Line ending conversion         | "Posix (LF)"
+Saving      | Serialization  | Default text encoding          | "UTF-8"
+
+　  
+
+### Appearance
+　Appearance オプションは RStudio の見た目に関する設定です。フォント設定のみ日本語の固定ピッチフォントに変更し、その他はお好みでどうぞ。  
+　  
+
+大項目(Tab) | 中項目(太文字) | 設定項目                       | 推奨設定
+------------|----------------|--------------------------------|-----------------
+N/A         | N/A            | Editor font                    | 任意の日本語等幅フォント
+
+　  
+　日本語等幅フォントは好みで構いませんが、無償ダウンロード可能な以下のフォントがおすゝめです。  
+
+* BIZ UDゴシック（macOS, Windows） - MORISAWA PASSPORT
+* Source Han Code JP（Linux, macOS） - SIL Open Font License
+* IPAゴシック（Linux, macOS, Windows） - IPA フォントライセンス
+
+　なお、日本語版 Windows の RStudio では一部の日本語等幅フォントを正しく表示できないバグがあるようですので、フォントの選択には注意してください。  
+
+　  
+
+### Pane Layout
+　Pane Layout オプションは前述のペインの表示場所や表示・非表示を変更するためのオプションですので、初学者はデフォルト設定のまま利用することをおすゝめします。  
+
+　  
+
+### Packages
+　Packages オプションはパッケージマネジメントに関する設定です。 Management と Development の二種類の設定がありますが、Development はパッケージ自体を開発するためのオプションですので Management のみ設定してください。  
+　  
+
+大項目(Tab) | 中項目(太文字) | 設定項目                       | 推奨設定
+------------|----------------|--------------------------------|-----------------
+Management  | Package Management | Primary CRAN repository    | 任意のhttpsサイト^1^
+Management  | Package Management | Enable packages pane       | Checked
+Management  | Package Management | Use secure download method for HTTP | Checked
+Management  | Package Management | Use Internet Explorer library/proxy for HTTP | Checked ^2^
+
+　  
+
+^1^ ネットワーク的に最も速い（近い）サイトを選んでください
+^2^ プロキシサーバーを利用している場合に設定してください
+
+　  
+
+### R Markdown
+　R Markdown オプションは R Markdown に関する設定です。
+
+
+大項目(Tab) | 中項目(太文字) | 設定項目                       | 推奨設定
+------------|----------------|--------------------------------|-----------------
+N/A         | R Markdown     | Show inline toolbar for R code chunk | Checked
+N/A         | R Markdown     | Enable chunk background highlight | Checked
+N/A         | R Markdown     | Show output preview in         | "Viewer Pane"
+N/A         | R Markdown     | Show output inline for all R Markdown documents | Checked
+N/A         | R Markdown     | Show equation and image previews | "Inline" or "In a popup"
+N/A         | R Markdown     | Evaluate chunks in directory   | "Document"
+N/A         | R Notebooks    | Execute setup chunk automatically in notebooks | Checked
+N/A         | R Notebooks    | Hide console automatically when executing notebook chunks | Checked
+
+
+
+
+### Sweave
+　Sweave オプションは R + $\LaTeX$ によるドキュメント作成に関する設定です。 Sweave を利用しない限り基本的に変更する必要はありませんが、 R Markdown で PDF ファイルを作成する場合は PDF ビューアに関する設定のみお好みのビューアを設定してください。  
+　  
+
+大項目(Tab) | 中項目(太文字) | 設定項目                       | 推奨設定
+------------|----------------|--------------------------------|-----------------
+N/A         | PDF Preview    | Preview PDF after compile using | お好みのビューア
+
+　  
+
+### Spelling
+　Spelling オプションはスペルチェックのための設定です。UK または US の English を指定するのが無難です。  
+
+　  
+
+### Git/SVN
+　Git/SVN オプションはバージョンコントロールシステム（VCS）に対する設定です。VCS を利用する場合のみ設定してください。  
+
+　   
+
+### Publishing
+　Publishing オプションは　RStudio, Inc. が提供しているサービスへドキュメントを発行する場合に利用する設定ですので、当該のサービスを利用する場合のみ設定してください。  
+
+　  
+
+### Terminal
+　Terminal オプションは OS のターミナルを RStudio の Terminal ペインから利用するための設定です。Terminal ペインを利用する場合のみ設定してください。  
+　  
+
+大項目(Tab) | 中項目(太文字) | 設定項目                       | 推奨設定
+------------|----------------|--------------------------------|-----------------
+N/A         | Shell          | New terminals open with        | 任意のシェル
+N/A         | Connection     | Connect with WebSockts         | Terminalが起動しない場合はチェックを外す
+
+　  
+
+## Project Options
+　メニュー［**Tools**］-［**Project Options...**］を選択すると表示できます。 Build Tools と Git/SVN を除いて基本的にグローバルオプションと同一の設定で構いません。  
+　  
+　Build Tools オプションは R Markdown Website や Bookdown を利用する場合に以下のように設定するのをおすゝめします。  
+　  
+
+大項目       | 中項目（太文字） | 設定項目                    | 推奨設定
+-------------|------------------|-----------------------------|-----------------
+Build Tools  | N/A | Project build tools | "Website"
+Build Tools  | N/A | Preview book after building | Checked
+Build Tools  | N/A | Re-knit current preview when supporting files change | Checked
+
+　Git/SVN オプションは VCS を利用する場合に利用する VCS を選択してください。VCS がインストールされていない場合は有効にできません。  
+
