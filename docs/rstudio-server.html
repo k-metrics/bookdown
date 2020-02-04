@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2020-02-03" />
+<meta name="date" content="2020-02-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -237,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>10</b> ggplot2</a></li>
 <li class="part"><span><b>IV Model/Infer</b></span></li>
 <li class="part"><span><b>V Communicate</b></span></li>
-<li class="chapter" data-level="11" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>11</b> R Markdown</a></li>
+<li class="chapter" data-level="11" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>11</b> R Markdown</a></li>
 <li class="part"><span><b>VI Automate</b></span></li>
 </ul>
 
@@ -372,6 +372,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td>Adds TeX and related packages to rocker/tidyverse</td>
 </tr>
 <tr class="odd">
+<td><a href="https://hub.docker.com/r/ykunisato/paper-r-jp" target="_blank">ykunisato/paper-r-jp <i class="fa fa-external-link"></i></a></td>
+<td>Dockerfile of writing paper by R Markdown</td>
+</tr>
+<tr class="even">
 <td><a href="https://hub.docker.com/r/kmetrics/jverse" target="_blank">kmetrics/jverse <i class="fa fa-external-link"></i></a></td>
 <td>Japanized rocker/verse</td>
 </tr>
@@ -379,7 +383,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>　<br />
 　<a href="https://github.com/rocker-org/rocker" target="_blank">rocker <i class="fa fa-external-link"></i></a> は準公式とも言えるような R に関連する Docker Image を継続的に提供しているプロジェクトです。様々なイメージを提供していますが残念ながら日本語フォントの追加などの日本語対応がなされていません。グラフで日本語を利用しない限りは rocker のイメージを利用しても何ら問題はありません（ソースなどの表示はブラウザに依存しているのでコードに日本語を記述することが可能です）。<br />
-　グラフで日本語を利用したい場合は著者が rocker/verse に日本語フォントなどを追加して日本語対応させた <a href="https://hub.docker.com/r/kmetrics/jverse" target="_blank">kmetrics/jverse <i class="fa fa-external-link"></i></a> を利用するか rocker が公開している Dockerfile を改修して日本語対応させたイメージを利用してください。</p>
+　グラフで日本語を利用したい場合は著者が rocker/verse に日本語フォントなどを追加して日本語対応させた <a href="https://hub.docker.com/r/kmetrics/jverse" target="_blank">kmetrics/jverse <i class="fa fa-external-link"></i></a> を利用するか rocker が公開している Dockerfile を改修して日本語対応させたイメージを利用してください。<br />
+　<br />
+　利用する Docker Image を決めたらコンソール（コマンドプロンプト）で以下のコマンドを実行してイメージをダウンロードしてください。<br />
+　</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">docker</span> pull rocker/tidyverse</a></code></pre></div>
+<p>　</p>
+</div>
+<div id="run-container" class="section level4">
+<h4><span class="header-section-number">2.5.1.4</span> Run Container</h4>
 
 </div>
 </div>
@@ -445,6 +457,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

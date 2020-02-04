@@ -45,3 +45,4 @@ require(tidyverse)
   * もしあなたがこの資料をリミックスしたり、改変したり、加工した場合には、あなたはあなたの貢献部分を元の作品と同じライセンスの下に頒布しなければなりません。
 
 ![CC 4.0 BY-NC-SA](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
+

@@ -26,12 +26,16 @@
 　RStudio を初めて起動すると以下のような画面が表示されます。画面は大きく以下の四つのエリアに分割されており、左上の A のエリアはソースエディタが表示されるエリアなので初めて起動した際には表示されません。  
 　  
 
-![RStudio](./fig/RStudio_Desktop_Area.png)
+```{r, echo=FALSE, out.width="80%", fig.cap="RStudio Desktop, Windows"}
+knitr::include_graphics("fig/RStudio_Desktop_Area.png")
+```
 
-　各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。
+　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しは A と B 、 C と D が常に同じサイズとなります。  
+　各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（灰文字）があります。  
 
-![RStudio](./fig/RStudio_Desktop_Pane.png)
-
+```{r, echo=FALSE, out.width="80%", fig.cap="RStudio Pane Layout, Windows"}
+knitr::include_graphics("fig/RStudio_Desktop_Pane.png")
+```
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。  
 　  
@@ -57,11 +61,11 @@ No | Area | Pane name     | Descriptions
 
 　  
 
-## オプション設定
+## Options
 　RStudio のオプション設定にはグローバルオプション（**Global Options**）とプロジェクトオプション（**Project Options**）の二つがあります。グローバルオプションは文字通り RStudio 全体（全てのプロジェクト）に有効なオプション設定で、プロジェクトオプションは開いているプロジェクトのみに有効なオプション設定です。 RStudio のバージョンにより多少異なります。
 　  
 
-### グローバルオプション
+### Global Options
 　メニュー［**Tools**］-［**Global Options...**］を選択すると表示できます。以降に推奨設定項目を記載しておきますので参考にしてください。記載されていないオプションはお好みで設定してください。  
 　  
 
@@ -207,24 +211,21 @@ N/A         | Connection     | Connect with WebSockts         | Terminalが起�
 
 　  
 
-### プロジェクトオプション
-　メニュー［**Tools**］-［**Project Options...**］を選択すると表示できます。  
+### Project Options
+　メニュー［**Tools**］-［**Project Options...**］を選択すると表示できます。 Build Tools と Git/SVN を除いて基本的にグローバルオプションと同一の設定で構いません。  
+　  
+　Build Tools オプションは R Markdown Website や Bookdown を利用する場合に以下のように設定するのをおすゝめします。  
 　  
 
-大項目       | 中項目                          | 設定内容等
--------------|---------------------------------|--------------------------------
-General      | 　                              | 必要に応じて変更します
-Code Editing | Insert spaces for tab           | Global Optionと同設定を推奨
-　           | Tab width                       | 同上
-　           | Line ending conversion          | 同上
-　           | Text encordint                  | 同上
-Sweave       | Weace Rnw files using           | 同上
-　           | Typeset LaTeX into PDF using    | 同上
-Build Tools  | Project build tools             | 必要に応じて選択します
-Git/SVN      | Version control system          | 同上
-Packrat      | Using packrat with this project | Packratを利用する場合に使います
+大項目       | 中項目（太文字） | 設定項目                    | 推奨設定
+-------------|------------------|-----------------------------|-----------------
+Build Tools  | N/A | Project build tools | "Website"
+Build Tools  | N/A | Preview book after building | Checked
+Build Tools  | N/A | Re-knit current preview when supporting files change | Checked
 
+　Git/SVN オプションは VCS を利用する場合に利用する VCS を選択してください。VCS がインストールされていない場合は有効にできません。  
 
+　  
 
 ## Keyboard Shortcuts
 　キーボードショートカットは効率的なコーディングに役立ちますので、最低限、以下のショートカットを覚えましょう。  
@@ -238,7 +239,7 @@ Keyboard Shortcuts       | Description
 ［Ctrl/Cmd］+［Shift］+［C］ | 選択行をコメント・アンコメントする（トグル動作）
 ［Ctrl/Cmd］+［Alt/Option］+［I］   | カーソル位置にコードチャンクを挿入する（R Markdownのみ）
 ［Ctrl/Cmd］+［Enter］       | 選択したコードを実行する（行選択、部分選択どちらも可）
-［Ctrl/Cmd］+ [Sift] +［Enter］| コードチャンク内の全てのコードを実行する（R Markdownのみ）
+［Ctrl/Cmd］+ [Shift] +［Enter］| コードチャンク内の全てのコードを実行する（R Markdownのみ）
 ［F1］                   | 選択またはカーソル位置の関数のヘルプを呼び出す
 ［Ctrl/Cmd］+［F］           | アクティブなペイン内の検索
 

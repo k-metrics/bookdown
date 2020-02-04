@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2020-02-03" />
+<meta name="date" content="2020-02-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -237,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>10</b> ggplot2</a></li>
 <li class="part"><span><b>IV Model/Infer</b></span></li>
 <li class="part"><span><b>V Communicate</b></span></li>
-<li class="chapter" data-level="11" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>11</b> R Markdown</a></li>
+<li class="chapter" data-level="11" data-path="r-markdown-1.html"><a href="r-markdown-1.html"><i class="fa fa-check"></i><b>11</b> R Markdown</a></li>
 <li class="part"><span><b>VI Automate</b></span></li>
 </ul>
 
@@ -260,11 +260,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">Rのすゝめ</h1>
 <h2 class="subtitle"><em>- Rによるデータ分析事始め -</em></h2>
 <p class="author"><em>Sampo Suzuki, CC 4.0 BY-NC-SA</em></p>
-<p class="date"><em>2020-02-03</em></p>
+<p class="date"><em>2020-02-04</em></p>
 </div>
 <div id="welcome" class="section level1 unnumbered">
 <h1>Welcome</h1>
-<p>　ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数理資本主義の時代と言われています。<br />
+<p>　ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す数理資本主義の時代と言われています。<br />
 　<br />
 　<a href="https://www.juse-p.co.jp/products/view/442">『データ指向のソフトウェア品質マネジメント』 <i class="fa １fa-external-link"></i></a> は、日本のソフトウェア品質管理におけるデータドリブン管理の必要性とデータドリブン管理に必要な知識を解説している数少ない書籍です。著者の一人である小池氏が主催している <a href="https://sites.google.com/site/kantometrics/home" target="_blank">データ分析勉強会 <i class="fa １fa-external-link"></i></a> では、メトリクス分析に興味をもつ有志がデータドリブン管理を実践するために様々な分析知識や手法を学んでいます。<br />
 　<br />
@@ -354,6 +354,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
