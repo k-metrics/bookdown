@@ -201,6 +201,7 @@ Image             | Description
 ------------------|------------------------------------------------------------
 [rocker/tidyverse <i class="fa fa-external-link"></i>](https://hub.docker.com/r/rocker/tidyverse){target="_blank"} | Version-stable base R and RStudio, tidyverse, devtools
 [rocker/verse <i class="fa fa-external-link"></i>](https://hub.docker.com/r/rocker/verse){target="_blank"} | Adds TeX and related packages to rocker/tidyverse
+[ykunisato/paper-r-jp <i class="fa fa-external-link"></i>](https://hub.docker.com/r/ykunisato/paper-r-jp){target="_blank"} | Dockerfile of writing paper by R Markdown 
 [kmetrics/jverse <i class="fa fa-external-link"></i>](https://hub.docker.com/r/kmetrics/jverse){target="_blank"} | Japanized rocker/verse 
 
 　  
