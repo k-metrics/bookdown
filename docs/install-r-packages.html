@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11.3 Install R packages | Rのすゝめ</title>
-  <meta name="description" content="11.3 Install R packages | Rのすゝめ" />
+  <title>2.3 Install R packages | Rのすゝめ</title>
+  <meta name="description" content="2.3 Install R packages | Rのすゝめ" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11.3 Install R packages | Rのすゝめ" />
+  <meta property="og:title" content="2.3 Install R packages | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.3 Install R packages | Rのすゝめ" />
+  <meta name="twitter:title" content="2.3 Install R packages | Rのすゝめ" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2020-02-04" />
+<meta name="date" content="2020-02-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="install-rstudio-desktop.html"/>
-<link rel="next" href="install-git.html"/>
+<link rel="next" href="trouble-shooting.html"/>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -73,7 +73,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -137,19 +137,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i><b>1.1</b> Data Science Workflow</a></li>
 </ul></li>
 <li class="part"><span><b>I Program</b></span></li>
-<li class="chapter" data-level="2" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a></li>
-<li class="chapter" data-level="3" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>3</b> RStudio IDE</a><ul>
-<li class="chapter" data-level="3.1" data-path="rstudio-overview.html"><a href="rstudio-overview.html"><i class="fa fa-check"></i><b>3.1</b> RStudio Overview</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="rstudio-overview.html"><a href="rstudio-overview.html#keyboard-shortcuts"><i class="fa fa-check"></i><b>3.1.1</b> Keyboard Shortcuts</a></li>
+<li class="chapter" data-level="2" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>2</b> Setup</a><ul>
+<li class="chapter" data-level="2.1" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>2.1</b> Install R</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="install-r.html"><a href="install-r.html#install-rtools"><i class="fa fa-check"></i><b>2.1.1</b> Install Rtools</a></li>
 </ul></li>
+<li class="chapter" data-level="2.2" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>2.2</b> Install RStudio Desktop</a></li>
+<li class="chapter" data-level="2.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>2.3</b> Install R packages</a></li>
+<li class="chapter" data-level="2.4" data-path="trouble-shooting.html"><a href="trouble-shooting.html"><i class="fa fa-check"></i><b>2.4</b> Trouble shooting</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>3</b> RStudio IDE</a><ul>
+<li class="chapter" data-level="3.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>3.1</b> Overview</a></li>
+<li class="chapter" data-level="3.2" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i><b>3.2</b> Keyboard Shortcuts</a></li>
+<li class="chapter" data-level="3.3" data-path="writing-r-code.html"><a href="writing-r-code.html"><i class="fa fa-check"></i><b>3.3</b> Writing R code</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>4</b> R Basics</a><ul>
-<li class="chapter" data-level="4.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>4.1</b> Overview</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="overview.html"><a href="overview.html#四則演算"><i class="fa fa-check"></i><b>4.1.1</b> 四則演算</a></li>
-<li class="chapter" data-level="4.1.2" data-path="overview.html"><a href="overview.html#四則演算結果の代入"><i class="fa fa-check"></i><b>4.1.2</b> 四則演算結果の代入</a></li>
-<li class="chapter" data-level="4.1.3" data-path="overview.html"><a href="overview.html#変数同士の演算"><i class="fa fa-check"></i><b>4.1.3</b> 変数同士の演算</a></li>
+<li class="chapter" data-level="4.1" data-path="basic-operators.html"><a href="basic-operators.html"><i class="fa fa-check"></i><b>4.1</b> Basic operators</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="basic-operators.html"><a href="basic-operators.html#preparation"><i class="fa fa-check"></i><b>4.1.1</b> Preparation</a></li>
+<li class="chapter" data-level="4.1.2" data-path="basic-operators.html"><a href="basic-operators.html#四則演算"><i class="fa fa-check"></i><b>4.1.2</b> 四則演算</a></li>
+<li class="chapter" data-level="4.1.3" data-path="basic-operators.html"><a href="basic-operators.html#四則演算結果の代入"><i class="fa fa-check"></i><b>4.1.3</b> 四則演算結果の代入</a></li>
+<li class="chapter" data-level="4.1.4" data-path="basic-operators.html"><a href="basic-operators.html#変数同士の演算"><i class="fa fa-check"></i><b>4.1.4</b> 変数同士の演算</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="reserved-words.html"><a href="reserved-words.html"><i class="fa fa-check"></i><b>4.2</b> Reserved words</a></li>
+<li class="chapter" data-level="4.2" data-path="reserved-words.html"><a href="reserved-words.html"><i class="fa fa-check"></i><b>4.2</b> Reserved words</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="reserved-words.html"><a href="reserved-words.html#boolean"><i class="fa fa-check"></i><b>4.2.1</b> Boolean</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="variables.html"><a href="variables.html"><i class="fa fa-check"></i><b>4.3</b> Variables</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="variables.html"><a href="variables.html#データ型"><i class="fa fa-check"></i><b>4.3.1</b> データ型</a></li>
 <li class="chapter" data-level="4.3.2" data-path="variables.html"><a href="variables.html#class"><i class="fa fa-check"></i><b>4.3.2</b> class</a></li>
@@ -218,16 +228,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>VI Automate</b></span></li>
 <li class="part"><span><b>VII Appendix</b></span></li>
 <li class="chapter" data-level="11" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>11</b> Install</a><ul>
-<li class="chapter" data-level="11.1" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>11.1</b> Install R</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="install-r.html"><a href="install-r.html#windows"><i class="fa fa-check"></i><b>11.1.1</b> Windows</a></li>
-<li class="chapter" data-level="11.1.2" data-path="install-r.html"><a href="install-r.html#macos-os-x"><i class="fa fa-check"></i><b>11.1.2</b> macOS (OS X)</a></li>
-<li class="chapter" data-level="11.1.3" data-path="install-r.html"><a href="install-r.html#linux"><i class="fa fa-check"></i><b>11.1.3</b> Linux</a></li>
+<li class="chapter" data-level="11.1" data-path="install-r-1.html"><a href="install-r-1.html"><i class="fa fa-check"></i><b>11.1</b> Install R</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="install-r-1.html"><a href="install-r-1.html#windows"><i class="fa fa-check"></i><b>11.1.1</b> Windows</a></li>
+<li class="chapter" data-level="11.1.2" data-path="install-r-1.html"><a href="install-r-1.html#macos-os-x"><i class="fa fa-check"></i><b>11.1.2</b> macOS (OS X)</a></li>
+<li class="chapter" data-level="11.1.3" data-path="install-r-1.html"><a href="install-r-1.html#linux"><i class="fa fa-check"></i><b>11.1.3</b> Linux</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>11.2</b> Install RStudio Desktop</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html#動作確認"><i class="fa fa-check"></i><b>11.2.1</b> 動作確認</a></li>
+<li class="chapter" data-level="11.2" data-path="install-rstudio-desktop-1.html"><a href="install-rstudio-desktop-1.html"><i class="fa fa-check"></i><b>11.2</b> Install RStudio Desktop</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="install-rstudio-desktop-1.html"><a href="install-rstudio-desktop-1.html#動作確認"><i class="fa fa-check"></i><b>11.2.1</b> 動作確認</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>11.3</b> Install R packages</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="install-r-packages.html"><a href="install-r-packages.html#linux環境の場合"><i class="fa fa-check"></i><b>11.3.1</b> Linux環境の場合</a></li>
+<li class="chapter" data-level="11.3" data-path="install-r-packages-1.html"><a href="install-r-packages-1.html"><i class="fa fa-check"></i><b>11.3</b> Install R packages</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="install-r-packages-1.html"><a href="install-r-packages-1.html#linux環境の場合"><i class="fa fa-check"></i><b>11.3.1</b> Linux環境の場合</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="install-git.html"><a href="install-git.html"><i class="fa fa-check"></i><b>11.4</b> Install Git</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="install-git.html"><a href="install-git.html#git"><i class="fa fa-check"></i><b>11.4.1</b> Git</a></li>
@@ -271,37 +281,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="install-r-packages" class="section level2">
-<h2><span class="header-section-number">11.3</span> Install R packages</h2>
-<p>　次に必要となるいくつかのパッケージをインストールします。パッケージをインストールする場合はインターネットに接続されている必要があります。 <strong>Console</strong> ペインのプロンプトに以下のコードを入力し [Enter]キーを押して実行します。</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
-<p>　インストールが終わりましたらパッケージが正しくインストールされていることを確認するために <strong>Console</strong> ペインに以下のコードを入力して実行します。</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<p>　以下のようなメッセージが表示されることを確認します。インストール時期によってはバージョン表記などが下記と異なる場合があります。なお、日本語版 Windows 環境では一部の文字が化けします。</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1">Loading required package<span class="op">:</span><span class="st"> </span>tidyverse</a>
-<a class="sourceLine" id="cb267-2" data-line-number="2">─ Attaching packages ─────────────────────────────── tidyverse <span class="dv">1</span>.<span class="fl">3.0</span> ─</a>
-<a class="sourceLine" id="cb267-3" data-line-number="3">✔ ggplot2 <span class="dv">3</span>.<span class="fl">2.1</span>     ✔ purrr   <span class="dv">0</span>.<span class="fl">3.3</span></a>
-<a class="sourceLine" id="cb267-4" data-line-number="4">✔ tibble  <span class="dv">2</span>.<span class="fl">1.3</span>     ✔ dplyr   <span class="dv">0</span>.<span class="fl">8.3</span></a>
-<a class="sourceLine" id="cb267-5" data-line-number="5">✔ tidyr   <span class="dv">1</span>.<span class="fl">0.0</span>     ✔ stringr <span class="dv">1</span>.<span class="fl">4.0</span></a>
-<a class="sourceLine" id="cb267-6" data-line-number="6">✔ readr   <span class="dv">1</span>.<span class="fl">3.1</span>     ✔ forcats <span class="dv">0</span>.<span class="fl">4.0</span></a>
-<a class="sourceLine" id="cb267-7" data-line-number="7">─ Conflicts ───────────────────────────────── <span class="kw">tidyverse_conflicts</span>() ─</a>
-<a class="sourceLine" id="cb267-8" data-line-number="8">✖ dplyr<span class="op">::</span><span class="kw">filter</span>() masks stats<span class="op">::</span><span class="kw">filter</span>()</a>
-<a class="sourceLine" id="cb267-9" data-line-number="9">✖ dplyr<span class="op">::</span><span class="kw">lag</span>()    masks stats<span class="op">::</span><span class="kw">lag</span>()</a></code></pre></div>
-<p>　</p>
-<p>　続いて <a href="https://rmarkdown.rstudio.com/" target="_blank">rmarkdown <i class="fa fa-external-link"></i></a> パッケージをインストールします。<code>tidyverse</code> パッケージのときと同様に以下のコードを <strong>Console</strong> ペインに入力して実行します。</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>)</a></code></pre></div>
-<div id="linux環境の場合" class="section level3">
-<h3><span class="header-section-number">11.3.1</span> Linux環境の場合</h3>
-<p>　Linux環境ではプラットフォーム側のライブラリなどが足りずにパッケージのインストールが完了できない場合があります。その場合は <a href="https://demo.rstudiopm.com/client/#/" target="_blank">RStudio Package Manager, demo site <i class="fa fa-external-link"></i></a> にてインストールしたいパッケージが必要とするライブラリなどを確認、インストールしてから再度パッケージをインストールしてください。<br />
-　例えば Ubuntu 18.04LTS で R に <code>tidyverse</code> パッケージをインストールする場合には以下のようなライブラリなどがOS側にインストールされている必要があります。<br />
-　</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb269-1" data-line-number="1"><span class="ex">apt-get</span> install -y libicu-dev</a>
-<a class="sourceLine" id="cb269-2" data-line-number="2"><span class="ex">apt-get</span> install -y make</a>
-<a class="sourceLine" id="cb269-3" data-line-number="3"><span class="ex">apt-get</span> install -y libcurl4-openssl-dev</a>
-<a class="sourceLine" id="cb269-4" data-line-number="4"><span class="ex">apt-get</span> install -y libssl-dev</a>
-<a class="sourceLine" id="cb269-5" data-line-number="5"><span class="ex">apt-get</span> install -y pandoc</a>
-<a class="sourceLine" id="cb269-6" data-line-number="6"><span class="ex">apt-get</span> install -y libxml2-dev</a></code></pre></div>
-<p>　</p>
+<h2><span class="header-section-number">2.3</span> Install R packages</h2>
+<p>　次に本書で利用しているパッケージをインストールするために RStudio を起動します。パッケージのインストールにはインターネット接続が必要です。<br />
+　RStudio が起動されたらウィンドウ左下（下図の B に相当するエリア）にある <strong>Console</strong> のキャレット（<code>&gt;</code> の部分）に以下のコマンド（関数）を入力します。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<img src="fig/RStudio_Desktop_Area.png" alt="RStudio Desktop, Windows" width="80%" />
+<p class="caption">
+Fig.2.1: RStudio Desktop, Windows
+</p>
 </div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>))</a></code></pre></div>
+<p>　入力が終わりましたら［Enter］キーを押下しコマンド（関数）を実行します。パッケージをインストールための様々なメッセージが表示され、インストールが完了すると再びキャレットが表示されます。
+　
+　インストールが完了しましたらパッケージが正しくインストールされていることを確認するために <strong>Console</strong> のキャレットで以下のコマンド（関数）を入力して［Enter］キーを押下します。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<p>　パッケージが読み込まれ以下のようなメッセージが表示されれば確認完了ですので、一旦、 RStudio を終了させます。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">Loading required package<span class="op">:</span><span class="st"> </span>tidyverse</a>
+<a class="sourceLine" id="cb3-2" title="2">─ Attaching packages ─────────────────────────────── tidyverse <span class="dv">1</span>.<span class="fl">3.0</span> ─</a>
+<a class="sourceLine" id="cb3-3" title="3">✔ ggplot2 <span class="dv">3</span>.<span class="fl">2.1</span>     ✔ purrr   <span class="dv">0</span>.<span class="fl">3.3</span></a>
+<a class="sourceLine" id="cb3-4" title="4">✔ tibble  <span class="dv">2</span>.<span class="fl">1.3</span>     ✔ dplyr   <span class="dv">0</span>.<span class="fl">8.3</span></a>
+<a class="sourceLine" id="cb3-5" title="5">✔ tidyr   <span class="dv">1</span>.<span class="fl">0.0</span>     ✔ stringr <span class="dv">1</span>.<span class="fl">4.0</span></a>
+<a class="sourceLine" id="cb3-6" title="6">✔ readr   <span class="dv">1</span>.<span class="fl">3.1</span>     ✔ forcats <span class="dv">0</span>.<span class="fl">4.0</span></a>
+<a class="sourceLine" id="cb3-7" title="7">─ Conflicts ───────────────────────────────── <span class="kw">tidyverse_conflicts</span>() ─</a>
+<a class="sourceLine" id="cb3-8" title="8">✖ dplyr<span class="op">::</span><span class="kw">filter</span>() masks stats<span class="op">::</span><span class="kw">filter</span>()</a>
+<a class="sourceLine" id="cb3-9" title="9">✖ dplyr<span class="op">::</span><span class="kw">lag</span>()    masks stats<span class="op">::</span><span class="kw">lag</span>()</a></code></pre></div>
+<p>　インストール時期によってはバージョン表記などが下記と異なる場合があります。また、日本語版 Windows 環境では一部の文字が化けしますが解決方法はありません。
+　</p>
+<p>　以上で R を利用するための環境構築は完了です。次は RStudio の基本的な使い方を紹介します。<br />
+　</p>
 </div>
             </section>
 
@@ -309,7 +316,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="install-rstudio-desktop.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="install-git.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="trouble-shooting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

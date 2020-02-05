@@ -31,7 +31,7 @@
 　  
 
 #### Rtools
-　Windows ではコンパイラなどの開発ツール類が標準装備されていませんので、 R のパッケージをインストールする際に必要となる Rtools と呼ばれるツールキットをインストールしておきます。 [Building R for Windows <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/windows/){target="_blank"} のページからインストールした R のバージョン用の Rtools をダウンロードしてインストールしてください。なお、インストールの際はデフォルトオプションでインストールしてください。インストールディレクトリなどを変更すると正しく動かない場合があります。  
+　Windows ではコンパイラなどの開発ツール類が標準装備されていませんので、 R のパッケージをインストールする際に必要となる Rtools と呼ばれるツールキットをインストールしておきます。 [Building R for Windows <i class="fa fa-external-link"></i>](https://cran.r-project.org/bin/windows/Rtools/){target="_blank"} のページからインストールした R のバージョン用の Rtools をダウンロードしてインストールしてください。なお、インストールの際はデフォルトオプションでインストールしてください。インストールディレクトリなどを変更すると正しく動かない場合があります。  
 　  
 
 ### macOS (OS X)
