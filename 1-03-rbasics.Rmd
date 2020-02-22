@@ -594,7 +594,7 @@ switch(8, "A", "B", "C", "D", "E", "Error")
 
 ### ifelse
 `base::ifelse`は予約語でなく関数です。`if`文と異なるのはベクトル型の評価が一度に行える点です。第一引数に`TRUE`か`FALSE`が返る評価式であればベクトル型でも構いません。
-```{r}
+```{r, eval=FALSE}
 vec_BOOL
 ifelse(vec_BOOL, "Yes", "No")
 ifelse(is.na(vec_BOOL), "Yes", "No")

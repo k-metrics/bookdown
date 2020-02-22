@@ -32,13 +32,13 @@
 　  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="RStudio Desktop, Windows"}
-knitr::include_graphics("fig/RStudio_Desktop_Area.png")
+knitr::include_graphics("fig/RStudio/DT_Area.png")
 ```
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="RStudio Pane Layout, Windows"}
-knitr::include_graphics("fig/RStudio_Desktop_Pane.png")
+knitr::include_graphics("fig/RStudio/DT_Pane.png")
 ```
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。  
@@ -90,37 +90,37 @@ Keyboard Shortcuts       | Description
 　R Notebook 形式を使うにはメニューから［File］-［New File］-［R Notebook］を実行します。すると下図のようなソースエディタ（以降、エディタ）が開きます。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="R Notebook file"}
-knitr::include_graphics("fig/RStudio_Desktop_RNotebook.png")
+knitr::include_graphics("fig/RStudio/DT_RNotebook.png")
 ```
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As...］を実行して適当な場所に適当な名前で保存しておきます。ここでは `test` という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は `test.Rmd` となります。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="R Notebook saved file"}
-knitr::include_graphics("fig/RStudio_Desktop_RNotebook_Saved.png")
+knitr::include_graphics("fig/RStudio/DT_RNotebook_Saved.png")
 ```
 
 　ファイルを保存したら 6 行目の「This is an　...」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="R Notebook insert chunk"}
-knitr::include_graphics("fig/RStudio_Desktop_RNotebook_Insert_Chunk.png")
+knitr::include_graphics("fig/RStudio/DT_RNotebook_Insert_Chunk.png")
 ```
 
 　すると上図のように三連のバッククォート（```` ``` ````）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="R Notebook first code"}
-knitr::include_graphics("fig/RStudio_Desktop_RNotebook_First_Code.png")
+knitr::include_graphics("fig/RStudio/DT_RNotebook_First_Code.png")
 ```
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="R Notebook run code"}
-knitr::include_graphics("fig/RStudio_Desktop_RNotebook_Run_Code.png")
+knitr::include_graphics("fig/RStudio/DT_RNotebook_Run_Code.png")
 ```
 
 　コードチャンクの下と **Console** ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから `Chunk Output Inline` にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="R Notebook option"}
-knitr::include_graphics("fig/RStudio_Desktop_RNotebook_Option.png")
+knitr::include_graphics("fig/RStudio/DT_RNotebook_Option.png")
 ```
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
