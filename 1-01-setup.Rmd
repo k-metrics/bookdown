@@ -37,7 +37,7 @@
 　RStudio が起動されたらウィンドウ左下（下図の B に相当するエリア）にある **Console** のキャレット（`>` の部分）に以下のコマンド（関数）を入力します。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="RStudio Desktop, Windows"}
-knitr::include_graphics("fig/RStudio_Desktop_Area.png")
+knitr::include_graphics("fig/RStudio/DT_Area.png")
 ```
 
 ```{r, eval=FALSE}

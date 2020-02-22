@@ -47,7 +47,7 @@ z
 　上記のコードを実行したら RStudio 右上にある **Environment** ペインを見てください。作成した変数とその値が表示されます。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="Environment pane"}
-knitr::include_graphics("fig/RStudio_Desktop_Env_Pane.png")
+knitr::include_graphics("fig/RStudio/DT_Env_Pane.png")
 ```
 
 　  
