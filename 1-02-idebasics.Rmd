@@ -90,37 +90,37 @@ Keyboard Shortcuts       | Description
 　R Notebook 形式を使うにはメニューから［File］-［New File］-［R Notebook］を実行します。すると下図のようなソースエディタ（以降、エディタ）が開きます。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="R Notebook file"}
-knitr::include_graphics("fig/RStudio/DT_RNotebook.png")
+knitr::include_graphics("fig/RStudio/DT_RN.png")
 ```
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As...］を実行して適当な場所に適当な名前で保存しておきます。ここでは `test` という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は `test.Rmd` となります。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="R Notebook saved file"}
-knitr::include_graphics("fig/RStudio/DT_RNotebook_Saved.png")
+knitr::include_graphics("fig/RStudio/DT_RN_Saved.png")
 ```
 
 　ファイルを保存したら 6 行目の「This is an　...」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="R Notebook insert chunk"}
-knitr::include_graphics("fig/RStudio/DT_RNotebook_Insert_Chunk.png")
+knitr::include_graphics("fig/RStudio/DT_RN_Insert_Chunk.png")
 ```
 
 　すると上図のように三連のバッククォート（```` ``` ````）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="R Notebook first code"}
-knitr::include_graphics("fig/RStudio/DT_RNotebook_First_Code.png")
+knitr::include_graphics("fig/RStudio/DT_RN_First_Code.png")
 ```
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="R Notebook run code"}
-knitr::include_graphics("fig/RStudio/DT_RNotebook_Run_Code.png")
+knitr::include_graphics("fig/RStudio/DT_RN_Run_Code.png")
 ```
 
 　コードチャンクの下と **Console** ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから `Chunk Output Inline` にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。  
 
 ```{r, echo=FALSE, out.width="80%", fig.cap="R Notebook option"}
-knitr::include_graphics("fig/RStudio/DT_RNotebook_Option.png")
+knitr::include_graphics("fig/RStudio/DT_RN_Option.png")
 ```
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
