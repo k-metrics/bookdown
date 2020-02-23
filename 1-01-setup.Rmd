@@ -1,6 +1,87 @@
-# Setup
-　R について学ぶ前に R が使えるように環境を整えます。本書では R, RStudio, [tidyverse/ <i class="fa fa-external-link"></i>](https://www.tidyverse.org/){target="_blank"} パッケージならびにその他必要なパッケージの利用を前提としていますのでこれらをインストールしておきます。  
-　R ならびに RStudio はマルチプラットフォーム対応（マルチOS対応）ですので Windows, macOS, Linux のどのプラットフォームを選択しても構いません。ただし、64bit プラットフォームであることが条件です。なお、日本語版 Windows では Windows が利用してる文字コード（CP932, Shift JIS）に起因する不具合が散見されています。日本語版 Windows 環境を利用する場合はその点を認識の上で利用してください。  
+# Program
+　R について学ぶ前に R が使えるように環境を構築する必要がありますが、環境構築は初学者にとって厄介な部分でもあります。そこで、本書では学習レベルに合わせて以下のように環境を使い分けることをおすゝめします。  
+　  
+
+学習フェーズ     | 環境                                    | 備考
+-----------------|-----------------------------------------|--------------------
+基礎学習フェーズ | [Google Colaboratory <i class="fa fa-external-link"></i>](https://colab.research.google.com/?hl=ja){target="_blank" title="Google Colab"} | 要Googleアカウント
+応用学習フェーズ | [RStudio Desktop <i class="fa fa-external-link"></i>](https://rstudio.com/products/rstudio/){target="_blank" title="RStudio, PBC"} | Open Source Edition
+
+　  
+　環境を構築するための基本的な知識がある方は最初から RStudio Dekstop（以降、RStudio）を利用しても構いません。  
+
+　  
+
+## Google Colaboratory
+　R の言語仕様など基礎的な学習フェーズでは環境構築の手間がかからないクラウド型の Google Colaboratory（以降、Google Colab）の利用をおすゝめします。Google Colab では Jupyter Notebook というデータ分析用のツールが使えます。ただし、デフォルトの状態で R を使うのは少し不便なので、以下の手順でファイルを準備します。  
+　  
+
+1. ブラウザで Google アカウントにログインする
+1. Google Colab を開く
+1. R 用のテンプレートファイルをアップロードする
+1. R のコードが実行できることを確認する
+1. アップロードしたファイルを Google ドライブに保存する
+
+　  
+
+### Login Google
+　Google Colab は名前通り Google が提供しているサービスですので Google のアカウントを持っていることが前提になります。また、Chrome 系（含む Chromium 系）のブラウザで利用することをおすゝめします。  
+　まず、ブラウザで [Google <i class="fa fa-external-link"></i>](https://www.google.co.jp){target="_blank" title="Google"} のページを開きます。ページの右上に［ログイン］と表示されている場合は［ログイン］をクリックしてログインしておきます。  
+
+　
+
+### Open Google Colab
+　Google で Google Colab を検索して [Colaboratory - Google Colab <i class="fa fa-external-link"></i>](https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja){target="_blank" title=""} のリンクをくと以下のような画面が表示されまます。  
+　  
+
+```{r, echo=FALSE, out.width="80%", fig.cap="Google Colab, Theme: dark"}
+knitr::include_graphics("fig/Colab/welcome.png")
+```
+
+　画面テーマは右上の歯車ボタンから変更できます。  
+
+　  
+
+### Upload Template
+　Google Colab が立ち上がりましたら上部にあるメニュー ［ファイル］-［ノートブックをアップロード...］を実行します。  
+　  
+
+```{r, echo=FALSE, out.width="80%", fig.cap="Upload notebook file"}
+knitr::include_graphics("fig/Colab/upload_notebook.png")
+```
+
+　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。  
+
+`https://gist.github.com/k-metrics/464ffbbd4d00e328560cd55966e7d4b8`  
+　  
+
+```{r, echo=FALSE, out.width="80%", fig.cap="Upload from GitHub"}
+knitr::include_graphics("fig/Colab/upload_dialog.png")
+```
+
+　テンプレートがアップロードされ表示されます。  
+
+　  
+
+### Run R code
+　テンプレートがアップロードできましたらテンプレートファイルの記述にしたがってコードを実行してみます。その際に下記のようなダイアログが表示されますが認証情報などを読み取ることはありませんので［このまま実行］をクリックしてください。
+```{r, echo=FALSE, out.width="80%", fig.cap="Warning dialog"}
+knitr::include_graphics("fig/Colab/run_dialog.png")
+```
+
+　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。  
+
+　  
+
+### Save File
+　コードの実行が確認できましたらメニューの［ファイル］-［ドライブにコピーを保存...］を実行してコピーを Google Drive に保存します。以降、この保存したファイルを利用してください。  
+
+　  
+
+## RStudio Desktop
+　Google Colab は簡単に使い始めることができますが、様々なパッケージを使う場合にはローカルに R/RStudio 環境を構築することをおすゝめします。本節では、R, RStudio, [tidyverse/ <i class="fa fa-external-link"></i>](https://www.tidyverse.org/){target="_blank"} パッケージならびにその他必要なパッケージのインストール方法の概略を説明します。  
+　
+　R ならびに RStudio はマルチプラットフォーム対応（マルチOS対応）ですので Windows, macOS, Linux のどのプラットフォームを選択しても構いません。ただし、64bit プラットフォームであることが前提条件となります。なお、日本語版 Windows では Windows が利用してる文字コード（CP932, Shift JIS）に起因する不具合が散見されています。日本語版 Windows 環境を利用する場合はその点を認識の上で利用してください。  
 　  
 　環境を整えるための手順は以下のようになります。  
 
@@ -18,7 +99,7 @@
 　本章では環境設定の概略のみを説明します。インストールの詳細に関しては Appendix を参照してください。  
 　  
 
-## Install R
+### Install R
 　R は [CRAN (The Comprehensive R Archive Network)<i class="fa fa-external-link"></i>](https://cran.r-project.org/){target="_blank"} と呼ばれる公式リポジトリから入手してインストールします。 CRAN には [ミラーサイト <i class="fa fa-external-link"></i>](https://cran.r-project.org/mirrors.html){target="_blank"} も多数ありますので、利用しているインターネット環境に応じて近いサイトからダウンロードしてください。  
 　よくある質問は [FAQ(Frequently Asked Questions) <i class="fa fa-external-link"></i>](https://cran.r-project.org/doc/FAQ/R-FAQ.html){target="_blank"} にまとめられています。  
 　  
@@ -28,11 +109,11 @@
 　Linux ならびに macOS はデフォルトで開発ツール類がインストールされていますが、もし、インストールされていない場合には追加でインストールしてください。  
 　  
 
-## Install RStudio Desktop
+### Install RStudio Desktop
 　R のインストールが完了しましたら統合開発環境（IDE）である RStudio Desktop をインストールします。 [Downloadページ <i class="fa fa-external-link"></i>](https://rstudio.com/products/rstudio/download/#download){target="_blank"} から使用している環境用の RStudio をダウンロードしてインストールしてください。  
 　  
 
-## Install R packages
+### Install R packages
 　次に本書で利用しているパッケージをインストールするために RStudio を起動します。パッケージのインストールにはインターネット接続が必要です。  
 　RStudio が起動されたらウィンドウ左下（下図の B に相当するエリア）にある **Console** のキャレット（`>` の部分）に以下のコマンド（関数）を入力します。  
 
@@ -65,10 +146,8 @@ Loading required package: tidyverse
 ✖ dplyr::lag()    masks stats::lag()
 ```
 
-　インストール時期によってはバージョン表記などが下記と異なる場合があります。また、日本語版 Windows 環境では一部の文字が化けしますが解決方法はありません。
-　  
+　インストール時期によってはバージョン表記などが下記と異なる場合があります。また、日本語版 Windows 環境では一部の文字が化けしますが解決方法はありません。  
 
-　以上で R を利用するための環境構築は完了です。次は RStudio の基本的な使い方を紹介します。  
 　  
 
 ## Trouble shooting
