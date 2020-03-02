@@ -1,4 +1,6 @@
-# Install
+# (APPENDIX) Appendix {-}
+
+# Install R/RStudio
 　R について学ぶ前に R が使えるように環境を整えます。本書は R, RStudio, [tidyverse/ <i class="fa fa-external-link"></i>](https://www.tidyverse.org/){target="_blank"} パッケージならびにその他必要なパッケージの利用を前提としています。  
 　R ならびに RStudio はマルチプラットフォーム対応（マルチOS対応）ですので Windows, macOS, Linux のどのプラットフォームを選択しても構いません。ただし、64bit プラットフォームであることが条件です。なお、日本語版 Windows では Windows が利用してる文字コード（CP932, Shift JIS）に起因する不具合が散見されています。日本語版 Windows 環境を利用する場合はその点を認識の上で利用してください。  
 　  
@@ -141,7 +143,7 @@ Git GUI Client           | Ubuntu | Mac | Windows | Memo
 
 　  
 
-## RStudio Server
+# RStudio Server
 　R/Rstudio Desktop は前述のようにマルチプラットフォーム対応ですがプラットフォームごとに以下のような制約があります。  
 　  
 
@@ -168,7 +170,7 @@ Windows | Docker Desktop for Windows | Hyper-V(Windows10 64bit Pro or Higher) or
 
 　  
 
-### Setup RStudio Sever with Docker
+## Setup RStudio Sever with Docker
 　Windows または macOS 環境で Docker を利用し RStudio Server を起動するためには以下の手順が必要です。  
 　  
 
@@ -183,17 +185,17 @@ Windows | Docker Desktop for Windows | Hyper-V(Windows10 64bit Pro or Higher) or
 　なお、Linux 環境での手順は割愛します。
 　
 
-#### Enable Hyper-V (Windows Only)
+### Enable Hyper-V (Windows Only)
 　Windows 環境ではインストールする前に [Hyper-V を有効にする <i class="fa fa-external-link"></i>](https://docs.microsoft.com/ja-jp/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v){target="_blank"} 必要があります。  
 
 
-#### Download and Install Docker Desktop
+### Download and Install Docker Desktop
 　利用している環境に応じた [Docker Desktop <i class="fa fa-external-link"></i>](https://www.docker.com/products/docker-desktop){target="_blank"} をダウンロードしてインストールします。なお、ダウンロードには [docker hub <i class="fa fa-external-link"></i>](https://hub.docker.com/){target="_blank"} でアカウント登録が必要です。  
 　  
 　詳細な手順や設定方法は [Docker docs <i class="fa fa-external-link"></i>](https://docs.docker.com/get-docker/){target="_blank"} を参照してください。  
 　  
 
-#### Download Docker Image
+### Download Docker Image
 　Docker Desktop をインストール・起動しましたら RStudio Server の Docker Image をダウンロードします。様々な方が RStudio Server の Docker Image を公開されていますが代表的な Docker Image には次のようなものがあります。  
 　  
 
@@ -218,5 +220,5 @@ docker pull rocker/tidyverse
 
 　  
 
-#### Run Container
+### Run Container
 

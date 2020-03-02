@@ -13,4 +13,14 @@ bookdown::gitbook:
       after: null
     toolbar:
       position: static
-bookdown::epub_book:
+#bookdown::epub_book: default
+#  always_allow_html: true
+#bookdown::pdf_book:
+#  always_allow_html: true
+#  includes:
+#    in_header: preamble.tex
+#  latex_engine: xelatex
+#  citation_package: natbib
+#  keep_tex: yes
+#  toc_depth: 2
+#  dev: "cairo_pdf"

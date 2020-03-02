@@ -1,1 +1,9 @@
+# (PART) Visualize {-}
+
 # Base R
+
+## plot
+
+## boxplot
+
+## hist
