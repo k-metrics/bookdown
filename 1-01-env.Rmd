@@ -81,10 +81,10 @@ knitr::include_graphics("fig/Colab/run_dialog.png")
 　  
 
 ## RStudio Cloud
-　Google Colab では R Markdown などのレポーティング機能は使用できませんので、このような場合には クラウド上で RStudio が利用できる RStudio Cloud が便利です。  
+　Google Colab では R Markdown などのレポーティング機能は使用できませんので、このような場合には クラウド上で RStudio が利用できる RStudio Cloud が便利です。RStudio Cloud は統合開発環境の RStudio だけでなく種々のチュートリアルコンテンツを備えています。  
 　  
 ```{r, echo=FALSE, out.width="80%", fig.cap="RStudio Cloud, beta"}
-knitr::include_graphics("fig/RStudio/Cloud.png")
+knitr::include_graphics("fig/RStudio/RSCloud_00.png")
 ```
 　  
 　執筆時点では無償で利用することができ、無制限のプロジェクトとプライベートプロジェクトの作成が可能です。RStudio Cloud を利用するにはアカウントを取得するだけです。  
@@ -98,17 +98,27 @@ knitr::include_graphics("fig/RStudio/Cloud.png")
 
 ### Create Project
 　RStudio Cloud ではプロジェクトという単位で分析を管理しますので、最初にプロジェクトを作成します。作成手順については RStudio Cloud メニューにある［Guide］で確認してください。ガイドは全て英語ですが、 Chrome 系のブラウザであれば「Google翻訳」機能拡張を用いれば日本語に翻訳表示できます。  
-　プロジェクトを作成すると統合開発環境の RStudio が表示されます。RStudio 自体の説明は Appendix を参照してください。  
+　プロジェクトを作成すると下図のような統合開発環境の RStudio が表示されます。RStudio 自体の説明は Appendix を参照してください。  
+　  
+```{r, echo=FALSE, out.width="80%", fig.cap="Initial View"}
+knitr::include_graphics("fig/RStudio/RSCloud_01.png")
+```
+
 　  
 
 ### Install Packages
-　RStudio Cloud の初期状態では R のパッケージは Base R しかインストールされていません。左下のコンソールから下記の関数を実行して最も利用する `tidyverse` パッケージと `rmarkdown` パッケージを最初にインストールしておきます。  
+　RStudio Cloud の初期状態では R のパッケージは Base R しかインストールされていません。最も利用する `tidyverse` パッケージと `rmarkdown` パッケージをインストールするために右下のエリアにある `Packages` タブをクリックしてパッケージマネージャを表示させます。  
 　  
-
-```{r, eval=FALSE}
-install.packages("tidyverse")
-install.packages("rmarkdown")
+```{r, echo=FALSE, out.width="80%", fig.cap="Packages Manager"}
+knitr::include_graphics("fig/RStudio/RSCloud_02.png")
 ```
 
+　  
+　次にパッケージマネージャの上部に表示されている `install` ボタンをクリックし表示されたダイアログに `tidyverse, rmarkdown` と入力し［install］ボタンをクリックしてインストールします。  
+　  
+```{r, echo=FALSE, out.width="80%", fig.cap="Install Dialog"}
+knitr::include_graphics("fig/RStudio/RSCloud_03.png")
+```
 
-
+　  
+　以上で、RStudio Cloud の準備は完了です。
