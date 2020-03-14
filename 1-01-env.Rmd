@@ -7,7 +7,7 @@
 学習フェーズ     | 環境                                    | 備考
 -----------------|-----------------------------------------|--------------------
 基礎学習フェーズ | [Google Colaboratory <i class="fa fa-external-link"></i>](https://colab.research.google.com/?hl=ja){target="_blank" title="Google Colab"} | 要Googleアカウント
-応用学習フェーズ | [RStudio Cloud <i class="fa fa-external-link"></i>](https://rstudio.cloud/){target="_blank" title="RStudio, PBC"} | Beta edition
+応用学習フェーズ | [RStudio Cloud <i class="fa fa-external-link"></i>](https://rstudio.cloud/){target="_blank" title="RStudio, PBC"} | beta edition
 
 　  
 　環境を構築するための基本的な知識がある方は最初から RStudio Dekstop（以降、RStudio）を利用しても構いません。  
@@ -102,5 +102,13 @@ knitr::include_graphics("fig/RStudio/Cloud.png")
 　  
 
 ### Install Packages
-　RStudio Cloud の初期状態では R のパッケージは Base R しかインストールされていません。最も利用する `tidyverse` パッケージや `rmarkdown` パッケージを最初にインストールしておきます。  
+　RStudio Cloud の初期状態では R のパッケージは Base R しかインストールされていません。左下のコンソールから下記の関数を実行して最も利用する `tidyverse` パッケージと `rmarkdown` パッケージを最初にインストールしておきます。  
+　  
+
+```{r, eval=FALSE}
+install.packages("tidyverse")
+install.packages("rmarkdown")
+```
+
+
 
