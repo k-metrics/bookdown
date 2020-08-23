@@ -48,68 +48,108 @@ knitr::read_chunk("./tutorial.R")
 
 ### 算術演算の基本
 　算術演算の基本である加減乗除算の四則演算は他のプログラミング言語や OS に付属の電卓アプリなどと同じです。  
-```{r arithmetic-operations, exercise=TRUE}
+```{r arithmetic-operations-add, exercise=TRUE, exercise.lines=2, exercise.cap="加算"}
+```
+
+```{r arithmetic-operations-sub, exercise=TRUE, exercise.lines=2, exercise.cap="減算"}
+```
+
+```{r arithmetic-operations-times, exercise=TRUE, exercise.lines=2, exercise.cap="乗算"}
+```
+
+```{r arithmetic-operations-div, exercise=TRUE, exercise.lines=2, exercise.cap="除算"}
 ```
 
 
 ### 代入演算の基本
 　変数に演算結果を代入するには代入演算子（`<-`）を用います。変数を使うための変数宣言は不要です。また、代入結果を確認（表示）するためには変数名だけを記述して実行します。  
 
-```{r assignment-operations, exercise=TRUE}
+```{r assignment-operations-add, exercise=TRUE, exercise.cap="加算"}
+```
+
+```{r assignment-operations-sub, exercise=TRUE, exercise.cap="減算"}
+```
+
+```{r assignment-operations-times, exercise=TRUE, exercise.cap="乗算"}
+```
+
+```{r assignment-operations-div, exercise=TRUE, exercise.cap="除算"}
 ```
 
 
 ### 変数同士の演算
 更に変数同士の演算を行ってみます。
-```{r variable-operation, exercise=TRUE}
+```{r assignment-operations, include=FALSE}
+```
+
+```{r variable-operation-add, exercise=TRUE, exercise.setup="assignment-operations", exercise.lines=2, exercise.cap="加算"}
+```
+
+```{r variable-operation-sub, exercise=TRUE, exercise.setup="assignment-operations", exercise.lines=2, exercise.cap="減算"}
+```
+
+```{r variable-operation-times, exercise=TRUE, exercise.setup="assignment-operations", exercise.lines=2, exercise.cap="乗算"}
+```
+
+```{r variable-operation-div, exercise=TRUE, exercise.setup="assignment-operations", exercise.lines=2, exercise.cap="除算"}
 ```
 
 
-## Variables
+## Variables (Vector)
+　ベクトル型変数は最も基本的な変数型で、同じ値の型（）
 
-### ベクトル型
-　ベクトル型は前述のように最も基本となる変数型です。ベクトル型変数を作成するには `c` 関数使います。代入して `str` 関数でクラス、長さ（値の個数）と値を確認してみます。  
+### ベクトル型変数
+　ベクトル型変数を作成するには `c` 関数使います。長さが `1` のベクトル型変数を作成する場合は `c` 関数を省略することができます。  
+　ベクトル型変数を作成後 `str` 関数（structure関数）で変数代入されている値の型と長さ（値の個数）、値を確認してみましょう。  
 
-```{r vector-1, exercise=TRUE}
+```{r vector-1, exercise=TRUE, exercise.cap="整数型で長さが１"}
 ```
 
-```{r vector-2, exercise=TRUE}
+```{r vector-2, exercise=TRUE, exercise.cap="実数型で長さが３"}
 ```
 
-　文字（型）を代入する場合はクォート（ダブルまはたシングル）で囲みます。
-```{r vector-3, exercise=TRUE}
+　文字にする場合はクォート（ダブルまはたシングル）で囲みます。
+```{r vector-3, exercise=TRUE, exercise.cap="文字型で長さが３"}
 ```
 
-　では文字（型）と数字（型）を混在させたらどうなるでしょう？
-```{r vector-4, exercise=TRUE}
+　では文字と数字を混在させたらどうなるでしょう？
+```{r vector-4, exercise=TRUE, exercise.cap="強制型変換の例"}
 ```
 　  
-　エラーにはならずベクトル型変数は文字型クラスとして作成されます。これは強制型変換という処理が行われるためです。強制型変換は複数のデータ型が混在した場合により柔軟度の高いデータ型に変換する処理です。論理型、整数型、実数型、複素数型、文字型の順に変換されます。  
-　便利ではありますが意図しない結果を招く可能性がありますので、このような変換があることは覚えておいてください。  
+　値の方が混在していもてエラーにはなりません。これは強制型変換という処理が行われるためです。強制型変換は複数のデータ型が混在した場合により柔軟度の高いデータ型に変換する処理です。論理型、整数型、実数型、複素数型、文字型の順に変換されます。  
+　便利ではありますが意図しない結果を招く可能性がありますので、このような処理が行われるということを覚えておいてください。  
 
 　  
-    
-## Chapter 6
-<!-- - Variable Type -->
-### マトリクス型
-マトリクス型は二次元配列のベクトル型変数と言えます。作成するには`base::matrix`関数を利用します。関数によってはベクトル型でなくマトリクス型の変数を引数にする必要がある場合がありますので覚えておいてください。
-```{r matrix, exercise=TRUE}
-matrix(c(10, 20, 30, 40, 50, 60), 2, 3)
-matrix(c("a", "b", "x", "y"), 2, 2)
 
-matrix(c(10, 20, 30, 40, 50, 60), 2, 3, byrow = TRUE)
-matrix(c("a", "b", "x", "y"), 2, 2, byrow = TRUE)
+## Variables (Matrix, Array)
+　ベクトル型変数の拡張系とも言えるのがマトリクス型（行列型）変数とアレイ型（配列型）変数です。どちらも機械学習などで利用される変数型なので基本として押さえておいてください。  
+
+### マトリクス型変数
+　マトリクス型（行列型）変数は二次元のベクトル型変数です。作成するには `base::matrix` 関数を利用します。関数によってはベクトル型でなくマトリクス型の変数を引数にする必要がある場合がありますので覚えておいてください。
+```{r matrix-2x3, exercise=TRUE, exercise.lines=2, exercise.cap="２行３列"}
 ```
 
-デフォルトでは列方向からデータを詰めていきます。行方向からデータを詰めたい場合は`byrow`オプションを使用してください。
-
-### アレイ型
-アレイ型はマトリクス型を拡張した多次元配列を扱える変数です。作成するには`base::array`関数を利用します。
-```{r array, exercise=TRUE}
-array(c(1:12), c(2, 3, 2))
+```{r matrix-2x2, exercise=TRUE, exercise.lines=2, exercise.cap="２行２列"}
 ```
 
-## Chapter 7
+　デフォルトでは列方向からデータを詰めていきます。行方向からデータを詰めたい場合は `byrow` オプションを使用してください。
+
+```{r matrix-2x3-row, exercise=TRUE, exercise.lines=2, exercise.cap="２行３列（行詰め）"}
+```
+
+```{r matrix-2x2-row, exercise=TRUE, exercise.lines=2, exercise.cap="２行２列（行詰め）"}
+```
+
+　  
+
+### アレイ型変数
+　アレイ型（配列型）変数は多次元の行列を扱うための変数型です。作成するには `base::array` 関数を利用します。
+```{r array, exercise=TRUE, exercise.lines=2, exercise.cap="２行３列２次元"}
+```
+
+　  
+
+## Variables (Dataframe)
 <!-- - Variable Type -->
 ### データフレーム型
 データフレーム型はRの特徴でもありベクトル型と並んで最も重要な変数型です。データフレーム型では**データ数の同じで異なるデータ型**のベクトル変数を複数まとめて格納できる変数型です。イメージとししてはスプレッドシートを用いたデータテーブルのようなものです。  
