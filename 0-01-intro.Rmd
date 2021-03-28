@@ -13,6 +13,81 @@
 　R はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。  
 　  
 
+## How to analize
+　分析対象のデータがどのようなものかを知ることは、データ分析を行うにあたって重要なことです。どのような分布なのか、どのような値の範囲なのか、全てのデータが揃っているのかなど俯瞰して把握します。　  
+　  
+
+### Visualize
+　データを俯瞰するためには可視化（Visualize）が分かりやすい手法の一つです。例えば、時系列データであれば折線グラフを用いるのが一般的です。
+```{r, echo=FALSE}
+plot(UKgas, main = "UK Quarterly Gas Consumption")
+```
+
+　計量値であれば棒グラフを用いて分布を確認したり、
+```{r, echo=FALSE}
+with(iris, barplot(Sepal.Width, main = "Sepal.Width"))
+```
+
+　二つの変量の関係を散布図で確認したりします。
+```{r, echo=FALSE}
+with(iris, plot(Sepal.Width, Sepal.Length))
+```
+
+　  
+
+### Visualize → Transform
+　可視化して確認したデータに対して適切な変換（Transform）を行うことで、さらにデータの傾向を把握できることがあります。例えば
+
+* 時系列データに対する移動平均を求める
+* 計量データに対して要約統計量を求める
+* 計量データに対して度数分布を求める
+
+```{r}
+with(iris, tapply(Sepal.Width, Species, fivenum))
+```
+
+```{r}
+with(iris, tapply(Sepal.Length, Species, fivenum))
+```
+
+
+
+```{r}
+with(iris, hist(Sepal.Width, plot = FALSE))$count
+```
+
+　  
+
+### Visualize → Transform → Visualize
+　求めた要約統計量を可視化することでよりデータを把握しやすくなります。例えば前項で求めた五数要約を可視化するには箱ひげ図を用います。
+```{r}
+with(iris, boxplot(Sepal.Width ~ Species, plot = TRUE, main = "Boxplot of Sepal.Width"))
+with(iris, boxplot(Sepal.Length ~ Species, plot = TRUE, main = "Boxplot of Sepal.Width"))
+```
+
+　度数分布を可視化するには文字通りヒストグラムを用います。
+```{r}
+with(iris, hist(Sepal.Width, plot = TRUE))
+```
+
+
+　つまり、データの把握とは可視化（Visualize）と変換（Transform）の繰り返し作業と言えます。
+
+
+### Visualize ←→ Transform → Model　{-}
+
+### Visualize ←→ Transform ←→ Model　{-}
+
+### （Visualize ←→ Transform ←→ Model）→ Communicate　{-}
+
+### Tidy →（Visualize ←→ Transform ←→ Model）→ Communicate　{-}
+
+### Import → Tidy →（Visualize ←→ Transform ←→ Model）→ Communicate　{-}
+
+### Program（Import → Tidy →（Visualize ←→ Transform ←→ Model）→ Communicate）　{-}
+
+　  
+
 ## Data Science Workflow
 　データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
 

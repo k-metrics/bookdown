@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.1 filter | Rのすゝめ</title>
   <meta name="description" content="6.1 filter | Rのすゝめ" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.1 filter | Rのすゝめ" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,16 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2020-08-24" />
+<meta name="date" content="2021-03-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="transform.html"/>
+<link rel="prev" href="transform-1.html"/>
 <link rel="next" href="rename.html"/>
+<script src="assets/header-attrs-2.7/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,7 +51,6 @@
 
 
 
-<script src="assets/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="assets/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="assets/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="assets/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -58,18 +58,18 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -89,7 +89,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -136,19 +136,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i><b>1.1</b> Data Science Workflow</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="how-to-analize.html"><a href="how-to-analize.html"><i class="fa fa-check"></i><b>1.1</b> How to analize</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="how-to-analize.html"><a href="how-to-analize.html#visualize"><i class="fa fa-check"></i><b>1.1.1</b> Visualize</a></li>
+<li class="chapter" data-level="1.1.2" data-path="how-to-analize.html"><a href="how-to-analize.html#transform"><i class="fa fa-check"></i><b>1.1.2</b> Transform</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i><b>1.2</b> Data Science Workflow</a></li>
 </ul></li>
 <li class="part"><span><b>I Program</b></span></li>
 <li class="chapter" data-level="2" data-path="environments.html"><a href="environments.html"><i class="fa fa-check"></i><b>2</b> Environments</a></li>
-<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R Basics</a><ul>
-<li class="chapter" data-level="3.1" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html"><i class="fa fa-check"></i><b>3.1</b> 基本的な演算（Basic Operations）</a><ul>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html"><i class="fa fa-check"></i><b>3.1</b> 基本的な演算（Basic Operations）</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html#算術演算の基本"><i class="fa fa-check"></i><b>3.1.1</b> 算術演算の基本</a></li>
 <li class="chapter" data-level="3.1.2" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html#代入演算の基本"><i class="fa fa-check"></i><b>3.1.2</b> 代入演算の基本</a></li>
 <li class="chapter" data-level="3.1.3" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html#変数演算の基本"><i class="fa fa-check"></i><b>3.1.3</b> 変数演算の基本</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="予約語reserved-word.html"><a href="予約語reserved-word.html"><i class="fa fa-check"></i><b>3.2</b> 予約語（Reserved word）</a></li>
-<li class="chapter" data-level="3.3" data-path="変数variables.html"><a href="変数variables.html"><i class="fa fa-check"></i><b>3.3</b> 変数（Variables）</a><ul>
+<li class="chapter" data-level="3.3" data-path="変数variables.html"><a href="変数variables.html"><i class="fa fa-check"></i><b>3.3</b> 変数（Variables）</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="変数variables.html"><a href="変数variables.html#データ型"><i class="fa fa-check"></i><b>3.3.1</b> データ型</a></li>
 <li class="chapter" data-level="3.3.2" data-path="変数variables.html"><a href="変数variables.html#変数型"><i class="fa fa-check"></i><b>3.3.2</b> 変数型</a></li>
 <li class="chapter" data-level="3.3.3" data-path="変数variables.html"><a href="変数variables.html#ベクトル型"><i class="fa fa-check"></i><b>3.3.3</b> ベクトル型</a></li>
@@ -158,22 +167,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3.7" data-path="変数variables.html"><a href="変数variables.html#データフレーム型"><i class="fa fa-check"></i><b>3.3.7</b> データフレーム型</a></li>
 <li class="chapter" data-level="3.3.8" data-path="変数variables.html"><a href="変数variables.html#リスト型"><i class="fa fa-check"></i><b>3.3.8</b> リスト型</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="定数constant.html"><a href="定数constant.html"><i class="fa fa-check"></i><b>3.4</b> 定数（Constant）</a><ul>
+<li class="chapter" data-level="3.4" data-path="定数constant.html"><a href="定数constant.html"><i class="fa fa-check"></i><b>3.4</b> 定数（Constant）</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="定数constant.html"><a href="定数constant.html#na-の型"><i class="fa fa-check"></i><b>3.4.1</b> <code>NA</code> の型</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html"><i class="fa fa-check"></i><b>3.5</b> 参照・アクセス（Access Operators）</a><ul>
+<li class="chapter" data-level="3.5" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html"><i class="fa fa-check"></i><b>3.5</b> 参照・アクセス（Access Operators）</a>
+<ul>
 <li class="chapter" data-level="3.5.1" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html#演算子"><i class="fa fa-check"></i><b>3.5.1</b> <code>[</code> 演算子</a></li>
 <li class="chapter" data-level="3.5.2" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html#演算子-1"><i class="fa fa-check"></i><b>3.5.2</b> <code>$</code> 演算子</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="検査変換.html"><a href="検査変換.html"><i class="fa fa-check"></i><b>3.6</b> 検査・変換</a></li>
-<li class="chapter" data-level="3.7" data-path="演算子operators.html"><a href="演算子operators.html"><i class="fa fa-check"></i><b>3.7</b> 演算子（Operators）</a><ul>
+<li class="chapter" data-level="3.7" data-path="演算子operators.html"><a href="演算子operators.html"><i class="fa fa-check"></i><b>3.7</b> 演算子（Operators）</a>
+<ul>
 <li class="chapter" data-level="3.7.1" data-path="演算子operators.html"><a href="演算子operators.html#算術演算子"><i class="fa fa-check"></i><b>3.7.1</b> 算術演算子</a></li>
 <li class="chapter" data-level="3.7.2" data-path="演算子operators.html"><a href="演算子operators.html#比較演算子-logical-operations"><i class="fa fa-check"></i><b>3.7.2</b> 比較演算子 Logical Operations</a></li>
 <li class="chapter" data-level="3.7.3" data-path="演算子operators.html"><a href="演算子operators.html#論理演算子-boolean-operations"><i class="fa fa-check"></i><b>3.7.3</b> 論理演算子 Boolean Operations</a></li>
 <li class="chapter" data-level="3.7.4" data-path="演算子operators.html"><a href="演算子operators.html#特殊演算子"><i class="fa fa-check"></i><b>3.7.4</b> 特殊演算子</a></li>
 <li class="chapter" data-level="3.7.5" data-path="演算子operators.html"><a href="演算子operators.html#演算子の優先順位"><i class="fa fa-check"></i><b>3.7.5</b> 演算子の優先順位</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="制御文.html"><a href="制御文.html"><i class="fa fa-check"></i><b>3.8</b> 制御文</a><ul>
+<li class="chapter" data-level="3.8" data-path="制御文.html"><a href="制御文.html"><i class="fa fa-check"></i><b>3.8</b> 制御文</a>
+<ul>
 <li class="chapter" data-level="3.8.1" data-path="制御文.html"><a href="制御文.html#条件分岐"><i class="fa fa-check"></i><b>3.8.1</b> 条件分岐</a></li>
 <li class="chapter" data-level="3.8.2" data-path="制御文.html"><a href="制御文.html#if-else"><i class="fa fa-check"></i><b>3.8.2</b> if, else</a></li>
 <li class="chapter" data-level="3.8.3" data-path="制御文.html"><a href="制御文.html#switch"><i class="fa fa-check"></i><b>3.8.3</b> switch</a></li>
@@ -184,27 +197,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Wrangle</b></span></li>
-<li class="chapter" data-level="4" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>4</b> Import</a><ul>
+<li class="chapter" data-level="4" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>4</b> Import</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>4.1</b> readr</a></li>
 <li class="chapter" data-level="4.2" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>4.2</b> readxl</a></li>
 <li class="chapter" data-level="4.3" data-path="pdftools.html"><a href="pdftools.html"><i class="fa fa-check"></i><b>4.3</b> pdftools</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>5</b> Tidy</a><ul>
+<li class="chapter" data-level="5" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>5</b> Tidy</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>5.1</b> Tidy Data</a></li>
 <li class="chapter" data-level="5.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>5.2</b> longer</a></li>
 <li class="chapter" data-level="5.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>5.3</b> wider</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>6</b> Transform</a><ul>
+<li class="chapter" data-level="6" data-path="transform-1.html"><a href="transform-1.html"><i class="fa fa-check"></i><b>6</b> Transform</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>6.1</b> filter</a></li>
 <li class="chapter" data-level="6.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>6.2</b> rename</a></li>
-<li class="chapter" data-level="6.3" data-path="select.html"><a href="select.html"><i class="fa fa-check"></i><b>6.3</b> select</a><ul>
+<li class="chapter" data-level="6.3" data-path="select.html"><a href="select.html"><i class="fa fa-check"></i><b>6.3</b> select</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="select.html"><a href="select.html#select-helpers"><i class="fa fa-check"></i><b>6.3.1</b> select helpers</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="mutate.html"><a href="mutate.html"><i class="fa fa-check"></i><b>6.4</b> mutate</a></li>
 <li class="chapter" data-level="6.5" data-path="summarize.html"><a href="summarize.html"><i class="fa fa-check"></i><b>6.5</b> summarize</a></li>
 </ul></li>
 <li class="part"><span><b>III Visualize</b></span></li>
-<li class="chapter" data-level="7" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>7</b> Base R</a><ul>
+<li class="chapter" data-level="7" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>7</b> Base R</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="plot.html"><a href="plot.html"><i class="fa fa-check"></i><b>7.1</b> plot</a></li>
 <li class="chapter" data-level="7.2" data-path="boxplot.html"><a href="boxplot.html"><i class="fa fa-check"></i><b>7.2</b> boxplot</a></li>
 <li class="chapter" data-level="7.3" data-path="hist.html"><a href="hist.html"><i class="fa fa-check"></i><b>7.3</b> hist</a></li>
@@ -219,56 +237,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>VI Automate</b></span></li>
 <li class="chapter" data-level="13" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>13</b> shiny</a></li>
 <li class="part"><span><b>VII Program</b></span></li>
-<li class="chapter" data-level="14" data-path="environments-2.html"><a href="environments-2.html"><i class="fa fa-check"></i><b>14</b> Environments 2</a><ul>
-<li class="chapter" data-level="14.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html"><i class="fa fa-check"></i><b>14.1</b> Google Colaboratory</a><ul>
+<li class="chapter" data-level="14" data-path="environments-2.html"><a href="environments-2.html"><i class="fa fa-check"></i><b>14</b> Environments 2</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html"><i class="fa fa-check"></i><b>14.1</b> Google Colaboratory</a>
+<ul>
 <li class="chapter" data-level="14.1.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html#login-google"><i class="fa fa-check"></i><b>14.1.1</b> Login Google</a></li>
 <li class="chapter" data-level="14.1.2" data-path="google-colaboratory.html"><a href="google-colaboratory.html#open-google-colab"><i class="fa fa-check"></i><b>14.1.2</b> Open Google Colab</a></li>
 <li class="chapter" data-level="14.1.3" data-path="google-colaboratory.html"><a href="google-colaboratory.html#upload-template"><i class="fa fa-check"></i><b>14.1.3</b> Upload Template</a></li>
 <li class="chapter" data-level="14.1.4" data-path="google-colaboratory.html"><a href="google-colaboratory.html#run-r-code"><i class="fa fa-check"></i><b>14.1.4</b> Run R code</a></li>
 <li class="chapter" data-level="14.1.5" data-path="google-colaboratory.html"><a href="google-colaboratory.html#save-file"><i class="fa fa-check"></i><b>14.1.5</b> Save File</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html"><i class="fa fa-check"></i><b>14.2</b> RStudio Cloud</a><ul>
+<li class="chapter" data-level="14.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html"><i class="fa fa-check"></i><b>14.2</b> RStudio Cloud</a>
+<ul>
 <li class="chapter" data-level="14.2.1" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#create-project"><i class="fa fa-check"></i><b>14.2.1</b> Create Project</a></li>
 <li class="chapter" data-level="14.2.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#install-packages"><i class="fa fa-check"></i><b>14.2.2</b> Install Packages</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="install-rrstudio.html"><a href="install-rrstudio.html"><i class="fa fa-check"></i><b>A</b> Install R/RStudio</a><ul>
-<li class="chapter" data-level="A.1" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>A.1</b> Install R</a><ul>
+<li class="chapter" data-level="A" data-path="install-rrstudio.html"><a href="install-rrstudio.html"><i class="fa fa-check"></i><b>A</b> Install R/RStudio</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>A.1</b> Install R</a>
+<ul>
 <li class="chapter" data-level="A.1.1" data-path="install-r.html"><a href="install-r.html#windows"><i class="fa fa-check"></i><b>A.1.1</b> Windows</a></li>
 <li class="chapter" data-level="A.1.2" data-path="install-r.html"><a href="install-r.html#macos-os-x"><i class="fa fa-check"></i><b>A.1.2</b> macOS (OS X)</a></li>
 <li class="chapter" data-level="A.1.3" data-path="install-r.html"><a href="install-r.html#linux"><i class="fa fa-check"></i><b>A.1.3</b> Linux</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>A.2</b> Install RStudio Desktop</a><ul>
+<li class="chapter" data-level="A.2" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>A.2</b> Install RStudio Desktop</a>
+<ul>
 <li class="chapter" data-level="A.2.1" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html#動作確認"><i class="fa fa-check"></i><b>A.2.1</b> 動作確認</a></li>
 </ul></li>
-<li class="chapter" data-level="A.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>A.3</b> Install R packages</a><ul>
+<li class="chapter" data-level="A.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>A.3</b> Install R packages</a>
+<ul>
 <li class="chapter" data-level="A.3.1" data-path="install-r-packages.html"><a href="install-r-packages.html#linux環境の場合"><i class="fa fa-check"></i><b>A.3.1</b> Linux環境の場合</a></li>
 </ul></li>
-<li class="chapter" data-level="A.4" data-path="install-git.html"><a href="install-git.html"><i class="fa fa-check"></i><b>A.4</b> Install Git</a><ul>
+<li class="chapter" data-level="A.4" data-path="install-git.html"><a href="install-git.html"><i class="fa fa-check"></i><b>A.4</b> Install Git</a>
+<ul>
 <li class="chapter" data-level="A.4.1" data-path="install-git.html"><a href="install-git.html#git"><i class="fa fa-check"></i><b>A.4.1</b> Git</a></li>
 <li class="chapter" data-level="A.4.2" data-path="install-git.html"><a href="install-git.html#git-client"><i class="fa fa-check"></i><b>A.4.2</b> Git Client</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>B</b> RStudio Server</a><ul>
-<li class="chapter" data-level="B.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html"><i class="fa fa-check"></i><b>B.1</b> Setup RStudio Sever with Docker</a><ul>
+<li class="chapter" data-level="B" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>B</b> RStudio Server</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html"><i class="fa fa-check"></i><b>B.1</b> Setup RStudio Sever with Docker</a>
+<ul>
 <li class="chapter" data-level="B.1.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#enable-hyper-v-windows-only"><i class="fa fa-check"></i><b>B.1.1</b> Enable Hyper-V (Windows Only)</a></li>
 <li class="chapter" data-level="B.1.2" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-and-install-docker-desktop"><i class="fa fa-check"></i><b>B.1.2</b> Download and Install Docker Desktop</a></li>
 <li class="chapter" data-level="B.1.3" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-docker-image"><i class="fa fa-check"></i><b>B.1.3</b> Download Docker Image</a></li>
 <li class="chapter" data-level="B.1.4" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#run-container"><i class="fa fa-check"></i><b>B.1.4</b> Run Container</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>C</b> RStudio IDE</a><ul>
+<li class="chapter" data-level="C" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>C</b> RStudio IDE</a>
+<ul>
 <li class="chapter" data-level="C.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>C.1</b> Overview</a></li>
 <li class="chapter" data-level="C.2" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i><b>C.2</b> Keyboard Shortcuts</a></li>
 <li class="chapter" data-level="C.3" data-path="writing-r-code.html"><a href="writing-r-code.html"><i class="fa fa-check"></i><b>C.3</b> Writing R code</a></li>
-<li class="chapter" data-level="C.4" data-path="global-options.html"><a href="global-options.html"><i class="fa fa-check"></i><b>C.4</b> Global Options</a><ul>
+<li class="chapter" data-level="C.4" data-path="global-options.html"><a href="global-options.html"><i class="fa fa-check"></i><b>C.4</b> Global Options</a>
+<ul>
 <li class="chapter" data-level="C.4.1" data-path="global-options.html"><a href="global-options.html#general"><i class="fa fa-check"></i><b>C.4.1</b> General</a></li>
 <li class="chapter" data-level="C.4.2" data-path="global-options.html"><a href="global-options.html#code"><i class="fa fa-check"></i><b>C.4.2</b> Code</a></li>
 <li class="chapter" data-level="C.4.3" data-path="global-options.html"><a href="global-options.html#appearance"><i class="fa fa-check"></i><b>C.4.3</b> Appearance</a></li>
 <li class="chapter" data-level="C.4.4" data-path="global-options.html"><a href="global-options.html#pane-layout"><i class="fa fa-check"></i><b>C.4.4</b> Pane Layout</a></li>
 <li class="chapter" data-level="C.4.5" data-path="global-options.html"><a href="global-options.html#packages"><i class="fa fa-check"></i><b>C.4.5</b> Packages</a></li>
-<li class="chapter" data-level="C.4.6" data-path="r-markdown.html"><a href="r-markdown.html#r-markdown"><i class="fa fa-check"></i><b>C.4.6</b> R Markdown</a></li>
+<li class="chapter" data-level="C.4.6" data-path="global-options.html"><a href="global-options.html#r-markdown-1"><i class="fa fa-check"></i><b>C.4.6</b> R Markdown</a></li>
 <li class="chapter" data-level="C.4.7" data-path="global-options.html"><a href="global-options.html#sweave"><i class="fa fa-check"></i><b>C.4.7</b> Sweave</a></li>
 <li class="chapter" data-level="C.4.8" data-path="global-options.html"><a href="global-options.html#spelling"><i class="fa fa-check"></i><b>C.4.8</b> Spelling</a></li>
 <li class="chapter" data-level="C.4.9" data-path="global-options.html"><a href="global-options.html#gitsvn"><i class="fa fa-check"></i><b>C.4.9</b> Git/SVN</a></li>
@@ -277,7 +307,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="C.5" data-path="project-options.html"><a href="project-options.html"><i class="fa fa-check"></i><b>C.5</b> Project Options</a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="cloud-ide.html"><a href="cloud-ide.html"><i class="fa fa-check"></i><b>D</b> Cloud IDE</a><ul>
+<li class="chapter" data-level="D" data-path="cloud-ide.html"><a href="cloud-ide.html"><i class="fa fa-check"></i><b>D</b> Cloud IDE</a>
+<ul>
 <li class="chapter" data-level="D.1" data-path="rstudio-cloud-ga.html"><a href="rstudio-cloud-ga.html"><i class="fa fa-check"></i><b>D.1</b> RStudio Cloud GA</a></li>
 <li class="chapter" data-level="D.2" data-path="exploratory.html"><a href="exploratory.html"><i class="fa fa-check"></i><b>D.2</b> Exploratory</a></li>
 <li class="chapter" data-level="D.3" data-path="binder.html"><a href="binder.html"><i class="fa fa-check"></i><b>D.3</b> binder</a></li>
@@ -299,7 +330,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="filter" class="section level2">
+<div id="filter" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> filter</h2>
 </div>
             </section>
@@ -307,7 +338,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="transform.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="transform-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="rename.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
