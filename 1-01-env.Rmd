@@ -6,5 +6,4 @@
 　binder による環境を利用するには以下のリンクをクリックしてください。Docker イメージのキャッシュが存在しない場合には Docker イメージの構築から行われますので起動するまでに多少の時間がかかります。  
 　  
 
-[![binder](https://mybinder.org/badge_logo.svg) Run Tutorial on binder](https://mybinder.org/v2/gh/k-metrics/learnr/master?urlpath=rstudio)
-
+[![binder](https://mybinder.org/badge_logo.svg) Run Tutorial on binder](https://mybinder.org/v2/gh/k-metrics/binder/master?urlpath=rstudio)

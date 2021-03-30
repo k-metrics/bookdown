@@ -1,24 +1,28 @@
 # Introduction
-　データ分析を行うためには適切な分析ツールが必要不可欠です。 [R <i class="fa fa-external-link"></i>](https://www.r-project.org/){target="_blank"} は統計計算に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。R がデータ分析に向いている理由をまとめているのが ["Six Reasons To Learn R For Business", R Blogger <i class="fa fa-external-link"></i>](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank"} です。  
-　  
 
-> 1. R Has The Best **Overall Qualities**
-1. R Is Data Science **For Non-Computer Scientists**
-1. Learning R Is **Easy With The Tidyverse**
-1. R Has **Brains, Muscle, And Heart**
-1. R Is Built **For Business**
-1. R **Community** Support
+　データ分析を行うためには適切な分析ツールが必要不可欠です。 [R <i class="fa fa-external-link"></i>](https://www.r-project.org/){target="_blank"} は統計計算に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。R がデータ分析に向いている理由をまとめているのが ["Six Reasons To Learn R For Business", R Blogger <i class="fa fa-external-link"></i>](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank"} です。\
+　
 
-　  
-　R はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。  
-　  
+> 1.  R Has The Best **Overall Qualities**
+> 2.  R Is Data Science **For Non-Computer Scientists**
+> 3.  Learning R Is **Easy With The Tidyverse**
+> 4.  R Has **Brains, Muscle, And Heart**
+> 5.  R Is Built **For Business**
+> 6.  R **Community** Support
+
+　\
+　R はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。\
+　
 
 ## How to analize
-　分析対象のデータがどのようなものかを知ることは、データ分析を行うにあたって重要なことです。どのような分布なのか、どのような値の範囲なのか、全てのデータが揃っているのかなど俯瞰して把握します。　  
-　  
 
-### Visualize/Transform {-}
+　分析対象のデータがどのようなものかを知ることは、データ分析を行うにあたって重要なことです。どのような分布なのか、どのような値の範囲なのか、全てのデータが揃っているのかなど俯瞰して把握します。　\
+　
+
+### Visualize/Transform {.unnumbered}
+
 　データを俯瞰するためには可視化（Visualize）が分かりやすい手法の一つです。例えば、計量値や計数値であれば棒グラフを用いて分布を確認したり、
+
 ```{r, echo=FALSE}
 with(iris, barplot(Sepal.Width, main = "Sepal.Width"))
 ```
@@ -37,21 +41,18 @@ with(iris, tapply(Sepal.Length, Species, fivenum))
 with(iris, hist(Sepal.Width, plot = FALSE))$count
 ```
 
-
 　つまり、データの把握（分布の把握）とは可視化（Visualize）と変換（Transform）の繰り返し作業と言えます。
 
+### Model　 {.unnumbered}
 
-### Model　{-}
-
-### Communicate　{-}
+### Communicate　 {.unnumbered}
 
 ### Import/Tidy
 
 ### Program
 
-
-
 ## Data Science Workflow
+
 　データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
 
 ```{r, echo=FALSE, out.width="95%", fig.cap="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham"}
@@ -61,33 +62,31 @@ knitr::include_graphics("https://github.com/hadley/r4ds/blob/master/diagrams/dat
 
 <!-- <p align=right>図出典：[RStartHere, RStudio, inc. <i class="fa fa-external-link"></i>](https://github.com/rstudio/RStartHere){target="_blank"}</p> -->
 
-　この図は「Data Science Workflow」と呼ばれ、R コミュニティに多大な貢献をしている Hadley Wickham がその著書 [『R for Data Science』 <i class="fa fa-external-link"></i>](https://r4ds.had.co.nz/){target="_blank"} で提唱している概念図です。本書は、この Data Science Workflow に基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。  
-　  
-
-**Program**  
-　データ分析のすべてのプロセス（Tidy 〜 Communicate/Automate）で必要となるツールがプログラミングです。プログラミングを覚えることで効率的に分析処理を行えるようになります。  
-   
-**Import**  
-　分析対象となるデータを分析環境に取り込み分析をできるようにするのがインポートプロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。  
-　  
-**Tidy**  
-　インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、一貫した形式（Tidy data）に整理します。 [Tidy data <i class="fa fa-external-link"></i>](){target="_blank"} はデータ分析において重要な概念です。  
-　  
-**Transform**  
-　整理したデータ（Tidy data）がそのまま状態でデータ分析に使えることは稀です。不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。  
-　**Tidy** プロセスと合わせて **Wrangle** や **Data wrangling**、前処理と呼ばれることもあります。  
-　  
-**Visualize**  
-　データを可視化することは様々な示唆を得ることと同義といえます。分析方針を考えるためにもデータがどういう傾向をもっているのかを把握するためのプロセスともいえます。  
-　  
-**Model**  
-　可視化で得られた情報を元に数式可（モデル化）するのプロセスです。モデルは様々な  
-　  
-**Communicate**  
-　分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で [再現可能性（Reproducible research） <i class="fa fa-external-link"></i>](){target="_blank"} が伴っていることも求められます。
+　この図は「Data Science Workflow」と呼ばれ、R コミュニティに多大な貢献をしている Hadley Wickham がその著書 [『R for Data Science』 <i class="fa fa-external-link"></i>](https://r4ds.had.co.nz/){target="_blank"} で提唱している概念図です。本書は、この Data Science Workflow に基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。\
 　
-　[3つの再現可能性 <i class="fa fa-external-link"></i>](http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03){target="_blank"} 
 
+**Program**\
+　データ分析のすべてのプロセス（Tidy 〜 Communicate/Automate）で必要となるツールがプログラミングです。プログラミングを覚えることで効率的に分析処理を行えるようになります。
+
+**Import**\
+　分析対象となるデータを分析環境に取り込み分析をできるようにするのがインポートプロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。\
+　\
+**Tidy**\
+　インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、一貫した形式（Tidy data）に整理します。 [Tidy data <i class="fa fa-external-link"></i>](){target="_blank"} はデータ分析において重要な概念です。\
+　\
+**Transform**\
+　整理したデータ（Tidy data）がそのまま状態でデータ分析に使えることは稀です。不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。\
+　**Tidy** プロセスと合わせて **Wrangle** や **Data wrangling**、前処理と呼ばれることもあります。\
+　\
+**Visualize**\
+　データを可視化することは様々な示唆を得ることと同義といえます。分析方針を考えるためにもデータがどういう傾向をもっているのかを把握するためのプロセスともいえます。\
+　\
+**Model**\
+　可視化で得られた情報を元に数式可（モデル化）するのプロセスです。モデルは様々な\
+　\
+**Communicate**\
+　分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で [再現可能性（Reproducible research） <i class="fa fa-external-link"></i>](){target="_blank"} が伴っていることも求められます。 　 　[3つの再現可能性 <i class="fa fa-external-link"></i>](http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03){target="_blank"}
 
 ## Tidyverse Eco System
 
+　このような Data Science Workflow を R で実現するための手段が Hadley Wickham により開発された tidyverse パッケージ群による Tidyverse Eco System です。tidyverse
