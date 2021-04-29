@@ -109,7 +109,7 @@ N/A         | R Notebooks    | Hide console automatically when executing noteboo
 
 
 ### Sweave
-　Sweave オプションは R + $\LaTeX$ によるドキュメント作成に関する設定です。 Sweave を利用しない限り基本的に変更する必要はありませんが、 R Markdown で PDF ファイルを作成する場合は PDF ビューアに関する設定のみお好みのビューアを設定してください。  
+　Sweave オプションは R + LaTeX によるドキュメント作成に関する設定です。 Sweave を利用しない限り基本的に変更する必要はありませんが、 R Markdown で PDF ファイルを作成する場合は PDF ビューアに関する設定のみお好みのビューアを設定してください。  
 　  
 
 大項目(Tab) | 中項目(太文字) | 設定項目                       | 推奨設定

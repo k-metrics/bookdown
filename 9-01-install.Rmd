@@ -53,7 +53,7 @@
 ### 動作確認
 　RStudio のインストールが完了したら RStudio を起動します。下図のようなウィンドウが立ち上がり左側の **Console** ペインに R のバージョンなどが表示されます。  
 　  
-![RStudio Desktop, Windows](./fig/RStudio_Desktop.png)
+<!-- ![RStudio Desktop, Windows](./fig/RStudio_Desktop.png) -->
 
 　**Console** ペインのプロンプト（`>`表示）の部分に`2 * 3`と打ち込んで［Enter］キーを押し`[1] 6`と表示されることを確認してください。
 

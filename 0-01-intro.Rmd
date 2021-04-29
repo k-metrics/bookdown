@@ -55,8 +55,11 @@ with(iris, hist(Sepal.Width, plot = FALSE))$count
 
 　データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
 
-```{r, echo=FALSE, out.width="95%", fig.cap="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham"}
-knitr::include_graphics("https://github.com/hadley/r4ds/blob/master/diagrams/data-science-explore.png?raw=true")
+<!-- ```{r, echo=FALSE, out.width="95%", fig.cap="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham"}
+-->
+
+```{r, echo=FALSE, fig.cap="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham"}
+# knitr::include_graphics("https://raw.githubusercontent.com/hadley/r4ds/master/diagrams/data-science-explore.png")
 # knitr::include_graphics("fig/data-science.png")
 ```
 

@@ -1,0 +1,132 @@
+\contentsline {chapter}{はじめに}{9}{chapter*.2}%
+\contentsline {section}{想定読者}{10}{section*.3}%
+\contentsline {chapter}{\numberline {1}Introduction}{11}{chapter.1}%
+\contentsline {section}{\numberline {1.1}How to analize}{12}{section.1.1}%
+\contentsline {subsection}{Visualize/Transform}{12}{section*.4}%
+\contentsline {subsection}{Model　}{13}{section*.5}%
+\contentsline {subsection}{Communicate　}{13}{section*.6}%
+\contentsline {subsection}{\numberline {1.1.1}Import/Tidy}{14}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Program}{14}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Data Science Workflow}{14}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Tidyverse Eco System}{15}{section.1.3}%
+\contentsline {part}{I\hspace {1em}Program}{17}{part.1}%
+\contentsline {chapter}{\numberline {2}Environments}{19}{chapter.2}%
+\contentsline {chapter}{\numberline {3}R Basics}{21}{chapter.3}%
+\contentsline {section}{\numberline {3.1}基本的な演算（Basic Operations）}{22}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}算術演算の基本}{22}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}代入演算の基本}{22}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}変数演算の基本}{23}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}予約語（Reserved word）}{23}{section.3.2}%
+\contentsline {section}{\numberline {3.3}変数（Variables）}{24}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}データ型}{24}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}変数型}{25}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}ベクトル型}{26}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}因子型}{27}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}マトリクス型}{28}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.6}アレイ型}{28}{subsection.3.3.6}%
+\contentsline {subsection}{\numberline {3.3.7}データフレーム型}{29}{subsection.3.3.7}%
+\contentsline {subsection}{\numberline {3.3.8}リスト型}{30}{subsection.3.3.8}%
+\contentsline {section}{\numberline {3.4}定数（Constant）}{31}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}\texttt {NA} の型}{32}{subsection.3.4.1}%
+\contentsline {section}{\numberline {3.5}参照・アクセス（Access Operators）}{32}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}\texttt {{[}} 演算子}{32}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}\texttt {\$} 演算子}{36}{subsection.3.5.2}%
+\contentsline {section}{\numberline {3.6}検査・変換}{37}{section.3.6}%
+\contentsline {section}{\numberline {3.7}演算子（Operators）}{39}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}算術演算子}{40}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}比較演算子 Logical Operations}{41}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.7.3}論理演算子 Boolean Operations}{43}{subsection.3.7.3}%
+\contentsline {subsection}{\numberline {3.7.4}特殊演算子}{43}{subsection.3.7.4}%
+\contentsline {subsection}{\numberline {3.7.5}演算子の優先順位}{44}{subsection.3.7.5}%
+\contentsline {section}{\numberline {3.8}制御文}{45}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}条件分岐}{45}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}if, else}{45}{subsection.3.8.2}%
+\contentsline {subsection}{\numberline {3.8.3}switch}{46}{subsection.3.8.3}%
+\contentsline {subsubsection}{\numberline {3.8.3.1}引数が整数の場合}{47}{subsubsection.3.8.3.1}%
+\contentsline {subsubsection}{\numberline {3.8.3.2}引数が文字の場合}{47}{subsubsection.3.8.3.2}%
+\contentsline {subsection}{\numberline {3.8.4}ifelse}{48}{subsection.3.8.4}%
+\contentsline {subsection}{\numberline {3.8.5}繰り返し}{48}{subsection.3.8.5}%
+\contentsline {subsection}{\numberline {3.8.6}for}{50}{subsection.3.8.6}%
+\contentsline {subsection}{\numberline {3.8.7}while, repeat}{51}{subsection.3.8.7}%
+\contentsline {part}{II\hspace {1em}Wrangle}{53}{part.2}%
+\contentsline {chapter}{\numberline {4}Import}{55}{chapter.4}%
+\contentsline {section}{\numberline {4.1}readr}{55}{section.4.1}%
+\contentsline {section}{\numberline {4.2}readxl}{56}{section.4.2}%
+\contentsline {section}{\numberline {4.3}pdftools}{56}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Tidy}{57}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Tidy Data}{57}{section.5.1}%
+\contentsline {section}{\numberline {5.2}longer}{57}{section.5.2}%
+\contentsline {section}{\numberline {5.3}wider}{57}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Transform}{59}{chapter.6}%
+\contentsline {section}{\numberline {6.1}filter}{59}{section.6.1}%
+\contentsline {section}{\numberline {6.2}rename}{59}{section.6.2}%
+\contentsline {section}{\numberline {6.3}select}{59}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}select helpers}{59}{subsection.6.3.1}%
+\contentsline {section}{\numberline {6.4}mutate}{59}{section.6.4}%
+\contentsline {section}{\numberline {6.5}summarize}{59}{section.6.5}%
+\contentsline {part}{III\hspace {1em}Visualize}{61}{part.3}%
+\contentsline {chapter}{\numberline {7}Base R}{63}{chapter.7}%
+\contentsline {section}{\numberline {7.1}plot}{63}{section.7.1}%
+\contentsline {section}{\numberline {7.2}boxplot}{63}{section.7.2}%
+\contentsline {section}{\numberline {7.3}hist}{63}{section.7.3}%
+\contentsline {chapter}{\numberline {8}ggplot2}{65}{chapter.8}%
+\contentsline {part}{IV\hspace {1em}Model/Infer}{67}{part.4}%
+\contentsline {chapter}{\numberline {9}Test}{69}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Linear model}{71}{chapter.10}%
+\contentsline {chapter}{\numberline {11}Machine Learning}{73}{chapter.11}%
+\contentsline {part}{V\hspace {1em}Communicate}{75}{part.5}%
+\contentsline {chapter}{\numberline {12}R Markdown}{77}{chapter.12}%
+\contentsline {part}{VI\hspace {1em}Automate}{79}{part.6}%
+\contentsline {chapter}{\numberline {13}shiny}{81}{chapter.13}%
+\contentsline {part}{VII\hspace {1em}Program}{83}{part.7}%
+\contentsline {chapter}{\numberline {14}Environments 2}{85}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Google Colaboratory}{85}{section.14.1}%
+\contentsline {subsection}{\numberline {14.1.1}Login Google}{86}{subsection.14.1.1}%
+\contentsline {subsection}{\numberline {14.1.2}Open Google Colab}{86}{subsection.14.1.2}%
+\contentsline {subsection}{\numberline {14.1.3}Upload Template}{86}{subsection.14.1.3}%
+\contentsline {subsection}{\numberline {14.1.4}Run R code}{89}{subsection.14.1.4}%
+\contentsline {subsection}{\numberline {14.1.5}Save File}{91}{subsection.14.1.5}%
+\contentsline {section}{\numberline {14.2}RStudio Cloud}{91}{section.14.2}%
+\contentsline {subsection}{\numberline {14.2.1}Create Project}{92}{subsection.14.2.1}%
+\contentsline {subsection}{\numberline {14.2.2}Install Packages}{92}{subsection.14.2.2}%
+\contentsline {chapter}{Appendix}{94}{figure.14.8}%
+\contentsline {chapter}{\numberline {A}Install R/RStudio}{95}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Install R}{96}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}Windows}{96}{subsection.A.1.1}%
+\contentsline {subsubsection}{\numberline {A.1.1.1}Rtools}{96}{subsubsection.A.1.1.1}%
+\contentsline {subsection}{\numberline {A.1.2}macOS (OS X)}{97}{subsection.A.1.2}%
+\contentsline {subsection}{\numberline {A.1.3}Linux}{97}{subsection.A.1.3}%
+\contentsline {section}{\numberline {A.2}Install RStudio Desktop}{97}{section.A.2}%
+\contentsline {subsection}{\numberline {A.2.1}動作確認}{97}{subsection.A.2.1}%
+\contentsline {section}{\numberline {A.3}Install R packages}{98}{section.A.3}%
+\contentsline {subsection}{\numberline {A.3.1}Linux環境の場合}{99}{subsection.A.3.1}%
+\contentsline {section}{\numberline {A.4}Install Git}{99}{section.A.4}%
+\contentsline {subsection}{\numberline {A.4.1}Git}{100}{subsection.A.4.1}%
+\contentsline {subsection}{\numberline {A.4.2}Git Client}{100}{subsection.A.4.2}%
+\contentsline {chapter}{\numberline {B}RStudio Server}{101}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Setup RStudio Sever with Docker}{102}{section.B.1}%
+\contentsline {subsection}{\numberline {B.1.1}Enable Hyper-V (Windows Only)}{102}{subsection.B.1.1}%
+\contentsline {subsection}{\numberline {B.1.2}Download and Install Docker Desktop}{103}{subsection.B.1.2}%
+\contentsline {subsection}{\numberline {B.1.3}Download Docker Image}{103}{subsection.B.1.3}%
+\contentsline {subsection}{\numberline {B.1.4}Run Container}{104}{subsection.B.1.4}%
+\contentsline {chapter}{\numberline {C}RStudio IDE}{105}{appendix.C}%
+\contentsline {section}{\numberline {C.1}Overview}{106}{section.C.1}%
+\contentsline {section}{\numberline {C.2}Keyboard Shortcuts}{108}{section.C.2}%
+\contentsline {section}{\numberline {C.3}Writing R code}{109}{section.C.3}%
+\contentsline {section}{\numberline {C.4}Global Options}{112}{section.C.4}%
+\contentsline {subsection}{\numberline {C.4.1}General}{112}{subsection.C.4.1}%
+\contentsline {subsection}{\numberline {C.4.2}Code}{112}{subsection.C.4.2}%
+\contentsline {subsection}{\numberline {C.4.3}Appearance}{113}{subsection.C.4.3}%
+\contentsline {subsection}{\numberline {C.4.4}Pane Layout}{114}{subsection.C.4.4}%
+\contentsline {subsection}{\numberline {C.4.5}Packages}{114}{subsection.C.4.5}%
+\contentsline {subsection}{\numberline {C.4.6}R Markdown}{115}{subsection.C.4.6}%
+\contentsline {subsection}{\numberline {C.4.7}Sweave}{116}{subsection.C.4.7}%
+\contentsline {subsection}{\numberline {C.4.8}Spelling}{116}{subsection.C.4.8}%
+\contentsline {subsection}{\numberline {C.4.9}Git/SVN}{116}{subsection.C.4.9}%
+\contentsline {subsection}{\numberline {C.4.10}Publishing}{116}{subsection.C.4.10}%
+\contentsline {subsection}{\numberline {C.4.11}Terminal}{117}{subsection.C.4.11}%
+\contentsline {section}{\numberline {C.5}Project Options}{117}{section.C.5}%
+\contentsline {chapter}{\numberline {D}Cloud IDE}{119}{appendix.D}%
+\contentsline {section}{\numberline {D.1}RStudio Cloud GA}{119}{section.D.1}%
+\contentsline {section}{\numberline {D.2}Exploratory}{120}{section.D.2}%
+\contentsline {section}{\numberline {D.3}binder}{120}{section.D.3}%

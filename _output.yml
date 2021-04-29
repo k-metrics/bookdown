@@ -4,6 +4,7 @@ bookdown::gitbook:
   # highlight: tango
   lib_dir: assets
   md_extensions: -ascii_identifiers
+  number_sections: TRUE
   split_by: "section"      # Select one of "chapter", "section", "rmd"
   config:
     toc:
@@ -22,67 +23,16 @@ bookdown::gitbook:
 #bookdown::epub_book: default
 #  always_allow_html: true
 bookdown::pdf_book:
-  always_allow_html: true
   citation_package: natbib
-  latex_engine: xelatex
+  fig_crop: false
   keep_tex: yes
-  toc_depth: 2
-  dev: "cairo_pdf"
-## Additional setting for Japanese PDF fonts, Ubuntu
-# header-includes: |
-#   \usepackage{booktabs}
-#   \usepackage{longtable}
-#   \usepackage{array}
-#   \usepackage{multirow}
-#   \usepackage{wrapfig}
-#   \usepackage{float}
-#   \usepackage{colortbl}
-#   \usepackage{pdflscape}
-#   \usepackage{tabu}
-#   \usepackage{threeparttable}
-#   \usepackage{threeparttablex}
-#   \usepackage[normalem]{ulem}
-#   \usepackage{makecell}
-#   \usepackage{xcolor}
-#   \usepackage{xeCJK}
-#   \usepackage{zxjatype}
-#   \setCJKmainfont{Noto Serif CJK JP}
-#   \setCJKmonofont{Noto Sans Mono CJK JP}
-#   \setCJKsansfont{Noto Sans CJK JP}
-#   \setCJKmathfont{Noto Serif CJK JP}
-# mainfont: Noto Serif CJK JP
-# mainfontoptions: Scale=MatchUppercase
-# sansfont: Noto Sans CJK JP
-# monofont: Noto Sans Mono CJK JP
-# # mathfont: Noto Serif CJK JP
-# CJKmainfont: Noto Serif CJK JP
-# CJKoptions: Scale=1
-## Additional setting for Japanese PDF fonts, Winodws10 (Use font filename)
-  header-includes: |
-    \usepackage{booktabs}
-    \usepackage{longtable}
-    \usepackage{array}
-    \usepackage{multirow}
-    \usepackage{wrapfig}
-    \usepackage{float}
-    \usepackage{colortbl}
-    \usepackage{pdflscape}
-    \usepackage{tabu}
-    \usepackage{threeparttable}
-    \usepackage{threeparttablex}
-    \usepackage[normalem]{ulem}
-    \usepackage{makecell}
-    \usepackage{xcolor}
-    \usepackage{xeCJK}
-    \usepackage{zxjatype}
-    \setCJKmainfont{NotoSerifCJKjp-Regular.otf}
-    \setCJKmonofont{NotoSansMonoCJKjp-Regular.otf}
-    \setCJKsansfont{NotoSansCJKjp-Regular.otf}
-    \setCJKmathfont{NotoSerifCJKjp-Regular.otf}
-  mainfont: NotoSerifCJKjp-Regular.otf
-  mainfontoptions: Scale=MatchUppercase
-  sansfont: NotoSansCJKjp-Regular.otf
-  monofont: NotoSansMonoCJKjp-Regular.otf
-  # mathfont: Noto Serif CJK JP
-  CJKmainfont: NotoSerifCJKjp-Regular.otf
-  CJKoptions: Scale=1
+  latex_engine: xelatex
+  link-citations: yes
+  # pandoc_args: [--top-level-division=chapter, --wrap=none]
+  pandoc_args: [--top-level-division=chapter]
+  toc_depth: 3
+  template: null
+  # toc_unnumbered: no
+  toc_appendix: yes
+  highlight_bw: yes
+  quote_footer: ["\\VA{", "}{}"]
