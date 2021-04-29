@@ -1,6 +1,6 @@
 bookdown::gitbook:
   css: style.css
-  df_print: paged
+  # df_print: paged
   # highlight: tango
   lib_dir: assets
   md_extensions: -ascii_identifiers

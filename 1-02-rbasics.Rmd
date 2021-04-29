@@ -46,25 +46,25 @@ knitr::read_chunk("./learnr/tutorial.R")
 
 ### 算術演算の基本
 　算術演算の基本である加減乗除算の四則演算は他のプログラミング言語や OS に付属の電卓アプリなどと同じです。  
-```{r arithmetic-operations, exercise=TRUE}
+```{r arithmetic-operations, exercise=FALSE}
 ```
 
 　  
 
 ### 代入演算の基本
 　変数に演算結果を代入するには代入演算子（`<-`）を用います。変数を使うための変数宣言は不要です。また、代入結果を確認（表示）するためには変数名だけを記述して実行します。  
-```{r assignment-operations, exercise=TRUE}
+```{r assignment-operations, exercise=FALSE}
 ```
 
 　  
 
 ### 変数演算の基本
 　定数だけでなく変数同士、変数と定数の演算も可能です。ここでは変数同士および変数と定数の四則演算を行ってみます。  
-```{r variable-operation, exercise=TRUE}
+```{r variable-operation, exercise=FALSE}
 ```
 
 　さらに変数同士の演習結果を変数に代入してみます。代入前後で変数の値を確認して変数がどのように変化するかのかを合わせて確認します。  
-```{r variable-operation-overwrite, exercise=TRUE}
+```{r variable-operation-overwrite, exercise=FALSE}
 ```
 
 　このように R での変数の扱いは非常にシンプルですが、簡単に変数を上書きできてしまう点に留意してください。  
@@ -131,18 +131,18 @@ number_int
 ### ベクトル型
 　ベクトル型は前述のように最も基本となる変数型です。ベクトル型変数を作成するには `c` 関数使います。代入して `str` 関数でクラス、長さ（値の個数）と値を確認してみます。  
 　長さが $1$ の場合は `c` 関数を省略できます。
-```{r vector-1, exercise=TRUE}
+```{r vector-1, exercise=FALSE}
 ```
 　
-```{r vector-2, exercise=TRUE}
+```{r vector-2, exercise=FALSE}
 ```
 
 　文字（型）を代入する場合はクォート（ダブルまはたシングル）で囲みます。
-```{r vector-3, exercise=TRUE}
+```{r vector-3, exercise=FALSE}
 ```
 
 　では文字（型）と数字（型）を混在させたらどうなるでしょう？
-```{r vector-4, exercise=TRUE}
+```{r vector-4, exercise=FALSE}
 ```
 　エラーにはならずベクトル型変数は文字型クラスとして作成されます。これは強制型変換という処理が行われるためです。強制型変換は複数のデータ型が混在した場合により柔軟度の高いデータ型に変換する処理です。論理型、整数型、実数型、複素数型、文字型の順に変換されます。  
 　便利ではありますが意図しない結果を招く可能性がありますので、このような変換があることは覚えておいてください。  
@@ -152,24 +152,24 @@ number_int
 ### 因子型
 　因子型は名義尺度や順序尺度の変数を扱うのに便利な変数型です。因子型を作成するには `factor` 関数を使う順序なしの因子型と `ordered` 関数を使う順序ありの因子型があります。どちらも `levels`（水準） という属性がついているベクトル型です。  
 　後述のデータフレーム型の中で使うと「層別」という処理が楽になります。
-```{r factor, exercise=TRUE}
+```{r factor, exercise=FALSE}
 ```
 
 　`ordered` 型は `levels` に順序がついている点が `factor` 型と異なる点です。
-```{r ordered, exercise=TRUE}
+```{r ordered, exercise=FALSE}
 ```
 
 　  
 
 ### マトリクス型
 　マトリクス型は文字通り二次元配列を扱うための変数型です。作成するには `matrix` 関数を利用します。引数のベクトル型を列方向から二次元に展開します。
-```{r matrix-1, exercise=TRUE}
+```{r matrix-1, exercise=FALSE}
 ```
 　展開方向を変えるには `byrow` オプションを指定します。
-```{r matrix-2, exercise=TRUE}
+```{r matrix-2, exercise=FALSE}
 ```
 　数値だけでなく文字列も扱えます。
-```{r matrix-3, exercise=TRUE}
+```{r matrix-3, exercise=FALSE}
 ```
 
 　  
@@ -177,14 +177,14 @@ number_int
 ### アレイ型
 　アレイ型は多次元配列を扱うのに便利な変数型です。作成するには `array` 関数を利用します。第一引数で指定したベクトル型のデータを第二引数で指定した構造（行, 列, 次元）にしたがって展開します。  
 　展開は列方向のみで `matrix` 型にある `byrow` オプションはありません。また、第一引数のデータ数が足りない場合は先頭からリサイクルして展開します。
-```{r array, exercise=TRUE}
+```{r array, exercise=FALSE}
 ```
 
 　  
 
 ### データフレーム型
 　データフレーム型は表形式のデータを扱うのに非常に便利な変数型です。列ごとに異なるデータ型の変数を格納することが可能ですので、データベースのテーブルのようなものです。ただし、全ての列において行数が同一でなければなりません。データフレーム型を作成するには `data.frame` 関数を用います。
-```{r dataframe, exercise=TRUE}
+```{r dataframe, exercise=FALSE}
 ```
 　データフレーム型は列名を指定することが可能です。また、文字型のデータはデフォルトで因子型変数として扱われます。
 
@@ -192,7 +192,7 @@ number_int
 
 ### リスト型
 　リスト型はデータフレーム型とは異なり不等長のベクトル型変数を格納できる変数型です。ベクトル型の他にもマトリクス型やデータフレーム型、リスト型地震を格納できる非常に柔軟な構造であるため様々な関数あが返り値と使っています。
-```{r list, exercise=TRUE}
+```{r list, exercise=FALSE}
 ```
 
 　  
@@ -212,7 +212,7 @@ number_int
 
 　  
 　`NULL` を除く定数はデータ型のクラスですので強制型変換の対象となります。以下のような変換が行われますので注意してください。
-```{r constant, exercise=TRUE}
+```{r constant, exercise=FALSE}
 ```
 
 　
@@ -237,45 +237,45 @@ NA_character_ | 文字型
 
 ### `[` 演算子
 　`[` 演算子はベクトル型系の要素を参照するための演算子です。例えば $5$ 番目の値を参照するには以下のようにします。
-```{r vector-access-1, exercise=TRUE}
+```{r vector-access-1, exercise=FALSE}
 ```
 
 　マトリクス型では、行・列・セルの三通りの参照が可能です。
-```{r vector-access-2, exercise=TRUE}
+```{r vector-access-2, exercise=FALSE}
 ```
 　  
 　アレイ型でも同様の参照が可能です。ただし、マトリクス型とは異なり次元が絡んできますので、表示は少しややこしくなります。以下の $2 \times 2$ の $4$ 次元アレイで説明します。
-```{r array-access-1, exercise=TRUE}
+```{r array-access-1, exercise=FALSE}
 ```
 　第 $1$ 次元を参照します。
-```{r array-access-2, exercise=TRUE}
+```{r array-access-2, exercise=FALSE}
 ```
 　第 $1$ 次元の $1$ 行目を参照します。
-```{r array-access-3, exercise=TRUE}
+```{r array-access-3, exercise=FALSE}
 ```
 　第 $1$ 次元の $1$ 列目を参照します。
-```{r array-access-4, exercise=TRUE}
+```{r array-access-4, exercise=FALSE}
 ```
 　全次元の $1$ 行目を参照します。参照結果は列が各次元になる点に注意してください。
-```{r array-access-5, exercise=TRUE}
+```{r array-access-5, exercise=FALSE}
 ```
 　全次元の $1$ 列目を参照します。行の参照と同様に参照結果は列が各次元になります。
-```{r array-access-6, exercise=TRUE}
+```{r array-access-6, exercise=FALSE}
 ```
 　全次元の $1$ 行 $1$ 列目を参照します。
-```{r array-access-7, exercise=TRUE}
+```{r array-access-7, exercise=FALSE}
 ```
 
 　  
 
 ### `$` 演算子
 　`$` 演算子はデータフレーム型やリスト型の要素を参照するための演算子です。
-```{r df-access-1, exercise=TRUE}
+```{r df-access-1, exercise=FALSE}
 ```
-```{r df-access-2, exercise=TRUE}
+```{r df-access-2, exercise=FALSE}
 ```
 　さらに要素内を参照するには前述の `[` 演算子と組み合わせます。
-```{r df-access-3, exercise=TRUE}
+```{r df-access-3, exercise=FALSE}
 ```
 
 　リスト型を `$` 演算子で参照するの場合は 要素が `names` 属性を持っていることが前提です。以下のリスト型変数では `$` 表示の後ろに要素名が表示されいている `blood`, `data` が `$` 演算子で参照可能です。
@@ -339,7 +339,7 @@ x[[2]][1]
 ## 演算子（Operators）
 　R はベクトル演算が可能ですので演算子は基本的にベクトル演算に対応しています。  
 　演算子は単項演算子と二項演算子に大別できます。二項演算子には算術演算子、比較演算子、論理演算子、特殊演算子があります。等長のベクトル型変数どうし、もしくは、ベクトル型変数とスカラ型変数の間の演算が可能です。不等長のベクトル変数に対して二項演算子を利用した場合、足りない値は先頭からリサイクルされて演算されます。条件によってはワーニングも表示されませんので不等長のベクトル演算は注意してください。  
-```{r operators, exercise=TRUE}
+```{r operators, exercise=FALSE}
 ```
 
 　  
