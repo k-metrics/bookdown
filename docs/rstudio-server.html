@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-03-28" />
+<meta name="date" content="2021-04-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -135,15 +135,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="how-to-read.html"><a href="how-to-read.html"><i class="fa fa-check"></i><b>0.1</b> How to read</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="how-to-analize.html"><a href="how-to-analize.html"><i class="fa fa-check"></i><b>1.1</b> How to analize</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="how-to-analize.html"><a href="how-to-analize.html#visualize"><i class="fa fa-check"></i><b>1.1.1</b> Visualize</a></li>
-<li class="chapter" data-level="1.1.2" data-path="how-to-analize.html"><a href="how-to-analize.html#transform"><i class="fa fa-check"></i><b>1.1.2</b> Transform</a></li>
+<li class="chapter" data-level="" data-path="how-to-analize.html"><a href="how-to-analize.html#visualizetransform"><i class="fa fa-check"></i>Visualize/Transform</a></li>
+<li class="chapter" data-level="" data-path="how-to-analize.html"><a href="how-to-analize.html#model"><i class="fa fa-check"></i>Model　</a></li>
+<li class="chapter" data-level="" data-path="how-to-analize.html"><a href="how-to-analize.html#communicate"><i class="fa fa-check"></i>Communicate　</a></li>
+<li class="chapter" data-level="1.1.1" data-path="how-to-analize.html"><a href="how-to-analize.html#importtidy"><i class="fa fa-check"></i><b>1.1.1</b> Import/Tidy</a></li>
+<li class="chapter" data-level="1.1.2" data-path="how-to-analize.html"><a href="how-to-analize.html#program"><i class="fa fa-check"></i><b>1.1.2</b> Program</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i><b>1.2</b> Data Science Workflow</a></li>
+<li class="chapter" data-level="1.3" data-path="tidyverse-eco-system.html"><a href="tidyverse-eco-system.html"><i class="fa fa-check"></i><b>1.3</b> Tidyverse Eco System</a></li>
 </ul></li>
 <li class="part"><span><b>I Program</b></span></li>
 <li class="chapter" data-level="2" data-path="environments.html"><a href="environments.html"><i class="fa fa-check"></i><b>2</b> Environments</a></li>
@@ -209,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>5.2</b> longer</a></li>
 <li class="chapter" data-level="5.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>5.3</b> wider</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="transform-1.html"><a href="transform-1.html"><i class="fa fa-check"></i><b>6</b> Transform</a>
+<li class="chapter" data-level="6" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>6</b> Transform</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>6.1</b> filter</a></li>
 <li class="chapter" data-level="6.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>6.2</b> rename</a></li>
@@ -409,14 +416,11 @@ gitbook.start({
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "white",
-"family": "sans",
+"theme": "night",
+"family": "serif",
 "size": 2
 },
-"edit": {
-"link": null,
-"text": null
-},
+"edit": null,
 "history": {
 "link": null,
 "text": null
@@ -425,14 +429,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["R.pdf"],
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
 },
 "toolbar": {
-"position": "static"
-}
+"position": "fixed"
+},
+"search": true
 });
 });
 </script>

@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-03-28" />
+<meta name="date" content="2021-04-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -135,15 +135,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="how-to-read.html"><a href="how-to-read.html"><i class="fa fa-check"></i><b>0.1</b> How to read</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="how-to-analize.html"><a href="how-to-analize.html"><i class="fa fa-check"></i><b>1.1</b> How to analize</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="how-to-analize.html"><a href="how-to-analize.html#visualize"><i class="fa fa-check"></i><b>1.1.1</b> Visualize</a></li>
-<li class="chapter" data-level="1.1.2" data-path="how-to-analize.html"><a href="how-to-analize.html#transform"><i class="fa fa-check"></i><b>1.1.2</b> Transform</a></li>
+<li class="chapter" data-level="" data-path="how-to-analize.html"><a href="how-to-analize.html#visualizetransform"><i class="fa fa-check"></i>Visualize/Transform</a></li>
+<li class="chapter" data-level="" data-path="how-to-analize.html"><a href="how-to-analize.html#model"><i class="fa fa-check"></i>Model　</a></li>
+<li class="chapter" data-level="" data-path="how-to-analize.html"><a href="how-to-analize.html#communicate"><i class="fa fa-check"></i>Communicate　</a></li>
+<li class="chapter" data-level="1.1.1" data-path="how-to-analize.html"><a href="how-to-analize.html#importtidy"><i class="fa fa-check"></i><b>1.1.1</b> Import/Tidy</a></li>
+<li class="chapter" data-level="1.1.2" data-path="how-to-analize.html"><a href="how-to-analize.html#program"><i class="fa fa-check"></i><b>1.1.2</b> Program</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i><b>1.2</b> Data Science Workflow</a></li>
+<li class="chapter" data-level="1.3" data-path="tidyverse-eco-system.html"><a href="tidyverse-eco-system.html"><i class="fa fa-check"></i><b>1.3</b> Tidyverse Eco System</a></li>
 </ul></li>
 <li class="part"><span><b>I Program</b></span></li>
 <li class="chapter" data-level="2" data-path="environments.html"><a href="environments.html"><i class="fa fa-check"></i><b>2</b> Environments</a></li>
@@ -209,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>5.2</b> longer</a></li>
 <li class="chapter" data-level="5.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>5.3</b> wider</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="transform-1.html"><a href="transform-1.html"><i class="fa fa-check"></i><b>6</b> Transform</a>
+<li class="chapter" data-level="6" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>6</b> Transform</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>6.1</b> filter</a></li>
 <li class="chapter" data-level="6.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>6.2</b> rename</a></li>
@@ -334,42 +341,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">C.3</span> Writing R code</h2>
 <p>　では、実際に RStudio を利用して簡単なコードを書いてみましょう。初学者が学習のために R のコードを記述するには R Notebook 形式が便利です。 R Notebook 形式は マークダウン言語とコードを混在できる R Markdown 形式を簡易にしたものです。コード以外に説明などを記述できるのでアウトプットしながらの学習が可能です。
 　R Notebook 形式を使うにはメニューから［File］-［New File］-［R Notebook］を実行します。すると下図のようなソースエディタ（以降、エディタ）が開きます。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-44"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-45"></span>
 <img src="fig/RStudio/DT_RN.png" alt="R Notebook file" width="80%" />
 <p class="caption">
 Fig C.3: R Notebook file
 </p>
 </div>
 <p>　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As…］を実行して適当な場所に適当な名前で保存しておきます。ここでは <code>test</code> という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は <code>test.Rmd</code> となります。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-45"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-46"></span>
 <img src="fig/RStudio/DT_RN_Saved.png" alt="R Notebook saved file" width="80%" />
 <p class="caption">
 Fig C.4: R Notebook saved file
 </p>
 </div>
 <p>　ファイルを保存したら 6 行目の「This is an　…」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-46"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-47"></span>
 <img src="fig/RStudio/DT_RN_Insert_Chunk.png" alt="R Notebook insert chunk" width="80%" />
 <p class="caption">
 Fig C.5: R Notebook insert chunk
 </p>
 </div>
 <p>　すると上図のように三連のバッククォート（<code>```</code>）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-47"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-48"></span>
 <img src="fig/RStudio/DT_RN_First_Code.png" alt="R Notebook first code" width="80%" />
 <p class="caption">
 Fig C.6: R Notebook first code
 </p>
 </div>
 <p>　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-48"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-49"></span>
 <img src="fig/RStudio/DT_RN_Run_Code.png" alt="R Notebook run code" width="80%" />
 <p class="caption">
 Fig C.7: R Notebook run code
 </p>
 </div>
 <p>　コードチャンクの下と <strong>Console</strong> ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから <code>Chunk Output Inline</code> にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-49"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-50"></span>
 <img src="fig/RStudio/DT_RN_Option.png" alt="R Notebook option" width="80%" />
 <p class="caption">
 Fig C.8: R Notebook option
@@ -410,14 +417,11 @@ gitbook.start({
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "white",
-"family": "sans",
+"theme": "night",
+"family": "serif",
 "size": 2
 },
-"edit": {
-"link": null,
-"text": null
-},
+"edit": null,
 "history": {
 "link": null,
 "text": null
@@ -426,14 +430,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["R.pdf"],
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
 },
 "toolbar": {
-"position": "static"
-}
+"position": "fixed"
+},
+"search": true
 });
 });
 </script>

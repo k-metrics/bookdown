@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-03-28" />
+<meta name="date" content="2021-04-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 
-<link rel="next" href="introduction.html"/>
+<link rel="next" href="how-to-read.html"/>
 <script src="assets/header-attrs-2.7/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -135,15 +135,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="how-to-read.html"><a href="how-to-read.html"><i class="fa fa-check"></i><b>0.1</b> How to read</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="how-to-analize.html"><a href="how-to-analize.html"><i class="fa fa-check"></i><b>1.1</b> How to analize</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="how-to-analize.html"><a href="how-to-analize.html#visualize"><i class="fa fa-check"></i><b>1.1.1</b> Visualize</a></li>
-<li class="chapter" data-level="1.1.2" data-path="how-to-analize.html"><a href="how-to-analize.html#transform"><i class="fa fa-check"></i><b>1.1.2</b> Transform</a></li>
+<li class="chapter" data-level="" data-path="how-to-analize.html"><a href="how-to-analize.html#visualizetransform"><i class="fa fa-check"></i>Visualize/Transform</a></li>
+<li class="chapter" data-level="" data-path="how-to-analize.html"><a href="how-to-analize.html#model"><i class="fa fa-check"></i>Model　</a></li>
+<li class="chapter" data-level="" data-path="how-to-analize.html"><a href="how-to-analize.html#communicate"><i class="fa fa-check"></i>Communicate　</a></li>
+<li class="chapter" data-level="1.1.1" data-path="how-to-analize.html"><a href="how-to-analize.html#importtidy"><i class="fa fa-check"></i><b>1.1.1</b> Import/Tidy</a></li>
+<li class="chapter" data-level="1.1.2" data-path="how-to-analize.html"><a href="how-to-analize.html#program"><i class="fa fa-check"></i><b>1.1.2</b> Program</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i><b>1.2</b> Data Science Workflow</a></li>
+<li class="chapter" data-level="1.3" data-path="tidyverse-eco-system.html"><a href="tidyverse-eco-system.html"><i class="fa fa-check"></i><b>1.3</b> Tidyverse Eco System</a></li>
 </ul></li>
 <li class="part"><span><b>I Program</b></span></li>
 <li class="chapter" data-level="2" data-path="environments.html"><a href="environments.html"><i class="fa fa-check"></i><b>2</b> Environments</a></li>
@@ -209,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>5.2</b> longer</a></li>
 <li class="chapter" data-level="5.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>5.3</b> wider</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="transform-1.html"><a href="transform-1.html"><i class="fa fa-check"></i><b>6</b> Transform</a>
+<li class="chapter" data-level="6" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>6</b> Transform</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>6.1</b> filter</a></li>
 <li class="chapter" data-level="6.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>6.2</b> rename</a></li>
@@ -334,39 +341,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 class="title">Rのすゝめ</h1>
 <h2 class="subtitle"><em>- Rによるデータ分析事始め -</em></h2>
 <p class="author"><em>Sampo Suzuki, CC 4.0 BY-NC-SA</em></p>
-<p class="date"><em>2021-03-28</em></p>
+<p class="date"><em>2021-04-29</em></p>
 </div>
-<div id="welcome" class="section level1 unnumbered">
-<h1>Welcome</h1>
+<div id="preface" class="section level1 unnumbered">
+<h1>Preface</h1>
 <p>　ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す数理資本主義の時代と言われています。<br />
 　<br />
-　<a href="https://www.juse-p.co.jp/products/view/442">『データ指向のソフトウェア品質マネジメント』 <i class="fa １fa-external-link"></i></a> は、日本のソフトウェア品質管理におけるデータドリブン管理の必要性とデータドリブン管理に必要な知識を解説している数少ない書籍です。著者の一人である小池氏が主催している <a href="https://sites.google.com/site/kantometrics/home" target="_blank">データ分析勉強会 <i class="fa １fa-external-link"></i></a> では、メトリクス分析に興味をもつ有志がデータドリブン管理を実践するために様々な分析知識や手法を学んでいます。<br />
+　<a href="https://www.juse-p.co.jp/products/view/442">『データ指向のソフトウェア品質マネジメント』 <i class="fa １fa-external-link"></i></a> は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。著者の一人である小池氏が主催している <a href="https://sites.google.com/site/kantometrics/home" target="_blank">データ分析勉強会 <i class="fa １fa-external-link"></i></a> では、メトリクス分析に興味をもつ有志がこれらの知識を元に統計的コンピューティングによる品質管理を実践するための様々な知識や手法を学んでいます。<br />
 　<br />
-　本書は実務でメトリクス分析を行うソフトウェア品質技術者をはじめとした R を学んでデータ分析をしたい方々を想定読者として R の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の助けになれば幸いです。<br />
+　本書は実務でメトリクス分析を行うソフトウェア品質技術者をはじめとし R を用いてデータ分析を行いたい方々を想定読者として R の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。<br />
 　</p>
 <hr />
 <p>　本書は <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス</a> の下に提供されています。<br />
 　<br />
 　あなたの従うべき条件は以下の通りです。</p>
 <ul>
-<li>表示
+<li><p>表示（BY）</p>
 <ul>
 <li>あなたは 適切なクレジットを表示し、ライセンスへのリンクを提供し、変更があったらその旨を示さなければなりません。これらは合理的であればどのような方法で行っても構いませんが、許諾者があなたやあなたの利用行為を支持していると示唆するような方法は除きます。</li>
 </ul></li>
-<li>非営利
+<li><p>非営利（NC）</p>
 <ul>
 <li>あなたは営利目的でこの資料を利用してはなりません。</li>
 </ul></li>
-<li>継承
+<li><p>継承（SA）</p>
 <ul>
-<li>もしあなたがこの資料をリミックスしたり、改変したり、加工した場合には、あなたはあなたの貢献部分を元の作品と同じライセンスの下に頒布しなければなりません。</li>
+<li>もしあなたがこの資料をリミックスしたり、改変したり、加工した場合には、あなたはあなたの貢献部分を元の作品と同じライセンスの下に頒布しなければなりません。<br />
+　</li>
 </ul></li>
 </ul>
 <div class="figure">
 <img src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" alt="" />
 <p class="caption">CC 4.0 BY-NC-SA</p>
 </div>
-
+<div style="page-break-after: always;"></div>
 </div>
             </section>
 
@@ -374,7 +382,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="how-to-read.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -400,14 +408,11 @@ gitbook.start({
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "white",
-"family": "sans",
+"theme": "night",
+"family": "serif",
 "size": 2
 },
-"edit": {
-"link": null,
-"text": null
-},
+"edit": null,
 "history": {
 "link": null,
 "text": null
@@ -416,14 +421,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["R.pdf"],
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
 },
 "toolbar": {
-"position": "static"
-}
+"position": "fixed"
+},
+"search": true
 });
 });
 </script>
