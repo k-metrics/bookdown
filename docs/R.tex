@@ -17,16 +17,16 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-  \setmainfont[Scale=MatchUppercase]{NotoSerifCJKjp-Regular.otf}
-  \setsansfont[]{NotoSansCJKjp-Regular.otf}
-  \setmonofont[]{NotoSansMonoCJKjp-Regular.otf}
+  \setmainfont[Scale=MatchUppercase]{Noto Serif CJK JP}
+  \setsansfont[]{Noto Sans CJK JP}
+  \setmonofont[]{Source Code Pro}
   \ifxetex
     \usepackage{xeCJK}
-    \setCJKmainfont[Scale=1]{NotoSerifCJKjp-Regular.otf}
+    \setCJKmainfont[Scale=1.0]{Noto Serif CJK JP}
   \fi
   \ifluatex
     \usepackage[]{luatexja-fontspec}
-    \setmainjfont[Scale=1]{NotoSerifCJKjp-Regular.otf}
+    \setmainjfont[Scale=1.0]{Noto Serif CJK JP}
   \fi
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
@@ -121,7 +121,7 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-\usepackage[a4paper, total={7in, 9.5in}]{geometry}
+\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -135,14 +135,14 @@
 \usepackage{threeparttablex}
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
-\usepackage{fontawesome5}
 \usepackage{xcolor}
+\usepackage{fontawesome5}
 \usepackage{xeCJK}
-\usepackage{zxjatype}
-\setCJKmainfont{NotoSerifCJKjp-Regular.otf}
-\setCJKmonofont{NotoSansMonoCJKjp-Regular.otf}
-\setCJKsansfont{NotoSansCJKjp-Regular.otf}
-\setCJKmathfont{NotoSerifCJKjp-Regular.otf}
+\usepackage[Noto]{zxjatype}
+\setCJKmainfont{Noto Serif CJK JP}
+\setCJKmonofont{Noto Sans Mono CJK JP}
+\setCJKsansfont{Noto Sans CJK JP}
+\setCJKmathfont{Noto Serif CJK JP}
 
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
@@ -256,9 +256,7 @@
 \end{quote}
 
 　\\
-R はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。\\
-
-\newpage
+R はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
 
 \hypertarget{ux5206ux6790ux624bux9806}{%
 \section{分析手順}\label{ux5206ux6790ux624bux9806}}

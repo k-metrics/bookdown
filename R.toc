@@ -2,8 +2,8 @@
 \contentsline {chapter}{はじめに}{11}{chapter*.3}%
 \contentsline {section}{想定読者}{11}{section*.4}%
 \contentsline {chapter}{\numberline {1}なぜ R を使うのか}{13}{chapter.1}%
-\contentsline {section}{\numberline {1.1}分析手順}{14}{section.1.1}%
-\contentsline {subsection}{Visualize/Transform}{14}{section*.5}%
+\contentsline {section}{\numberline {1.1}分析手順}{13}{section.1.1}%
+\contentsline {subsection}{Visualize/Transform}{13}{section*.5}%
 \contentsline {subsection}{Model　}{15}{section*.6}%
 \contentsline {subsection}{Communicate　}{15}{section*.7}%
 \contentsline {subsection}{\numberline {1.1.1}Import/Tidy}{15}{subsection.1.1.1}%
@@ -40,14 +40,14 @@
 \contentsline {subsection}{\numberline {3.7.4}特殊演算子}{38}{subsection.3.7.4}%
 \contentsline {subsection}{\numberline {3.7.5}演算子の優先順位}{39}{subsection.3.7.5}%
 \contentsline {section}{\numberline {3.8}制御文}{39}{section.3.8}%
-\contentsline {subsection}{\numberline {3.8.1}条件分岐}{39}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.1}条件分岐}{40}{subsection.3.8.1}%
 \contentsline {subsection}{\numberline {3.8.2}if, else}{40}{subsection.3.8.2}%
-\contentsline {subsection}{\numberline {3.8.3}switch}{40}{subsection.3.8.3}%
+\contentsline {subsection}{\numberline {3.8.3}switch}{41}{subsection.3.8.3}%
 \contentsline {subsubsection}{\numberline {3.8.3.1}引数が整数の場合}{41}{subsubsection.3.8.3.1}%
 \contentsline {subsubsection}{\numberline {3.8.3.2}引数が文字の場合}{41}{subsubsection.3.8.3.2}%
 \contentsline {subsection}{\numberline {3.8.4}ifelse}{42}{subsection.3.8.4}%
 \contentsline {subsection}{\numberline {3.8.5}繰り返し}{42}{subsection.3.8.5}%
-\contentsline {subsection}{\numberline {3.8.6}for}{42}{subsection.3.8.6}%
+\contentsline {subsection}{\numberline {3.8.6}for}{43}{subsection.3.8.6}%
 \contentsline {subsection}{\numberline {3.8.7}while, repeat}{43}{subsection.3.8.7}%
 \contentsline {part}{II\hspace {1em}Wrangle}{45}{part.2}%
 \contentsline {chapter}{\numberline {4}Import}{47}{chapter.4}%
