@@ -7,9 +7,43 @@ site: bookdown::bookdown_site
 github-repo: k-metrics/bookdown
 description: ""
 # LaTeX関連の設定はベースとなるRmdに記述しないと正しく認識されません
-## Additional setting for Japanese PDF fonts, Ubuntu
 always_allow_html: true
+# documentclass: krantz
+fontsize: 12pt
+## Additional setting for Japanese PDF fonts, Ubuntu
+# header-includes: |
+#   \usepackage{booktabs}
+#   \usepackage{longtable}
+#   \usepackage{array}
+#   \usepackage{multirow}
+#   \usepackage{wrapfig}
+#   \usepackage{float}
+#   \usepackage{colortbl}
+#   \usepackage{pdflscape}
+#   \usepackage{tabu}
+#   \usepackage{threeparttable}
+#   \usepackage{threeparttablex}
+#   \usepackage[normalem]{ulem}
+#   \usepackage{makecell}
+#   \usepackage{xcolor}
+#   \usepackage{xeCJK}
+#   \usepackage[Noto]{zxjatype}
+#   \setCJKmainfont{Noto Serif CJK JP}
+#   \setCJKmonofont{Noto Sans Mono CJK JP}
+#   \setCJKsansfont{Noto Sans CJK JP}
+#   \setCJKmathfont{Noto Serif CJK JP}
+# mainfont: "Noto Serif CJK JP"
+# mainfontoptions: "Scale=MatchUppercase"
+# sansfont: "Noto Sans CJK JP"
+# # monofont: Noto Sans Mono CJK JP
+# monofont: "Source Code Pro"
+# # monofontoptions: "Scale=0.8"
+# # mathfont: Noto Serif CJK JP
+# CJKmainfont: "Noto Serif CJK JP"
+# CJKoptions: "Scale=1.0"
+## Additional setting for Japanese PDF fonts, Winodws10 (Use font filename)
 header-includes: |
+  \usepackage[a4paper, total={7in, 9.5in}]{geometry}
   \usepackage{booktabs}
   \usepackage{longtable}
   \usepackage{array}
@@ -23,52 +57,21 @@ header-includes: |
   \usepackage{threeparttablex}
   \usepackage[normalem]{ulem}
   \usepackage{makecell}
+  \usepackage{fontawesome5}
   \usepackage{xcolor}
   \usepackage{xeCJK}
-  \usepackage[Noto]{zxjatype}
-  \setCJKmainfont{Noto Serif CJK JP}
-  \setCJKmonofont{Noto Sans Mono CJK JP}
-  \setCJKsansfont{Noto Sans CJK JP}
-  \setCJKmathfont{Noto Serif CJK JP}
-fontsize: 12pt
-mainfont: "Noto Serif CJK JP"
-mainfontoptions: "Scale=MatchUppercase"
-sansfont: "Noto Sans CJK JP"
-# monofont: Noto Sans Mono CJK JP
-monofont: "Source Code Pro"
-# monofontoptions: "Scale=0.8"
+  \usepackage{zxjatype}
+  \setCJKmainfont{NotoSerifCJKjp-Regular.otf}
+  \setCJKmonofont{NotoSansMonoCJKjp-Regular.otf}
+  \setCJKsansfont{NotoSansCJKjp-Regular.otf}
+  \setCJKmathfont{NotoSerifCJKjp-Regular.otf}
+mainfont: NotoSerifCJKjp-Regular.otf
+mainfontoptions: Scale=MatchUppercase
+sansfont: NotoSansCJKjp-Regular.otf
+monofont: NotoSansMonoCJKjp-Regular.otf
 # mathfont: Noto Serif CJK JP
-CJKmainfont: "Noto Serif CJK JP"
-CJKoptions: "Scale=1.0"
-## Additional setting for Japanese PDF fonts, Winodws10 (Use font filename)
-  # header-includes: |
-  #   \usepackage{booktabs}
-  #   \usepackage{longtable}
-  #   \usepackage{array}
-  #   \usepackage{multirow}
-  #   \usepackage{wrapfig}
-  #   \usepackage{float}
-  #   \usepackage{colortbl}
-  #   \usepackage{pdflscape}
-  #   \usepackage{tabu}
-  #   \usepackage{threeparttable}
-  #   \usepackage{threeparttablex}
-  #   \usepackage[normalem]{ulem}
-  #   \usepackage{makecell}
-  #   \usepackage{xcolor}
-  #   \usepackage{xeCJK}
-  #   \usepackage{zxjatype}
-  #   \setCJKmainfont{NotoSerifCJKjp-Regular.otf}
-  #   \setCJKmonofont{NotoSansMonoCJKjp-Regular.otf}
-  #   \setCJKsansfont{NotoSansCJKjp-Regular.otf}
-  #   \setCJKmathfont{NotoSerifCJKjp-Regular.otf}
-  # mainfont: NotoSerifCJKjp-Regular.otf
-  # mainfontoptions: Scale=MatchUppercase
-  # sansfont: NotoSansCJKjp-Regular.otf
-  # monofont: NotoSansMonoCJKjp-Regular.otf
-  # # mathfont: Noto Serif CJK JP
-  # CJKmainfont: NotoSerifCJKjp-Regular.otf
-  # CJKoptions: Scale=1
+CJKmainfont: NotoSerifCJKjp-Regular.otf
+CJKoptions: Scale=1
 ---
 
 
@@ -91,13 +94,14 @@ if (!is.null(output)) {
 require(tidyverse)
 ```
 
-# はじめに {.unnumbered}
+
+# License {.unnumbered}
 
 ------------------------------------------------------------------------
 
-　本書は [クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja) の下に提供されています。\
+本書は [クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja) の下に提供されています。\
 　\
-　あなたの従うべき条件は以下の通りです。
+あなたの従うべき条件は以下の通りです。
 
 -   表示（BY）
 
@@ -113,22 +117,5 @@ require(tidyverse)
         　
 
 ![CC 4.0 BY-NC-SA](./fig/88x31.png)
-<!-- ![CC 4.0 BY-NC-SA](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png) -->
 
 ------------------------------------------------------------------------
-
-
-\newpage
-
-
-　ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す数理資本主義の時代と言われています。\
-　\
-　[『データ指向のソフトウェア品質マネジメント』 <i class="fa １fa-external-link"></i>](https://www.juse-p.co.jp/products/view/442) は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。著者の一人である小池氏が主催している [データ分析勉強会 <i class="fa １fa-external-link"></i>](https://sites.google.com/site/kantometrics/home){target="_blank"} では、メトリクス分析に興味をもつ有志がこれらの知識を元に統計的コンピューティングによる品質管理を実践するための様々な知識や手法を学んでいます。\
-　\
-　本書は実務でメトリクス分析を行うソフトウェア品質技術者をはじめとし R を用いてデータ分析を行いたい方々を想定読者として R の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。\
-　
-
-## 想定読者 {.unnumbered}
-　本書は基本的なコンピュータの知識と基本的な統計の知識を有している読者におすゝめします。本書は R の実行環境構築に関する詳細な解説を行いませんので、実行環境の構築に不安がある方は次章で紹介している無料のクラウドサービスをご利用ください。
-
-￥

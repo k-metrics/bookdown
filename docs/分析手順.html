@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7: Base R | Rのすゝめ</title>
-  <meta name="description" content="Chapter 7: Base R | Rのすゝめ" />
+  <title>1.1 分析手順 | Rのすゝめ</title>
+  <meta name="description" content="1.1 分析手順 | Rのすゝめ" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7: Base R | Rのすゝめ" />
+  <meta property="og:title" content="1.1 分析手順 | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7: Base R | Rのすゝめ" />
+  <meta name="twitter:title" content="1.1 分析手順 | Rのすゝめ" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="summarize.html"/>
-<link rel="next" href="plot.html"/>
+<link rel="prev" href="なぜ-r-を使うのか.html"/>
+<link rel="next" href="data-science-workflow.html"/>
 <script src="assets/header-attrs-2.7/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -336,16 +336,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="base-r" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7:</span> Base R</h1>
+<div id="分析手順" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> 分析手順</h2>
+<p>分析対象のデータがどのようなものかを知ることはデータ分析を行うにあたって重要なことのひとつです。どのような分布なのか、どのような値の範囲なのか、全てのデータが揃っているのかなど俯瞰して把握します。　<br />
+　</p>
+<div id="visualizetransform" class="section level3 unnumbered">
+<h3>Visualize/Transform</h3>
+<p>　データを俯瞰するためには可視化（Visualize）が分かりやすい手法の一つです。例えば、計量値や計数値であれば棒グラフを用いて分布を確認したり、</p>
+<p><img src="R_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>　だた、棒グラフでは今ひとつ分布の状況が分かりませんので、度数を求めてヒストグラムを描いたり、五数要約を求めて箱ひげ図を描くことでよりデータの分布（状況）を把握することができるようになります。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="分析手順.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(iris, <span class="fu">tapply</span>(Sepal.Width, Species, fivenum))</span></code></pre></div>
+<pre><code>## $setosa
+## [1] 2.3 3.2 3.4 3.7 4.4
+## 
+## $versicolor
+## [1] 2.0 2.5 2.8 3.0 3.4
+## 
+## $virginica
+## [1] 2.2 2.8 3.0 3.2 3.8</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="分析手順.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(iris, <span class="fu">tapply</span>(Sepal.Length, Species, fivenum))</span></code></pre></div>
+<pre><code>## $setosa
+## [1] 4.3 4.8 5.0 5.2 5.8
+## 
+## $versicolor
+## [1] 4.9 5.6 5.9 6.3 7.0
+## 
+## $virginica
+## [1] 4.9 6.2 6.5 6.9 7.9</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="分析手順.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(iris, <span class="fu">hist</span>(Sepal.Width, <span class="at">plot =</span> <span class="cn">FALSE</span>))<span class="sc">$</span>count</span></code></pre></div>
+<pre><code>##  [1]  4  7 13 23 36 24 18 10  9  3  2  1</code></pre>
+<p>　つまり、データの把握（分布の把握）とは可視化（Visualize）と変換（Transform）の繰り返し作業と言えます。</p>
+</div>
+<div id="model" class="section level3 unnumbered">
+<h3>Model　</h3>
+</div>
+<div id="communicate" class="section level3 unnumbered">
+<h3>Communicate　</h3>
+</div>
+<div id="importtidy" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Import/Tidy</h3>
+</div>
+<div id="program" class="section level3" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Program</h3>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="summarize.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="plot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="なぜ-r-を使うのか.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-science-workflow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

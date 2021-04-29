@@ -27,7 +27,7 @@ bookdown::pdf_book:
   fig_crop: false
   keep_tex: yes
   latex_engine: xelatex
-  link-citations: yes
+  link-citations: true
   # pandoc_args: [--top-level-division=chapter, --wrap=none]
   pandoc_args: [--top-level-division=chapter]
   toc_depth: 3

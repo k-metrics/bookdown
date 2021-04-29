@@ -17,16 +17,16 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-  \setmainfont[Scale=MatchUppercase]{Noto Serif CJK JP}
-  \setsansfont[]{Noto Sans CJK JP}
-  \setmonofont[]{Source Code Pro}
+  \setmainfont[Scale=MatchUppercase]{NotoSerifCJKjp-Regular.otf}
+  \setsansfont[]{NotoSansCJKjp-Regular.otf}
+  \setmonofont[]{NotoSansMonoCJKjp-Regular.otf}
   \ifxetex
     \usepackage{xeCJK}
-    \setCJKmainfont[Scale=1.0]{Noto Serif CJK JP}
+    \setCJKmainfont[Scale=1]{NotoSerifCJKjp-Regular.otf}
   \fi
   \ifluatex
     \usepackage[]{luatexja-fontspec}
-    \setmainjfont[Scale=1.0]{Noto Serif CJK JP}
+    \setmainjfont[Scale=1]{NotoSerifCJKjp-Regular.otf}
   \fi
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
@@ -121,6 +121,7 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
+\usepackage[a4paper, total={7in, 9.5in}]{geometry}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -134,13 +135,14 @@
 \usepackage{threeparttablex}
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
+\usepackage{fontawesome5}
 \usepackage{xcolor}
 \usepackage{xeCJK}
-\usepackage[Noto]{zxjatype}
-\setCJKmainfont{Noto Serif CJK JP}
-\setCJKmonofont{Noto Sans Mono CJK JP}
-\setCJKsansfont{Noto Sans CJK JP}
-\setCJKmathfont{Noto Serif CJK JP}
+\usepackage{zxjatype}
+\setCJKmainfont{NotoSerifCJKjp-Regular.otf}
+\setCJKmonofont{NotoSansMonoCJKjp-Regular.otf}
+\setCJKsansfont{NotoSansCJKjp-Regular.otf}
+\setCJKmathfont{NotoSerifCJKjp-Regular.otf}
 
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
@@ -166,15 +168,15 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
-\hypertarget{ux306fux3058ux3081ux306b}{%
-\chapter*{はじめに}\label{ux306fux3058ux3081ux306b}}
-\addcontentsline{toc}{chapter}{はじめに}
+\hypertarget{license}{%
+\chapter*{License}\label{license}}
+\addcontentsline{toc}{chapter}{License}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-　本書は \href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja}{クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス} の下に提供されています。\\
+本書は \href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja}{クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス} の下に提供されています。\\
 　\\
-　あなたの従うべき条件は以下の通りです。
+あなたの従うべき条件は以下の通りです。
 
 \begin{itemize}
 \item
@@ -204,31 +206,34 @@
   \end{itemize}
 \end{itemize}
 
+\begin{figure}
+\centering
 \includegraphics{./fig/88x31.png}
+\caption{CC 4.0 BY-NC-SA}
+\end{figure}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\newpage
+\hypertarget{ux306fux3058ux3081ux306b}{%
+\chapter*{はじめに}\label{ux306fux3058ux3081ux306b}}
+\addcontentsline{toc}{chapter}{はじめに}
 
-　ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す数理資本主義の時代と言われています。\\
+ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す数理資本主義の時代と言われています。\\
 　\\
-　\href{https://www.juse-p.co.jp/products/view/442}{『データ指向のソフトウェア品質マネジメント』 } は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。著者の一人である小池氏が主催している \href{https://sites.google.com/site/kantometrics/home}{データ分析勉強会 } では、メトリクス分析に興味をもつ有志がこれらの知識を元に統計的コンピューティングによる品質管理を実践するための様々な知識や手法を学んでいます。\\
+\href{https://www.juse-p.co.jp/products/view/442}{『データ指向のソフトウェア品質マネジメント』 } は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。著者の一人である小池氏が主催している \href{https://sites.google.com/site/kantometrics/home}{データ分析勉強会 } では、メトリクス分析に興味をもつ有志がこれらの知識を元に統計的コンピューティングによる品質管理を実践するための様々な知識や手法を学んでいます。\\
 　\\
-　本書は実務でメトリクス分析を行うソフトウェア品質技術者をはじめとし R を用いてデータ分析を行いたい方々を想定読者として R の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。\\
-　
+本書は実務でメトリクス分析を行うソフトウェア品質技術者をはじめとし R を用いてデータ分析を行いたい方々を想定読者として R の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。
 
 \hypertarget{ux60f3ux5b9aux8aadux8005}{%
 \section*{想定読者}\label{ux60f3ux5b9aux8aadux8005}}
 \addcontentsline{toc}{section}{想定読者}
 
-　本書は基本的なコンピュータの知識と基本的な統計の知識を有している読者におすゝめします。本書は R の実行環境構築に関する詳細な解説を行いませんので、実行環境の構築に不安がある方は次章で紹介している無料のクラウドサービスをご利用ください。
+本書は基本的なコンピュータの知識と基礎的な統計の知識を有している読者を想定しています。本書では \href{https://cran.r-project.org/}{R} の分析環境の構築に関する詳細な解説は行いませんので、分析環境の構築に不安がある読者は \href{https://colab.research.google.com/notebook\#create=true\&language=r}{Google Colaboratory} を利用してみてください。
 
-￥
+\hypertarget{ux306aux305c-r-ux3092ux4f7fux3046ux306eux304b}{%
+\chapter{なぜ R を使うのか}\label{ux306aux305c-r-ux3092ux4f7fux3046ux306eux304b}}
 
-\hypertarget{introduction}{%
-\chapter{Introduction}\label{introduction}}
-
-　データ分析を行うためには適切な分析ツールが必要不可欠です。 \href{https://www.r-project.org/}{R } は統計計算に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。R がデータ分析に向いている理由をまとめているのが \href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business'', R Blogger } です。\\
+データ分析を行うためには適切な分析ツールが必要不可欠です。 \href{https://www.r-project.org/}{R } は統計計算に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。R がデータ分析に向いている理由をまとめているのが \href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business'', R Blogger } です。\\
 　
 
 \begin{quote}
@@ -251,13 +256,14 @@
 \end{quote}
 
 　\\
-　R はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。\\
-　
+R はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。\\
 
-\hypertarget{how-to-analize}{%
-\section{How to analize}\label{how-to-analize}}
+\newpage
 
-　分析対象のデータがどのようなものかを知ることは、データ分析を行うにあたって重要なことです。どのような分布なのか、どのような値の範囲なのか、全てのデータが揃っているのかなど俯瞰して把握します。　\\
+\hypertarget{ux5206ux6790ux624bux9806}{%
+\section{分析手順}\label{ux5206ux6790ux624bux9806}}
+
+分析対象のデータがどのようなものかを知ることはデータ分析を行うにあたって重要なことのひとつです。どのような分布なのか、どのような値の範囲なのか、全てのデータが揃っているのかなど俯瞰して把握します。　\\
 　
 
 \hypertarget{visualizetransform}{%
@@ -333,32 +339,41 @@
 \hypertarget{data-science-workflow}{%
 \section{Data Science Workflow}\label{data-science-workflow}}
 
-　データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
+データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
 
-　この図は「Data Science Workflow」と呼ばれ、R コミュニティに多大な貢献をしている Hadley Wickham がその著書 \href{https://r4ds.had.co.nz/}{『R for Data Science』 } で提唱している概念図です。本書は、この Data Science Workflow に基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。\\
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{fig/data-science} 
+
+}
+
+\caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-6}
+\end{figure}
+
+この図は「Data Science Workflow」と呼ばれ、R コミュニティに多大な貢献をしている Hadley Wickham がその著書 \href{https://r4ds.had.co.nz/}{『R for Data Science』 } で提唱している概念図です。本書は、この Data Science Workflow に基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。\\
 　
 
 \textbf{Program}\\
-　データ分析のすべてのプロセス（Tidy 〜 Communicate/Automate）で必要となるツールがプログラミングです。プログラミングを覚えることで効率的に分析処理を行えるようになります。
+データ分析のすべてのプロセス（Tidy 〜 Communicate/Automate）で必要となるツールがプログラミングです。プログラミングを覚えることで効率的に分析処理を行えるようになります。
 
 \textbf{Import}\\
-　分析対象となるデータを分析環境に取り込み分析をできるようにするのがインポートプロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。\\
+分析対象となるデータを分析環境に取り込み分析をできるようにするのがインポートプロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。\\
 　\\
 \textbf{Tidy}\\
-　インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、一貫した形式（Tidy data）に整理します。 \href{}{Tidy data } はデータ分析において重要な概念です。\\
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、一貫した形式（Tidy data）に整理します。 \href{}{Tidy data } はデータ分析において重要な概念です。\\
 　\\
 \textbf{Transform}\\
-　整理したデータ（Tidy data）がそのまま状態でデータ分析に使えることは稀です。不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。\\
+整理したデータ（Tidy data）がそのまま状態でデータ分析に使えることは稀です。不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。\\
 　\textbf{Tidy} プロセスと合わせて \textbf{Wrangle} や \textbf{Data wrangling}、前処理と呼ばれることもあります。\\
 　\\
 \textbf{Visualize}\\
-　データを可視化することは様々な示唆を得ることと同義といえます。分析方針を考えるためにもデータがどういう傾向をもっているのかを把握するためのプロセスともいえます。\\
+データを可視化することは様々な示唆を得ることと同義といえます。分析方針を考えるためにもデータがどういう傾向をもっているのかを把握するためのプロセスともいえます。\\
 　\\
 \textbf{Model}\\
-　可視化で得られた情報を元に数式可（モデル化）するのプロセスです。モデルは様々な\\
+可視化で得られた情報を元に数式可（モデル化）するのプロセスです。モデルは様々な\\
 　\\
 \textbf{Communicate}\\
-　分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で \href{}{再現可能性（Reproducible research） } が伴っていることも求められます。 　 　\href{http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03}{3つの再現可能性 }
+分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で \href{}{再現可能性（Reproducible research） } が伴っていることも求められます。 　 　\href{http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03}{3つの再現可能性 }
 
 \hypertarget{tidyverse-eco-system}{%
 \section{Tidyverse Eco System}\label{tidyverse-eco-system}}

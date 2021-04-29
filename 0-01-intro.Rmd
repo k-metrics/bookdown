@@ -1,6 +1,17 @@
-# Introduction
+# はじめに {.unnumbered}
+ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す数理資本主義の時代と言われています。\
+　\
+[『データ指向のソフトウェア品質マネジメント』 <i class="fa １fa-external-link"></i>](https://www.juse-p.co.jp/products/view/442) は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。著者の一人である小池氏が主催している [データ分析勉強会 <i class="fa １fa-external-link"></i>](https://sites.google.com/site/kantometrics/home){target="_blank"} では、メトリクス分析に興味をもつ有志がこれらの知識を元に統計的コンピューティングによる品質管理を実践するための様々な知識や手法を学んでいます。\
+　\
+本書は実務でメトリクス分析を行うソフトウェア品質技術者をはじめとし R を用いてデータ分析を行いたい方々を想定読者として R の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。
 
-　データ分析を行うためには適切な分析ツールが必要不可欠です。 [R <i class="fa fa-external-link"></i>](https://www.r-project.org/){target="_blank"} は統計計算に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。R がデータ分析に向いている理由をまとめているのが ["Six Reasons To Learn R For Business", R Blogger <i class="fa fa-external-link"></i>](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank"} です。\
+## 想定読者 {.unnumbered}
+本書は基本的なコンピュータの知識と基礎的な統計の知識を有している読者を想定しています。本書では [R](https://cran.r-project.org/) の分析環境の構築に関する詳細な解説は行いませんので、分析環境の構築に不安がある読者は [Google Colaboratory](https://colab.research.google.com/notebook#create=true&language=r) を利用してみてください。
+
+
+
+# なぜ R を使うのか
+データ分析を行うためには適切な分析ツールが必要不可欠です。 [R <i class="fa fa-external-link"></i>](https://www.r-project.org/){target="_blank"} は統計計算に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。R がデータ分析に向いている理由をまとめているのが ["Six Reasons To Learn R For Business", R Blogger <i class="fa fa-external-link"></i>](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank"} です。\
 　
 
 > 1.  R Has The Best **Overall Qualities**
@@ -11,13 +22,14 @@
 > 6.  R **Community** Support
 
 　\
-　R はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。\
+R はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。\
+
+\newpage
+
+## 分析手順
+分析対象のデータがどのようなものかを知ることはデータ分析を行うにあたって重要なことのひとつです。どのような分布なのか、どのような値の範囲なのか、全てのデータが揃っているのかなど俯瞰して把握します。　\
 　
 
-## How to analize
-
-　分析対象のデータがどのようなものかを知ることは、データ分析を行うにあたって重要なことです。どのような分布なのか、どのような値の範囲なのか、全てのデータが揃っているのかなど俯瞰して把握します。　\
-　
 
 ### Visualize/Transform {.unnumbered}
 
@@ -53,42 +65,42 @@ with(iris, hist(Sepal.Width, plot = FALSE))$count
 
 ## Data Science Workflow
 
-　データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
+データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
 
 <!-- ```{r, echo=FALSE, out.width="95%", fig.cap="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham"}
 -->
 
-```{r, echo=FALSE, fig.cap="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham"}
+```{r, echo=FALSE, out.width="95%", fig.cap="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham"}
 # knitr::include_graphics("https://raw.githubusercontent.com/hadley/r4ds/master/diagrams/data-science-explore.png")
-# knitr::include_graphics("fig/data-science.png")
+knitr::include_graphics("fig/data-science.png")
 ```
 
 <!-- <p align=right>図出典：[RStartHere, RStudio, inc. <i class="fa fa-external-link"></i>](https://github.com/rstudio/RStartHere){target="_blank"}</p> -->
 
-　この図は「Data Science Workflow」と呼ばれ、R コミュニティに多大な貢献をしている Hadley Wickham がその著書 [『R for Data Science』 <i class="fa fa-external-link"></i>](https://r4ds.had.co.nz/){target="_blank"} で提唱している概念図です。本書は、この Data Science Workflow に基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。\
+この図は「Data Science Workflow」と呼ばれ、R コミュニティに多大な貢献をしている Hadley Wickham がその著書 [『R for Data Science』 <i class="fa fa-external-link"></i>](https://r4ds.had.co.nz/){target="_blank"} で提唱している概念図です。本書は、この Data Science Workflow に基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。\
 　
 
 **Program**\
-　データ分析のすべてのプロセス（Tidy 〜 Communicate/Automate）で必要となるツールがプログラミングです。プログラミングを覚えることで効率的に分析処理を行えるようになります。
+データ分析のすべてのプロセス（Tidy 〜 Communicate/Automate）で必要となるツールがプログラミングです。プログラミングを覚えることで効率的に分析処理を行えるようになります。
 
 **Import**\
-　分析対象となるデータを分析環境に取り込み分析をできるようにするのがインポートプロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。\
+分析対象となるデータを分析環境に取り込み分析をできるようにするのがインポートプロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。\
 　\
 **Tidy**\
-　インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、一貫した形式（Tidy data）に整理します。 [Tidy data <i class="fa fa-external-link"></i>](){target="_blank"} はデータ分析において重要な概念です。\
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、一貫した形式（Tidy data）に整理します。 [Tidy data <i class="fa fa-external-link"></i>](){target="_blank"} はデータ分析において重要な概念です。\
 　\
 **Transform**\
-　整理したデータ（Tidy data）がそのまま状態でデータ分析に使えることは稀です。不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。\
+整理したデータ（Tidy data）がそのまま状態でデータ分析に使えることは稀です。不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。\
 　**Tidy** プロセスと合わせて **Wrangle** や **Data wrangling**、前処理と呼ばれることもあります。\
 　\
 **Visualize**\
-　データを可視化することは様々な示唆を得ることと同義といえます。分析方針を考えるためにもデータがどういう傾向をもっているのかを把握するためのプロセスともいえます。\
+データを可視化することは様々な示唆を得ることと同義といえます。分析方針を考えるためにもデータがどういう傾向をもっているのかを把握するためのプロセスともいえます。\
 　\
 **Model**\
-　可視化で得られた情報を元に数式可（モデル化）するのプロセスです。モデルは様々な\
+可視化で得られた情報を元に数式可（モデル化）するのプロセスです。モデルは様々な\
 　\
 **Communicate**\
-　分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で [再現可能性（Reproducible research） <i class="fa fa-external-link"></i>](){target="_blank"} が伴っていることも求められます。 　 　[3つの再現可能性 <i class="fa fa-external-link"></i>](http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03){target="_blank"}
+分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で [再現可能性（Reproducible research） <i class="fa fa-external-link"></i>](){target="_blank"} が伴っていることも求められます。 　 　[3つの再現可能性 <i class="fa fa-external-link"></i>](http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03){target="_blank"}
 
 ## Tidyverse Eco System
 
