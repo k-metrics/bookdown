@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.3 変数（Variables） | Rのすゝめ</title>
   <meta name="description" content="3.3 変数（Variables） | Rのすゝめ" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.3 変数（Variables） | Rのすゝめ" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2020-08-24" />
+<meta name="date" content="2021-04-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="予約語reserved-word.html"/>
 <link rel="next" href="定数constant.html"/>
+<script src="assets/header-attrs-2.7/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,26 +51,27 @@
 
 
 
-<script src="assets/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="assets/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="assets/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="assets/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="assets/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -89,7 +91,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -122,6 +124,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,19 +139,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i><b>1.1</b> Data Science Workflow</a></li>
 </ul></li>
 <li class="part"><span><b>I Program</b></span></li>
 <li class="chapter" data-level="2" data-path="environments.html"><a href="environments.html"><i class="fa fa-check"></i><b>2</b> Environments</a></li>
-<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R Basics</a><ul>
-<li class="chapter" data-level="3.1" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html"><i class="fa fa-check"></i><b>3.1</b> 基本的な演算（Basic Operations）</a><ul>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html"><i class="fa fa-check"></i><b>3.1</b> 基本的な演算（Basic Operations）</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html#算術演算の基本"><i class="fa fa-check"></i><b>3.1.1</b> 算術演算の基本</a></li>
 <li class="chapter" data-level="3.1.2" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html#代入演算の基本"><i class="fa fa-check"></i><b>3.1.2</b> 代入演算の基本</a></li>
 <li class="chapter" data-level="3.1.3" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html#変数演算の基本"><i class="fa fa-check"></i><b>3.1.3</b> 変数演算の基本</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="予約語reserved-word.html"><a href="予約語reserved-word.html"><i class="fa fa-check"></i><b>3.2</b> 予約語（Reserved word）</a></li>
-<li class="chapter" data-level="3.3" data-path="変数variables.html"><a href="変数variables.html"><i class="fa fa-check"></i><b>3.3</b> 変数（Variables）</a><ul>
+<li class="chapter" data-level="3.3" data-path="変数variables.html"><a href="変数variables.html"><i class="fa fa-check"></i><b>3.3</b> 変数（Variables）</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="変数variables.html"><a href="変数variables.html#データ型"><i class="fa fa-check"></i><b>3.3.1</b> データ型</a></li>
 <li class="chapter" data-level="3.3.2" data-path="変数variables.html"><a href="変数variables.html#変数型"><i class="fa fa-check"></i><b>3.3.2</b> 変数型</a></li>
 <li class="chapter" data-level="3.3.3" data-path="変数variables.html"><a href="変数variables.html#ベクトル型"><i class="fa fa-check"></i><b>3.3.3</b> ベクトル型</a></li>
@@ -158,22 +165,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3.7" data-path="変数variables.html"><a href="変数variables.html#データフレーム型"><i class="fa fa-check"></i><b>3.3.7</b> データフレーム型</a></li>
 <li class="chapter" data-level="3.3.8" data-path="変数variables.html"><a href="変数variables.html#リスト型"><i class="fa fa-check"></i><b>3.3.8</b> リスト型</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="定数constant.html"><a href="定数constant.html"><i class="fa fa-check"></i><b>3.4</b> 定数（Constant）</a><ul>
+<li class="chapter" data-level="3.4" data-path="定数constant.html"><a href="定数constant.html"><i class="fa fa-check"></i><b>3.4</b> 定数（Constant）</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="定数constant.html"><a href="定数constant.html#na-の型"><i class="fa fa-check"></i><b>3.4.1</b> <code>NA</code> の型</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html"><i class="fa fa-check"></i><b>3.5</b> 参照・アクセス（Access Operators）</a><ul>
+<li class="chapter" data-level="3.5" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html"><i class="fa fa-check"></i><b>3.5</b> 参照・アクセス（Access Operators）</a>
+<ul>
 <li class="chapter" data-level="3.5.1" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html#演算子"><i class="fa fa-check"></i><b>3.5.1</b> <code>[</code> 演算子</a></li>
 <li class="chapter" data-level="3.5.2" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html#演算子-1"><i class="fa fa-check"></i><b>3.5.2</b> <code>$</code> 演算子</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="検査変換.html"><a href="検査変換.html"><i class="fa fa-check"></i><b>3.6</b> 検査・変換</a></li>
-<li class="chapter" data-level="3.7" data-path="演算子operators.html"><a href="演算子operators.html"><i class="fa fa-check"></i><b>3.7</b> 演算子（Operators）</a><ul>
+<li class="chapter" data-level="3.7" data-path="演算子operators.html"><a href="演算子operators.html"><i class="fa fa-check"></i><b>3.7</b> 演算子（Operators）</a>
+<ul>
 <li class="chapter" data-level="3.7.1" data-path="演算子operators.html"><a href="演算子operators.html#算術演算子"><i class="fa fa-check"></i><b>3.7.1</b> 算術演算子</a></li>
 <li class="chapter" data-level="3.7.2" data-path="演算子operators.html"><a href="演算子operators.html#比較演算子-logical-operations"><i class="fa fa-check"></i><b>3.7.2</b> 比較演算子 Logical Operations</a></li>
 <li class="chapter" data-level="3.7.3" data-path="演算子operators.html"><a href="演算子operators.html#論理演算子-boolean-operations"><i class="fa fa-check"></i><b>3.7.3</b> 論理演算子 Boolean Operations</a></li>
 <li class="chapter" data-level="3.7.4" data-path="演算子operators.html"><a href="演算子operators.html#特殊演算子"><i class="fa fa-check"></i><b>3.7.4</b> 特殊演算子</a></li>
 <li class="chapter" data-level="3.7.5" data-path="演算子operators.html"><a href="演算子operators.html#演算子の優先順位"><i class="fa fa-check"></i><b>3.7.5</b> 演算子の優先順位</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="制御文.html"><a href="制御文.html"><i class="fa fa-check"></i><b>3.8</b> 制御文</a><ul>
+<li class="chapter" data-level="3.8" data-path="制御文.html"><a href="制御文.html"><i class="fa fa-check"></i><b>3.8</b> 制御文</a>
+<ul>
 <li class="chapter" data-level="3.8.1" data-path="制御文.html"><a href="制御文.html#条件分岐"><i class="fa fa-check"></i><b>3.8.1</b> 条件分岐</a></li>
 <li class="chapter" data-level="3.8.2" data-path="制御文.html"><a href="制御文.html#if-else"><i class="fa fa-check"></i><b>3.8.2</b> if, else</a></li>
 <li class="chapter" data-level="3.8.3" data-path="制御文.html"><a href="制御文.html#switch"><i class="fa fa-check"></i><b>3.8.3</b> switch</a></li>
@@ -184,27 +195,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Wrangle</b></span></li>
-<li class="chapter" data-level="4" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>4</b> Import</a><ul>
+<li class="chapter" data-level="4" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>4</b> Import</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>4.1</b> readr</a></li>
 <li class="chapter" data-level="4.2" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>4.2</b> readxl</a></li>
 <li class="chapter" data-level="4.3" data-path="pdftools.html"><a href="pdftools.html"><i class="fa fa-check"></i><b>4.3</b> pdftools</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>5</b> Tidy</a><ul>
+<li class="chapter" data-level="5" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>5</b> Tidy</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>5.1</b> Tidy Data</a></li>
 <li class="chapter" data-level="5.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>5.2</b> longer</a></li>
 <li class="chapter" data-level="5.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>5.3</b> wider</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>6</b> Transform</a><ul>
+<li class="chapter" data-level="6" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>6</b> Transform</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>6.1</b> filter</a></li>
 <li class="chapter" data-level="6.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>6.2</b> rename</a></li>
-<li class="chapter" data-level="6.3" data-path="select.html"><a href="select.html"><i class="fa fa-check"></i><b>6.3</b> select</a><ul>
+<li class="chapter" data-level="6.3" data-path="select.html"><a href="select.html"><i class="fa fa-check"></i><b>6.3</b> select</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="select.html"><a href="select.html#select-helpers"><i class="fa fa-check"></i><b>6.3.1</b> select helpers</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="mutate.html"><a href="mutate.html"><i class="fa fa-check"></i><b>6.4</b> mutate</a></li>
 <li class="chapter" data-level="6.5" data-path="summarize.html"><a href="summarize.html"><i class="fa fa-check"></i><b>6.5</b> summarize</a></li>
 </ul></li>
 <li class="part"><span><b>III Visualize</b></span></li>
-<li class="chapter" data-level="7" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>7</b> Base R</a><ul>
+<li class="chapter" data-level="7" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>7</b> Base R</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="plot.html"><a href="plot.html"><i class="fa fa-check"></i><b>7.1</b> plot</a></li>
 <li class="chapter" data-level="7.2" data-path="boxplot.html"><a href="boxplot.html"><i class="fa fa-check"></i><b>7.2</b> boxplot</a></li>
 <li class="chapter" data-level="7.3" data-path="hist.html"><a href="hist.html"><i class="fa fa-check"></i><b>7.3</b> hist</a></li>
@@ -219,56 +235,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>VI Automate</b></span></li>
 <li class="chapter" data-level="13" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>13</b> shiny</a></li>
 <li class="part"><span><b>VII Program</b></span></li>
-<li class="chapter" data-level="14" data-path="environments-2.html"><a href="environments-2.html"><i class="fa fa-check"></i><b>14</b> Environments 2</a><ul>
-<li class="chapter" data-level="14.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html"><i class="fa fa-check"></i><b>14.1</b> Google Colaboratory</a><ul>
+<li class="chapter" data-level="14" data-path="environments-2.html"><a href="environments-2.html"><i class="fa fa-check"></i><b>14</b> Environments 2</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html"><i class="fa fa-check"></i><b>14.1</b> Google Colaboratory</a>
+<ul>
 <li class="chapter" data-level="14.1.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html#login-google"><i class="fa fa-check"></i><b>14.1.1</b> Login Google</a></li>
 <li class="chapter" data-level="14.1.2" data-path="google-colaboratory.html"><a href="google-colaboratory.html#open-google-colab"><i class="fa fa-check"></i><b>14.1.2</b> Open Google Colab</a></li>
 <li class="chapter" data-level="14.1.3" data-path="google-colaboratory.html"><a href="google-colaboratory.html#upload-template"><i class="fa fa-check"></i><b>14.1.3</b> Upload Template</a></li>
 <li class="chapter" data-level="14.1.4" data-path="google-colaboratory.html"><a href="google-colaboratory.html#run-r-code"><i class="fa fa-check"></i><b>14.1.4</b> Run R code</a></li>
 <li class="chapter" data-level="14.1.5" data-path="google-colaboratory.html"><a href="google-colaboratory.html#save-file"><i class="fa fa-check"></i><b>14.1.5</b> Save File</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html"><i class="fa fa-check"></i><b>14.2</b> RStudio Cloud</a><ul>
+<li class="chapter" data-level="14.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html"><i class="fa fa-check"></i><b>14.2</b> RStudio Cloud</a>
+<ul>
 <li class="chapter" data-level="14.2.1" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#create-project"><i class="fa fa-check"></i><b>14.2.1</b> Create Project</a></li>
 <li class="chapter" data-level="14.2.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#install-packages"><i class="fa fa-check"></i><b>14.2.2</b> Install Packages</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="install-rrstudio.html"><a href="install-rrstudio.html"><i class="fa fa-check"></i><b>A</b> Install R/RStudio</a><ul>
-<li class="chapter" data-level="A.1" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>A.1</b> Install R</a><ul>
+<li class="chapter" data-level="A" data-path="install-rrstudio.html"><a href="install-rrstudio.html"><i class="fa fa-check"></i><b>A</b> Install R/RStudio</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>A.1</b> Install R</a>
+<ul>
 <li class="chapter" data-level="A.1.1" data-path="install-r.html"><a href="install-r.html#windows"><i class="fa fa-check"></i><b>A.1.1</b> Windows</a></li>
 <li class="chapter" data-level="A.1.2" data-path="install-r.html"><a href="install-r.html#macos-os-x"><i class="fa fa-check"></i><b>A.1.2</b> macOS (OS X)</a></li>
 <li class="chapter" data-level="A.1.3" data-path="install-r.html"><a href="install-r.html#linux"><i class="fa fa-check"></i><b>A.1.3</b> Linux</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>A.2</b> Install RStudio Desktop</a><ul>
+<li class="chapter" data-level="A.2" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>A.2</b> Install RStudio Desktop</a>
+<ul>
 <li class="chapter" data-level="A.2.1" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html#動作確認"><i class="fa fa-check"></i><b>A.2.1</b> 動作確認</a></li>
 </ul></li>
-<li class="chapter" data-level="A.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>A.3</b> Install R packages</a><ul>
+<li class="chapter" data-level="A.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>A.3</b> Install R packages</a>
+<ul>
 <li class="chapter" data-level="A.3.1" data-path="install-r-packages.html"><a href="install-r-packages.html#linux環境の場合"><i class="fa fa-check"></i><b>A.3.1</b> Linux環境の場合</a></li>
 </ul></li>
-<li class="chapter" data-level="A.4" data-path="install-git.html"><a href="install-git.html"><i class="fa fa-check"></i><b>A.4</b> Install Git</a><ul>
+<li class="chapter" data-level="A.4" data-path="install-git.html"><a href="install-git.html"><i class="fa fa-check"></i><b>A.4</b> Install Git</a>
+<ul>
 <li class="chapter" data-level="A.4.1" data-path="install-git.html"><a href="install-git.html#git"><i class="fa fa-check"></i><b>A.4.1</b> Git</a></li>
 <li class="chapter" data-level="A.4.2" data-path="install-git.html"><a href="install-git.html#git-client"><i class="fa fa-check"></i><b>A.4.2</b> Git Client</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>B</b> RStudio Server</a><ul>
-<li class="chapter" data-level="B.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html"><i class="fa fa-check"></i><b>B.1</b> Setup RStudio Sever with Docker</a><ul>
+<li class="chapter" data-level="B" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>B</b> RStudio Server</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html"><i class="fa fa-check"></i><b>B.1</b> Setup RStudio Sever with Docker</a>
+<ul>
 <li class="chapter" data-level="B.1.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#enable-hyper-v-windows-only"><i class="fa fa-check"></i><b>B.1.1</b> Enable Hyper-V (Windows Only)</a></li>
 <li class="chapter" data-level="B.1.2" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-and-install-docker-desktop"><i class="fa fa-check"></i><b>B.1.2</b> Download and Install Docker Desktop</a></li>
 <li class="chapter" data-level="B.1.3" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-docker-image"><i class="fa fa-check"></i><b>B.1.3</b> Download Docker Image</a></li>
 <li class="chapter" data-level="B.1.4" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#run-container"><i class="fa fa-check"></i><b>B.1.4</b> Run Container</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>C</b> RStudio IDE</a><ul>
+<li class="chapter" data-level="C" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>C</b> RStudio IDE</a>
+<ul>
 <li class="chapter" data-level="C.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>C.1</b> Overview</a></li>
 <li class="chapter" data-level="C.2" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i><b>C.2</b> Keyboard Shortcuts</a></li>
 <li class="chapter" data-level="C.3" data-path="writing-r-code.html"><a href="writing-r-code.html"><i class="fa fa-check"></i><b>C.3</b> Writing R code</a></li>
-<li class="chapter" data-level="C.4" data-path="global-options.html"><a href="global-options.html"><i class="fa fa-check"></i><b>C.4</b> Global Options</a><ul>
+<li class="chapter" data-level="C.4" data-path="global-options.html"><a href="global-options.html"><i class="fa fa-check"></i><b>C.4</b> Global Options</a>
+<ul>
 <li class="chapter" data-level="C.4.1" data-path="global-options.html"><a href="global-options.html#general"><i class="fa fa-check"></i><b>C.4.1</b> General</a></li>
 <li class="chapter" data-level="C.4.2" data-path="global-options.html"><a href="global-options.html#code"><i class="fa fa-check"></i><b>C.4.2</b> Code</a></li>
 <li class="chapter" data-level="C.4.3" data-path="global-options.html"><a href="global-options.html#appearance"><i class="fa fa-check"></i><b>C.4.3</b> Appearance</a></li>
 <li class="chapter" data-level="C.4.4" data-path="global-options.html"><a href="global-options.html#pane-layout"><i class="fa fa-check"></i><b>C.4.4</b> Pane Layout</a></li>
 <li class="chapter" data-level="C.4.5" data-path="global-options.html"><a href="global-options.html#packages"><i class="fa fa-check"></i><b>C.4.5</b> Packages</a></li>
-<li class="chapter" data-level="C.4.6" data-path="r-markdown.html"><a href="r-markdown.html#r-markdown"><i class="fa fa-check"></i><b>C.4.6</b> R Markdown</a></li>
+<li class="chapter" data-level="C.4.6" data-path="global-options.html"><a href="global-options.html#r-markdown-1"><i class="fa fa-check"></i><b>C.4.6</b> R Markdown</a></li>
 <li class="chapter" data-level="C.4.7" data-path="global-options.html"><a href="global-options.html#sweave"><i class="fa fa-check"></i><b>C.4.7</b> Sweave</a></li>
 <li class="chapter" data-level="C.4.8" data-path="global-options.html"><a href="global-options.html#spelling"><i class="fa fa-check"></i><b>C.4.8</b> Spelling</a></li>
 <li class="chapter" data-level="C.4.9" data-path="global-options.html"><a href="global-options.html#gitsvn"><i class="fa fa-check"></i><b>C.4.9</b> Git/SVN</a></li>
@@ -277,7 +305,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="C.5" data-path="project-options.html"><a href="project-options.html"><i class="fa fa-check"></i><b>C.5</b> Project Options</a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="cloud-ide.html"><a href="cloud-ide.html"><i class="fa fa-check"></i><b>D</b> Cloud IDE</a><ul>
+<li class="chapter" data-level="D" data-path="cloud-ide.html"><a href="cloud-ide.html"><i class="fa fa-check"></i><b>D</b> Cloud IDE</a>
+<ul>
 <li class="chapter" data-level="D.1" data-path="rstudio-cloud-ga.html"><a href="rstudio-cloud-ga.html"><i class="fa fa-check"></i><b>D.1</b> RStudio Cloud GA</a></li>
 <li class="chapter" data-level="D.2" data-path="exploratory.html"><a href="exploratory.html"><i class="fa fa-check"></i><b>D.2</b> Exploratory</a></li>
 <li class="chapter" data-level="D.3" data-path="binder.html"><a href="binder.html"><i class="fa fa-check"></i><b>D.3</b> binder</a></li>
@@ -299,21 +328,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="変数variables" class="section level2">
+<div id="変数variables" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> 変数（Variables）</h2>
 <p>　R での変数の扱い方について触れておきます。まず、変数名の命名規則ですが <a href="https://style.tidyverse.org/syntax.html#object-names" target="_blank">スタイルガイド <i class="fa fa-external-link"></i></a> に準拠して「英小文字、数字、アンダースコア」のみを使うことを推奨します。また、変数名は分かりやすい名称にするように心掛けてください。例えば</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="変数variables.html#cb11-1"></a>number_int &lt;-<span class="st"> </span>10L</span>
-<span id="cb11-2"><a href="変数variables.html#cb11-2"></a>number_int</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="変数variables.html#cb11-1" aria-hidden="true" tabindex="-1"></a>number_int <span class="ot">&lt;-</span> 10L</span>
+<span id="cb11-2"><a href="変数variables.html#cb11-2" aria-hidden="true" tabindex="-1"></a>number_int</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>　なお、数字から始まる変数名は R の仕様により使用することができません。</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="変数variables.html#cb13-1"></a>1num &lt;-<span class="st"> </span><span class="dv">100</span></span>
-<span id="cb13-2"><a href="変数variables.html#cb13-2"></a><span class="dv">2</span>_string &lt;-<span class="st"> &quot;foo&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="変数variables.html#cb13-1" aria-hidden="true" tabindex="-1"></a>1num <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb13-2"><a href="変数variables.html#cb13-2" aria-hidden="true" tabindex="-1"></a>2_string <span class="ot">&lt;-</span> <span class="st">&quot;foo&quot;</span></span></code></pre></div>
 <pre><code>## Error: &lt;text&gt;:1:2:  想定外のシンボルです 
 ## 1: 1num
 ##      ^</code></pre>
 <p>　また、予約語以外でも変数型や関数に使われているような名前を変数名にすることはおすゝめできません。</p>
 <p>　</p>
-<div id="データ型" class="section level3">
+<div id="データ型" class="section level3" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> データ型</h3>
 <p>　他の言語でも同じですが変数には値を入れることができます。データ型はどのような値（データ）が入っているかを識別するためのものです。R の代表的なデータ型には以下のようなものがあります。</p>
 <table>
@@ -381,7 +410,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>　R は開発の経緯から様々な型の見かたがありますが、基本的に同じようなものだとと考えてください。書籍などでよく出てくる <code>str</code>（structure）関数が返す型は上表におけるクラスです。</p>
 <p>　</p>
 </div>
-<div id="変数型" class="section level3">
+<div id="変数型" class="section level3" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> 変数型</h3>
 <p>　前述のようなデータ型を持った値を入れる箱が変数です。変数には華表のような様々な形があります。中でも表形式のデータを扱えるデータフレーム型は R ならではの変数型といえます。また、R には他の言語ではよく見かけるスカラー型（一種類のデータ型の値を一つだけ格納できる変数型）はありません基本となる変数型はベクトル型になります。<br />
 　変数型にもクラスがありますが、ベクトル型変数のクラスはデータ型のクラスと同じです。<br />
@@ -429,58 +458,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>　</p>
 </div>
-<div id="ベクトル型" class="section level3">
+<div id="ベクトル型" class="section level3" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> ベクトル型</h3>
 <p>　ベクトル型は前述のように最も基本となる変数型です。ベクトル型変数を作成するには <code>c</code> 関数使います。代入して <code>str</code> 関数でクラス、長さ（値の個数）と値を確認してみます。<br />
 　長さが <span class="math inline">\(1\)</span> の場合は <code>c</code> 関数を省略できます。</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="変数variables.html#cb15-1"></a>x &lt;-<span class="st"> </span>2L                   <span class="co"># 一つだけ代入（格納）する場合 `c` は省略可能です</span></span>
-<span id="cb15-2"><a href="変数variables.html#cb15-2"></a><span class="kw">str</span>(x)                    <span class="co"># 値が一つだけの場合は長さ表示が省略されます</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="変数variables.html#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> 2L                   <span class="co"># 一つだけ代入（格納）する場合 `c` は省略可能です</span></span>
+<span id="cb15-2"><a href="変数variables.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)                    <span class="co"># 値が一つだけの場合は長さ表示が省略されます</span></span></code></pre></div>
 <pre><code>##  int 2</code></pre>
 <p>　</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="変数variables.html#cb17-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)           <span class="co"># 実数の 1 から 3 の三つの値が代入されます</span></span>
-<span id="cb17-2"><a href="変数variables.html#cb17-2"></a><span class="kw">str</span>(x)                    <span class="co"># []の部分が長さ表示です</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="変数variables.html#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)           <span class="co"># 実数の 1 から 3 の三つの値が代入されます</span></span>
+<span id="cb17-2"><a href="変数variables.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)                    <span class="co"># []の部分が長さ表示です</span></span></code></pre></div>
 <pre><code>##  num [1:3] 1 2 3</code></pre>
 <p>　文字（型）を代入する場合はクォート（ダブルまはたシングル）で囲みます。</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="変数variables.html#cb19-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&#39;2&#39;</span>, <span class="st">&quot;3&quot;</span>)     <span class="co"># 文字として数字を代入してみます</span></span>
-<span id="cb19-2"><a href="変数variables.html#cb19-2"></a><span class="kw">str</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="変数variables.html#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&#39;2&#39;</span>, <span class="st">&quot;3&quot;</span>)     <span class="co"># 文字として数字を代入してみます</span></span>
+<span id="cb19-2"><a href="変数variables.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code></pre></div>
 <pre><code>##  chr [1:3] &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
 <p>　では文字（型）と数字（型）を混在させたらどうなるでしょう？</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="変数variables.html#cb21-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(1L, <span class="dv">2</span>, <span class="st">&quot;3&quot;</span>)        <span class="co"># 整数、実数、文字としての数字を代入してみます</span></span>
-<span id="cb21-2"><a href="変数variables.html#cb21-2"></a><span class="kw">str</span>(x)                    <span class="co"># 強制型変換により最も柔軟度の高い文字型になります</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="変数variables.html#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(1L, <span class="dv">2</span>, <span class="st">&quot;3&quot;</span>)        <span class="co"># 整数、実数、文字としての数字を代入してみます</span></span>
+<span id="cb21-2"><a href="変数variables.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)                    <span class="co"># 強制型変換により最も柔軟度の高い文字型になります</span></span></code></pre></div>
 <pre><code>##  chr [1:3] &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
 <p>　エラーにはならずベクトル型変数は文字型クラスとして作成されます。これは強制型変換という処理が行われるためです。強制型変換は複数のデータ型が混在した場合により柔軟度の高いデータ型に変換する処理です。論理型、整数型、実数型、複素数型、文字型の順に変換されます。<br />
 　便利ではありますが意図しない結果を招く可能性がありますので、このような変換があることは覚えておいてください。</p>
 <p>　</p>
 </div>
-<div id="因子型" class="section level3">
+<div id="因子型" class="section level3" number="3.3.4">
 <h3><span class="header-section-number">3.3.4</span> 因子型</h3>
 <p>　因子型は名義尺度や順序尺度の変数を扱うのに便利な変数型です。因子型を作成するには <code>factor</code> 関数を使う順序なしの因子型と <code>ordered</code> 関数を使う順序ありの因子型があります。どちらも <code>levels</code>（水準） という属性がついているベクトル型です。<br />
 　後述のデータフレーム型の中で使うと「層別」という処理が楽になります。</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="変数variables.html#cb23-1"></a>x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
-<span id="cb23-2"><a href="変数variables.html#cb23-2"></a><span class="kw">str</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="変数variables.html#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
+<span id="cb23-2"><a href="変数variables.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code></pre></div>
 <pre><code>##  Factor w/ 4 levels &quot;A&quot;,&quot;AB&quot;,&quot;B&quot;,&quot;O&quot;: 1 3 2 4 1 1 1 3</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="変数variables.html#cb25-1"></a><span class="kw">levels</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="変数variables.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot;  &quot;AB&quot; &quot;B&quot;  &quot;O&quot;</code></pre>
 <p>　<code>ordered</code> 型は <code>levels</code> に順序がついている点が <code>factor</code> 型と異なる点です。</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="変数variables.html#cb27-1"></a>x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
-<span id="cb27-2"><a href="変数variables.html#cb27-2"></a><span class="kw">str</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="変数variables.html#cb27-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">ordered</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
+<span id="cb27-2"><a href="変数variables.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code></pre></div>
 <pre><code>##  Ord.factor w/ 4 levels &quot;A&quot;&lt;&quot;AB&quot;&lt;&quot;B&quot;&lt;&quot;O&quot;: 1 3 2 4 1 1 1 3</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="変数variables.html#cb29-1"></a><span class="kw">levels</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="変数variables.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot;  &quot;AB&quot; &quot;B&quot;  &quot;O&quot;</code></pre>
 <p>　</p>
 </div>
-<div id="マトリクス型" class="section level3">
+<div id="マトリクス型" class="section level3" number="3.3.5">
 <h3><span class="header-section-number">3.3.5</span> マトリクス型</h3>
 <p>　マトリクス型は文字通り二次元配列を扱うための変数型です。作成するには <code>matrix</code> 関数を利用します。引数のベクトル型を列方向から二次元に展開します。</p>
 <p>　展開方向を変えるには <code>byrow</code> オプションを指定します。</p>
 <p>　数値だけでなく文字列も扱えます。</p>
 <p>　</p>
 </div>
-<div id="アレイ型" class="section level3">
+<div id="アレイ型" class="section level3" number="3.3.6">
 <h3><span class="header-section-number">3.3.6</span> アレイ型</h3>
 <p>　アレイ型は多次元配列を扱うのに便利な変数型です。作成するには <code>array</code> 関数を利用します。第一引数で指定したベクトル型のデータを第二引数で指定した構造（行, 列, 次元）にしたがって展開します。<br />
 　展開は列方向のみで <code>matrix</code> 型にある <code>byrow</code> オプションはありません。また、第一引数のデータ数が足りない場合は先頭からリサイクルして展開します。</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="変数variables.html#cb31-1"></a><span class="kw">array</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="変数variables.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">array</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3]
@@ -494,42 +523,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [2,]    8   10   12</code></pre>
 <p>　</p>
 </div>
-<div id="データフレーム型" class="section level3">
+<div id="データフレーム型" class="section level3" number="3.3.7">
 <h3><span class="header-section-number">3.3.7</span> データフレーム型</h3>
 <p>　データフレーム型は表形式のデータを扱うのに非常に便利な変数型です。列ごとに異なるデータ型の変数を格納することが可能ですので、データベースのテーブルのようなものです。ただし、全ての列において行数が同一でなければなりません。データフレーム型を作成するには <code>data.frame</code> 関数を用います。</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="変数variables.html#cb33-1"></a>x &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">col1 =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dt">col2 =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>),</span>
-<span id="cb33-2"><a href="変数variables.html#cb33-2"></a>                <span class="dt">col3 =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>), <span class="dt">col4 =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>))</span>
-<span id="cb33-3"><a href="変数variables.html#cb33-3"></a><span class="kw">str</span>(x)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:	5 obs. of  4 variables:
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="変数variables.html#cb33-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="at">col2 =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>),</span>
+<span id="cb33-2"><a href="変数variables.html#cb33-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">col3 =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>), <span class="at">col4 =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb33-3"><a href="変数variables.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  4 variables:
 ##  $ col1: int  1 2 3 4 5
-##  $ col2: Factor w/ 5 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,..: 1 2 3 4 5
+##  $ col2: chr  &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
 ##  $ col3: num  10 11 12 13 14
 ##  $ col4: logi  TRUE TRUE FALSE TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="変数variables.html#cb35-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="変数variables.html#cb35-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["col1"],"name":[1],"type":["int"],"align":["right"]},{"label":["col2"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["col3"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["col4"],"name":[4],"type":["lgl"],"align":["right"]}],"data":[{"1":"1","2":"A","3":"10","4":"TRUE"},{"1":"2","2":"B","3":"11","4":"TRUE"},{"1":"3","2":"C","3":"12","4":"FALSE"},{"1":"4","2":"D","3":"13","4":"TRUE"},{"1":"5","2":"E","3":"14","4":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["col1"],"name":[1],"type":["int"],"align":["right"]},{"label":["col2"],"name":[2],"type":["chr"],"align":["left"]},{"label":["col3"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["col4"],"name":[4],"type":["lgl"],"align":["right"]}],"data":[{"1":"1","2":"A","3":"10","4":"TRUE"},{"1":"2","2":"B","3":"11","4":"TRUE"},{"1":"3","2":"C","3":"12","4":"FALSE"},{"1":"4","2":"D","3":"13","4":"TRUE"},{"1":"5","2":"E","3":"14","4":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>　データフレーム型は列名を指定することが可能です。また、文字型のデータはデフォルトで因子型変数として扱われます。</p>
 <p>　</p>
 </div>
-<div id="リスト型" class="section level3">
+<div id="リスト型" class="section level3" number="3.3.8">
 <h3><span class="header-section-number">3.3.8</span> リスト型</h3>
 <p>　リスト型はデータフレーム型とは異なり不等長のベクトル型変数を格納できる変数型です。ベクトル型の他にもマトリクス型やデータフレーム型、リスト型地震を格納できる非常に柔軟な構造であるため様々な関数あが返り値と使っています。</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="変数variables.html#cb36-1"></a>x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="kw">c</span>(<span class="fl">0.5</span><span class="op">:</span><span class="fl">5.5</span>), <span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">0.2</span>), <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;O&quot;</span>), x)</span>
-<span id="cb36-2"><a href="変数variables.html#cb36-2"></a><span class="kw">str</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="変数variables.html#cb36-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="fu">c</span>(<span class="fl">0.5</span><span class="sc">:</span><span class="fl">5.5</span>), <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">0.2</span>), <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;O&quot;</span>), x)</span>
+<span id="cb36-2"><a href="変数variables.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code></pre></div>
 <pre><code>## List of 5
 ##  $ : int [1:10] 1 2 3 4 5 6 7 8 9 10
 ##  $ : num [1:6] 0.5 1.5 2.5 3.5 4.5 5.5
 ##  $ : num [1:16] 1 1.2 1.4 1.6 1.8 2 2.2 2.4 2.6 2.8 ...
 ##  $ : chr [1:4] &quot;A&quot; &quot;B&quot; &quot;AB&quot; &quot;O&quot;
-##  $ :&#39;data.frame&#39;:	5 obs. of  4 variables:
+##  $ :&#39;data.frame&#39;:    5 obs. of  4 variables:
 ##   ..$ col1: int [1:5] 1 2 3 4 5
-##   ..$ col2: Factor w/ 5 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,..: 1 2 3 4 5
+##   ..$ col2: chr [1:5] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
 ##   ..$ col3: num [1:5] 10 11 12 13 14
 ##   ..$ col4: logi [1:5] TRUE TRUE FALSE TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="変数variables.html#cb38-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="変数variables.html#cb38-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [[1]]
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -581,6 +610,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

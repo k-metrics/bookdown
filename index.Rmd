@@ -9,6 +9,7 @@ description: ""
 output: 
   bookdown::gitbook:
     number_sections: TRUE
+always_allow_html: true
 ---
 
 ```{css, include=FALSE}
