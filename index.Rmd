@@ -9,8 +9,7 @@ description: ""
 # LaTeX関連の設定はベースとなるRmdに記述しないと正しく認識されません
 always_allow_html: true
 # documentclass: krantz
-fontsize: 12pt
-## Additional setting for Japanese PDF fonts, Ubuntu
+## 日本語とtufteを使うために必要なTeXパッケージ
 header-includes: |
   \usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
   \usepackage{booktabs}
@@ -29,50 +28,26 @@ header-includes: |
   \usepackage{xcolor}
   \usepackage{fontawesome5}
   \usepackage{xeCJK}
-  \usepackage[Noto]{zxjatype}
-  \setCJKmainfont{Noto Serif CJK JP}
-  \setCJKmonofont{Noto Sans Mono CJK JP}
-  \setCJKsansfont{Noto Sans CJK JP}
-  \setCJKmathfont{Noto Serif CJK JP}
-mainfont: "Noto Serif CJK JP"
+  \usepackage{zxjatype}
+  \usepackage[noto]{zxjafont}
+## Windows環境では上記の設定ではNotoフォントが認識されないので以下の行と
+## 入れ替えてIPAフォントを利用するのが楽
+# \usepackage[ipaex]{zxjafont}
+## モノフォントのみ入れ替えフォントのスケーリングを調整する
 mainfontoptions: "Scale=MatchUppercase"
-sansfont: "Noto Sans CJK JP"
-# monofont: Noto Sans Mono CJK JP
 monofont: "Source Code Pro"
-# monofontoptions: "Scale=0.8"
-# mathfont: Noto Serif CJK JP
-CJKmainfont: "Noto Serif CJK JP"
+monofontoptions: "Scale=0.8"
 CJKoptions: "Scale=1.0"
-## Additional setting for Japanese PDF fonts, Winodws10 (Use font filename)
-# header-includes: |
-#   \usepackage[a4paper, total={7in, 9.5in}]{geometry}
-#   \usepackage{booktabs}
-#   \usepackage{longtable}
-#   \usepackage{array}
-#   \usepackage{multirow}
-#   \usepackage{wrapfig}
-#   \usepackage{float}
-#   \usepackage{colortbl}
-#   \usepackage{pdflscape}
-#   \usepackage{tabu}
-#   \usepackage{threeparttable}
-#   \usepackage{threeparttablex}
-#   \usepackage[normalem]{ulem}
-#   \usepackage{makecell}
-#   \usepackage{fontawesome5}
-#   \usepackage{xcolor}
-#   \usepackage{xeCJK}
-#   \usepackage{zxjatype}
-#   \setCJKmainfont{NotoSerifCJKjp-Regular.otf}
-#   \setCJKmonofont{NotoSansMonoCJKjp-Regular.otf}
-#   \setCJKsansfont{NotoSansCJKjp-Regular.otf}
-#   \setCJKmathfont{NotoSerifCJKjp-Regular.otf}
+## Windows環境でNotoフォントを指定したい場合は以下のように個別に指定する
+## 必要があるが、以下だけでは太字が表示できないので追加記述が必要（調査中）
 # mainfont: NotoSerifCJKjp-Regular.otf
 # mainfontoptions: Scale=MatchUppercase
 # sansfont: NotoSansCJKjp-Regular.otf
 # monofont: NotoSansMonoCJKjp-Regular.otf
 # # mathfont: Noto Serif CJK JP
 # CJKmainfont: NotoSerifCJKjp-Regular.otf
+# CJKmonofont: NotoSansMonoCJKjp-Regular.otf
+# CJKsansfont: NotoSansCJKjp-Regular.otf
 # CJKoptions: Scale=1
 ---
 
@@ -82,7 +57,8 @@ CJKoptions: "Scale=1.0"
 ```
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig_caption = TRUE, fig.align = 'center')
+knitr::opts_chunk$set(echo = TRUE, fig_caption = TRUE, fig.align = 'center',
+                      warning = FALSE)
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 
 output <- knitr::opts_knit$get("rmarkdown.pandoc.to")
@@ -101,8 +77,8 @@ require(tidyverse)
 
 ------------------------------------------------------------------------
 
-本書は [クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja) の下に提供されています。\
-　\
+本書は [[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス]](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja) の下に提供されています。
+
 あなたの従うべき条件は以下の通りです。
 
 -   表示（BY）
@@ -115,9 +91,13 @@ require(tidyverse)
 
 -   継承（SA）
 
-    -   もしあなたがこの資料をリミックスしたり、改変したり、加工した場合には、あなたはあなたの貢献部分を元の作品と同じライセンスの下に頒布しなければなりません。\
-        　
+    -   もしあなたがこの資料をリミックスしたり、改変したり、加工した場合には、あなたはあなたの貢献部分を元の作品と同じライセンスの下に頒布しなければなりません。
+
 
 ![CC 4.0 BY-NC-SA](./fig/88x31.png)
 
+
+ただし、本書にて引用している文書、図、ロゴなどの権利は原著作者が保有しています。
+
 ------------------------------------------------------------------------
+

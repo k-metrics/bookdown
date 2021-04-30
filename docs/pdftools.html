@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.3 pdftools | Rのすゝめ</title>
-  <meta name="description" content="4.3 pdftools | Rのすゝめ" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <title>3.3 pdftools | Rのすゝめ</title>
+  <meta name="description" content="3.3 pdftools | Rのすゝめ" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.3 pdftools | Rのすゝめ" />
+  <meta property="og:title" content="3.3 pdftools | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.3 pdftools | Rのすゝめ" />
+  <meta name="twitter:title" content="3.3 pdftools | Rのすゝめ" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-04-29" />
+<meta name="date" content="2021-04-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,8 @@
 
 
 
+<link href="assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="assets/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="assets/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -120,6 +122,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -137,126 +140,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="はじめに.html"><a href="はじめに.html"><i class="fa fa-check"></i>はじめに</a>
 <ul>
 <li class="chapter" data-level="" data-path="想定読者.html"><a href="想定読者.html"><i class="fa fa-check"></i>想定読者</a></li>
-</ul></li>
-<li class="chapter" data-level="1" data-path="なぜ-r-を使うのか.html"><a href="なぜ-r-を使うのか.html"><i class="fa fa-check"></i><b>1</b> なぜ R を使うのか</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="分析手順.html"><a href="分析手順.html"><i class="fa fa-check"></i><b>1.1</b> 分析手順</a>
-<ul>
-<li class="chapter" data-level="" data-path="分析手順.html"><a href="分析手順.html#visualizetransform"><i class="fa fa-check"></i>Visualize/Transform</a></li>
-<li class="chapter" data-level="" data-path="分析手順.html"><a href="分析手順.html#model"><i class="fa fa-check"></i>Model　</a></li>
-<li class="chapter" data-level="" data-path="分析手順.html"><a href="分析手順.html#communicate"><i class="fa fa-check"></i>Communicate　</a></li>
-<li class="chapter" data-level="1.1.1" data-path="分析手順.html"><a href="分析手順.html#importtidy"><i class="fa fa-check"></i><b>1.1.1</b> Import/Tidy</a></li>
-<li class="chapter" data-level="1.1.2" data-path="分析手順.html"><a href="分析手順.html#program"><i class="fa fa-check"></i><b>1.1.2</b> Program</a></li>
-</ul></li>
-<li class="chapter" data-level="1.2" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i><b>1.2</b> Data Science Workflow</a></li>
-<li class="chapter" data-level="1.3" data-path="tidyverse-eco-system.html"><a href="tidyverse-eco-system.html"><i class="fa fa-check"></i><b>1.3</b> Tidyverse Eco System</a></li>
+<li class="chapter" data-level="" data-path="表記ルール.html"><a href="表記ルール.html"><i class="fa fa-check"></i>表記ルール</a></li>
+<li class="chapter" data-level="" data-path="なぜ-r-を使うのか.html"><a href="なぜ-r-を使うのか.html"><i class="fa fa-check"></i>なぜ R を使うのか</a></li>
+<li class="chapter" data-level="" data-path="分析の手順.html"><a href="分析の手順.html"><i class="fa fa-check"></i>分析の手順</a></li>
+<li class="chapter" data-level="" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i>Data Science Workflow</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-eco-system.html"><a href="tidyverse-eco-system.html"><i class="fa fa-check"></i>Tidyverse Eco System</a></li>
 </ul></li>
 <li class="part"><span><b>I Program</b></span></li>
-<li class="chapter" data-level="2" data-path="environments.html"><a href="environments.html"><i class="fa fa-check"></i><b>2</b> Environments</a></li>
-<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R Basics</a>
+<li class="chapter" data-level="1" data-path="environments.html"><a href="environments.html"><i class="fa fa-check"></i><b>1</b> Environments</a></li>
+<li class="chapter" data-level="2" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2</b> R Basics</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html"><i class="fa fa-check"></i><b>3.1</b> 基本的な演算（Basic Operations）</a>
+<li class="chapter" data-level="2.1" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html"><i class="fa fa-check"></i><b>2.1</b> 基本的な演算（Basic Operations）</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html#算術演算の基本"><i class="fa fa-check"></i><b>3.1.1</b> 算術演算の基本</a></li>
-<li class="chapter" data-level="3.1.2" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html#代入演算の基本"><i class="fa fa-check"></i><b>3.1.2</b> 代入演算の基本</a></li>
-<li class="chapter" data-level="3.1.3" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html#変数演算の基本"><i class="fa fa-check"></i><b>3.1.3</b> 変数演算の基本</a></li>
+<li class="chapter" data-level="2.1.1" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html#算術演算の基本"><i class="fa fa-check"></i><b>2.1.1</b> 算術演算の基本</a></li>
+<li class="chapter" data-level="2.1.2" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html#代入演算の基本"><i class="fa fa-check"></i><b>2.1.2</b> 代入演算の基本</a></li>
+<li class="chapter" data-level="2.1.3" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html#変数演算の基本"><i class="fa fa-check"></i><b>2.1.3</b> 変数演算の基本</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="予約語reserved-word.html"><a href="予約語reserved-word.html"><i class="fa fa-check"></i><b>3.2</b> 予約語（Reserved word）</a></li>
-<li class="chapter" data-level="3.3" data-path="変数variables.html"><a href="変数variables.html"><i class="fa fa-check"></i><b>3.3</b> 変数（Variables）</a>
+<li class="chapter" data-level="2.2" data-path="予約語reserved-word.html"><a href="予約語reserved-word.html"><i class="fa fa-check"></i><b>2.2</b> 予約語（Reserved word）</a></li>
+<li class="chapter" data-level="2.3" data-path="変数variables.html"><a href="変数variables.html"><i class="fa fa-check"></i><b>2.3</b> 変数（Variables）</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="変数variables.html"><a href="変数variables.html#データ型"><i class="fa fa-check"></i><b>3.3.1</b> データ型</a></li>
-<li class="chapter" data-level="3.3.2" data-path="変数variables.html"><a href="変数variables.html#変数型"><i class="fa fa-check"></i><b>3.3.2</b> 変数型</a></li>
-<li class="chapter" data-level="3.3.3" data-path="変数variables.html"><a href="変数variables.html#ベクトル型"><i class="fa fa-check"></i><b>3.3.3</b> ベクトル型</a></li>
-<li class="chapter" data-level="3.3.4" data-path="変数variables.html"><a href="変数variables.html#因子型"><i class="fa fa-check"></i><b>3.3.4</b> 因子型</a></li>
-<li class="chapter" data-level="3.3.5" data-path="変数variables.html"><a href="変数variables.html#マトリクス型"><i class="fa fa-check"></i><b>3.3.5</b> マトリクス型</a></li>
-<li class="chapter" data-level="3.3.6" data-path="変数variables.html"><a href="変数variables.html#アレイ型"><i class="fa fa-check"></i><b>3.3.6</b> アレイ型</a></li>
-<li class="chapter" data-level="3.3.7" data-path="変数variables.html"><a href="変数variables.html#データフレーム型"><i class="fa fa-check"></i><b>3.3.7</b> データフレーム型</a></li>
-<li class="chapter" data-level="3.3.8" data-path="変数variables.html"><a href="変数variables.html#リスト型"><i class="fa fa-check"></i><b>3.3.8</b> リスト型</a></li>
+<li class="chapter" data-level="2.3.1" data-path="変数variables.html"><a href="変数variables.html#データ型"><i class="fa fa-check"></i><b>2.3.1</b> データ型</a></li>
+<li class="chapter" data-level="2.3.2" data-path="変数variables.html"><a href="変数variables.html#変数型"><i class="fa fa-check"></i><b>2.3.2</b> 変数型</a></li>
+<li class="chapter" data-level="2.3.3" data-path="変数variables.html"><a href="変数variables.html#ベクトル型"><i class="fa fa-check"></i><b>2.3.3</b> ベクトル型</a></li>
+<li class="chapter" data-level="2.3.4" data-path="変数variables.html"><a href="変数variables.html#因子型"><i class="fa fa-check"></i><b>2.3.4</b> 因子型</a></li>
+<li class="chapter" data-level="2.3.5" data-path="変数variables.html"><a href="変数variables.html#マトリクス型"><i class="fa fa-check"></i><b>2.3.5</b> マトリクス型</a></li>
+<li class="chapter" data-level="2.3.6" data-path="変数variables.html"><a href="変数variables.html#アレイ型"><i class="fa fa-check"></i><b>2.3.6</b> アレイ型</a></li>
+<li class="chapter" data-level="2.3.7" data-path="変数variables.html"><a href="変数variables.html#データフレーム型"><i class="fa fa-check"></i><b>2.3.7</b> データフレーム型</a></li>
+<li class="chapter" data-level="2.3.8" data-path="変数variables.html"><a href="変数variables.html#リスト型"><i class="fa fa-check"></i><b>2.3.8</b> リスト型</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="定数constant.html"><a href="定数constant.html"><i class="fa fa-check"></i><b>3.4</b> 定数（Constant）</a>
+<li class="chapter" data-level="2.4" data-path="定数constant.html"><a href="定数constant.html"><i class="fa fa-check"></i><b>2.4</b> 定数（Constant）</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="定数constant.html"><a href="定数constant.html#na-の型"><i class="fa fa-check"></i><b>3.4.1</b> <code>NA</code> の型</a></li>
+<li class="chapter" data-level="2.4.1" data-path="定数constant.html"><a href="定数constant.html#na-の型"><i class="fa fa-check"></i><b>2.4.1</b> <code>NA</code> の型</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html"><i class="fa fa-check"></i><b>3.5</b> 参照・アクセス（Access Operators）</a>
+<li class="chapter" data-level="2.5" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html"><i class="fa fa-check"></i><b>2.5</b> 参照・アクセス（Access Operators）</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html#演算子"><i class="fa fa-check"></i><b>3.5.1</b> <code>[</code> 演算子</a></li>
-<li class="chapter" data-level="3.5.2" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html#演算子-1"><i class="fa fa-check"></i><b>3.5.2</b> <code>$</code> 演算子</a></li>
+<li class="chapter" data-level="2.5.1" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html#演算子"><i class="fa fa-check"></i><b>2.5.1</b> <code>[</code> 演算子</a></li>
+<li class="chapter" data-level="2.5.2" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html#演算子-1"><i class="fa fa-check"></i><b>2.5.2</b> <code>$</code> 演算子</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="検査変換.html"><a href="検査変換.html"><i class="fa fa-check"></i><b>3.6</b> 検査・変換</a></li>
-<li class="chapter" data-level="3.7" data-path="演算子operators.html"><a href="演算子operators.html"><i class="fa fa-check"></i><b>3.7</b> 演算子（Operators）</a>
+<li class="chapter" data-level="2.6" data-path="検査変換.html"><a href="検査変換.html"><i class="fa fa-check"></i><b>2.6</b> 検査・変換</a></li>
+<li class="chapter" data-level="2.7" data-path="演算子operators.html"><a href="演算子operators.html"><i class="fa fa-check"></i><b>2.7</b> 演算子（Operators）</a>
 <ul>
-<li class="chapter" data-level="3.7.1" data-path="演算子operators.html"><a href="演算子operators.html#算術演算子"><i class="fa fa-check"></i><b>3.7.1</b> 算術演算子</a></li>
-<li class="chapter" data-level="3.7.2" data-path="演算子operators.html"><a href="演算子operators.html#比較演算子-logical-operations"><i class="fa fa-check"></i><b>3.7.2</b> 比較演算子 Logical Operations</a></li>
-<li class="chapter" data-level="3.7.3" data-path="演算子operators.html"><a href="演算子operators.html#論理演算子-boolean-operations"><i class="fa fa-check"></i><b>3.7.3</b> 論理演算子 Boolean Operations</a></li>
-<li class="chapter" data-level="3.7.4" data-path="演算子operators.html"><a href="演算子operators.html#特殊演算子"><i class="fa fa-check"></i><b>3.7.4</b> 特殊演算子</a></li>
-<li class="chapter" data-level="3.7.5" data-path="演算子operators.html"><a href="演算子operators.html#演算子の優先順位"><i class="fa fa-check"></i><b>3.7.5</b> 演算子の優先順位</a></li>
+<li class="chapter" data-level="2.7.1" data-path="演算子operators.html"><a href="演算子operators.html#算術演算子"><i class="fa fa-check"></i><b>2.7.1</b> 算術演算子</a></li>
+<li class="chapter" data-level="2.7.2" data-path="演算子operators.html"><a href="演算子operators.html#比較演算子-logical-operations"><i class="fa fa-check"></i><b>2.7.2</b> 比較演算子 Logical Operations</a></li>
+<li class="chapter" data-level="2.7.3" data-path="演算子operators.html"><a href="演算子operators.html#論理演算子-boolean-operations"><i class="fa fa-check"></i><b>2.7.3</b> 論理演算子 Boolean Operations</a></li>
+<li class="chapter" data-level="2.7.4" data-path="演算子operators.html"><a href="演算子operators.html#特殊演算子"><i class="fa fa-check"></i><b>2.7.4</b> 特殊演算子</a></li>
+<li class="chapter" data-level="2.7.5" data-path="演算子operators.html"><a href="演算子operators.html#演算子の優先順位"><i class="fa fa-check"></i><b>2.7.5</b> 演算子の優先順位</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="制御文.html"><a href="制御文.html"><i class="fa fa-check"></i><b>3.8</b> 制御文</a>
+<li class="chapter" data-level="2.8" data-path="制御文.html"><a href="制御文.html"><i class="fa fa-check"></i><b>2.8</b> 制御文</a>
 <ul>
-<li class="chapter" data-level="3.8.1" data-path="制御文.html"><a href="制御文.html#条件分岐"><i class="fa fa-check"></i><b>3.8.1</b> 条件分岐</a></li>
-<li class="chapter" data-level="3.8.2" data-path="制御文.html"><a href="制御文.html#if-else"><i class="fa fa-check"></i><b>3.8.2</b> if, else</a></li>
-<li class="chapter" data-level="3.8.3" data-path="制御文.html"><a href="制御文.html#switch"><i class="fa fa-check"></i><b>3.8.3</b> switch</a></li>
-<li class="chapter" data-level="3.8.4" data-path="制御文.html"><a href="制御文.html#ifelse"><i class="fa fa-check"></i><b>3.8.4</b> ifelse</a></li>
-<li class="chapter" data-level="3.8.5" data-path="制御文.html"><a href="制御文.html#繰り返し"><i class="fa fa-check"></i><b>3.8.5</b> 繰り返し</a></li>
-<li class="chapter" data-level="3.8.6" data-path="制御文.html"><a href="制御文.html#for"><i class="fa fa-check"></i><b>3.8.6</b> for</a></li>
-<li class="chapter" data-level="3.8.7" data-path="制御文.html"><a href="制御文.html#while-repeat"><i class="fa fa-check"></i><b>3.8.7</b> while, repeat</a></li>
+<li class="chapter" data-level="2.8.1" data-path="制御文.html"><a href="制御文.html#条件分岐"><i class="fa fa-check"></i><b>2.8.1</b> 条件分岐</a></li>
+<li class="chapter" data-level="2.8.2" data-path="制御文.html"><a href="制御文.html#if-else"><i class="fa fa-check"></i><b>2.8.2</b> if, else</a></li>
+<li class="chapter" data-level="2.8.3" data-path="制御文.html"><a href="制御文.html#switch"><i class="fa fa-check"></i><b>2.8.3</b> switch</a></li>
+<li class="chapter" data-level="2.8.4" data-path="制御文.html"><a href="制御文.html#ifelse"><i class="fa fa-check"></i><b>2.8.4</b> ifelse</a></li>
+<li class="chapter" data-level="2.8.5" data-path="制御文.html"><a href="制御文.html#繰り返し"><i class="fa fa-check"></i><b>2.8.5</b> 繰り返し</a></li>
+<li class="chapter" data-level="2.8.6" data-path="制御文.html"><a href="制御文.html#for"><i class="fa fa-check"></i><b>2.8.6</b> for</a></li>
+<li class="chapter" data-level="2.8.7" data-path="制御文.html"><a href="制御文.html#while-repeat"><i class="fa fa-check"></i><b>2.8.7</b> while, repeat</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II Wrangle</b></span></li>
-<li class="chapter" data-level="4" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>4</b> Import</a>
+<li class="chapter" data-level="3" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>3</b> Import</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>4.1</b> readr</a></li>
-<li class="chapter" data-level="4.2" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>4.2</b> readxl</a></li>
-<li class="chapter" data-level="4.3" data-path="pdftools.html"><a href="pdftools.html"><i class="fa fa-check"></i><b>4.3</b> pdftools</a></li>
+<li class="chapter" data-level="3.1" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>3.1</b> readr</a></li>
+<li class="chapter" data-level="3.2" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>3.2</b> readxl</a></li>
+<li class="chapter" data-level="3.3" data-path="pdftools.html"><a href="pdftools.html"><i class="fa fa-check"></i><b>3.3</b> pdftools</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>5</b> Tidy</a>
+<li class="chapter" data-level="4" data-path="tidy.html"><a href="tidy.html"><i class="fa fa-check"></i><b>4</b> Tidy</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>5.1</b> Tidy Data</a></li>
-<li class="chapter" data-level="5.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>5.2</b> longer</a></li>
-<li class="chapter" data-level="5.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>5.3</b> wider</a></li>
+<li class="chapter" data-level="4.1" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>4.1</b> Tidy Data</a></li>
+<li class="chapter" data-level="4.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>4.2</b> longer</a></li>
+<li class="chapter" data-level="4.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>4.3</b> wider</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>6</b> Transform</a>
+<li class="chapter" data-level="5" data-path="transform.html"><a href="transform.html"><i class="fa fa-check"></i><b>5</b> Transform</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>6.1</b> filter</a></li>
-<li class="chapter" data-level="6.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>6.2</b> rename</a></li>
-<li class="chapter" data-level="6.3" data-path="select.html"><a href="select.html"><i class="fa fa-check"></i><b>6.3</b> select</a>
+<li class="chapter" data-level="5.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>5.1</b> filter</a></li>
+<li class="chapter" data-level="5.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>5.2</b> rename</a></li>
+<li class="chapter" data-level="5.3" data-path="select.html"><a href="select.html"><i class="fa fa-check"></i><b>5.3</b> select</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="select.html"><a href="select.html#select-helpers"><i class="fa fa-check"></i><b>6.3.1</b> select helpers</a></li>
+<li class="chapter" data-level="5.3.1" data-path="select.html"><a href="select.html#select-helpers"><i class="fa fa-check"></i><b>5.3.1</b> select helpers</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="mutate.html"><a href="mutate.html"><i class="fa fa-check"></i><b>6.4</b> mutate</a></li>
-<li class="chapter" data-level="6.5" data-path="summarize.html"><a href="summarize.html"><i class="fa fa-check"></i><b>6.5</b> summarize</a></li>
+<li class="chapter" data-level="5.4" data-path="mutate.html"><a href="mutate.html"><i class="fa fa-check"></i><b>5.4</b> mutate</a></li>
+<li class="chapter" data-level="5.5" data-path="summarize.html"><a href="summarize.html"><i class="fa fa-check"></i><b>5.5</b> summarize</a></li>
 </ul></li>
 <li class="part"><span><b>III Visualize</b></span></li>
-<li class="chapter" data-level="7" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>7</b> Base R</a>
+<li class="chapter" data-level="6" data-path="base-r.html"><a href="base-r.html"><i class="fa fa-check"></i><b>6</b> Base R</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="plot.html"><a href="plot.html"><i class="fa fa-check"></i><b>7.1</b> plot</a></li>
-<li class="chapter" data-level="7.2" data-path="boxplot.html"><a href="boxplot.html"><i class="fa fa-check"></i><b>7.2</b> boxplot</a></li>
-<li class="chapter" data-level="7.3" data-path="hist.html"><a href="hist.html"><i class="fa fa-check"></i><b>7.3</b> hist</a></li>
+<li class="chapter" data-level="6.1" data-path="plot.html"><a href="plot.html"><i class="fa fa-check"></i><b>6.1</b> plot</a></li>
+<li class="chapter" data-level="6.2" data-path="boxplot.html"><a href="boxplot.html"><i class="fa fa-check"></i><b>6.2</b> boxplot</a></li>
+<li class="chapter" data-level="6.3" data-path="hist.html"><a href="hist.html"><i class="fa fa-check"></i><b>6.3</b> hist</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>8</b> ggplot2</a></li>
+<li class="chapter" data-level="7" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>7</b> ggplot2</a></li>
 <li class="part"><span><b>IV Model/Infer</b></span></li>
-<li class="chapter" data-level="9" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>9</b> Test</a></li>
-<li class="chapter" data-level="10" data-path="linear-model.html"><a href="linear-model.html"><i class="fa fa-check"></i><b>10</b> Linear model</a></li>
-<li class="chapter" data-level="11" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>11</b> Machine Learning</a></li>
+<li class="chapter" data-level="8" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>8</b> Test</a></li>
+<li class="chapter" data-level="9" data-path="linear-model.html"><a href="linear-model.html"><i class="fa fa-check"></i><b>9</b> Linear model</a></li>
+<li class="chapter" data-level="10" data-path="machine-learning.html"><a href="machine-learning.html"><i class="fa fa-check"></i><b>10</b> Machine Learning</a></li>
 <li class="part"><span><b>V Communicate</b></span></li>
-<li class="chapter" data-level="12" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>12</b> R Markdown</a></li>
+<li class="chapter" data-level="11" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>11</b> R Markdown</a></li>
 <li class="part"><span><b>VI Automate</b></span></li>
-<li class="chapter" data-level="13" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>13</b> shiny</a></li>
+<li class="chapter" data-level="12" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>12</b> shiny</a></li>
 <li class="part"><span><b>VII Program</b></span></li>
-<li class="chapter" data-level="14" data-path="environments-2.html"><a href="environments-2.html"><i class="fa fa-check"></i><b>14</b> Environments 2</a>
+<li class="chapter" data-level="13" data-path="environments-2.html"><a href="environments-2.html"><i class="fa fa-check"></i><b>13</b> Environments 2</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html"><i class="fa fa-check"></i><b>14.1</b> Google Colaboratory</a>
+<li class="chapter" data-level="13.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html"><i class="fa fa-check"></i><b>13.1</b> Google Colaboratory</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html#login-google"><i class="fa fa-check"></i><b>14.1.1</b> Login Google</a></li>
-<li class="chapter" data-level="14.1.2" data-path="google-colaboratory.html"><a href="google-colaboratory.html#open-google-colab"><i class="fa fa-check"></i><b>14.1.2</b> Open Google Colab</a></li>
-<li class="chapter" data-level="14.1.3" data-path="google-colaboratory.html"><a href="google-colaboratory.html#upload-template"><i class="fa fa-check"></i><b>14.1.3</b> Upload Template</a></li>
-<li class="chapter" data-level="14.1.4" data-path="google-colaboratory.html"><a href="google-colaboratory.html#run-r-code"><i class="fa fa-check"></i><b>14.1.4</b> Run R code</a></li>
-<li class="chapter" data-level="14.1.5" data-path="google-colaboratory.html"><a href="google-colaboratory.html#save-file"><i class="fa fa-check"></i><b>14.1.5</b> Save File</a></li>
+<li class="chapter" data-level="13.1.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html#login-google"><i class="fa fa-check"></i><b>13.1.1</b> Login Google</a></li>
+<li class="chapter" data-level="13.1.2" data-path="google-colaboratory.html"><a href="google-colaboratory.html#open-google-colab"><i class="fa fa-check"></i><b>13.1.2</b> Open Google Colab</a></li>
+<li class="chapter" data-level="13.1.3" data-path="google-colaboratory.html"><a href="google-colaboratory.html#upload-template"><i class="fa fa-check"></i><b>13.1.3</b> Upload Template</a></li>
+<li class="chapter" data-level="13.1.4" data-path="google-colaboratory.html"><a href="google-colaboratory.html#run-r-code"><i class="fa fa-check"></i><b>13.1.4</b> Run R code</a></li>
+<li class="chapter" data-level="13.1.5" data-path="google-colaboratory.html"><a href="google-colaboratory.html#save-file"><i class="fa fa-check"></i><b>13.1.5</b> Save File</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html"><i class="fa fa-check"></i><b>14.2</b> RStudio Cloud</a>
+<li class="chapter" data-level="13.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html"><i class="fa fa-check"></i><b>13.2</b> RStudio Cloud</a>
 <ul>
-<li class="chapter" data-level="14.2.1" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#create-project"><i class="fa fa-check"></i><b>14.2.1</b> Create Project</a></li>
-<li class="chapter" data-level="14.2.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#install-packages"><i class="fa fa-check"></i><b>14.2.2</b> Install Packages</a></li>
+<li class="chapter" data-level="13.2.1" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#create-project"><i class="fa fa-check"></i><b>13.2.1</b> Create Project</a></li>
+<li class="chapter" data-level="13.2.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#install-packages"><i class="fa fa-check"></i><b>13.2.2</b> Install Packages</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -336,8 +331,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pdftools" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> pdftools</h2>
+<div id="pdftools" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> pdftools</h2>
 
 </div>
 <!-- </div> -->
@@ -370,6 +365,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

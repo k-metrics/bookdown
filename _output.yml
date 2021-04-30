@@ -20,19 +20,22 @@ bookdown::gitbook:
     fontsettings:
       theme: night  # "white" or "sepia" or "night"
       family: serif # "serif" or "sans"
-#bookdown::epub_book: default
-#  always_allow_html: true
+
+bookdown::epub_book: default
+
 bookdown::pdf_book:
   citation_package: natbib
+  colorlinks: true
   fig_crop: false
-  keep_tex: yes
+  fontsize: 12pt
+  keep_tex: true
+  highlight_bw: false
   latex_engine: xelatex
   link-citations: true
-  # pandoc_args: [--top-level-division=chapter, --wrap=none]
-  pandoc_args: [--top-level-division=chapter]
-  toc_depth: 3
-  template: null
-  # toc_unnumbered: no
-  toc_appendix: yes
-  highlight_bw: yes
+  pandoc_args: [--top-level-division=chapter, --wrap=none]
+# pandoc_args: [--top-level-division=chapter]
   quote_footer: ["\\VA{", "}{}"]
+  template: null
+  toc_appendix: true
+  toc_depth: 3
+# toc_unnumbered: no

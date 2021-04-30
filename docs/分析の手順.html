@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Appendix D: Cloud IDE | Rのすゝめ</title>
-  <meta name="description" content="Appendix D: Cloud IDE | Rのすゝめ" />
+  <title>分析の手順 | Rのすゝめ</title>
+  <meta name="description" content="分析の手順 | Rのすゝめ" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Appendix D: Cloud IDE | Rのすゝめ" />
+  <meta property="og:title" content="分析の手順 | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Appendix D: Cloud IDE | Rのすゝめ" />
+  <meta name="twitter:title" content="分析の手順 | Rのすゝめ" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="project-options.html"/>
-<link rel="next" href="rstudio-cloud-ga.html"/>
+<link rel="prev" href="なぜ-r-を使うのか.html"/>
+<link rel="next" href="data-science-workflow.html"/>
 <script src="assets/header-attrs-2.7/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -331,17 +331,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="cloud-ide" class="section level1" number="17">
-<h1><span class="header-section-number">Appendix D:</span> Cloud IDE</h1>
-<p>　開発環境のクラウドサービス化も進んでいます。</p>
+<div id="分析の手順" class="section level2 unnumbered">
+<h2>分析の手順</h2>
+<p>では、R を使った分析とはどのような手順になるかを簡単に見てみましょう。R は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。
+例えば「フィッシャーのあやめ（Fisher’s or Anderson’s iris）」を例にとってみましょう。「フィッシャーのあやめ」はRの例題でよく使われる下記のような150行のデータセットでRに標準で組み込まれています。</p>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 1            5.1         3.5          1.4         0.2    setosa
+## 2            4.9           3          1.4         0.2    setosa
+## 3            4.7         3.2          1.3         0.2    setosa
+## 4            4.6         3.1          1.5         0.2    setosa
+## ...          ...         ...          ...         ...      &lt;NA&gt;
+## 147          6.3         2.5            5         1.9 virginica
+## 148          6.5           3          5.2           2 virginica
+## 149          6.2         3.4          5.4         2.3 virginica
+## 150          5.9           3          5.1         1.8 virginica</code></pre>
+<p>このデータセットの主な要約統計量は以下のようになり、Sepal（萼片）よりPetal（花弁）の方が小さい傾向にあると推測できます。</p>
+<pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## </code></pre>
+<p>この要約の通りか箱ひげ図を描いて確かめてみますが、このままの形では都合が悪いので下記のように変形しておきます。</p>
+<pre><code>##     Species         part value
+## 1    setosa Sepal.Length   5.1
+## 2    setosa  Sepal.Width   3.5
+## 3    setosa Petal.Length   1.4
+## 4    setosa  Petal.Width   0.2
+## 5      &lt;NA&gt;         &lt;NA&gt;   ...
+## 6 virginica Sepal.Length   5.9
+## 7 virginica  Sepal.Width     3
+## 8 virginica Petal.Length   5.1
+## 9 virginica  Petal.Width   1.8</code></pre>
+<p>変形したデータを使って部位別の箱ひげ図を描くと確かに Petal（花弁）の方が Sepal（萼片）よりも小さい傾向にあることが分かります。
+<img src="R_files/figure-html/unnamed-chunk-5-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>これがデータサイエンスワークフロー（Data Science Workflow）と呼ばれる抽象化された分析フローです。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="project-options.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="rstudio-cloud-ga.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="なぜ-r-を使うのか.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-science-workflow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

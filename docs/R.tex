@@ -1,10 +1,8 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{space}{xeCJK}
 %
 \documentclass[
-  12pt,
 ]{book}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -17,17 +15,7 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-  \setmainfont[Scale=MatchUppercase]{Noto Serif CJK JP}
-  \setsansfont[]{Noto Sans CJK JP}
-  \setmonofont[]{Source Code Pro}
-  \ifxetex
-    \usepackage{xeCJK}
-    \setCJKmainfont[Scale=1.0]{Noto Serif CJK JP}
-  \fi
-  \ifluatex
-    \usepackage[]{luatexja-fontspec}
-    \setmainjfont[Scale=1.0]{Noto Serif CJK JP}
-  \fi
+  \setmonofont[Scale=0.8]{Source Code Pro}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -63,37 +51,37 @@
 \usepackage{framed}
 \definecolor{shadecolor}{RGB}{248,248,248}
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.33,0.33,0.33}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.61,0.61,0.61}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.06,0.06,0.06}{#1}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.5,0.5,0.5}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0,0,0}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.27,0.27,0.27}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.27,0.27,0.27}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.06,0.06,0.06}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.14,0.14,0.14}{\textbf{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.06,0.06,0.06}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0,0,0}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.27,0.27,0.27}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.43,0.43,0.43}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0,0,0}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.5,0.5,0.5}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.5,0.5,0.5}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0,0,0}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.5,0.5,0.5}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textbf{\textit{#1}}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -138,11 +126,8 @@
 \usepackage{xcolor}
 \usepackage{fontawesome5}
 \usepackage{xeCJK}
-\usepackage[Noto]{zxjatype}
-\setCJKmainfont{Noto Serif CJK JP}
-\setCJKmonofont{Noto Sans Mono CJK JP}
-\setCJKsansfont{Noto Sans CJK JP}
-\setCJKmathfont{Noto Serif CJK JP}
+\usepackage{zxjatype}
+\usepackage[noto]{zxjafont}
 
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
@@ -159,7 +144,7 @@
 \makeatother
 \subtitle{- Rによるデータ分析事始め -}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-04-29}
+\date{2021-04-30}
 
 \begin{document}
 \maketitle
@@ -174,8 +159,8 @@
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-本書は \href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja}{クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス} の下に提供されています。\\
-　\\
+本書は \href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja}{{[}クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス{]}} の下に提供されています。
+
 あなたの従うべき条件は以下の通りです。
 
 \begin{itemize}
@@ -201,8 +186,7 @@
   \begin{itemize}
   \tightlist
   \item
-    もしあなたがこの資料をリミックスしたり、改変したり、加工した場合には、あなたはあなたの貢献部分を元の作品と同じライセンスの下に頒布しなければなりません。\\
-    　
+    もしあなたがこの資料をリミックスしたり、改変したり、加工した場合には、あなたはあなたの貢献部分を元の作品と同じライセンスの下に頒布しなければなりません。
   \end{itemize}
 \end{itemize}
 
@@ -212,29 +196,53 @@
 \caption{CC 4.0 BY-NC-SA}
 \end{figure}
 
+ただし、本書にて引用している文書、図、ロゴなどの権利は原著作者が保有しています。
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{ux306fux3058ux3081ux306b}{%
 \chapter*{はじめに}\label{ux306fux3058ux3081ux306b}}
 \addcontentsline{toc}{chapter}{はじめに}
 
-ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す数理資本主義の時代と言われています。\\
-　\\
-\href{https://www.juse-p.co.jp/products/view/442}{『データ指向のソフトウェア品質マネジメント』 } は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。著者の一人である小池氏が主催している \href{https://sites.google.com/site/kantometrics/home}{データ分析勉強会 } では、メトリクス分析に興味をもつ有志がこれらの知識を元に統計的コンピューティングによる品質管理を実践するための様々な知識や手法を学んでいます。\\
-　\\
-本書は実務でメトリクス分析を行うソフトウェア品質技術者をはじめとし R を用いてデータ分析を行いたい方々を想定読者として R の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。
+ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す数理資本主義の時代と言われています。
+
+\href{https://www.juse-p.co.jp/products/view/442}{{[}『データ指向のソフトウェア品質マネジメント』{]}} は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。この書籍の著者の一人である小池氏が主催している \href{https://sites.google.com/site/kantometrics/home}{{[}データ分析勉強会{]}} では、メトリクス分析に興味をもつ有志が統計分析を実践するために統計的コンピューティングを中心に様々な知識や手法を学んでいます。
+
+本書は実務でメトリクス分析を行いたいソフトウェア品質技術者をはじめとした統計的コンピューティングに興味を持っている方々に \href{https://www.r-project.org/}{{[}R言語{]}} の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。
 
 \hypertarget{ux60f3ux5b9aux8aadux8005}{%
 \section*{想定読者}\label{ux60f3ux5b9aux8aadux8005}}
 \addcontentsline{toc}{section}{想定読者}
 
-本書は基本的なコンピュータの知識と基礎的な統計の知識を有している読者を想定しています。本書では \href{https://cran.r-project.org/}{R} の分析環境の構築に関する詳細な解説は行いませんので、分析環境の構築に不安がある読者は \href{https://colab.research.google.com/notebook\#create=true\&language=r}{Google Colaboratory} を利用してみてください。
+本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有している方々を読者として想定しています。本書では \href{https://cran.r-project.org/}{{[}R言語{]}} を実行するための環境構築に関する詳細な解説は行いませんの「で、R言語のインストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえずR言語を使ってみたいという方には \href{\%60https://colab.research.google.com/notebook\#create=true\&language=r\%60}{{[}Google Colaboratory{]}} の利用をおすゝめします。
+
+\hypertarget{ux8868ux8a18ux30ebux30fcux30eb}{%
+\section*{表記ルール}\label{ux8868ux8a18ux30ebux30fcux30eb}}
+\addcontentsline{toc}{section}{表記ルール}
+
+本書では以下の表記ルールを用いています。
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+対象 & 表記方法 & 表記例 \\
+\midrule
+\endhead
+ハイパーリンク & {[}{]}付きで表記 & \href{https://www.google.com/?hl=ja}{{[}Google{]}} \\
+パス名、ファイル名 & モノフォント（タイプライタフォント） & \texttt{sample/sample.Rmd} \\
+パッケージ名 & 太字のモノフォント & \textbf{\texttt{tidyverse}} \\
+関数（オブジェクト） & モノフォントで()付き表記 & \texttt{print()} \\
+コード & モノフォント（プロンプトなし） & \texttt{library(tidyverse)} \\
+コードの実行結果 & モノフォント（\texttt{\#\#} プロンプトあり） & \texttt{\#\#\ output...} \\
+\bottomrule
+\end{longtable}
+
+\newpage
 
 \hypertarget{ux306aux305c-r-ux3092ux4f7fux3046ux306eux304b}{%
-\chapter{なぜ R を使うのか}\label{ux306aux305c-r-ux3092ux4f7fux3046ux306eux304b}}
+\section*{なぜ R を使うのか}\label{ux306aux305c-r-ux3092ux4f7fux3046ux306eux304b}}
+\addcontentsline{toc}{section}{なぜ R を使うのか}
 
-データ分析を行うためには適切な分析ツールが必要不可欠です。 \href{https://www.r-project.org/}{R } は統計計算に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。R がデータ分析に向いている理由をまとめているのが \href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business'', R Blogger } です。\\
-　
+データ分析を行うためには適切な分析ツールが必要不可欠です。\href{https://www.r-project.org/}{{[}R言語{]}} は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。R がデータ分析に向いている理由をまとめているのが \href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{{[}``Six Reasons To Learn R For Business'', R Blogger{]}} です。
 
 \begin{quote}
 \begin{enumerate}
@@ -255,87 +263,72 @@
 \end{enumerate}
 \end{quote}
 
-　\\
 R はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
 
-\hypertarget{ux5206ux6790ux624bux9806}{%
-\section{分析手順}\label{ux5206ux6790ux624bux9806}}
+\hypertarget{ux5206ux6790ux306eux624bux9806}{%
+\section*{分析の手順}\label{ux5206ux6790ux306eux624bux9806}}
+\addcontentsline{toc}{section}{分析の手順}
 
-分析対象のデータがどのようなものかを知ることはデータ分析を行うにあたって重要なことのひとつです。どのような分布なのか、どのような値の範囲なのか、全てのデータが揃っているのかなど俯瞰して把握します。　\\
-　
-
-\hypertarget{visualizetransform}{%
-\subsection*{Visualize/Transform}\label{visualizetransform}}
-\addcontentsline{toc}{subsection}{Visualize/Transform}
-
-　データを俯瞰するためには可視化（Visualize）が分かりやすい手法の一つです。例えば、計量値や計数値であれば棒グラフを用いて分布を確認したり、
-
-\begin{center}\includegraphics{R_files/figure-latex/unnamed-chunk-2-1} \end{center}
-
-　だた、棒グラフでは今ひとつ分布の状況が分かりませんので、度数を求めてヒストグラムを描いたり、五数要約を求めて箱ひげ図を描くことでよりデータの分布（状況）を把握することができるようになります。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{with}\NormalTok{(iris, }\FunctionTok{tapply}\NormalTok{(Sepal.Width, Species, fivenum))}
-\end{Highlighting}
-\end{Shaded}
+では、R を使った分析とはどのような手順になるかを簡単に見てみましょう。R は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。 例えば「フィッシャーのあやめ（Fisher's or Anderson's iris）」を例にとってみましょう。「フィッシャーのあやめ」はRの例題でよく使われる下記のような150行のデータセットでRに標準で組み込まれています。
 
 \begin{verbatim}
-## $setosa
-## [1] 2.3 3.2 3.4 3.7 4.4
-## 
-## $versicolor
-## [1] 2.0 2.5 2.8 3.0 3.4
-## 
-## $virginica
-## [1] 2.2 2.8 3.0 3.2 3.8
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 1            5.1         3.5          1.4         0.2    setosa
+## 2            4.9           3          1.4         0.2    setosa
+## 3            4.7         3.2          1.3         0.2    setosa
+## 4            4.6         3.1          1.5         0.2    setosa
+## ...          ...         ...          ...         ...      <NA>
+## 147          6.3         2.5            5         1.9 virginica
+## 148          6.5           3          5.2           2 virginica
+## 149          6.2         3.4          5.4         2.3 virginica
+## 150          5.9           3          5.1         1.8 virginica
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{with}\NormalTok{(iris, }\FunctionTok{tapply}\NormalTok{(Sepal.Length, Species, fivenum))}
-\end{Highlighting}
-\end{Shaded}
+このデータセットの主な要約統計量は以下のようになり、Sepal（萼片）よりPetal（花弁）の方が小さい傾向にあると推測できます。
 
 \begin{verbatim}
-## $setosa
-## [1] 4.3 4.8 5.0 5.2 5.8
+##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
 ## 
-## $versicolor
-## [1] 4.9 5.6 5.9 6.3 7.0
-## 
-## $virginica
-## [1] 4.9 6.2 6.5 6.9 7.9
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{with}\NormalTok{(iris, }\FunctionTok{hist}\NormalTok{(Sepal.Width, }\AttributeTok{plot =} \ConstantTok{FALSE}\NormalTok{))}\SpecialCharTok{$}\NormalTok{count}
-\end{Highlighting}
-\end{Shaded}
+この要約の通りか箱ひげ図を描いて確かめてみますが、このままの形では都合が悪いので下記のように変形しておきます。
 
 \begin{verbatim}
-##  [1]  4  7 13 23 36 24 18 10  9  3  2  1
+##     Species         part value
+## 1    setosa Sepal.Length   5.1
+## 2    setosa  Sepal.Width   3.5
+## 3    setosa Petal.Length   1.4
+## 4    setosa  Petal.Width   0.2
+## 5      <NA>         <NA>   ...
+## 6 virginica Sepal.Length   5.9
+## 7 virginica  Sepal.Width     3
+## 8 virginica Petal.Length   5.1
+## 9 virginica  Petal.Width   1.8
 \end{verbatim}
 
-　つまり、データの把握（分布の把握）とは可視化（Visualize）と変換（Transform）の繰り返し作業と言えます。
+変形したデータを使って部位別の箱ひげ図を描くと確かに Petal（花弁）の方が Sepal（萼片）よりも小さい傾向にあることが分かります。
 
-\hypertarget{model}{%
-\subsection*{Model　}\label{model}}
-\addcontentsline{toc}{subsection}{Model　}
+\begin{center}\includegraphics[width=0.9\linewidth]{R_files/figure-latex/unnamed-chunk-5-1} \end{center}
 
-\hypertarget{communicate}{%
-\subsection*{Communicate　}\label{communicate}}
-\addcontentsline{toc}{subsection}{Communicate　}
+これがデータサイエンスワークフロー（Data Science Workflow）と呼ばれる分析フローです。
 
-\hypertarget{importtidy}{%
-\subsection{Import/Tidy}\label{importtidy}}
-
-\hypertarget{program}{%
-\subsection{Program}\label{program}}
+\newpage
 
 \hypertarget{data-science-workflow}{%
-\section{Data Science Workflow}\label{data-science-workflow}}
+\section*{Data Science Workflow}\label{data-science-workflow}}
+\addcontentsline{toc}{section}{Data Science Workflow}
 
 データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
 
@@ -374,7 +367,8 @@ R はデータ分析に必要となるデータのハンドリングや可視化
 分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で \href{}{再現可能性（Reproducible research） } が伴っていることも求められます。 　 　\href{http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03}{3つの再現可能性 }
 
 \hypertarget{tidyverse-eco-system}{%
-\section{Tidyverse Eco System}\label{tidyverse-eco-system}}
+\section*{Tidyverse Eco System}\label{tidyverse-eco-system}}
+\addcontentsline{toc}{section}{Tidyverse Eco System}
 
 　このような Data Science Workflow を R で実現するための手段が Hadley Wickham により開発された tidyverse パッケージ群による Tidyverse Eco System です。tidyverse
 
@@ -1278,18 +1272,11 @@ NA\_character\_ & 文字型 \\
 \end{Shaded}
 
 \begin{verbatim}
-## Warning in c(1:10) * c(1:3): 長いオブジェクトの長さが短いオブジェクトの長さの倍
-## 数になっていません
-\end{verbatim}
-
-\begin{verbatim}
 ##  [1]  1  4  9  4 10 18  7 16 27 10
 \end{verbatim}
 
 　\\
-、
-\#\#\# 単項演算子
-　単項演算子は文字通り単項に作用する演算子です。単項演算子には算術演算子の \texttt{-}（マイナス）と論理型演算子の \texttt{!}（否定, NOT）があります。
+、 \#\#\# 単項演算子 　単項演算子は文字通り単項に作用する演算子です。単項演算子には算術演算子の \texttt{-}（マイナス）と論理型演算子の \texttt{!}（否定, NOT）があります。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1536,8 +1523,7 @@ NA\_character\_ & 文字型 \\
 \hypertarget{ux8ad6ux7406ux6f14ux7b97ux5b50-boolean-operations}{%
 \subsection{論理演算子 Boolean Operations}\label{ux8ad6ux7406ux6f14ux7b97ux5b50-boolean-operations}}
 
-　論理演算子はブール関数を評価するものです。論理積（AND）・論理和（OR）は演算対象により二種類の演算子があります。
-　
+　論理演算子はブール関数を評価するものです。論理積（AND）・論理和（OR）は演算対象により二種類の演算子があります。 　
 
 \begin{longtable}[]{@{}lll@{}}
 \toprule
@@ -2208,8 +2194,7 @@ NA\_character\_ & 文字型 \\
 \subsection{Windows}\label{windows}}
 
 　Winodws では特段の理由がない限り \href{https://cran.r-project.org/bin/windows/}{CRAN } から最新バージョンをインストールしてください。\\
-　旧バージョンをインストールしたい場合は　\href{https://cran.r-project.org/bin/windows/base/old/}{Previous Releases of R for Windows }
-から当該バージョンをダウンロードしインストールしてください。\\
+　旧バージョンをインストールしたい場合は　\href{https://cran.r-project.org/bin/windows/base/old/}{Previous Releases of R for Windows } から当該バージョンをダウンロードしインストールしてください。\\
 　\\
 　日本語によるインストール方法が必要な場合は非公式ページですが \href{https://das-kino.hatenablog.com/entry/2019/11/07/125044}{R初心者の館（RとRStudioのインストール、初期設定、基本的な記法など） } などのサイトを参考にしてください。\\
 　
@@ -2237,8 +2222,7 @@ NA\_character\_ & 文字型 \\
 \hypertarget{install-rstudio-desktop}{%
 \section{Install RStudio Desktop}\label{install-rstudio-desktop}}
 
-　R のインストールが完了しましたら統合開発環境（IDE）である RStudio Desktop をインストールします。 \href{https://rstudio.com/products/rstudio/download/\#download}{Downloadページ } から使用している環境（OS）用の RStudio をダウンロードしてインストールしてください。
-　
+　R のインストールが完了しましたら統合開発環境（IDE）である RStudio Desktop をインストールします。 \href{https://rstudio.com/products/rstudio/download/\#download}{Downloadページ } から使用している環境（OS）用の RStudio をダウンロードしてインストールしてください。 　
 
 \hypertarget{ux52d5ux4f5cux78baux8a8d}{%
 \subsection{動作確認}\label{ux52d5ux4f5cux78baux8a8d}}
@@ -2382,19 +2366,15 @@ Git GUI Client & Ubuntu & Mac & Windows & Memo \\
 \item
   日本語版 Windows 環境では文字コード（CP932, Shift JIS）が原因で日本語を正しく処理できない事例が散見される
 \item
-  18.04LTSより前の Ubuntu 環境では RStudio Desktop で日本語入力ができない
-  * 有志による日本語入力パッチ（非公式パッチ）はあり
+  18.04LTSより前の Ubuntu 環境では RStudio Desktop で日本語入力ができない * 有志による日本語入力パッチ（非公式パッチ）はあり
 \item
-  macOS 環境ではグラフの日本語が文字化けする
-  * いわゆる豆腐文字問題
+  macOS 環境ではグラフの日本語が文字化けする * いわゆる豆腐文字問題
 \end{itemize}
 
 　\\
 　特に日本語版 Windows 環境での問題は Windows が利用している文字コード（CP932, Shift JIS） に起因しているため問題は根本的な解決を期待できません。詳細については伝説とも言われている「Why are you using SJIS?」というキーワードで検索してみてください。\\
 　\\
-　日本語版 Windows 環境における文字コード問題を回避するためには、 \href{https://rstudio.com/products/rstudio/download-server/}{RStudio Server } を利用する方法が考えられます。
-　RStudio Server は Linux 環境で動作する Web サーバベースの IDE ですが、 \href{https://www.docker.com/}{Docker } のコンテナ技術を利用することで Windows や macOS 環境で動作させることが可能です。
-　
+　日本語版 Windows 環境における文字コード問題を回避するためには、 \href{https://rstudio.com/products/rstudio/download-server/}{RStudio Server } を利用する方法が考えられます。 　RStudio Server は Linux 環境で動作する Web サーバベースの IDE ですが、 \href{https://www.docker.com/}{Docker } のコンテナ技術を利用することで Windows や macOS 環境で動作させることが可能です。 　
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.14}}
@@ -2433,8 +2413,7 @@ Windows & Docker Desktop for Windows & Hyper-V(Windows10 64bit Pro or Higher) or
 \end{longtable}
 
 　\\
-　なお、Linux 環境での手順は割愛します。
-　
+　なお、Linux 環境での手順は割愛します。 　
 
 \hypertarget{enable-hyper-v-windows-only}{%
 \subsection{Enable Hyper-V (Windows Only)}\label{enable-hyper-v-windows-only}}
@@ -2639,8 +2618,7 @@ Keyboard Shortcuts & Description \\
 \hypertarget{writing-r-code}{%
 \section{Writing R code}\label{writing-r-code}}
 
-　では、実際に RStudio を利用して簡単なコードを書いてみましょう。初学者が学習のために R のコードを記述するには R Notebook 形式が便利です。 R Notebook 形式は マークダウン言語とコードを混在できる R Markdown 形式を簡易にしたものです。コード以外に説明などを記述できるのでアウトプットしながらの学習が可能です。
-　R Notebook 形式を使うにはメニューから［File］-［New File］-［R Notebook］を実行します。すると下図のようなソースエディタ（以降、エディタ）が開きます。
+　では、実際に RStudio を利用して簡単なコードを書いてみましょう。初学者が学習のために R のコードを記述するには R Notebook 形式が便利です。 R Notebook 形式は マークダウン言語とコードを混在できる R Markdown 形式を簡易にしたものです。コード以外に説明などを記述できるのでアウトプットしながらの学習が可能です。 　R Notebook 形式を使うにはメニューから［File］-［New File］-［R Notebook］を実行します。すると下図のようなソースエディタ（以降、エディタ）が開きます。
 
 \begin{figure}
 
@@ -2837,8 +2815,7 @@ Management & Package Management & Use Internet Explorer library/proxy for HTTP &
 
 　
 
-\textsuperscript{1} ネットワーク的に最も速い（近い）サイトを選んでください
-\textsuperscript{2} プロキシサーバーを利用している場合に設定してください
+\textsuperscript{1} ネットワーク的に最も速い（近い）サイトを選んでください \textsuperscript{2} プロキシサーバーを利用している場合に設定してください
 
 　
 
