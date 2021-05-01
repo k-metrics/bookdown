@@ -3,6 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
+  12pt,
 ]{book}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -15,7 +16,7 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-  \setmonofont[Scale=0.8]{Source Code Pro}
+  \setmonofont[Scale=0.96]{Source Code Pro}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -122,13 +123,29 @@
 \usepackage{threeparttable}
 \usepackage{threeparttablex}
 \usepackage[normalem]{ulem}
+\usepackage{inputenc}
 \usepackage{makecell}
 \usepackage{xcolor}
 \usepackage{fontawesome5}
+\usepackage{subfig}
 \usepackage{xeCJK}
-\usepackage{zxjatype}
 \usepackage[noto]{zxjafont}
+\usepackage{zxjatype}
 
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -144,7 +161,7 @@
 \makeatother
 \subtitle{- Rによるデータ分析事始め -}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-04-30}
+\date{2021-05-01}
 
 \begin{document}
 \maketitle
@@ -200,6 +217,9 @@
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
+\hypertarget{part-introduction}{%
+\part{Introduction}\label{part-introduction}}
+
 \hypertarget{ux306fux3058ux3081ux306b}{%
 \chapter*{はじめに}\label{ux306fux3058ux3081ux306b}}
 \addcontentsline{toc}{chapter}{はじめに}
@@ -215,6 +235,8 @@
 \addcontentsline{toc}{section}{想定読者}
 
 本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有している方々を読者として想定しています。本書では \href{https://cran.r-project.org/}{{[}R言語{]}} を実行するための環境構築に関する詳細な解説は行いませんの「で、R言語のインストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえずR言語を使ってみたいという方には \href{\%60https://colab.research.google.com/notebook\#create=true\&language=r\%60}{{[}Google Colaboratory{]}} の利用をおすゝめします。
+
+\newpage
 
 \hypertarget{ux8868ux8a18ux30ebux30fcux30eb}{%
 \section*{表記ルール}\label{ux8868ux8a18ux30ebux30fcux30eb}}
@@ -271,18 +293,30 @@ R はデータ分析に必要となるデータのハンドリングや可視化
 
 では、R を使った分析とはどのような手順になるかを簡単に見てみましょう。R は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。 例えば「フィッシャーのあやめ（Fisher's or Anderson's iris）」を例にとってみましょう。「フィッシャーのあやめ」はRの例題でよく使われる下記のような150行のデータセットでRに標準で組み込まれています。
 
-\begin{verbatim}
-##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
-## 1            5.1         3.5          1.4         0.2    setosa
-## 2            4.9           3          1.4         0.2    setosa
-## 3            4.7         3.2          1.3         0.2    setosa
-## 4            4.6         3.1          1.5         0.2    setosa
-## ...          ...         ...          ...         ...      <NA>
-## 147          6.3         2.5            5         1.9 virginica
-## 148          6.5           3          5.2           2 virginica
-## 149          6.2         3.4          5.4         2.3 virginica
-## 150          5.9           3          5.1         1.8 virginica
-\end{verbatim}
+\begin{table}[H]
+\centering\begingroup\fontsize{10}{12}\selectfont
+
+\begin{tabular}[t]{l|l|l|l|l|l}
+\hline
+  & Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
+\hline
+\cellcolor{gray!6}{1} & \cellcolor{gray!6}{5.1} & \cellcolor{gray!6}{3.5} & \cellcolor{gray!6}{1.4} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
+\hline
+2 & 4.9 & 3 & 1.4 & 0.2 & setosa\\
+\hline
+\cellcolor{gray!6}{3} & \cellcolor{gray!6}{4.7} & \cellcolor{gray!6}{3.2} & \cellcolor{gray!6}{1.3} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
+\hline
+... & ... & ... & ... & ... & NA\\
+\hline
+\cellcolor{gray!6}{148} & \cellcolor{gray!6}{6.5} & \cellcolor{gray!6}{3} & \cellcolor{gray!6}{5.2} & \cellcolor{gray!6}{2} & \cellcolor{gray!6}{virginica}\\
+\hline
+149 & 6.2 & 3.4 & 5.4 & 2.3 & virginica\\
+\hline
+\cellcolor{gray!6}{150} & \cellcolor{gray!6}{5.9} & \cellcolor{gray!6}{3} & \cellcolor{gray!6}{5.1} & \cellcolor{gray!6}{1.8} & \cellcolor{gray!6}{virginica}\\
+\hline
+\end{tabular}
+\endgroup{}
+\end{table}
 
 このデータセットの主な要約統計量は以下のようになり、Sepal（萼片）よりPetal（花弁）の方が小さい傾向にあると推測できます。
 
@@ -303,24 +337,92 @@ R はデータ分析に必要となるデータのハンドリングや可視化
 ## 
 \end{verbatim}
 
-この要約の通りか箱ひげ図を描いて確かめてみますが、このままの形では都合が悪いので下記のように変形しておきます。
+この要約の通りか箱ひげ図を描いて確かめてみますが、元のデータ形式では都合が悪いので以下のように変形しておきます。
 
-\begin{verbatim}
-##     Species         part value
-## 1    setosa Sepal.Length   5.1
-## 2    setosa  Sepal.Width   3.5
-## 3    setosa Petal.Length   1.4
-## 4    setosa  Petal.Width   0.2
-## 5      <NA>         <NA>   ...
-## 6 virginica Sepal.Length   5.9
-## 7 virginica  Sepal.Width     3
-## 8 virginica Petal.Length   5.1
-## 9 virginica  Petal.Width   1.8
-\end{verbatim}
+\begin{table}[H]
+\centering
+\begin{tabular}[t]{l|l|l}
+\hline
+Species & part & value\\
+\hline
+\cellcolor{gray!6}{setosa} & \cellcolor{gray!6}{Sepal.Length} & \cellcolor{gray!6}{5.1}\\
+\hline
+setosa & Sepal.Width & 3.5\\
+\hline
+\cellcolor{gray!6}{setosa} & \cellcolor{gray!6}{Petal.Length} & \cellcolor{gray!6}{1.4}\\
+\hline
+setosa & Petal.Width & 0.2\\
+\hline
+\cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{...}\\
+\hline
+virginica & Sepal.Length & 5.9\\
+\hline
+\cellcolor{gray!6}{virginica} & \cellcolor{gray!6}{Sepal.Width} & \cellcolor{gray!6}{3}\\
+\hline
+virginica & Petal.Length & 5.1\\
+\hline
+\cellcolor{gray!6}{virginica} & \cellcolor{gray!6}{Petal.Width} & \cellcolor{gray!6}{1.8}\\
+\hline
+\end{tabular}
+\end{table}
 
 変形したデータを使って部位別の箱ひげ図を描くと確かに Petal（花弁）の方が Sepal（萼片）よりも小さい傾向にあることが分かります。
 
-\begin{center}\includegraphics[width=0.9\linewidth]{R_files/figure-latex/unnamed-chunk-5-1} \end{center}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth,]{R_files/figure-latex/unnamed-chunk-5-1} 
+
+}
+
+\caption{花弁と萼片の分布}\label{fig:unnamed-chunk-5}
+\end{figure}
+
+次に花弁と萼片の幅と長さの関係を見ると花弁の幅と長さに相関関係があるように見えます。
+
+\begin{figure}[H]
+
+{\centering \subfloat[花弁\label{fig:unnamed-chunk-7-1}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-7-1} }\subfloat[萼片\label{fig:unnamed-chunk-7-2}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-7-2} }
+
+}
+
+\caption{幅と長さの関係}\label{fig:unnamed-chunk-7}
+\end{figure}
+
+そこで、花弁の幅と長さの回帰関係を求めてみます。
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Petal.Length ~ Petal.Width)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.33542 -0.30347 -0.02955  0.25776  1.39453 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  1.08356    0.07297   14.85   <2e-16 ***
+## Petal.Width  2.22994    0.05140   43.39   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.4782 on 148 degrees of freedom
+## Multiple R-squared:  0.9271, Adjusted R-squared:  0.9266 
+## F-statistic:  1882 on 1 and 148 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+モデルの当てはまり具合が良さそうなので、回帰関係を可視化してみます。ついでに萼片の方も可視化してみます。
+
+\begin{figure}[H]
+
+{\centering \subfloat[花弁の回帰関係\label{fig:unnamed-chunk-9-1}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-9-1} }\subfloat[萼片の回帰関係\label{fig:unnamed-chunk-9-2}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-9-2} }
+
+}
+
+\caption{幅と長さの関係}\label{fig:unnamed-chunk-9}
+\end{figure}
+
+実際にはこれだけではデータ分析はできませんので、分析対象を
 
 これがデータサイエンスワークフロー（Data Science Workflow）と呼ばれる分析フローです。
 
@@ -332,13 +434,13 @@ R はデータ分析に必要となるデータのハンドリングや可視化
 
 データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.95\linewidth]{fig/data-science} 
+{\centering \includegraphics[width=1\linewidth,]{fig/data-science} 
 
 }
 
-\caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-6}
+\caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-11}
 \end{figure}
 
 この図は「Data Science Workflow」と呼ばれ、R コミュニティに多大な貢献をしている Hadley Wickham がその著書 \href{https://r4ds.had.co.nz/}{『R for Data Science』 } で提唱している概念図です。本書は、この Data Science Workflow に基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。\\
@@ -375,11 +477,23 @@ R はデータ分析に必要となるデータのハンドリングや可視化
 \hypertarget{part-program}{%
 \part{Program}\label{part-program}}
 
-\hypertarget{environments}{%
-\chapter{Environments}\label{environments}}
+\hypertarget{ux5206ux6790ux74b0ux5883}{%
+\chapter{分析環境}\label{ux5206ux6790ux74b0ux5883}}
 
-　R について学ぶ前に R が使えるように環境を構築する必要がありますが、環境構築は初学者にとって厄介な部分でもあります。そこで、本書では環境構築の必要がない \href{https://mybinder.org/}{binder } を利用します。RStudio 環境を構築できる方はそちらを利用しても構いません。\\
-　\\
+R について学ぶ際には R が使えるような環境を構築しておくべきです。しかし、環境構築は初学者にとって最も厄介な作業でもあります。そこで、本書では環境構築の必要がない \href{}{{[}Google Colaboratory{]}} を利用します。R/RStudio 環境を構築できる方はそちらを利用しても構いません。
+
+\hypertarget{r-ux306eux4e3bux306aux5206ux6790ux74b0ux5883}{%
+\section{R の主な分析環境}\label{r-ux306eux4e3bux306aux5206ux6790ux74b0ux5883}}
+
+RCommander
+
+RStudio Desktop
+
+RStudio Server
+
+Google Colaboratory
+
+VisualStudio Code/emacs
 
 \hypertarget{r-basics}{%
 \chapter{R Basics}\label{r-basics}}
@@ -396,13 +510,13 @@ Rの一番良いところは統計学者が作っているところだ。 Rの�
 
 　
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth]{fig/tutorial_code} 
+{\centering \includegraphics[width=0.9\linewidth,]{fig/tutorial_code} 
 
 }
 
-\caption{Google Colab での実行例}\label{fig:unnamed-chunk-7}
+\caption{Google Colab での実行例}\label{fig:unnamed-chunk-12}
 \end{figure}
 
 　\\
@@ -2001,13 +2115,13 @@ NA\_character\_ & 文字型 \\
 　Google で Google Colab を検索して \href{https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja}{Colaboratory - Google Colab } のリンクをくと以下のような画面が表示されまます。\\
 　
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/Colab/welcome} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/Colab/welcome} 
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-28}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-33}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -2020,13 +2134,13 @@ NA\_character\_ & 文字型 \\
 　Google Colab が立ち上がりましたら上部にあるメニュー ［ファイル］-［ノートブックをアップロード\ldots］を実行します。\\
 　
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/Colab/upload_notebook} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/Colab/upload_notebook} 
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-29}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-34}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -2034,13 +2148,13 @@ NA\_character\_ & 文字型 \\
 \texttt{https://gist.github.com/k-metrics/464ffbbd4d00e328560cd55966e7d4b8}~\\
 　
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/Colab/upload_dialog} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/Colab/upload_dialog} 
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-30}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-35}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -2052,13 +2166,13 @@ NA\_character\_ & 文字型 \\
 
 　テンプレートがアップロードできましたらテンプレートファイルの記述にしたがってコードを実行してみます。その際に下記のようなダイアログが表示されますが認証情報などを読み取ることはありませんので［このまま実行］をクリックしてください。
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/Colab/run_dialog} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/Colab/run_dialog} 
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-31}
+\caption{Warning dialog}\label{fig:unnamed-chunk-36}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -2078,13 +2192,13 @@ NA\_character\_ & 文字型 \\
 　Google Colab では R Markdown などのレポーティング機能は使用できませんので、このような場合には クラウド上で RStudio が利用できる RStudio Cloud が便利です。RStudio Cloud は統合開発環境の RStudio だけでなく種々のチュートリアルコンテンツを備えています。\\
 　\\
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/RSCloud_00} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/RSCloud_00} 
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-32}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-37}
 \end{figure}
 
 　\\
@@ -2111,13 +2225,13 @@ NA\_character\_ & 文字型 \\
 　プロジェクトを作成すると下図のような統合開発環境の RStudio が表示されます。RStudio 自体の説明は Appendix を参照してください。\\
 　\\
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/RSCloud_01} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/RSCloud_01} 
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-33}
+\caption{Initial View}\label{fig:unnamed-chunk-38}
 \end{figure}
 
 　
@@ -2128,26 +2242,26 @@ NA\_character\_ & 文字型 \\
 　RStudio Cloud の初期状態では R のパッケージは Base R しかインストールされていません。最も利用する \texttt{tidyverse} パッケージと \texttt{rmarkdown} パッケージをインストールするために右下のエリアにある \texttt{Packages} タブをクリックしてパッケージマネージャを表示させます。\\
 　\\
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/RSCloud_02} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/RSCloud_02} 
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-34}
+\caption{Packages Manager}\label{fig:unnamed-chunk-39}
 \end{figure}
 
 　\\
 　次にパッケージマネージャの上部に表示されている \texttt{install} ボタンをクリックし表示されたダイアログに \texttt{tidyverse,\ rmarkdown} と入力し［install］ボタンをクリックしてインストールします。\\
 　\\
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/RSCloud_03} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/RSCloud_03} 
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-35}
+\caption{Install Dialog}\label{fig:unnamed-chunk-40}
 \end{figure}
 
 　\\
@@ -2539,24 +2653,24 @@ Image & Description \\
 　RStudio を起動すると以下のような画面が表示されます。画面は大きく以下の四つのエリアに分割されており、左上の A のエリアはソースエディタが表示されるエリアなので初めて起動した際には表示されません。\\
 　
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/DT_Area} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/DT_Area} 
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-43}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-48}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/DT_Pane} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/DT_Pane} 
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-44}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-49}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -2620,68 +2734,68 @@ Keyboard Shortcuts & Description \\
 
 　では、実際に RStudio を利用して簡単なコードを書いてみましょう。初学者が学習のために R のコードを記述するには R Notebook 形式が便利です。 R Notebook 形式は マークダウン言語とコードを混在できる R Markdown 形式を簡易にしたものです。コード以外に説明などを記述できるのでアウトプットしながらの学習が可能です。 　R Notebook 形式を使うにはメニューから［File］-［New File］-［R Notebook］を実行します。すると下図のようなソースエディタ（以降、エディタ）が開きます。
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/DT_RN} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/DT_RN} 
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-45}
+\caption{R Notebook file}\label{fig:unnamed-chunk-50}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/DT_RN_Saved} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/DT_RN_Saved} 
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-46}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-51}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/DT_RN_Insert_Chunk} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/DT_RN_Insert_Chunk} 
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-47}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-52}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/DT_RN_First_Code} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/DT_RN_First_Code} 
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-48}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-53}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/DT_RN_Run_Code} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/DT_RN_Run_Code} 
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-49}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-54}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/DT_RN_Option} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/DT_RN_Option} 
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-50}
+\caption{R Notebook option}\label{fig:unnamed-chunk-55}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -2937,13 +3051,13 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 　\\
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/RStudio/Cloud} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/RStudio/Cloud} 
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-51}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-56}
 \end{figure}
 
 　
@@ -2962,13 +3076,13 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 　\\
 
-\begin{figure}
+\begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth]{fig/Exploratory} 
+{\centering \includegraphics[width=0.8\linewidth,]{fig/Exploratory} 
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-52}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-57}
 \end{figure}
 
 　

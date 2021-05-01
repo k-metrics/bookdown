@@ -1,3 +1,5 @@
+# (PART) Introduction {-}
+
 # はじめに {.unnumbered}
 ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す数理資本主義の時代と言われています。
 
@@ -9,6 +11,7 @@
 ## 想定読者 {.unnumbered}
 本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有している方々を読者として想定しています。本書では [[R言語]](https://cran.r-project.org/) を実行するための環境構築に関する詳細な解説は行いませんの「で、R言語のインストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえずR言語を使ってみたいという方には [[Google Colaboratory]](`https://colab.research.google.com/notebook#create=true&language=r`) の利用をおすゝめします。
 
+\newpage
 
 ## 表記ルール {.unnumbered}
 本書では以下の表記ルールを用いています。
@@ -43,29 +46,74 @@ R はデータ分析に必要となるデータのハンドリングや可視化
 
 ```{r, echo=FALSE}
 iris %>% 
-  psych::headTail()
+  df_print(font_size = 10)
 ```
 
+<!-- \newpage -->
+
 このデータセットの主な要約統計量は以下のようになり、Sepal（萼片）よりPetal（花弁）の方が小さい傾向にあると推測できます。
-```{r, echo=FALSE}
+```{r, echo=FALSE, out.width="100%"}
 summary(iris)
 ```
 
-この要約の通りか箱ひげ図を描いて確かめてみますが、このままの形では都合が悪いので下記のように変形しておきます。
+この要約の通りか箱ひげ図を描いて確かめてみますが、元のデータ形式では都合が悪いので以下のように変形しておきます。
 ```{r, echo=FALSE}
 iris %>%
   tidyr::pivot_longer(cols = -Species, names_to = "part", values_to = "value") %>% 
-  psych::headTail()
+  # psych::headTail() %>% 
+  df_print(n = 4L)
 ```
 
 変形したデータを使って部位別の箱ひげ図を描くと確かに Petal（花弁）の方が Sepal（萼片）よりも小さい傾向にあることが分かります。
-```{r, echo=FALSE, out.width="90%"}
+```{r, echo=FALSE, fig.cap="花弁と萼片の分布", out.width="80%"}
 iris %>%
   tidyr::pivot_longer(cols = -Species, names_to = "part", values_to = "value") %>% 
   ggplot2::ggplot(ggplot2::aes(x = part, y = value)) + 
-   ggplot2::geom_boxplot()
+    ggplot2::geom_boxplot() +
+    ggplot2::labs(x = "", y = "")
 ```
 
+```{r, echo=FALSE, eval=FALSE}
+# Visualize <-> Transform
+knitr::include_graphics()
+```
+
+次に花弁と萼片の幅と長さの関係を見ると花弁の幅と長さに相関関係があるように見えます。
+```{r, echo=FALSE, fig.cap="幅と長さの関係", fig.ncol=2, out.width="40%", fig.subcap=c('花弁', '萼片')}
+iris %>%
+  ggplot2::ggplot(ggplot2::aes(x = Petal.Width, y = Petal.Length)) +
+    ggplot2::geom_point()
+
+iris %>%
+  ggplot2::ggplot(ggplot2::aes(x = Sepal.Width, y = Sepal.Length)) +
+    ggplot2::geom_point()
+```
+
+そこで、花弁の幅と長さの回帰関係を求めてみます。
+```{r, echo=FALSE}
+with(iris, lm(Petal.Length ~ Petal.Width)) %>% 
+  summary()
+```
+
+モデルの当てはまり具合が良さそうなので、回帰関係を可視化してみます。ついでに萼片の方も可視化してみます。
+```{r, echo=FALSE, message=FALSE, fig.cap="幅と長さの関係", fig.ncol=2, out.width="40%", fig.subcap=c('花弁の回帰関係', '萼片の回帰関係')}
+iris %>%
+  ggplot2::ggplot(ggplot2::aes(x = Petal.Width, y = Petal.Length)) +
+    ggplot2::geom_point() +
+    ggplot2::geom_smooth(method = "lm", se = FALSE)
+
+iris %>%
+  ggplot2::ggplot(ggplot2::aes(x = Sepal.Width, y = Sepal.Length)) +
+    ggplot2::geom_point() + 
+    ggplot2::geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r, echo=FALSE, eval=FALSE}
+# Visualize <-> Transform <-> Model
+knitr::include_graphics()
+```
+
+実際にはこれだけではデータ分析はできませんので、分析対象を
 
 
 これがデータサイエンスワークフロー（Data Science Workflow）と呼ばれる分析フローです。
@@ -76,15 +124,10 @@ iris %>%
 
 データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
 
-<!-- ```{r, echo=FALSE, out.width="95%", fig.cap="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham"}
--->
-
-```{r, echo=FALSE, out.width="95%", fig.cap="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham"}
+```{r, echo=FALSE, out.width="100%", fig.cap="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham"}
 # knitr::include_graphics("https://raw.githubusercontent.com/hadley/r4ds/master/diagrams/data-science-explore.png")
 knitr::include_graphics("fig/data-science.png")
 ```
-
-<!-- <p align=right>図出典：[RStartHere, RStudio, inc. <i class="fa fa-external-link"></i>](https://github.com/rstudio/RStartHere){target="_blank"}</p> -->
 
 この図は「Data Science Workflow」と呼ばれ、R コミュニティに多大な貢献をしている Hadley Wickham がその著書 [『R for Data Science』 <i class="fa fa-external-link"></i>](https://r4ds.had.co.nz/){target="_blank"} で提唱している概念図です。本書は、この Data Science Workflow に基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。\
 　

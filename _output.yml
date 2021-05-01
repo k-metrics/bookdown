@@ -27,7 +27,6 @@ bookdown::pdf_book:
   citation_package: natbib
   colorlinks: true
   fig_crop: false
-  fontsize: 12pt
   keep_tex: true
   highlight_bw: false
   latex_engine: xelatex

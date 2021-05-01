@@ -1,9 +1,17 @@
 # (PART) Program {-}
 
-# Environments
-　R について学ぶ前に R が使えるように環境を構築する必要がありますが、環境構築は初学者にとって厄介な部分でもあります。そこで、本書では環境構築の必要がない [binder <i class="fa fa-external-link"></i>](https://mybinder.org/){target="_blank" title="Turn a Git repo into a collection of interactive notebooks"} を利用します。RStudio 環境を構築できる方はそちらを利用しても構いません。  
-　  
-<!-- 　binder による環境を利用するには以下のリンクをクリックしてください。Docker イメージのキャッシュが存在しない場合には Docker イメージの構築から行われますので起動するまでに多少の時間がかかります。   -->
-<!-- 　   -->
+# 分析環境
+R について学ぶ際には R が使えるような環境を構築しておくべきです。しかし、環境構築は初学者にとって最も厄介な作業でもあります。そこで、本書では環境構築の必要がない [[Google Colaboratory]](){target="_blank" title="Turn a Git repo into a collection of interactive notebooks"} を利用します。R/RStudio 環境を構築できる方はそちらを利用しても構いません。
 
-<!-- [![binder](https://mybinder.org/badge_logo.svg) Run Tutorial on binder](https://mybinder.org/v2/gh/k-metrics/binder/master?urlpath=rstudio) -->
+
+## R の主な分析環境
+
+RCommander
+
+RStudio Desktop
+
+RStudio Server
+
+Google Colaboratory
+
+VisualStudio Code/emacs

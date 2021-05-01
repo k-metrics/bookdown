@@ -5,11 +5,12 @@ author: "Sampo Suzuki, CC 4.0 BY-NC-SA"
 date: "`r format(Sys.Date(), format = '%Y-%m-%d')`"
 site: bookdown::bookdown_site
 github-repo: k-metrics/bookdown
-description: ""
+description: "本書は"
 # LaTeX関連の設定はベースとなるRmdに記述しないと正しく認識されません
 always_allow_html: true
 # documentclass: krantz
-## 日本語とtufteを使うために必要なTeXパッケージ
+fontsize: 12pt
+## 日本語とtufte, kableExtraを使うために必要なTeXパッケージ
 header-includes: |
   \usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
   \usepackage{booktabs}
@@ -24,20 +25,22 @@ header-includes: |
   \usepackage{threeparttable}
   \usepackage{threeparttablex}
   \usepackage[normalem]{ulem}
+  \usepackage{inputenc}
   \usepackage{makecell}
   \usepackage{xcolor}
   \usepackage{fontawesome5}
+  \usepackage{subfig}
   \usepackage{xeCJK}
-  \usepackage{zxjatype}
   \usepackage[noto]{zxjafont}
+  \usepackage{zxjatype}
 ## Windows環境では上記の設定ではNotoフォントが認識されないので以下の行と
 ## 入れ替えてIPAフォントを利用するのが楽
 # \usepackage[ipaex]{zxjafont}
 ## モノフォントのみ入れ替えフォントのスケーリングを調整する
 mainfontoptions: "Scale=MatchUppercase"
 monofont: "Source Code Pro"
-monofontoptions: "Scale=0.8"
-CJKoptions: "Scale=1.0"
+monofontoptions: "Scale=0.96"
+CJKoptions: "Scale=1.25"
 ## Windows環境でNotoフォントを指定したい場合は以下のように個別に指定する
 ## 必要があるが、以下だけでは太字が表示できないので追加記述が必要（調査中）
 # mainfont: NotoSerifCJKjp-Regular.otf
@@ -57,8 +60,19 @@ CJKoptions: "Scale=1.0"
 ```
 
 ```{r setup, include=FALSE}
+# 図の描画位置調整については以下を参照
+# https://gedevan-aleksizde.github.io/rmarkdown-cookbook/figure-placement.html#force-floats-forward
+# opts_chunkで"fig.pos"を指定することで全てのチャンク出力に対して調整可能
+# h: フロートをここ (here) に配置します. つまりソーステキスト上に現れるところとほぼ同じ位置です.
+# t: そのページの先頭 (top) に配置します.
+# b: そのページの末尾 (bottom) に配置します.
+# p: フロート専用の特別なページに配置します.
+# !: LaTex が「良い」フロートの位置を決定するための内部パラメータ上書きします.
+# H: フロートを正確に LaTex コード上と同じ位置に配置します. float パッケージが必要です (\usepackage{float}).
+
 knitr::opts_chunk$set(echo = TRUE, fig_caption = TRUE, fig.align = 'center',
-                      warning = FALSE)
+                      warning = FALSE, fig.pos = "H", out.extra = "")
+
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 
 output <- knitr::opts_knit$get("rmarkdown.pandoc.to")
@@ -66,6 +80,52 @@ if (!is.null(output)) {
   if (output == "latex") {
     knitr::opts_chunk$set(dev = "cairo_pdf",
                           dev.args = list(family = "Noto Serif"))
+  }
+}
+
+## 出力によりテーブル表記を変更する
+# HTML format use rmarkdown::paged_table
+# PDF/DOCX format use kableExtra package
+#  https://haozhu233.github.io/kableExtra/
+#  https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf
+# WARNING:
+# Should NOT exec df_print befor skimr::skim (has bug) 
+# Do NOT require() or library() kableExtra package with using skimr package
+df_print <- function(df = NULL, type = NULL, n = 3L, caption = NULL, 
+                     scale_down = FALSE, font_size = NULL, position = "center",
+                     full_width = FALSE, ...) {
+
+  # if (is.null(type)) {
+  #   output_type <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+  # } else {
+  #   output_type <- type
+  # }
+
+  # print(output_type)     # for debug
+
+  if (!is.null(df)) {
+    if (knitr::is_html_output()) {
+    # if (output_type == "html") {
+      rmarkdown::paged_table(df)
+    } else if (knitr::is_latex_output()) {
+    # } else if (output_type == "latex" | output_type == "docx") {
+      if (scale_down == FALSE) {
+        latex_option = c("striped", "HOLD_position")
+      } else {
+        latex_option = c("striped", "HOLD_position", "scale_down")
+      }
+      df %>% 
+        psych::headTail(top = n, bottom = n) %>% 
+        # knitr::kable(caption = caption, ...) %>% 
+        kableExtra::kbl(caption  = caption, ...) %>%
+        kableExtra::kable_styling(font_size = font_size, position = position,
+                                  full_width = full_width,
+                                  latex_options = latex_option)
+    } else {
+      df
+    }
+  }　else {
+    return(NULL)
   }
 }
 
