@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Rのすゝめ</title>
-  <meta name="description" content="Rのすゝめ" />
+  <meta name="description" content="本書は" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
-  
+  <meta property="og:description" content="本書は" />
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Rのすゝめ" />
   
-  
+  <meta name="twitter:description" content="本書は" />
   
 
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-01" />
+<meta name="date" content="2021-05-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,8 +55,74 @@
 <script src="assets/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="assets/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="assets/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="assets/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="assets/pagedtable-1.1/js/pagedtable.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -84,7 +150,18 @@
 <li class="chapter" data-level="" data-path="tidyverse-eco-system.html"><a href="tidyverse-eco-system.html"><i class="fa fa-check"></i>Tidyverse Eco System</a></li>
 </ul></li>
 <li class="part"><span><b>II Program</b></span></li>
-<li class="chapter" data-level="1" data-path="environments.html"><a href="environments.html"><i class="fa fa-check"></i><b>1</b> Environments</a></li>
+<li class="chapter" data-level="1" data-path="分析環境.html"><a href="分析環境.html"><i class="fa fa-check"></i><b>1</b> 分析環境</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="r-の主な分析環境.html"><a href="r-の主な分析環境.html"><i class="fa fa-check"></i><b>1.1</b> R の主な分析環境</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="r-の主な分析環境.html"><a href="r-の主な分析環境.html#rr-commanderrcmdr"><i class="fa fa-check"></i><b>1.1.1</b> R/R Commander(Rcmdr)</a></li>
+<li class="chapter" data-level="1.1.2" data-path="r-の主な分析環境.html"><a href="r-の主な分析環境.html#rrstudio-desktop"><i class="fa fa-check"></i><b>1.1.2</b> R/RStudio Desktop</a></li>
+<li class="chapter" data-level="1.1.3" data-path="r-の主な分析環境.html"><a href="r-の主な分析環境.html#rrstudio-server"><i class="fa fa-check"></i><b>1.1.3</b> R/RStudio Server</a></li>
+<li class="chapter" data-level="1.1.4" data-path="r-の主な分析環境.html"><a href="r-の主な分析環境.html#rstudio-cloud"><i class="fa fa-check"></i><b>1.1.4</b> RStudio Cloud</a></li>
+<li class="chapter" data-level="1.1.5" data-path="r-の主な分析環境.html"><a href="r-の主な分析環境.html#google-colaboratoryr-engine"><i class="fa fa-check"></i><b>1.1.5</b> Google Colaboratory(R Engine)</a></li>
+<li class="chapter" data-level="1.1.6" data-path="r-の主な分析環境.html"><a href="r-の主な分析環境.html#rr-consoleeditorvisualstudio-code-gnu-emacs"><i class="fa fa-check"></i><b>1.1.6</b> R(R Console)/Editor(VisualStudio Code, GNU Emacs)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>2</b> R Basics</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="基本的な演算basic-operations.html"><a href="基本的な演算basic-operations.html"><i class="fa fa-check"></i><b>2.1</b> 基本的な演算（Basic Operations）</a>
@@ -117,12 +194,11 @@
 <li class="chapter" data-level="2.6" data-path="検査変換.html"><a href="検査変換.html"><i class="fa fa-check"></i><b>2.6</b> 検査・変換</a></li>
 <li class="chapter" data-level="2.7" data-path="演算子operators.html"><a href="演算子operators.html"><i class="fa fa-check"></i><b>2.7</b> 演算子（Operators）</a>
 <ul>
-<li class="chapter" data-level="2.7.1" data-path="演算子operators.html"><a href="演算子operators.html#単項演算子"><i class="fa fa-check"></i><b>2.7.1</b> 単項演算子</a></li>
-<li class="chapter" data-level="2.7.2" data-path="演算子operators.html"><a href="演算子operators.html#算術演算子"><i class="fa fa-check"></i><b>2.7.2</b> 算術演算子</a></li>
-<li class="chapter" data-level="2.7.3" data-path="演算子operators.html"><a href="演算子operators.html#比較演算子-logical-operations"><i class="fa fa-check"></i><b>2.7.3</b> 比較演算子 Logical Operations</a></li>
-<li class="chapter" data-level="2.7.4" data-path="演算子operators.html"><a href="演算子operators.html#論理演算子-boolean-operations"><i class="fa fa-check"></i><b>2.7.4</b> 論理演算子 Boolean Operations</a></li>
-<li class="chapter" data-level="2.7.5" data-path="演算子operators.html"><a href="演算子operators.html#特殊演算子"><i class="fa fa-check"></i><b>2.7.5</b> 特殊演算子</a></li>
-<li class="chapter" data-level="2.7.6" data-path="演算子operators.html"><a href="演算子operators.html#演算子の優先順位"><i class="fa fa-check"></i><b>2.7.6</b> 演算子の優先順位</a></li>
+<li class="chapter" data-level="2.7.1" data-path="演算子operators.html"><a href="演算子operators.html#算術演算子"><i class="fa fa-check"></i><b>2.7.1</b> 算術演算子</a></li>
+<li class="chapter" data-level="2.7.2" data-path="演算子operators.html"><a href="演算子operators.html#比較演算子-logical-operations"><i class="fa fa-check"></i><b>2.7.2</b> 比較演算子 Logical Operations</a></li>
+<li class="chapter" data-level="2.7.3" data-path="演算子operators.html"><a href="演算子operators.html#論理演算子-boolean-operations"><i class="fa fa-check"></i><b>2.7.3</b> 論理演算子 Boolean Operations</a></li>
+<li class="chapter" data-level="2.7.4" data-path="演算子operators.html"><a href="演算子operators.html#特殊演算子"><i class="fa fa-check"></i><b>2.7.4</b> 特殊演算子</a></li>
+<li class="chapter" data-level="2.7.5" data-path="演算子operators.html"><a href="演算子operators.html#演算子の優先順位"><i class="fa fa-check"></i><b>2.7.5</b> 演算子の優先順位</a></li>
 </ul></li>
 <li class="chapter" data-level="2.8" data-path="制御文.html"><a href="制御文.html"><i class="fa fa-check"></i><b>2.8</b> 制御文</a>
 <ul>
@@ -186,10 +262,10 @@
 <li class="chapter" data-level="13.1.4" data-path="google-colaboratory.html"><a href="google-colaboratory.html#run-r-code"><i class="fa fa-check"></i><b>13.1.4</b> Run R code</a></li>
 <li class="chapter" data-level="13.1.5" data-path="google-colaboratory.html"><a href="google-colaboratory.html#save-file"><i class="fa fa-check"></i><b>13.1.5</b> Save File</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html"><i class="fa fa-check"></i><b>13.2</b> RStudio Cloud</a>
+<li class="chapter" data-level="13.2" data-path="rstudio-cloud-1.html"><a href="rstudio-cloud-1.html"><i class="fa fa-check"></i><b>13.2</b> RStudio Cloud</a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#create-project"><i class="fa fa-check"></i><b>13.2.1</b> Create Project</a></li>
-<li class="chapter" data-level="13.2.2" data-path="rstudio-cloud.html"><a href="rstudio-cloud.html#install-packages"><i class="fa fa-check"></i><b>13.2.2</b> Install Packages</a></li>
+<li class="chapter" data-level="13.2.1" data-path="rstudio-cloud-1.html"><a href="rstudio-cloud-1.html#create-project"><i class="fa fa-check"></i><b>13.2.1</b> Create Project</a></li>
+<li class="chapter" data-level="13.2.2" data-path="rstudio-cloud-1.html"><a href="rstudio-cloud-1.html#install-packages"><i class="fa fa-check"></i><b>13.2.2</b> Install Packages</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -214,40 +290,43 @@
 <li class="chapter" data-level="A.4.1" data-path="install-git.html"><a href="install-git.html#git"><i class="fa fa-check"></i><b>A.4.1</b> Git</a></li>
 <li class="chapter" data-level="A.4.2" data-path="install-git.html"><a href="install-git.html#git-client"><i class="fa fa-check"></i><b>A.4.2</b> Git Client</a></li>
 </ul></li>
-<li class="chapter" data-level="A.5" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html"><i class="fa fa-check"></i><b>A.5</b> Setup RStudio Sever with Docker</a>
+</ul></li>
+<li class="chapter" data-level="B" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>B</b> RStudio Server</a>
 <ul>
-<li class="chapter" data-level="A.5.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#enable-hyper-v-windows-only"><i class="fa fa-check"></i><b>A.5.1</b> Enable Hyper-V (Windows Only)</a></li>
-<li class="chapter" data-level="A.5.2" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-and-install-docker-desktop"><i class="fa fa-check"></i><b>A.5.2</b> Download and Install Docker Desktop</a></li>
-<li class="chapter" data-level="A.5.3" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-docker-image"><i class="fa fa-check"></i><b>A.5.3</b> Download Docker Image</a></li>
-<li class="chapter" data-level="A.5.4" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#run-container"><i class="fa fa-check"></i><b>A.5.4</b> Run Container</a></li>
+<li class="chapter" data-level="B.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html"><i class="fa fa-check"></i><b>B.1</b> Setup RStudio Sever with Docker</a>
+<ul>
+<li class="chapter" data-level="B.1.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#enable-hyper-v-windows-only"><i class="fa fa-check"></i><b>B.1.1</b> Enable Hyper-V (Windows Only)</a></li>
+<li class="chapter" data-level="B.1.2" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-and-install-docker-desktop"><i class="fa fa-check"></i><b>B.1.2</b> Download and Install Docker Desktop</a></li>
+<li class="chapter" data-level="B.1.3" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-docker-image"><i class="fa fa-check"></i><b>B.1.3</b> Download Docker Image</a></li>
+<li class="chapter" data-level="B.1.4" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#run-container"><i class="fa fa-check"></i><b>B.1.4</b> Run Container</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>B</b> RStudio IDE</a>
+<li class="chapter" data-level="C" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>C</b> RStudio IDE</a>
 <ul>
-<li class="chapter" data-level="B.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>B.1</b> Overview</a></li>
-<li class="chapter" data-level="B.2" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i><b>B.2</b> Keyboard Shortcuts</a></li>
-<li class="chapter" data-level="B.3" data-path="writing-r-code.html"><a href="writing-r-code.html"><i class="fa fa-check"></i><b>B.3</b> Writing R code</a></li>
-<li class="chapter" data-level="B.4" data-path="global-options.html"><a href="global-options.html"><i class="fa fa-check"></i><b>B.4</b> Global Options</a>
+<li class="chapter" data-level="C.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>C.1</b> Overview</a></li>
+<li class="chapter" data-level="C.2" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i><b>C.2</b> Keyboard Shortcuts</a></li>
+<li class="chapter" data-level="C.3" data-path="writing-r-code.html"><a href="writing-r-code.html"><i class="fa fa-check"></i><b>C.3</b> Writing R code</a></li>
+<li class="chapter" data-level="C.4" data-path="global-options.html"><a href="global-options.html"><i class="fa fa-check"></i><b>C.4</b> Global Options</a>
 <ul>
-<li class="chapter" data-level="B.4.1" data-path="global-options.html"><a href="global-options.html#general"><i class="fa fa-check"></i><b>B.4.1</b> General</a></li>
-<li class="chapter" data-level="B.4.2" data-path="global-options.html"><a href="global-options.html#code"><i class="fa fa-check"></i><b>B.4.2</b> Code</a></li>
-<li class="chapter" data-level="B.4.3" data-path="global-options.html"><a href="global-options.html#appearance"><i class="fa fa-check"></i><b>B.4.3</b> Appearance</a></li>
-<li class="chapter" data-level="B.4.4" data-path="global-options.html"><a href="global-options.html#pane-layout"><i class="fa fa-check"></i><b>B.4.4</b> Pane Layout</a></li>
-<li class="chapter" data-level="B.4.5" data-path="global-options.html"><a href="global-options.html#packages"><i class="fa fa-check"></i><b>B.4.5</b> Packages</a></li>
-<li class="chapter" data-level="B.4.6" data-path="global-options.html"><a href="global-options.html#r-markdown-1"><i class="fa fa-check"></i><b>B.4.6</b> R Markdown</a></li>
-<li class="chapter" data-level="B.4.7" data-path="global-options.html"><a href="global-options.html#sweave"><i class="fa fa-check"></i><b>B.4.7</b> Sweave</a></li>
-<li class="chapter" data-level="B.4.8" data-path="global-options.html"><a href="global-options.html#spelling"><i class="fa fa-check"></i><b>B.4.8</b> Spelling</a></li>
-<li class="chapter" data-level="B.4.9" data-path="global-options.html"><a href="global-options.html#gitsvn"><i class="fa fa-check"></i><b>B.4.9</b> Git/SVN</a></li>
-<li class="chapter" data-level="B.4.10" data-path="global-options.html"><a href="global-options.html#publishing"><i class="fa fa-check"></i><b>B.4.10</b> Publishing</a></li>
-<li class="chapter" data-level="B.4.11" data-path="global-options.html"><a href="global-options.html#terminal"><i class="fa fa-check"></i><b>B.4.11</b> Terminal</a></li>
+<li class="chapter" data-level="C.4.1" data-path="global-options.html"><a href="global-options.html#general"><i class="fa fa-check"></i><b>C.4.1</b> General</a></li>
+<li class="chapter" data-level="C.4.2" data-path="global-options.html"><a href="global-options.html#code"><i class="fa fa-check"></i><b>C.4.2</b> Code</a></li>
+<li class="chapter" data-level="C.4.3" data-path="global-options.html"><a href="global-options.html#appearance"><i class="fa fa-check"></i><b>C.4.3</b> Appearance</a></li>
+<li class="chapter" data-level="C.4.4" data-path="global-options.html"><a href="global-options.html#pane-layout"><i class="fa fa-check"></i><b>C.4.4</b> Pane Layout</a></li>
+<li class="chapter" data-level="C.4.5" data-path="global-options.html"><a href="global-options.html#packages"><i class="fa fa-check"></i><b>C.4.5</b> Packages</a></li>
+<li class="chapter" data-level="C.4.6" data-path="global-options.html"><a href="global-options.html#r-markdown-1"><i class="fa fa-check"></i><b>C.4.6</b> R Markdown</a></li>
+<li class="chapter" data-level="C.4.7" data-path="global-options.html"><a href="global-options.html#sweave"><i class="fa fa-check"></i><b>C.4.7</b> Sweave</a></li>
+<li class="chapter" data-level="C.4.8" data-path="global-options.html"><a href="global-options.html#spelling"><i class="fa fa-check"></i><b>C.4.8</b> Spelling</a></li>
+<li class="chapter" data-level="C.4.9" data-path="global-options.html"><a href="global-options.html#gitsvn"><i class="fa fa-check"></i><b>C.4.9</b> Git/SVN</a></li>
+<li class="chapter" data-level="C.4.10" data-path="global-options.html"><a href="global-options.html#publishing"><i class="fa fa-check"></i><b>C.4.10</b> Publishing</a></li>
+<li class="chapter" data-level="C.4.11" data-path="global-options.html"><a href="global-options.html#terminal"><i class="fa fa-check"></i><b>C.4.11</b> Terminal</a></li>
 </ul></li>
-<li class="chapter" data-level="B.5" data-path="project-options.html"><a href="project-options.html"><i class="fa fa-check"></i><b>B.5</b> Project Options</a></li>
+<li class="chapter" data-level="C.5" data-path="project-options.html"><a href="project-options.html"><i class="fa fa-check"></i><b>C.5</b> Project Options</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="cloud-ide.html"><a href="cloud-ide.html"><i class="fa fa-check"></i><b>C</b> Cloud IDE</a>
+<li class="chapter" data-level="D" data-path="cloud-ide.html"><a href="cloud-ide.html"><i class="fa fa-check"></i><b>D</b> Cloud IDE</a>
 <ul>
-<li class="chapter" data-level="C.1" data-path="rstudio-cloud-ga.html"><a href="rstudio-cloud-ga.html"><i class="fa fa-check"></i><b>C.1</b> RStudio Cloud GA</a></li>
-<li class="chapter" data-level="C.2" data-path="exploratory.html"><a href="exploratory.html"><i class="fa fa-check"></i><b>C.2</b> Exploratory</a></li>
-<li class="chapter" data-level="C.3" data-path="binder.html"><a href="binder.html"><i class="fa fa-check"></i><b>C.3</b> binder</a></li>
+<li class="chapter" data-level="D.1" data-path="rstudio-cloud-ga.html"><a href="rstudio-cloud-ga.html"><i class="fa fa-check"></i><b>D.1</b> RStudio Cloud GA</a></li>
+<li class="chapter" data-level="D.2" data-path="exploratory.html"><a href="exploratory.html"><i class="fa fa-check"></i><b>D.2</b> Exploratory</a></li>
+<li class="chapter" data-level="D.3" data-path="binder.html"><a href="binder.html"><i class="fa fa-check"></i><b>D.3</b> binder</a></li>
 </ul></li>
 </ul>
 
@@ -270,7 +349,7 @@
 <h1 class="title">Rのすゝめ</h1>
 <h2 class="subtitle"><em>- Rによるデータ分析事始め -</em></h2>
 <p class="author"><em>Sampo Suzuki, CC 4.0 BY-NC-SA</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-05-01</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>2021-05-06</em></p>
 </div>
 <div id="license" class="section level1 unnumbered">
 <h1>License</h1>
@@ -361,6 +440,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

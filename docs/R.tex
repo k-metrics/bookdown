@@ -126,6 +126,7 @@
 \usepackage{inputenc}
 \usepackage{makecell}
 \usepackage{xcolor}
+\usepackage{amsmath}
 \usepackage{fontawesome5}
 \usepackage{subfig}
 \usepackage{xeCJK}
@@ -161,7 +162,7 @@
 \makeatother
 \subtitle{- Rによるデータ分析事始め -}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-01}
+\date{2021-05-06}
 
 \begin{document}
 \maketitle
@@ -252,9 +253,11 @@
 ハイパーリンク & {[}{]}付きで表記 & \href{https://www.google.com/?hl=ja}{{[}Google{]}} \\
 パス名、ファイル名 & モノフォント（タイプライタフォント） & \texttt{sample/sample.Rmd} \\
 パッケージ名 & 太字のモノフォント & \textbf{\texttt{tidyverse}} \\
-関数（オブジェクト） & モノフォントで()付き表記 & \texttt{print()} \\
+関数（オブジェクト）名 & モノフォントで()付き表記 & \texttt{print()} \\
 コード & モノフォント（プロンプトなし） & \texttt{library(tidyverse)} \\
 コードの実行結果 & モノフォント（\texttt{\#\#} プロンプトあり） & \texttt{\#\#\ output...} \\
+キーボードでのキー入力 & モノフォントで{[}{]}付きで表記 & {[}\texttt{Ctrl}{]}+{[}\texttt{S}{]} \\
+数式 & \LaTeX 数式（math mode） & \(y = ax^2 + b\) \\
 \bottomrule
 \end{longtable}
 
@@ -485,15 +488,89 @@ R について学ぶ際には R が使えるような環境を構築しておく
 \hypertarget{r-ux306eux4e3bux306aux5206ux6790ux74b0ux5883}{%
 \section{R の主な分析環境}\label{r-ux306eux4e3bux306aux5206ux6790ux74b0ux5883}}
 
-RCommander
+\hypertarget{rr-commanderrcmdr}{%
+\subsection{R/R Commander(Rcmdr)}\label{rr-commanderrcmdr}}
 
-RStudio Desktop
+コードを記述する必要がない代わりに実行できる機能（関数）が限定され、GUI による対話形式で R を使えるのが \href{https://socialsciences.mcmaster.ca/jfox/Misc/Rcmdr/}{{[}R Commander（以降、Rcmdr）{]}}です。Rcmdr は R のパッケージとして提供されていますが、OS により使える機能（メニュー）が若干異なるようで、基本的には Windows 環境での利用をおすゝめします。ちなみに SQiP のメトリクス演習コースでは Rcmdr を利用してます。
 
-RStudio Server
+\begin{figure}[H]
 
-Google Colaboratory
+{\centering \includegraphics[width=0.85\linewidth,]{./fig/RCmdr} 
 
-VisualStudio Code/emacs
+}
+
+\caption{Rcmdr, Ubuntu}\label{fig:unnamed-chunk-12}
+\end{figure}
+
+\hypertarget{rrstudio-desktop}{%
+\subsection{R/RStudio Desktop}\label{rrstudio-desktop}}
+
+Rcmdr は簡単ですが実行できる機能（関数）が限定されていること、GUI による対話形式のため操作手順の記録が残しにくいなどの難点があります。それらを解決する統合開発環境（IDE）が RStudio です。RStudio は R の IDE におけるデファクトスタンダードであり
+
+\begin{itemize}
+\tightlist
+\item
+  R のコードを記述するのに適したエディタを備えている
+\item
+  R のパッケージをインストール・管理するためのパッケージマネージャを備えている
+\item
+  \href{https://rmarkdown.rstudio.com/}{{[}R Markdown{]}} や \href{https://pandoc.org/}{{[}Pandoc{]}} との連携による再現可能性を確保するための仕組みを備えている
+\item
+  外部リソースからのデータを取り込む仕組み（RStudio Connect）を備えている
+\item
+  複数の分析をプロジェクト単位で管理する仕組みを備えている
+\item
+  \href{https://git-scm.com/}{{[}Git{]}} などの外部プログラムと連携したソースの版管理の仕組みを備えている
+\end{itemize}
+
+という特徴があり、R を用いた分析に最も適した分析環境と言えます。RStudio にはインストール環境に応じた複数のリリース形態がありますが、その中でも Desktop は OS 上のアプリケーションとして動作するため最も利用しやすいと言えます。
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,]{./fig/RStudio/DT} 
+
+}
+
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-13}
+\end{figure}
+
+\hypertarget{rrstudio-server}{%
+\subsection{R/RStudio Server}\label{rrstudio-server}}
+
+RStudio Server はブラウザベースで動作する RStudio です。Linux 上で動作するサーバアプリケーションですが、Docker で動作させることも可能ですので複数の分析者で分析環境を統一したい場合などに適しています。
+
+\hypertarget{rstudio-cloud}{%
+\subsection{RStudio Cloud}\label{rstudio-cloud}}
+
+クラウド版の RStudio が RStudio Cloud です。RStudio Server Pro ベースのクラウドサービスですので、任意のバージョンの R に切り替えて使うことも可能です。無料プランでは利用時間が限定される点に注意してください。
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,]{./fig/RStudio/RSCloud_01} 
+
+}
+
+\caption{RStudio Cloud}\label{fig:unnamed-chunk-14}
+\end{figure}
+
+\hypertarget{google-colaboratoryr-engine}{%
+\subsection{Google Colaboratory(R Engine)}\label{google-colaboratoryr-engine}}
+
+Google Colaboratory（以降、Google Colab）は、Googleアカウントを持っていれば誰でも利用可能な Python 向けの開発環境である Jupyter Notebook サービスです。Jupyter Notebook は Python 以外に R をエンジンして利用することができるため、この機能を利用することで利用時間の制限なく R の分析環境として使うことができますので初学者の方には最も適した分析環境と言えます。
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,]{./fig/Colab/Firsttime} 
+
+}
+
+\caption{Google Colab}\label{fig:unnamed-chunk-15}
+\end{figure}
+
+\hypertarget{rr-consoleeditorvisualstudio-code-gnu-emacs}{%
+\subsection{R(R Console)/Editor(VisualStudio Code, GNU Emacs)}\label{rr-consoleeditorvisualstudio-code-gnu-emacs}}
+
+R はインタプリタ（対話的に逐次実行する処理系）として提供されていますので、R 単体で動作させることが当然、可能です。単体で動作させた場合、ターミナルやコンソールと呼ばれるウィンドウベースで動作するため非常に使いにくい環境です。一方、プログラミングに慣れている方は自分の好みの使いなれたエディタで分析を行いたい場合が多いと思われます。 一部のエディタでは、このようば要望を満たすために R Conole との連携機能を提供しています。古くは Emacs 用の ESS や最近人気のある Microsoft の VisualStudio Code 用の機能拡張などが
 
 \hypertarget{r-basics}{%
 \chapter{R Basics}\label{r-basics}}
@@ -516,7 +593,7 @@ Rの一番良いところは統計学者が作っているところだ。 Rの�
 
 }
 
-\caption{Google Colab での実行例}\label{fig:unnamed-chunk-12}
+\caption{Google Colab での実行例}\label{fig:unnamed-chunk-16}
 \end{figure}
 
 　\\
@@ -2121,7 +2198,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-33}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-37}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -2140,7 +2217,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-34}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-38}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -2154,7 +2231,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-35}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-39}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -2172,7 +2249,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-36}
+\caption{Warning dialog}\label{fig:unnamed-chunk-40}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -2186,8 +2263,8 @@ NA\_character\_ & 文字型 \\
 
 　
 
-\hypertarget{rstudio-cloud}{%
-\section{RStudio Cloud}\label{rstudio-cloud}}
+\hypertarget{rstudio-cloud-1}{%
+\section{RStudio Cloud}\label{rstudio-cloud-1}}
 
 　Google Colab では R Markdown などのレポーティング機能は使用できませんので、このような場合には クラウド上で RStudio が利用できる RStudio Cloud が便利です。RStudio Cloud は統合開発環境の RStudio だけでなく種々のチュートリアルコンテンツを備えています。\\
 　\\
@@ -2198,7 +2275,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-37}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-41}
 \end{figure}
 
 　\\
@@ -2231,7 +2308,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-38}
+\caption{Initial View}\label{fig:unnamed-chunk-42}
 \end{figure}
 
 　
@@ -2248,7 +2325,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-39}
+\caption{Packages Manager}\label{fig:unnamed-chunk-43}
 \end{figure}
 
 　\\
@@ -2261,7 +2338,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-40}
+\caption{Install Dialog}\label{fig:unnamed-chunk-44}
 \end{figure}
 
 　\\
@@ -2659,7 +2736,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-48}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-52}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -2670,7 +2747,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-49}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-53}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -2740,7 +2817,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-50}
+\caption{R Notebook file}\label{fig:unnamed-chunk-54}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -2751,7 +2828,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-51}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-55}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -2762,7 +2839,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-52}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-56}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -2773,7 +2850,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-53}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-57}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -2784,7 +2861,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-54}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-58}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -2795,7 +2872,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-55}
+\caption{R Notebook option}\label{fig:unnamed-chunk-59}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -3057,7 +3134,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-56}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-60}
 \end{figure}
 
 　
@@ -3082,7 +3159,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-57}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-61}
 \end{figure}
 
 　

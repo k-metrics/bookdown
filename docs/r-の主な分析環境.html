@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8: Test | Rのすゝめ</title>
+  <title>1.1 R の主な分析環境 | Rのすゝめ</title>
   <meta name="description" content="本書は" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8: Test | Rのすゝめ" />
+  <meta property="og:title" content="1.1 R の主な分析環境 | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8: Test | Rのすゝめ" />
+  <meta name="twitter:title" content="1.1 R の主な分析環境 | Rのすゝめ" />
   
   <meta name="twitter:description" content="本書は" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ggplot2.html"/>
-<link rel="next" href="linear-model.html"/>
+<link rel="prev" href="分析環境.html"/>
+<link rel="next" href="r-basics.html"/>
 <script src="assets/header-attrs-2.7/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -345,16 +345,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="test" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8:</span> Test</h1>
+<div id="r-の主な分析環境" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> R の主な分析環境</h2>
+<div id="rr-commanderrcmdr" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> R/R Commander(Rcmdr)</h3>
+<p>コードを記述する必要がない代わりに実行できる機能（関数）が限定され、GUI による対話形式で R を使えるのが <a href="https://socialsciences.mcmaster.ca/jfox/Misc/Rcmdr/">[R Commander（以降、Rcmdr）]</a>です。Rcmdr は R のパッケージとして提供されていますが、OS により使える機能（メニュー）が若干異なるようで、基本的には Windows 環境での利用をおすゝめします。ちなみに SQiP のメトリクス演習コースでは Rcmdr を利用してます。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
+<img src="fig/RCmdr.png" alt="Rcmdr, Ubuntu" width="85%"  />
+<p class="caption">
+Fig 1.1: Rcmdr, Ubuntu
+</p>
 </div>
+</div>
+<div id="rrstudio-desktop" class="section level3" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> R/RStudio Desktop</h3>
+<p>Rcmdr は簡単ですが実行できる機能（関数）が限定されていること、GUI による対話形式のため操作手順の記録が残しにくいなどの難点があります。それらを解決する統合開発環境（IDE）が RStudio です。RStudio は R の IDE におけるデファクトスタンダードであり</p>
+<ul>
+<li>R のコードを記述するのに適したエディタを備えている</li>
+<li>R のパッケージをインストール・管理するためのパッケージマネージャを備えている</li>
+<li><a href="https://rmarkdown.rstudio.com/">[R Markdown]</a> や <a href="https://pandoc.org/">[Pandoc]</a> との連携による再現可能性を確保するための仕組みを備えている</li>
+<li>外部リソースからのデータを取り込む仕組み（RStudio Connect）を備えている</li>
+<li>複数の分析をプロジェクト単位で管理する仕組みを備えている</li>
+<li><a href="https://git-scm.com/">[Git]</a> などの外部プログラムと連携したソースの版管理の仕組みを備えている</li>
+</ul>
+<p>という特徴があり、R を用いた分析に最も適した分析環境と言えます。RStudio にはインストール環境に応じた複数のリリース形態がありますが、その中でも Desktop は OS 上のアプリケーションとして動作するため最も利用しやすいと言えます。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
+<img src="fig/RStudio/DT.png" alt="RStudio Desktop, Windows" width="85%"  />
+<p class="caption">
+Fig 1.2: RStudio Desktop, Windows
+</p>
+</div>
+</div>
+<div id="rrstudio-server" class="section level3" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> R/RStudio Server</h3>
+<p>RStudio Server はブラウザベースで動作する RStudio です。Linux 上で動作するサーバアプリケーションですが、Docker で動作させることも可能ですので複数の分析者で分析環境を統一したい場合などに適しています。</p>
+</div>
+<div id="rstudio-cloud" class="section level3" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> RStudio Cloud</h3>
+<p>クラウド版の RStudio が RStudio Cloud です。RStudio Server Pro ベースのクラウドサービスですので、任意のバージョンの R に切り替えて使うことも可能です。無料プランでは利用時間が限定される点に注意してください。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
+<img src="fig/RStudio/RSCloud_01.png" alt="RStudio Cloud" width="85%"  />
+<p class="caption">
+Fig 1.3: RStudio Cloud
+</p>
+</div>
+</div>
+<div id="google-colaboratoryr-engine" class="section level3" number="1.1.5">
+<h3><span class="header-section-number">1.1.5</span> Google Colaboratory(R Engine)</h3>
+<p>Google Colaboratory（以降、Google Colab）は、Googleアカウントを持っていれば誰でも利用可能な Python 向けの開発環境である Jupyter Notebook サービスです。Jupyter Notebook は Python 以外に R をエンジンして利用することができるため、この機能を利用することで利用時間の制限なく R の分析環境として使うことができますので初学者の方には最も適した分析環境と言えます。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
+<img src="fig/Colab/Firsttime.png" alt="Google Colab" width="85%"  />
+<p class="caption">
+Fig 1.4: Google Colab
+</p>
+</div>
+</div>
+<div id="rr-consoleeditorvisualstudio-code-gnu-emacs" class="section level3" number="1.1.6">
+<h3><span class="header-section-number">1.1.6</span> R(R Console)/Editor(VisualStudio Code, GNU Emacs)</h3>
+<p>R はインタプリタ（対話的に逐次実行する処理系）として提供されていますので、R 単体で動作させることが当然、可能です。単体で動作させた場合、ターミナルやコンソールと呼ばれるウィンドウベースで動作するため非常に使いにくい環境です。一方、プログラミングに慣れている方は自分の好みの使いなれたエディタで分析を行いたい場合が多いと思われます。
+一部のエディタでは、このようば要望を満たすために R Conole との連携機能を提供しています。古くは Emacs 用の ESS や最近人気のある Microsoft の VisualStudio Code 用の機能拡張などが</p>
+
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="linear-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="分析環境.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

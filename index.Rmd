@@ -28,6 +28,7 @@ header-includes: |
   \usepackage{inputenc}
   \usepackage{makecell}
   \usepackage{xcolor}
+  \usepackage{amsmath}
   \usepackage{fontawesome5}
   \usepackage{subfig}
   \usepackage{xeCJK}
