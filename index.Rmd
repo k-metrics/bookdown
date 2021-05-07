@@ -10,6 +10,7 @@ description: "本書は"
 always_allow_html: true
 # documentclass: krantz
 fontsize: 12pt
+links-as-notes: true
 ## 日本語とtufte, kableExtraを使うために必要なTeXパッケージ
 header-includes: |
   \usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
@@ -138,7 +139,7 @@ require(tidyverse)
 
 ------------------------------------------------------------------------
 
-本書は [[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス]](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja) の下に提供されています。
+本書は [クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja){target="_blank" title="Creative Commons"} の下に提供されています。
 
 あなたの従うべき条件は以下の通りです。
 

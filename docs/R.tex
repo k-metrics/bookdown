@@ -106,6 +106,8 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
+% Make links footnotes instead of hotlinks:
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -162,7 +164,7 @@
 \makeatother
 \subtitle{- Rによるデータ分析事始め -}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-06}
+\date{2021-05-08}
 
 \begin{document}
 \maketitle
@@ -177,7 +179,7 @@
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-本書は \href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja}{{[}クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス{]}} の下に提供されています。
+本書は \href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja}{クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス} の下に提供されています。
 
 あなたの従うべき条件は以下の通りです。
 
@@ -227,17 +229,15 @@
 
 ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す数理資本主義の時代と言われています。
 
-\href{https://www.juse-p.co.jp/products/view/442}{{[}『データ指向のソフトウェア品質マネジメント』{]}} は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。この書籍の著者の一人である小池氏が主催している \href{https://sites.google.com/site/kantometrics/home}{{[}データ分析勉強会{]}} では、メトリクス分析に興味をもつ有志が統計分析を実践するために統計的コンピューティングを中心に様々な知識や手法を学んでいます。
+\href{https://www.juse-p.co.jp/products/view/442}{『データ指向のソフトウェア品質マネジメント』} は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。この書籍の著者の一人である小池氏が主催している \href{https://sites.google.com/site/kantometrics/home}{データ分析勉強会} では、メトリクス分析に興味をもつ有志が統計分析を実践するために統計的コンピューティングを中心に様々な知識や手法を学んでいます。
 
-本書は実務でメトリクス分析を行いたいソフトウェア品質技術者をはじめとした統計的コンピューティングに興味を持っている方々に \href{https://www.r-project.org/}{{[}R言語{]}} の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。
+本書は実務でメトリクス分析を行いたいソフトウェア品質技術者をはじめとした統計的コンピューティングに興味を持っている方々に \href{https://www.r-project.org/}{R言語（以降、\textbf{R}と記述）} の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。
 
 \hypertarget{ux60f3ux5b9aux8aadux8005}{%
 \section*{想定読者}\label{ux60f3ux5b9aux8aadux8005}}
 \addcontentsline{toc}{section}{想定読者}
 
-本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有している方々を読者として想定しています。本書では \href{https://cran.r-project.org/}{{[}R言語{]}} を実行するための環境構築に関する詳細な解説は行いませんの「で、R言語のインストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえずR言語を使ってみたいという方には \href{\%60https://colab.research.google.com/notebook\#create=true\&language=r\%60}{{[}Google Colaboratory{]}} の利用をおすゝめします。
-
-\newpage
+本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有しており\textbf{R}を用いて分析を行いたいと考えている方々を読者として想定しています。本書では\textbf{R}を実行するための環境構築に関する詳細な解説は行いませんので、インストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえず\textbf{R}を使ってみたいという方は \href{https://colab.research.google.com/notebook\#create=true\&language=r}{Google Colaboratory（以降、\textbf{Google Colab}）} の利用をおすゝめします。
 
 \hypertarget{ux8868ux8a18ux30ebux30fcux30eb}{%
 \section*{表記ルール}\label{ux8868ux8a18ux30ebux30fcux30eb}}
@@ -250,51 +250,53 @@
 対象 & 表記方法 & 表記例 \\
 \midrule
 \endhead
-ハイパーリンク & {[}{]}付きで表記 & \href{https://www.google.com/?hl=ja}{{[}Google{]}} \\
-パス名、ファイル名 & モノフォント（タイプライタフォント） & \texttt{sample/sample.Rmd} \\
+ハイパーリンク & 脚注にURLを表記（PDF形式の場合） & CRAN\textsuperscript{1} \\
+パス・ファイル名 & モノフォント\textsuperscript{a} & \texttt{sample/sample.Rmd} \\
 パッケージ名 & 太字のモノフォント & \textbf{\texttt{tidyverse}} \\
-関数（オブジェクト）名 & モノフォントで()付き表記 & \texttt{print()} \\
+変数・オブジェクト名 & モノフォント & \texttt{Sepela.Width} \\
+関数名 & モノフォントで()付き表記 & \texttt{print()} \\
 コード & モノフォント（プロンプトなし） & \texttt{library(tidyverse)} \\
 コードの実行結果 & モノフォント（\texttt{\#\#} プロンプトあり） & \texttt{\#\#\ output...} \\
-キーボードでのキー入力 & モノフォントで{[}{]}付きで表記 & {[}\texttt{Ctrl}{]}+{[}\texttt{S}{]} \\
+キーボードのキー & モノフォントで{[}{]}付き表記 & {[}\texttt{Ctrl}{]}+{[}\texttt{S}{]} \\
 数式 & \LaTeX 数式（math mode） & \(y = ax^2 + b\) \\
+サービス名など & 太字 & \textbf{Google Colab} \\
 \bottomrule
 \end{longtable}
 
-\newpage
+\textsuperscript{a} タイプライタフォントとも呼ばれる等幅フォントのこと
 
-\hypertarget{ux306aux305c-r-ux3092ux4f7fux3046ux306eux304b}{%
-\section*{なぜ R を使うのか}\label{ux306aux305c-r-ux3092ux4f7fux3046ux306eux304b}}
-\addcontentsline{toc}{section}{なぜ R を使うのか}
+\hypertarget{ux306aux305crux3092ux4f7fux3046ux306eux304b}{%
+\section*{\texorpdfstring{なぜ\textbf{R}を使うのか}{なぜRを使うのか}}\label{ux306aux305crux3092ux4f7fux3046ux306eux304b}}
+\addcontentsline{toc}{section}{なぜ\textbf{R}を使うのか}
 
-データ分析を行うためには適切な分析ツールが必要不可欠です。\href{https://www.r-project.org/}{{[}R言語{]}} は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。R がデータ分析に向いている理由をまとめているのが \href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{{[}``Six Reasons To Learn R For Business'', R Blogger{]}} です。
+データ分析を行うためには適切な分析ツールが必要不可欠です。\textbf{R}は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。\textbf{R } がデータ分析に向いている理由をまとめているのが \href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business'', R Blogger} です。
 
 \begin{quote}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  R Has The Best \textbf{Overall Qualities}
+  R Has The Best \emph{\textbf{Overall Qualities}}
 \item
-  R Is Data Science \textbf{For Non-Computer Scientists}
+  R Is Data Science \emph{\textbf{For Non-Computer Scientists}}
 \item
-  Learning R Is \textbf{Easy With The Tidyverse}
+  Learning R Is \emph{\textbf{Easy With The Tidyverse}}
 \item
-  R Has \textbf{Brains, Muscle, And Heart}
+  R Has \emph{\textbf{Brains, Muscle, And Heart}}
 \item
-  R Is Built \textbf{For Business}
+  R Is Built \emph{\textbf{For Business}}
 \item
-  R \textbf{Community} Support
+  R \emph{\textbf{Community Support}}
 \end{enumerate}
 \end{quote}
 
-R はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
+\textbf{R}はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
 
 \hypertarget{ux5206ux6790ux306eux624bux9806}{%
 \section*{分析の手順}\label{ux5206ux6790ux306eux624bux9806}}
 \addcontentsline{toc}{section}{分析の手順}
 
-では、R を使った分析とはどのような手順になるかを簡単に見てみましょう。R は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。 例えば「フィッシャーのあやめ（Fisher's or Anderson's iris）」を例にとってみましょう。「フィッシャーのあやめ」はRの例題でよく使われる下記のような150行のデータセットでRに標準で組み込まれています。
+では、\textbf{R}を使った分析とはどのような手順になるかを簡単に見てみましょう。\textbf{R}は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。 例えば「フィッシャーのあやめ（Fisher's or Anderson's iris）」を例にとってみましょう。「フィッシャーのあやめ」は\textbf{R}の例題でよく使われる下記のような150行のデータセットでRに標準で組み込まれています。
 
 \begin{table}[H]
 \centering\begingroup\fontsize{10}{12}\selectfont
@@ -321,7 +323,7 @@ R はデータ分析に必要となるデータのハンドリングや可視化
 \endgroup{}
 \end{table}
 
-このデータセットの主な要約統計量は以下のようになり、Sepal（萼片）よりPetal（花弁）の方が小さい傾向にあると推測できます。
+このデータセットの主な要約統計量は以下のようになり、萼片（Sepal）より花弁（Petal）の方が小さい傾向にあると推測できます。
 
 \begin{verbatim}
 ##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
@@ -369,7 +371,7 @@ virginica & Petal.Length & 5.1\\
 \end{tabular}
 \end{table}
 
-変形したデータを使って部位別の箱ひげ図を描くと確かに Petal（花弁）の方が Sepal（萼片）よりも小さい傾向にあることが分かります。
+変形したデータを使って部位別の箱ひげ図を描くと確かに 花弁（Petal）の方が 萼片（Sepal）よりも小さい傾向にあることが分かります。
 
 \begin{figure}[H]
 
@@ -380,7 +382,7 @@ virginica & Petal.Length & 5.1\\
 \caption{花弁と萼片の分布}\label{fig:unnamed-chunk-5}
 \end{figure}
 
-次に花弁と萼片の幅と長さの関係を見ると花弁の幅と長さに相関関係があるように見えます。
+次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を見ると花弁（Petal）の幅と長さに相関関係があるように見えます。
 
 \begin{figure}[H]
 
@@ -391,7 +393,7 @@ virginica & Petal.Length & 5.1\\
 \caption{幅と長さの関係}\label{fig:unnamed-chunk-7}
 \end{figure}
 
-そこで、花弁の幅と長さの回帰関係を求めてみます。
+そこで、花弁（Petal）の幅（\texttt{Petal.Width}）と長さ（\texttt{Petal.Length}）の回帰関係を求めてみます。
 
 \begin{verbatim}
 ## 
@@ -414,7 +416,7 @@ virginica & Petal.Length & 5.1\\
 ## F-statistic:  1882 on 1 and 148 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
-モデルの当てはまり具合が良さそうなので、回帰関係を可視化してみます。ついでに萼片の方も可視化してみます。
+モデルの当てはまり具合が良さそうなので、回帰関係を可視化してみます。ついでに萼片（Sepal）の方も可視化してみます。
 
 \begin{figure}[H]
 
@@ -428,8 +430,6 @@ virginica & Petal.Length & 5.1\\
 実際にはこれだけではデータ分析はできませんので、分析対象を
 
 これがデータサイエンスワークフロー（Data Science Workflow）と呼ばれる分析フローです。
-
-\newpage
 
 \hypertarget{data-science-workflow}{%
 \section*{Data Science Workflow}\label{data-science-workflow}}
@@ -446,30 +446,49 @@ virginica & Petal.Length & 5.1\\
 \caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-11}
 \end{figure}
 
-この図は「Data Science Workflow」と呼ばれ、R コミュニティに多大な貢献をしている Hadley Wickham がその著書 \href{https://r4ds.had.co.nz/}{『R for Data Science』 } で提唱している概念図です。本書は、この Data Science Workflow に基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。\\
-　
+この図は「Data Science Workflow」と呼ばれ、\textbf{R}コミュニティに多大な貢献をしている \href{http://hadley.nz/}{Hadley Wickham} が、その著書\href{https://r4ds.had.co.nz/}{『R for Data Science』} で提唱している概念図です。本書は、この Data Science Workflow に基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。
 
-\textbf{Program}\\
+\hypertarget{program}{%
+\subsection*{Program}\label{program}}
+\addcontentsline{toc}{subsection}{Program}
+
 データ分析のすべてのプロセス（Tidy 〜 Communicate/Automate）で必要となるツールがプログラミングです。プログラミングを覚えることで効率的に分析処理を行えるようになります。
 
-\textbf{Import}\\
-分析対象となるデータを分析環境に取り込み分析をできるようにするのがインポートプロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。\\
-　\\
-\textbf{Tidy}\\
-インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、一貫した形式（Tidy data）に整理します。 \href{}{Tidy data } はデータ分析において重要な概念です。\\
-　\\
-\textbf{Transform}\\
-整理したデータ（Tidy data）がそのまま状態でデータ分析に使えることは稀です。不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。\\
-　\textbf{Tidy} プロセスと合わせて \textbf{Wrangle} や \textbf{Data wrangling}、前処理と呼ばれることもあります。\\
-　\\
-\textbf{Visualize}\\
-データを可視化することは様々な示唆を得ることと同義といえます。分析方針を考えるためにもデータがどういう傾向をもっているのかを把握するためのプロセスともいえます。\\
-　\\
-\textbf{Model}\\
-可視化で得られた情報を元に数式可（モデル化）するのプロセスです。モデルは様々な\\
-　\\
-\textbf{Communicate}\\
-分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で \href{}{再現可能性（Reproducible research） } が伴っていることも求められます。 　 　\href{http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03}{3つの再現可能性 }
+\hypertarget{import}{%
+\subsection*{Import}\label{import}}
+\addcontentsline{toc}{subsection}{Import}
+
+分析対象となるデータを分析環境に取り込み分析をできるようにするのがインポートプロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。
+
+\hypertarget{tidy}{%
+\subsection*{Tidy}\label{tidy}}
+\addcontentsline{toc}{subsection}{Tidy}
+
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、一貫した形式（Tidy data）に整理します。 \href{}{Tidy data } はデータ分析において重要な概念です。
+
+\hypertarget{transform}{%
+\subsection*{Transform}\label{transform}}
+\addcontentsline{toc}{subsection}{Transform}
+
+整理したデータ（Tidy data）がそのまま状態でデータ分析に使えることは稀です。不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。 　\textbf{Tidy} プロセスと合わせて \textbf{Wrangle} や \textbf{Data wrangling}、前処理と呼ばれることもあります。
+
+\hypertarget{visualize}{%
+\subsection*{Visualize}\label{visualize}}
+\addcontentsline{toc}{subsection}{Visualize}
+
+データを可視化することは様々な示唆を得ることと同義といえます。分析方針を考えるためにもデータがどういう傾向をもっているのかを把握するためのプロセスともいえます。
+
+\hypertarget{model}{%
+\subsection*{Model}\label{model}}
+\addcontentsline{toc}{subsection}{Model}
+
+可視化で得られた情報を元に数式可（モデル化）するのプロセスです。モデルは様々な
+
+\hypertarget{communicate}{%
+\subsection*{Communicate}\label{communicate}}
+\addcontentsline{toc}{subsection}{Communicate}
+
+分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で \href{}{再現可能性（Reproducible research）} が伴っていることも求められます。 \href{http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03}{3つの再現可能性}
 
 \hypertarget{tidyverse-eco-system}{%
 \section*{Tidyverse Eco System}\label{tidyverse-eco-system}}
@@ -483,15 +502,32 @@ virginica & Petal.Length & 5.1\\
 \hypertarget{ux5206ux6790ux74b0ux5883}{%
 \chapter{分析環境}\label{ux5206ux6790ux74b0ux5883}}
 
-R について学ぶ際には R が使えるような環境を構築しておくべきです。しかし、環境構築は初学者にとって最も厄介な作業でもあります。そこで、本書では環境構築の必要がない \href{}{{[}Google Colaboratory{]}} を利用します。R/RStudio 環境を構築できる方はそちらを利用しても構いません。
+R について学ぶ際には R が使えるような環境を構築しておくべきですが、環境構築は初学者にとって最も厄介な作業です。そこで、本書では環境構築の必要がない\textbf{Google Colab}の利用をおすゝめします。\textbf{RStudio}環境を構築できる方は\textbf{RStudi}でも構いません。
 
-\hypertarget{r-ux306eux4e3bux306aux5206ux6790ux74b0ux5883}{%
-\section{R の主な分析環境}\label{r-ux306eux4e3bux306aux5206ux6790ux74b0ux5883}}
+\hypertarget{ux4e3bux306aux5206ux6790ux74b0ux5883}{%
+\section{主な分析環境}\label{ux4e3bux306aux5206ux6790ux74b0ux5883}}
 
-\hypertarget{rr-commanderrcmdr}{%
-\subsection{R/R Commander(Rcmdr)}\label{rr-commanderrcmdr}}
+\textbf{R}を利用した分析環境には以下のようなものがあります。
 
-コードを記述する必要がない代わりに実行できる機能（関数）が限定され、GUI による対話形式で R を使えるのが \href{https://socialsciences.mcmaster.ca/jfox/Misc/Rcmdr/}{{[}R Commander（以降、Rcmdr）{]}}です。Rcmdr は R のパッケージとして提供されていますが、OS により使える機能（メニュー）が若干異なるようで、基本的には Windows 環境での利用をおすゝめします。ちなみに SQiP のメトリクス演習コースでは Rcmdr を利用してます。
+\begin{longtable}[]{@{}llccl@{}}
+\toprule
+想定利用者 & 環境 & コード記述 & 再現可能性 & 備考 \\
+\midrule
+\endhead
+初学者 & R Commander & 不要 & 低 & 本書ではスコープ外 \\
+初学者 & Exploratory & 不要 & 高 & 同上 \\
+初学・中級者 & Google Colab & 要 & 高 & \\
+中上級者 & RStudio Desktop & 要 & 高 & \\
+中上級者 & RStudio Cloud & 要 & 高 & \\
+中上級者 & RStudio Server & 要 & 高 & \\
+開発者 & R + VS Code/Emacs & 要 & 高 & \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{r-commander}{%
+\subsection{R Commander}\label{r-commander}}
+
+\href{https://socialsciences.mcmaster.ca/jfox/Misc/Rcmdr/}{R Commander（以降、\textbf{Rcmdr}）} は、本書ではスコープ外ですが、\href{https://www.juse.or.jp/sqip/workshop/outline/index.html}{SQiP研究会の演習コース ソフトウエアメトリクス（以降、メトリクス演習コース）} におけるデフォルトツールですので簡単に紹介しておきます。 \textbf{Rcmdr}は\textbf{R}のパッケージとして提供されている GUI ベースの対話型分析環境です。分析にあたって\textbf{R}のコードを記述する必要がありませんので、プログラミングの経験のない方でも利用することができます。ただし、実行できる機能（関数）が限定されている点と分析対象のデータの扱いに特有の考え方を用いてる点には注意が必要です。
 
 \begin{figure}[H]
 
@@ -502,61 +538,10 @@ R について学ぶ際には R が使えるような環境を構築しておく
 \caption{Rcmdr, Ubuntu}\label{fig:unnamed-chunk-12}
 \end{figure}
 
-\hypertarget{rrstudio-desktop}{%
-\subsection{R/RStudio Desktop}\label{rrstudio-desktop}}
+\hypertarget{google-colab}{%
+\subsection{Google Colab}\label{google-colab}}
 
-Rcmdr は簡単ですが実行できる機能（関数）が限定されていること、GUI による対話形式のため操作手順の記録が残しにくいなどの難点があります。それらを解決する統合開発環境（IDE）が RStudio です。RStudio は R の IDE におけるデファクトスタンダードであり
-
-\begin{itemize}
-\tightlist
-\item
-  R のコードを記述するのに適したエディタを備えている
-\item
-  R のパッケージをインストール・管理するためのパッケージマネージャを備えている
-\item
-  \href{https://rmarkdown.rstudio.com/}{{[}R Markdown{]}} や \href{https://pandoc.org/}{{[}Pandoc{]}} との連携による再現可能性を確保するための仕組みを備えている
-\item
-  外部リソースからのデータを取り込む仕組み（RStudio Connect）を備えている
-\item
-  複数の分析をプロジェクト単位で管理する仕組みを備えている
-\item
-  \href{https://git-scm.com/}{{[}Git{]}} などの外部プログラムと連携したソースの版管理の仕組みを備えている
-\end{itemize}
-
-という特徴があり、R を用いた分析に最も適した分析環境と言えます。RStudio にはインストール環境に応じた複数のリリース形態がありますが、その中でも Desktop は OS 上のアプリケーションとして動作するため最も利用しやすいと言えます。
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=0.85\linewidth,]{./fig/RStudio/DT} 
-
-}
-
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-13}
-\end{figure}
-
-\hypertarget{rrstudio-server}{%
-\subsection{R/RStudio Server}\label{rrstudio-server}}
-
-RStudio Server はブラウザベースで動作する RStudio です。Linux 上で動作するサーバアプリケーションですが、Docker で動作させることも可能ですので複数の分析者で分析環境を統一したい場合などに適しています。
-
-\hypertarget{rstudio-cloud}{%
-\subsection{RStudio Cloud}\label{rstudio-cloud}}
-
-クラウド版の RStudio が RStudio Cloud です。RStudio Server Pro ベースのクラウドサービスですので、任意のバージョンの R に切り替えて使うことも可能です。無料プランでは利用時間が限定される点に注意してください。
-
-\begin{figure}[H]
-
-{\centering \includegraphics[width=0.85\linewidth,]{./fig/RStudio/RSCloud_01} 
-
-}
-
-\caption{RStudio Cloud}\label{fig:unnamed-chunk-14}
-\end{figure}
-
-\hypertarget{google-colaboratoryr-engine}{%
-\subsection{Google Colaboratory(R Engine)}\label{google-colaboratoryr-engine}}
-
-Google Colaboratory（以降、Google Colab）は、Googleアカウントを持っていれば誰でも利用可能な Python 向けの開発環境である Jupyter Notebook サービスです。Jupyter Notebook は Python 以外に R をエンジンして利用することができるため、この機能を利用することで利用時間の制限なく R の分析環境として使うことができますので初学者の方には最も適した分析環境と言えます。
+\textbf{Google Colab}は Google アカウントを持っていれば誰でも利用可能な\textbf{Python}向けの環境である\textbf{Jupyter Notebook}サービスです。\textbf{Jupyter Notebook}は\textbf{R}をエンジンとして利用することができますので、環境を構築することなく使い始めることができますので、初学者の演習環境としておすゝめです。
 
 \begin{figure}[H]
 
@@ -564,63 +549,175 @@ Google Colaboratory（以降、Google Colab）は、Googleアカウントを持�
 
 }
 
-\caption{Google Colab}\label{fig:unnamed-chunk-15}
+\caption{Google Colab}\label{fig:unnamed-chunk-13}
 \end{figure}
 
-\hypertarget{rr-consoleeditorvisualstudio-code-gnu-emacs}{%
-\subsection{R(R Console)/Editor(VisualStudio Code, GNU Emacs)}\label{rr-consoleeditorvisualstudio-code-gnu-emacs}}
+\hypertarget{rstudio}{%
+\subsection{RStudio}\label{rstudio}}
 
-R はインタプリタ（対話的に逐次実行する処理系）として提供されていますので、R 単体で動作させることが当然、可能です。単体で動作させた場合、ターミナルやコンソールと呼ばれるウィンドウベースで動作するため非常に使いにくい環境です。一方、プログラミングに慣れている方は自分の好みの使いなれたエディタで分析を行いたい場合が多いと思われます。 一部のエディタでは、このようば要望を満たすために R Conole との連携機能を提供しています。古くは Emacs 用の ESS や最近人気のある Microsoft の VisualStudio Code 用の機能拡張などが
+再現可能性を確保した探索的データ分析を行うのに最も適しているのが\textbf{RStudio}です。無償で使えるオープンソース版には、PC上のアプリケーションとして動作する\textbf{Desktop}と Webサーバとして動作する\textbf{Server}の二種類があります。 \textbf{RStudio}は\textbf{R}のデファクトスタンダード的な統合開発環境（IDE）であり、Tidyverse Eco System の中核とも言えます。その特徴として
 
-\hypertarget{r-basics}{%
-\chapter{R Basics}\label{r-basics}}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{R}のコードを記述するのに適したエディタを備えている
+\item
+  \textbf{R}のパッケージをインストール・管理するためのパッケージマネージャを備えている
+\item
+  \href{https://rmarkdown.rstudio.com/}{\textbf{R Markdown}}や \href{https://pandoc.org/}{\textbf{Pandoc}} との連携による再現可能性を確保するための仕組みを備えている
+\item
+  外部リソースからのデータを取り込む仕組み（\textbf{RStudio Connect}）を備えている
+\item
+  複数の分析をプロジェクト単位で管理する仕組みを備えている
+\item
+  \href{https://git-scm.com/}{Git} などの外部プログラムと連携したソースの版管理の仕組みを備えている
+\end{itemize}
+
+などがあります。
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,]{./fig/RStudio/DT} 
+
+}
+
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-14}
+\end{figure}
+
+\textbf{RStudio Server}は\textbf{RStudio}をブラウザ経由で使う Linux 上で動作するサーバアプリケーションです。Docker コンテナとして動作させることも可能ですので、個々の PC での分析環境を固定さたい場合には非常に便利です。
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,]{./fig/RStudio/RStudioServer} 
+
+}
+
+\caption{RStudio Server, Docker}\label{fig:unnamed-chunk-15}
+\end{figure}
+
+\hypertarget{rstudio-cloud}{%
+\subsection{RStudio Cloud}\label{rstudio-cloud}}
+
+\textbf{RStudio Cloud}は、その名の通りクラウド版の\textbf{RStudio}です。商用版の\textbf{RStudio Server Pro}をベースしていますので、任意のバージョンの\textbf{R}に切り替えて使うことや\textbf{RStduio Package Manager}とも連携しています。また、英語版ですがチュートリアル機能が充実しているのも特徴です。 無料プランが用意されていますが利用時間が15時間/月に限定されていますので、繋げっぱなしでの長時間利用には不向きです。
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,]{./fig/RStudio/RSCloud_01} 
+
+}
+
+\caption{RStudio Cloud}\label{fig:unnamed-chunk-16}
+\end{figure}
+
+\hypertarget{programing-editor}{%
+\subsection{Programing Editor}\label{programing-editor}}
+
+\textbf{R}の本体ははインタプリタ（対話的に逐次実行する処理系）として提供されていますので、\textbf{R}単体で動作させることが可能です。区別するために単体の\textbf{R}を\textbf{R Console}と呼ぶことがあります。 一部のプログラミングエディタでは機能拡張などを利用して直接\textbf{R Console}と連携して IDE のように\textbf{R}を利用することが可能です。古くは GNU Emacs 用の ESS や最近人気のある Microsoft の VisualStudio Code 用の機能拡張を使えば、お好みのエディタから直接\textbf{R}を使えるようになります。
+
+\hypertarget{rux306eux57faux672c}{%
+\chapter{Rの基本}\label{rux306eux57faux672c}}
 
 \begin{quote}
-Rの一番良いところは統計学者が作っているところだ。 Rの一番悪いところは統計学者が作っているところだ。
+Rの一番良いところは統計学者が作っているところだ。\\
+Rの一番悪いところは統計学者が作っているところだ。
 \end{quote}
 
 \href{https://www.slideshare.net/shuyo/r-4022379}{出典}
 
-　と言われる R ですが、最たる特徴は統計処理に特化している点です。また、前出の Data Science Workflow 全体をカバーできるようになっており、データ構造の変換や特定の分析に対する数々のパッケージ、コマンド一つでグラフが描ける高度なグラフィクス、更には分析結果をレポーティングするための仕組みも用意されています。\\
-　データ分析をひとつの言語で一気通貫できるので覚えることは非常に多岐に渡りますが、初学者が R を学ぶ際には、まず、「ベクトル演算」を理解するのが一つのポイントだと考えます。\\
-　\\
+\textbf{R}は統計的コンピューティングに特化している言語ですが、その開発は上記にもあるように統計学者が中心となって行われてきました。このような背景があるため他のコンピュータ言語を知っている方が使うと奇妙に感じる言語仕様があるかも知れません。 しかし、\textbf{R}の便利な点は統計的コンピューティングを行うに際して必須と言えるベクトル演算がデフォルトで使えることにあります。 まずは、このベクトル演算に慣れることから始めます。
 
-　
+コードの表記は以下のように灰色で網掛けされた部分が実行するコード、\texttt{\#\#} から始まる部分が実行結果となります。実行結果の表示がない場合は、次に実行するコードとあわせてコードが表示されます。なお、コード内の\texttt{\#}で始まる部分はコメントですので実行されません。
 
-\begin{figure}[H]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}        \CommentTok{\# 変数への代入時は実行結果は表示されない}
+\NormalTok{x             }\CommentTok{\# 表示させたい場合は、別途、変数のみで実行する}
+\end{Highlighting}
+\end{Shaded}
 
-{\centering \includegraphics[width=0.9\linewidth,]{fig/tutorial_code} 
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
 
-}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(x)      }\CommentTok{\# もしくはprint()関数を用いる}
+\end{Highlighting}
+\end{Shaded}
 
-\caption{Google Colab での実行例}\label{fig:unnamed-chunk-16}
-\end{figure}
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
 
-　\\
-　なお、チュートリアルを起動後、何も操作をしないで放置しておくと自動的にチュートリアルウィンドウがクローズします。クローズした場合は、再度、\textbf{\texttt{Run\ Document}} をクリックして再起動してください。\\
-　
+実行結果の \texttt{\#\#} の後に表示されている \texttt{{[}{]}} 内の数値は実行結果の出力の数を示すためのインデックスです。実行環境の表示幅により表示される値が変わります。例えば 1 から 100 までの数字を表示した場合
 
-　以降、見出しの括弧内の英語はチュートリアルの見出しと対応しています。\\
-　
+\begin{verbatim}
+##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+##  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+##  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
+##  [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
+##  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
+##  [91]  91  92  93  94  95  96  97  98  99 100
+\end{verbatim}
 
-\hypertarget{ux57faux672cux7684ux306aux6f14ux7b97basic-operations}{%
-\section{基本的な演算（Basic Operations）}\label{ux57faux672cux7684ux306aux6f14ux7b97basic-operations}}
+このように1行目は最初の値から表示されるので\texttt{{[}1{]}}に、2行目は1行目で18個表示されており19個目からの表示となるため\texttt{{[}19{]}}になっていることが分かります。
 
-　まずは最も基本となる演算を行ってみましょう。
+なお、以降に出てくるコードは\textbf{RStudio}上で動作するチュートリアルとしてパッケージ化してあります。興味のある方は \href{https://github.com/k-metrics/kmetrics}{パッケージ kmetrics} をインストールして使ってみてください。なお、パッケージ概要や動作環境はリンク先のページでご確認ください。
 
-　
+\hypertarget{ux57faux672cux7684ux306aux6f14ux7b97}{%
+\section{基本的な演算}\label{ux57faux672cux7684ux306aux6f14ux7b97}}
 
-\hypertarget{ux7b97ux8853ux6f14ux7b97ux306eux57faux672c}{%
-\subsection{算術演算の基本}\label{ux7b97ux8853ux6f14ux7b97ux306eux57faux672c}}
+最初に基本的な演算です。
 
-　算術演算の基本である加減乗除算の四則演算は他のプログラミング言語や OS に付属の電卓アプリなどと同じです。
+\hypertarget{ux7b97ux8853ux6f14ux7b97}{%
+\subsection{算術演算}\label{ux7b97ux8853ux6f14ux7b97}}
 
-　
+算術演算の基本である加減乗除算の四則演算は他のプログラミング言語や OS に付属の電卓アプリなどと同じです。
 
-\hypertarget{ux4ee3ux5165ux6f14ux7b97ux306eux57faux672c}{%
-\subsection{代入演算の基本}\label{ux4ee3ux5165ux6f14ux7b97ux306eux57faux672c}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{+} \DecValTok{2}     \CommentTok{\# 加算}
+\end{Highlighting}
+\end{Shaded}
 
-　変数に演算結果を代入するには代入演算子（\texttt{\textless{}-}）を用います。変数を使うための変数宣言は不要です。また、代入結果を確認（表示）するためには変数名だけを記述して実行します。
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \SpecialCharTok{{-}} \DecValTok{3}     \CommentTok{\# 減算}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3} \SpecialCharTok{*} \DecValTok{4}     \CommentTok{\# 乗算}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{4} \SpecialCharTok{/} \DecValTok{5}     \CommentTok{\# 除算}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8
+\end{verbatim}
+
+\hypertarget{ux4ee3ux5165ux6f14ux7b97}{%
+\subsection{代入演算}\label{ux4ee3ux5165ux6f14ux7b97}}
+
+上記の演算結果を変数に代入してみます。代入には代入演算子（\texttt{\textless{}-}）を用います。変数を使うための変数宣言は不要です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -631,14 +728,10 @@ Rの一番良いところは統計学者が作っているところだ。 Rの�
 \end{Highlighting}
 \end{Shaded}
 
-　
+\hypertarget{ux4ee3ux5165ux7d50ux679cux306eux78baux8a8d}{%
+\subsection{代入結果の確認}\label{ux4ee3ux5165ux7d50ux679cux306eux78baux8a8d}}
 
-\hypertarget{ux5909ux6570ux6f14ux7b97ux306eux57faux672c}{%
-\subsection{変数演算の基本}\label{ux5909ux6570ux6f14ux7b97ux306eux57faux672c}}
-
-　定数だけでなく変数同士、変数と定数の演算も可能です。ここでは変数同士および変数と定数の四則演算を行ってみます。
-
-　さらに変数同士の演習結果を変数に代入してみます。代入前後で変数の値を確認して変数がどのように変化するかのかを合わせて確認します。
+代入結果を確認するには変数名だけで実行するか \texttt{print()} 関数を用います。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -662,18 +755,37 @@ Rの一番良いところは統計学者が作っているところだ。 Rの�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{w }\OtherTok{\textless{}{-}}\NormalTok{ w }\SpecialCharTok{+}\NormalTok{ x}
-\NormalTok{w}
+\NormalTok{y}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 9
+## [1] -1
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x}
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(w)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -683,63 +795,129 @@ Rの一番良いところは統計学者が作っているところだ。 Rの�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DocumentationTok{\#\#\#\#\# Variables \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\FunctionTok{print}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
 
-　このように R での変数の扱いは非常にシンプルですが、簡単に変数を上書きできてしまう点に留意してください。
+\begin{verbatim}
+## [1] -1
+\end{verbatim}
 
-　
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(z)}
+\end{Highlighting}
+\end{Shaded}
 
-\hypertarget{ux4e88ux7d04ux8a9ereserved-word}{%
-\section{予約語（Reserved word）}\label{ux4e88ux7d04ux8a9ereserved-word}}
+\begin{verbatim}
+## [1] 0.8
+\end{verbatim}
 
-　プログラミング言語には予約語（Reserved word）といわれるものがあり予約語は変数名として使えません。 R では以下が予約語になっています。
+\hypertarget{ux5408ux7b97ux5024}{%
+\subsection{合算値}\label{ux5408ux7b97ux5024}}
+
+全ての変数を合算します。単純に加算演算子（\texttt{+}）を用いても構いませんが、\texttt{sum()}という関数が用意されていますので、これを使います。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(w, x, y, z)    }\CommentTok{\# 3 + 6 + {-}1 + 0.8}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8.8
+\end{verbatim}
+
+\hypertarget{ux5e73ux5747ux5024}{%
+\subsection{平均値}\label{ux5e73ux5747ux5024}}
+
+全ての変数の平均値を求めます。平均には
+
+\begin{itemize}
+\tightlist
+\item
+  算術平均（相加平均）
+\item
+  幾何平均（相乗平均）
+\item
+  トリム平均
+\end{itemize}
+
+がありますが、ここでは算術平均の値を求めます。算術平均の値を求めるには\texttt{mean()}という関数を用います。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(w, x, y, z)   }\CommentTok{\# (3 + 6 + {-}1 + 0.8) / 4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\texttt{sum()}関数と同じ指定をすると計算結果が期待と違います。これは\texttt{mean()}関数がとる引数が\texttt{sum()}関数と異なりひとつに限られるためです。そこで、ベクトル変数を作成する\texttt{c()}関数を用いて以下のように記述します。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(w, x, y, z)}
+\FunctionTok{mean}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.2
+\end{verbatim}
+
+これで期待通りの値を得ることができました。
+
+\hypertarget{ux5909ux6570ux306eux4e0aux66f8ux304d}{%
+\subsection{変数の上書き}\label{ux5909ux6570ux306eux4e0aux66f8ux304d}}
+
+さて、最初に\texttt{x}に代入した値は\texttt{6}でしたが、この時点では以下のように複数の値が代入されています。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  3.0  6.0 -1.0  0.8
+\end{verbatim}
+
+これは平均値を求める際に\texttt{x}という変数を再利用したためです。このように\textbf{R}では警告なしに既存の変数を上書きすることができますので注意してください。
+
+\hypertarget{ux5909ux6570}{%
+\section{変数}\label{ux5909ux6570}}
+
+変数の命名規則は \href{https://style.tidyverse.org/syntax.html\#object-names}{tidyverse スタイルガイド（以降、スタイルガイド）} と呼ばれる記述ルールに準拠することをおすゝめします。スタイルガイドでは変数名に使える文字を以下の組合せであることを推奨しています。
+
+\begin{itemize}
+\tightlist
+\item
+  英数小文字（\texttt{A-Z}, \texttt{a-z}）
+\item
+  数字（\texttt{0\ 1\ 2\ 3\ 4\ 5\ 6\ 7\ 8\ 9}）
+\item
+  アンダースコア（\texttt{\_}）
+\end{itemize}
+
+ただし、数字から始まる変数名は\textbf{R}の仕様により使うことができません（エラーになります）。また、日本語の変数名を使うことは可能ですが、様々な環境を考慮すると変数名に日本語を使用することはおすゝめできません。本書はスタイルガイドに準拠した記述になっています。
+
+\hypertarget{ux4e88ux7d04ux8a9e}{%
+\subsection{予約語}\label{ux4e88ux7d04ux8a9e}}
+
+プログラミング言語には予約語（Reserved Word）といわれるものがあり予約語は変数名として使えません。\textbf{R}では以下が予約語になっています。
 
 \texttt{if}, \texttt{else}, \texttt{for}, \texttt{while}, \texttt{repeat}, \texttt{in}, \texttt{next}, \texttt{break}, \texttt{function},\\
 \texttt{TRUE}, \texttt{FALSE}, \texttt{NULL}, \texttt{NA}, \texttt{NaN}, \texttt{Inf}
 
-　
-
-\hypertarget{ux5909ux6570variables}{%
-\section{変数（Variables）}\label{ux5909ux6570variables}}
-
-　R での変数の扱い方について触れておきます。まず、変数名の命名規則ですが \href{https://style.tidyverse.org/syntax.html\#object-names}{スタイルガイド } に準拠して「英小文字、数字、アンダースコア」のみを使うことを推奨します。また、変数名は分かりやすい名称にするように心掛けてください。例えば
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{number\_int }\OtherTok{\textless{}{-}}\NormalTok{ 10L}
-\NormalTok{number\_int}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 10
-\end{verbatim}
-
-　なお、数字から始まる変数名は R の仕様により使用することができません。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{1num }\OtherTok{\textless{}{-}} \DecValTok{100}
-\NormalTok{2\_string }\OtherTok{\textless{}{-}} \StringTok{"foo"}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Error: <text>:1:2:  想定外のシンボルです 
-## 1: 1num
-##      ^
-\end{verbatim}
-
-　また、予約語以外でも変数型や関数に使われているような名前を変数名にすることはおすゝめできません。
-
-　
+また、予約語以外でも変数型や関数に使われている名前を変数名として使うことはおすゝめできません。
 
 \hypertarget{ux30c7ux30fcux30bfux578b}{%
 \subsection{データ型}\label{ux30c7ux30fcux30bfux578b}}
 
-　他の言語でも同じですが変数には値を入れることができます。データ型はどのような値（データ）が入っているかを識別するためのものです。R の代表的なデータ型には以下のようなものがあります。
+他の言語でも同じですが変数には値を入れることができます。データ型はどのような値のデータが入っているかを識別するためのものです。\textbf{R}の代表的なデータ型には以下のようなものがあります。
 
 \begin{longtable}[]{@{}llllll@{}}
 \toprule
@@ -751,47 +929,42 @@ Rの一番良いところは統計学者が作っているところだ。 Rの�
 複素数型 & \texttt{complex} & \texttt{complex} & \texttt{complex} & \texttt{complex} & \\
 論理型 & \texttt{logical} & \texttt{logical} & \texttt{logical} & \texttt{logical} & Boolean型 \\
 文字型 & \texttt{character} & \texttt{character} & \texttt{character} & \texttt{character} & \\
-日付型 & \texttt{Date} & \texttt{double} & \texttt{numeric} & \texttt{double} & Date型（POSIX型もあり） \\
+日付型 & \texttt{Date} & \texttt{double} & \texttt{numeric} & \texttt{double} & Date型\textsuperscript{b} \\
 \bottomrule
 \end{longtable}
 
-　R は開発の経緯から様々な型の見かたがありますが、基本的に同じようなものだとと考えてください。書籍などでよく出てくる \texttt{str}（structure）関数が返す型は上表におけるクラスです。
+\textsuperscript{b} 日付型にはPOSIX型もあります
 
-　
+\textbf{R}は開発の経緯から様々な型の見かたがありますが、基本的に同じようなものだとと考えてください。書籍などでよく出てくる\texttt{str()}関数が返す型は上表におけるクラスです。
 
 \hypertarget{ux5909ux6570ux578b}{%
 \subsection{変数型}\label{ux5909ux6570ux578b}}
 
-　前述のようなデータ型を持った値を入れる箱が変数です。変数には華表のような様々な形があります。中でも表形式のデータを扱えるデータフレーム型は R ならではの変数型といえます。また、R には他の言語ではよく見かけるスカラー型（一種類のデータ型の値を一つだけ格納できる変数型）はありません基本となる変数型はベクトル型になります。\\
-　変数型にもクラスがありますが、ベクトル型変数のクラスはデータ型のクラスと同じです。\\
-　
+変数型はどのような形でデータを格納できるかを識別するためのものです。
 
 \begin{longtable}[]{@{}lll@{}}
 \toprule
-変数の型 & クラス & 説明 \\
+変数型 & クラス & 説明 \\
 \midrule
 \endhead
-ベクトル型 & データ型に同じ & 一種類のデータ型の値を任意の個数だけ格納できる変数型 \\
-因子型 & \texttt{factor}, \texttt{ordered} & 水準インデックスを持ったベクトル型変数 \\
-マトリクス型（行列型） & \texttt{matrix} & 二次元型の変数型（ベクトル型とは異なる型） \\
-アレイ型（配列型） & \texttt{array} & 多次元型の変数（ベクトル型とは異なる型） \\
-データフレーム型 & \texttt{data.frame} & データ型の異なる複数の\textbf{等長}ベクトル型を格納できる変数型 \\
-リスト型 & \texttt{list} & データ型の異なる複数のベクトル型変数を格納できる変数型 \\
+ベクトル型 & データ型に同じ & 基本となる変数型 \\
+因子型 & \texttt{factor}, \texttt{ordered} & インデックスを持つ変数型 \\
+マトリクス型（行列型） & \texttt{matrix} & 二次元のベクトル型 \\
+アレイ型（配列型） & \texttt{array} & 多次元のベクトル型 \\
+データフレーム型 & \texttt{data.frame} & \textbf{等長}なベクトル型 \\
+リスト型 & \texttt{list} & 自由度が最も高い変数型 \\
 \bottomrule
 \end{longtable}
 
-　
-
 \hypertarget{ux30d9ux30afux30c8ux30ebux578b}{%
-\subsection{ベクトル型}\label{ux30d9ux30afux30c8ux30ebux578b}}
+\subsubsection{ベクトル型}\label{ux30d9ux30afux30c8ux30ebux578b}}
 
-　ベクトル型は前述のように最も基本となる変数型です。ベクトル型変数を作成するには \texttt{c} 関数使います。代入して \texttt{str} 関数でクラス、長さ（値の個数）と値を確認してみます。\\
-　長さが \(1\) の場合は \texttt{c} 関数を省略できます。
+ベクトル型は基本となる変数型です。ベクトル型には一種類のデータ型のデータ（値）しか格納することができません。格納できる個数は任意です。 ベクトル型の変数を作成するには\texttt{c()}関数を用います。代入して\texttt{str()}関数でクラス、長さ（値の個数）と値を確認してみます。長さが1の場合は\texttt{c()}関数を省略することができます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 2L                   }\CommentTok{\# 一つだけ代入（格納）する場合 \textasciigrave{}c\textasciigrave{} は省略可能です}
-\FunctionTok{str}\NormalTok{(x)                    }\CommentTok{\# 値が一つだけの場合は長さ表示が省略されます}
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 2L                 }\CommentTok{\# 一つだけ代入する場合 \textasciigrave{}c()\textasciigrave{} は省略可能}
+\FunctionTok{str}\NormalTok{(x)                  }\CommentTok{\# 値が一つだけの場合は長さ表示が省略}
 \end{Highlighting}
 \end{Shaded}
 
@@ -803,8 +976,8 @@ Rの一番良いところは統計学者が作っているところだ。 Rの�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)           }\CommentTok{\# 実数の 1 から 3 の三つの値が代入されます}
-\FunctionTok{str}\NormalTok{(x)                    }\CommentTok{\# []の部分が長さ表示です}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)         }\CommentTok{\# 実数の 1 から 3 の三つの値が代入}
+\FunctionTok{str}\NormalTok{(x)                  }\CommentTok{\# []の部分が長さ表示}
 \end{Highlighting}
 \end{Shaded}
 
@@ -812,11 +985,11 @@ Rの一番良いところは統計学者が作っているところだ。 Rの�
 ##  num [1:3] 1 2 3
 \end{verbatim}
 
-　文字（型）を代入する場合はクォート（ダブルまはたシングル）で囲みます。
+文字（型）を代入する場合はクォート（ダブルまはたシングル）で囲みます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}\NormalTok{, }\StringTok{\textquotesingle{}2\textquotesingle{}}\NormalTok{, }\StringTok{"3"}\NormalTok{)     }\CommentTok{\# 文字として数字を代入してみます}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}\NormalTok{, }\StringTok{\textquotesingle{}2\textquotesingle{}}\NormalTok{, }\StringTok{"3"}\NormalTok{)   }\CommentTok{\# 文字として数字を代入}
 \FunctionTok{str}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -825,12 +998,12 @@ Rの一番良いところは統計学者が作っているところだ。 Rの�
 ##  chr [1:3] "1" "2" "3"
 \end{verbatim}
 
-　では文字（型）と数字（型）を混在させたらどうなるでしょう？
+では文字（型）と数字（型）を混在させたらどうなるでしょう？
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(1L, }\DecValTok{2}\NormalTok{, }\StringTok{"3"}\NormalTok{)        }\CommentTok{\# 整数、実数、文字としての数字を代入してみます}
-\FunctionTok{str}\NormalTok{(x)                    }\CommentTok{\# 強制型変換により最も柔軟度の高い文字型になります}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(1L, }\DecValTok{2}\NormalTok{, }\StringTok{"3"}\NormalTok{)      }\CommentTok{\# 整数、実数、文字としての数字を代入}
+\FunctionTok{str}\NormalTok{(x)                  }\CommentTok{\# 強制型変換により最も柔軟度の高い文字型に}
 \end{Highlighting}
 \end{Shaded}
 
@@ -838,16 +1011,12 @@ Rの一番良いところは統計学者が作っているところだ。 Rの�
 ##  chr [1:3] "1" "2" "3"
 \end{verbatim}
 
-　エラーにはならずベクトル型変数は文字型クラスとして作成されます。これは強制型変換という処理が行われるためです。強制型変換は複数のデータ型が混在した場合により柔軟度の高いデータ型に変換する処理です。論理型、整数型、実数型、複素数型、文字型の順に変換されます。\\
-　便利ではありますが意図しない結果を招く可能性がありますので、このような変換があることは覚えておいてください。
-
-　
+エラーにはならずベクトル型変数は文字型の変数として作成されます。これは強制型変換という処理が行われるためです。強制型変換は複数のデータ型が混在した場合により柔軟度の高いデータ型に自動的に変換する処理で、論理型、整数型、実数型、複素数型、文字型の順に変換されます。 強制型変換は便利ですが意図しない変換結果を招く場合もありますので、このような変換が行われることは憶えてください。
 
 \hypertarget{ux56e0ux5b50ux578b}{%
-\subsection{因子型}\label{ux56e0ux5b50ux578b}}
+\subsubsection{因子型}\label{ux56e0ux5b50ux578b}}
 
-　因子型は名義尺度や順序尺度の変数を扱うのに便利な変数型です。因子型を作成するには \texttt{factor} 関数を使う順序なしの因子型と \texttt{ordered} 関数を使う順序ありの因子型があります。どちらも \texttt{levels}（水準） という属性がついているベクトル型です。\\
-　後述のデータフレーム型の中で使うと「層別」という処理が楽になります。
+因子型は名義尺度や順序尺度の変数を扱う際に便利な変数型です。因子型を作成するには\texttt{factor()}関数を使う順序なしの因子型と\texttt{ordered()}関数を使う順序ありの因子型があります。どちらも\texttt{levels}（水準）という属性がつくベクトル型変数です。 後述のデータフレーム型の中で使うと「層別」という処理が楽になります。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -870,7 +1039,7 @@ Rの一番良いところは統計学者が作っているところだ。 Rの�
 ## [1] "A"  "AB" "B"  "O"
 \end{verbatim}
 
-　\texttt{ordered} 型は \texttt{levels} に順序がついている点が \texttt{factor} 型と異なる点です。
+\texttt{ordered}型は\texttt{levels}に順序がついている点が\texttt{factor}型と異なる点です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -893,10 +1062,8 @@ Rの一番良いところは統計学者が作っているところだ。 Rの�
 ## [1] "A"  "AB" "B"  "O"
 \end{verbatim}
 
-　
-
 \hypertarget{ux30deux30c8ux30eaux30afux30b9ux578b}{%
-\subsection{マトリクス型}\label{ux30deux30c8ux30eaux30afux30b9ux578b}}
+\subsubsection{マトリクス型}\label{ux30deux30c8ux30eaux30afux30b9ux578b}}
 
 　マトリクス型は文字通り二次元配列を扱うための変数型です。作成するには \texttt{matrix} 関数を利用します。引数のベクトル型を列方向から二次元に展開します。
 
@@ -2030,8 +2197,8 @@ NA\_character\_ & 文字型 \\
 \hypertarget{part-wrangle}{%
 \part{Wrangle}\label{part-wrangle}}
 
-\hypertarget{import}{%
-\chapter{Import}\label{import}}
+\hypertarget{import-1}{%
+\chapter{Import}\label{import-1}}
 
 　Import は
 
@@ -2056,8 +2223,8 @@ NA\_character\_ & 文字型 \\
 \hypertarget{pdftools}{%
 \section{pdftools}\label{pdftools}}
 
-\hypertarget{tidy}{%
-\chapter{Tidy}\label{tidy}}
+\hypertarget{tidy-1}{%
+\chapter{Tidy}\label{tidy-1}}
 
 \hypertarget{tidy-data}{%
 \section{Tidy Data}\label{tidy-data}}
@@ -2068,8 +2235,8 @@ NA\_character\_ & 文字型 \\
 \hypertarget{wider}{%
 \section{wider}\label{wider}}
 
-\hypertarget{transform}{%
-\chapter{Transform}\label{transform}}
+\hypertarget{transform-1}{%
+\chapter{Transform}\label{transform-1}}
 
 \hypertarget{filter}{%
 \section{filter}\label{filter}}
