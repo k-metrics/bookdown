@@ -1,6 +1,7 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 %
 \documentclass[
   12pt,
@@ -16,7 +17,7 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-  \setmonofont[Scale=0.96]{Source Code Pro}
+  \setmonofont[Scale=0.8]{Source Han Code JP}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -40,7 +41,11 @@
 \hypersetup{
   pdftitle={Rのすゝめ},
   pdfauthor={Sampo Suzuki, CC 4.0 BY-NC-SA},
-  hidelinks,
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=Blue,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
@@ -170,6 +175,7 @@
 \maketitle
 
 {
+\hypersetup{linkcolor=}
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
@@ -179,7 +185,7 @@
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-本書は \href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja}{クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス} の下に提供されています。
+本書は\href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja}{クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス}の下に提供されています。
 
 あなたの従うべき条件は以下の通りです。
 
@@ -269,7 +275,7 @@
 \section*{\texorpdfstring{なぜ\textbf{R}を使うのか}{なぜRを使うのか}}\label{ux306aux305crux3092ux4f7fux3046ux306eux304b}}
 \addcontentsline{toc}{section}{なぜ\textbf{R}を使うのか}
 
-データ分析を行うためには適切な分析ツールが必要不可欠です。\textbf{R}は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。\textbf{R } がデータ分析に向いている理由をまとめているのが \href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business'', R Blogger} です。
+データ分析を行うためには適切な分析ツールが必要不可欠です。\textbf{R}は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。\textbf{R}がデータ分析に向いている理由をまとめているのが\href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business'', R Blogger}です。
 
 \begin{quote}
 \begin{enumerate}
@@ -290,7 +296,9 @@
 \end{enumerate}
 \end{quote}
 
-\textbf{R}はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
+\textbf{R}はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。\href{https://cran.r-project.org/}{CRAN(The Comprehensive R Archive Network)}と呼ばれる\textbf{R}のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は\href{https://cran.r-project.org/web/views/}{CRAN Task Views}を見て分かるように古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は\href{https://cran.r-project.org/web/views/ReproducibleResearch.html}{Reproducible Research}と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉ですが、データ分析では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々は「Reproducible Research」とあるように科学的研究の分野で使われている言葉です。他の言語ではこの分野を開発範囲（スコープ）に含めることはほぼありません。 また、\textbf{R}は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）にも適していると言えます。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
+
+ちなみに本書も\textbf{R}のパッケージである\href{https://bookdown.org/}{\textbf{\texttt{bookdown}}}という文書作成に特化したパッケージを利用して作成してます。
 
 \hypertarget{ux5206ux6790ux306eux624bux9806}{%
 \section*{分析の手順}\label{ux5206ux6790ux306eux624bux9806}}
@@ -446,7 +454,7 @@ virginica & Petal.Length & 5.1\\
 \caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-11}
 \end{figure}
 
-この図は「Data Science Workflow」と呼ばれ、\textbf{R}コミュニティに多大な貢献をしている \href{http://hadley.nz/}{Hadley Wickham} が、その著書\href{https://r4ds.had.co.nz/}{『R for Data Science』} で提唱している概念図です。本書は、この Data Science Workflow に基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。
+この図は「Data Science Workflow」と呼ばれ、\textbf{R}コミュニティに多大な貢献をしている \href{http://hadley.nz/}{Hadley Wickham}が、その著書\href{https://r4ds.had.co.nz/}{『R for Data Science』}で提唱している概念図です。本書は、このData Science Workflowに基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。
 
 \hypertarget{program}{%
 \subsection*{Program}\label{program}}
@@ -541,7 +549,7 @@ R について学ぶ際には R が使えるような環境を構築しておく
 \hypertarget{google-colab}{%
 \subsection{Google Colab}\label{google-colab}}
 
-\textbf{Google Colab}は Google アカウントを持っていれば誰でも利用可能な\textbf{Python}向けの環境である\textbf{Jupyter Notebook}サービスです。\textbf{Jupyter Notebook}は\textbf{R}をエンジンとして利用することができますので、環境を構築することなく使い始めることができますので、初学者の演習環境としておすゝめです。
+\textbf{Google Colab}は Googleアカウントを持っていれば誰でも利用可能な\textbf{Python}向けの環境である\textbf{Jupyter Notebook}サービスです。\textbf{Jupyter Notebook}は\textbf{R}をエンジンとして利用することができますので、環境を構築することなく使い始めることができますので、初学者の演習環境としておすゝめです。
 
 \begin{figure}[H]
 
@@ -555,7 +563,7 @@ R について学ぶ際には R が使えるような環境を構築しておく
 \hypertarget{rstudio}{%
 \subsection{RStudio}\label{rstudio}}
 
-再現可能性を確保した探索的データ分析を行うのに最も適しているのが\textbf{RStudio}です。無償で使えるオープンソース版には、PC上のアプリケーションとして動作する\textbf{Desktop}と Webサーバとして動作する\textbf{Server}の二種類があります。 \textbf{RStudio}は\textbf{R}のデファクトスタンダード的な統合開発環境（IDE）であり、Tidyverse Eco System の中核とも言えます。その特徴として
+再現可能性を確保した探索的データ分析を行うのに最も適しているのが\textbf{RStudio}です。無償で使えるオープンソース版には、PC上のアプリケーションとして動作する\textbf{Desktop}と Webサーバとして動作する\textbf{Server}の二種類があります。 \textbf{RStudio}は\textbf{R}のデファクトスタンダード的な統合開発環境（IDE）であり、Tidyverse Eco Systemの中核とも言えます。その特徴として
 
 \begin{itemize}
 \tightlist
@@ -584,7 +592,7 @@ R について学ぶ際には R が使えるような環境を構築しておく
 \caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-14}
 \end{figure}
 
-\textbf{RStudio Server}は\textbf{RStudio}をブラウザ経由で使う Linux 上で動作するサーバアプリケーションです。Docker コンテナとして動作させることも可能ですので、個々の PC での分析環境を固定さたい場合には非常に便利です。
+\textbf{RStudio Server}は\textbf{RStudio}をブラウザ経由で使う Linux 上で動作するサーバアプリケーションです。Dockerコンテナとして動作させることも可能ですので、個々の PC での分析環境を固定さたい場合には非常に便利です。
 
 \begin{figure}[H]
 
@@ -667,7 +675,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \hypertarget{ux57faux672cux7684ux306aux6f14ux7b97}{%
 \section{基本的な演算}\label{ux57faux672cux7684ux306aux6f14ux7b97}}
 
-最初に基本的な演算です。
+最初に\textbf{R}の演算がどのような形式で行われるのかを紹介します。
 
 \hypertarget{ux7b97ux8853ux6f14ux7b97}{%
 \subsection{算術演算}\label{ux7b97ux8853ux6f14ux7b97}}
@@ -714,8 +722,8 @@ Rの一番悪いところは統計学者が作っているところだ。
 ## [1] 0.8
 \end{verbatim}
 
-\hypertarget{ux4ee3ux5165ux6f14ux7b97}{%
-\subsection{代入演算}\label{ux4ee3ux5165ux6f14ux7b97}}
+\hypertarget{ux4ee3ux5165}{%
+\subsection{代入}\label{ux4ee3ux5165}}
 
 上記の演算結果を変数に代入してみます。代入には代入演算子（\texttt{\textless{}-}）を用います。変数を使うための変数宣言は不要です。
 
@@ -813,8 +821,8 @@ Rの一番悪いところは統計学者が作っているところだ。
 ## [1] 0.8
 \end{verbatim}
 
-\hypertarget{ux5408ux7b97ux5024}{%
-\subsection{合算値}\label{ux5408ux7b97ux5024}}
+\hypertarget{ux5408ux7b97}{%
+\subsection{合算}\label{ux5408ux7b97}}
 
 全ての変数を合算します。単純に加算演算子（\texttt{+}）を用いても構いませんが、\texttt{sum()}という関数が用意されていますので、これを使います。
 
@@ -828,8 +836,8 @@ Rの一番悪いところは統計学者が作っているところだ。
 ## [1] 8.8
 \end{verbatim}
 
-\hypertarget{ux5e73ux5747ux5024}{%
-\subsection{平均値}\label{ux5e73ux5747ux5024}}
+\hypertarget{ux5e73ux5747}{%
+\subsection{平均}\label{ux5e73ux5747}}
 
 全ての変数の平均値を求めます。平均には
 
@@ -885,7 +893,9 @@ Rの一番悪いところは統計学者が作っているところだ。
 ## [1]  3.0  6.0 -1.0  0.8
 \end{verbatim}
 
-これは平均値を求める際に\texttt{x}という変数を再利用したためです。このように\textbf{R}では警告なしに既存の変数を上書きすることができますので注意してください。
+これは平均値を求める際に\texttt{x}という変数を再利用したためですが、このように\textbf{R}では警告なしに既存の変数を上書きすることができます。注意してください。
+
+このように\textbf{R}での演算は、他の言語と同様に何らかの値を変数に入れたり、何らかの値を関数で処理したりします。
 
 \hypertarget{ux5909ux6570}{%
 \section{変数}\label{ux5909ux6570}}
@@ -1016,7 +1026,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \hypertarget{ux56e0ux5b50ux578b}{%
 \subsubsection{因子型}\label{ux56e0ux5b50ux578b}}
 
-因子型は名義尺度や順序尺度の変数を扱う際に便利な変数型です。因子型を作成するには\texttt{factor()}関数を使う順序なしの因子型と\texttt{ordered()}関数を使う順序ありの因子型があります。どちらも\texttt{levels}（水準）という属性がつくベクトル型変数です。 後述のデータフレーム型の中で使うと「層別」という処理が楽になります。
+因子型は名義尺度や順序尺度の変数を扱う際に便利な変数型です。前述のベクトル型変数に格納された値を識別するためのインデックスがついたデータベーステーブルのような仕組みを持っています。 因子型を作成するには\texttt{factor()}関数を使う順序なしの因子型と\texttt{ordered()}関数を使う順序ありの因子型があります。どちらも\texttt{levels}（水準）という属性がつきます。この水準にインデックスとしての役割があります。後述のデータフレーム型の中で使うと「層別」という処理が楽になります。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1065,19 +1075,66 @@ Rの一番悪いところは統計学者が作っているところだ。
 \hypertarget{ux30deux30c8ux30eaux30afux30b9ux578b}{%
 \subsubsection{マトリクス型}\label{ux30deux30c8ux30eaux30afux30b9ux578b}}
 
-　マトリクス型は文字通り二次元配列を扱うための変数型です。作成するには \texttt{matrix} 関数を利用します。引数のベクトル型を列方向から二次元に展開します。
+マトリクス型は文字通り二次元配列を扱うための変数型です。作成するには\texttt{matrix()}関数を利用します。引数のベクトル型を列方向から二次元に展開します。
 
-　展開方向を変えるには \texttt{byrow} オプションを指定します。
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{60}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)     }\CommentTok{\# 2行3列のマトリクス型}
+\end{Highlighting}
+\end{Shaded}
 
-　数値だけでなく文字列も扱えます。
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]   10   30   50
+## [2,]   20   40   60
+\end{verbatim}
 
-　
+展開方向を変えるには引数自体を変える方法もありますが\texttt{byrow}オプションを利用する方がスマートです。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{60}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]   10   20   30
+## [2,]   40   50   60
+\end{verbatim}
+
+整数型や実数型の数値だけでなく文字型など他のデータ型も扱えます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"x"}\NormalTok{, }\StringTok{"y"}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,] "a"  "x" 
+## [2,] "b"  "y"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"x"}\NormalTok{, }\StringTok{"y"}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,] "a"  "b" 
+## [2,] "x"  "y"
+\end{verbatim}
+
+マトリクス型を使う機会はあまり多くありませんが、関数の引数や返り値として使われることがありますので、どういう変数型なのかを憶えておいてください。
 
 \hypertarget{ux30a2ux30ecux30a4ux578b}{%
-\subsection{アレイ型}\label{ux30a2ux30ecux30a4ux578b}}
+\subsubsection{アレイ型}\label{ux30a2ux30ecux30a4ux578b}}
 
-　アレイ型は多次元配列を扱うのに便利な変数型です。作成するには \texttt{array} 関数を利用します。第一引数で指定したベクトル型のデータを第二引数で指定した構造（行, 列, 次元）にしたがって展開します。\\
-　展開は列方向のみで \texttt{matrix} 型にある \texttt{byrow} オプションはありません。また、第一引数のデータ数が足りない場合は先頭からリサイクルして展開します。
+アレイ型はマトリクス型を複数ならべたような多次元配列を扱うための変数型です。作成するには\texttt{array()}関数を利用します。第一引数で指定したベクトル型のデータを第二引数で指定した構造（行数, 列数, 次元数）にしたがって多次元配列に展開します。展開は列方向のみで\texttt{matrix()}関数がもつ\texttt{byrow}オプションはありません。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1099,17 +1156,70 @@ Rの一番悪いところは統計学者が作っているところだ。
 ## [2,]    8   10   12
 \end{verbatim}
 
-　
+なお、第一引数のデータ数が第二引数で指定した総数（\(\mbox{行数} \times \mbox{列数} \times \mbox{次元数}\)）より少ない場合は警告メッセージ（以降、ワーニング）を出力して第一引数のデータを先頭からリサイクルして埋めます。これは\texttt{matrix()}関数でも同様です。 アレイ型もマトリクス型同様に使うと機会はあまり多くありません。
 
 \hypertarget{ux30c7ux30fcux30bfux30d5ux30ecux30fcux30e0ux578b}{%
-\subsection{データフレーム型}\label{ux30c7ux30fcux30bfux30d5ux30ecux30fcux30e0ux578b}}
+\subsubsection{データフレーム型}\label{ux30c7ux30fcux30bfux30d5ux30ecux30fcux30e0ux578b}}
 
-　データフレーム型は表形式のデータを扱うのに非常に便利な変数型です。列ごとに異なるデータ型の変数を格納することが可能ですので、データベースのテーブルのようなものです。ただし、全ての列において行数が同一でなければなりません。データフレーム型を作成するには \texttt{data.frame} 関数を用います。
+データフレーム型はデータベースのテーブルのような形式の変数型で最も使われる変数型と言えます。制約として全ての列の行数が等しい必要があります。すなわち、等長のベクトル型変数を列方向にならべた変数型と言えます。例えば前出の\texttt{iris}データセットはデータフレーム型変数です。
+
+\begin{table}[H]
+\centering
+\begin{tabular}[t]{l|l|l|l|l|l}
+\hline
+  & Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
+\hline
+\cellcolor{gray!6}{1} & \cellcolor{gray!6}{5.1} & \cellcolor{gray!6}{3.5} & \cellcolor{gray!6}{1.4} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
+\hline
+2 & 4.9 & 3 & 1.4 & 0.2 & setosa\\
+\hline
+\cellcolor{gray!6}{3} & \cellcolor{gray!6}{4.7} & \cellcolor{gray!6}{3.2} & \cellcolor{gray!6}{1.3} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
+\hline
+... & ... & ... & ... & ... & NA\\
+\hline
+\cellcolor{gray!6}{148} & \cellcolor{gray!6}{6.5} & \cellcolor{gray!6}{3} & \cellcolor{gray!6}{5.2} & \cellcolor{gray!6}{2} & \cellcolor{gray!6}{virginica}\\
+\hline
+149 & 6.2 & 3.4 & 5.4 & 2.3 & virginica\\
+\hline
+\cellcolor{gray!6}{150} & \cellcolor{gray!6}{5.9} & \cellcolor{gray!6}{3} & \cellcolor{gray!6}{5.1} & \cellcolor{gray!6}{1.8} & \cellcolor{gray!6}{virginica}\\
+\hline
+\end{tabular}
+\end{table}
+
+150のデータを持つ実数型のベクトル型変数が四つ、150のデータを持つ因子型のベクトル型変数が一つ、計五つのベクトル型変数から構成されています。加えて個々の行がひとつの計測結果になっています。 様々な車の諸元をまとめた\texttt{mtcars}データセットの方がイメージを掴みやすいかも知れません。
+
+\begin{table}[H]
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{l|l|l|l|l|l|l|l|l|l|l|l}
+\hline
+  & mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb\\
+\hline
+\cellcolor{gray!6}{Mazda RX4} & \cellcolor{gray!6}{21} & \cellcolor{gray!6}{6} & \cellcolor{gray!6}{160} & \cellcolor{gray!6}{110} & \cellcolor{gray!6}{3.9} & \cellcolor{gray!6}{2.62} & \cellcolor{gray!6}{16.46} & \cellcolor{gray!6}{0} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{4} & \cellcolor{gray!6}{4}\\
+\hline
+Mazda RX4 Wag & 21 & 6 & 160 & 110 & 3.9 & 2.88 & 17.02 & 0 & 1 & 4 & 4\\
+\hline
+\cellcolor{gray!6}{Datsun 710} & \cellcolor{gray!6}{22.8} & \cellcolor{gray!6}{4} & \cellcolor{gray!6}{108} & \cellcolor{gray!6}{93} & \cellcolor{gray!6}{3.85} & \cellcolor{gray!6}{2.32} & \cellcolor{gray!6}{18.61} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{4} & \cellcolor{gray!6}{1}\\
+\hline
+... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ...\\
+\hline
+\cellcolor{gray!6}{Ferrari Dino} & \cellcolor{gray!6}{19.7} & \cellcolor{gray!6}{6} & \cellcolor{gray!6}{145} & \cellcolor{gray!6}{175} & \cellcolor{gray!6}{3.62} & \cellcolor{gray!6}{2.77} & \cellcolor{gray!6}{15.5} & \cellcolor{gray!6}{0} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{6}\\
+\hline
+Maserati Bora & 15 & 8 & 301 & 335 & 3.54 & 3.57 & 14.6 & 0 & 1 & 5 & 8\\
+\hline
+\cellcolor{gray!6}{Volvo 142E} & \cellcolor{gray!6}{21.4} & \cellcolor{gray!6}{4} & \cellcolor{gray!6}{121} & \cellcolor{gray!6}{109} & \cellcolor{gray!6}{4.11} & \cellcolor{gray!6}{2.78} & \cellcolor{gray!6}{18.6} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{4} & \cellcolor{gray!6}{2}\\
+\hline
+\end{tabular}}
+\end{table}
+
+このようにデータフレーム型は表形式のデータを扱うのに非常に便利な変数型です。データフレーム型を作成するには\texttt{data.frame()}関数を用います。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{col1 =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{), }\AttributeTok{col2 =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{, }\StringTok{"E"}\NormalTok{),}
-                \AttributeTok{col3 =} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{14}\NormalTok{), }\AttributeTok{col4 =} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{))}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{col1 =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{),}
+                \AttributeTok{col2 =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{, }\StringTok{"E"}\NormalTok{),}
+                \AttributeTok{col3 =} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{14}\NormalTok{),}
+                \AttributeTok{col4 =} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{))}
 \FunctionTok{str}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -1137,14 +1247,12 @@ Rの一番悪いところは統計学者が作っているところだ。
 ## 5    5    E   14 FALSE
 \end{verbatim}
 
-　データフレーム型は列名を指定することが可能です。また、文字型のデータはデフォルトで因子型変数として扱われます。
-
-　
+なお、\texttt{data.frame()}関数では\textbf{R}のバージョンによっては文字型のデータを因子型として扱うことがあります。このよう場合には\texttt{stringsAsFactors\ =\ FALSE}オプションを指定すると強制的に文字型として扱えるようになります。逆に因子型として扱いたい場合には\texttt{stringsAsFactors\ =\ TRUE}を指定することで因子型になりますがこちらは非推奨なオプション指定です。
 
 \hypertarget{ux30eaux30b9ux30c8ux578b}{%
-\subsection{リスト型}\label{ux30eaux30b9ux30c8ux578b}}
+\subsubsection{リスト型}\label{ux30eaux30b9ux30c8ux578b}}
 
-　リスト型はデータフレーム型とは異なり不等長のベクトル型変数を格納できる変数型です。ベクトル型の他にもマトリクス型やデータフレーム型、リスト型地震を格納できる非常に柔軟な構造であるため様々な関数あが返り値と使っています。
+リスト型はデータ格納の自由度が高いため関数の返り値として使われることが多い変数型です。データフレーム型との大きな違いは不等長のベクトル型を複数格納できる点にあります。さらにマトリクス型やデータフレーム型、リスト型など基本的に全ての変数型をリスト型内に格納可能です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1194,30 +1302,28 @@ Rの一番悪いところは統計学者が作っているところだ。
 ## 5    5    E   14 FALSE
 \end{verbatim}
 
-　
+\hypertarget{ux5b9aux6570}{%
+\section{定数}\label{ux5b9aux6570}}
 
-\hypertarget{ux5b9aux6570constant}{%
-\section{定数（Constant）}\label{ux5b9aux6570constant}}
+変数はその名の通り値を変更できますが、定数は特別な意味を持った値を保持するためもので予約語になっています。定数にもクラスがあり、下表のようになっています。
 
-　変数はその名の通り値を変更できますが、R には特別な意味を持った値を保持するための定数があります。なお、定数にもクラスがあります。\\
-　
-
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}lll@{}}
 \toprule
-定数 & クラス \\
+定数 & クラス & 意味・説明 \\
 \midrule
 \endhead
-\texttt{TRUE} & \texttt{logical} \\
-\texttt{FALSE} & \texttt{logical} \\
-\texttt{NULL} & \texttt{NULL} \\
-\texttt{NA} & \texttt{logical} \\
-\texttt{NaN} & \texttt{numeric} \\
-\texttt{Inf} & \texttt{numeric} \\
+\texttt{TRUE} & \texttt{logical} & Booleanの真を意味する（\(1\)と等価） \\
+\texttt{FALSE} & \texttt{logical} & Booleanの偽を意味する（\(0\)と等価） \\
+\texttt{NULL} & \texttt{NULL} & 空（何も存在しない）を意味する（\(0\)や\texttt{NA}とは異なる） \\
+\texttt{NA} & \texttt{logical} & 欠損値（Not Availabl で、データの欠損を意味する） \\
+\texttt{NaN} & \texttt{numeric} & 非数（Not a Numberで非数\textsuperscript{c}を表す） \\
+\texttt{Inf} & \texttt{numeric} & 無限大（\(0\)除算時等は\texttt{NaN}ではなく\texttt{Inf/-Inf}） \\
 \bottomrule
 \end{longtable}
 
-　\\
-　\texttt{NULL} を除く定数はデータ型のクラスですので強制型変換の対象となります。以下のような変換が行われますので注意してください。
+\textsuperscript{c} \(\frac{0}{0}\)のような数値では表現できないものを意味する
+
+\texttt{NULL}を除く定数はデータ型のクラスですので強制型変換の対象となります。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1229,39 +1335,89 @@ Rの一番悪いところは統計学者が作っているところだ。
 ## [1] 10.0+0i  2.5+0i  3.0+4i  1.0+0i  NaN+0i      NA  Inf+0i -Inf+0i
 \end{verbatim}
 
-　
+\hypertarget{naux306eux578b}{%
+\subsection{\texorpdfstring{\texttt{NA}の型}{NAの型}}\label{naux306eux578b}}
 
-\hypertarget{na-ux306eux578b}{%
-\subsection{\texorpdfstring{\texttt{NA} の型}{NA の型}}\label{na-ux306eux578b}}
-
-　欠損値を示す\texttt{NA}には明示的にデータ型を示すためのバリエーションがあります。関数によっては明示的に \texttt{NA} を指定する必要がありますので覚えておいてください。\\
-　
+欠損値を示す\texttt{NA}にはデータ型を明示的に示すためのバリエーションがあります。関数によっては明示的な\texttt{NA}を指定する必要があります。
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
 NA & データ型 \\
 \midrule
 \endhead
-NA\_integer\_ & 整数型 \\
-NA\_real\_ & 実数型 \\
-NA\_complex\_ & 複素数型 \\
-NA\_character\_ & 文字型 \\
+\texttt{NA\_integer\_} & 整数型 \\
+\texttt{NA\_real\_} & 実数型 \\
+\texttt{NA\_complex\_} & 複素数型 \\
+\texttt{NA\_character\_} & 文字型 \\
 \bottomrule
 \end{longtable}
 
-　
+\hypertarget{ux691cux67fbux5909ux63db}{%
+\section{検査・変換}\label{ux691cux67fbux5909ux63db}}
 
-\hypertarget{ux53c2ux7167ux30a2ux30afux30bbux30b9access-operators}{%
-\section{参照・アクセス（Access Operators）}\label{ux53c2ux7167ux30a2ux30afux30bbux30b9access-operators}}
+\textbf{R}では変数内に複数のデータ型が混在している場合は前述のような強制型変換が行われますので、タイポなどがあると知らぬ間に意図しないデータ型になっていることがあります。作成した変数のデータ型を検査するために\texttt{is.()}関数群が用意されています。
 
-　変数の中の値を参照する方法は変数型により多少異なりますが、基本的には参照演算子またはアクセス演算子と呼ばれる \texttt{{[}} や \texttt{\$} を用います。
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+データ型 & 関数 & 備考 \\
+\midrule
+\endhead
+論理型 & \texttt{is.logical()} & \\
+整数型 & \texttt{is.integer()} & \\
+実数型 & \texttt{is.double()} & \\
+数値型 & \texttt{is.numeric()} & 整数型または実数型の場合\texttt{TRUE}が返る \\
+複素数型 & \texttt{is.complex()} & \\
+文字型 & \texttt{is.character()} & \\
+\bottomrule
+\end{longtable}
 
-　
+同様に変数型を検査するための\texttt{is.()}関数軍も用意されています。
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+変数型 & 関数 & 備考 \\
+\midrule
+\endhead
+ベクトル型 & \texttt{is.vector()} & \\
+因子型 & \texttt{is.factor()},\texttt{is.ordered()} & \\
+マトリクス型 & \texttt{is.matrix()} & \\
+アレイ型 & \texttt{is.array()} & \\
+データフレーム型 & \texttt{is.data.frame()} & \\
+リスト型 & \texttt{is.list()} & \\
+\bottomrule
+\end{longtable}
+
+定数は比較演算子（\texttt{==}や\texttt{!=}）では比較できませんので判別には\texttt{is.()}関数群を使います。
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+定数 & 関数 & 備考 \\
+\midrule
+\endhead
+\texttt{NULL} & \texttt{id.null()} & NULL値か否か \\
+\texttt{NA} & \texttt{is.na()} & 欠損値か否か \\
+\texttt{NaN} & \texttt{is.nan()} & 非数か否か \\
+\texttt{inf} & \texttt{is.infinit()} & 無限値か否か \\
+　 & \texttt{is.finit()} & 有限値か否か \\
+\bottomrule
+\end{longtable}
 
 \hypertarget{ux6f14ux7b97ux5b50}{%
-\subsection{\texorpdfstring{\texttt{{[}} 演算子}{{[} 演算子}}\label{ux6f14ux7b97ux5b50}}
+\section{演算子}\label{ux6f14ux7b97ux5b50}}
 
-　\texttt{{[}} 演算子はベクトル型系の要素を参照するための演算子です。例えば \(5\) 番目の値を参照するには以下のようにします。
+\textbf{R}の演算子には算術的・論理的な演算子だけでなく変数内の特定位置を参照のための演算子や任意の定義が可能な特殊演算子があります。
+
+\hypertarget{ux53c2ux7167ux6f14ux7b97ux5b50}{%
+\subsection{参照演算子}\label{ux53c2ux7167ux6f14ux7b97ux5b50}}
+
+変数の中の値を参照する方法は変数型により異なりますが、基本的には参照演算子もしくはアクセス演算子と呼ばれる演算子を用います。
+
+\hypertarget{ux6f14ux7b97ux5b50-1}{%
+\subsubsection{\texorpdfstring{\texttt{{[}}演算子}{{[}演算子}}\label{ux6f14ux7b97ux5b50-1}}
+
+ベクトル型の特定位置の値を参照する演算子です。記述の際は\texttt{{[}{]}}と閉じる必要があります。
+
+演算子はベクトル型系の要素を参照するための演算子です。例えば \(5\) 番目の値を参照するには以下のようにします。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1446,10 +1602,10 @@ NA\_character\_ & 文字型 \\
 
 　
 
-\hypertarget{ux6f14ux7b97ux5b50-1}{%
-\subsection{\texorpdfstring{\texttt{\$} 演算子}{\$ 演算子}}\label{ux6f14ux7b97ux5b50-1}}
+\hypertarget{ux6f14ux7b97ux5b50-2}{%
+\subsubsection{\texorpdfstring{\texttt{\$}演算子}{\$演算子}}\label{ux6f14ux7b97ux5b50-2}}
 
-　\texttt{\$} 演算子はデータフレーム型やリスト型の要素を参照するための演算子です。
+\texttt{\$} 演算子はデータフレーム型やリスト型の要素を参照するための演算子です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1549,92 +1705,10 @@ NA\_character\_ & 文字型 \\
 ## [1] "M"
 \end{verbatim}
 
-　
+\hypertarget{ux5358ux9805ux6f14ux7b97ux5b50}{%
+\subsection{単項演算子}\label{ux5358ux9805ux6f14ux7b97ux5b50}}
 
-\hypertarget{ux691cux67fbux5909ux63db}{%
-\section{検査・変換}\label{ux691cux67fbux5909ux63db}}
-
-　R では変数内に複数のデータ型が混在している場合は前述のように強制型変換が行われますので、タイポなどがあると知らぬ間に意図しないデータ型になっていることがあります。作成した変数のデータ型を検査するために \texttt{is.} 関数群が用意されています。\\
-　
-
-\begin{longtable}[]{@{}lll@{}}
-\toprule
-データ型 & 関数 & 備考 \\
-\midrule
-\endhead
-論理型 & \texttt{is.logical} & \\
-整数型 & \texttt{is.integer} & \\
-実数型 & \texttt{is.double} & \\
-数値型 & \texttt{is.numeric} & 整数型または実数型の場合 \texttt{TRUE} \\
-複素数型 & \texttt{is.complex} & \\
-文字型 & \texttt{is.character} & \\
-\bottomrule
-\end{longtable}
-
-　\\
-　同様に変数型を検査するための \texttt{is.} 関数軍も用意されています。\\
-　
-
-\begin{longtable}[]{@{}lll@{}}
-\toprule
-変数型 & 関数 & 備考 \\
-\midrule
-\endhead
-ベクトル型 & \texttt{is.vector} & \\
-因子型 & \texttt{is.factor} or \texttt{is.ordered} & \\
-マトリクス型 & \texttt{is.matrix} & \\
-アレイ型 & \texttt{is.array} & \\
-データフレーム型 & \texttt{is.data.frame} & \\
-リスト型 & \texttt{is.list} & \\
-\bottomrule
-\end{longtable}
-
-　\\
-　定数用の \texttt{is.} 関数群もあります。\\
-　
-
-\begin{longtable}[]{@{}lll@{}}
-\toprule
-定数 & 関数 & 備考 \\
-\midrule
-\endhead
-\texttt{NULL} & \texttt{id.null} & NULL値か否か \\
-\texttt{NA} & \texttt{is.na} & 欠損値か否か \\
-\texttt{NaN} & \texttt{is.nan} & 非数か否か \\
-\texttt{inf} & \texttt{is.infinit} & 無現値か否か（有限値か否かを確認する \texttt{is.finit} 関数もあり） \\
-\bottomrule
-\end{longtable}
-
-　
-
-\hypertarget{ux6f14ux7b97ux5b50operators}{%
-\section{演算子（Operators）}\label{ux6f14ux7b97ux5b50operators}}
-
-　R はベクトル演算が可能ですので演算子は基本的にベクトル演算に対応しています。\\
-　演算子は単項演算子と二項演算子に大別できます。二項演算子には算術演算子、比較演算子、論理演算子、特殊演算子があります。等長のベクトル型変数どうし、もしくは、ベクトル型変数とスカラ型変数の間の演算が可能です。不等長のベクトル変数に対して二項演算子を利用した場合、足りない値は先頭からリサイクルされて演算されます。条件によってはワーニングも表示されませんので不等長のベクトル演算は注意してください。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{) }\SpecialCharTok{*} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##  [1]  1  4  3  8  5 12  7 16  9 20
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{) }\SpecialCharTok{*} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##  [1]  1  4  9  4 10 18  7 16 27 10
-\end{verbatim}
-
-　\\
-、 \#\#\# 単項演算子 　単項演算子は文字通り単項に作用する演算子です。単項演算子には算術演算子の \texttt{-}（マイナス）と論理型演算子の \texttt{!}（否定, NOT）があります。
+単項演算子は文字通り一つの項に作用する演算子です。単項演算子には算術演算子の\texttt{-}（マイナス）と論理型演算子の\texttt{!}（否定, NOT）があります。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1678,12 +1752,17 @@ NA\_character\_ & 文字型 \\
 ## [1] FALSE FALSE FALSE  TRUE FALSE
 \end{verbatim}
 
-　
+単項演算子
+
+\hypertarget{ux4e8cux9805ux6f14ux7b97ux5b50}{%
+\subsection{二項演算子}\label{ux4e8cux9805ux6f14ux7b97ux5b50}}
+
+二項演算子とは二つの項に作用する演算子です。
 
 \hypertarget{ux7b97ux8853ux6f14ux7b97ux5b50}{%
-\subsection{算術演算子}\label{ux7b97ux8853ux6f14ux7b97ux5b50}}
+\subsubsection{算術演算子}\label{ux7b97ux8853ux6f14ux7b97ux5b50}}
 
-　算術演算子は基本中の基本とも言える四則演算子である加算、減算、乗算、除算、ならびに、べき算（べき乗算）、整数除算（商、剰余）の六つの演算子があります。
+演算子は四則演算（加算、減算、乗算、除算）ならびに、べき算（べき乗算）、整数除算（商、剰余）の六つがあります。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1778,14 +1857,12 @@ NA\_character\_ & 文字型 \\
 ##  [1] 1 2 3 4 5 1 3 2 1 0
 \end{verbatim}
 
-　
+\hypertarget{ux6bd4ux8f03ux6f14ux7b97ux5b50}{%
+\subsubsection{比較演算子}\label{ux6bd4ux8f03ux6f14ux7b97ux5b50}}
 
-\hypertarget{ux6bd4ux8f03ux6f14ux7b97ux5b50-logical-operations}{%
-\subsection{比較演算子 Logical Operations}\label{ux6bd4ux8f03ux6f14ux7b97ux5b50-logical-operations}}
+比較演算子は関係演算子とも呼ばれ、二変数の関係を調べる演算子です。同値関係を調べる等号記号や大小関係を調べる不等号などがこれにあたります。返り値は論理型となります。
 
-　比較演算子は関係演算子とも呼ばれ、二変数の関係を調べる演算子です。同値関係を調べる等号記号や大小関係を調べる不等号などがこれにあたります。返り値は論理型となります。
-
-\begin{longtable}[]{@{}llllll@{}}
+\begin{longtable}[]{@{}cccccc@{}}
 \toprule
 小なり & 大なり & 小なりイコール & 大なりイコール & イコール & ノットイコール \\
 \midrule
@@ -1794,7 +1871,7 @@ NA\_character\_ & 文字型 \\
 \bottomrule
 \end{longtable}
 
-　例えば以下の二つのベクトル型変数に対する比較を行ってみます。
+例えば以下の二つのベクトル型変数に対する比較を行ってみます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1878,10 +1955,10 @@ NA\_character\_ & 文字型 \\
 
 　
 
-\hypertarget{ux8ad6ux7406ux6f14ux7b97ux5b50-boolean-operations}{%
-\subsection{論理演算子 Boolean Operations}\label{ux8ad6ux7406ux6f14ux7b97ux5b50-boolean-operations}}
+\hypertarget{ux8ad6ux7406ux6f14ux7b97ux5b50}{%
+\subsubsection{論理演算子}\label{ux8ad6ux7406ux6f14ux7b97ux5b50}}
 
-　論理演算子はブール関数を評価するものです。論理積（AND）・論理和（OR）は演算対象により二種類の演算子があります。 　
+論理演算子はブール関数を評価するものです。論理積（AND）・論理和（OR）は演算対象により二種類の演算子があります。 　
 
 \begin{longtable}[]{@{}lll@{}}
 \toprule
@@ -1902,9 +1979,7 @@ NA\_character\_ & 文字型 \\
 \hypertarget{ux7279ux6b8aux6f14ux7b97ux5b50}{%
 \subsection{特殊演算子}\label{ux7279ux6b8aux6f14ux7b97ux5b50}}
 
-　特殊演算子は\texttt{\%}文字と\texttt{\%}文字で挟まれた演算子です。算術演算子の整数除算（商、剰余）厳密にいえば特殊演算子になりますが本資料では算術演算子として記載しています。\\
-　R では特殊演算子を用いて任意の演算を定義することができます。パッケージによっては特殊演算子を用意している場合もあります。\\
-　
+特殊演算子は\texttt{\%}文字と\texttt{\%}文字で任意の文字を挟んだ演算子で二項演算子の一種です。算術演算子で出てきた整数除算（商、剰余）は厳密に言えば特殊演算子に分類されますが、本書では算術演算子として分類しています。 また、任意の特殊演算子を定義することも可能で、パッケージによっては様々な特殊演算子を用意しているものもあります。
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -1920,23 +1995,23 @@ NA\_character\_ & 文字型 \\
 
 　
 
-\hypertarget{ux6f14ux7b97ux5b50ux306eux512aux5148ux9806ux4f4d}{%
-\subsection{演算子の優先順位}\label{ux6f14ux7b97ux5b50ux306eux512aux5148ux9806ux4f4d}}
+\hypertarget{ux512aux5148ux9806ux4f4d}{%
+\subsection{優先順位}\label{ux512aux5148ux9806ux4f4d}}
 
-　演算子の優先順位は下表の通りとなります。優先順位を変えたい場合は数学と同様に \texttt{()} を利用して明示的に優先順位を指定をしてください。下記以外はヘルプで \texttt{Syntax} を検索すると確認できます。
+演算子には下表のような優先順位があります。優先順位を変えたい場合は数学と同様に\texttt{()}を利用して明示的に優先順位を指定をしてください。下記以外はコンソールで\texttt{?\ Syntax}+{[}\texttt{Enter}{]}と打てばヘルプが表示され確認できます。
 
-\begin{longtable}[]{@{}lll@{}}
+\begin{longtable}[]{@{}llr@{}}
 \toprule
 演算子 & 説明 & 順位 \\
 \midrule
 \endhead
-\texttt{::} & 名前空間へのアクセス & 高 \\
+\texttt{::} & 名前空間へのアクセス（パッケージ内への明示的アクセス） & 高 \\
 \texttt{\$} & 要素へのアクセス（データフレーム型、リスト型） & \\
 \texttt{{[}{]}}, \texttt{{[}{[}{]}{]}} & 要素へのアクセス（ベクトル型、マトリクス型、アレイ型、リスト型） & \\
 \texttt{\^{}} & べき乗 & \\
-\texttt{-} & マイナス（単項演算子、\texttt{+}も使用可） & \\
-\texttt{:} & 等差数列（c(1:10）のような数列） & \\
-\texttt{\%\%} & 特殊演算子（二項演算子） & \\
+\texttt{-} & マイナス（単項演算子、\texttt{+}も単項演算子として使用可） & \\
+\texttt{:} & 等差数列（\texttt{c(1:10}）のような数列） & \\
+\texttt{\%nay\%} & 特殊演算子（二項演算子） & \\
 \texttt{*}, \texttt{/} & 乗算、除算（二項演算子） & \\
 \texttt{+}, \texttt{-} & 加算、減算（二項演算子） & \\
 \texttt{\textless{}}, \texttt{\textgreater{}}, \texttt{\textless{}=}, \texttt{\textgreater{}=} & 比較演算子（大小関係） & \\
@@ -1944,7 +2019,7 @@ NA\_character\_ & 文字型 \\
 \texttt{!} & 否定（単項演算子） & \\
 \texttt{\&}, \texttt{\&\&}, \texttt{\textbar{}}, \texttt{\textbar{}\textbar{}} & 論理積、論理和（論理演算子） & \\
 \texttt{\textasciitilde{}} & フォーミュラ & \\
-\texttt{\textless{}-} & 代入 & 低 \\
+\texttt{\textless{}-} & 代入演算子 & 低 \\
 \bottomrule
 \end{longtable}
 
@@ -1953,14 +2028,13 @@ NA\_character\_ & 文字型 \\
 \hypertarget{ux5236ux5fa1ux6587}{%
 \section{制御文}\label{ux5236ux5fa1ux6587}}
 
-　制御文はプログラムの流れをコントロールするためのもので大抵の言語で予約語になっています。制御文には条件分岐と繰り返し（ループ）の二種類があります。
-
-　
+制御文はプログラムの流れをコントロールするためのもので大抵の言語で予約語になっています。制御文には条件分岐と繰り返し（ループ）の二種類があります。\\
+あ
 
 \hypertarget{ux6761ux4ef6ux5206ux5c90}{%
 \subsection{条件分岐}\label{ux6761ux4ef6ux5206ux5c90}}
 
-　条件分岐には以下のようなものがあります。その他、パッケージなどで条件分岐のための関数が提供されています。
+条件分岐には以下のようなものがあります。その他、パッケージなどで条件分岐のための関数が提供されています。
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -1976,9 +2050,9 @@ NA\_character\_ & 文字型 \\
 　
 
 \hypertarget{if-else}{%
-\subsection{if, else}\label{if-else}}
+\subsubsection{if, else}\label{if-else}}
 
-　\texttt{if} 文と \texttt{else} 文は最も基本的な条件分岐です。評価式には論理演算子または論理型変数を用います。コーディングスタイルとして以下のどちらも可能です。
+\texttt{if} 文と \texttt{else} 文は最も基本的な条件分岐です。評価式には論理演算子または論理型変数を用います。コーディングスタイルとして以下のどちらも可能です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2006,7 +2080,7 @@ NA\_character\_ & 文字型 \\
 ## [1] "FALSE"
 \end{verbatim}
 
-　\texttt{if} 文は入れ子にしたり \texttt{else\ if} 文として組み合わせて使うことも可能です。
+\texttt{if} 文は入れ子にしたり \texttt{else\ if} 文として組み合わせて使うことも可能です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2030,15 +2104,15 @@ NA\_character\_ & 文字型 \\
 　
 
 \hypertarget{switch}{%
-\subsection{switch}\label{switch}}
+\subsubsection{switch}\label{switch}}
 
-　分岐する条件の数が多い場合は\texttt{if}文でなく\texttt{switch}*文を利用するのが便利です。\texttt{if}文と同じで評価式は\texttt{TRUE}か\texttt{FALSE}が単一で返るようにしなければなりません。注意しなければならないのは、引数により構文が異なる点です。\\
+分岐する条件の数が多い場合は\texttt{if}文でなく\texttt{switch}文を利用するのが便利です。\texttt{if}文と同じで評価式は\texttt{TRUE}か\texttt{FALSE}が単一で返るようにしなければなりません。注意しなければならないのは、引数により構文が異なる点です。\\
 　
 
 \hypertarget{ux5f15ux6570ux304cux6574ux6570ux306eux5834ux5408}{%
-\subsubsection{引数が整数の場合}\label{ux5f15ux6570ux304cux6574ux6570ux306eux5834ux5408}}
+\paragraph{引数が整数の場合}\label{ux5f15ux6570ux304cux6574ux6570ux306eux5834ux5408}}
 
-　引数に整数 \(n\) を指定した場合、\(n\) 番目の処理文の結果が返ります。
+引数に整数 \(n\) を指定した場合、\(n\) 番目の処理文の結果が返ります。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2054,7 +2128,7 @@ NA\_character\_ & 文字型 \\
 ## [1] "x is 2"
 \end{verbatim}
 
-　注意しなければならないのは条件分岐数と一致しない場合は \texttt{NULL} が返される点です。
+注意しなければならないのは条件分岐数と一致しない場合は\texttt{NULL}が返される点です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2073,9 +2147,9 @@ NA\_character\_ & 文字型 \\
 　
 
 \hypertarget{ux5f15ux6570ux304cux6587ux5b57ux306eux5834ux5408}{%
-\subsubsection{引数が文字の場合}\label{ux5f15ux6570ux304cux6587ux5b57ux306eux5834ux5408}}
+\paragraph{引数が文字の場合}\label{ux5f15ux6570ux304cux6587ux5b57ux306eux5834ux5408}}
 
-　一方、引数が文字の場合、\texttt{if/else} 文と同様の処理が行われます。\texttt{if/else} 文と異なるのは \texttt{else} 文に相当する分岐が途中になっていても正しく処理してくれる点です。
+一方、引数が文字の場合、\texttt{if/else}文と同様の処理が行われます。\texttt{if/else}文と異なるのは\texttt{else}文に相当する分岐が途中になっていても正しく処理してくれる点です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2092,7 +2166,7 @@ NA\_character\_ & 文字型 \\
 \end{verbatim}
 
 　\\
-　引数に整数を指定しても動作しますが、引数が整数の場合と同様の動きをします。
+引数に整数を指定しても動作しますが、引数が整数の場合と同様の動きをします。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2111,9 +2185,9 @@ NA\_character\_ & 文字型 \\
 　
 
 \hypertarget{ifelse}{%
-\subsection{ifelse}\label{ifelse}}
+\subsubsection{ifelse}\label{ifelse}}
 
-　\texttt{base::ifelse} は予約語でなく関数です。\texttt{if/else} 文と異なるのはベクトル型の評価が一度に行える点です。第一引数に \texttt{TRUE} か \texttt{FALSE} が返る評価式であればベクトル型でも構いません。
+\texttt{base::ifelse()}は予約語でなく関数です。\texttt{if/else}文と異なるのはベクトル型の評価が一度に行える点です。第一引数に\texttt{TRUE}か\texttt{FALSE}が返る評価式であればベクトル型でも構いません。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2126,9 +2200,7 @@ NA\_character\_ & 文字型 \\
 \hypertarget{ux7e70ux308aux8fd4ux3057}{%
 \subsection{繰り返し}\label{ux7e70ux308aux8fd4ux3057}}
 
-　繰り返しは文字通り処理を任意の回数繰り返す場合に用いるもので予約語になっています。繰り返し文の処理は時間がかかるため R においては好ましくなく繰り返しは使わずベクトル演算で処理すべきと言われていますが、R-3.4.0 から JIT コンパイラと呼ばれる繰り返し処理の高速化がデフォルトで有効化されており今後は処理記述の流れが変わる可能性があります。処理の高速化についてはこちらの \href{http://masato-613.hatenablog.com/entry/2017/04/25/064632}{参考資料 } で確認してください。なお、繰り返し処理で注意すべき点は繰り返し文中では明示的に出力を指定しないと出力がなされない点です。
-
-　
+繰り返しは文字通り処理を任意の回数繰り返す場合に用いるもので予約語になっています。繰り返し文の処理は時間がかかるため R においては好ましくなく繰り返しは使わずベクトル演算で処理すべきと言われていますが、R-3.4.0 から JIT コンパイラと呼ばれる繰り返し処理の高速化がデフォルトで有効化されており今後は処理記述の流れが変わる可能性があります。処理の高速化についてはこちらの\href{http://masato-613.hatenablog.com/entry/2017/04/25/064632}{参考資料}で確認してください。なお、繰り返し処理で注意すべき点は繰り返し文中では明示的に出力を指定しないと出力がなされない点です。
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -2158,9 +2230,9 @@ NA\_character\_ & 文字型 \\
 　
 
 \hypertarget{for}{%
-\subsection{for}\label{for}}
+\subsubsection{for}\label{for}}
 
-　\texttt{for}文は最も基本となる繰り返し処理で、条件式としてベクトルやリストを指定できる点が他の言語と異なる点です。
+\texttt{for}文は最も基本となる繰り返し処理で、条件式としてベクトルやリストを指定できる点が他の言語と異なる点です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2185,14 +2257,302 @@ NA\_character\_ & 文字型 \\
 ## [1] "9"
 \end{verbatim}
 
-　
-
 \hypertarget{while-repeat}{%
-\subsection{while, repeat}\label{while-repeat}}
+\subsubsection{while, repeat}\label{while-repeat}}
 
-　\texttt{while}文と\texttt{repeat}文については、あまり使うこともないと思いますので省略します。
+\texttt{while}文と\texttt{repeat}文については、あまり使うこともないと思いますので省略します。
 
-　
+\hypertarget{rux306eux5fdcux7528}{%
+\chapter{Rの応用}\label{rux306eux5fdcux7528}}
+
+Data Science Workflowの個々のプロセスに入る前にもう少し\textbf{R}のプログラミングについて知って置きましょう。
+
+\hypertarget{ux57faux672cux7d71ux8a08ux91cf}{%
+\section{基本統計量}\label{ux57faux672cux7d71ux8a08ux91cf}}
+
+データを分析する前には対象となるデータがどのような特徴を持っているか確認しておく必要があります。基本統計量と呼ばれる様々な統計量を用いるとデータの特徴が見えてきます。 ここでは『統計のはなし【改訂版】』（大村平著、日科技連出版社）
+
+\hypertarget{ux5e73ux5747-1}{%
+\subsection{平均}\label{ux5e73ux5747-1}}
+
+統計量の中でよく使われるのが平均です。平均というと下式で表される算術平均を思い浮かべる方が多いと思いますが、 \[\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i\] 算術平均以外にも下式で表される幾何平均（相乗平均）、 \[\sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i}\] 体操競技などで使われる複数審判が出す得点の最小値と最大値を除いた得点で求めるトリム平均などがあります。
+
+\textbf{R}では算術平均とトリム平均は\texttt{mean()}関数で求めることができます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+算出平均は\texttt{mean()}関数に計算対象を指定します。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.8
+\end{verbatim}
+
+トリム平均は上記に加えて\texttt{trim}オプションで計算対象外にする割合を指定します。今回は五つのデータから最小値・最大値の二つを除いて求めたいので\texttt{0.25}という割合を指定します。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(x, }\AttributeTok{trim =} \FloatTok{0.25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.666667
+\end{verbatim}
+
+幾何平均を求める関数は標準では用意されていません。「R geometric mean」で検索すればパッケージが見つかります。ここでは\textbf{\texttt{psych}}パッケージをインストールして使うことにします。パッケージをインストールして使えるようにするには以下の手順が必要です。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  パッケージをインストールする
+\item
+  パッケージを読み込む
+\end{enumerate}
+
+パッケージのインストールは\texttt{install.packages()}関数を用います。環境によってはCRANミラーサイトの選択を促される場合があります。その場合は、お住まいの地域に最も近いミラーサイトを選択してください。なお、パッケージのインストールは一度行えば済みます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"psych"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+パッケージが提供する関数などを使えるようにするには\texttt{library()}関数を使って読み込みます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(psych)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'psych'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:ggplot2':
+## 
+##     %+%, alpha
+\end{verbatim}
+
+これで\textbf{\texttt{psych}}パッケージを使う準備が整いましたので、\texttt{geometric.mean()}関数で幾何平均を求めます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{geometric.mean}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.159818
+\end{verbatim}
+
+インストールしたパッケージの関数を使う場合、どのパッケージの関数を使っているかを明示的に示すために下記のように\texttt{::}演算子（名前空間へのアクセス演算子）でパッケージ名と関数名をつなげて記述することもできます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{psych}\SpecialCharTok{::}\FunctionTok{geometric.mean}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.159818
+\end{verbatim}
+
+この表記方法については賛否ありますが、どのパッケージの関数を使っているかを明示できるため、本書ではこの記述方法を用います。
+
+\hypertarget{ux30ecux30f3ux30b8ux7bc4ux56f2}{%
+\subsection{レンジ（範囲）}\label{ux30ecux30f3ux30b8ux7bc4ux56f2}}
+
+データのばらつきを見るためにレンジと呼ばれる範囲を用いることがあります。以下の\texttt{x}と\texttt{y}は同じ平均値をとるデータです。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{8}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+レンジを求めるには\texttt{range()}関数を用います。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{range}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{range}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 9
+\end{verbatim}
+
+\texttt{range()}関数は最小値と最大値を求める関数ですので\texttt{diff()}関数を用いて最小値と最大値の幅を求めます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(y))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+\end{verbatim}
+
+\hypertarget{ux6a19ux6e96ux504fux5dee}{%
+\subsection{標準偏差}\label{ux6a19ux6e96ux504fux5dee}}
+
+レンジは比較的簡単に計算できますが、以下のように同じレンジを持つデータの特徴が同じとは言い難いです。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\FunctionTok{range}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\FunctionTok{range}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 9
+\end{verbatim}
+
+このような場合、下式で求められる標準偏差（Standard Deviation）を使います。 \[\sigma = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n} - \bar{x}^2 }\]
+
+標準偏差は\texttt{sd()}関数で求めることができます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.828427
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\hypertarget{ux4e2dux592eux5024}{%
+\subsection{中央値}\label{ux4e2dux592eux5024}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{median}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{median}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\hypertarget{ux6700ux983bux5024}{%
+\subsection{最頻値}\label{ux6700ux983bux5024}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(modeest)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Registered S3 methods overwritten by 'rmutil':
+##   method         from 
+##   plot.residuals psych
+##   print.response httr
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modeest}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modeest}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 9
+\end{verbatim}
 
 \hypertarget{part-wrangle}{%
 \part{Wrangle}\label{part-wrangle}}
@@ -2365,7 +2725,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-37}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-54}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -2384,7 +2744,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-38}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-55}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -2398,7 +2758,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-39}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-56}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -2416,7 +2776,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-40}
+\caption{Warning dialog}\label{fig:unnamed-chunk-57}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -2442,7 +2802,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-41}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-58}
 \end{figure}
 
 　\\
@@ -2475,7 +2835,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-42}
+\caption{Initial View}\label{fig:unnamed-chunk-59}
 \end{figure}
 
 　
@@ -2492,7 +2852,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-43}
+\caption{Packages Manager}\label{fig:unnamed-chunk-60}
 \end{figure}
 
 　\\
@@ -2505,7 +2865,7 @@ NA\_character\_ & 文字型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-44}
+\caption{Install Dialog}\label{fig:unnamed-chunk-61}
 \end{figure}
 
 　\\
@@ -2903,7 +3263,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-52}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-69}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -2914,7 +3274,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-53}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-70}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -2984,7 +3344,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-54}
+\caption{R Notebook file}\label{fig:unnamed-chunk-71}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -2995,7 +3355,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-55}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-72}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -3006,7 +3366,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-56}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-73}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -3017,7 +3377,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-57}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-74}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -3028,7 +3388,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-58}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-75}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -3039,7 +3399,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-59}
+\caption{R Notebook option}\label{fig:unnamed-chunk-76}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -3301,7 +3661,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-60}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-77}
 \end{figure}
 
 　
@@ -3326,7 +3686,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-61}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-78}
 \end{figure}
 
 　

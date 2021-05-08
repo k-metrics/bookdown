@@ -8,8 +8,11 @@ github-repo: k-metrics/bookdown
 description: "本書は"
 # LaTeX関連の設定はベースとなるRmdに記述しないと正しく認識されません
 always_allow_html: true
+colorlinks: true
 # documentclass: krantz
+fig_crop: false
 fontsize: 12pt
+highlight: default  # tango pygments kate haddoc
 links-as-notes: true
 ## 日本語とtufte, kableExtraを使うために必要なTeXパッケージ
 header-includes: |
@@ -40,9 +43,10 @@ header-includes: |
 # \usepackage[ipaex]{zxjafont}
 ## モノフォントのみ入れ替えフォントのスケーリングを調整する
 mainfontoptions: "Scale=MatchUppercase"
-monofont: "Source Code Pro"
-monofontoptions: "Scale=0.96"
-CJKoptions: "Scale=1.25"
+monofont: "Source Han Code JP"
+monofontoptions: "Scale=0.8"
+# monofontoptions: "Scale=0.96"
+CJKoptions: "Scale=1.0"
 ## Windows環境でNotoフォントを指定したい場合は以下のように個別に指定する
 ## 必要があるが、以下だけでは太字が表示できないので追加記述が必要（調査中）
 # mainfont: NotoSerifCJKjp-Regular.otf
@@ -62,6 +66,8 @@ CJKoptions: "Scale=1.25"
 ```
 
 ```{r setup, include=FALSE}
+require(tidyverse)
+
 # 図の描画位置調整については以下を参照
 # https://gedevan-aleksizde.github.io/rmarkdown-cookbook/figure-placement.html#force-floats-forward
 # opts_chunkで"fig.pos"を指定することで全てのチャンク出力に対して調整可能
@@ -131,7 +137,6 @@ df_print <- function(df = NULL, type = NULL, n = 3L, caption = NULL,
   }
 }
 
-require(tidyverse)
 ```
 
 
@@ -139,7 +144,7 @@ require(tidyverse)
 
 ------------------------------------------------------------------------
 
-本書は [クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja){target="_blank" title="Creative Commons"} の下に提供されています。
+本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja){target="_blank" title="Creative Commons"}の下に提供されています。
 
 あなたの従うべき条件は以下の通りです。
 

@@ -28,7 +28,7 @@ knitr::include_graphics("./fig/RCmdr.png")
 
 
 ### Google Colab
-**Google Colab**は Google アカウントを持っていれば誰でも利用可能な**Python**向けの環境である**Jupyter Notebook**サービスです。**Jupyter Notebook**は**R**をエンジンとして利用することができますので、環境を構築することなく使い始めることができますので、初学者の演習環境としておすゝめです。
+**Google Colab**は Googleアカウントを持っていれば誰でも利用可能な**Python**向けの環境である**Jupyter Notebook**サービスです。**Jupyter Notebook**は**R**をエンジンとして利用することができますので、環境を構築することなく使い始めることができますので、初学者の演習環境としておすゝめです。
 
 ```{r, echo=FALSE, out.width="85%", fig.cap="Google Colab"}
 knitr::include_graphics("./fig/Colab/Firsttime.png")
@@ -37,7 +37,7 @@ knitr::include_graphics("./fig/Colab/Firsttime.png")
 
 ### RStudio 
 再現可能性を確保した探索的データ分析を行うのに最も適しているのが**RStudio**です。無償で使えるオープンソース版には、PC上のアプリケーションとして動作する**Desktop**と Webサーバとして動作する**Server**の二種類があります。
-**RStudio**は**R**のデファクトスタンダード的な統合開発環境（IDE）であり、Tidyverse Eco System の中核とも言えます。その特徴として
+**RStudio**は**R**のデファクトスタンダード的な統合開発環境（IDE）であり、Tidyverse Eco Systemの中核とも言えます。その特徴として
 
 * **R**のコードを記述するのに適したエディタを備えている
 * **R**のパッケージをインストール・管理するためのパッケージマネージャを備えている
@@ -52,7 +52,7 @@ knitr::include_graphics("./fig/Colab/Firsttime.png")
 knitr::include_graphics("./fig/RStudio/DT.png")
 ```
 
-**RStudio Server**は**RStudio**をブラウザ経由で使う Linux 上で動作するサーバアプリケーションです。Docker コンテナとして動作させることも可能ですので、個々の PC での分析環境を固定さたい場合には非常に便利です。
+**RStudio Server**は**RStudio**をブラウザ経由で使う Linux 上で動作するサーバアプリケーションです。Dockerコンテナとして動作させることも可能ですので、個々の PC での分析環境を固定さたい場合には非常に便利です。
 
 ```{r, echo=FALSE, out.width="85%", fig.cap="RStudio Server, Docker"}
 knitr::include_graphics("./fig/RStudio/RStudioServer.png")

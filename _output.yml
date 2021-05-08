@@ -26,8 +26,11 @@ bookdown::epub_book: default
 bookdown::pdf_book:
   citation_package: natbib
   colorlinks: true
-  fig_crop: false
+# fig_crop: false
   keep_tex: true
+# highlight: pygments
+# highlight: tango
+# higlight-style: pygments
   highlight_bw: false
   latex_engine: xelatex
   link-citations: true

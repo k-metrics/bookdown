@@ -35,7 +35,7 @@
 <!-- \newpage -->
 
 ## なぜ**R**を使うのか {.unnumbered}
-データ分析を行うためには適切な分析ツールが必要不可欠です。**R**は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。**R ** がデータ分析に向いている理由をまとめているのが ["Six Reasons To Learn R For Business", R Blogger](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank" title=""} です。
+データ分析を行うためには適切な分析ツールが必要不可欠です。**R**は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。**R**がデータ分析に向いている理由をまとめているのが["Six Reasons To Learn R For Business", R Blogger](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank" title=""}です。
 
 > 1.  R Has The Best _**Overall Qualities**_
 > 2.  R Is Data Science _**For Non-Computer Scientists**_
@@ -44,7 +44,10 @@
 > 5.  R Is Built _**For Business**_
 > 6.  R _**Community Support**_
 
-**R**はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポーティングといった様々な機能を無料で利用することができます。また、R は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適していると言えます。さらに、非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
+**R**はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。[CRAN(The Comprehensive R Archive Network)](https://cran.r-project.org/){target="_blank" title=""}と呼ばれる**R**のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は[CRAN Task Views](https://cran.r-project.org/web/views/){target="_blank" title=""}を見て分かるように古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は[Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html){target="_blank" title=""}と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉ですが、データ分析では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々は「Reproducible Research」とあるように科学的研究の分野で使われている言葉です。他の言語ではこの分野を開発範囲（スコープ）に含めることはほぼありません。
+また、**R**は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）にも適していると言えます。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
+
+ちなみに本書も**R**のパッケージである[**`bookdown`**](https://bookdown.org/){target="_blank" title="Write HTML, PDF, ePub, and Kindle books with R Markdown"}という文書作成に特化したパッケージを利用して作成してます。
 
 
 ## 分析の手順 {.unnumbered}
@@ -67,7 +70,6 @@ summary(iris)
 ```{r, echo=FALSE}
 iris %>%
   tidyr::pivot_longer(cols = -Species, names_to = "part", values_to = "value") %>% 
-  # psych::headTail() %>% 
   df_print(n = 4L)
 ```
 
@@ -136,7 +138,7 @@ knitr::include_graphics()
 knitr::include_graphics("fig/data-science.png")
 ```
 
-この図は「Data Science Workflow」と呼ばれ、**R**コミュニティに多大な貢献をしている [Hadley Wickham](http://hadley.nz/){target="_blank" title=""} が、その著書[『R for Data Science』](https://r4ds.had.co.nz/){target="_blank" title=""} で提唱している概念図です。本書は、この Data Science Workflow に基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。
+この図は「Data Science Workflow」と呼ばれ、**R**コミュニティに多大な貢献をしている [Hadley Wickham](http://hadley.nz/){target="_blank" title=""}が、その著書[『R for Data Science』](https://r4ds.had.co.nz/){target="_blank" title=""}で提唱している概念図です。本書は、このData Science Workflowに基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。
 
 
 ### Program {.unnumbered}
