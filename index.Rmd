@@ -3,20 +3,25 @@ title: "Rのすゝめ"
 subtitle: "- Rによるデータ分析事始め -"
 author: "Sampo Suzuki, CC 4.0 BY-NC-SA"
 date: "`r format(Sys.Date(), format = '%Y-%m-%d')`"
+description: "本書はデータ分析勉強会で学んだ成果をまとめたものです"
 site: bookdown::bookdown_site
 github-repo: k-metrics/bookdown
-description: "本書は"
 # LaTeX関連の設定はベースとなるRmdに記述しないと正しく認識されません
-always_allow_html: true
-colorlinks: true
+always_allow_html: true  # 一種の呪文
+colorlinks: true         # ハイパーリンクを色分けする
 # documentclass: krantz
 fig_crop: false
-fontsize: 12pt
-highlight: default  # tango pygments kate haddoc
-links-as-notes: true
-## 日本語とtufte, kableExtraを使うために必要なTeXパッケージ
+fontsize: 12pt           # 本文のフォントサイズ
+highlight: default       # tango pygments kate haddoc
+linestretch: 1.1        # 行間の指定
+links-as-notes: true     # ハイパーリンク先を脚注に記載
+## 日本語とtufte, kableExtraを使うために必要なTeXパッケージ群
+# A4 210mm x 297mm
+#  \usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+#  \usepackage[pdfbox,tombo]{gentombow}
+#  \usepackage{indentfirst}   # tinytexのリポジトリには存在しない
 header-includes: |
-  \usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+  \usepackage[a4paper, total={160mm, 247mm}, left=25mm, top=25mm]{geometry}
   \usepackage{booktabs}
   \usepackage{longtable}
   \usepackage{array}
@@ -138,3 +143,31 @@ df_print <- function(df = NULL, type = NULL, n = 3L, caption = NULL,
 }
 
 ```
+
+# License {.unnumbered}
+
+-------------------------------------------------------------------------------
+
+　本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja){target="_blank" title="Creative Commons"}の下に提供されています。あなたは以下の条件に従う限り自由に共有・翻案することができます。
+
+　あなたの従うべき条件は以下の通りです。
+
+-   表示（BY）
+
+    -   あなたは 適切なクレジットを表示し、ライセンスへのリンクを提供し、変更があったらその旨を示さなければなりません。これらは合理的であればどのような方法で行っても構いませんが、許諾者があなたやあなたの利用行為を支持していると示唆するような方法は除きます。
+
+-   非営利（NC）
+
+    -   あなたは営利目的でこの資料を利用してはなりません。
+
+-   継承（SA）
+
+    -   もしあなたがこの資料をリミックスしたり、改変したり、加工した場合には、あなたはあなたの貢献部分を元の作品と同じライセンスの下に頒布しなければなりません。
+
+
+![CC 4.0 BY-NC-SA]("./fig/88x31.png")
+
+　ただし、本書にて引用している文書、図、ロゴなどの権利は原著作者が保有しています。
+
+-------------------------------------------------------------------------------
+

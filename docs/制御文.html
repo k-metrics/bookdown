@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.8 制御文 | Rのすゝめ</title>
+  <title>B.6 制御文 | Rのすゝめ</title>
   <meta name="description" content="本書は" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.8 制御文 | Rのすゝめ" />
+  <meta property="og:title" content="B.6 制御文 | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.8 制御文 | Rのすゝめ" />
+  <meta name="twitter:title" content="B.6 制御文 | Rのすゝめ" />
   
   <meta name="twitter:description" content="本書は" />
   
@@ -24,16 +24,16 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-07" />
+<meta name="date" content="2021-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="演算子operators.html"/>
-<link rel="next" href="import-1.html"/>
-<script src="assets/header-attrs-2.7/header-attrs.js"></script>
+<link rel="prev" href="演算子.html"/>
+<link rel="next" href="environments-2.html"/>
+<script src="assets/header-attrs-2.8/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="想定読者.html"><a href="想定読者.html"><i class="fa fa-check"></i>想定読者</a></li>
 <li class="chapter" data-level="" data-path="表記ルール.html"><a href="表記ルール.html"><i class="fa fa-check"></i>表記ルール</a></li>
-<li><a href="なぜ-r-を使うのか.html#なぜ-r-を使うのか">なぜ <strong>R</strong> を使うのか</a></li>
+<li><a href="なぜrを使うのか.html#なぜrを使うのか">なぜ<strong>R</strong>を使うのか</a></li>
 <li class="chapter" data-level="" data-path="分析の手順.html"><a href="分析の手順.html"><i class="fa fa-check"></i>分析の手順</a></li>
 <li class="chapter" data-level="" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i>Data Science Workflow</a>
 <ul>
@@ -170,54 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.5" data-path="主な分析環境.html"><a href="主な分析環境.html#programing-editor"><i class="fa fa-check"></i><b>1.1.5</b> Programing Editor</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="rの基本.html"><a href="rの基本.html"><i class="fa fa-check"></i><b>2</b> Rの基本</a>
+<li class="chapter" data-level="2" data-path="rの基本.html"><a href="rの基本.html"><i class="fa fa-check"></i><b>2</b> <strong>R</strong>の基本</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="基本的な演算.html"><a href="基本的な演算.html"><i class="fa fa-check"></i><b>2.1</b> 基本的な演算</a>
+<li class="chapter" data-level="2.1" data-path="基本統計量.html"><a href="基本統計量.html"><i class="fa fa-check"></i><b>2.1</b> 基本統計量</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="基本的な演算.html"><a href="基本的な演算.html#算術演算"><i class="fa fa-check"></i><b>2.1.1</b> 算術演算</a></li>
-<li class="chapter" data-level="2.1.2" data-path="基本的な演算.html"><a href="基本的な演算.html#代入演算"><i class="fa fa-check"></i><b>2.1.2</b> 代入演算</a></li>
-<li class="chapter" data-level="2.1.3" data-path="基本的な演算.html"><a href="基本的な演算.html#代入結果の確認"><i class="fa fa-check"></i><b>2.1.3</b> 代入結果の確認</a></li>
-<li class="chapter" data-level="2.1.4" data-path="基本的な演算.html"><a href="基本的な演算.html#変数演算の基本"><i class="fa fa-check"></i><b>2.1.4</b> 変数演算の基本</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="予約語reserved-word.html"><a href="予約語reserved-word.html"><i class="fa fa-check"></i><b>2.2</b> 予約語（Reserved word）</a></li>
-<li class="chapter" data-level="2.3" data-path="変数variables.html"><a href="変数variables.html"><i class="fa fa-check"></i><b>2.3</b> 変数（Variables）</a>
-<ul>
-<li class="chapter" data-level="2.3.1" data-path="変数variables.html"><a href="変数variables.html#データ型"><i class="fa fa-check"></i><b>2.3.1</b> データ型</a></li>
-<li class="chapter" data-level="2.3.2" data-path="変数variables.html"><a href="変数variables.html#変数型"><i class="fa fa-check"></i><b>2.3.2</b> 変数型</a></li>
-<li class="chapter" data-level="2.3.3" data-path="変数variables.html"><a href="変数variables.html#ベクトル型"><i class="fa fa-check"></i><b>2.3.3</b> ベクトル型</a></li>
-<li class="chapter" data-level="2.3.4" data-path="変数variables.html"><a href="変数variables.html#因子型"><i class="fa fa-check"></i><b>2.3.4</b> 因子型</a></li>
-<li class="chapter" data-level="2.3.5" data-path="変数variables.html"><a href="変数variables.html#マトリクス型"><i class="fa fa-check"></i><b>2.3.5</b> マトリクス型</a></li>
-<li class="chapter" data-level="2.3.6" data-path="変数variables.html"><a href="変数variables.html#アレイ型"><i class="fa fa-check"></i><b>2.3.6</b> アレイ型</a></li>
-<li class="chapter" data-level="2.3.7" data-path="変数variables.html"><a href="変数variables.html#データフレーム型"><i class="fa fa-check"></i><b>2.3.7</b> データフレーム型</a></li>
-<li class="chapter" data-level="2.3.8" data-path="変数variables.html"><a href="変数variables.html#リスト型"><i class="fa fa-check"></i><b>2.3.8</b> リスト型</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="定数constant.html"><a href="定数constant.html"><i class="fa fa-check"></i><b>2.4</b> 定数（Constant）</a>
-<ul>
-<li class="chapter" data-level="2.4.1" data-path="定数constant.html"><a href="定数constant.html#na-の型"><i class="fa fa-check"></i><b>2.4.1</b> <code>NA</code> の型</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html"><i class="fa fa-check"></i><b>2.5</b> 参照・アクセス（Access Operators）</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html#演算子"><i class="fa fa-check"></i><b>2.5.1</b> <code>[</code> 演算子</a></li>
-<li class="chapter" data-level="2.5.2" data-path="参照アクセスaccess-operators.html"><a href="参照アクセスaccess-operators.html#演算子-1"><i class="fa fa-check"></i><b>2.5.2</b> <code>$</code> 演算子</a></li>
-</ul></li>
-<li class="chapter" data-level="2.6" data-path="検査変換.html"><a href="検査変換.html"><i class="fa fa-check"></i><b>2.6</b> 検査・変換</a></li>
-<li class="chapter" data-level="2.7" data-path="演算子operators.html"><a href="演算子operators.html"><i class="fa fa-check"></i><b>2.7</b> 演算子（Operators）</a>
-<ul>
-<li class="chapter" data-level="2.7.1" data-path="演算子operators.html"><a href="演算子operators.html#算術演算子"><i class="fa fa-check"></i><b>2.7.1</b> 算術演算子</a></li>
-<li class="chapter" data-level="2.7.2" data-path="演算子operators.html"><a href="演算子operators.html#比較演算子-logical-operations"><i class="fa fa-check"></i><b>2.7.2</b> 比較演算子 Logical Operations</a></li>
-<li class="chapter" data-level="2.7.3" data-path="演算子operators.html"><a href="演算子operators.html#論理演算子-boolean-operations"><i class="fa fa-check"></i><b>2.7.3</b> 論理演算子 Boolean Operations</a></li>
-<li class="chapter" data-level="2.7.4" data-path="演算子operators.html"><a href="演算子operators.html#特殊演算子"><i class="fa fa-check"></i><b>2.7.4</b> 特殊演算子</a></li>
-<li class="chapter" data-level="2.7.5" data-path="演算子operators.html"><a href="演算子operators.html#演算子の優先順位"><i class="fa fa-check"></i><b>2.7.5</b> 演算子の優先順位</a></li>
-</ul></li>
-<li class="chapter" data-level="2.8" data-path="制御文.html"><a href="制御文.html"><i class="fa fa-check"></i><b>2.8</b> 制御文</a>
-<ul>
-<li class="chapter" data-level="2.8.1" data-path="制御文.html"><a href="制御文.html#条件分岐"><i class="fa fa-check"></i><b>2.8.1</b> 条件分岐</a></li>
-<li class="chapter" data-level="2.8.2" data-path="制御文.html"><a href="制御文.html#if-else"><i class="fa fa-check"></i><b>2.8.2</b> if, else</a></li>
-<li class="chapter" data-level="2.8.3" data-path="制御文.html"><a href="制御文.html#switch"><i class="fa fa-check"></i><b>2.8.3</b> switch</a></li>
-<li class="chapter" data-level="2.8.4" data-path="制御文.html"><a href="制御文.html#ifelse"><i class="fa fa-check"></i><b>2.8.4</b> ifelse</a></li>
-<li class="chapter" data-level="2.8.5" data-path="制御文.html"><a href="制御文.html#繰り返し"><i class="fa fa-check"></i><b>2.8.5</b> 繰り返し</a></li>
-<li class="chapter" data-level="2.8.6" data-path="制御文.html"><a href="制御文.html#for"><i class="fa fa-check"></i><b>2.8.6</b> for</a></li>
-<li class="chapter" data-level="2.8.7" data-path="制御文.html"><a href="制御文.html#while-repeat"><i class="fa fa-check"></i><b>2.8.7</b> while, repeat</a></li>
+<li class="chapter" data-level="2.1.1" data-path="基本統計量.html"><a href="基本統計量.html#平均"><i class="fa fa-check"></i><b>2.1.1</b> 平均</a></li>
+<li class="chapter" data-level="2.1.2" data-path="基本統計量.html"><a href="基本統計量.html#中央値"><i class="fa fa-check"></i><b>2.1.2</b> 中央値</a></li>
+<li class="chapter" data-level="2.1.3" data-path="基本統計量.html"><a href="基本統計量.html#最小最大値"><i class="fa fa-check"></i><b>2.1.3</b> 最小・最大値</a></li>
+<li class="chapter" data-level="2.1.4" data-path="基本統計量.html"><a href="基本統計量.html#レンジ範囲"><i class="fa fa-check"></i><b>2.1.4</b> レンジ（範囲）</a></li>
+<li class="chapter" data-level="2.1.5" data-path="基本統計量.html"><a href="基本統計量.html#標準偏差"><i class="fa fa-check"></i><b>2.1.5</b> 標準偏差</a></li>
+<li class="chapter" data-level="2.1.6" data-path="基本統計量.html"><a href="基本統計量.html#最頻値"><i class="fa fa-check"></i><b>2.1.6</b> 最頻値</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Wrangle</b></span></li>
@@ -260,82 +222,123 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>11</b> R Markdown</a></li>
 <li class="part"><span><b>VII Automate</b></span></li>
 <li class="chapter" data-level="12" data-path="shiny.html"><a href="shiny.html"><i class="fa fa-check"></i><b>12</b> shiny</a></li>
-<li class="part"><span><b>VIII Program</b></span></li>
-<li class="chapter" data-level="13" data-path="environments-2.html"><a href="environments-2.html"><i class="fa fa-check"></i><b>13</b> Environments 2</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html"><i class="fa fa-check"></i><b>13.1</b> Google Colaboratory</a>
-<ul>
-<li class="chapter" data-level="13.1.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html#login-google"><i class="fa fa-check"></i><b>13.1.1</b> Login Google</a></li>
-<li class="chapter" data-level="13.1.2" data-path="google-colaboratory.html"><a href="google-colaboratory.html#open-google-colab"><i class="fa fa-check"></i><b>13.1.2</b> Open Google Colab</a></li>
-<li class="chapter" data-level="13.1.3" data-path="google-colaboratory.html"><a href="google-colaboratory.html#upload-template"><i class="fa fa-check"></i><b>13.1.3</b> Upload Template</a></li>
-<li class="chapter" data-level="13.1.4" data-path="google-colaboratory.html"><a href="google-colaboratory.html#run-r-code"><i class="fa fa-check"></i><b>13.1.4</b> Run R code</a></li>
-<li class="chapter" data-level="13.1.5" data-path="google-colaboratory.html"><a href="google-colaboratory.html#save-file"><i class="fa fa-check"></i><b>13.1.5</b> Save File</a></li>
-</ul></li>
-<li class="chapter" data-level="13.2" data-path="rstudio-cloud-1.html"><a href="rstudio-cloud-1.html"><i class="fa fa-check"></i><b>13.2</b> RStudio Cloud</a>
-<ul>
-<li class="chapter" data-level="13.2.1" data-path="rstudio-cloud-1.html"><a href="rstudio-cloud-1.html#create-project"><i class="fa fa-check"></i><b>13.2.1</b> Create Project</a></li>
-<li class="chapter" data-level="13.2.2" data-path="rstudio-cloud-1.html"><a href="rstudio-cloud-1.html#install-packages"><i class="fa fa-check"></i><b>13.2.2</b> Install Packages</a></li>
-</ul></li>
-</ul></li>
+<li class="part"><span><b>VIII APPENDIX</b></span></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="install-rrstudio.html"><a href="install-rrstudio.html"><i class="fa fa-check"></i><b>A</b> Install R/RStudio</a>
+<li class="chapter" data-level="A" data-path="refereneces.html"><a href="refereneces.html"><i class="fa fa-check"></i><b>A</b> Refereneces</a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>A.1</b> Install R</a>
-<ul>
-<li class="chapter" data-level="A.1.1" data-path="install-r.html"><a href="install-r.html#windows"><i class="fa fa-check"></i><b>A.1.1</b> Windows</a></li>
-<li class="chapter" data-level="A.1.2" data-path="install-r.html"><a href="install-r.html#macos-os-x"><i class="fa fa-check"></i><b>A.1.2</b> macOS (OS X)</a></li>
-<li class="chapter" data-level="A.1.3" data-path="install-r.html"><a href="install-r.html#linux"><i class="fa fa-check"></i><b>A.1.3</b> Linux</a></li>
+<li class="chapter" data-level="A.1" data-path="book.html"><a href="book.html"><i class="fa fa-check"></i><b>A.1</b> Book</a></li>
+<li class="chapter" data-level="A.2" data-path="site.html"><a href="site.html"><i class="fa fa-check"></i><b>A.2</b> Site</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>A.2</b> Install RStudio Desktop</a>
+<li class="chapter" data-level="B" data-path="Appendix-RBasics.html"><a href="Appendix-RBasics.html"><i class="fa fa-check"></i><b>B</b> R Basics</a>
 <ul>
-<li class="chapter" data-level="A.2.1" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html#動作確認"><i class="fa fa-check"></i><b>A.2.1</b> 動作確認</a></li>
-</ul></li>
-<li class="chapter" data-level="A.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>A.3</b> Install R packages</a>
+<li class="chapter" data-level="B.1" data-path="基本的な演算.html"><a href="基本的な演算.html"><i class="fa fa-check"></i><b>B.1</b> 基本的な演算</a>
 <ul>
-<li class="chapter" data-level="A.3.1" data-path="install-r-packages.html"><a href="install-r-packages.html#linux環境の場合"><i class="fa fa-check"></i><b>A.3.1</b> Linux環境の場合</a></li>
+<li class="chapter" data-level="B.1.1" data-path="基本的な演算.html"><a href="基本的な演算.html#算術演算"><i class="fa fa-check"></i><b>B.1.1</b> 算術演算</a></li>
+<li class="chapter" data-level="B.1.2" data-path="基本的な演算.html"><a href="基本的な演算.html#代入"><i class="fa fa-check"></i><b>B.1.2</b> 代入</a></li>
+<li class="chapter" data-level="B.1.3" data-path="基本的な演算.html"><a href="基本的な演算.html#代入結果の確認"><i class="fa fa-check"></i><b>B.1.3</b> 代入結果の確認</a></li>
+<li class="chapter" data-level="B.1.4" data-path="基本的な演算.html"><a href="基本的な演算.html#合算"><i class="fa fa-check"></i><b>B.1.4</b> 合算</a></li>
+<li class="chapter" data-level="B.1.5" data-path="基本的な演算.html"><a href="基本的な演算.html#平均-1"><i class="fa fa-check"></i><b>B.1.5</b> 平均</a></li>
+<li class="chapter" data-level="B.1.6" data-path="基本的な演算.html"><a href="基本的な演算.html#変数の上書き"><i class="fa fa-check"></i><b>B.1.6</b> 変数の上書き</a></li>
 </ul></li>
-<li class="chapter" data-level="A.4" data-path="install-git.html"><a href="install-git.html"><i class="fa fa-check"></i><b>A.4</b> Install Git</a>
+<li class="chapter" data-level="B.2" data-path="変数.html"><a href="変数.html"><i class="fa fa-check"></i><b>B.2</b> 変数</a>
 <ul>
-<li class="chapter" data-level="A.4.1" data-path="install-git.html"><a href="install-git.html#git"><i class="fa fa-check"></i><b>A.4.1</b> Git</a></li>
-<li class="chapter" data-level="A.4.2" data-path="install-git.html"><a href="install-git.html#git-client"><i class="fa fa-check"></i><b>A.4.2</b> Git Client</a></li>
+<li class="chapter" data-level="B.2.1" data-path="変数.html"><a href="変数.html#予約語"><i class="fa fa-check"></i><b>B.2.1</b> 予約語</a></li>
+<li class="chapter" data-level="B.2.2" data-path="変数.html"><a href="変数.html#データ型"><i class="fa fa-check"></i><b>B.2.2</b> データ型</a></li>
+<li class="chapter" data-level="B.2.3" data-path="変数.html"><a href="変数.html#変数型"><i class="fa fa-check"></i><b>B.2.3</b> 変数型</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="B" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>B</b> RStudio Server</a>
+<li class="chapter" data-level="B.3" data-path="定数.html"><a href="定数.html"><i class="fa fa-check"></i><b>B.3</b> 定数</a>
 <ul>
-<li class="chapter" data-level="B.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html"><i class="fa fa-check"></i><b>B.1</b> Setup RStudio Sever with Docker</a>
+<li class="chapter" data-level="B.3.1" data-path="定数.html"><a href="定数.html#naの型"><i class="fa fa-check"></i><b>B.3.1</b> <code>NA</code>の型</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="検査変換.html"><a href="検査変換.html"><i class="fa fa-check"></i><b>B.4</b> 検査・変換</a></li>
+<li class="chapter" data-level="B.5" data-path="演算子.html"><a href="演算子.html"><i class="fa fa-check"></i><b>B.5</b> 演算子</a>
 <ul>
-<li class="chapter" data-level="B.1.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#enable-hyper-v-windows-only"><i class="fa fa-check"></i><b>B.1.1</b> Enable Hyper-V (Windows Only)</a></li>
-<li class="chapter" data-level="B.1.2" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-and-install-docker-desktop"><i class="fa fa-check"></i><b>B.1.2</b> Download and Install Docker Desktop</a></li>
-<li class="chapter" data-level="B.1.3" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-docker-image"><i class="fa fa-check"></i><b>B.1.3</b> Download Docker Image</a></li>
-<li class="chapter" data-level="B.1.4" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#run-container"><i class="fa fa-check"></i><b>B.1.4</b> Run Container</a></li>
+<li class="chapter" data-level="B.5.1" data-path="演算子.html"><a href="演算子.html#参照演算子"><i class="fa fa-check"></i><b>B.5.1</b> 参照演算子</a></li>
+<li class="chapter" data-level="B.5.2" data-path="演算子.html"><a href="演算子.html#単項演算子"><i class="fa fa-check"></i><b>B.5.2</b> 単項演算子</a></li>
+<li class="chapter" data-level="B.5.3" data-path="演算子.html"><a href="演算子.html#二項演算子"><i class="fa fa-check"></i><b>B.5.3</b> 二項演算子</a></li>
+<li class="chapter" data-level="B.5.4" data-path="演算子.html"><a href="演算子.html#特殊演算子"><i class="fa fa-check"></i><b>B.5.4</b> 特殊演算子</a></li>
+<li class="chapter" data-level="B.5.5" data-path="演算子.html"><a href="演算子.html#優先順位"><i class="fa fa-check"></i><b>B.5.5</b> 優先順位</a></li>
+</ul></li>
+<li class="chapter" data-level="B.6" data-path="制御文.html"><a href="制御文.html"><i class="fa fa-check"></i><b>B.6</b> 制御文</a>
+<ul>
+<li class="chapter" data-level="B.6.1" data-path="制御文.html"><a href="制御文.html#条件分岐"><i class="fa fa-check"></i><b>B.6.1</b> 条件分岐</a></li>
+<li class="chapter" data-level="B.6.2" data-path="制御文.html"><a href="制御文.html#繰り返し"><i class="fa fa-check"></i><b>B.6.2</b> 繰り返し</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>C</b> RStudio IDE</a>
+<li class="chapter" data-level="C" data-path="environments-2.html"><a href="environments-2.html"><i class="fa fa-check"></i><b>C</b> Environments 2</a>
 <ul>
-<li class="chapter" data-level="C.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>C.1</b> Overview</a></li>
-<li class="chapter" data-level="C.2" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i><b>C.2</b> Keyboard Shortcuts</a></li>
-<li class="chapter" data-level="C.3" data-path="writing-r-code.html"><a href="writing-r-code.html"><i class="fa fa-check"></i><b>C.3</b> Writing R code</a></li>
-<li class="chapter" data-level="C.4" data-path="global-options.html"><a href="global-options.html"><i class="fa fa-check"></i><b>C.4</b> Global Options</a>
+<li class="chapter" data-level="C.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html"><i class="fa fa-check"></i><b>C.1</b> Google Colaboratory</a>
 <ul>
-<li class="chapter" data-level="C.4.1" data-path="global-options.html"><a href="global-options.html#general"><i class="fa fa-check"></i><b>C.4.1</b> General</a></li>
-<li class="chapter" data-level="C.4.2" data-path="global-options.html"><a href="global-options.html#code"><i class="fa fa-check"></i><b>C.4.2</b> Code</a></li>
-<li class="chapter" data-level="C.4.3" data-path="global-options.html"><a href="global-options.html#appearance"><i class="fa fa-check"></i><b>C.4.3</b> Appearance</a></li>
-<li class="chapter" data-level="C.4.4" data-path="global-options.html"><a href="global-options.html#pane-layout"><i class="fa fa-check"></i><b>C.4.4</b> Pane Layout</a></li>
-<li class="chapter" data-level="C.4.5" data-path="global-options.html"><a href="global-options.html#packages"><i class="fa fa-check"></i><b>C.4.5</b> Packages</a></li>
-<li class="chapter" data-level="C.4.6" data-path="global-options.html"><a href="global-options.html#r-markdown-1"><i class="fa fa-check"></i><b>C.4.6</b> R Markdown</a></li>
-<li class="chapter" data-level="C.4.7" data-path="global-options.html"><a href="global-options.html#sweave"><i class="fa fa-check"></i><b>C.4.7</b> Sweave</a></li>
-<li class="chapter" data-level="C.4.8" data-path="global-options.html"><a href="global-options.html#spelling"><i class="fa fa-check"></i><b>C.4.8</b> Spelling</a></li>
-<li class="chapter" data-level="C.4.9" data-path="global-options.html"><a href="global-options.html#gitsvn"><i class="fa fa-check"></i><b>C.4.9</b> Git/SVN</a></li>
-<li class="chapter" data-level="C.4.10" data-path="global-options.html"><a href="global-options.html#publishing"><i class="fa fa-check"></i><b>C.4.10</b> Publishing</a></li>
-<li class="chapter" data-level="C.4.11" data-path="global-options.html"><a href="global-options.html#terminal"><i class="fa fa-check"></i><b>C.4.11</b> Terminal</a></li>
+<li class="chapter" data-level="C.1.1" data-path="google-colaboratory.html"><a href="google-colaboratory.html#login-google"><i class="fa fa-check"></i><b>C.1.1</b> Login Google</a></li>
+<li class="chapter" data-level="C.1.2" data-path="google-colaboratory.html"><a href="google-colaboratory.html#open-google-colab"><i class="fa fa-check"></i><b>C.1.2</b> Open Google Colab</a></li>
+<li class="chapter" data-level="C.1.3" data-path="google-colaboratory.html"><a href="google-colaboratory.html#upload-template"><i class="fa fa-check"></i><b>C.1.3</b> Upload Template</a></li>
+<li class="chapter" data-level="C.1.4" data-path="google-colaboratory.html"><a href="google-colaboratory.html#run-r-code"><i class="fa fa-check"></i><b>C.1.4</b> Run R code</a></li>
+<li class="chapter" data-level="C.1.5" data-path="google-colaboratory.html"><a href="google-colaboratory.html#save-file"><i class="fa fa-check"></i><b>C.1.5</b> Save File</a></li>
 </ul></li>
-<li class="chapter" data-level="C.5" data-path="project-options.html"><a href="project-options.html"><i class="fa fa-check"></i><b>C.5</b> Project Options</a></li>
-</ul></li>
-<li class="chapter" data-level="D" data-path="cloud-ide.html"><a href="cloud-ide.html"><i class="fa fa-check"></i><b>D</b> Cloud IDE</a>
+<li class="chapter" data-level="C.2" data-path="rstudio-cloud-1.html"><a href="rstudio-cloud-1.html"><i class="fa fa-check"></i><b>C.2</b> RStudio Cloud</a>
 <ul>
-<li class="chapter" data-level="D.1" data-path="rstudio-cloud-ga.html"><a href="rstudio-cloud-ga.html"><i class="fa fa-check"></i><b>D.1</b> RStudio Cloud GA</a></li>
-<li class="chapter" data-level="D.2" data-path="exploratory.html"><a href="exploratory.html"><i class="fa fa-check"></i><b>D.2</b> Exploratory</a></li>
-<li class="chapter" data-level="D.3" data-path="binder.html"><a href="binder.html"><i class="fa fa-check"></i><b>D.3</b> binder</a></li>
+<li class="chapter" data-level="C.2.1" data-path="rstudio-cloud-1.html"><a href="rstudio-cloud-1.html#create-project"><i class="fa fa-check"></i><b>C.2.1</b> Create Project</a></li>
+<li class="chapter" data-level="C.2.2" data-path="rstudio-cloud-1.html"><a href="rstudio-cloud-1.html#install-packages"><i class="fa fa-check"></i><b>C.2.2</b> Install Packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="install-rrstudio.html"><a href="install-rrstudio.html"><i class="fa fa-check"></i><b>D</b> Install R/RStudio</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="install-r.html"><a href="install-r.html"><i class="fa fa-check"></i><b>D.1</b> Install R</a>
+<ul>
+<li class="chapter" data-level="D.1.1" data-path="install-r.html"><a href="install-r.html#windows"><i class="fa fa-check"></i><b>D.1.1</b> Windows</a></li>
+<li class="chapter" data-level="D.1.2" data-path="install-r.html"><a href="install-r.html#macos-os-x"><i class="fa fa-check"></i><b>D.1.2</b> macOS (OS X)</a></li>
+<li class="chapter" data-level="D.1.3" data-path="install-r.html"><a href="install-r.html#linux"><i class="fa fa-check"></i><b>D.1.3</b> Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html"><i class="fa fa-check"></i><b>D.2</b> Install RStudio Desktop</a>
+<ul>
+<li class="chapter" data-level="D.2.1" data-path="install-rstudio-desktop.html"><a href="install-rstudio-desktop.html#動作確認"><i class="fa fa-check"></i><b>D.2.1</b> 動作確認</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="install-r-packages.html"><a href="install-r-packages.html"><i class="fa fa-check"></i><b>D.3</b> Install R packages</a>
+<ul>
+<li class="chapter" data-level="D.3.1" data-path="install-r-packages.html"><a href="install-r-packages.html#linux環境の場合"><i class="fa fa-check"></i><b>D.3.1</b> Linux環境の場合</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="install-git.html"><a href="install-git.html"><i class="fa fa-check"></i><b>D.4</b> Install Git</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="install-git.html"><a href="install-git.html#git"><i class="fa fa-check"></i><b>D.4.1</b> Git</a></li>
+<li class="chapter" data-level="D.4.2" data-path="install-git.html"><a href="install-git.html#git-client"><i class="fa fa-check"></i><b>D.4.2</b> Git Client</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>E</b> RStudio Server</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html"><i class="fa fa-check"></i><b>E.1</b> Setup RStudio Sever with Docker</a>
+<ul>
+<li class="chapter" data-level="E.1.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#enable-hyper-v-windows-only"><i class="fa fa-check"></i><b>E.1.1</b> Enable Hyper-V (Windows Only)</a></li>
+<li class="chapter" data-level="E.1.2" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-and-install-docker-desktop"><i class="fa fa-check"></i><b>E.1.2</b> Download and Install Docker Desktop</a></li>
+<li class="chapter" data-level="E.1.3" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-docker-image"><i class="fa fa-check"></i><b>E.1.3</b> Download Docker Image</a></li>
+<li class="chapter" data-level="E.1.4" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#run-container"><i class="fa fa-check"></i><b>E.1.4</b> Run Container</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>F</b> RStudio IDE</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>F.1</b> Overview</a></li>
+<li class="chapter" data-level="F.2" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i><b>F.2</b> Keyboard Shortcuts</a></li>
+<li class="chapter" data-level="F.3" data-path="writing-r-code.html"><a href="writing-r-code.html"><i class="fa fa-check"></i><b>F.3</b> Writing R code</a></li>
+<li class="chapter" data-level="F.4" data-path="global-options.html"><a href="global-options.html"><i class="fa fa-check"></i><b>F.4</b> Global Options</a>
+<ul>
+<li class="chapter" data-level="F.4.1" data-path="global-options.html"><a href="global-options.html#general"><i class="fa fa-check"></i><b>F.4.1</b> General</a></li>
+<li class="chapter" data-level="F.4.2" data-path="global-options.html"><a href="global-options.html#code"><i class="fa fa-check"></i><b>F.4.2</b> Code</a></li>
+<li class="chapter" data-level="F.4.3" data-path="global-options.html"><a href="global-options.html#appearance"><i class="fa fa-check"></i><b>F.4.3</b> Appearance</a></li>
+<li class="chapter" data-level="F.4.4" data-path="global-options.html"><a href="global-options.html#pane-layout"><i class="fa fa-check"></i><b>F.4.4</b> Pane Layout</a></li>
+<li class="chapter" data-level="F.4.5" data-path="global-options.html"><a href="global-options.html#packages"><i class="fa fa-check"></i><b>F.4.5</b> Packages</a></li>
+<li class="chapter" data-level="F.4.6" data-path="global-options.html"><a href="global-options.html#r-markdown-1"><i class="fa fa-check"></i><b>F.4.6</b> R Markdown</a></li>
+<li class="chapter" data-level="F.4.7" data-path="global-options.html"><a href="global-options.html#sweave"><i class="fa fa-check"></i><b>F.4.7</b> Sweave</a></li>
+<li class="chapter" data-level="F.4.8" data-path="global-options.html"><a href="global-options.html#spelling"><i class="fa fa-check"></i><b>F.4.8</b> Spelling</a></li>
+<li class="chapter" data-level="F.4.9" data-path="global-options.html"><a href="global-options.html#gitsvn"><i class="fa fa-check"></i><b>F.4.9</b> Git/SVN</a></li>
+<li class="chapter" data-level="F.4.10" data-path="global-options.html"><a href="global-options.html#publishing"><i class="fa fa-check"></i><b>F.4.10</b> Publishing</a></li>
+<li class="chapter" data-level="F.4.11" data-path="global-options.html"><a href="global-options.html#terminal"><i class="fa fa-check"></i><b>F.4.11</b> Terminal</a></li>
+</ul></li>
+<li class="chapter" data-level="F.5" data-path="project-options.html"><a href="project-options.html"><i class="fa fa-check"></i><b>F.5</b> Project Options</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="cloud-ide.html"><a href="cloud-ide.html"><i class="fa fa-check"></i><b>G</b> Cloud IDE</a>
+<ul>
+<li class="chapter" data-level="G.1" data-path="rstudio-cloud-ga.html"><a href="rstudio-cloud-ga.html"><i class="fa fa-check"></i><b>G.1</b> RStudio Cloud GA</a></li>
+<li class="chapter" data-level="G.2" data-path="exploratory.html"><a href="exploratory.html"><i class="fa fa-check"></i><b>G.2</b> Exploratory</a></li>
+<li class="chapter" data-level="G.3" data-path="binder.html"><a href="binder.html"><i class="fa fa-check"></i><b>G.3</b> binder</a></li>
 </ul></li>
 </ul>
 
@@ -354,13 +357,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="制御文" class="section level2" number="2.8">
-<h2><span class="header-section-number">2.8</span> 制御文</h2>
-<p>　制御文はプログラムの流れをコントロールするためのもので大抵の言語で予約語になっています。制御文には条件分岐と繰り返し（ループ）の二種類があります。</p>
-<p>　</p>
-<div id="条件分岐" class="section level3" number="2.8.1">
-<h3><span class="header-section-number">2.8.1</span> 条件分岐</h3>
-<p>　条件分岐には以下のようなものがあります。その他、パッケージなどで条件分岐のための関数が提供されています。</p>
+<div id="制御文" class="section level2" number="14.6">
+<h2><span class="header-section-number">B.6</span> 制御文</h2>
+<p>制御文はプログラムの流れをコントロールするためのもので大抵の言語で予約語になっています。制御文には条件分岐と繰り返し（ループ）の二種類があります。<br />
+あ</p>
+<div id="条件分岐" class="section level3" number="14.6.1">
+<h3><span class="header-section-number">B.6.1</span> 条件分岐</h3>
+<p>条件分岐には以下のようなものがあります。その他、パッケージなどで条件分岐のための関数が提供されています。</p>
 <table>
 <thead>
 <tr class="header">
@@ -384,86 +387,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>　</p>
-</div>
-<div id="if-else" class="section level3" number="2.8.2">
-<h3><span class="header-section-number">2.8.2</span> if, else</h3>
-<p>　<code>if</code> 文と <code>else</code> 文は最も基本的な条件分岐です。評価式には論理演算子または論理型変数を用います。コーディングスタイルとして以下のどちらも可能です。</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="制御文.html#cb162-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb162-2"><a href="制御文.html#cb162-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb162-3"><a href="制御文.html#cb162-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">!=</span> <span class="cn">TRUE</span>) <span class="fu">print</span>(<span class="st">&quot;TRUE&quot;</span>) <span class="cf">else</span> <span class="fu">print</span>(<span class="st">&quot;FALSE&quot;</span>)</span></code></pre></div>
+<div id="if-else" class="section level4" number="14.6.1.1">
+<h4><span class="header-section-number">B.6.1.1</span> if, else</h4>
+<p><code>if</code> 文と <code>else</code> 文は最も基本的な条件分岐です。評価式には論理演算子または論理型変数を用います。コーディングスタイルとして以下のどちらも可能です。</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="制御文.html#cb223-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb223-2"><a href="制御文.html#cb223-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-3"><a href="制御文.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">!=</span> <span class="cn">TRUE</span>) <span class="fu">print</span>(<span class="st">&quot;TRUE&quot;</span>) <span class="cf">else</span> <span class="fu">print</span>(<span class="st">&quot;FALSE&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;TRUE&quot;</code></pre>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="制御文.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
-<span id="cb164-2"><a href="制御文.html#cb164-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;TRUE&quot;</span>)</span>
-<span id="cb164-3"><a href="制御文.html#cb164-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb164-4"><a href="制御文.html#cb164-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;FALSE&quot;</span>)</span>
-<span id="cb164-5"><a href="制御文.html#cb164-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="制御文.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb225-2"><a href="制御文.html#cb225-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;TRUE&quot;</span>)</span>
+<span id="cb225-3"><a href="制御文.html#cb225-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb225-4"><a href="制御文.html#cb225-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;FALSE&quot;</span>)</span>
+<span id="cb225-5"><a href="制御文.html#cb225-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;FALSE&quot;</code></pre>
-<p>　<code>if</code> 文は入れ子にしたり <code>else if</code> 文として組み合わせて使うことも可能です。</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="制御文.html#cb166-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> 10L</span>
-<span id="cb166-2"><a href="制御文.html#cb166-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb166-3"><a href="制御文.html#cb166-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-4"><a href="制御文.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> ((x <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">&amp;&amp;</span> (y <span class="sc">&lt;</span> x)) {</span>
-<span id="cb166-5"><a href="制御文.html#cb166-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;match, (x &gt; 5) &amp;&amp; (y &lt; x)&quot;</span>)</span>
-<span id="cb166-6"><a href="制御文.html#cb166-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> ((x <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">&amp;&amp;</span> (y <span class="sc">&gt;=</span> x)) {</span>
-<span id="cb166-7"><a href="制御文.html#cb166-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;match, (x &gt; 5) &amp;&amp; (y &gt;= x)&quot;</span>)</span>
-<span id="cb166-8"><a href="制御文.html#cb166-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb166-9"><a href="制御文.html#cb166-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;else&quot;</span>)</span>
-<span id="cb166-10"><a href="制御文.html#cb166-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><code>if</code> 文は入れ子にしたり <code>else if</code> 文として組み合わせて使うことも可能です。</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="制御文.html#cb227-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> 10L</span>
+<span id="cb227-2"><a href="制御文.html#cb227-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb227-3"><a href="制御文.html#cb227-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb227-4"><a href="制御文.html#cb227-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> ((x <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">&amp;&amp;</span> (y <span class="sc">&lt;</span> x)) {</span>
+<span id="cb227-5"><a href="制御文.html#cb227-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;match, (x &gt; 5) &amp;&amp; (y &lt; x)&quot;</span>)</span>
+<span id="cb227-6"><a href="制御文.html#cb227-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> ((x <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">&amp;&amp;</span> (y <span class="sc">&gt;=</span> x)) {</span>
+<span id="cb227-7"><a href="制御文.html#cb227-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;match, (x &gt; 5) &amp;&amp; (y &gt;= x)&quot;</span>)</span>
+<span id="cb227-8"><a href="制御文.html#cb227-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb227-9"><a href="制御文.html#cb227-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;else&quot;</span>)</span>
+<span id="cb227-10"><a href="制御文.html#cb227-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;match, (x &gt; 5) &amp;&amp; (y &lt; x)&quot;</code></pre>
 <p>　</p>
 </div>
-<div id="switch" class="section level3" number="2.8.3">
-<h3><span class="header-section-number">2.8.3</span> switch</h3>
-<p>　分岐する条件の数が多い場合は<code>if</code>文でなく<code>switch</code>*文を利用するのが便利です。<code>if</code>文と同じで評価式は<code>TRUE</code>か<code>FALSE</code>が単一で返るようにしなければなりません。注意しなければならないのは、引数により構文が異なる点です。<br />
+<div id="switch" class="section level4" number="14.6.1.2">
+<h4><span class="header-section-number">B.6.1.2</span> switch</h4>
+<p>分岐する条件の数が多い場合は<code>if</code>文でなく<code>switch</code>文を利用するのが便利です。<code>if</code>文と同じで評価式は<code>TRUE</code>か<code>FALSE</code>が単一で返るようにしなければなりません。注意しなければならないのは、引数により構文が異なる点です。<br />
 　</p>
-<div id="引数が整数の場合" class="section level4" number="2.8.3.1">
-<h4><span class="header-section-number">2.8.3.1</span> 引数が整数の場合</h4>
-<p>　引数に整数 <span class="math inline">\(n\)</span> を指定した場合、<span class="math inline">\(n\)</span> 番目の処理文の結果が返ります。</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="制御文.html#cb168-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb168-2"><a href="制御文.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(x,                 <span class="co"># 分岐のための引数</span></span>
-<span id="cb168-3"><a href="制御文.html#cb168-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is 1&quot;</span>,          <span class="co"># 1番目の処理文</span></span>
-<span id="cb168-4"><a href="制御文.html#cb168-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is 2&quot;</span>,          <span class="co"># 2番目の処理文</span></span>
-<span id="cb168-5"><a href="制御文.html#cb168-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;Error&quot;</span>)           <span class="co"># 3番目の処理文</span></span></code></pre></div>
+<div id="引数が整数の場合" class="section level5" number="14.6.1.2.1">
+<h5><span class="header-section-number">B.6.1.2.1</span> 引数が整数の場合</h5>
+<p>引数に整数 <span class="math inline">\(n\)</span> を指定した場合、<span class="math inline">\(n\)</span> 番目の処理文の結果が返ります。</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="制御文.html#cb229-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb229-2"><a href="制御文.html#cb229-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(x,                 <span class="co"># 分岐のための引数</span></span>
+<span id="cb229-3"><a href="制御文.html#cb229-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is 1&quot;</span>,          <span class="co"># 1番目の処理文</span></span>
+<span id="cb229-4"><a href="制御文.html#cb229-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is 2&quot;</span>,          <span class="co"># 2番目の処理文</span></span>
+<span id="cb229-5"><a href="制御文.html#cb229-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;Error&quot;</span>)           <span class="co"># 3番目の処理文</span></span></code></pre></div>
 <pre><code>## [1] &quot;x is 2&quot;</code></pre>
-<p>　注意しなければならないのは条件分岐数と一致しない場合は <code>NULL</code> が返される点です。</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="制御文.html#cb170-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> 5L</span>
-<span id="cb170-2"><a href="制御文.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.null</span>(<span class="cf">switch</span>(x,         <span class="co"># 分岐のための引数</span></span>
-<span id="cb170-3"><a href="制御文.html#cb170-3" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;x is 1&quot;</span>,  <span class="co"># 1番目の処理文</span></span>
-<span id="cb170-4"><a href="制御文.html#cb170-4" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;x is 2&quot;</span>,  <span class="co"># 2番目の処理文</span></span>
-<span id="cb170-5"><a href="制御文.html#cb170-5" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;Error&quot;</span>))  <span class="co"># 3番目の処理文</span></span></code></pre></div>
+<p>注意しなければならないのは条件分岐数と一致しない場合は<code>NULL</code>が返される点です。</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="制御文.html#cb231-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> 5L</span>
+<span id="cb231-2"><a href="制御文.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.null</span>(<span class="cf">switch</span>(x,         <span class="co"># 分岐のための引数</span></span>
+<span id="cb231-3"><a href="制御文.html#cb231-3" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;x is 1&quot;</span>,  <span class="co"># 1番目の処理文</span></span>
+<span id="cb231-4"><a href="制御文.html#cb231-4" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;x is 2&quot;</span>,  <span class="co"># 2番目の処理文</span></span>
+<span id="cb231-5"><a href="制御文.html#cb231-5" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;Error&quot;</span>))  <span class="co"># 3番目の処理文</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>　</p>
 </div>
-<div id="引数が文字の場合" class="section level4" number="2.8.3.2">
-<h4><span class="header-section-number">2.8.3.2</span> 引数が文字の場合</h4>
-<p>　一方、引数が文字の場合、<code>if/else</code> 文と同様の処理が行われます。<code>if/else</code> 文と異なるのは <code>else</code> 文に相当する分岐が途中になっていても正しく処理してくれる点です。</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="制御文.html#cb172-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;2&quot;</span></span>
-<span id="cb172-2"><a href="制御文.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(x,</span>
-<span id="cb172-3"><a href="制御文.html#cb172-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 1&quot;</span>,    <span class="co"># 引数が&quot;1&quot;と一致する場合（`if (x == &quot;1&quot;)` に等価）</span></span>
-<span id="cb172-4"><a href="制御文.html#cb172-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is others&quot;</span>,     <span class="co"># 一致するものがない場合（`else` に等価）</span></span>
-<span id="cb172-5"><a href="制御文.html#cb172-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;2&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 2&quot;</span>)    <span class="co"># 引数が&quot;2&quot;と一致する場合（`if (x == &quot;2&quot;)` に等価）</span></span></code></pre></div>
+<div id="引数が文字の場合" class="section level5" number="14.6.1.2.2">
+<h5><span class="header-section-number">B.6.1.2.2</span> 引数が文字の場合</h5>
+<p>一方、引数が文字の場合、<code>if/else</code>文と同様の処理が行われます。<code>if/else</code>文と異なるのは<code>else</code>文に相当する分岐が途中になっていても正しく処理してくれる点です。</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="制御文.html#cb233-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;2&quot;</span></span>
+<span id="cb233-2"><a href="制御文.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(x,</span>
+<span id="cb233-3"><a href="制御文.html#cb233-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 1&quot;</span>,    <span class="co"># 引数が&quot;1&quot;と一致する場合（`if (x == &quot;1&quot;)` に等価）</span></span>
+<span id="cb233-4"><a href="制御文.html#cb233-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is others&quot;</span>,     <span class="co"># 一致するものがない場合（`else` に等価）</span></span>
+<span id="cb233-5"><a href="制御文.html#cb233-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;2&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 2&quot;</span>)    <span class="co"># 引数が&quot;2&quot;と一致する場合（`if (x == &quot;2&quot;)` に等価）</span></span></code></pre></div>
 <pre><code>## [1] &quot;x is 2&quot;</code></pre>
 <p>　<br />
-　引数に整数を指定しても動作しますが、引数が整数の場合と同様の動きをします。</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="制御文.html#cb174-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb174-2"><a href="制御文.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(x,                 <span class="co"># 分岐のための引数が整数になると</span></span>
-<span id="cb174-3"><a href="制御文.html#cb174-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 1&quot;</span>,    <span class="co"># 1番目の処理文</span></span>
-<span id="cb174-4"><a href="制御文.html#cb174-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is others&quot;</span>,     <span class="co"># 2番目の処理文</span></span>
-<span id="cb174-5"><a href="制御文.html#cb174-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;2&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 2&quot;</span>)    <span class="co"># 3番目の処理文</span></span></code></pre></div>
+引数に整数を指定しても動作しますが、引数が整数の場合と同様の動きをします。</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="制御文.html#cb235-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb235-2"><a href="制御文.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(x,                 <span class="co"># 分岐のための引数が整数になると</span></span>
+<span id="cb235-3"><a href="制御文.html#cb235-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 1&quot;</span>,    <span class="co"># 1番目の処理文</span></span>
+<span id="cb235-4"><a href="制御文.html#cb235-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is others&quot;</span>,     <span class="co"># 2番目の処理文</span></span>
+<span id="cb235-5"><a href="制御文.html#cb235-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;2&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 2&quot;</span>)    <span class="co"># 3番目の処理文</span></span></code></pre></div>
 <pre><code>## [1] &quot;x is 2&quot;</code></pre>
 <p>　</p>
 </div>
 </div>
-<div id="ifelse" class="section level3" number="2.8.4">
-<h3><span class="header-section-number">2.8.4</span> ifelse</h3>
-<p>　<code>base::ifelse</code> は予約語でなく関数です。<code>if/else</code> 文と異なるのはベクトル型の評価が一度に行える点です。第一引数に <code>TRUE</code> か <code>FALSE</code> が返る評価式であればベクトル型でも構いません。</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="制御文.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="cn">TRUE</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span></code></pre></div>
+<div id="ifelse" class="section level4" number="14.6.1.3">
+<h4><span class="header-section-number">B.6.1.3</span> ifelse</h4>
+<p><code>base::ifelse()</code>は予約語でなく関数です。<code>if/else</code>文と異なるのはベクトル型の評価が一度に行える点です。第一引数に<code>TRUE</code>か<code>FALSE</code>が返る評価式であればベクトル型でも構いません。</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="制御文.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="cn">TRUE</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span></code></pre></div>
 <p>　</p>
 </div>
-<div id="繰り返し" class="section level3" number="2.8.5">
-<h3><span class="header-section-number">2.8.5</span> 繰り返し</h3>
-<p>　繰り返しは文字通り処理を任意の回数繰り返す場合に用いるもので予約語になっています。繰り返し文の処理は時間がかかるため R においては好ましくなく繰り返しは使わずベクトル演算で処理すべきと言われていますが、R-3.4.0 から JIT コンパイラと呼ばれる繰り返し処理の高速化がデフォルトで有効化されており今後は処理記述の流れが変わる可能性があります。処理の高速化についてはこちらの <a href="http://masato-613.hatenablog.com/entry/2017/04/25/064632" target="_blank" title="R 3.4.0 のJITバイトコンパイラってどんくらい早くなるの？">参考資料 <i class="fa fa-external-link"></i></a> で確認してください。なお、繰り返し処理で注意すべき点は繰り返し文中では明示的に出力を指定しないと出力がなされない点です。</p>
-<p>　</p>
+</div>
+<div id="繰り返し" class="section level3" number="14.6.2">
+<h3><span class="header-section-number">B.6.2</span> 繰り返し</h3>
+<p>繰り返しは文字通り処理を任意の回数繰り返す場合に用いるもので予約語になっています。繰り返し文の処理は時間がかかるため R においては好ましくなく繰り返しは使わずベクトル演算で処理すべきと言われていますが、R-3.4.0 から JIT コンパイラと呼ばれる繰り返し処理の高速化がデフォルトで有効化されており今後は処理記述の流れが変わる可能性があります。処理の高速化についてはこちらの<a href="http://masato-613.hatenablog.com/entry/2017/04/25/064632" target="_blank" title="R 3.4.0 のJITバイトコンパイラってどんくらい早くなるの？">参考資料</a>で確認してください。なお、繰り返し処理で注意すべき点は繰り返し文中では明示的に出力を指定しないと出力がなされない点です。</p>
 <table>
 <thead>
 <tr class="header">
@@ -508,45 +510,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>　</p>
-</div>
-<div id="for" class="section level3" number="2.8.6">
-<h3><span class="header-section-number">2.8.6</span> for</h3>
-<p>　<code>for</code>文は最も基本となる繰り返し処理で、条件式としてベクトルやリストを指定できる点が他の言語と異なる点です。</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="制御文.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span><span class="sc">:</span><span class="dv">15</span>)) {</span>
-<span id="cb177-2"><a href="制御文.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">4</span>) {</span>
-<span id="cb177-3"><a href="制御文.html#cb177-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
-<span id="cb177-4"><a href="制御文.html#cb177-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (i <span class="sc">&gt;=</span> <span class="dv">10</span>) {</span>
-<span id="cb177-5"><a href="制御文.html#cb177-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
-<span id="cb177-6"><a href="制御文.html#cb177-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb177-7"><a href="制御文.html#cb177-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">as.character</span>(i))</span>
-<span id="cb177-8"><a href="制御文.html#cb177-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb177-9"><a href="制御文.html#cb177-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div id="for" class="section level4" number="14.6.2.1">
+<h4><span class="header-section-number">B.6.2.1</span> for</h4>
+<p><code>for</code>文は最も基本となる繰り返し処理で、条件式としてベクトルやリストを指定できる点が他の言語と異なる点です。</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="制御文.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span><span class="sc">:</span><span class="dv">15</span>)) {</span>
+<span id="cb238-2"><a href="制御文.html#cb238-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">4</span>) {</span>
+<span id="cb238-3"><a href="制御文.html#cb238-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb238-4"><a href="制御文.html#cb238-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (i <span class="sc">&gt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb238-5"><a href="制御文.html#cb238-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb238-6"><a href="制御文.html#cb238-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb238-7"><a href="制御文.html#cb238-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">as.character</span>(i))</span>
+<span id="cb238-8"><a href="制御文.html#cb238-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb238-9"><a href="制御文.html#cb238-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;1&quot;
 ## [1] &quot;2&quot;
 ## [1] &quot;3&quot;
 ## [1] &quot;5&quot;
 ## [1] &quot;7&quot;
 ## [1] &quot;9&quot;</code></pre>
-<p>　</p>
 </div>
-<div id="while-repeat" class="section level3" number="2.8.7">
-<h3><span class="header-section-number">2.8.7</span> while, repeat</h3>
-<p>　<code>while</code>文と<code>repeat</code>文については、あまり使うこともないと思いますので省略します。</p>
-<p>　</p>
+<div id="while-repeat" class="section level4" number="14.6.2.2">
+<h4><span class="header-section-number">B.6.2.2</span> while, repeat</h4>
+<p><code>while</code>文と<code>repeat</code>文については、あまり使うこともないと思いますので省略します。</p>
 
+<!-- # (PART) Appendix {-} -->
+</div>
 </div>
 </div>
 <!-- </div> -->
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="演算子operators.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="import-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="演算子.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="environments-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

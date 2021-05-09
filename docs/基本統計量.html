@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>G.2 Exploratory | Rのすゝめ</title>
+  <title>2.1 基本統計量 | Rのすゝめ</title>
   <meta name="description" content="本書は" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="G.2 Exploratory | Rのすゝめ" />
+  <meta property="og:title" content="2.1 基本統計量 | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="G.2 Exploratory | Rのすゝめ" />
+  <meta name="twitter:title" content="2.1 基本統計量 | Rのすゝめ" />
   
   <meta name="twitter:description" content="本書は" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rstudio-cloud-ga.html"/>
-<link rel="next" href="binder.html"/>
+<link rel="prev" href="rの基本.html"/>
+<link rel="next" href="import-1.html"/>
 <script src="assets/header-attrs-2.8/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,30 +357,149 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exploratory" class="section level2" number="19.2">
-<h2><span class="header-section-number">G.2</span> Exploratory</h2>
-<p>　<a href="https://exploratory.io/" target="_blank" title="Exploratory">Exploratory <i class="fa fa-external-link"></i></a> は BI（Business Intelligence）BI（Business Intelligence）ツールのような操作で R を持ちた探索的データ分析（EDA）が行える利用できる専用クライアントアプリケーションを用いるクラウドサービスです。無料で利用できますがオンライン限定・パブリックシェアオンリーとなりますので注意してください。</p>
-<p>　<a href="https://exploratory.io/insight?type=note&amp;q=tag%3Avisualization%20tag%3Ahow-to%20tag%3A%22team%20exploratory%22&amp;sort=top-viewed&amp;language=ja" target="_blank" title="Exploratory">何ができるのか見てみる <i class="fa fa-external-link"></i></a> ページで多数の分析サンプルが公開されています。<br />
-　また、 <a href="https://exploratory.io/howto?language=ja" target="_blank" title="Exploratory">使い方ガイド <i class="fa fa-external-link"></i></a> ページにも様々な説明資料が用意されています。</p>
-　<br />
+<div id="基本統計量" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> 基本統計量</h2>
+<p>データを分析する前には対象となるデータがどのような特徴を持っているか確認しておくことが重要であるとよく言われます。データの特徴を見るには基本統計量を用いる分かりやすいと思います。</p>
+<div id="平均" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> 平均</h3>
+<p>統計量の中でよく使われるのが平均です。平均というと下式で表される算術平均を思い浮かべる方が多いと思いますが、
+<span class="math display">\[\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i\]</span>
+算術平均以外にも下式で表される幾何平均（相乗平均）や
+<span class="math display">\[\sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i}\]</span>
+体操競技などで使われる複数審判が出す得点の最小値と最大値を除いた得点の平均であるトリム平均などがあります。以降、灰色に網掛けされた部分が<strong>R</strong>のコード、コードの下の<code>##</code>で始まる部分が実行結果ですので、コード部分をコピペして<strong>R</strong>のコンソールで実行してみてください。</p>
+<p><strong>R</strong>では算術平均とトリム平均は<code>mean()</code>関数で求めることができます。最初に平均の計算対象となるデータを作成します。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="基本統計量.html#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span></code></pre></div>
+<p>ここで<code>x</code>は5つの値を格納（代入）するための変数、<code>&lt;-</code>は値を変数に格納するための代入演算子、<code>c()</code>関数はベクトルデータを作成する関数です。代入結果を確認するには以下を実行します。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="基本統計量.html#cb4-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 1 3 3 5 7</code></pre>
+<p>算出平均は<code>mean()</code>関数に計算対象である<code>x</code>を指定します。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="基本統計量.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] 3.8</code></pre>
+<p>トリム平均は上記のコードに<code>trim</code>オプションを指定します。<code>trim</code>オプションは計算対象外にする割合を指定するオプションです。今回は五つのデータから最小値・最大値の二つを除いてトリム平均を求めるので<span class="math inline">\(\frac{2}{5} = 0.2\)</span>を指定します。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="基本統計量.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">trim =</span> <span class="fl">0.2</span>)</span></code></pre></div>
+<pre><code>## [1] 3.666667</code></pre>
+<p>ヘルプを見たい場合は<code>?</code>に続いて関数名を<code>()</code>付きで打ち込んで実行してください。</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="基本統計量.html#cb10-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">mean</span>()</span></code></pre></div>
+<p>幾何平均を求める関数は標準では用意されていませんのでインストールする必要があり、ここでは<strong><code>psych</code></strong>パッケージを使います。パッケージをインストールして使えるようにするには以下の手順が必要です。</p>
+<ol style="list-style-type: decimal">
+<li>パッケージをインストールする</li>
+<li>パッケージを読み込む</li>
+</ol>
+<p>パッケージのインストールは<code>install.packages()</code>関数を用います。インターネットに接続している必要があります。<code>install.packages()</code>関数を実行すると環境によってはCRANミラーサイトの選択を促される場合があります。その場合は、お住まいの地域に最も近い地域のミラーサイトを選択してください。なお、パッケージのインストールは一度だけでよく、次からはインストール不要になります。</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="基本統計量.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span></code></pre></div>
+<p>インストールが完了したらパッケージが提供する関数などを使えるように<code>library()</code>関数を使ってパッケージを使えるようにします。</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="基本統計量.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
+<pre><code>## 
+##  次のパッケージを付け加えます: &#39;psych&#39;</code></pre>
+<pre><code>##  以下のオブジェクトは &#39;package:ggplot2&#39; からマスクされています: 
+## 
+##      %+%, alpha</code></pre>
+<p>環境によっては上記のように他のパッケージの関数をマスクしている旨のメッセージが出力されてますが、今は、あまり気にする必要はありません。
+これで<strong><code>psych</code></strong>パッケージを使う準備が整いましたので、<code>geometric.mean()</code>関数で幾何平均を求めます。</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="基本統計量.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geometric.mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] 3.159818</code></pre>
+<p>インストールしたパッケージの関数を使う場合、どのパッケージの関数を使っているかを明示的に示すために下記のように<code>::</code>演算子（名前空間へのアクセス演算子）でパッケージ名と関数名をつなげて記述することもできます。</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="基本統計量.html#cb17-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">geometric.mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] 3.159818</code></pre>
+<p>この表記方法については賛否ありますが、どのパッケージの関数を使っているかを明示できるので、本書ではこの記述方法を用います。</p>
+<p>ところで、この程度の幾何平均であればパッケージをインストールしなくても総積を求める<code>prod()</code>関数とべき乗演算子（<code>^</code>）を使えば計算は可能です、</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="基本統計量.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(x)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] 3.159818</code></pre>
+<p>ただし、幾何平均ではデータの値を全て乗算しなければならないためデータ数が多い場合や値が大きい（または、小さい）場合に<code>prod()</code>関数でオーバーフロー（または、アンダーフロー）が起こるという問題があります。</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="基本統計量.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>))</span></code></pre></div>
+<pre><code>## [1] Inf</code></pre>
+<p>一方、<code>geometric.mean()</code>関数ではオーバーフロー（または、アンダーフロー）対策が施されていますので正しい値を求めることができます。</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="基本統計量.html#cb23-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">geometric.mean</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>))</span></code></pre></div>
+<pre><code>## [1] 74.90045</code></pre>
+<p>つまり、パッケージ、特にCRANに登録されているパッケージは登録にあたり審査による検証が行われていますので、使わないより使う方が楽で確実なことが多いのです。</p>
+</div>
+<div id="中央値" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> 中央値</h3>
+<p>平均値と並んで比較的よく使われるのが中央値です。中央値はデータの分布が歪んでいる場合に使われることが多いように比較的ロバスト（データの分布に左右されにくい）な統計量です。
+中央値</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="基本統計量.html#cb25-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 1 3 3 5 7</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="基本統計量.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+</div>
+<div id="最小最大値" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> 最小・最大値</h3>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="基本統計量.html#cb29-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 1 3 3 5 7</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="基本統計量.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(x)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="基本統計量.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<p><strong>R</strong>には<code>range()</code>関数という最小値を最大値を一度に求めることができる便利な関数があります。</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="基本統計量.html#cb35-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 1 3 3 5 7</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="基本統計量.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)</span></code></pre></div>
+<pre><code>## [1] 1 7</code></pre>
+</div>
+<div id="レンジ範囲" class="section level3" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> レンジ（範囲）</h3>
+<p>データのばらつきを見るためにレンジと呼ばれる範囲を用いることがあります。以下の<code>x</code>と<code>y</code>は同じ平均値をとるデータです。</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="基本統計量.html#cb39-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">8</span>)</span>
+<span id="cb39-2"><a href="基本統計量.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="基本統計量.html#cb41-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>)</span>
+<span id="cb41-2"><a href="基本統計量.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>レンジを求めるには<code>range()</code>関数を用います。</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="基本統計量.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)</span></code></pre></div>
+<pre><code>## [1] 2 8</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="基本統計量.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(y)</span></code></pre></div>
+<pre><code>## [1] 1 9</code></pre>
+<p><code>range()</code>関数は最小値と最大値を求める関数ですので<code>diff()</code>関数を用いて最小値と最大値の幅を求めます。</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="基本統計量.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(x))</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="基本統計量.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(y))</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+</div>
+<div id="標準偏差" class="section level3" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> 標準偏差</h3>
+<p>レンジは比較的簡単に計算できますが、以下のように同じレンジを持つデータの特徴が同じと言えるでしょうか？</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="基本統計量.html#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>)</span>
+<span id="cb51-2"><a href="基本統計量.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)</span></code></pre></div>
+<pre><code>## [1] 1 9</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="基本統計量.html#cb53-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>)</span>
+<span id="cb53-2"><a href="基本統計量.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(y)</span></code></pre></div>
+<pre><code>## [1] 1 9</code></pre>
+<p>このような場合、下式で求められる標準偏差（Standard Deviation）を使うと特徴が見えてくることがあります。
+<span class="math display">\[\sigma = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n} - \bar{x}^2 }\]</span></p>
+<p>標準偏差は<code>sd()</code>関数で求めることができます。</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="基本統計量.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
+<pre><code>## [1] 2.828427</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="基本統計量.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(y)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+</div>
+<div id="最頻値" class="section level3" number="2.1.6">
+<h3><span class="header-section-number">2.1.6</span> 最頻値</h3>
+<p>最頻値とはデータの中で最も頻繁に出てくる値のことで、モードとも呼ばれます。最頻値を求める関数は標準では用意されていませんので<code>modeest</code>パッケージを用います。</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="基本統計量.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modeest&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="基本統計量.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modeest)</span></code></pre></div>
+<pre><code>## Registered S3 methods overwritten by &#39;rmutil&#39;:
+##   method         from 
+##   plot.residuals psych
+##   print.response httr</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="基本統計量.html#cb62-1" aria-hidden="true" tabindex="-1"></a>modeest<span class="sc">::</span><span class="fu">mfv</span>(x)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="基本統計量.html#cb64-1" aria-hidden="true" tabindex="-1"></a>modeest<span class="sc">::</span><span class="fu">mfv</span>(y)</span></code></pre></div>
+<pre><code>## [1] 1 9</code></pre>
 
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-86"></span>
-<img src="fig/Exploratory.png" alt="Exploratory Public" width="80%"  />
-<p class="caption">
-Fig G.2: Exploratory Public
-</p>
 </div>
-<p>　</p>
-<p>　<a href="https://exploratory.io/pricing" target="_blank" title="">価格 <i class="fa fa-external-link"></i></a> ページからお好みのプランを選んでアカウントを取得します。クライアントアプリケーションは、mac まはた Windwos でしか動作しません。</p>
-<p>　</p>
 </div>
+<!-- </div> -->
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="rstudio-cloud-ga.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="binder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="rの基本.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="import-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

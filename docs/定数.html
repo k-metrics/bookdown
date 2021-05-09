@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>G.2 Exploratory | Rのすゝめ</title>
+  <title>B.3 定数 | Rのすゝめ</title>
   <meta name="description" content="本書は" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="G.2 Exploratory | Rのすゝめ" />
+  <meta property="og:title" content="B.3 定数 | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="G.2 Exploratory | Rのすゝめ" />
+  <meta name="twitter:title" content="B.3 定数 | Rのすゝめ" />
   
   <meta name="twitter:description" content="本書は" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rstudio-cloud-ga.html"/>
-<link rel="next" href="binder.html"/>
+<link rel="prev" href="変数.html"/>
+<link rel="next" href="検査変換.html"/>
 <script src="assets/header-attrs-2.8/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,30 +357,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exploratory" class="section level2" number="19.2">
-<h2><span class="header-section-number">G.2</span> Exploratory</h2>
-<p>　<a href="https://exploratory.io/" target="_blank" title="Exploratory">Exploratory <i class="fa fa-external-link"></i></a> は BI（Business Intelligence）BI（Business Intelligence）ツールのような操作で R を持ちた探索的データ分析（EDA）が行える利用できる専用クライアントアプリケーションを用いるクラウドサービスです。無料で利用できますがオンライン限定・パブリックシェアオンリーとなりますので注意してください。</p>
-<p>　<a href="https://exploratory.io/insight?type=note&amp;q=tag%3Avisualization%20tag%3Ahow-to%20tag%3A%22team%20exploratory%22&amp;sort=top-viewed&amp;language=ja" target="_blank" title="Exploratory">何ができるのか見てみる <i class="fa fa-external-link"></i></a> ページで多数の分析サンプルが公開されています。<br />
-　また、 <a href="https://exploratory.io/howto?language=ja" target="_blank" title="Exploratory">使い方ガイド <i class="fa fa-external-link"></i></a> ページにも様々な説明資料が用意されています。</p>
-　<br />
-
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-86"></span>
-<img src="fig/Exploratory.png" alt="Exploratory Public" width="80%"  />
-<p class="caption">
-Fig G.2: Exploratory Public
-</p>
+<div id="定数" class="section level2" number="14.3">
+<h2><span class="header-section-number">B.3</span> 定数</h2>
+<p>変数はその名の通り値を変更できますが、定数は特別な意味を持った値を保持するためもので予約語になっています。定数にもクラスがあり、下表のようになっています。</p>
+<table>
+<thead>
+<tr class="header">
+<th>定数</th>
+<th>クラス</th>
+<th>意味・説明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>TRUE</code></td>
+<td><code>logical</code></td>
+<td>Booleanの真を意味する（<span class="math inline">\(1\)</span>と等価）</td>
+</tr>
+<tr class="even">
+<td><code>FALSE</code></td>
+<td><code>logical</code></td>
+<td>Booleanの偽を意味する（<span class="math inline">\(0\)</span>と等価）</td>
+</tr>
+<tr class="odd">
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+<td>空（何も存在しない）を意味する（<span class="math inline">\(0\)</span>や<code>NA</code>とは異なる）</td>
+</tr>
+<tr class="even">
+<td><code>NA</code></td>
+<td><code>logical</code></td>
+<td>欠損値（Not Availabl で、データの欠損を意味する）</td>
+</tr>
+<tr class="odd">
+<td><code>NaN</code></td>
+<td><code>numeric</code></td>
+<td>非数（Not a Numberで非数<sup>c</sup>を表す）</td>
+</tr>
+<tr class="even">
+<td><code>Inf</code></td>
+<td><code>numeric</code></td>
+<td>無限大（<span class="math inline">\(0\)</span>除算時等は<code>NaN</code>ではなく<code>Inf/-Inf</code>）</td>
+</tr>
+</tbody>
+</table>
+<p><sup>c</sup> <span class="math inline">\(\frac{0}{0}\)</span>のような数値では表現できないものを意味する</p>
+<p><code>NULL</code>を除く定数はデータ型のクラスですので強制型変換の対象となります。</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="定数.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(10L, <span class="fl">2.5</span>, <span class="dv">3</span> <span class="sc">+</span> 4i, <span class="cn">TRUE</span>, <span class="cn">NaN</span>, <span class="cn">NA</span>, <span class="cn">Inf</span>, <span class="sc">-</span><span class="cn">Inf</span>)</span></code></pre></div>
+<pre><code>## [1] 10.0+0i  2.5+0i  3.0+4i  1.0+0i  NaN+0i      NA  Inf+0i -Inf+0i</code></pre>
+<div id="naの型" class="section level3" number="14.3.1">
+<h3><span class="header-section-number">B.3.1</span> <code>NA</code>の型</h3>
+<p>欠損値を示す<code>NA</code>にはデータ型を明示的に示すためのバリエーションがあります。関数によっては明示的な<code>NA</code>を指定する必要があります。</p>
+<table>
+<thead>
+<tr class="header">
+<th>NA</th>
+<th>データ型</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>NA_integer_</code></td>
+<td>整数型</td>
+</tr>
+<tr class="even">
+<td><code>NA_real_</code></td>
+<td>実数型</td>
+</tr>
+<tr class="odd">
+<td><code>NA_complex_</code></td>
+<td>複素数型</td>
+</tr>
+<tr class="even">
+<td><code>NA_character_</code></td>
+<td>文字型</td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>　</p>
-<p>　<a href="https://exploratory.io/pricing" target="_blank" title="">価格 <i class="fa fa-external-link"></i></a> ページからお好みのプランを選んでアカウントを取得します。クライアントアプリケーションは、mac まはた Windwos でしか動作しません。</p>
-<p>　</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="rstudio-cloud-ga.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="binder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="変数.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="検査変換.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

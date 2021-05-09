@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>G.2 Exploratory | Rのすゝめ</title>
+  <title>Appendix B: R Basics | Rのすゝめ</title>
   <meta name="description" content="本書は" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="G.2 Exploratory | Rのすゝめ" />
+  <meta property="og:title" content="Appendix B: R Basics | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="G.2 Exploratory | Rのすゝめ" />
+  <meta name="twitter:title" content="Appendix B: R Basics | Rのすゝめ" />
   
   <meta name="twitter:description" content="本書は" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rstudio-cloud-ga.html"/>
-<link rel="next" href="binder.html"/>
+<link rel="prev" href="site.html"/>
+<link rel="next" href="基本的な演算.html"/>
 <script src="assets/header-attrs-2.8/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,30 +357,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exploratory" class="section level2" number="19.2">
-<h2><span class="header-section-number">G.2</span> Exploratory</h2>
-<p>　<a href="https://exploratory.io/" target="_blank" title="Exploratory">Exploratory <i class="fa fa-external-link"></i></a> は BI（Business Intelligence）BI（Business Intelligence）ツールのような操作で R を持ちた探索的データ分析（EDA）が行える利用できる専用クライアントアプリケーションを用いるクラウドサービスです。無料で利用できますがオンライン限定・パブリックシェアオンリーとなりますので注意してください。</p>
-<p>　<a href="https://exploratory.io/insight?type=note&amp;q=tag%3Avisualization%20tag%3Ahow-to%20tag%3A%22team%20exploratory%22&amp;sort=top-viewed&amp;language=ja" target="_blank" title="Exploratory">何ができるのか見てみる <i class="fa fa-external-link"></i></a> ページで多数の分析サンプルが公開されています。<br />
-　また、 <a href="https://exploratory.io/howto?language=ja" target="_blank" title="Exploratory">使い方ガイド <i class="fa fa-external-link"></i></a> ページにも様々な説明資料が用意されています。</p>
-　<br />
-
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-86"></span>
-<img src="fig/Exploratory.png" alt="Exploratory Public" width="80%"  />
-<p class="caption">
-Fig G.2: Exploratory Public
+<div id="Appendix-RBasics" class="section level1" number="14">
+<h1><span class="header-section-number">Appendix B:</span> R Basics</h1>
+<blockquote>
+<p>Rの一番良いところは統計学者が作っているところだ。<br />
+Rの一番悪いところは統計学者が作っているところだ。</p>
+</blockquote>
+<p align="right">
+<a href="https://www.slideshare.net/shuyo/r-4022379" target="_blank" title="">出典</a>
 </p>
-</div>
-<p>　</p>
-<p>　<a href="https://exploratory.io/pricing" target="_blank" title="">価格 <i class="fa fa-external-link"></i></a> ページからお好みのプランを選んでアカウントを取得します。クライアントアプリケーションは、mac まはた Windwos でしか動作しません。</p>
-<p>　</p>
+<p><strong>R</strong>は統計的コンピューティングに特化している言語ですが、その開発は上記にもあるように統計学者が中心となって行われてきました。このような背景があるため他のコンピュータ言語を知っている方が使うと奇妙に感じる言語仕様があるかも知れません。
+しかし、<strong>R</strong>の便利な点は統計的コンピューティングを行うに際して必須と言えるベクトル演算がデフォルトで使えることにあります。
+まずは、このベクトル演算に慣れることから始めます。</p>
+<p>コードの表記は以下のように灰色で網掛けされた部分が実行するコード、<code>##</code> から始まる部分が実行結果となります。実行結果の表示がない場合は、次に実行するコードとあわせてコードが表示されます。なお、コード内の<code>#</code>で始まる部分はコメントですので実行されません。</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="Appendix-RBasics.html#cb66-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span>        <span class="co"># 変数への代入時は実行結果は表示されない</span></span>
+<span id="cb66-2"><a href="Appendix-RBasics.html#cb66-2" aria-hidden="true" tabindex="-1"></a>x             <span class="co"># 表示させたい場合は、別途、変数のみで実行する</span></span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="Appendix-RBasics.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)      <span class="co"># もしくはprint()関数を用いる</span></span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>実行結果の <code>##</code> の後に表示されている <code>[]</code> 内の数値は実行結果の出力の数を示すためのインデックスです。実行環境の表示幅により表示される値が変わります。例えば 1 から 100 までの数字を表示した場合</p>
+<pre><code>##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+##  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+##  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
+##  [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
+##  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
+##  [91]  91  92  93  94  95  96  97  98  99 100</code></pre>
+<p>このように1行目は最初の値から表示されるので<code>[1]</code>に、2行目は1行目で18個表示されており19個目からの表示となるため<code>[19]</code>になっていることが分かります。</p>
+<p>なお、以降に出てくるコードは<strong>RStudio</strong>上で動作するチュートリアルとしてパッケージ化してあります。興味のある方は <a href="https://github.com/k-metrics/kmetrics" target="_blank" title="">パッケージ kmetrics</a> をインストールして使ってみてください。なお、パッケージ概要や動作環境はリンク先のページでご確認ください。</p>
+<!-- \newpage -->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="rstudio-cloud-ga.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="binder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="site.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="基本的な演算.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

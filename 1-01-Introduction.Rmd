@@ -1,41 +1,41 @@
 # (PART) Introduction {-}
 
 # はじめに {.unnumbered}
-ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す数理資本主義の時代と言われています。
+　ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す[数理資本主義](https://www.meti.go.jp/shingikai/economy/risukei_jinzai/20190326_report.html){target="_blank" title="数学パワーが世界を変える，経済産業省"}の時代と言われています。
 
-[『データ指向のソフトウェア品質マネジメント』](https://www.juse-p.co.jp/products/view/442){target="_blank" title=""} は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。この書籍の著者の一人である小池氏が主催している [データ分析勉強会](https://sites.google.com/site/kantometrics/home){target="_blank" title=""} では、メトリクス分析に興味をもつ有志が統計分析を実践するために統計的コンピューティングを中心に様々な知識や手法を学んでいます。
+　[『データ指向のソフトウェア品質マネジメント』](https://www.juse-p.co.jp/products/view/442){target="_blank" title=""}は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。この書籍の著者の一人である小池氏が主催している [データ分析勉強会](https://sites.google.com/site/kantometrics/home){target="_blank" title=""}では、メトリクス分析に興味をもつ有志が統計分析を実践するために統計的コンピューティングを中心に様々な知識や手法を学んでいます。
 
-本書は実務でメトリクス分析を行いたいソフトウェア品質技術者をはじめとした統計的コンピューティングに興味を持っている方々に [R言語（以降、**R**と記述）](https://www.r-project.org/) の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。
+　本書は実務でメトリクス分析を行いたいソフトウェア品質技術者をはじめとした統計的コンピューティングに興味を持っている方々に [R言語（以降、**R**と記述）](https://www.r-project.org/){target="_blank" title=""}の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。
 
 
 ## 想定読者 {.unnumbered}
-本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有しており**R**を用いて分析を行いたいと考えている方々を読者として想定しています。本書では**R**を実行するための環境構築に関する詳細な解説は行いませんので、インストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえず**R**を使ってみたいという方は [Google Colaboratory（以降、**Google Colab**）](https://colab.research.google.com/notebook#create=true&language=r){target="_blank" title="Lunch Google Colab with R engine"} の利用をおすゝめします。
+　本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有しており**R**を用いて分析を行いたいと考えている方々を読者として想定しています。本書では**R**を実行するための環境構築に関する詳細な解説は行いませんので、インストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえず**R**を使ってみたいという方は [Google Colaboratory（以降、**Google Colab**）](https://colab.research.google.com/notebook#create=true&language=r){target="_blank" title="Lunch Google Colab with R engine"}の利用をおすゝめします。
 
 <!-- \newpage -->
 
 ## 表記ルール {.unnumbered}
-本書では以下の表記ルールを用いています。
+　本書では以下の表記ルールを用いています。
 
-対象                 | 表記方法                             | 表記例
----------------------|--------------------------------------|--------------
-ハイパーリンク       | 脚注にURLを表記（PDF形式の場合）     | CRAN^1^
-パス・ファイル名     | モノフォント^a^                      | `sample/sample.Rmd`
-パッケージ名         | 太字のモノフォント                   | **`tidyverse`**
-変数・オブジェクト名 | モノフォント                         | `Sepela.Width`
-関数名               | モノフォントで()付き表記             | `print()`
-コード               | モノフォント（プロンプトなし）       | `library(tidyverse)`
-コードの実行結果     | モノフォント（`##` プロンプトあり）  | `## output...`
-キーボードのキー     | モノフォントで[]付き表記             | [`Ctrl`]+[`S`]
-数式                 | \LaTeX 数式（math mode）             | $y = ax^2 + b$
-サービス名など       | 太字                                 | **Google Colab**
+対象                 | 表記方法                            | 表記例
+---------------------|-------------------------------------|-------------------
+ハイパーリンク       | 脚注にURL表記（PDFのみ）            | CRAN^No.^
+パス・ファイル名     | モノフォント^a^                     | `sample/sample.Rmd`
+パッケージ名         | 太字のモノフォント                  | **`tidyverse`**
+変数・オブジェクト名 | モノフォント                        | `Sepela.Width`
+関数名               | モノフォントで()付き表記            | `print()`
+コード               | モノフォント（プロンプトなし）      | `library(tidyverse)`
+コードの実行結果     | モノフォント（`##` プロンプトあり） | `## output...`
+キーボードのキー     | モノフォントで[]付き表記            | [`Ctrl`]+[`S`]
+数式                 | \LaTeX 数式（math mode）            | $y = ax^2 + b$
+サービス名など       | 太字                                | **Google Colab**
 
 ^a^ タイプライタフォントとも呼ばれる等幅フォントのこと
 
 
 <!-- \newpage -->
 
-## なぜ**R**を使うのか {.unnumbered}
-データ分析を行うためには適切な分析ツールが必要不可欠です。**R**は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。**R**がデータ分析に向いている理由をまとめているのが["Six Reasons To Learn R For Business", R Blogger](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank" title=""}です。
+## なぜRか？ {.unnumbered}
+　データ分析を行うためには適切な分析ツールが必要不可欠です。**R**は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。**R**がデータ分析に向いている理由をまとめているのが["Six Reasons To Learn R For Business", R Blogger](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank" title=""}です。
 
 > 1.  R Has The Best _**Overall Qualities**_
 > 2.  R Is Data Science _**For Non-Computer Scientists**_
@@ -44,15 +44,17 @@
 > 5.  R Is Built _**For Business**_
 > 6.  R _**Community Support**_
 
-**R**はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。[CRAN(The Comprehensive R Archive Network)](https://cran.r-project.org/){target="_blank" title=""}と呼ばれる**R**のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は[CRAN Task Views](https://cran.r-project.org/web/views/){target="_blank" title=""}を見て分かるように古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は[Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html){target="_blank" title=""}と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉ですが、データ分析では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々は「Reproducible Research」とあるように科学的研究の分野で使われている言葉です。他の言語ではこの分野を開発範囲（スコープ）に含めることはほぼありません。
-また、**R**は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）にも適していると言えます。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
+　**R**はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。[CRAN(The Comprehensive R Archive Network)](https://cran.r-project.org/){target="_blank" title=""}と呼ばれる**R**のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は[CRAN Task Views](https://cran.r-project.org/web/views/){target="_blank" title=""}を見て分かるように古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は[Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html){target="_blank" title=""}と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉ですが、データ分析では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々は「Reproducible Research」とあるように科学的研究の分野で使われている言葉です。他の言語ではこの分野を開発範囲（スコープ）に含めることはほぼありません。
 
-ちなみに本書も**R**のパッケージである[**`bookdown`**](https://bookdown.org/){target="_blank" title="Write HTML, PDF, ePub, and Kindle books with R Markdown"}という文書作成に特化したパッケージを利用して作成してます。
+　また、**R**は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）にも適していると言えます。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
+
+　ちなみに本書も**R**のパッケージである[**`bookdown`**](https://bookdown.org/){target="_blank" title="Write HTML, PDF, ePub, and Kindle books with R Markdown"}という文書作成に特化したパッケージを利用して**RStudio**という**R**用の統合開発環境を用いて作成してます。
 
 
 ## 分析の手順 {.unnumbered}
-では、**R**を使った分析とはどのような手順になるかを簡単に見てみましょう。**R**は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。
-例えば「フィッシャーのあやめ（Fisher's or Anderson's iris）」を例にとってみましょう。「フィッシャーのあやめ」は**R**の例題でよく使われる下記のような150行のデータセットでRに標準で組み込まれています。
+　**R**を使った分析とはどのような手順になるかを簡単に見てみましょう。**R**は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。
+
+　例えば[フィッシャーのあやめ（Fisher's or Anderson's iris）](https://en.wikipedia.org/wiki/Iris_flower_data_set){target="_blank" title="Iris flower data set, Wikipedia"}を例にとってみましょう。「フィッシャーのあやめ」は**R**や機械学習の例題として様々な媒体で頻繁に使われる下記のような150行のデータセットです。**R**に標準で組み込まれています。
 
 ```{r, echo=FALSE}
 iris %>% 
@@ -61,19 +63,22 @@ iris %>%
 
 <!-- \newpage -->
 
-このデータセットの主な要約統計量は以下のようになり、萼片（Sepal）より花弁（Petal）の方が小さい傾向にあると推測できます。
+　このデータセットの要約統計量は以下で、萼片（Sepal）より花弁（Petal）の方が小さい傾向にあると推測できます。
+
 ```{r, echo=FALSE, out.width="100%"}
 summary(iris)
 ```
 
-この要約の通りか箱ひげ図を描いて確かめてみますが、元のデータ形式では都合が悪いので以下のように変形しておきます。
+　上記の要約統計章を箱ひげ図で表してみます。ただし、元の形式では都合が悪いので以下に変形しておきます。
+
 ```{r, echo=FALSE}
 iris %>%
   tidyr::pivot_longer(cols = -Species, names_to = "part", values_to = "value") %>% 
   df_print(n = 4L)
 ```
 
-変形したデータを使って部位別の箱ひげ図を描くと確かに 花弁（Petal）の方が 萼片（Sepal）よりも小さい傾向にあることが分かります。
+　変形したデータを使って部位別の箱ひげ図を描くと確かに 花弁（Petal）の方が 萼片（Sepal）よりも小さい傾向にあることが分かります。
+
 ```{r, echo=FALSE, fig.cap="花弁と萼片の分布", out.width="80%"}
 iris %>%
   tidyr::pivot_longer(cols = -Species, names_to = "part", values_to = "value") %>% 
@@ -87,7 +92,8 @@ iris %>%
 knitr::include_graphics()
 ```
 
-次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を見ると花弁（Petal）の幅と長さに相関関係があるように見えます。
+　次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を見てみます。
+
 ```{r, echo=FALSE, fig.cap="幅と長さの関係", fig.ncol=2, out.width="40%", fig.subcap=c('花弁', '萼片')}
 iris %>%
   ggplot2::ggplot(ggplot2::aes(x = Petal.Width, y = Petal.Length)) +
@@ -98,13 +104,15 @@ iris %>%
     ggplot2::geom_point()
 ```
 
-そこで、花弁（Petal）の幅（`Petal.Width`）と長さ（`Petal.Length`）の回帰関係を求めてみます。
+　花弁（Petal）の幅と長さに相関関係があるように、萼片（Sepal）の方には相関関係がないように見えます。そこで、花弁（Petal）の幅（`Petal.Width`）と長さ（`Petal.Length`）の回帰式を求めます。
+
 ```{r, echo=FALSE}
 with(iris, lm(Petal.Length ~ Petal.Width)) %>% 
   summary()
 ```
 
-モデルの当てはまり具合が良さそうなので、回帰関係を可視化してみます。ついでに萼片（Sepal）の方も可視化してみます。
+　回帰モデルの当てはまり具合がかなり良いので回帰モデルを可視化します。比較として萼片（Sepal）の回帰モデルも可視化します。
+
 ```{r, echo=FALSE, message=FALSE, fig.cap="幅と長さの関係", fig.ncol=2, out.width="40%", fig.subcap=c('花弁の回帰関係', '萼片の回帰関係')}
 iris %>%
   ggplot2::ggplot(ggplot2::aes(x = Petal.Width, y = Petal.Length)) +
@@ -117,15 +125,26 @@ iris %>%
     ggplot2::geom_smooth(method = "lm", se = FALSE)
 ```
 
+　データ分析では、このような手順で対象のデータに対して可視化と変形、モデルの計算を繰り返すことで適切なモデルを同定します。
+
 ```{r, echo=FALSE, eval=FALSE}
 # Visualize <-> Transform <-> Model
 knitr::include_graphics()
 ```
 
-実際にはこれだけではデータ分析はできませんので、分析対象を
+　実際には対象のデータが都合よく**R**に組み込まれている訳ではありませんので、対象となるデータを読み込み（インポートし）、処理がしやすいように整形してから可視化などを行います。
 
+```{r, echo=FALSE, eval=FALSE}
+# Import -> Tidy -> Visualize <-> Transform <-> Model
+knitr::include_graphics()
+```
 
-これがデータサイエンスワークフロー（Data Science Workflow）と呼ばれる分析フローです。
+```{r, echo=FALSE, eval=FALSE}
+# Import -> Tidy -> Visualize <-> Transform <-> Model -> Infer -> Communicate/Automate
+knitr::include_graphics()
+```
+
+この図がデータサイエンスワークフロー（Data Science Workflow）と呼ばれるデータ分析のプロセスを抽象化したフロー図です。
 
 <!-- \newpage -->
 

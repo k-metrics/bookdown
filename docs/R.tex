@@ -8,6 +8,7 @@
 ]{book}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
+\usepackage{setspace}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
@@ -117,7 +118,7 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-\usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+\usepackage[a4paper, total={160mm, 247mm}, left=25mm, top=25mm]{geometry}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -179,15 +180,16 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
+\setstretch{1.1}
 \hypertarget{license}{%
 \chapter*{License}\label{license}}
 \addcontentsline{toc}{chapter}{License}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-本書は\href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja}{クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス}の下に提供されています。
+　本書は\href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja}{クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス}の下に提供されています。あなたは以下の条件に従う限り自由に共有・翻案することができます。
 
-あなたの従うべき条件は以下の通りです。
+　あなたの従うべき条件は以下の通りです。
 
 \begin{itemize}
 \item
@@ -218,11 +220,11 @@
 
 \begin{figure}
 \centering
-\includegraphics{./fig/88x31.png}
+\includegraphics{"./fig/88x31.png"}
 \caption{CC 4.0 BY-NC-SA}
 \end{figure}
 
-ただし、本書にて引用している文書、図、ロゴなどの権利は原著作者が保有しています。
+　ただし、本書にて引用している文書、図、ロゴなどの権利は原著作者が保有しています。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -233,30 +235,30 @@
 \chapter*{はじめに}\label{ux306fux3058ux3081ux306b}}
 \addcontentsline{toc}{chapter}{はじめに}
 
-ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す数理資本主義の時代と言われています。
+　ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す\href{https://www.meti.go.jp/shingikai/economy/risukei_jinzai/20190326_report.html}{数理資本主義}の時代と言われています。
 
-\href{https://www.juse-p.co.jp/products/view/442}{『データ指向のソフトウェア品質マネジメント』} は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。この書籍の著者の一人である小池氏が主催している \href{https://sites.google.com/site/kantometrics/home}{データ分析勉強会} では、メトリクス分析に興味をもつ有志が統計分析を実践するために統計的コンピューティングを中心に様々な知識や手法を学んでいます。
+　\href{https://www.juse-p.co.jp/products/view/442}{『データ指向のソフトウェア品質マネジメント』}は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。この書籍の著者の一人である小池氏が主催している \href{https://sites.google.com/site/kantometrics/home}{データ分析勉強会}では、メトリクス分析に興味をもつ有志が統計分析を実践するために統計的コンピューティングを中心に様々な知識や手法を学んでいます。
 
-本書は実務でメトリクス分析を行いたいソフトウェア品質技術者をはじめとした統計的コンピューティングに興味を持っている方々に \href{https://www.r-project.org/}{R言語（以降、\textbf{R}と記述）} の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。
+　本書は実務でメトリクス分析を行いたいソフトウェア品質技術者をはじめとした統計的コンピューティングに興味を持っている方々に \href{https://www.r-project.org/}{R言語（以降、\textbf{R}と記述）}の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。
 
 \hypertarget{ux60f3ux5b9aux8aadux8005}{%
 \section*{想定読者}\label{ux60f3ux5b9aux8aadux8005}}
 \addcontentsline{toc}{section}{想定読者}
 
-本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有しており\textbf{R}を用いて分析を行いたいと考えている方々を読者として想定しています。本書では\textbf{R}を実行するための環境構築に関する詳細な解説は行いませんので、インストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえず\textbf{R}を使ってみたいという方は \href{https://colab.research.google.com/notebook\#create=true\&language=r}{Google Colaboratory（以降、\textbf{Google Colab}）} の利用をおすゝめします。
+　本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有しており\textbf{R}を用いて分析を行いたいと考えている方々を読者として想定しています。本書では\textbf{R}を実行するための環境構築に関する詳細な解説は行いませんので、インストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえず\textbf{R}を使ってみたいという方は \href{https://colab.research.google.com/notebook\#create=true\&language=r}{Google Colaboratory（以降、\textbf{Google Colab}）}の利用をおすゝめします。
 
 \hypertarget{ux8868ux8a18ux30ebux30fcux30eb}{%
 \section*{表記ルール}\label{ux8868ux8a18ux30ebux30fcux30eb}}
 \addcontentsline{toc}{section}{表記ルール}
 
-本書では以下の表記ルールを用いています。
+　本書では以下の表記ルールを用いています。
 
 \begin{longtable}[]{@{}lll@{}}
 \toprule
 対象 & 表記方法 & 表記例 \\
 \midrule
 \endhead
-ハイパーリンク & 脚注にURLを表記（PDF形式の場合） & CRAN\textsuperscript{1} \\
+ハイパーリンク & 脚注にURL表記（PDFのみ） & CRAN\textsuperscript{No.} \\
 パス・ファイル名 & モノフォント\textsuperscript{a} & \texttt{sample/sample.Rmd} \\
 パッケージ名 & 太字のモノフォント & \textbf{\texttt{tidyverse}} \\
 変数・オブジェクト名 & モノフォント & \texttt{Sepela.Width} \\
@@ -271,11 +273,11 @@
 
 \textsuperscript{a} タイプライタフォントとも呼ばれる等幅フォントのこと
 
-\hypertarget{ux306aux305crux3092ux4f7fux3046ux306eux304b}{%
-\section*{\texorpdfstring{なぜ\textbf{R}を使うのか}{なぜRを使うのか}}\label{ux306aux305crux3092ux4f7fux3046ux306eux304b}}
-\addcontentsline{toc}{section}{なぜ\textbf{R}を使うのか}
+\hypertarget{ux306aux305crux304b}{%
+\section*{なぜRか？}\label{ux306aux305crux304b}}
+\addcontentsline{toc}{section}{なぜRか？}
 
-データ分析を行うためには適切な分析ツールが必要不可欠です。\textbf{R}は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。\textbf{R}がデータ分析に向いている理由をまとめているのが\href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business'', R Blogger}です。
+　データ分析を行うためには適切な分析ツールが必要不可欠です。\textbf{R}は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。\textbf{R}がデータ分析に向いている理由をまとめているのが\href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business'', R Blogger}です。
 
 \begin{quote}
 \begin{enumerate}
@@ -296,9 +298,10 @@
 \end{enumerate}
 \end{quote}
 
-\textbf{R}はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。\href{https://cran.r-project.org/}{CRAN(The Comprehensive R Archive Network)}と呼ばれる\textbf{R}のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は\href{https://cran.r-project.org/web/views/}{CRAN Task Views}を見て分かるように古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は\href{https://cran.r-project.org/web/views/ReproducibleResearch.html}{Reproducible Research}と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉ですが、データ分析では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々は「Reproducible Research」とあるように科学的研究の分野で使われている言葉です。他の言語ではこの分野を開発範囲（スコープ）に含めることはほぼありません。 また、\textbf{R}は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）にも適していると言えます。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
+　\textbf{R}はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。\href{https://cran.r-project.org/}{CRAN(The Comprehensive R Archive Network)}と呼ばれる\textbf{R}のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は\href{https://cran.r-project.org/web/views/}{CRAN Task Views}を見て分かるように古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は\href{https://cran.r-project.org/web/views/ReproducibleResearch.html}{Reproducible Research}と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉ですが、データ分析では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々は「Reproducible Research」とあるように科学的研究の分野で使われている言葉です。他の言語ではこの分野を開発範囲（スコープ）に含めることはほぼありません。\\
+　また、\textbf{R}は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）にも適していると言えます。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
 
-ちなみに本書も\textbf{R}のパッケージである\href{https://bookdown.org/}{\textbf{\texttt{bookdown}}}という文書作成に特化したパッケージを利用して作成してます。
+　ちなみに本書も\textbf{R}のパッケージである\href{https://bookdown.org/}{\textbf{\texttt{bookdown}}}という文書作成に特化したパッケージを利用して作成してます。
 
 \hypertarget{ux5206ux6790ux306eux624bux9806}{%
 \section*{分析の手順}\label{ux5206ux6790ux306eux624bux9806}}
@@ -817,7 +820,7 @@ R について学ぶ際には R が使えるような環境を構築しておく
 \end{verbatim}
 
 \hypertarget{ux6700ux5c0fux6700ux5927ux5024}{%
-\section{最小・最大値}\label{ux6700ux5c0fux6700ux5927ux5024}}
+\subsection{最小・最大値}\label{ux6700ux5c0fux6700ux5927ux5024}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1150,6 +1153,12 @@ R について学ぶ際には R が使えるような環境を構築しておく
 
 \hypertarget{refereneces}{%
 \chapter{Refereneces}\label{refereneces}}
+
+\hypertarget{book}{%
+\section{Book}\label{book}}
+
+\hypertarget{site}{%
+\section{Site}\label{site}}
 
 \hypertarget{Appendix-RBasics}{%
 \chapter{R Basics}\label{Appendix-RBasics}}

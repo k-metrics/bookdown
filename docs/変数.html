@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>分析の手順 | Rのすゝめ</title>
+  <title>B.2 変数 | Rのすゝめ</title>
   <meta name="description" content="本書は" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="分析の手順 | Rのすゝめ" />
+  <meta property="og:title" content="B.2 変数 | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="分析の手順 | Rのすゝめ" />
+  <meta name="twitter:title" content="B.2 変数 | Rのすゝめ" />
   
   <meta name="twitter:description" content="本書は" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="なぜrを使うのか.html"/>
-<link rel="next" href="data-science-workflow.html"/>
+<link rel="prev" href="基本的な演算.html"/>
+<link rel="next" href="定数.html"/>
 <script src="assets/header-attrs-2.8/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,88 +357,293 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="分析の手順" class="section level2 unnumbered">
-<h2>分析の手順</h2>
-<p>では、<strong>R</strong>を使った分析とはどのような手順になるかを簡単に見てみましょう。<strong>R</strong>は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。
-例えば「フィッシャーのあやめ（Fisher’s or Anderson’s iris）」を例にとってみましょう。「フィッシャーのあやめ」は<strong>R</strong>の例題でよく使われる下記のような150行のデータセットでRに標準で組み込まれています。</p>
+<div id="変数" class="section level2" number="14.2">
+<h2><span class="header-section-number">B.2</span> 変数</h2>
+<p>変数の命名規則は <a href="https://style.tidyverse.org/syntax.html#object-names" target="_blank">tidyverse スタイルガイド（以降、スタイルガイド）</a> と呼ばれる記述ルールに準拠することをおすゝめします。スタイルガイドでは変数名に使える文字を以下の組合せであることを推奨しています。</p>
+<ul>
+<li>英数小文字（<code>A-Z</code>, <code>a-z</code>）</li>
+<li>数字（<code>0 1 2 3 4 5 6 7 8 9</code>）</li>
+<li>アンダースコア（<code>_</code>）</li>
+</ul>
+<p>ただし、数字から始まる変数名は<strong>R</strong>の仕様により使うことができません（エラーになります）。また、日本語の変数名を使うことは可能ですが、様々な環境を考慮すると変数名に日本語を使用することはおすゝめできません。本書はスタイルガイドに準拠した記述になっています。</p>
+<div id="予約語" class="section level3" number="14.2.1">
+<h3><span class="header-section-number">B.2.1</span> 予約語</h3>
+<p>プログラミング言語には予約語（Reserved Word）といわれるものがあり予約語は変数名として使えません。<strong>R</strong>では以下が予約語になっています。</p>
+<p><code>if</code>, <code>else</code>, <code>for</code>, <code>while</code>, <code>repeat</code>, <code>in</code>, <code>next</code>, <code>break</code>, <code>function</code>,<br />
+<code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>, <code>NA</code>, <code>NaN</code>, <code>Inf</code></p>
+<p>また、予約語以外でも変数型や関数に使われている名前を変数名として使うことはおすゝめできません。</p>
+</div>
+<div id="データ型" class="section level3" number="14.2.2">
+<h3><span class="header-section-number">B.2.2</span> データ型</h3>
+<p>他の言語でも同じですが変数には値を入れることができます。データ型はどのような値のデータが入っているかを識別するためのものです。<strong>R</strong>の代表的なデータ型には以下のようなものがあります。</p>
+<table>
+<thead>
+<tr class="header">
+<th>型</th>
+<th>クラス</th>
+<th>タイプ</th>
+<th>モード</th>
+<th>格納モード</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>実数型</td>
+<td><code>numeric</code></td>
+<td><code>double</code></td>
+<td><code>numeric</code></td>
+<td><code>double</code></td>
+<td>倍精度浮動小数点</td>
+</tr>
+<tr class="even">
+<td>整数型</td>
+<td><code>integer</code></td>
+<td><code>integer</code></td>
+<td><code>numeric</code></td>
+<td><code>integer</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>複素数型</td>
+<td><code>complex</code></td>
+<td><code>complex</code></td>
+<td><code>complex</code></td>
+<td><code>complex</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>論理型</td>
+<td><code>logical</code></td>
+<td><code>logical</code></td>
+<td><code>logical</code></td>
+<td><code>logical</code></td>
+<td>Boolean型</td>
+</tr>
+<tr class="odd">
+<td>文字型</td>
+<td><code>character</code></td>
+<td><code>character</code></td>
+<td><code>character</code></td>
+<td><code>character</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>日付型</td>
+<td><code>Date</code></td>
+<td><code>double</code></td>
+<td><code>numeric</code></td>
+<td><code>double</code></td>
+<td>Date型<sup>b</sup></td>
+</tr>
+</tbody>
+</table>
+<p><sup>b</sup> 日付型にはPOSIX型もあります</p>
+<p><strong>R</strong>は開発の経緯から様々な型の見かたがありますが、基本的に同じようなものだとと考えてください。書籍などでよく出てくる<code>str()</code>関数が返す型は上表におけるクラスです。</p>
+</div>
+<div id="変数型" class="section level3" number="14.2.3">
+<h3><span class="header-section-number">B.2.3</span> 変数型</h3>
+<p>変数型はどのような形でデータを格納できるかを識別するためのものです。</p>
+<table>
+<thead>
+<tr class="header">
+<th>変数型</th>
+<th>クラス</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ベクトル型</td>
+<td>データ型に同じ</td>
+<td>基本となる変数型</td>
+</tr>
+<tr class="even">
+<td>因子型</td>
+<td><code>factor</code>, <code>ordered</code></td>
+<td>インデックスを持つ変数型</td>
+</tr>
+<tr class="odd">
+<td>マトリクス型（行列型）</td>
+<td><code>matrix</code></td>
+<td>二次元のベクトル型</td>
+</tr>
+<tr class="even">
+<td>アレイ型（配列型）</td>
+<td><code>array</code></td>
+<td>多次元のベクトル型</td>
+</tr>
+<tr class="odd">
+<td>データフレーム型</td>
+<td><code>data.frame</code></td>
+<td><strong>等長</strong>なベクトル型</td>
+</tr>
+<tr class="even">
+<td>リスト型</td>
+<td><code>list</code></td>
+<td>自由度が最も高い変数型</td>
+</tr>
+</tbody>
+</table>
+<div id="ベクトル型" class="section level4" number="14.2.3.1">
+<h4><span class="header-section-number">B.2.3.1</span> ベクトル型</h4>
+<p>ベクトル型は基本となる変数型です。ベクトル型には一種類のデータ型のデータ（値）しか格納することができません。格納できる個数は任意です。
+ベクトル型の変数を作成するには<code>c()</code>関数を用います。代入して<code>str()</code>関数でクラス、長さ（値の個数）と値を確認してみます。長さが1の場合は<code>c()</code>関数を省略することができます。</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="変数.html#cb104-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> 2L                 <span class="co"># 一つだけ代入する場合 `c()` は省略可能</span></span>
+<span id="cb104-2"><a href="変数.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)                  <span class="co"># 値が一つだけの場合は長さ表示が省略</span></span></code></pre></div>
+<pre><code>##  int 2</code></pre>
+<p>　</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="変数.html#cb106-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)         <span class="co"># 実数の 1 から 3 の三つの値が代入</span></span>
+<span id="cb106-2"><a href="変数.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)                  <span class="co"># []の部分が長さ表示</span></span></code></pre></div>
+<pre><code>##  num [1:3] 1 2 3</code></pre>
+<p>文字（型）を代入する場合はクォート（ダブルまはたシングル）で囲みます。</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="変数.html#cb108-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&#39;2&#39;</span>, <span class="st">&quot;3&quot;</span>)   <span class="co"># 文字として数字を代入</span></span>
+<span id="cb108-2"><a href="変数.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code></pre></div>
+<pre><code>##  chr [1:3] &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
+<p>では文字（型）と数字（型）を混在させたらどうなるでしょう？</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="変数.html#cb110-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(1L, <span class="dv">2</span>, <span class="st">&quot;3&quot;</span>)      <span class="co"># 整数、実数、文字としての数字を代入</span></span>
+<span id="cb110-2"><a href="変数.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)                  <span class="co"># 強制型変換により最も柔軟度の高い文字型に</span></span></code></pre></div>
+<pre><code>##  chr [1:3] &quot;1&quot; &quot;2&quot; &quot;3&quot;</code></pre>
+<p>エラーにはならずベクトル型変数は文字型の変数として作成されます。これは強制型変換という処理が行われるためです。強制型変換は複数のデータ型が混在した場合により柔軟度の高いデータ型に自動的に変換する処理で、論理型、整数型、実数型、複素数型、文字型の順に変換されます。
+強制型変換は便利ですが意図しない変換結果を招く場合もありますので、このような変換が行われることは憶えてください。</p>
+</div>
+<div id="因子型" class="section level4" number="14.2.3.2">
+<h4><span class="header-section-number">B.2.3.2</span> 因子型</h4>
+<p>因子型は名義尺度や順序尺度の変数を扱う際に便利な変数型です。前述のベクトル型変数に格納された値を識別するためのインデックスがついたデータベーステーブルのような仕組みを持っています。
+因子型を作成するには<code>factor()</code>関数を使う順序なしの因子型と<code>ordered()</code>関数を使う順序ありの因子型があります。どちらも<code>levels</code>（水準）という属性がつきます。この水準にインデックスとしての役割があります。後述のデータフレーム型の中で使うと「層別」という処理が楽になります。</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="変数.html#cb112-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
+<span id="cb112-2"><a href="変数.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code></pre></div>
+<pre><code>##  Factor w/ 4 levels &quot;A&quot;,&quot;AB&quot;,&quot;B&quot;,&quot;O&quot;: 1 3 2 4 1 1 1 3</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="変数.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot;  &quot;AB&quot; &quot;B&quot;  &quot;O&quot;</code></pre>
+<p><code>ordered</code>型は<code>levels</code>に順序がついている点が<code>factor</code>型と異なる点です。</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="変数.html#cb116-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">ordered</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>))</span>
+<span id="cb116-2"><a href="変数.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code></pre></div>
+<pre><code>##  Ord.factor w/ 4 levels &quot;A&quot;&lt;&quot;AB&quot;&lt;&quot;B&quot;&lt;&quot;O&quot;: 1 3 2 4 1 1 1 3</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="変数.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot;  &quot;AB&quot; &quot;B&quot;  &quot;O&quot;</code></pre>
+</div>
+<div id="マトリクス型" class="section level4" number="14.2.3.3">
+<h4><span class="header-section-number">B.2.3.3</span> マトリクス型</h4>
+<p>マトリクス型は文字通り二次元配列を扱うための変数型です。作成するには<code>matrix()</code>関数を利用します。引数のベクトル型を列方向から二次元に展開します。</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="変数.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>), <span class="dv">2</span>, <span class="dv">3</span>)     <span class="co"># 2行3列のマトリクス型</span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   10   30   50
+## [2,]   20   40   60</code></pre>
+<p>展開方向を変えるには引数自体を変える方法もありますが<code>byrow</code>オプションを利用する方がスマートです。</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="変数.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>), <span class="dv">2</span>, <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   10   20   30
+## [2,]   40   50   60</code></pre>
+<p>整数型や実数型の数値だけでなく文字型など他のデータ型も扱えます。</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="変数.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,] &quot;a&quot;  &quot;x&quot; 
+## [2,] &quot;b&quot;  &quot;y&quot;</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="変数.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>), <span class="dv">2</span>, <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,] &quot;a&quot;  &quot;b&quot; 
+## [2,] &quot;x&quot;  &quot;y&quot;</code></pre>
+<p>マトリクス型を使う機会はあまり多くありませんが、関数の引数や返り値として使われることがありますので、どういう変数型なのかを憶えておいてください。</p>
+</div>
+<div id="アレイ型" class="section level4" number="14.2.3.4">
+<h4><span class="header-section-number">B.2.3.4</span> アレイ型</h4>
+<p>アレイ型はマトリクス型を複数ならべたような多次元配列を扱うための変数型です。作成するには<code>array()</code>関数を利用します。第一引数で指定したベクトル型のデータを第二引数で指定した構造（行数, 列数, 次元数）にしたがって多次元配列に展開します。展開は列方向のみで<code>matrix()</code>関数がもつ<code>byrow</code>オプションはありません。</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="変数.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">array</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]    7    9   11
+## [2,]    8   10   12</code></pre>
+<p>なお、第一引数のデータ数が第二引数で指定した総数（<span class="math inline">\(\mbox{行数} \times \mbox{列数} \times \mbox{次元数}\)</span>）より少ない場合は警告メッセージ（以降、ワーニング）を出力して第一引数のデータを先頭からリサイクルして埋めます。これは<code>matrix()</code>関数でも同様です。
+アレイ型もマトリクス型同様に使うと機会はあまり多くありません。</p>
+</div>
+<div id="データフレーム型" class="section level4" number="14.2.3.5">
+<h4><span class="header-section-number">B.2.3.5</span> データフレーム型</h4>
+<p>データフレーム型はデータベースのテーブルのような形式の変数型で最も使われる変数型と言えます。制約として全ての列の行数が等しい必要があります。すなわち、等長のベクトル型変数を列方向にならべた変数型と言えます。例えば前出の<code>iris</code>データセットはデータフレーム型変数です。</p>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Sepal.Length"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sepal.Width"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Petal.Length"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Petal.Width"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Species"],"name":[5],"type":["fct"],"align":["left"]}],"data":[{"1":"5.1","2":"3.5","3":"1.4","4":"0.2","5":"setosa"},{"1":"4.9","2":"3.0","3":"1.4","4":"0.2","5":"setosa"},{"1":"4.7","2":"3.2","3":"1.3","4":"0.2","5":"setosa"},{"1":"4.6","2":"3.1","3":"1.5","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.6","3":"1.4","4":"0.2","5":"setosa"},{"1":"5.4","2":"3.9","3":"1.7","4":"0.4","5":"setosa"},{"1":"4.6","2":"3.4","3":"1.4","4":"0.3","5":"setosa"},{"1":"5.0","2":"3.4","3":"1.5","4":"0.2","5":"setosa"},{"1":"4.4","2":"2.9","3":"1.4","4":"0.2","5":"setosa"},{"1":"4.9","2":"3.1","3":"1.5","4":"0.1","5":"setosa"},{"1":"5.4","2":"3.7","3":"1.5","4":"0.2","5":"setosa"},{"1":"4.8","2":"3.4","3":"1.6","4":"0.2","5":"setosa"},{"1":"4.8","2":"3.0","3":"1.4","4":"0.1","5":"setosa"},{"1":"4.3","2":"3.0","3":"1.1","4":"0.1","5":"setosa"},{"1":"5.8","2":"4.0","3":"1.2","4":"0.2","5":"setosa"},{"1":"5.7","2":"4.4","3":"1.5","4":"0.4","5":"setosa"},{"1":"5.4","2":"3.9","3":"1.3","4":"0.4","5":"setosa"},{"1":"5.1","2":"3.5","3":"1.4","4":"0.3","5":"setosa"},{"1":"5.7","2":"3.8","3":"1.7","4":"0.3","5":"setosa"},{"1":"5.1","2":"3.8","3":"1.5","4":"0.3","5":"setosa"},{"1":"5.4","2":"3.4","3":"1.7","4":"0.2","5":"setosa"},{"1":"5.1","2":"3.7","3":"1.5","4":"0.4","5":"setosa"},{"1":"4.6","2":"3.6","3":"1.0","4":"0.2","5":"setosa"},{"1":"5.1","2":"3.3","3":"1.7","4":"0.5","5":"setosa"},{"1":"4.8","2":"3.4","3":"1.9","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.0","3":"1.6","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.4","3":"1.6","4":"0.4","5":"setosa"},{"1":"5.2","2":"3.5","3":"1.5","4":"0.2","5":"setosa"},{"1":"5.2","2":"3.4","3":"1.4","4":"0.2","5":"setosa"},{"1":"4.7","2":"3.2","3":"1.6","4":"0.2","5":"setosa"},{"1":"4.8","2":"3.1","3":"1.6","4":"0.2","5":"setosa"},{"1":"5.4","2":"3.4","3":"1.5","4":"0.4","5":"setosa"},{"1":"5.2","2":"4.1","3":"1.5","4":"0.1","5":"setosa"},{"1":"5.5","2":"4.2","3":"1.4","4":"0.2","5":"setosa"},{"1":"4.9","2":"3.1","3":"1.5","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.2","3":"1.2","4":"0.2","5":"setosa"},{"1":"5.5","2":"3.5","3":"1.3","4":"0.2","5":"setosa"},{"1":"4.9","2":"3.6","3":"1.4","4":"0.1","5":"setosa"},{"1":"4.4","2":"3.0","3":"1.3","4":"0.2","5":"setosa"},{"1":"5.1","2":"3.4","3":"1.5","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.5","3":"1.3","4":"0.3","5":"setosa"},{"1":"4.5","2":"2.3","3":"1.3","4":"0.3","5":"setosa"},{"1":"4.4","2":"3.2","3":"1.3","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.5","3":"1.6","4":"0.6","5":"setosa"},{"1":"5.1","2":"3.8","3":"1.9","4":"0.4","5":"setosa"},{"1":"4.8","2":"3.0","3":"1.4","4":"0.3","5":"setosa"},{"1":"5.1","2":"3.8","3":"1.6","4":"0.2","5":"setosa"},{"1":"4.6","2":"3.2","3":"1.4","4":"0.2","5":"setosa"},{"1":"5.3","2":"3.7","3":"1.5","4":"0.2","5":"setosa"},{"1":"5.0","2":"3.3","3":"1.4","4":"0.2","5":"setosa"},{"1":"7.0","2":"3.2","3":"4.7","4":"1.4","5":"versicolor"},{"1":"6.4","2":"3.2","3":"4.5","4":"1.5","5":"versicolor"},{"1":"6.9","2":"3.1","3":"4.9","4":"1.5","5":"versicolor"},{"1":"5.5","2":"2.3","3":"4.0","4":"1.3","5":"versicolor"},{"1":"6.5","2":"2.8","3":"4.6","4":"1.5","5":"versicolor"},{"1":"5.7","2":"2.8","3":"4.5","4":"1.3","5":"versicolor"},{"1":"6.3","2":"3.3","3":"4.7","4":"1.6","5":"versicolor"},{"1":"4.9","2":"2.4","3":"3.3","4":"1.0","5":"versicolor"},{"1":"6.6","2":"2.9","3":"4.6","4":"1.3","5":"versicolor"},{"1":"5.2","2":"2.7","3":"3.9","4":"1.4","5":"versicolor"},{"1":"5.0","2":"2.0","3":"3.5","4":"1.0","5":"versicolor"},{"1":"5.9","2":"3.0","3":"4.2","4":"1.5","5":"versicolor"},{"1":"6.0","2":"2.2","3":"4.0","4":"1.0","5":"versicolor"},{"1":"6.1","2":"2.9","3":"4.7","4":"1.4","5":"versicolor"},{"1":"5.6","2":"2.9","3":"3.6","4":"1.3","5":"versicolor"},{"1":"6.7","2":"3.1","3":"4.4","4":"1.4","5":"versicolor"},{"1":"5.6","2":"3.0","3":"4.5","4":"1.5","5":"versicolor"},{"1":"5.8","2":"2.7","3":"4.1","4":"1.0","5":"versicolor"},{"1":"6.2","2":"2.2","3":"4.5","4":"1.5","5":"versicolor"},{"1":"5.6","2":"2.5","3":"3.9","4":"1.1","5":"versicolor"},{"1":"5.9","2":"3.2","3":"4.8","4":"1.8","5":"versicolor"},{"1":"6.1","2":"2.8","3":"4.0","4":"1.3","5":"versicolor"},{"1":"6.3","2":"2.5","3":"4.9","4":"1.5","5":"versicolor"},{"1":"6.1","2":"2.8","3":"4.7","4":"1.2","5":"versicolor"},{"1":"6.4","2":"2.9","3":"4.3","4":"1.3","5":"versicolor"},{"1":"6.6","2":"3.0","3":"4.4","4":"1.4","5":"versicolor"},{"1":"6.8","2":"2.8","3":"4.8","4":"1.4","5":"versicolor"},{"1":"6.7","2":"3.0","3":"5.0","4":"1.7","5":"versicolor"},{"1":"6.0","2":"2.9","3":"4.5","4":"1.5","5":"versicolor"},{"1":"5.7","2":"2.6","3":"3.5","4":"1.0","5":"versicolor"},{"1":"5.5","2":"2.4","3":"3.8","4":"1.1","5":"versicolor"},{"1":"5.5","2":"2.4","3":"3.7","4":"1.0","5":"versicolor"},{"1":"5.8","2":"2.7","3":"3.9","4":"1.2","5":"versicolor"},{"1":"6.0","2":"2.7","3":"5.1","4":"1.6","5":"versicolor"},{"1":"5.4","2":"3.0","3":"4.5","4":"1.5","5":"versicolor"},{"1":"6.0","2":"3.4","3":"4.5","4":"1.6","5":"versicolor"},{"1":"6.7","2":"3.1","3":"4.7","4":"1.5","5":"versicolor"},{"1":"6.3","2":"2.3","3":"4.4","4":"1.3","5":"versicolor"},{"1":"5.6","2":"3.0","3":"4.1","4":"1.3","5":"versicolor"},{"1":"5.5","2":"2.5","3":"4.0","4":"1.3","5":"versicolor"},{"1":"5.5","2":"2.6","3":"4.4","4":"1.2","5":"versicolor"},{"1":"6.1","2":"3.0","3":"4.6","4":"1.4","5":"versicolor"},{"1":"5.8","2":"2.6","3":"4.0","4":"1.2","5":"versicolor"},{"1":"5.0","2":"2.3","3":"3.3","4":"1.0","5":"versicolor"},{"1":"5.6","2":"2.7","3":"4.2","4":"1.3","5":"versicolor"},{"1":"5.7","2":"3.0","3":"4.2","4":"1.2","5":"versicolor"},{"1":"5.7","2":"2.9","3":"4.2","4":"1.3","5":"versicolor"},{"1":"6.2","2":"2.9","3":"4.3","4":"1.3","5":"versicolor"},{"1":"5.1","2":"2.5","3":"3.0","4":"1.1","5":"versicolor"},{"1":"5.7","2":"2.8","3":"4.1","4":"1.3","5":"versicolor"},{"1":"6.3","2":"3.3","3":"6.0","4":"2.5","5":"virginica"},{"1":"5.8","2":"2.7","3":"5.1","4":"1.9","5":"virginica"},{"1":"7.1","2":"3.0","3":"5.9","4":"2.1","5":"virginica"},{"1":"6.3","2":"2.9","3":"5.6","4":"1.8","5":"virginica"},{"1":"6.5","2":"3.0","3":"5.8","4":"2.2","5":"virginica"},{"1":"7.6","2":"3.0","3":"6.6","4":"2.1","5":"virginica"},{"1":"4.9","2":"2.5","3":"4.5","4":"1.7","5":"virginica"},{"1":"7.3","2":"2.9","3":"6.3","4":"1.8","5":"virginica"},{"1":"6.7","2":"2.5","3":"5.8","4":"1.8","5":"virginica"},{"1":"7.2","2":"3.6","3":"6.1","4":"2.5","5":"virginica"},{"1":"6.5","2":"3.2","3":"5.1","4":"2.0","5":"virginica"},{"1":"6.4","2":"2.7","3":"5.3","4":"1.9","5":"virginica"},{"1":"6.8","2":"3.0","3":"5.5","4":"2.1","5":"virginica"},{"1":"5.7","2":"2.5","3":"5.0","4":"2.0","5":"virginica"},{"1":"5.8","2":"2.8","3":"5.1","4":"2.4","5":"virginica"},{"1":"6.4","2":"3.2","3":"5.3","4":"2.3","5":"virginica"},{"1":"6.5","2":"3.0","3":"5.5","4":"1.8","5":"virginica"},{"1":"7.7","2":"3.8","3":"6.7","4":"2.2","5":"virginica"},{"1":"7.7","2":"2.6","3":"6.9","4":"2.3","5":"virginica"},{"1":"6.0","2":"2.2","3":"5.0","4":"1.5","5":"virginica"},{"1":"6.9","2":"3.2","3":"5.7","4":"2.3","5":"virginica"},{"1":"5.6","2":"2.8","3":"4.9","4":"2.0","5":"virginica"},{"1":"7.7","2":"2.8","3":"6.7","4":"2.0","5":"virginica"},{"1":"6.3","2":"2.7","3":"4.9","4":"1.8","5":"virginica"},{"1":"6.7","2":"3.3","3":"5.7","4":"2.1","5":"virginica"},{"1":"7.2","2":"3.2","3":"6.0","4":"1.8","5":"virginica"},{"1":"6.2","2":"2.8","3":"4.8","4":"1.8","5":"virginica"},{"1":"6.1","2":"3.0","3":"4.9","4":"1.8","5":"virginica"},{"1":"6.4","2":"2.8","3":"5.6","4":"2.1","5":"virginica"},{"1":"7.2","2":"3.0","3":"5.8","4":"1.6","5":"virginica"},{"1":"7.4","2":"2.8","3":"6.1","4":"1.9","5":"virginica"},{"1":"7.9","2":"3.8","3":"6.4","4":"2.0","5":"virginica"},{"1":"6.4","2":"2.8","3":"5.6","4":"2.2","5":"virginica"},{"1":"6.3","2":"2.8","3":"5.1","4":"1.5","5":"virginica"},{"1":"6.1","2":"2.6","3":"5.6","4":"1.4","5":"virginica"},{"1":"7.7","2":"3.0","3":"6.1","4":"2.3","5":"virginica"},{"1":"6.3","2":"3.4","3":"5.6","4":"2.4","5":"virginica"},{"1":"6.4","2":"3.1","3":"5.5","4":"1.8","5":"virginica"},{"1":"6.0","2":"3.0","3":"4.8","4":"1.8","5":"virginica"},{"1":"6.9","2":"3.1","3":"5.4","4":"2.1","5":"virginica"},{"1":"6.7","2":"3.1","3":"5.6","4":"2.4","5":"virginica"},{"1":"6.9","2":"3.1","3":"5.1","4":"2.3","5":"virginica"},{"1":"5.8","2":"2.7","3":"5.1","4":"1.9","5":"virginica"},{"1":"6.8","2":"3.2","3":"5.9","4":"2.3","5":"virginica"},{"1":"6.7","2":"3.3","3":"5.7","4":"2.5","5":"virginica"},{"1":"6.7","2":"3.0","3":"5.2","4":"2.3","5":"virginica"},{"1":"6.3","2":"2.5","3":"5.0","4":"1.9","5":"virginica"},{"1":"6.5","2":"3.0","3":"5.2","4":"2.0","5":"virginica"},{"1":"6.2","2":"3.4","3":"5.4","4":"2.3","5":"virginica"},{"1":"5.9","2":"3.0","3":"5.1","4":"1.8","5":"virginica"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<!-- \newpage -->
-<p>このデータセットの主な要約統計量は以下のようになり、萼片（Sepal）より花弁（Petal）の方が小さい傾向にあると推測できます。</p>
-<pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
-##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
-##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
-##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
-##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
-##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
-##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
-##        Species  
-##  setosa    :50  
-##  versicolor:50  
-##  virginica :50  
-##                 
-##                 
-## </code></pre>
-この要約の通りか箱ひげ図を描いて確かめてみますが、元のデータ形式では都合が悪いので以下のように変形しておきます。
+150のデータを持つ実数型のベクトル型変数が四つ、150のデータを持つ因子型のベクトル型変数が一つ、計五つのベクトル型変数から構成されています。加えて個々の行がひとつの計測結果になっています。
+様々な車の諸元をまとめた<code>mtcars</code>データセットの方がイメージを掴みやすいかも知れません。
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["part"],"name":[2],"type":["chr"],"align":["left"]},{"label":["value"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"setosa","2":"Sepal.Length","3":"5.1"},{"1":"setosa","2":"Sepal.Width","3":"3.5"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"4.9"},{"1":"setosa","2":"Sepal.Width","3":"3.0"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"4.7"},{"1":"setosa","2":"Sepal.Width","3":"3.2"},{"1":"setosa","2":"Petal.Length","3":"1.3"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"4.6"},{"1":"setosa","2":"Sepal.Width","3":"3.1"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.0"},{"1":"setosa","2":"Sepal.Width","3":"3.6"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.4"},{"1":"setosa","2":"Sepal.Width","3":"3.9"},{"1":"setosa","2":"Petal.Length","3":"1.7"},{"1":"setosa","2":"Petal.Width","3":"0.4"},{"1":"setosa","2":"Sepal.Length","3":"4.6"},{"1":"setosa","2":"Sepal.Width","3":"3.4"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.3"},{"1":"setosa","2":"Sepal.Length","3":"5.0"},{"1":"setosa","2":"Sepal.Width","3":"3.4"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"4.4"},{"1":"setosa","2":"Sepal.Width","3":"2.9"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"4.9"},{"1":"setosa","2":"Sepal.Width","3":"3.1"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.1"},{"1":"setosa","2":"Sepal.Length","3":"5.4"},{"1":"setosa","2":"Sepal.Width","3":"3.7"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"4.8"},{"1":"setosa","2":"Sepal.Width","3":"3.4"},{"1":"setosa","2":"Petal.Length","3":"1.6"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"4.8"},{"1":"setosa","2":"Sepal.Width","3":"3.0"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.1"},{"1":"setosa","2":"Sepal.Length","3":"4.3"},{"1":"setosa","2":"Sepal.Width","3":"3.0"},{"1":"setosa","2":"Petal.Length","3":"1.1"},{"1":"setosa","2":"Petal.Width","3":"0.1"},{"1":"setosa","2":"Sepal.Length","3":"5.8"},{"1":"setosa","2":"Sepal.Width","3":"4.0"},{"1":"setosa","2":"Petal.Length","3":"1.2"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.7"},{"1":"setosa","2":"Sepal.Width","3":"4.4"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.4"},{"1":"setosa","2":"Sepal.Length","3":"5.4"},{"1":"setosa","2":"Sepal.Width","3":"3.9"},{"1":"setosa","2":"Petal.Length","3":"1.3"},{"1":"setosa","2":"Petal.Width","3":"0.4"},{"1":"setosa","2":"Sepal.Length","3":"5.1"},{"1":"setosa","2":"Sepal.Width","3":"3.5"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.3"},{"1":"setosa","2":"Sepal.Length","3":"5.7"},{"1":"setosa","2":"Sepal.Width","3":"3.8"},{"1":"setosa","2":"Petal.Length","3":"1.7"},{"1":"setosa","2":"Petal.Width","3":"0.3"},{"1":"setosa","2":"Sepal.Length","3":"5.1"},{"1":"setosa","2":"Sepal.Width","3":"3.8"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.3"},{"1":"setosa","2":"Sepal.Length","3":"5.4"},{"1":"setosa","2":"Sepal.Width","3":"3.4"},{"1":"setosa","2":"Petal.Length","3":"1.7"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.1"},{"1":"setosa","2":"Sepal.Width","3":"3.7"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.4"},{"1":"setosa","2":"Sepal.Length","3":"4.6"},{"1":"setosa","2":"Sepal.Width","3":"3.6"},{"1":"setosa","2":"Petal.Length","3":"1.0"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.1"},{"1":"setosa","2":"Sepal.Width","3":"3.3"},{"1":"setosa","2":"Petal.Length","3":"1.7"},{"1":"setosa","2":"Petal.Width","3":"0.5"},{"1":"setosa","2":"Sepal.Length","3":"4.8"},{"1":"setosa","2":"Sepal.Width","3":"3.4"},{"1":"setosa","2":"Petal.Length","3":"1.9"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.0"},{"1":"setosa","2":"Sepal.Width","3":"3.0"},{"1":"setosa","2":"Petal.Length","3":"1.6"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.0"},{"1":"setosa","2":"Sepal.Width","3":"3.4"},{"1":"setosa","2":"Petal.Length","3":"1.6"},{"1":"setosa","2":"Petal.Width","3":"0.4"},{"1":"setosa","2":"Sepal.Length","3":"5.2"},{"1":"setosa","2":"Sepal.Width","3":"3.5"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.2"},{"1":"setosa","2":"Sepal.Width","3":"3.4"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"4.7"},{"1":"setosa","2":"Sepal.Width","3":"3.2"},{"1":"setosa","2":"Petal.Length","3":"1.6"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"4.8"},{"1":"setosa","2":"Sepal.Width","3":"3.1"},{"1":"setosa","2":"Petal.Length","3":"1.6"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.4"},{"1":"setosa","2":"Sepal.Width","3":"3.4"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.4"},{"1":"setosa","2":"Sepal.Length","3":"5.2"},{"1":"setosa","2":"Sepal.Width","3":"4.1"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.1"},{"1":"setosa","2":"Sepal.Length","3":"5.5"},{"1":"setosa","2":"Sepal.Width","3":"4.2"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"4.9"},{"1":"setosa","2":"Sepal.Width","3":"3.1"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.0"},{"1":"setosa","2":"Sepal.Width","3":"3.2"},{"1":"setosa","2":"Petal.Length","3":"1.2"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.5"},{"1":"setosa","2":"Sepal.Width","3":"3.5"},{"1":"setosa","2":"Petal.Length","3":"1.3"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"4.9"},{"1":"setosa","2":"Sepal.Width","3":"3.6"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.1"},{"1":"setosa","2":"Sepal.Length","3":"4.4"},{"1":"setosa","2":"Sepal.Width","3":"3.0"},{"1":"setosa","2":"Petal.Length","3":"1.3"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.1"},{"1":"setosa","2":"Sepal.Width","3":"3.4"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.0"},{"1":"setosa","2":"Sepal.Width","3":"3.5"},{"1":"setosa","2":"Petal.Length","3":"1.3"},{"1":"setosa","2":"Petal.Width","3":"0.3"},{"1":"setosa","2":"Sepal.Length","3":"4.5"},{"1":"setosa","2":"Sepal.Width","3":"2.3"},{"1":"setosa","2":"Petal.Length","3":"1.3"},{"1":"setosa","2":"Petal.Width","3":"0.3"},{"1":"setosa","2":"Sepal.Length","3":"4.4"},{"1":"setosa","2":"Sepal.Width","3":"3.2"},{"1":"setosa","2":"Petal.Length","3":"1.3"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.0"},{"1":"setosa","2":"Sepal.Width","3":"3.5"},{"1":"setosa","2":"Petal.Length","3":"1.6"},{"1":"setosa","2":"Petal.Width","3":"0.6"},{"1":"setosa","2":"Sepal.Length","3":"5.1"},{"1":"setosa","2":"Sepal.Width","3":"3.8"},{"1":"setosa","2":"Petal.Length","3":"1.9"},{"1":"setosa","2":"Petal.Width","3":"0.4"},{"1":"setosa","2":"Sepal.Length","3":"4.8"},{"1":"setosa","2":"Sepal.Width","3":"3.0"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.3"},{"1":"setosa","2":"Sepal.Length","3":"5.1"},{"1":"setosa","2":"Sepal.Width","3":"3.8"},{"1":"setosa","2":"Petal.Length","3":"1.6"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"4.6"},{"1":"setosa","2":"Sepal.Width","3":"3.2"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.3"},{"1":"setosa","2":"Sepal.Width","3":"3.7"},{"1":"setosa","2":"Petal.Length","3":"1.5"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"setosa","2":"Sepal.Length","3":"5.0"},{"1":"setosa","2":"Sepal.Width","3":"3.3"},{"1":"setosa","2":"Petal.Length","3":"1.4"},{"1":"setosa","2":"Petal.Width","3":"0.2"},{"1":"versicolor","2":"Sepal.Length","3":"7.0"},{"1":"versicolor","2":"Sepal.Width","3":"3.2"},{"1":"versicolor","2":"Petal.Length","3":"4.7"},{"1":"versicolor","2":"Petal.Width","3":"1.4"},{"1":"versicolor","2":"Sepal.Length","3":"6.4"},{"1":"versicolor","2":"Sepal.Width","3":"3.2"},{"1":"versicolor","2":"Petal.Length","3":"4.5"},{"1":"versicolor","2":"Petal.Width","3":"1.5"},{"1":"versicolor","2":"Sepal.Length","3":"6.9"},{"1":"versicolor","2":"Sepal.Width","3":"3.1"},{"1":"versicolor","2":"Petal.Length","3":"4.9"},{"1":"versicolor","2":"Petal.Width","3":"1.5"},{"1":"versicolor","2":"Sepal.Length","3":"5.5"},{"1":"versicolor","2":"Sepal.Width","3":"2.3"},{"1":"versicolor","2":"Petal.Length","3":"4.0"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"versicolor","2":"Sepal.Length","3":"6.5"},{"1":"versicolor","2":"Sepal.Width","3":"2.8"},{"1":"versicolor","2":"Petal.Length","3":"4.6"},{"1":"versicolor","2":"Petal.Width","3":"1.5"},{"1":"versicolor","2":"Sepal.Length","3":"5.7"},{"1":"versicolor","2":"Sepal.Width","3":"2.8"},{"1":"versicolor","2":"Petal.Length","3":"4.5"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"versicolor","2":"Sepal.Length","3":"6.3"},{"1":"versicolor","2":"Sepal.Width","3":"3.3"},{"1":"versicolor","2":"Petal.Length","3":"4.7"},{"1":"versicolor","2":"Petal.Width","3":"1.6"},{"1":"versicolor","2":"Sepal.Length","3":"4.9"},{"1":"versicolor","2":"Sepal.Width","3":"2.4"},{"1":"versicolor","2":"Petal.Length","3":"3.3"},{"1":"versicolor","2":"Petal.Width","3":"1.0"},{"1":"versicolor","2":"Sepal.Length","3":"6.6"},{"1":"versicolor","2":"Sepal.Width","3":"2.9"},{"1":"versicolor","2":"Petal.Length","3":"4.6"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"versicolor","2":"Sepal.Length","3":"5.2"},{"1":"versicolor","2":"Sepal.Width","3":"2.7"},{"1":"versicolor","2":"Petal.Length","3":"3.9"},{"1":"versicolor","2":"Petal.Width","3":"1.4"},{"1":"versicolor","2":"Sepal.Length","3":"5.0"},{"1":"versicolor","2":"Sepal.Width","3":"2.0"},{"1":"versicolor","2":"Petal.Length","3":"3.5"},{"1":"versicolor","2":"Petal.Width","3":"1.0"},{"1":"versicolor","2":"Sepal.Length","3":"5.9"},{"1":"versicolor","2":"Sepal.Width","3":"3.0"},{"1":"versicolor","2":"Petal.Length","3":"4.2"},{"1":"versicolor","2":"Petal.Width","3":"1.5"},{"1":"versicolor","2":"Sepal.Length","3":"6.0"},{"1":"versicolor","2":"Sepal.Width","3":"2.2"},{"1":"versicolor","2":"Petal.Length","3":"4.0"},{"1":"versicolor","2":"Petal.Width","3":"1.0"},{"1":"versicolor","2":"Sepal.Length","3":"6.1"},{"1":"versicolor","2":"Sepal.Width","3":"2.9"},{"1":"versicolor","2":"Petal.Length","3":"4.7"},{"1":"versicolor","2":"Petal.Width","3":"1.4"},{"1":"versicolor","2":"Sepal.Length","3":"5.6"},{"1":"versicolor","2":"Sepal.Width","3":"2.9"},{"1":"versicolor","2":"Petal.Length","3":"3.6"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"versicolor","2":"Sepal.Length","3":"6.7"},{"1":"versicolor","2":"Sepal.Width","3":"3.1"},{"1":"versicolor","2":"Petal.Length","3":"4.4"},{"1":"versicolor","2":"Petal.Width","3":"1.4"},{"1":"versicolor","2":"Sepal.Length","3":"5.6"},{"1":"versicolor","2":"Sepal.Width","3":"3.0"},{"1":"versicolor","2":"Petal.Length","3":"4.5"},{"1":"versicolor","2":"Petal.Width","3":"1.5"},{"1":"versicolor","2":"Sepal.Length","3":"5.8"},{"1":"versicolor","2":"Sepal.Width","3":"2.7"},{"1":"versicolor","2":"Petal.Length","3":"4.1"},{"1":"versicolor","2":"Petal.Width","3":"1.0"},{"1":"versicolor","2":"Sepal.Length","3":"6.2"},{"1":"versicolor","2":"Sepal.Width","3":"2.2"},{"1":"versicolor","2":"Petal.Length","3":"4.5"},{"1":"versicolor","2":"Petal.Width","3":"1.5"},{"1":"versicolor","2":"Sepal.Length","3":"5.6"},{"1":"versicolor","2":"Sepal.Width","3":"2.5"},{"1":"versicolor","2":"Petal.Length","3":"3.9"},{"1":"versicolor","2":"Petal.Width","3":"1.1"},{"1":"versicolor","2":"Sepal.Length","3":"5.9"},{"1":"versicolor","2":"Sepal.Width","3":"3.2"},{"1":"versicolor","2":"Petal.Length","3":"4.8"},{"1":"versicolor","2":"Petal.Width","3":"1.8"},{"1":"versicolor","2":"Sepal.Length","3":"6.1"},{"1":"versicolor","2":"Sepal.Width","3":"2.8"},{"1":"versicolor","2":"Petal.Length","3":"4.0"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"versicolor","2":"Sepal.Length","3":"6.3"},{"1":"versicolor","2":"Sepal.Width","3":"2.5"},{"1":"versicolor","2":"Petal.Length","3":"4.9"},{"1":"versicolor","2":"Petal.Width","3":"1.5"},{"1":"versicolor","2":"Sepal.Length","3":"6.1"},{"1":"versicolor","2":"Sepal.Width","3":"2.8"},{"1":"versicolor","2":"Petal.Length","3":"4.7"},{"1":"versicolor","2":"Petal.Width","3":"1.2"},{"1":"versicolor","2":"Sepal.Length","3":"6.4"},{"1":"versicolor","2":"Sepal.Width","3":"2.9"},{"1":"versicolor","2":"Petal.Length","3":"4.3"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"versicolor","2":"Sepal.Length","3":"6.6"},{"1":"versicolor","2":"Sepal.Width","3":"3.0"},{"1":"versicolor","2":"Petal.Length","3":"4.4"},{"1":"versicolor","2":"Petal.Width","3":"1.4"},{"1":"versicolor","2":"Sepal.Length","3":"6.8"},{"1":"versicolor","2":"Sepal.Width","3":"2.8"},{"1":"versicolor","2":"Petal.Length","3":"4.8"},{"1":"versicolor","2":"Petal.Width","3":"1.4"},{"1":"versicolor","2":"Sepal.Length","3":"6.7"},{"1":"versicolor","2":"Sepal.Width","3":"3.0"},{"1":"versicolor","2":"Petal.Length","3":"5.0"},{"1":"versicolor","2":"Petal.Width","3":"1.7"},{"1":"versicolor","2":"Sepal.Length","3":"6.0"},{"1":"versicolor","2":"Sepal.Width","3":"2.9"},{"1":"versicolor","2":"Petal.Length","3":"4.5"},{"1":"versicolor","2":"Petal.Width","3":"1.5"},{"1":"versicolor","2":"Sepal.Length","3":"5.7"},{"1":"versicolor","2":"Sepal.Width","3":"2.6"},{"1":"versicolor","2":"Petal.Length","3":"3.5"},{"1":"versicolor","2":"Petal.Width","3":"1.0"},{"1":"versicolor","2":"Sepal.Length","3":"5.5"},{"1":"versicolor","2":"Sepal.Width","3":"2.4"},{"1":"versicolor","2":"Petal.Length","3":"3.8"},{"1":"versicolor","2":"Petal.Width","3":"1.1"},{"1":"versicolor","2":"Sepal.Length","3":"5.5"},{"1":"versicolor","2":"Sepal.Width","3":"2.4"},{"1":"versicolor","2":"Petal.Length","3":"3.7"},{"1":"versicolor","2":"Petal.Width","3":"1.0"},{"1":"versicolor","2":"Sepal.Length","3":"5.8"},{"1":"versicolor","2":"Sepal.Width","3":"2.7"},{"1":"versicolor","2":"Petal.Length","3":"3.9"},{"1":"versicolor","2":"Petal.Width","3":"1.2"},{"1":"versicolor","2":"Sepal.Length","3":"6.0"},{"1":"versicolor","2":"Sepal.Width","3":"2.7"},{"1":"versicolor","2":"Petal.Length","3":"5.1"},{"1":"versicolor","2":"Petal.Width","3":"1.6"},{"1":"versicolor","2":"Sepal.Length","3":"5.4"},{"1":"versicolor","2":"Sepal.Width","3":"3.0"},{"1":"versicolor","2":"Petal.Length","3":"4.5"},{"1":"versicolor","2":"Petal.Width","3":"1.5"},{"1":"versicolor","2":"Sepal.Length","3":"6.0"},{"1":"versicolor","2":"Sepal.Width","3":"3.4"},{"1":"versicolor","2":"Petal.Length","3":"4.5"},{"1":"versicolor","2":"Petal.Width","3":"1.6"},{"1":"versicolor","2":"Sepal.Length","3":"6.7"},{"1":"versicolor","2":"Sepal.Width","3":"3.1"},{"1":"versicolor","2":"Petal.Length","3":"4.7"},{"1":"versicolor","2":"Petal.Width","3":"1.5"},{"1":"versicolor","2":"Sepal.Length","3":"6.3"},{"1":"versicolor","2":"Sepal.Width","3":"2.3"},{"1":"versicolor","2":"Petal.Length","3":"4.4"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"versicolor","2":"Sepal.Length","3":"5.6"},{"1":"versicolor","2":"Sepal.Width","3":"3.0"},{"1":"versicolor","2":"Petal.Length","3":"4.1"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"versicolor","2":"Sepal.Length","3":"5.5"},{"1":"versicolor","2":"Sepal.Width","3":"2.5"},{"1":"versicolor","2":"Petal.Length","3":"4.0"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"versicolor","2":"Sepal.Length","3":"5.5"},{"1":"versicolor","2":"Sepal.Width","3":"2.6"},{"1":"versicolor","2":"Petal.Length","3":"4.4"},{"1":"versicolor","2":"Petal.Width","3":"1.2"},{"1":"versicolor","2":"Sepal.Length","3":"6.1"},{"1":"versicolor","2":"Sepal.Width","3":"3.0"},{"1":"versicolor","2":"Petal.Length","3":"4.6"},{"1":"versicolor","2":"Petal.Width","3":"1.4"},{"1":"versicolor","2":"Sepal.Length","3":"5.8"},{"1":"versicolor","2":"Sepal.Width","3":"2.6"},{"1":"versicolor","2":"Petal.Length","3":"4.0"},{"1":"versicolor","2":"Petal.Width","3":"1.2"},{"1":"versicolor","2":"Sepal.Length","3":"5.0"},{"1":"versicolor","2":"Sepal.Width","3":"2.3"},{"1":"versicolor","2":"Petal.Length","3":"3.3"},{"1":"versicolor","2":"Petal.Width","3":"1.0"},{"1":"versicolor","2":"Sepal.Length","3":"5.6"},{"1":"versicolor","2":"Sepal.Width","3":"2.7"},{"1":"versicolor","2":"Petal.Length","3":"4.2"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"versicolor","2":"Sepal.Length","3":"5.7"},{"1":"versicolor","2":"Sepal.Width","3":"3.0"},{"1":"versicolor","2":"Petal.Length","3":"4.2"},{"1":"versicolor","2":"Petal.Width","3":"1.2"},{"1":"versicolor","2":"Sepal.Length","3":"5.7"},{"1":"versicolor","2":"Sepal.Width","3":"2.9"},{"1":"versicolor","2":"Petal.Length","3":"4.2"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"versicolor","2":"Sepal.Length","3":"6.2"},{"1":"versicolor","2":"Sepal.Width","3":"2.9"},{"1":"versicolor","2":"Petal.Length","3":"4.3"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"versicolor","2":"Sepal.Length","3":"5.1"},{"1":"versicolor","2":"Sepal.Width","3":"2.5"},{"1":"versicolor","2":"Petal.Length","3":"3.0"},{"1":"versicolor","2":"Petal.Width","3":"1.1"},{"1":"versicolor","2":"Sepal.Length","3":"5.7"},{"1":"versicolor","2":"Sepal.Width","3":"2.8"},{"1":"versicolor","2":"Petal.Length","3":"4.1"},{"1":"versicolor","2":"Petal.Width","3":"1.3"},{"1":"virginica","2":"Sepal.Length","3":"6.3"},{"1":"virginica","2":"Sepal.Width","3":"3.3"},{"1":"virginica","2":"Petal.Length","3":"6.0"},{"1":"virginica","2":"Petal.Width","3":"2.5"},{"1":"virginica","2":"Sepal.Length","3":"5.8"},{"1":"virginica","2":"Sepal.Width","3":"2.7"},{"1":"virginica","2":"Petal.Length","3":"5.1"},{"1":"virginica","2":"Petal.Width","3":"1.9"},{"1":"virginica","2":"Sepal.Length","3":"7.1"},{"1":"virginica","2":"Sepal.Width","3":"3.0"},{"1":"virginica","2":"Petal.Length","3":"5.9"},{"1":"virginica","2":"Petal.Width","3":"2.1"},{"1":"virginica","2":"Sepal.Length","3":"6.3"},{"1":"virginica","2":"Sepal.Width","3":"2.9"},{"1":"virginica","2":"Petal.Length","3":"5.6"},{"1":"virginica","2":"Petal.Width","3":"1.8"},{"1":"virginica","2":"Sepal.Length","3":"6.5"},{"1":"virginica","2":"Sepal.Width","3":"3.0"},{"1":"virginica","2":"Petal.Length","3":"5.8"},{"1":"virginica","2":"Petal.Width","3":"2.2"},{"1":"virginica","2":"Sepal.Length","3":"7.6"},{"1":"virginica","2":"Sepal.Width","3":"3.0"},{"1":"virginica","2":"Petal.Length","3":"6.6"},{"1":"virginica","2":"Petal.Width","3":"2.1"},{"1":"virginica","2":"Sepal.Length","3":"4.9"},{"1":"virginica","2":"Sepal.Width","3":"2.5"},{"1":"virginica","2":"Petal.Length","3":"4.5"},{"1":"virginica","2":"Petal.Width","3":"1.7"},{"1":"virginica","2":"Sepal.Length","3":"7.3"},{"1":"virginica","2":"Sepal.Width","3":"2.9"},{"1":"virginica","2":"Petal.Length","3":"6.3"},{"1":"virginica","2":"Petal.Width","3":"1.8"},{"1":"virginica","2":"Sepal.Length","3":"6.7"},{"1":"virginica","2":"Sepal.Width","3":"2.5"},{"1":"virginica","2":"Petal.Length","3":"5.8"},{"1":"virginica","2":"Petal.Width","3":"1.8"},{"1":"virginica","2":"Sepal.Length","3":"7.2"},{"1":"virginica","2":"Sepal.Width","3":"3.6"},{"1":"virginica","2":"Petal.Length","3":"6.1"},{"1":"virginica","2":"Petal.Width","3":"2.5"},{"1":"virginica","2":"Sepal.Length","3":"6.5"},{"1":"virginica","2":"Sepal.Width","3":"3.2"},{"1":"virginica","2":"Petal.Length","3":"5.1"},{"1":"virginica","2":"Petal.Width","3":"2.0"},{"1":"virginica","2":"Sepal.Length","3":"6.4"},{"1":"virginica","2":"Sepal.Width","3":"2.7"},{"1":"virginica","2":"Petal.Length","3":"5.3"},{"1":"virginica","2":"Petal.Width","3":"1.9"},{"1":"virginica","2":"Sepal.Length","3":"6.8"},{"1":"virginica","2":"Sepal.Width","3":"3.0"},{"1":"virginica","2":"Petal.Length","3":"5.5"},{"1":"virginica","2":"Petal.Width","3":"2.1"},{"1":"virginica","2":"Sepal.Length","3":"5.7"},{"1":"virginica","2":"Sepal.Width","3":"2.5"},{"1":"virginica","2":"Petal.Length","3":"5.0"},{"1":"virginica","2":"Petal.Width","3":"2.0"},{"1":"virginica","2":"Sepal.Length","3":"5.8"},{"1":"virginica","2":"Sepal.Width","3":"2.8"},{"1":"virginica","2":"Petal.Length","3":"5.1"},{"1":"virginica","2":"Petal.Width","3":"2.4"},{"1":"virginica","2":"Sepal.Length","3":"6.4"},{"1":"virginica","2":"Sepal.Width","3":"3.2"},{"1":"virginica","2":"Petal.Length","3":"5.3"},{"1":"virginica","2":"Petal.Width","3":"2.3"},{"1":"virginica","2":"Sepal.Length","3":"6.5"},{"1":"virginica","2":"Sepal.Width","3":"3.0"},{"1":"virginica","2":"Petal.Length","3":"5.5"},{"1":"virginica","2":"Petal.Width","3":"1.8"},{"1":"virginica","2":"Sepal.Length","3":"7.7"},{"1":"virginica","2":"Sepal.Width","3":"3.8"},{"1":"virginica","2":"Petal.Length","3":"6.7"},{"1":"virginica","2":"Petal.Width","3":"2.2"},{"1":"virginica","2":"Sepal.Length","3":"7.7"},{"1":"virginica","2":"Sepal.Width","3":"2.6"},{"1":"virginica","2":"Petal.Length","3":"6.9"},{"1":"virginica","2":"Petal.Width","3":"2.3"},{"1":"virginica","2":"Sepal.Length","3":"6.0"},{"1":"virginica","2":"Sepal.Width","3":"2.2"},{"1":"virginica","2":"Petal.Length","3":"5.0"},{"1":"virginica","2":"Petal.Width","3":"1.5"},{"1":"virginica","2":"Sepal.Length","3":"6.9"},{"1":"virginica","2":"Sepal.Width","3":"3.2"},{"1":"virginica","2":"Petal.Length","3":"5.7"},{"1":"virginica","2":"Petal.Width","3":"2.3"},{"1":"virginica","2":"Sepal.Length","3":"5.6"},{"1":"virginica","2":"Sepal.Width","3":"2.8"},{"1":"virginica","2":"Petal.Length","3":"4.9"},{"1":"virginica","2":"Petal.Width","3":"2.0"},{"1":"virginica","2":"Sepal.Length","3":"7.7"},{"1":"virginica","2":"Sepal.Width","3":"2.8"},{"1":"virginica","2":"Petal.Length","3":"6.7"},{"1":"virginica","2":"Petal.Width","3":"2.0"},{"1":"virginica","2":"Sepal.Length","3":"6.3"},{"1":"virginica","2":"Sepal.Width","3":"2.7"},{"1":"virginica","2":"Petal.Length","3":"4.9"},{"1":"virginica","2":"Petal.Width","3":"1.8"},{"1":"virginica","2":"Sepal.Length","3":"6.7"},{"1":"virginica","2":"Sepal.Width","3":"3.3"},{"1":"virginica","2":"Petal.Length","3":"5.7"},{"1":"virginica","2":"Petal.Width","3":"2.1"},{"1":"virginica","2":"Sepal.Length","3":"7.2"},{"1":"virginica","2":"Sepal.Width","3":"3.2"},{"1":"virginica","2":"Petal.Length","3":"6.0"},{"1":"virginica","2":"Petal.Width","3":"1.8"},{"1":"virginica","2":"Sepal.Length","3":"6.2"},{"1":"virginica","2":"Sepal.Width","3":"2.8"},{"1":"virginica","2":"Petal.Length","3":"4.8"},{"1":"virginica","2":"Petal.Width","3":"1.8"},{"1":"virginica","2":"Sepal.Length","3":"6.1"},{"1":"virginica","2":"Sepal.Width","3":"3.0"},{"1":"virginica","2":"Petal.Length","3":"4.9"},{"1":"virginica","2":"Petal.Width","3":"1.8"},{"1":"virginica","2":"Sepal.Length","3":"6.4"},{"1":"virginica","2":"Sepal.Width","3":"2.8"},{"1":"virginica","2":"Petal.Length","3":"5.6"},{"1":"virginica","2":"Petal.Width","3":"2.1"},{"1":"virginica","2":"Sepal.Length","3":"7.2"},{"1":"virginica","2":"Sepal.Width","3":"3.0"},{"1":"virginica","2":"Petal.Length","3":"5.8"},{"1":"virginica","2":"Petal.Width","3":"1.6"},{"1":"virginica","2":"Sepal.Length","3":"7.4"},{"1":"virginica","2":"Sepal.Width","3":"2.8"},{"1":"virginica","2":"Petal.Length","3":"6.1"},{"1":"virginica","2":"Petal.Width","3":"1.9"},{"1":"virginica","2":"Sepal.Length","3":"7.9"},{"1":"virginica","2":"Sepal.Width","3":"3.8"},{"1":"virginica","2":"Petal.Length","3":"6.4"},{"1":"virginica","2":"Petal.Width","3":"2.0"},{"1":"virginica","2":"Sepal.Length","3":"6.4"},{"1":"virginica","2":"Sepal.Width","3":"2.8"},{"1":"virginica","2":"Petal.Length","3":"5.6"},{"1":"virginica","2":"Petal.Width","3":"2.2"},{"1":"virginica","2":"Sepal.Length","3":"6.3"},{"1":"virginica","2":"Sepal.Width","3":"2.8"},{"1":"virginica","2":"Petal.Length","3":"5.1"},{"1":"virginica","2":"Petal.Width","3":"1.5"},{"1":"virginica","2":"Sepal.Length","3":"6.1"},{"1":"virginica","2":"Sepal.Width","3":"2.6"},{"1":"virginica","2":"Petal.Length","3":"5.6"},{"1":"virginica","2":"Petal.Width","3":"1.4"},{"1":"virginica","2":"Sepal.Length","3":"7.7"},{"1":"virginica","2":"Sepal.Width","3":"3.0"},{"1":"virginica","2":"Petal.Length","3":"6.1"},{"1":"virginica","2":"Petal.Width","3":"2.3"},{"1":"virginica","2":"Sepal.Length","3":"6.3"},{"1":"virginica","2":"Sepal.Width","3":"3.4"},{"1":"virginica","2":"Petal.Length","3":"5.6"},{"1":"virginica","2":"Petal.Width","3":"2.4"},{"1":"virginica","2":"Sepal.Length","3":"6.4"},{"1":"virginica","2":"Sepal.Width","3":"3.1"},{"1":"virginica","2":"Petal.Length","3":"5.5"},{"1":"virginica","2":"Petal.Width","3":"1.8"},{"1":"virginica","2":"Sepal.Length","3":"6.0"},{"1":"virginica","2":"Sepal.Width","3":"3.0"},{"1":"virginica","2":"Petal.Length","3":"4.8"},{"1":"virginica","2":"Petal.Width","3":"1.8"},{"1":"virginica","2":"Sepal.Length","3":"6.9"},{"1":"virginica","2":"Sepal.Width","3":"3.1"},{"1":"virginica","2":"Petal.Length","3":"5.4"},{"1":"virginica","2":"Petal.Width","3":"2.1"},{"1":"virginica","2":"Sepal.Length","3":"6.7"},{"1":"virginica","2":"Sepal.Width","3":"3.1"},{"1":"virginica","2":"Petal.Length","3":"5.6"},{"1":"virginica","2":"Petal.Width","3":"2.4"},{"1":"virginica","2":"Sepal.Length","3":"6.9"},{"1":"virginica","2":"Sepal.Width","3":"3.1"},{"1":"virginica","2":"Petal.Length","3":"5.1"},{"1":"virginica","2":"Petal.Width","3":"2.3"},{"1":"virginica","2":"Sepal.Length","3":"5.8"},{"1":"virginica","2":"Sepal.Width","3":"2.7"},{"1":"virginica","2":"Petal.Length","3":"5.1"},{"1":"virginica","2":"Petal.Width","3":"1.9"},{"1":"virginica","2":"Sepal.Length","3":"6.8"},{"1":"virginica","2":"Sepal.Width","3":"3.2"},{"1":"virginica","2":"Petal.Length","3":"5.9"},{"1":"virginica","2":"Petal.Width","3":"2.3"},{"1":"virginica","2":"Sepal.Length","3":"6.7"},{"1":"virginica","2":"Sepal.Width","3":"3.3"},{"1":"virginica","2":"Petal.Length","3":"5.7"},{"1":"virginica","2":"Petal.Width","3":"2.5"},{"1":"virginica","2":"Sepal.Length","3":"6.7"},{"1":"virginica","2":"Sepal.Width","3":"3.0"},{"1":"virginica","2":"Petal.Length","3":"5.2"},{"1":"virginica","2":"Petal.Width","3":"2.3"},{"1":"virginica","2":"Sepal.Length","3":"6.3"},{"1":"virginica","2":"Sepal.Width","3":"2.5"},{"1":"virginica","2":"Petal.Length","3":"5.0"},{"1":"virginica","2":"Petal.Width","3":"1.9"},{"1":"virginica","2":"Sepal.Length","3":"6.5"},{"1":"virginica","2":"Sepal.Width","3":"3.0"},{"1":"virginica","2":"Petal.Length","3":"5.2"},{"1":"virginica","2":"Petal.Width","3":"2.0"},{"1":"virginica","2":"Sepal.Length","3":"6.2"},{"1":"virginica","2":"Sepal.Width","3":"3.4"},{"1":"virginica","2":"Petal.Length","3":"5.4"},{"1":"virginica","2":"Petal.Width","3":"2.3"},{"1":"virginica","2":"Sepal.Length","3":"5.9"},{"1":"virginica","2":"Sepal.Width","3":"3.0"},{"1":"virginica","2":"Petal.Length","3":"5.1"},{"1":"virginica","2":"Petal.Width","3":"1.8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"21.0","2":"6","3":"160.0","4":"110","5":"3.90","6":"2.620","7":"16.46","8":"0","9":"1","10":"4","11":"4","_rn_":"Mazda RX4"},{"1":"21.0","2":"6","3":"160.0","4":"110","5":"3.90","6":"2.875","7":"17.02","8":"0","9":"1","10":"4","11":"4","_rn_":"Mazda RX4 Wag"},{"1":"22.8","2":"4","3":"108.0","4":"93","5":"3.85","6":"2.320","7":"18.61","8":"1","9":"1","10":"4","11":"1","_rn_":"Datsun 710"},{"1":"21.4","2":"6","3":"258.0","4":"110","5":"3.08","6":"3.215","7":"19.44","8":"1","9":"0","10":"3","11":"1","_rn_":"Hornet 4 Drive"},{"1":"18.7","2":"8","3":"360.0","4":"175","5":"3.15","6":"3.440","7":"17.02","8":"0","9":"0","10":"3","11":"2","_rn_":"Hornet Sportabout"},{"1":"18.1","2":"6","3":"225.0","4":"105","5":"2.76","6":"3.460","7":"20.22","8":"1","9":"0","10":"3","11":"1","_rn_":"Valiant"},{"1":"14.3","2":"8","3":"360.0","4":"245","5":"3.21","6":"3.570","7":"15.84","8":"0","9":"0","10":"3","11":"4","_rn_":"Duster 360"},{"1":"24.4","2":"4","3":"146.7","4":"62","5":"3.69","6":"3.190","7":"20.00","8":"1","9":"0","10":"4","11":"2","_rn_":"Merc 240D"},{"1":"22.8","2":"4","3":"140.8","4":"95","5":"3.92","6":"3.150","7":"22.90","8":"1","9":"0","10":"4","11":"2","_rn_":"Merc 230"},{"1":"19.2","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.30","8":"1","9":"0","10":"4","11":"4","_rn_":"Merc 280"},{"1":"17.8","2":"6","3":"167.6","4":"123","5":"3.92","6":"3.440","7":"18.90","8":"1","9":"0","10":"4","11":"4","_rn_":"Merc 280C"},{"1":"16.4","2":"8","3":"275.8","4":"180","5":"3.07","6":"4.070","7":"17.40","8":"0","9":"0","10":"3","11":"3","_rn_":"Merc 450SE"},{"1":"17.3","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.730","7":"17.60","8":"0","9":"0","10":"3","11":"3","_rn_":"Merc 450SL"},{"1":"15.2","2":"8","3":"275.8","4":"180","5":"3.07","6":"3.780","7":"18.00","8":"0","9":"0","10":"3","11":"3","_rn_":"Merc 450SLC"},{"1":"10.4","2":"8","3":"472.0","4":"205","5":"2.93","6":"5.250","7":"17.98","8":"0","9":"0","10":"3","11":"4","_rn_":"Cadillac Fleetwood"},{"1":"10.4","2":"8","3":"460.0","4":"215","5":"3.00","6":"5.424","7":"17.82","8":"0","9":"0","10":"3","11":"4","_rn_":"Lincoln Continental"},{"1":"14.7","2":"8","3":"440.0","4":"230","5":"3.23","6":"5.345","7":"17.42","8":"0","9":"0","10":"3","11":"4","_rn_":"Chrysler Imperial"},{"1":"32.4","2":"4","3":"78.7","4":"66","5":"4.08","6":"2.200","7":"19.47","8":"1","9":"1","10":"4","11":"1","_rn_":"Fiat 128"},{"1":"30.4","2":"4","3":"75.7","4":"52","5":"4.93","6":"1.615","7":"18.52","8":"1","9":"1","10":"4","11":"2","_rn_":"Honda Civic"},{"1":"33.9","2":"4","3":"71.1","4":"65","5":"4.22","6":"1.835","7":"19.90","8":"1","9":"1","10":"4","11":"1","_rn_":"Toyota Corolla"},{"1":"21.5","2":"4","3":"120.1","4":"97","5":"3.70","6":"2.465","7":"20.01","8":"1","9":"0","10":"3","11":"1","_rn_":"Toyota Corona"},{"1":"15.5","2":"8","3":"318.0","4":"150","5":"2.76","6":"3.520","7":"16.87","8":"0","9":"0","10":"3","11":"2","_rn_":"Dodge Challenger"},{"1":"15.2","2":"8","3":"304.0","4":"150","5":"3.15","6":"3.435","7":"17.30","8":"0","9":"0","10":"3","11":"2","_rn_":"AMC Javelin"},{"1":"13.3","2":"8","3":"350.0","4":"245","5":"3.73","6":"3.840","7":"15.41","8":"0","9":"0","10":"3","11":"4","_rn_":"Camaro Z28"},{"1":"19.2","2":"8","3":"400.0","4":"175","5":"3.08","6":"3.845","7":"17.05","8":"0","9":"0","10":"3","11":"2","_rn_":"Pontiac Firebird"},{"1":"27.3","2":"4","3":"79.0","4":"66","5":"4.08","6":"1.935","7":"18.90","8":"1","9":"1","10":"4","11":"1","_rn_":"Fiat X1-9"},{"1":"26.0","2":"4","3":"120.3","4":"91","5":"4.43","6":"2.140","7":"16.70","8":"0","9":"1","10":"5","11":"2","_rn_":"Porsche 914-2"},{"1":"30.4","2":"4","3":"95.1","4":"113","5":"3.77","6":"1.513","7":"16.90","8":"1","9":"1","10":"5","11":"2","_rn_":"Lotus Europa"},{"1":"15.8","2":"8","3":"351.0","4":"264","5":"4.22","6":"3.170","7":"14.50","8":"0","9":"1","10":"5","11":"4","_rn_":"Ford Pantera L"},{"1":"19.7","2":"6","3":"145.0","4":"175","5":"3.62","6":"2.770","7":"15.50","8":"0","9":"1","10":"5","11":"6","_rn_":"Ferrari Dino"},{"1":"15.0","2":"8","3":"301.0","4":"335","5":"3.54","6":"3.570","7":"14.60","8":"0","9":"1","10":"5","11":"8","_rn_":"Maserati Bora"},{"1":"21.4","2":"4","3":"121.0","4":"109","5":"4.11","6":"2.780","7":"18.60","8":"1","9":"1","10":"4","11":"2","_rn_":"Volvo 142E"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-変形したデータを使って部位別の箱ひげ図を描くと確かに 花弁（Petal）の方が 萼片（Sepal）よりも小さい傾向にあることが分かります。
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
-<img src="R_files/figure-html/unnamed-chunk-5-1.png" alt="花弁と萼片の分布" width="80%"  />
-<p class="caption">
-Fig 0.1: 花弁と萼片の分布
-</p>
+<p>このようにデータフレーム型は表形式のデータを扱うのに非常に便利な変数型です。データフレーム型を作成するには<code>data.frame()</code>関数を用います。</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="変数.html#cb130-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">col1 =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>),</span>
+<span id="cb130-2"><a href="変数.html#cb130-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">col2 =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>),</span>
+<span id="cb130-3"><a href="変数.html#cb130-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">col3 =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>),</span>
+<span id="cb130-4"><a href="変数.html#cb130-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">col4 =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb130-5"><a href="変数.html#cb130-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  4 variables:
+##  $ col1: int  1 2 3 4 5
+##  $ col2: chr  &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
+##  $ col3: num  10 11 12 13 14
+##  $ col4: logi  TRUE TRUE FALSE TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="変数.html#cb132-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##   col1 col2 col3  col4
+## 1    1    A   10  TRUE
+## 2    2    B   11  TRUE
+## 3    3    C   12 FALSE
+## 4    4    D   13  TRUE
+## 5    5    E   14 FALSE</code></pre>
+<p>なお、<code>data.frame()</code>関数では<strong>R</strong>のバージョンによっては文字型のデータを因子型として扱うことがあります。このよう場合には<code>stringsAsFactors = FALSE</code>オプションを指定すると強制的に文字型として扱えるようになります。逆に因子型として扱いたい場合には<code>stringsAsFactors = TRUE</code>を指定することで因子型になりますがこちらは非推奨なオプション指定です。</p>
 </div>
-次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を見ると花弁（Petal）の幅と長さに相関関係があるように見えます。
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
-<img src="R_files/figure-html/unnamed-chunk-7-1.png" alt="幅と長さの関係" width="40%"  /><img src="R_files/figure-html/unnamed-chunk-7-2.png" alt="幅と長さの関係" width="40%"  />
-<p class="caption">
-Fig 0.2: 幅と長さの関係
-</p>
+<div id="リスト型" class="section level4" number="14.2.3.6">
+<h4><span class="header-section-number">B.2.3.6</span> リスト型</h4>
+<p>リスト型はデータ格納の自由度が高いため関数の返り値として使われることが多い変数型です。データフレーム型との大きな違いは不等長のベクトル型を複数格納できる点にあります。さらにマトリクス型やデータフレーム型、リスト型など基本的に全ての変数型をリスト型内に格納可能です。</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="変数.html#cb134-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="fu">c</span>(<span class="fl">0.5</span><span class="sc">:</span><span class="fl">5.5</span>), <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="fl">0.2</span>), <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;O&quot;</span>), x)</span>
+<span id="cb134-2"><a href="変数.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code></pre></div>
+<pre><code>## List of 5
+##  $ : int [1:10] 1 2 3 4 5 6 7 8 9 10
+##  $ : num [1:6] 0.5 1.5 2.5 3.5 4.5 5.5
+##  $ : num [1:16] 1 1.2 1.4 1.6 1.8 2 2.2 2.4 2.6 2.8 ...
+##  $ : chr [1:4] &quot;A&quot; &quot;B&quot; &quot;AB&quot; &quot;O&quot;
+##  $ :&#39;data.frame&#39;:    5 obs. of  4 variables:
+##   ..$ col1: int [1:5] 1 2 3 4 5
+##   ..$ col2: chr [1:5] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
+##   ..$ col3: num [1:5] 10 11 12 13 14
+##   ..$ col4: logi [1:5] TRUE TRUE FALSE TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="変数.html#cb136-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [[1]]
+##  [1]  1  2  3  4  5  6  7  8  9 10
+## 
+## [[2]]
+## [1] 0.5 1.5 2.5 3.5 4.5 5.5
+## 
+## [[3]]
+##  [1] 1.0 1.2 1.4 1.6 1.8 2.0 2.2 2.4 2.6 2.8 3.0 3.2 3.4 3.6 3.8 4.0
+## 
+## [[4]]
+## [1] &quot;A&quot;  &quot;B&quot;  &quot;AB&quot; &quot;O&quot; 
+## 
+## [[5]]
+##   col1 col2 col3  col4
+## 1    1    A   10  TRUE
+## 2    2    B   11  TRUE
+## 3    3    C   12 FALSE
+## 4    4    D   13  TRUE
+## 5    5    E   14 FALSE</code></pre>
 </div>
-<p>そこで、花弁（Petal）の幅（<code>Petal.Width</code>）と長さ（<code>Petal.Length</code>）の回帰関係を求めてみます。</p>
-<pre><code>## 
-## Call:
-## lm(formula = Petal.Length ~ Petal.Width)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -1.33542 -0.30347 -0.02955  0.25776  1.39453 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  1.08356    0.07297   14.85   &lt;2e-16 ***
-## Petal.Width  2.22994    0.05140   43.39   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 0.4782 on 148 degrees of freedom
-## Multiple R-squared:  0.9271, Adjusted R-squared:  0.9266 
-## F-statistic:  1882 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
-モデルの当てはまり具合が良さそうなので、回帰関係を可視化してみます。ついでに萼片（Sepal）の方も可視化してみます。
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
-<img src="R_files/figure-html/unnamed-chunk-9-1.png" alt="幅と長さの関係" width="40%"  /><img src="R_files/figure-html/unnamed-chunk-9-2.png" alt="幅と長さの関係" width="40%"  />
-<p class="caption">
-Fig 0.3: 幅と長さの関係
-</p>
 </div>
-<p>実際にはこれだけではデータ分析はできませんので、分析対象を</p>
-<p>これがデータサイエンスワークフロー（Data Science Workflow）と呼ばれる分析フローです。</p>
-<!-- \newpage -->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="なぜrを使うのか.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-science-workflow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="基本的な演算.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="定数.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

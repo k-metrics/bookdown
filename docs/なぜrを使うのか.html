@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>G.2 Exploratory | Rのすゝめ</title>
+  <title>なぜRを使うのか | Rのすゝめ</title>
   <meta name="description" content="本書は" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="G.2 Exploratory | Rのすゝめ" />
+  <meta property="og:title" content="なぜRを使うのか | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="G.2 Exploratory | Rのすゝめ" />
+  <meta name="twitter:title" content="なぜRを使うのか | Rのすゝめ" />
   
   <meta name="twitter:description" content="本書は" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rstudio-cloud-ga.html"/>
-<link rel="next" href="binder.html"/>
+<link rel="prev" href="表記ルール.html"/>
+<link rel="next" href="分析の手順.html"/>
 <script src="assets/header-attrs-2.8/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -357,30 +357,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exploratory" class="section level2" number="19.2">
-<h2><span class="header-section-number">G.2</span> Exploratory</h2>
-<p>　<a href="https://exploratory.io/" target="_blank" title="Exploratory">Exploratory <i class="fa fa-external-link"></i></a> は BI（Business Intelligence）BI（Business Intelligence）ツールのような操作で R を持ちた探索的データ分析（EDA）が行える利用できる専用クライアントアプリケーションを用いるクラウドサービスです。無料で利用できますがオンライン限定・パブリックシェアオンリーとなりますので注意してください。</p>
-<p>　<a href="https://exploratory.io/insight?type=note&amp;q=tag%3Avisualization%20tag%3Ahow-to%20tag%3A%22team%20exploratory%22&amp;sort=top-viewed&amp;language=ja" target="_blank" title="Exploratory">何ができるのか見てみる <i class="fa fa-external-link"></i></a> ページで多数の分析サンプルが公開されています。<br />
-　また、 <a href="https://exploratory.io/howto?language=ja" target="_blank" title="Exploratory">使い方ガイド <i class="fa fa-external-link"></i></a> ページにも様々な説明資料が用意されています。</p>
-　<br />
-
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-86"></span>
-<img src="fig/Exploratory.png" alt="Exploratory Public" width="80%"  />
-<p class="caption">
-Fig G.2: Exploratory Public
-</p>
-</div>
-<p>　</p>
-<p>　<a href="https://exploratory.io/pricing" target="_blank" title="">価格 <i class="fa fa-external-link"></i></a> ページからお好みのプランを選んでアカウントを取得します。クライアントアプリケーションは、mac まはた Windwos でしか動作しません。</p>
-<p>　</p>
+<div id="なぜrを使うのか" class="section level2 unnumbered">
+<h2>なぜ<strong>R</strong>を使うのか</h2>
+<p>データ分析を行うためには適切な分析ツールが必要不可欠です。<strong>R</strong>は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。<strong>R</strong>がデータ分析に向いている理由をまとめているのが<a href="https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/" target="_blank" title="">“Six Reasons To Learn R For Business”, R Blogger</a>です。</p>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>R Has The Best <em><strong>Overall Qualities</strong></em></li>
+<li>R Is Data Science <em><strong>For Non-Computer Scientists</strong></em></li>
+<li>Learning R Is <em><strong>Easy With The Tidyverse</strong></em></li>
+<li>R Has <em><strong>Brains, Muscle, And Heart</strong></em></li>
+<li>R Is Built <em><strong>For Business</strong></em></li>
+<li>R <em><strong>Community Support</strong></em></li>
+</ol>
+</blockquote>
+<p><strong>R</strong>はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。<a href="https://cran.r-project.org/" target="_blank" title="">CRAN(The Comprehensive R Archive Network)</a>と呼ばれる<strong>R</strong>のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は<a href="https://cran.r-project.org/web/views/" target="_blank" title="">CRAN Task Views</a>を見て分かるように古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は<a href="https://cran.r-project.org/web/views/ReproducibleResearch.html" target="_blank" title="">Reproducible Research</a>と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉ですが、データ分析では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々は「Reproducible Research」とあるように科学的研究の分野で使われている言葉です。他の言語ではこの分野を開発範囲（スコープ）に含めることはほぼありません。
+また、<strong>R</strong>は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）にも適していると言えます。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。</p>
+<p>ちなみに本書も<strong>R</strong>のパッケージである<a href="https://bookdown.org/" target="_blank" title="Write HTML, PDF, ePub, and Kindle books with R Markdown"><strong><code>bookdown</code></strong></a>という文書作成に特化したパッケージを利用して作成してます。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="rstudio-cloud-ga.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="binder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="表記ルール.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="分析の手順.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
