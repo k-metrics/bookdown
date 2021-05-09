@@ -169,7 +169,7 @@
 \makeatother
 \subtitle{- Rによるデータ分析事始め -}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-08}
+\date{2021-05-09}
 
 \begin{document}
 \maketitle
@@ -623,7 +623,536 @@ R について学ぶ際には R が使えるような環境を構築しておく
 \textbf{R}の本体ははインタプリタ（対話的に逐次実行する処理系）として提供されていますので、\textbf{R}単体で動作させることが可能です。区別するために単体の\textbf{R}を\textbf{R Console}と呼ぶことがあります。 一部のプログラミングエディタでは機能拡張などを利用して直接\textbf{R Console}と連携して IDE のように\textbf{R}を利用することが可能です。古くは GNU Emacs 用の ESS や最近人気のある Microsoft の VisualStudio Code 用の機能拡張を使えば、お好みのエディタから直接\textbf{R}を使えるようになります。
 
 \hypertarget{rux306eux57faux672c}{%
-\chapter{Rの基本}\label{rux306eux57faux672c}}
+\chapter{\texorpdfstring{\textbf{R}の基本}{Rの基本}}\label{rux306eux57faux672c}}
+
+\textbf{R}の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から\textbf{R}のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』（大村平著、日科技連出版社）や『統計解析のはなし【改訂版】』（大村平著、日科技連出版社）を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。 なお、基本文法については\protect\hyperlink{Appendix-RBasics}{Appendix B}をご覧ください。
+
+\hypertarget{ux57faux672cux7d71ux8a08ux91cf}{%
+\section{基本統計量}\label{ux57faux672cux7d71ux8a08ux91cf}}
+
+データを分析する前には対象となるデータがどのような特徴を持っているか確認しておくことが重要であるとよく言われます。データの特徴を見るには基本統計量を用いる分かりやすいと思います。
+
+\hypertarget{ux5e73ux5747}{%
+\subsection{平均}\label{ux5e73ux5747}}
+
+統計量の中でよく使われるのが平均です。平均というと下式で表される算術平均を思い浮かべる方が多いと思いますが、 \[\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i\] 算術平均以外にも下式で表される幾何平均（相乗平均）や \[\sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i}\] 体操競技などで使われる複数審判が出す得点の最小値と最大値を除いた得点の平均であるトリム平均などがあります。以降、灰色に網掛けされた部分が\textbf{R}のコード、コードの下の\texttt{\#\#}で始まる部分が実行結果ですので、コード部分をコピペして\textbf{R}のコンソールで実行してみてください。
+
+\textbf{R}では算術平均とトリム平均は\texttt{mean()}関数で求めることができます。最初に平均の計算対象となるデータを作成します。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+ここで\texttt{x}は5つの値を格納（代入）するための変数、\texttt{\textless{}-}は値を変数に格納するための代入演算子、\texttt{c()}関数はベクトルデータを作成する関数です。代入結果を確認するには以下を実行します。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 3 3 5 7
+\end{verbatim}
+
+算出平均は\texttt{mean()}関数に計算対象である\texttt{x}を指定します。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.8
+\end{verbatim}
+
+トリム平均は上記のコードに\texttt{trim}オプションを指定します。\texttt{trim}オプションは計算対象外にする割合を指定するオプションです。今回は五つのデータから最小値・最大値の二つを除いてトリム平均を求めるので\(\frac{2}{5} = 0.2\)を指定します。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(x, }\AttributeTok{trim =} \FloatTok{0.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.666667
+\end{verbatim}
+
+ヘルプを見たい場合は\texttt{?}に続いて関数名を\texttt{()}付きで打ち込んで実行してください。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?}\FunctionTok{mean}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+幾何平均を求める関数は標準では用意されていませんのでインストールする必要があり、ここでは\textbf{\texttt{psych}}パッケージを使います。パッケージをインストールして使えるようにするには以下の手順が必要です。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  パッケージをインストールする
+\item
+  パッケージを読み込む
+\end{enumerate}
+
+パッケージのインストールは\texttt{install.packages()}関数を用います。インターネットに接続している必要があります。\texttt{install.packages()}関数を実行すると環境によってはCRANミラーサイトの選択を促される場合があります。その場合は、お住まいの地域に最も近い地域のミラーサイトを選択してください。なお、パッケージのインストールは一度だけでよく、次からはインストール不要になります。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"psych"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+インストールが完了したらパッケージが提供する関数などを使えるように\texttt{library()}関数を使ってパッケージを使えるようにします。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(psych)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'psych'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:ggplot2':
+## 
+##     %+%, alpha
+\end{verbatim}
+
+環境によっては上記のように他のパッケージの関数をマスクしている旨のメッセージが出力されてますが、今は、あまり気にする必要はありません。 これで\textbf{\texttt{psych}}パッケージを使う準備が整いましたので、\texttt{geometric.mean()}関数で幾何平均を求めます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{geometric.mean}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.159818
+\end{verbatim}
+
+インストールしたパッケージの関数を使う場合、どのパッケージの関数を使っているかを明示的に示すために下記のように\texttt{::}演算子（名前空間へのアクセス演算子）でパッケージ名と関数名をつなげて記述することもできます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{psych}\SpecialCharTok{::}\FunctionTok{geometric.mean}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.159818
+\end{verbatim}
+
+この表記方法については賛否ありますが、どのパッケージの関数を使っているかを明示できるので、本書ではこの記述方法を用います。
+
+ところで、この程度の幾何平均であればパッケージをインストールしなくても総積を求める\texttt{prod()}関数とべき乗演算子（\texttt{\^{}}）を使えば計算は可能です、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{prod}\NormalTok{(x)}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.159818
+\end{verbatim}
+
+ただし、幾何平均ではデータの値を全て乗算しなければならないためデータ数が多い場合や値が大きい（または、小さい）場合に\texttt{prod()}関数でオーバーフロー（または、アンダーフロー）が起こるという問題があります。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{prod}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{200}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Inf
+\end{verbatim}
+
+一方、\texttt{geometric.mean()}関数ではオーバーフロー（または、アンダーフロー）対策が施されていますので正しい値を求めることができます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{psych}\SpecialCharTok{::}\FunctionTok{geometric.mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{200}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 74.90045
+\end{verbatim}
+
+つまり、パッケージ、特にCRANに登録されているパッケージは登録にあたり審査による検証が行われていますので、使わないより使う方が楽で確実なことが多いのです。
+
+\hypertarget{ux4e2dux592eux5024}{%
+\subsection{中央値}\label{ux4e2dux592eux5024}}
+
+平均値と並んで比較的よく使われるのが中央値です。中央値はデータの分布が歪んでいる場合に使われることが多いように比較的ロバスト（データの分布に左右されにくい）な統計量です。 中央値
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 3 3 5 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{median}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\hypertarget{ux6700ux5c0fux6700ux5927ux5024}{%
+\section{最小・最大値}\label{ux6700ux5c0fux6700ux5927ux5024}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 3 3 5 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{min}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{max}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+\textbf{R}には\texttt{range()}関数という最小値を最大値を一度に求めることができる便利な関数があります。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 3 3 5 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{range}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 7
+\end{verbatim}
+
+\hypertarget{ux30ecux30f3ux30b8ux7bc4ux56f2}{%
+\subsection{レンジ（範囲）}\label{ux30ecux30f3ux30b8ux7bc4ux56f2}}
+
+データのばらつきを見るためにレンジと呼ばれる範囲を用いることがあります。以下の\texttt{x}と\texttt{y}は同じ平均値をとるデータです。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{8}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+レンジを求めるには\texttt{range()}関数を用います。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{range}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{range}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 9
+\end{verbatim}
+
+\texttt{range()}関数は最小値と最大値を求める関数ですので\texttt{diff()}関数を用いて最小値と最大値の幅を求めます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(y))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+\end{verbatim}
+
+\hypertarget{ux6a19ux6e96ux504fux5dee}{%
+\subsection{標準偏差}\label{ux6a19ux6e96ux504fux5dee}}
+
+レンジは比較的簡単に計算できますが、以下のように同じレンジを持つデータの特徴が同じと言えるでしょうか？
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\FunctionTok{range}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\FunctionTok{range}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 9
+\end{verbatim}
+
+このような場合、下式で求められる標準偏差（Standard Deviation）を使うと特徴が見えてくることがあります。 \[\sigma = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n} - \bar{x}^2 }\]
+
+標準偏差は\texttt{sd()}関数で求めることができます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.828427
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\hypertarget{ux6700ux983bux5024}{%
+\subsection{最頻値}\label{ux6700ux983bux5024}}
+
+最頻値とはデータの中で最も頻繁に出てくる値のことで、モードとも呼ばれます。最頻値を求める関数は標準では用意されていませんので\texttt{modeest}パッケージを用います。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"modeest"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(modeest)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Registered S3 methods overwritten by 'rmutil':
+##   method         from 
+##   plot.residuals psych
+##   print.response httr
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modeest}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modeest}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 9
+\end{verbatim}
+
+\hypertarget{part-wrangle}{%
+\part{Wrangle}\label{part-wrangle}}
+
+\hypertarget{import-1}{%
+\chapter{Import}\label{import-1}}
+
+　Import は
+
+\begin{quote}
+　Google Colab を利用する場合は［＋コード］（［Ctrl］+［M］+［Ctrl］+［B］）ボタンでコードを追加してコードブロックを挿入してからコードを記載します。コードブロックの移動や削除はブロック右側に表示されているサブメニューで行います。［＋テキスト］ボタンでテキストブロックを挿入すればコメントなどを書き込むことができます。
+\end{quote}
+
+　
+
+\begin{quote}
+　RStudio を利用する場合はメニューから［File］-［New File］-［R Notebook］を実行してR Notebook を作成します。キーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］でコードチャンクを挿入しチャンクにコードを記述します。チャング以外にコメントなどを書き込むことができます。
+\end{quote}
+
+　
+
+\hypertarget{readr}{%
+\section{readr}\label{readr}}
+
+\hypertarget{readxl}{%
+\section{readxl}\label{readxl}}
+
+\hypertarget{pdftools}{%
+\section{pdftools}\label{pdftools}}
+
+\hypertarget{tidy-1}{%
+\chapter{Tidy}\label{tidy-1}}
+
+\hypertarget{tidy-data}{%
+\section{Tidy Data}\label{tidy-data}}
+
+\hypertarget{longer}{%
+\section{longer}\label{longer}}
+
+\hypertarget{wider}{%
+\section{wider}\label{wider}}
+
+\hypertarget{transform-1}{%
+\chapter{Transform}\label{transform-1}}
+
+\hypertarget{filter}{%
+\section{filter}\label{filter}}
+
+\hypertarget{rename}{%
+\section{rename}\label{rename}}
+
+\hypertarget{select}{%
+\section{select}\label{select}}
+
+\hypertarget{select-helpers}{%
+\subsection{select helpers}\label{select-helpers}}
+
+\hypertarget{mutate}{%
+\section{mutate}\label{mutate}}
+
+\hypertarget{summarize}{%
+\section{summarize}\label{summarize}}
+
+\hypertarget{part-visualize}{%
+\part{Visualize}\label{part-visualize}}
+
+\hypertarget{base-r}{%
+\chapter{Base R}\label{base-r}}
+
+\hypertarget{plot}{%
+\section{plot}\label{plot}}
+
+\hypertarget{boxplot}{%
+\section{boxplot}\label{boxplot}}
+
+\hypertarget{hist}{%
+\section{hist}\label{hist}}
+
+\hypertarget{ggplot2}{%
+\chapter{ggplot2}\label{ggplot2}}
+
+\hypertarget{part-modelinfer}{%
+\part{Model/Infer}\label{part-modelinfer}}
+
+\hypertarget{test}{%
+\chapter{Test}\label{test}}
+
+\hypertarget{linear-model}{%
+\chapter{Linear model}\label{linear-model}}
+
+\hypertarget{machine-learning}{%
+\chapter{Machine Learning}\label{machine-learning}}
+
+\hypertarget{part-communicate}{%
+\part{Communicate}\label{part-communicate}}
+
+\hypertarget{r-markdown}{%
+\chapter{R Markdown}\label{r-markdown}}
+
+\hypertarget{part-automate}{%
+\part{Automate}\label{part-automate}}
+
+\hypertarget{shiny}{%
+\chapter{shiny}\label{shiny}}
+
+\hypertarget{part-appendix}{%
+\part{APPENDIX}\label{part-appendix}}
+
+\hypertarget{appendix-appendix}{%
+\appendix \addcontentsline{toc}{chapter}{\appendixname}}
+
+
+\hypertarget{refereneces}{%
+\chapter{Refereneces}\label{refereneces}}
+
+\hypertarget{Appendix-RBasics}{%
+\chapter{R Basics}\label{Appendix-RBasics}}
 
 \begin{quote}
 Rの一番良いところは統計学者が作っているところだ。\\
@@ -836,8 +1365,8 @@ Rの一番悪いところは統計学者が作っているところだ。
 ## [1] 8.8
 \end{verbatim}
 
-\hypertarget{ux5e73ux5747}{%
-\subsection{平均}\label{ux5e73ux5747}}
+\hypertarget{ux5e73ux5747-1}{%
+\subsection{平均}\label{ux5e73ux5747-1}}
 
 全ての変数の平均値を求めます。平均には
 
@@ -2262,405 +2791,6 @@ NA & データ型 \\
 
 \texttt{while}文と\texttt{repeat}文については、あまり使うこともないと思いますので省略します。
 
-\hypertarget{rux306eux5fdcux7528}{%
-\chapter{Rの応用}\label{rux306eux5fdcux7528}}
-
-Data Science Workflowの個々のプロセスに入る前にもう少し\textbf{R}のプログラミングについて知って置きましょう。
-
-\hypertarget{ux57faux672cux7d71ux8a08ux91cf}{%
-\section{基本統計量}\label{ux57faux672cux7d71ux8a08ux91cf}}
-
-データを分析する前には対象となるデータがどのような特徴を持っているか確認しておく必要があります。基本統計量と呼ばれる様々な統計量を用いるとデータの特徴が見えてきます。 ここでは『統計のはなし【改訂版】』（大村平著、日科技連出版社）
-
-\hypertarget{ux5e73ux5747-1}{%
-\subsection{平均}\label{ux5e73ux5747-1}}
-
-統計量の中でよく使われるのが平均です。平均というと下式で表される算術平均を思い浮かべる方が多いと思いますが、 \[\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i\] 算術平均以外にも下式で表される幾何平均（相乗平均）、 \[\sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i}\] 体操競技などで使われる複数審判が出す得点の最小値と最大値を除いた得点で求めるトリム平均などがあります。
-
-\textbf{R}では算術平均とトリム平均は\texttt{mean()}関数で求めることができます。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-算出平均は\texttt{mean()}関数に計算対象を指定します。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{mean}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 3.8
-\end{verbatim}
-
-トリム平均は上記に加えて\texttt{trim}オプションで計算対象外にする割合を指定します。今回は五つのデータから最小値・最大値の二つを除いて求めたいので\texttt{0.25}という割合を指定します。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{mean}\NormalTok{(x, }\AttributeTok{trim =} \FloatTok{0.25}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 3.666667
-\end{verbatim}
-
-幾何平均を求める関数は標準では用意されていません。「R geometric mean」で検索すればパッケージが見つかります。ここでは\textbf{\texttt{psych}}パッケージをインストールして使うことにします。パッケージをインストールして使えるようにするには以下の手順が必要です。
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  パッケージをインストールする
-\item
-  パッケージを読み込む
-\end{enumerate}
-
-パッケージのインストールは\texttt{install.packages()}関数を用います。環境によってはCRANミラーサイトの選択を促される場合があります。その場合は、お住まいの地域に最も近いミラーサイトを選択してください。なお、パッケージのインストールは一度行えば済みます。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(}\StringTok{"psych"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-パッケージが提供する関数などを使えるようにするには\texttt{library()}関数を使って読み込みます。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(psych)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-## Attaching package: 'psych'
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:ggplot2':
-## 
-##     %+%, alpha
-\end{verbatim}
-
-これで\textbf{\texttt{psych}}パッケージを使う準備が整いましたので、\texttt{geometric.mean()}関数で幾何平均を求めます。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{geometric.mean}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 3.159818
-\end{verbatim}
-
-インストールしたパッケージの関数を使う場合、どのパッケージの関数を使っているかを明示的に示すために下記のように\texttt{::}演算子（名前空間へのアクセス演算子）でパッケージ名と関数名をつなげて記述することもできます。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{psych}\SpecialCharTok{::}\FunctionTok{geometric.mean}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 3.159818
-\end{verbatim}
-
-この表記方法については賛否ありますが、どのパッケージの関数を使っているかを明示できるため、本書ではこの記述方法を用います。
-
-\hypertarget{ux30ecux30f3ux30b8ux7bc4ux56f2}{%
-\subsection{レンジ（範囲）}\label{ux30ecux30f3ux30b8ux7bc4ux56f2}}
-
-データのばらつきを見るためにレンジと呼ばれる範囲を用いることがあります。以下の\texttt{x}と\texttt{y}は同じ平均値をとるデータです。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{8}\NormalTok{)}
-\FunctionTok{mean}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 5
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
-\FunctionTok{mean}\NormalTok{(y)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 5
-\end{verbatim}
-
-レンジを求めるには\texttt{range()}関数を用います。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{range}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 2 8
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{range}\NormalTok{(y)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 1 9
-\end{verbatim}
-
-\texttt{range()}関数は最小値と最大値を求める関数ですので\texttt{diff()}関数を用いて最小値と最大値の幅を求めます。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(x))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 6
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(y))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 8
-\end{verbatim}
-
-\hypertarget{ux6a19ux6e96ux504fux5dee}{%
-\subsection{標準偏差}\label{ux6a19ux6e96ux504fux5dee}}
-
-レンジは比較的簡単に計算できますが、以下のように同じレンジを持つデータの特徴が同じとは言い難いです。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
-\FunctionTok{range}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 1 9
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{9}\NormalTok{)}
-\FunctionTok{range}\NormalTok{(y)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 1 9
-\end{verbatim}
-
-このような場合、下式で求められる標準偏差（Standard Deviation）を使います。 \[\sigma = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n} - \bar{x}^2 }\]
-
-標準偏差は\texttt{sd()}関数で求めることができます。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{sd}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 2.828427
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{sd}\NormalTok{(y)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 4
-\end{verbatim}
-
-\hypertarget{ux4e2dux592eux5024}{%
-\subsection{中央値}\label{ux4e2dux592eux5024}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{median}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 5
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{median}\NormalTok{(y)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 5
-\end{verbatim}
-
-\hypertarget{ux6700ux983bux5024}{%
-\subsection{最頻値}\label{ux6700ux983bux5024}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(modeest)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Registered S3 methods overwritten by 'rmutil':
-##   method         from 
-##   plot.residuals psych
-##   print.response httr
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{modeest}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 5
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{modeest}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(y)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 1 9
-\end{verbatim}
-
-\hypertarget{part-wrangle}{%
-\part{Wrangle}\label{part-wrangle}}
-
-\hypertarget{import-1}{%
-\chapter{Import}\label{import-1}}
-
-　Import は
-
-\begin{quote}
-　Google Colab を利用する場合は［＋コード］（［Ctrl］+［M］+［Ctrl］+［B］）ボタンでコードを追加してコードブロックを挿入してからコードを記載します。コードブロックの移動や削除はブロック右側に表示されているサブメニューで行います。［＋テキスト］ボタンでテキストブロックを挿入すればコメントなどを書き込むことができます。
-\end{quote}
-
-　
-
-\begin{quote}
-　RStudio を利用する場合はメニューから［File］-［New File］-［R Notebook］を実行してR Notebook を作成します。キーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］でコードチャンクを挿入しチャンクにコードを記述します。チャング以外にコメントなどを書き込むことができます。
-\end{quote}
-
-　
-
-\hypertarget{readr}{%
-\section{readr}\label{readr}}
-
-\hypertarget{readxl}{%
-\section{readxl}\label{readxl}}
-
-\hypertarget{pdftools}{%
-\section{pdftools}\label{pdftools}}
-
-\hypertarget{tidy-1}{%
-\chapter{Tidy}\label{tidy-1}}
-
-\hypertarget{tidy-data}{%
-\section{Tidy Data}\label{tidy-data}}
-
-\hypertarget{longer}{%
-\section{longer}\label{longer}}
-
-\hypertarget{wider}{%
-\section{wider}\label{wider}}
-
-\hypertarget{transform-1}{%
-\chapter{Transform}\label{transform-1}}
-
-\hypertarget{filter}{%
-\section{filter}\label{filter}}
-
-\hypertarget{rename}{%
-\section{rename}\label{rename}}
-
-\hypertarget{select}{%
-\section{select}\label{select}}
-
-\hypertarget{select-helpers}{%
-\subsection{select helpers}\label{select-helpers}}
-
-\hypertarget{mutate}{%
-\section{mutate}\label{mutate}}
-
-\hypertarget{summarize}{%
-\section{summarize}\label{summarize}}
-
-\hypertarget{part-visualize}{%
-\part{Visualize}\label{part-visualize}}
-
-\hypertarget{base-r}{%
-\chapter{Base R}\label{base-r}}
-
-\hypertarget{plot}{%
-\section{plot}\label{plot}}
-
-\hypertarget{boxplot}{%
-\section{boxplot}\label{boxplot}}
-
-\hypertarget{hist}{%
-\section{hist}\label{hist}}
-
-\hypertarget{ggplot2}{%
-\chapter{ggplot2}\label{ggplot2}}
-
-\hypertarget{part-modelinfer}{%
-\part{Model/Infer}\label{part-modelinfer}}
-
-\hypertarget{test}{%
-\chapter{Test}\label{test}}
-
-\hypertarget{linear-model}{%
-\chapter{Linear model}\label{linear-model}}
-
-\hypertarget{machine-learning}{%
-\chapter{Machine Learning}\label{machine-learning}}
-
-\hypertarget{part-communicate}{%
-\part{Communicate}\label{part-communicate}}
-
-\hypertarget{r-markdown}{%
-\chapter{R Markdown}\label{r-markdown}}
-
-\hypertarget{part-automate}{%
-\part{Automate}\label{part-automate}}
-
-\hypertarget{shiny}{%
-\chapter{shiny}\label{shiny}}
-
-\hypertarget{part-program-1}{%
-\part{Program}\label{part-program-1}}
-
 \hypertarget{environments-2}{%
 \chapter{Environments 2}\label{environments-2}}
 
@@ -2725,7 +2855,7 @@ Data Science Workflowの個々のプロセスに入る前にもう少し\textbf{
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-54}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-62}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -2744,7 +2874,7 @@ Data Science Workflowの個々のプロセスに入る前にもう少し\textbf{
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-55}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-63}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -2758,7 +2888,7 @@ Data Science Workflowの個々のプロセスに入る前にもう少し\textbf{
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-56}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-64}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -2776,7 +2906,7 @@ Data Science Workflowの個々のプロセスに入る前にもう少し\textbf{
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-57}
+\caption{Warning dialog}\label{fig:unnamed-chunk-65}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -2802,7 +2932,7 @@ Data Science Workflowの個々のプロセスに入る前にもう少し\textbf{
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-58}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-66}
 \end{figure}
 
 　\\
@@ -2835,7 +2965,7 @@ Data Science Workflowの個々のプロセスに入る前にもう少し\textbf{
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-59}
+\caption{Initial View}\label{fig:unnamed-chunk-67}
 \end{figure}
 
 　
@@ -2852,7 +2982,7 @@ Data Science Workflowの個々のプロセスに入る前にもう少し\textbf{
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-60}
+\caption{Packages Manager}\label{fig:unnamed-chunk-68}
 \end{figure}
 
 　\\
@@ -2865,15 +2995,11 @@ Data Science Workflowの個々のプロセスに入る前にもう少し\textbf{
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-61}
+\caption{Install Dialog}\label{fig:unnamed-chunk-69}
 \end{figure}
 
 　\\
 　以上で、RStudio Cloud の準備は完了です。
-
-\hypertarget{appendix-appendix}{%
-\appendix \addcontentsline{toc}{chapter}{\appendixname}}
-
 
 \hypertarget{install-rrstudio}{%
 \chapter{Install R/RStudio}\label{install-rrstudio}}
@@ -3263,7 +3389,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-69}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-77}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -3274,7 +3400,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-70}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-78}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -3344,7 +3470,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-71}
+\caption{R Notebook file}\label{fig:unnamed-chunk-79}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -3355,7 +3481,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-72}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-80}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -3366,7 +3492,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-73}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-81}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -3377,7 +3503,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-74}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-82}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -3388,7 +3514,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-75}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-83}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -3399,7 +3525,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-76}
+\caption{R Notebook option}\label{fig:unnamed-chunk-84}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -3661,7 +3787,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-77}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-85}
 \end{figure}
 
 　
@@ -3686,7 +3812,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-78}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-86}
 \end{figure}
 
 　

@@ -1,4 +1,4 @@
-# (APPENDIX) Appendix {-}
+<!-- # (APPENDIX) Appendix {-} -->
 
 # Install R/RStudio
 　R について学ぶ前に R が使えるように環境を整えます。本書は R, RStudio, [tidyverse/ <i class="fa fa-external-link"></i>](https://www.tidyverse.org/){target="_blank"} パッケージならびにその他必要なパッケージの利用を前提としています。  

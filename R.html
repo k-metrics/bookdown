@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Rのすゝめ</title>
+  <meta name="description" content="本書は" />
+  <meta name="generator" content="bookdown #bookdown:version# and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Rのすゝめ" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="本書は" />
+  <meta name="github-repo" content="k-metrics/bookdown" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Rのすゝめ" />
+  
+  <meta name="twitter:description" content="本書は" />
+  
+
+<meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
+
+
+<meta name="date" content="2021-05-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
+<script src="assets/header-attrs-2.8/header-attrs.js"></script>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<link href="assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+<!--bookdown:title:start-->
+<div id="header">
+<h1 class="title">Rのすゝめ</h1>
+<h2 class="subtitle"><em>- Rによるデータ分析事始め -</em></h2>
+<p class="author"><em>Sampo Suzuki, CC 4.0 BY-NC-SA</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>2021-05-09</em></p>
+</div>
+<!--bookdown:title:end-->
+
+<!--bookdown:toc:start-->
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+<!--bookdown:toc2:start-->
+<ul>
+<li><a href="#latex関連の設定はベースとなるrmdに記述しないと正しく認識されません"><span class="toc-section-number">1</span> LaTeX関連の設定はベースとなるRmdに記述しないと正しく認識されません</a>
+<ul>
+<li><a href="#日本語とtufte-kableextraを使うために必要なtexパッケージ"><span class="toc-section-number">1.1</span> 日本語とtufte, kableExtraを使うために必要なTeXパッケージ</a></li>
+<li><a href="#windows環境では上記の設定ではnotoフォントが認識されないので以下の行と"><span class="toc-section-number">1.2</span> Windows環境では上記の設定ではNotoフォントが認識されないので以下の行と</a></li>
+<li><a href="#入れ替えてipaフォントを利用するのが楽"><span class="toc-section-number">1.3</span> 入れ替えてIPAフォントを利用するのが楽</a></li>
+<li><a href="#モノフォントのみ入れ替えフォントのスケーリングを調整する"><span class="toc-section-number">1.4</span> モノフォントのみ入れ替えフォントのスケーリングを調整する</a></li>
+<li><a href="#windows環境でnotoフォントを指定したい場合は以下のように個別に指定する"><span class="toc-section-number">1.5</span> Windows環境でNotoフォントを指定したい場合は以下のように個別に指定する</a></li>
+<li><a href="#必要があるが以下だけでは太字が表示できないので追加記述が必要調査中"><span class="toc-section-number">1.6</span> 必要があるが、以下だけでは太字が表示できないので追加記述が必要（調査中）</a></li>
+</ul></li>
+<li><a href="#license">License</a></li>
+<li><a href="#part-introduction">(PART) Introduction</a></li>
+<li><a href="#はじめに">はじめに</a>
+<ul>
+<li><a href="#想定読者">想定読者</a></li>
+<li><a href="#表記ルール">表記ルール</a></li>
+<li><a href="#なぜrを使うのか">なぜ<strong>R</strong>を使うのか</a></li>
+<li><a href="#分析の手順">分析の手順</a></li>
+<li><a href="#data-science-workflow">Data Science Workflow</a>
+<ul>
+<li><a href="#program">Program</a></li>
+<li><a href="#import">Import</a></li>
+<li><a href="#tidy">Tidy</a></li>
+<li><a href="#transform">Transform</a></li>
+<li><a href="#visualize">Visualize</a></li>
+<li><a href="#model">Model</a></li>
+<li><a href="#communicate">Communicate</a></li>
+</ul></li>
+<li><a href="#tidyverse-eco-system">Tidyverse Eco System</a></li>
+</ul></li>
+<li><a href="#part-program">(PART) Program</a></li>
+<li><a href="#分析環境"><span class="toc-section-number">2</span> 分析環境</a>
+<ul>
+<li><a href="#主な分析環境"><span class="toc-section-number">2.1</span> 主な分析環境</a>
+<ul>
+<li><a href="#r-commander"><span class="toc-section-number">2.1.1</span> R Commander</a></li>
+<li><a href="#google-colab"><span class="toc-section-number">2.1.2</span> Google Colab</a></li>
+<li><a href="#rstudio"><span class="toc-section-number">2.1.3</span> RStudio</a></li>
+<li><a href="#rstudio-cloud"><span class="toc-section-number">2.1.4</span> RStudio Cloud</a></li>
+<li><a href="#programing-editor"><span class="toc-section-number">2.1.5</span> Programing Editor</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#rの基本"><span class="toc-section-number">3</span> <strong>R</strong>の基本</a>
+<ul>
+<li><a href="#基本統計量"><span class="toc-section-number">3.1</span> 基本統計量</a>
+<ul>
+<li><a href="#平均"><span class="toc-section-number">3.1.1</span> 平均</a></li>
+<li><a href="#レンジ範囲"><span class="toc-section-number">3.1.2</span> レンジ（範囲）</a></li>
+<li><a href="#標準偏差"><span class="toc-section-number">3.1.3</span> 標準偏差</a></li>
+<li><a href="#中央値"><span class="toc-section-number">3.1.4</span> 中央値</a></li>
+<li><a href="#最頻値"><span class="toc-section-number">3.1.5</span> 最頻値</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#part-wrangle">(PART) Wrangle</a></li>
+<li><a href="#import-1"><span class="toc-section-number">4</span> Import</a>
+<ul>
+<li><a href="#readr"><span class="toc-section-number">4.1</span> readr</a></li>
+<li><a href="#readxl"><span class="toc-section-number">4.2</span> readxl</a></li>
+<li><a href="#pdftools"><span class="toc-section-number">4.3</span> pdftools</a></li>
+</ul></li>
+<li><a href="#tidy-1"><span class="toc-section-number">5</span> Tidy</a>
+<ul>
+<li><a href="#tidy-data"><span class="toc-section-number">5.1</span> Tidy Data</a></li>
+<li><a href="#longer"><span class="toc-section-number">5.2</span> longer</a></li>
+<li><a href="#wider"><span class="toc-section-number">5.3</span> wider</a></li>
+</ul></li>
+<li><a href="#transform-1"><span class="toc-section-number">6</span> Transform</a>
+<ul>
+<li><a href="#filter"><span class="toc-section-number">6.1</span> filter</a></li>
+<li><a href="#rename"><span class="toc-section-number">6.2</span> rename</a></li>
+<li><a href="#select"><span class="toc-section-number">6.3</span> select</a>
+<ul>
+<li><a href="#select-helpers"><span class="toc-section-number">6.3.1</span> select helpers</a></li>
+</ul></li>
+<li><a href="#mutate"><span class="toc-section-number">6.4</span> mutate</a></li>
+<li><a href="#summarize"><span class="toc-section-number">6.5</span> summarize</a></li>
+</ul></li>
+<li><a href="#part-visualize">(PART) Visualize</a></li>
+<li><a href="#base-r"><span class="toc-section-number">7</span> Base R</a>
+<ul>
+<li><a href="#plot"><span class="toc-section-number">7.1</span> plot</a></li>
+<li><a href="#boxplot"><span class="toc-section-number">7.2</span> boxplot</a></li>
+<li><a href="#hist"><span class="toc-section-number">7.3</span> hist</a></li>
+</ul></li>
+<li><a href="#ggplot2"><span class="toc-section-number">8</span> ggplot2</a></li>
+<li><a href="#part-modelinfer">(PART) Model/Infer</a></li>
+<li><a href="#test"><span class="toc-section-number">9</span> Test</a></li>
+<li><a href="#linear-model"><span class="toc-section-number">10</span> Linear model</a></li>
+<li><a href="#machine-learning"><span class="toc-section-number">11</span> Machine Learning</a></li>
+<li><a href="#part-communicate">(PART) Communicate</a></li>
+<li><a href="#r-markdown"><span class="toc-section-number">12</span> R Markdown</a></li>
+<li><a href="#part-automate">(PART) Automate</a></li>
+<li><a href="#shiny"><span class="toc-section-number">13</span> shiny</a></li>
+<li><a href="#part-appendix">(PART) APPENDIX</a></li>
+<li><a href="#appendix-appendix">(APPENDIX) Appendix</a></li>
+<li><a href="#refereneces"><span class="toc-section-number">14</span> Refereneces</a></li>
+<li><a href="#Appendix-RBasics"><span class="toc-section-number">15</span> R Basics</a>
+<ul>
+<li><a href="#基本的な演算"><span class="toc-section-number">15.1</span> 基本的な演算</a>
+<ul>
+<li><a href="#算術演算"><span class="toc-section-number">15.1.1</span> 算術演算</a></li>
+<li><a href="#代入"><span class="toc-section-number">15.1.2</span> 代入</a></li>
+<li><a href="#代入結果の確認"><span class="toc-section-number">15.1.3</span> 代入結果の確認</a></li>
+<li><a href="#合算"><span class="toc-section-number">15.1.4</span> 合算</a></li>
+<li><a href="#平均-1"><span class="toc-section-number">15.1.5</span> 平均</a></li>
+<li><a href="#変数の上書き"><span class="toc-section-number">15.1.6</span> 変数の上書き</a></li>
+</ul></li>
+<li><a href="#変数"><span class="toc-section-number">15.2</span> 変数</a>
+<ul>
+<li><a href="#予約語"><span class="toc-section-number">15.2.1</span> 予約語</a></li>
+<li><a href="#データ型"><span class="toc-section-number">15.2.2</span> データ型</a></li>
+<li><a href="#変数型"><span class="toc-section-number">15.2.3</span> 変数型</a></li>
+</ul></li>
+<li><a href="#定数"><span class="toc-section-number">15.3</span> 定数</a>
+<ul>
+<li><a href="#naの型"><span class="toc-section-number">15.3.1</span> <code>NA</code>の型</a></li>
+</ul></li>
+<li><a href="#検査変換"><span class="toc-section-number">15.4</span> 検査・変換</a></li>
+<li><a href="#演算子"><span class="toc-section-number">15.5</span> 演算子</a>
+<ul>
+<li><a href="#参照演算子"><span class="toc-section-number">15.5.1</span> 参照演算子</a></li>
+<li><a href="#単項演算子"><span class="toc-section-number">15.5.2</span> 単項演算子</a></li>
+<li><a href="#二項演算子"><span class="toc-section-number">15.5.3</span> 二項演算子</a></li>
+<li><a href="#特殊演算子"><span class="toc-section-number">15.5.4</span> 特殊演算子</a></li>
+<li><a href="#優先順位"><span class="toc-section-number">15.5.5</span> 優先順位</a></li>
+</ul></li>
+<li><a href="#制御文"><span class="toc-section-number">15.6</span> 制御文</a>
+<ul>
+<li><a href="#条件分岐"><span class="toc-section-number">15.6.1</span> 条件分岐</a></li>
+<li><a href="#繰り返し"><span class="toc-section-number">15.6.2</span> 繰り返し</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#environments-2"><span class="toc-section-number">16</span> Environments 2</a>
+<ul>
+<li><a href="#google-colaboratory"><span class="toc-section-number">16.1</span> Google Colaboratory</a>
+<ul>
+<li><a href="#login-google"><span class="toc-section-number">16.1.1</span> Login Google</a></li>
+<li><a href="#open-google-colab"><span class="toc-section-number">16.1.2</span> Open Google Colab</a></li>
+<li><a href="#upload-template"><span class="toc-section-number">16.1.3</span> Upload Template</a></li>
+<li><a href="#run-r-code"><span class="toc-section-number">16.1.4</span> Run R code</a></li>
+<li><a href="#save-file"><span class="toc-section-number">16.1.5</span> Save File</a></li>
+</ul></li>
+<li><a href="#rstudio-cloud-1"><span class="toc-section-number">16.2</span> RStudio Cloud</a>
+<ul>
+<li><a href="#create-project"><span class="toc-section-number">16.2.1</span> Create Project</a></li>
+<li><a href="#install-packages"><span class="toc-section-number">16.2.2</span> Install Packages</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#install-rrstudio"><span class="toc-section-number">17</span> Install R/RStudio</a>
+<ul>
+<li><a href="#install-r"><span class="toc-section-number">17.1</span> Install R</a>
+<ul>
+<li><a href="#windows"><span class="toc-section-number">17.1.1</span> Windows</a></li>
+<li><a href="#macos-os-x"><span class="toc-section-number">17.1.2</span> macOS (OS X)</a></li>
+<li><a href="#linux"><span class="toc-section-number">17.1.3</span> Linux</a></li>
+</ul></li>
+<li><a href="#install-rstudio-desktop"><span class="toc-section-number">17.2</span> Install RStudio Desktop</a>
+<ul>
+<li><a href="#動作確認"><span class="toc-section-number">17.2.1</span> 動作確認</a></li>
+</ul></li>
+<li><a href="#install-r-packages"><span class="toc-section-number">17.3</span> Install R packages</a>
+<ul>
+<li><a href="#linux環境の場合"><span class="toc-section-number">17.3.1</span> Linux環境の場合</a></li>
+</ul></li>
+<li><a href="#install-git"><span class="toc-section-number">17.4</span> Install Git</a>
+<ul>
+<li><a href="#git"><span class="toc-section-number">17.4.1</span> Git</a></li>
+<li><a href="#git-client"><span class="toc-section-number">17.4.2</span> Git Client</a></li>
+</ul></li>
+<li><a href="#setup-rstudio-sever-with-docker"><span class="toc-section-number">17.5</span> Setup RStudio Sever with Docker</a>
+<ul>
+<li><a href="#enable-hyper-v-windows-only"><span class="toc-section-number">17.5.1</span> Enable Hyper-V (Windows Only)</a></li>
+<li><a href="#download-and-install-docker-desktop"><span class="toc-section-number">17.5.2</span> Download and Install Docker Desktop</a></li>
+<li><a href="#download-docker-image"><span class="toc-section-number">17.5.3</span> Download Docker Image</a></li>
+<li><a href="#run-container"><span class="toc-section-number">17.5.4</span> Run Container</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#rstudio-ide"><span class="toc-section-number">18</span> RStudio IDE</a>
+<ul>
+<li><a href="#overview"><span class="toc-section-number">18.1</span> Overview</a></li>
+<li><a href="#keyboard-shortcuts"><span class="toc-section-number">18.2</span> Keyboard Shortcuts</a></li>
+<li><a href="#writing-r-code"><span class="toc-section-number">18.3</span> Writing R code</a></li>
+<li><a href="#global-options"><span class="toc-section-number">18.4</span> Global Options</a>
+<ul>
+<li><a href="#general"><span class="toc-section-number">18.4.1</span> General</a></li>
+<li><a href="#code"><span class="toc-section-number">18.4.2</span> Code</a></li>
+<li><a href="#appearance"><span class="toc-section-number">18.4.3</span> Appearance</a></li>
+<li><a href="#pane-layout"><span class="toc-section-number">18.4.4</span> Pane Layout</a></li>
+<li><a href="#packages"><span class="toc-section-number">18.4.5</span> Packages</a></li>
+<li><a href="#r-markdown-1"><span class="toc-section-number">18.4.6</span> R Markdown</a></li>
+<li><a href="#sweave"><span class="toc-section-number">18.4.7</span> Sweave</a></li>
+<li><a href="#spelling"><span class="toc-section-number">18.4.8</span> Spelling</a></li>
+<li><a href="#gitsvn"><span class="toc-section-number">18.4.9</span> Git/SVN</a></li>
+<li><a href="#publishing"><span class="toc-section-number">18.4.10</span> Publishing</a></li>
+<li><a href="#terminal"><span class="toc-section-number">18.4.11</span> Terminal</a></li>
+</ul></li>
+<li><a href="#project-options"><span class="toc-section-number">18.5</span> Project Options</a></li>
+</ul></li>
+<li><a href="#cloud-ide"><span class="toc-section-number">19</span> Cloud IDE</a>
+<ul>
+<li><a href="#rstudio-cloud-ga"><span class="toc-section-number">19.1</span> RStudio Cloud GA</a></li>
+<li><a href="#exploratory"><span class="toc-section-number">19.2</span> Exploratory</a></li>
+<li><a href="#binder"><span class="toc-section-number">19.3</span> binder</a></li>
+</ul></li>
+</ul>
+<!--bookdown:toc2:end-->
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Rのすゝめ</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:toc:end-->
+<!--bookdown:body:start-->
+<div id="latex関連の設定はベースとなるrmdに記述しないと正しく認識されません" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> LaTeX関連の設定はベースとなるRmdに記述しないと正しく認識されません</h1>
+<p>Placeholder</p>
+<div id="日本語とtufte-kableextraを使うために必要なtexパッケージ" class="section level2" number="1.1">
+<h2 number="1.1"><span class="header-section-number">1.1</span> 日本語とtufte, kableExtraを使うために必要なTeXパッケージ</h2>
+</div>
+<div id="windows環境では上記の設定ではnotoフォントが認識されないので以下の行と" class="section level2" number="1.2">
+<h2 number="1.2"><span class="header-section-number">1.2</span> Windows環境では上記の設定ではNotoフォントが認識されないので以下の行と</h2>
+</div>
+<div id="入れ替えてipaフォントを利用するのが楽" class="section level2" number="1.3">
+<h2 number="1.3"><span class="header-section-number">1.3</span> 入れ替えてIPAフォントを利用するのが楽</h2>
+</div>
+<div id="モノフォントのみ入れ替えフォントのスケーリングを調整する" class="section level2" number="1.4">
+<h2 number="1.4"><span class="header-section-number">1.4</span> モノフォントのみ入れ替えフォントのスケーリングを調整する</h2>
+</div>
+<div id="windows環境でnotoフォントを指定したい場合は以下のように個別に指定する" class="section level2" number="1.5">
+<h2 number="1.5"><span class="header-section-number">1.5</span> Windows環境でNotoフォントを指定したい場合は以下のように個別に指定する</h2>
+</div>
+<div id="必要があるが以下だけでは太字が表示できないので追加記述が必要調査中" class="section level2" number="1.6">
+<h2 number="1.6"><span class="header-section-number">1.6</span> 必要があるが、以下だけでは太字が表示できないので追加記述が必要（調査中）</h2>
+<!--chapter:end:index.Rmd-->
+</div>
+</div>
+<div id="license" class="section level1 unnumbered">
+<h1 class="unnumbered">License</h1>
+<hr />
+<p>本書は<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja" target="_blank" title="Creative Commons">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス</a>の下に提供されています。</p>
+<p>あなたの従うべき条件は以下の通りです。</p>
+<ul>
+<li><p>表示（BY）</p>
+<ul>
+<li>あなたは 適切なクレジットを表示し、ライセンスへのリンクを提供し、変更があったらその旨を示さなければなりません。これらは合理的であればどのような方法で行っても構いませんが、許諾者があなたやあなたの利用行為を支持していると示唆するような方法は除きます。</li>
+</ul></li>
+<li><p>非営利（NC）</p>
+<ul>
+<li>あなたは営利目的でこの資料を利用してはなりません。</li>
+</ul></li>
+<li><p>継承（SA）</p>
+<ul>
+<li>もしあなたがこの資料をリミックスしたり、改変したり、加工した場合には、あなたはあなたの貢献部分を元の作品と同じライセンスの下に頒布しなければなりません。</li>
+</ul></li>
+</ul>
+<div class="figure">
+<img src="fig/88x31.png" alt="" />
+<p class="caption">CC 4.0 BY-NC-SA</p>
+</div>
+<p>ただし、本書にて引用している文書、図、ロゴなどの権利は原著作者が保有しています。</p>
+<hr />
+<!--chapter:end:0-00-licence.Rmd-->
+</div>
+<div id="part-introduction" class="section level1 unnumbered">
+<h1 class="unnumbered">(PART) Introduction</h1>
+</div>
+<div id="はじめに" class="section level1 unnumbered">
+<h1 class="unnumbered">はじめに</h1>
+<p>Placeholder</p>
+<div id="想定読者" class="section level2 unnumbered">
+<h2 class="unnumbered">想定読者</h2>
+</div>
+<div id="表記ルール" class="section level2 unnumbered">
+<h2 class="unnumbered">表記ルール</h2>
+</div>
+<div id="なぜrを使うのか" class="section level2 unnumbered">
+<h2 class="unnumbered">なぜ<strong>R</strong>を使うのか</h2>
+</div>
+<div id="分析の手順" class="section level2 unnumbered">
+<h2 class="unnumbered">分析の手順</h2>
+</div>
+<div id="data-science-workflow" class="section level2 unnumbered">
+<h2 class="unnumbered">Data Science Workflow</h2>
+<div id="program" class="section level3 unnumbered">
+<h3 class="unnumbered">Program</h3>
+</div>
+<div id="import" class="section level3 unnumbered">
+<h3 class="unnumbered">Import</h3>
+</div>
+<div id="tidy" class="section level3 unnumbered">
+<h3 class="unnumbered">Tidy</h3>
+</div>
+<div id="transform" class="section level3 unnumbered">
+<h3 class="unnumbered">Transform</h3>
+</div>
+<div id="visualize" class="section level3 unnumbered">
+<h3 class="unnumbered">Visualize</h3>
+</div>
+<div id="model" class="section level3 unnumbered">
+<h3 class="unnumbered">Model</h3>
+</div>
+<div id="communicate" class="section level3 unnumbered">
+<h3 class="unnumbered">Communicate</h3>
+</div>
+</div>
+<div id="tidyverse-eco-system" class="section level2 unnumbered">
+<h2 class="unnumbered">Tidyverse Eco System</h2>
+<!--chapter:end:1-01-Introduction.Rmd-->
+</div>
+</div>
+<div id="part-program" class="section level1 unnumbered">
+<h1 class="unnumbered">(PART) Program</h1>
+</div>
+<div id="分析環境" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> 分析環境</h1>
+<p>Placeholder</p>
+<div id="主な分析環境" class="section level2" number="2.1">
+<h2 number="2.1"><span class="header-section-number">2.1</span> 主な分析環境</h2>
+<div id="r-commander" class="section level3" number="2.1.1">
+<h3 number="2.1.1"><span class="header-section-number">2.1.1</span> R Commander</h3>
+</div>
+<div id="google-colab" class="section level3" number="2.1.2">
+<h3 number="2.1.2"><span class="header-section-number">2.1.2</span> Google Colab</h3>
+</div>
+<div id="rstudio" class="section level3" number="2.1.3">
+<h3 number="2.1.3"><span class="header-section-number">2.1.3</span> RStudio</h3>
+</div>
+<div id="rstudio-cloud" class="section level3" number="2.1.4">
+<h3 number="2.1.4"><span class="header-section-number">2.1.4</span> RStudio Cloud</h3>
+</div>
+<div id="programing-editor" class="section level3" number="2.1.5">
+<h3 number="2.1.5"><span class="header-section-number">2.1.5</span> Programing Editor</h3>
+<!--chapter:end:2-01-Program.Rmd-->
+</div>
+</div>
+</div>
+<div id="rの基本" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> <strong>R</strong>の基本</h1>
+<p><strong>R</strong>の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から<strong>R</strong>のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』（大村平著、日科技連出版社）や『統計解析のはなし【改訂版】』（大村平著、日科技連出版社）を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。
+なお、基本文法については<a href="#Appendix-RBasics">Appendix B</a>をご覧ください。</p>
+<div id="基本統計量" class="section level2" number="3.1">
+<h2 number="3.1"><span class="header-section-number">3.1</span> 基本統計量</h2>
+<p>データを分析する前には対象となるデータがどのような特徴を持っているか確認しておくことが重要であるとよく言われます。データの特徴を見るには基本統計量を用いる分かりやすいと思います。</p>
+<div id="平均" class="section level3" number="3.1.1">
+<h3 number="3.1.1"><span class="header-section-number">3.1.1</span> 平均</h3>
+<p>統計量の中でよく使われるのが平均です。平均というと下式で表される算術平均を思い浮かべる方が多いと思いますが、
+<span class="math display">\[\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i\]</span>
+算術平均以外にも下式で表される幾何平均（相乗平均）や
+<span class="math display">\[\sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i}\]</span>
+体操競技などで使われる複数審判が出す得点の最小値と最大値を除いた得点の平均であるトリム平均などがあります。以降、灰色に網掛けされた部分が<strong>R</strong>のコード、コードの下の<code>##</code>で始まる部分が実行結果ですので<strong>R</strong>のコンソールで実行してみてください。</p>
+<p><strong>R</strong>では算術平均とトリム平均は<code>mean()</code>関数で求めることができます。最初に平均の計算対象となるデータを作成します。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span></code></pre></div>
+<p>ここで<code>x</code>は5つの値を格納（代入）するための変数、<code>&lt;-</code>は値を変数に格納するための代入演算子、<code>c()</code>関数はベクトルデータを作成する関数です。代入結果を確認するには以下を実行します。</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 1 3 3 5 7</code></pre>
+<p>算出平均は<code>mean()</code>関数に計算対象である<code>x</code>を指定します。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] 3.8</code></pre>
+<p>トリム平均は上記のコードに<code>trim</code>オプションを指定します。<code>trim</code>オプションは計算対象外にする割合を指定するオプションです。今回は五つのデータから最小値・最大値の二つを除いてトリム平均を求めるので<span class="math inline">\(\frac{2}{5} = 0.2\)</span>を指定します。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x, <span class="at">trim =</span> <span class="fl">0.2</span>)</span></code></pre></div>
+<pre><code>## [1] 3.666667</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">mean</span>()</span></code></pre></div>
+<p>幾何平均を求める関数は標準では用意されていませんのでインストールする必要があり、ここでは<strong><code>psych</code></strong>パッケージを使います。パッケージをインストールして使えるようにするには以下の手順が必要です。</p>
+<ol style="list-style-type: decimal">
+<li>パッケージをインストールする</li>
+<li>パッケージを読み込む</li>
+</ol>
+<p>パッケージのインストールは<code>install.packages()</code>関数を用います。環境によってはCRANミラーサイトの選択を促される場合があります。その場合は、お住まいの地域に最も近いミラーサイトを選択してください。なお、パッケージのインストールは一度行えば済みます。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span></code></pre></div>
+<p>パッケージが提供する関数などを使えるようにするには<code>library()</code>関数を使って読み込みます。</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
+<p>これで<strong><code>psych</code></strong>パッケージを使う準備が整いましたので、<code>geometric.mean()</code>関数で幾何平均を求めます。</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geometric.mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] 3.159818</code></pre>
+<p>インストールしたパッケージの関数を使う場合、どのパッケージの関数を使っているかを明示的に示すために下記のように<code>::</code>演算子（名前空間へのアクセス演算子）でパッケージ名と関数名をつなげて記述することもできます。</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">geometric.mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] 3.159818</code></pre>
+<p>この表記方法については賛否ありますが、どのパッケージの関数を使っているかを明示できるため、本書ではこの記述方法を用います。</p>
+</div>
+<div id="レンジ範囲" class="section level3" number="3.1.2">
+<h3 number="3.1.2"><span class="header-section-number">3.1.2</span> レンジ（範囲）</h3>
+<p>データのばらつきを見るためにレンジと呼ばれる範囲を用いることがあります。以下の<code>x</code>と<code>y</code>は同じ平均値をとるデータです。</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">8</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(y)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>レンジを求めるには<code>range()</code>関数を用います。</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)</span></code></pre></div>
+<pre><code>## [1] 2 8</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(y)</span></code></pre></div>
+<pre><code>## [1] 1 9</code></pre>
+<p><code>range()</code>関数は最小値と最大値を求める関数ですので<code>diff()</code>関数を用いて最小値と最大値の幅を求めます。</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(x))</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(y))</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+</div>
+<div id="標準偏差" class="section level3" number="3.1.3">
+<h3 number="3.1.3"><span class="header-section-number">3.1.3</span> 標準偏差</h3>
+<p>レンジは比較的簡単に計算できますが、以下のように同じレンジを持つデータの特徴が同じと言えるでしょうか？</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x)</span></code></pre></div>
+<pre><code>## [1] 1 9</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(y)</span></code></pre></div>
+<pre><code>## [1] 1 9</code></pre>
+<p>このような場合、下式で求められる標準偏差（Standard Deviation）を使うと特徴が見えてくることがあります。
+<span class="math display">\[\sigma = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n} - \bar{x}^2 }\]</span></p>
+<p>標準偏差は<code>sd()</code>関数で求めることができます。</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
+<pre><code>## [1] 2.828427</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(y)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+</div>
+<div id="中央値" class="section level3" number="3.1.4">
+<h3 number="3.1.4"><span class="header-section-number">3.1.4</span> 中央値</h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(y)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+</div>
+<div id="最頻値" class="section level3" number="3.1.5">
+<h3 number="3.1.5"><span class="header-section-number">3.1.5</span> 最頻値</h3>
+<p>最頻値とはデータの中で最も頻繁に出てくる値のことで、モードとも呼ばれます。最頻値を求める関数は標準では用意されていませんので<code>modeest</code>パッケージを用います。</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modeest&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modeest)</span></code></pre></div>
+<pre><code>## Registered S3 method overwritten by &#39;rmutil&#39;:
+##   method         from 
+##   plot.residuals psych</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>modeest<span class="sc">::</span><span class="fu">mfv</span>(x)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>modeest<span class="sc">::</span><span class="fu">mfv</span>(y)</span></code></pre></div>
+<pre><code>## [1] 1 9</code></pre>
+<!--chapter:end:2-02-rbasics.Rmd-->
+</div>
+</div>
+</div>
+<div id="part-wrangle" class="section level1 unnumbered">
+<h1 class="unnumbered">(PART) Wrangle</h1>
+</div>
+<div id="import-1" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> Import</h1>
+<p>　Import は</p>
+<blockquote>
+<p>　Google Colab を利用する場合は［＋コード］（［Ctrl］+［M］+［Ctrl］+［B］）ボタンでコードを追加してコードブロックを挿入してからコードを記載します。コードブロックの移動や削除はブロック右側に表示されているサブメニューで行います。［＋テキスト］ボタンでテキストブロックを挿入すればコメントなどを書き込むことができます。</p>
+</blockquote>
+<p>　</p>
+<blockquote>
+<p>　RStudio を利用する場合はメニューから［File］-［New File］-［R Notebook］を実行してR Notebook を作成します。キーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］でコードチャンクを挿入しチャンクにコードを記述します。チャング以外にコメントなどを書き込むことができます。</p>
+</blockquote>
+<p>　</p>
+<div id="readr" class="section level2" number="4.1">
+<h2 number="4.1"><span class="header-section-number">4.1</span> readr</h2>
+</div>
+<div id="readxl" class="section level2" number="4.2">
+<h2 number="4.2"><span class="header-section-number">4.2</span> readxl</h2>
+</div>
+<div id="pdftools" class="section level2" number="4.3">
+<h2 number="4.3"><span class="header-section-number">4.3</span> pdftools</h2>
+<!--chapter:end:3-01-Wrangle.Rmd-->
+</div>
+</div>
+<div id="tidy-1" class="section level1" number="5">
+<h1 number="5"><span class="header-section-number">5</span> Tidy</h1>
+<div id="tidy-data" class="section level2" number="5.1">
+<h2 number="5.1"><span class="header-section-number">5.1</span> Tidy Data</h2>
+</div>
+<div id="longer" class="section level2" number="5.2">
+<h2 number="5.2"><span class="header-section-number">5.2</span> longer</h2>
+</div>
+<div id="wider" class="section level2" number="5.3">
+<h2 number="5.3"><span class="header-section-number">5.3</span> wider</h2>
+<!--chapter:end:3-02-tidy.Rmd-->
+</div>
+</div>
+<div id="transform-1" class="section level1" number="6">
+<h1 number="6"><span class="header-section-number">6</span> Transform</h1>
+<div id="filter" class="section level2" number="6.1">
+<h2 number="6.1"><span class="header-section-number">6.1</span> filter</h2>
+</div>
+<div id="rename" class="section level2" number="6.2">
+<h2 number="6.2"><span class="header-section-number">6.2</span> rename</h2>
+</div>
+<div id="select" class="section level2" number="6.3">
+<h2 number="6.3"><span class="header-section-number">6.3</span> select</h2>
+<div id="select-helpers" class="section level3" number="6.3.1">
+<h3 number="6.3.1"><span class="header-section-number">6.3.1</span> select helpers</h3>
+</div>
+</div>
+<div id="mutate" class="section level2" number="6.4">
+<h2 number="6.4"><span class="header-section-number">6.4</span> mutate</h2>
+</div>
+<div id="summarize" class="section level2" number="6.5">
+<h2 number="6.5"><span class="header-section-number">6.5</span> summarize</h2>
+<!--chapter:end:3-03-transform.Rmd-->
+</div>
+</div>
+<div id="part-visualize" class="section level1 unnumbered">
+<h1 class="unnumbered">(PART) Visualize</h1>
+</div>
+<div id="base-r" class="section level1" number="7">
+<h1 number="7"><span class="header-section-number">7</span> Base R</h1>
+<div id="plot" class="section level2" number="7.1">
+<h2 number="7.1"><span class="header-section-number">7.1</span> plot</h2>
+</div>
+<div id="boxplot" class="section level2" number="7.2">
+<h2 number="7.2"><span class="header-section-number">7.2</span> boxplot</h2>
+</div>
+<div id="hist" class="section level2" number="7.3">
+<h2 number="7.3"><span class="header-section-number">7.3</span> hist</h2>
+<!--chapter:end:4-01-Visualize.Rmd-->
+</div>
+</div>
+<div id="ggplot2" class="section level1" number="8">
+<h1 number="8"><span class="header-section-number">8</span> ggplot2</h1>
+<!--chapter:end:4-02-ggplot2.Rmd-->
+</div>
+<div id="part-modelinfer" class="section level1 unnumbered">
+<h1 class="unnumbered">(PART) Model/Infer</h1>
+</div>
+<div id="test" class="section level1" number="9">
+<h1 number="9"><span class="header-section-number">9</span> Test</h1>
+</div>
+<div id="linear-model" class="section level1" number="10">
+<h1 number="10"><span class="header-section-number">10</span> Linear model</h1>
+</div>
+<div id="machine-learning" class="section level1" number="11">
+<h1 number="11"><span class="header-section-number">11</span> Machine Learning</h1>
+<!--chapter:end:5-00-Model.Rmd-->
+</div>
+<div id="part-communicate" class="section level1 unnumbered">
+<h1 class="unnumbered">(PART) Communicate</h1>
+</div>
+<div id="r-markdown" class="section level1" number="12">
+<h1 number="12"><span class="header-section-number">12</span> R Markdown</h1>
+<!--chapter:end:6-01-Communicate.Rmd-->
+</div>
+<div id="part-automate" class="section level1 unnumbered">
+<h1 class="unnumbered">(PART) Automate</h1>
+</div>
+<div id="shiny" class="section level1" number="13">
+<h1 number="13"><span class="header-section-number">13</span> shiny</h1>
+<!--chapter:end:7-01-Automate.Rmd-->
+</div>
+<div id="part-appendix" class="section level1 unnumbered">
+<h1 class="unnumbered">(PART) APPENDIX</h1>
+</div>
+<div id="appendix-appendix" class="section level1 unnumbered">
+<h1 class="unnumbered">(APPENDIX) Appendix</h1>
+</div>
+<div id="refereneces" class="section level1" number="14">
+<h1 number="14"><span class="header-section-number">14</span> Refereneces</h1>
+<!--chapter:end:8-01-Appendix.Rmd-->
+</div>
+<div id="Appendix-RBasics" class="section level1" number="15">
+<h1 number="15"><span class="header-section-number">15</span> R Basics</h1>
+<p>Placeholder</p>
+<div id="基本的な演算" class="section level2" number="15.1">
+<h2 number="15.1"><span class="header-section-number">15.1</span> 基本的な演算</h2>
+<div id="算術演算" class="section level3" number="15.1.1">
+<h3 number="15.1.1"><span class="header-section-number">15.1.1</span> 算術演算</h3>
+</div>
+<div id="代入" class="section level3" number="15.1.2">
+<h3 number="15.1.2"><span class="header-section-number">15.1.2</span> 代入</h3>
+</div>
+<div id="代入結果の確認" class="section level3" number="15.1.3">
+<h3 number="15.1.3"><span class="header-section-number">15.1.3</span> 代入結果の確認</h3>
+</div>
+<div id="合算" class="section level3" number="15.1.4">
+<h3 number="15.1.4"><span class="header-section-number">15.1.4</span> 合算</h3>
+</div>
+<div id="平均-1" class="section level3" number="15.1.5">
+<h3 number="15.1.5"><span class="header-section-number">15.1.5</span> 平均</h3>
+</div>
+<div id="変数の上書き" class="section level3" number="15.1.6">
+<h3 number="15.1.6"><span class="header-section-number">15.1.6</span> 変数の上書き</h3>
+</div>
+</div>
+<div id="変数" class="section level2" number="15.2">
+<h2 number="15.2"><span class="header-section-number">15.2</span> 変数</h2>
+<div id="予約語" class="section level3" number="15.2.1">
+<h3 number="15.2.1"><span class="header-section-number">15.2.1</span> 予約語</h3>
+</div>
+<div id="データ型" class="section level3" number="15.2.2">
+<h3 number="15.2.2"><span class="header-section-number">15.2.2</span> データ型</h3>
+</div>
+<div id="変数型" class="section level3" number="15.2.3">
+<h3 number="15.2.3"><span class="header-section-number">15.2.3</span> 変数型</h3>
+<div id="ベクトル型" class="section level4" number="15.2.3.1">
+<h4 number="15.2.3.1"><span class="header-section-number">15.2.3.1</span> ベクトル型</h4>
+</div>
+<div id="因子型" class="section level4" number="15.2.3.2">
+<h4 number="15.2.3.2"><span class="header-section-number">15.2.3.2</span> 因子型</h4>
+</div>
+<div id="マトリクス型" class="section level4" number="15.2.3.3">
+<h4 number="15.2.3.3"><span class="header-section-number">15.2.3.3</span> マトリクス型</h4>
+</div>
+<div id="アレイ型" class="section level4" number="15.2.3.4">
+<h4 number="15.2.3.4"><span class="header-section-number">15.2.3.4</span> アレイ型</h4>
+</div>
+<div id="データフレーム型" class="section level4" number="15.2.3.5">
+<h4 number="15.2.3.5"><span class="header-section-number">15.2.3.5</span> データフレーム型</h4>
+</div>
+<div id="リスト型" class="section level4" number="15.2.3.6">
+<h4 number="15.2.3.6"><span class="header-section-number">15.2.3.6</span> リスト型</h4>
+</div>
+</div>
+</div>
+<div id="定数" class="section level2" number="15.3">
+<h2 number="15.3"><span class="header-section-number">15.3</span> 定数</h2>
+<div id="naの型" class="section level3" number="15.3.1">
+<h3 number="15.3.1"><span class="header-section-number">15.3.1</span> <code>NA</code>の型</h3>
+</div>
+</div>
+<div id="検査変換" class="section level2" number="15.4">
+<h2 number="15.4"><span class="header-section-number">15.4</span> 検査・変換</h2>
+</div>
+<div id="演算子" class="section level2" number="15.5">
+<h2 number="15.5"><span class="header-section-number">15.5</span> 演算子</h2>
+<div id="参照演算子" class="section level3" number="15.5.1">
+<h3 number="15.5.1"><span class="header-section-number">15.5.1</span> 参照演算子</h3>
+<div id="演算子-1" class="section level4" number="15.5.1.1">
+<h4 number="15.5.1.1"><span class="header-section-number">15.5.1.1</span> <code>[</code>演算子</h4>
+</div>
+<div id="演算子-2" class="section level4" number="15.5.1.2">
+<h4 number="15.5.1.2"><span class="header-section-number">15.5.1.2</span> <code>$</code>演算子</h4>
+</div>
+</div>
+<div id="単項演算子" class="section level3" number="15.5.2">
+<h3 number="15.5.2"><span class="header-section-number">15.5.2</span> 単項演算子</h3>
+</div>
+<div id="二項演算子" class="section level3" number="15.5.3">
+<h3 number="15.5.3"><span class="header-section-number">15.5.3</span> 二項演算子</h3>
+<div id="算術演算子" class="section level4" number="15.5.3.1">
+<h4 number="15.5.3.1"><span class="header-section-number">15.5.3.1</span> 算術演算子</h4>
+</div>
+<div id="比較演算子" class="section level4" number="15.5.3.2">
+<h4 number="15.5.3.2"><span class="header-section-number">15.5.3.2</span> 比較演算子</h4>
+</div>
+<div id="論理演算子" class="section level4" number="15.5.3.3">
+<h4 number="15.5.3.3"><span class="header-section-number">15.5.3.3</span> 論理演算子</h4>
+</div>
+</div>
+<div id="特殊演算子" class="section level3" number="15.5.4">
+<h3 number="15.5.4"><span class="header-section-number">15.5.4</span> 特殊演算子</h3>
+</div>
+<div id="優先順位" class="section level3" number="15.5.5">
+<h3 number="15.5.5"><span class="header-section-number">15.5.5</span> 優先順位</h3>
+</div>
+</div>
+<div id="制御文" class="section level2" number="15.6">
+<h2 number="15.6"><span class="header-section-number">15.6</span> 制御文</h2>
+<div id="条件分岐" class="section level3" number="15.6.1">
+<h3 number="15.6.1"><span class="header-section-number">15.6.1</span> 条件分岐</h3>
+<div id="if-else" class="section level4" number="15.6.1.1">
+<h4 number="15.6.1.1"><span class="header-section-number">15.6.1.1</span> if, else</h4>
+</div>
+<div id="switch" class="section level4" number="15.6.1.2">
+<h4 number="15.6.1.2"><span class="header-section-number">15.6.1.2</span> switch</h4>
+<div id="引数が整数の場合" class="section level5" number="15.6.1.2.1">
+<h5 number="15.6.1.2.1"><span class="header-section-number">15.6.1.2.1</span> 引数が整数の場合</h5>
+</div>
+<div id="引数が文字の場合" class="section level5" number="15.6.1.2.2">
+<h5 number="15.6.1.2.2"><span class="header-section-number">15.6.1.2.2</span> 引数が文字の場合</h5>
+</div>
+</div>
+<div id="ifelse" class="section level4" number="15.6.1.3">
+<h4 number="15.6.1.3"><span class="header-section-number">15.6.1.3</span> ifelse</h4>
+</div>
+</div>
+<div id="繰り返し" class="section level3" number="15.6.2">
+<h3 number="15.6.2"><span class="header-section-number">15.6.2</span> 繰り返し</h3>
+<div id="for" class="section level4" number="15.6.2.1">
+<h4 number="15.6.2.1"><span class="header-section-number">15.6.2.1</span> for</h4>
+</div>
+<div id="while-repeat" class="section level4" number="15.6.2.2">
+<h4 number="15.6.2.2"><span class="header-section-number">15.6.2.2</span> while, repeat</h4>
+<!--chapter:end:8-02-rbasics.Rmd-->
+</div>
+</div>
+</div>
+</div>
+<div id="environments-2" class="section level1" number="16">
+<h1 number="16"><span class="header-section-number">16</span> Environments 2</h1>
+<p>Placeholder</p>
+<div id="google-colaboratory" class="section level2" number="16.1">
+<h2 number="16.1"><span class="header-section-number">16.1</span> Google Colaboratory</h2>
+<div id="login-google" class="section level3" number="16.1.1">
+<h3 number="16.1.1"><span class="header-section-number">16.1.1</span> Login Google</h3>
+</div>
+<div id="open-google-colab" class="section level3" number="16.1.2">
+<h3 number="16.1.2"><span class="header-section-number">16.1.2</span> Open Google Colab</h3>
+</div>
+<div id="upload-template" class="section level3" number="16.1.3">
+<h3 number="16.1.3"><span class="header-section-number">16.1.3</span> Upload Template</h3>
+</div>
+<div id="run-r-code" class="section level3" number="16.1.4">
+<h3 number="16.1.4"><span class="header-section-number">16.1.4</span> Run R code</h3>
+</div>
+<div id="save-file" class="section level3" number="16.1.5">
+<h3 number="16.1.5"><span class="header-section-number">16.1.5</span> Save File</h3>
+</div>
+</div>
+<div id="rstudio-cloud-1" class="section level2" number="16.2">
+<h2 number="16.2"><span class="header-section-number">16.2</span> RStudio Cloud</h2>
+<div id="create-project" class="section level3" number="16.2.1">
+<h3 number="16.2.1"><span class="header-section-number">16.2.1</span> Create Project</h3>
+</div>
+<div id="install-packages" class="section level3" number="16.2.2">
+<h3 number="16.2.2"><span class="header-section-number">16.2.2</span> Install Packages</h3>
+<!--chapter:end:9-01-01-env.Rmd-->
+</div>
+</div>
+</div>
+<div id="install-rrstudio" class="section level1" number="17">
+<h1 number="17"><span class="header-section-number">17</span> Install R/RStudio</h1>
+<p>Placeholder</p>
+<div id="install-r" class="section level2" number="17.1">
+<h2 number="17.1"><span class="header-section-number">17.1</span> Install R</h2>
+<div id="windows" class="section level3" number="17.1.1">
+<h3 number="17.1.1"><span class="header-section-number">17.1.1</span> Windows</h3>
+<div id="rtools" class="section level4" number="17.1.1.1">
+<h4 number="17.1.1.1"><span class="header-section-number">17.1.1.1</span> Rtools</h4>
+</div>
+</div>
+<div id="macos-os-x" class="section level3" number="17.1.2">
+<h3 number="17.1.2"><span class="header-section-number">17.1.2</span> macOS (OS X)</h3>
+</div>
+<div id="linux" class="section level3" number="17.1.3">
+<h3 number="17.1.3"><span class="header-section-number">17.1.3</span> Linux</h3>
+</div>
+</div>
+<div id="install-rstudio-desktop" class="section level2" number="17.2">
+<h2 number="17.2"><span class="header-section-number">17.2</span> Install RStudio Desktop</h2>
+<div id="動作確認" class="section level3" number="17.2.1">
+<h3 number="17.2.1"><span class="header-section-number">17.2.1</span> 動作確認</h3>
+</div>
+</div>
+<div id="install-r-packages" class="section level2" number="17.3">
+<h2 number="17.3"><span class="header-section-number">17.3</span> Install R packages</h2>
+<div id="linux環境の場合" class="section level3" number="17.3.1">
+<h3 number="17.3.1"><span class="header-section-number">17.3.1</span> Linux環境の場合</h3>
+</div>
+</div>
+<div id="install-git" class="section level2" number="17.4">
+<h2 number="17.4"><span class="header-section-number">17.4</span> Install Git</h2>
+<div id="git" class="section level3" number="17.4.1">
+<h3 number="17.4.1"><span class="header-section-number">17.4.1</span> Git</h3>
+</div>
+<div id="git-client" class="section level3" number="17.4.2">
+<h3 number="17.4.2"><span class="header-section-number">17.4.2</span> Git Client</h3>
+</div>
+</div>
+<div id="setup-rstudio-sever-with-docker" class="section level2" number="17.5">
+<h2 number="17.5"><span class="header-section-number">17.5</span> Setup RStudio Sever with Docker</h2>
+<div id="enable-hyper-v-windows-only" class="section level3" number="17.5.1">
+<h3 number="17.5.1"><span class="header-section-number">17.5.1</span> Enable Hyper-V (Windows Only)</h3>
+</div>
+<div id="download-and-install-docker-desktop" class="section level3" number="17.5.2">
+<h3 number="17.5.2"><span class="header-section-number">17.5.2</span> Download and Install Docker Desktop</h3>
+</div>
+<div id="download-docker-image" class="section level3" number="17.5.3">
+<h3 number="17.5.3"><span class="header-section-number">17.5.3</span> Download Docker Image</h3>
+</div>
+<div id="run-container" class="section level3" number="17.5.4">
+<h3 number="17.5.4"><span class="header-section-number">17.5.4</span> Run Container</h3>
+<!--chapter:end:9-01-install.Rmd-->
+</div>
+</div>
+</div>
+<div id="rstudio-ide" class="section level1" number="18">
+<h1 number="18"><span class="header-section-number">18</span> RStudio IDE</h1>
+<p>Placeholder</p>
+<div id="overview" class="section level2" number="18.1">
+<h2 number="18.1"><span class="header-section-number">18.1</span> Overview</h2>
+</div>
+<div id="keyboard-shortcuts" class="section level2" number="18.2">
+<h2 number="18.2"><span class="header-section-number">18.2</span> Keyboard Shortcuts</h2>
+</div>
+<div id="writing-r-code" class="section level2" number="18.3">
+<h2 number="18.3"><span class="header-section-number">18.3</span> Writing R code</h2>
+<!--chapter:end:9-02-idebasics.Rmd-->
+</div>
+<div id="global-options" class="section level2" number="18.4">
+<h2 number="18.4"><span class="header-section-number">18.4</span> Global Options</h2>
+<div id="general" class="section level3" number="18.4.1">
+<h3 number="18.4.1"><span class="header-section-number">18.4.1</span> General</h3>
+</div>
+<div id="code" class="section level3" number="18.4.2">
+<h3 number="18.4.2"><span class="header-section-number">18.4.2</span> Code</h3>
+</div>
+<div id="appearance" class="section level3" number="18.4.3">
+<h3 number="18.4.3"><span class="header-section-number">18.4.3</span> Appearance</h3>
+</div>
+<div id="pane-layout" class="section level3" number="18.4.4">
+<h3 number="18.4.4"><span class="header-section-number">18.4.4</span> Pane Layout</h3>
+</div>
+<div id="packages" class="section level3" number="18.4.5">
+<h3 number="18.4.5"><span class="header-section-number">18.4.5</span> Packages</h3>
+</div>
+<div id="r-markdown-1" class="section level3" number="18.4.6">
+<h3 number="18.4.6"><span class="header-section-number">18.4.6</span> R Markdown</h3>
+</div>
+<div id="sweave" class="section level3" number="18.4.7">
+<h3 number="18.4.7"><span class="header-section-number">18.4.7</span> Sweave</h3>
+</div>
+<div id="spelling" class="section level3" number="18.4.8">
+<h3 number="18.4.8"><span class="header-section-number">18.4.8</span> Spelling</h3>
+</div>
+<div id="gitsvn" class="section level3" number="18.4.9">
+<h3 number="18.4.9"><span class="header-section-number">18.4.9</span> Git/SVN</h3>
+</div>
+<div id="publishing" class="section level3" number="18.4.10">
+<h3 number="18.4.10"><span class="header-section-number">18.4.10</span> Publishing</h3>
+</div>
+<div id="terminal" class="section level3" number="18.4.11">
+<h3 number="18.4.11"><span class="header-section-number">18.4.11</span> Terminal</h3>
+</div>
+</div>
+<div id="project-options" class="section level2" number="18.5">
+<h2 number="18.5"><span class="header-section-number">18.5</span> Project Options</h2>
+<!--chapter:end:9-03-IDEoptions.Rmd-->
+</div>
+</div>
+<div id="cloud-ide" class="section level1" number="19">
+<h1 number="19"><span class="header-section-number">19</span> Cloud IDE</h1>
+<p>Placeholder</p>
+<div id="rstudio-cloud-ga" class="section level2" number="19.1">
+<h2 number="19.1"><span class="header-section-number">19.1</span> RStudio Cloud GA</h2>
+</div>
+<div id="exploratory" class="section level2" number="19.2">
+<h2 number="19.2"><span class="header-section-number">19.2</span> Exploratory</h2>
+</div>
+<div id="binder" class="section level2" number="19.3">
+<h2 number="19.3"><span class="header-section-number">19.3</span> binder</h2>
+<!--chapter:end:9-04-Cloud.Rmd-->
+</div>
+</div>
+<!--bookdown:body:end-->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
+    </div>
+  </div>
+<!--bookdown:config-->
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
