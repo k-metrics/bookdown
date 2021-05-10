@@ -84,7 +84,8 @@ require(tidyverse)
 # H: フロートを正確に LaTex コード上と同じ位置に配置します. float パッケージが必要です (\usepackage{float}).
 
 knitr::opts_chunk$set(echo = TRUE, fig_caption = TRUE, fig.align = 'center',
-                      warning = FALSE, fig.pos = "H", out.extra = "")
+                      warning = FALSE, fig.pos = "H", out.extra = "",
+                      out.width = "85%")
 
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 
@@ -104,24 +105,13 @@ if (!is.null(output)) {
 # WARNING:
 # Should NOT exec df_print befor skimr::skim (has bug) 
 # Do NOT require() or library() kableExtra package with using skimr package
-df_print <- function(df = NULL, type = NULL, n = 3L, caption = NULL, 
-                     scale_down = FALSE, font_size = NULL, position = "center",
-                     full_width = FALSE, ...) {
-
-  # if (is.null(type)) {
-  #   output_type <- knitr::opts_knit$get("rmarkdown.pandoc.to")
-  # } else {
-  #   output_type <- type
-  # }
-
-  # print(output_type)     # for debug
-
+df_print <- function(df = NULL, n = 3L, caption = NULL, scale_down = FALSE,
+                     font_size = NULL, position = "center", full_width = FALSE,
+                     ...) {
   if (!is.null(df)) {
-    if (knitr::is_html_output()) {
-    # if (output_type == "html") {
+    if (knitr::is_html_output(excludes = c("epub"))) {
       rmarkdown::paged_table(df)
     } else if (knitr::is_latex_output()) {
-    # } else if (output_type == "latex" | output_type == "docx") {
       if (scale_down == FALSE) {
         latex_option = c("striped", "HOLD_position")
       } else {
@@ -129,13 +119,14 @@ df_print <- function(df = NULL, type = NULL, n = 3L, caption = NULL,
       }
       df %>% 
         psych::headTail(top = n, bottom = n) %>% 
-        # knitr::kable(caption = caption, ...) %>% 
         kableExtra::kbl(caption  = caption, ...) %>%
         kableExtra::kable_styling(font_size = font_size, position = position,
                                   full_width = full_width,
                                   latex_options = latex_option)
-    } else {
-      df
+    } else {  # ePUBの場合
+      df %>% 
+        psych::headTail(top = n, bottom = n) %>% 
+        kableExtra::kbl(caption  = caption, ...)
     }
   }　else {
     return(NULL)
@@ -164,8 +155,11 @@ df_print <- function(df = NULL, type = NULL, n = 3L, caption = NULL,
 
     -   もしあなたがこの資料をリミックスしたり、改変したり、加工した場合には、あなたはあなたの貢献部分を元の作品と同じライセンスの下に頒布しなければなりません。
 
-
-![CC 4.0 BY-NC-SA]("./fig/88x31.png")
+<!-- 下記の一行は"out.width"オプションを使う場合には呪文として必須。この一行が無いとknitrパッケージに"out.width"オプション指定時に図の格納先を見失うバグが残ってる模様。詳細は下記URLにて
+https://stackoverflow.com/questions/40470290/r-markdown-pdf-output-figure-with-out-width-90-generating-the-wrong-path-with
+https://github.com/rstudio/rmarkdown/issues/2024
+-->
+![CC 4.0 BY-NC-SA]("./fig/by-nc-sa.png")
 
 　ただし、本書にて引用している文書、図、ロゴなどの権利は原著作者が保有しています。
 

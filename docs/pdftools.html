@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.3 pdftools | Rのすゝめ</title>
-  <meta name="description" content="本書は" />
+  <meta name="description" content="本書はデータ分析勉強会で学んだ成果をまとめたものです" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.3 pdftools | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="本書は" />
+  <meta property="og:description" content="本書はデータ分析勉強会で学んだ成果をまとめたものです" />
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="3.3 pdftools | Rのすゝめ" />
   
-  <meta name="twitter:description" content="本書は" />
+  <meta name="twitter:description" content="本書はデータ分析勉強会で学んだ成果をまとめたものです" />
   
 
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-09" />
+<meta name="date" content="2021-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="readxl.html"/>
-<link rel="next" href="tidy-1.html"/>
+<link rel="next" href="tidy-2.html"/>
 <script src="assets/header-attrs-2.8/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="想定読者.html"><a href="想定読者.html"><i class="fa fa-check"></i>想定読者</a></li>
 <li class="chapter" data-level="" data-path="表記ルール.html"><a href="表記ルール.html"><i class="fa fa-check"></i>表記ルール</a></li>
-<li><a href="なぜrを使うのか.html#なぜrを使うのか">なぜ<strong>R</strong>を使うのか</a></li>
+<li class="chapter" data-level="" data-path="なぜrか.html"><a href="なぜrか.html"><i class="fa fa-check"></i>なぜRか？</a></li>
 <li class="chapter" data-level="" data-path="分析の手順.html"><a href="分析の手順.html"><i class="fa fa-check"></i>分析の手順</a></li>
 <li class="chapter" data-level="" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i>Data Science Workflow</a>
 <ul>
@@ -156,7 +156,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="data-science-workflow.html"><a href="data-science-workflow.html#model"><i class="fa fa-check"></i>Model</a></li>
 <li class="chapter" data-level="" data-path="data-science-workflow.html"><a href="data-science-workflow.html#communicate"><i class="fa fa-check"></i>Communicate</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="tidyverse-eco-system.html"><a href="tidyverse-eco-system.html"><i class="fa fa-check"></i>Tidyverse Eco System</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html"><i class="fa fa-check"></i>Tidyverse Ecosystem</a>
+<ul>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#import-1"><i class="fa fa-check"></i>Import</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#tidy-1"><i class="fa fa-check"></i>Tidy</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#visualize-1"><i class="fa fa-check"></i>Visualize</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#transform-1"><i class="fa fa-check"></i>Transform</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#model-1"><i class="fa fa-check"></i>Model</a></li>
+<li class="chapter" data-level="0.0.1" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#communicate-1"><i class="fa fa-check"></i><b>0.0.1</b> Communicate</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#othres"><i class="fa fa-check"></i>Othres</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>II Program</b></span></li>
 <li class="chapter" data-level="1" data-path="分析環境.html"><a href="分析環境.html"><i class="fa fa-check"></i><b>1</b> 分析環境</a>
@@ -183,19 +192,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Wrangle</b></span></li>
-<li class="chapter" data-level="3" data-path="import-1.html"><a href="import-1.html"><i class="fa fa-check"></i><b>3</b> Import</a>
+<li class="chapter" data-level="3" data-path="import-2.html"><a href="import-2.html"><i class="fa fa-check"></i><b>3</b> Import</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>3.1</b> readr</a></li>
 <li class="chapter" data-level="3.2" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>3.2</b> readxl</a></li>
 <li class="chapter" data-level="3.3" data-path="pdftools.html"><a href="pdftools.html"><i class="fa fa-check"></i><b>3.3</b> pdftools</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="tidy-1.html"><a href="tidy-1.html"><i class="fa fa-check"></i><b>4</b> Tidy</a>
+<li class="chapter" data-level="4" data-path="tidy-2.html"><a href="tidy-2.html"><i class="fa fa-check"></i><b>4</b> Tidy</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>4.1</b> Tidy Data</a></li>
 <li class="chapter" data-level="4.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>4.2</b> longer</a></li>
 <li class="chapter" data-level="4.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>4.3</b> wider</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="transform-1.html"><a href="transform-1.html"><i class="fa fa-check"></i><b>5</b> Transform</a>
+<li class="chapter" data-level="5" data-path="transform-2.html"><a href="transform-2.html"><i class="fa fa-check"></i><b>5</b> Transform</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>5.1</b> filter</a></li>
 <li class="chapter" data-level="5.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>5.2</b> rename</a></li>
@@ -368,7 +377,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="readxl.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tidy-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tidy-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

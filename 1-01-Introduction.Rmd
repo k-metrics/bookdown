@@ -79,7 +79,7 @@ iris %>%
 
 　変形したデータを使って部位別の箱ひげ図を描くと確かに 花弁（Petal）の方が 萼片（Sepal）よりも小さい傾向にあることが分かります。
 
-```{r, echo=FALSE, fig.cap="花弁と萼片の分布", out.width="80%"}
+```{r, echo=FALSE, fig.cap="花弁と萼片の分布"}
 iris %>%
   tidyr::pivot_longer(cols = -Species, names_to = "part", values_to = "value") %>% 
   ggplot2::ggplot(ggplot2::aes(x = part, y = value)) + 
@@ -87,14 +87,9 @@ iris %>%
     ggplot2::labs(x = "", y = "")
 ```
 
-```{r, echo=FALSE, eval=FALSE}
-# Visualize <-> Transform
-knitr::include_graphics()
-```
-
 　次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を見てみます。
 
-```{r, echo=FALSE, fig.cap="幅と長さの関係", fig.ncol=2, out.width="40%", fig.subcap=c('花弁', '萼片')}
+```{r, echo=FALSE, fig.cap="幅と長さの関係", fig.subcap=c('花弁', '萼片'), fig.ncol=2, out.width="40%"}
 iris %>%
   ggplot2::ggplot(ggplot2::aes(x = Petal.Width, y = Petal.Length)) +
     ggplot2::geom_point()
@@ -113,7 +108,7 @@ with(iris, lm(Petal.Length ~ Petal.Width)) %>%
 
 　回帰モデルの当てはまり具合がかなり良いので回帰モデルを可視化します。比較として萼片（Sepal）の回帰モデルも可視化します。
 
-```{r, echo=FALSE, message=FALSE, fig.cap="幅と長さの関係", fig.ncol=2, out.width="40%", fig.subcap=c('花弁の回帰関係', '萼片の回帰関係')}
+```{r, echo=FALSE, message=FALSE, fig.cap="幅と長さの関係", fig.subcap=c('花弁の回帰関係', '萼片の回帰関係'), fig.ncol=2, out.width="40%"}
 iris %>%
   ggplot2::ggplot(ggplot2::aes(x = Petal.Width, y = Petal.Length)) +
     ggplot2::geom_point() +
@@ -125,64 +120,128 @@ iris %>%
     ggplot2::geom_smooth(method = "lm", se = FALSE)
 ```
 
-　データ分析では、このような手順で対象のデータに対して可視化と変形、モデルの計算を繰り返すことで適切なモデルを同定します。
+　データ分析では、このような手順で対象のデータに対して可視化と変形、モデルの計算を繰り返すことで適切なモデルを探ります。これが基本となる分析プロセスです。
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, fig.cap="基本となる分析プロセス"}
 # Visualize <-> Transform <-> Model
-knitr::include_graphics()
+knitr::include_graphics("./fig/DSWF/data_science_workflow_step1.png")
 ```
 
-　実際には対象のデータが都合よく**R**に組み込まれている訳ではありませんので、対象となるデータを読み込み（インポートし）、処理がしやすいように整形してから可視化などを行います。
+　実際には対象のデータが都合よく**R**に組み込まれている訳ではありませんので、対象となるデータを読み込み（インポート）、処理がしやすいように整形してから可視化などを行います。最後に分析結果を報告（レポート）しますので、分析プロセスは下図になります。
 
-```{r, echo=FALSE, eval=FALSE}
-# Import -> Tidy -> Visualize <-> Transform <-> Model
-knitr::include_graphics()
+```{r, echo=FALSE, fig.cap="分析プロセス"}
+# Import -> Tidy -> Visualize <-> Transform <-> Model -> Communicate
+knitr::include_graphics("./fig/DSWF/data_science_workflow_step2.png")
 ```
 
-```{r, echo=FALSE, eval=FALSE}
-# Import -> Tidy -> Visualize <-> Transform <-> Model -> Infer -> Communicate/Automate
-knitr::include_graphics()
-```
 
-この図がデータサイエンスワークフロー（Data Science Workflow）と呼ばれるデータ分析のプロセスを抽象化したフロー図です。
-
-<!-- \newpage -->
 
 ## Data Science Workflow {.unnumbered}
+実際には前節でのプロセスを**R**などのプログラム（プログラミング）でサポートすることによりプロセス全体を円滑に回せるよう仕組みも必要です。それを加えたものが「Data Science Workflow」と呼ばれるフロー図です。
 
-データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
+```{r, echo=FALSE, fig.cap="Data Science Workflow"}
+# Import -> Tidy -> Visualize <-> Transform <-> Model -> Infer -> Communicate/Automate
+knitr::include_graphics("./fig/DSWF/data_science_workflow.png")
+```
 
-```{r, echo=FALSE, out.width="100%", fig.cap="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham"}
+「Data Science Workflow」自体は**R**コミュニティに多大な貢献をしている [Hadley Wickham](http://hadley.nz/){target="_blank" title=""}が著書[『R for Data Science』](https://r4ds.had.co.nz/){target="_blank" title=""}において提唱している概念です。
+
+```{r, echo=FALSE, fig.cap="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham"}
 # knitr::include_graphics("https://raw.githubusercontent.com/hadley/r4ds/master/diagrams/data-science-explore.png")
 knitr::include_graphics("fig/data-science.png")
 ```
 
-この図は「Data Science Workflow」と呼ばれ、**R**コミュニティに多大な貢献をしている [Hadley Wickham](http://hadley.nz/){target="_blank" title=""}が、その著書[『R for Data Science』](https://r4ds.had.co.nz/){target="_blank" title=""}で提唱している概念図です。本書は、このData Science Workflowに基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。
+Hadlyの図には前節の図にはない**Infer**と**Automate**すというプロセスが入っていますが、本書では**Infer**は**Model**に、**Automate**は**Communicate**に含まれるものとして考えています。
+
+次章に移る前に個々のプロセスについて簡単な説明をしておきます。
 
 
 ### Program {.unnumbered}
-データ分析のすべてのプロセス（Tidy 〜 Communicate/Automate）で必要となるツールがプログラミングです。プログラミングを覚えることで効率的に分析処理を行えるようになります。
+データ分析のすべてのプロセス（Import〜Communicate）で必要となるツールが**Program**です。**R**では様々なパッケージを使うことで外部アプリケーションとの連動を図り、**R**だけで全てのプロセスが完結するような「R Eco System」と呼べるような体型が出来上がりつつあります。この点は他のプログラミング言語と大きな違いです。
+
 
 ### Import {.unnumbered}
-分析対象となるデータを分析環境に取り込み分析をできるようにするのがインポートプロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。
+分析対象となるデータを分析環境に取り込み分析をできるようにするのが**Import**プロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。
+
 
 ### Tidy {.unnumbered}
-インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、一貫した形式（Tidy data）に整理します。 [Tidy data <i class="fa fa-external-link"></i>](){target="_blank"} はデータ分析において重要な概念です。
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、**R**で扱いやすいような形式（Tidy Data）にします。[Tidy Data](https://www.jstatsoft.org/article/view/v059i10){target="_blank" title=""Jounal of Statistical Software}はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
+
+* 個々の変数が一つの列をなす
+* 個々の観測が一つの行をなす
+* 個々の観測の構成単位の累計が一つの表をなす
+* 個々の値が一つのセルをなす
+
+端的に表現すればデータの「構造と意味が合致する」と言えます。日本語では整然データと呼ばれることもあり、対義語は雑然データ（Messy Data）です。
+
 
 ### Transform {.unnumbered}
-整理したデータ（Tidy data）がそのまま状態でデータ分析に使えることは稀です。不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。
-　**Tidy** プロセスと合わせて **Wrangle** や **Data wrangling**、前処理と呼ばれることもあります。
+整然データ（Tidy Data）に変換したとしても、データをそのまま状態で分析に使えることは稀です。実際のデータにはデータの一部が欠損していたり、分析には必要のないデータが含まれていたりしますので、不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。これらの変換を事なうのが**Transform**プロセスです。
+
+**Tidy**プロセスと合わせて**Wrangle**や**Data Wrangling**、前処理などと呼ばれることもあります。本書では**Import**、**Tidy**、**Transform**をあわせて**Wrangle**と称しています。
+
 
 ### Visualize {.unnumbered}
-データを可視化することは様々な示唆を得ることと同義といえます。分析方針を考えるためにもデータがどういう傾向をもっているのかを把握するためのプロセスともいえます。
+文字通りデータの可視化を行うのが**Visualize**プロセスです。**R**には伝統的な`plot()`関数系を用いた可視化に加えて、**`ggplot2`**パッケージを用いた統一された文法による可視化があります。
+
 
 ### Model {.unnumbered}
-可視化で得られた情報を元に数式可（モデル化）するのプロセスです。モデルは様々な
+データを数式を用いてモデルにするのが**Model**プロセスです。本書では**Model**プロセスと**Infer**プロセスを合わせて**Model**プロセスと称しています。
+
 
 ### Communicate {.unnumbered}
-分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で [再現可能性（Reproducible research）](){target="_blank"} が伴っていることも求められます。
-[3つの再現可能性](http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03){target="_blank" title=""}
+モデルが作成できましたら最後は分析結果を伝え（報告し）なければなりません。この報告のプロセスが**Communicate**で、プロセスにおいて重要な点が再現可能性（Reproducible research）です。再現可能性の重要性については[「統計解析の再現可能性を高めるために」](http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03){target="_blank" title="医学界新聞, 医学書院"}をお読みください。
 
-## Tidyverse Eco System {.unnumbered}
+<!-- \newpage￥ -->
 
-　このような Data Science Workflow を R で実現するための手段が Hadley Wickham により開発された tidyverse パッケージ群による Tidyverse Eco System です。tidyverse
+## Tidyverse Ecosystem {.unnumbered}
+Data Science Workflowを**R**で実現するための手段がHadley Wickhamが中心となって開発している**`tidyverse`**パッケージ群による「Tidyverse Ecosystem」です。
+
+```{r, echo=FALSE, fig.cap="Tidyverse Ecosystem"}
+knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
+```
+
+ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章をご覧ください。
+
+### Import {.unnumbered}
+
+* **`readr`** - 様々なテキスト形式テーブルを読み込むためのパッケージ
+* **`readxl `** - Microsoft Excelのファイルを読み込むためのパッケージ
+* **`rvest`** - Webスクレイピングのためのパッケージ
+* **`googlesheets4`** - Google API v4 経由でスプレッドシートを読み込むためのパッケージ
+* **`DBI`** - SQL系の各種データベースと接続するためのパッケージ
+
+
+### Tidy {.unnumbered}
+
+* **`tidyr`** - Tidy Dataの作成を強力にサポートしてくれるパッケージ
+* **`zoo`** - 時系列（TS）データを効率よく扱うためのパッケージ
+
+
+### Visualize {.unnumbered}
+* **`ggplot2`** - 統一された文法で描画が行えるパッケージ
+* **`htmlwidgets`** - JavaScriptのウィジェットを利用できるパッケージ
+
+
+### Transform {.unnumbered}
+* **`dplyr`** - Tidy Dataを様々な方法で操作するためのパッケージ
+* **`stringr`** - 文字列処理をするためのパッケージ
+* **`forcats`** - 因子型を操作するためのパッケージ
+* **`lubridate`** - 日付データを簡単に変換するためのパッケージ
+
+
+### Model {.unnumbered}
+* **`broom`** - 各種モデリング結果を整然データにするためのパッケージ
+* **`tidymodels`** - 機械学習を中心としたモデリングフレームワーク
+
+
+### Communicate {.unnumberd}
+* **`knitr`** - **R**のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ
+* **`rmarkdown``** - マークダウン書式を用いてレポートを作成するためのパッケージ
+* **`bookdown`** - 書籍や長いドキュメンを作成するためのパッケージ
+* **`shiny`** - インタラクティブなWebアプリケーションを作成するためのパッケージ
+
+
+### Othres {.unnumbered}
+**`magrittr`**パッケージのパイプ演算子（`%>%”`）や**`purrr`**パッケージによる反復処理が、分析を円滑に回すハブ・スポーク的な役目を果たします。
+

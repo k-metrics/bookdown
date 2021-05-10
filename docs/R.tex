@@ -170,7 +170,7 @@
 \makeatother
 \subtitle{- Rによるデータ分析事始め -}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-09}
+\date{2021-05-10}
 
 \begin{document}
 \maketitle
@@ -220,7 +220,7 @@
 
 \begin{figure}
 \centering
-\includegraphics{"./fig/88x31.png"}
+\includegraphics{"./fig/by-nc-sa.png"}
 \caption{CC 4.0 BY-NC-SA}
 \end{figure}
 
@@ -298,16 +298,19 @@
 \end{enumerate}
 \end{quote}
 
-　\textbf{R}はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。\href{https://cran.r-project.org/}{CRAN(The Comprehensive R Archive Network)}と呼ばれる\textbf{R}のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は\href{https://cran.r-project.org/web/views/}{CRAN Task Views}を見て分かるように古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は\href{https://cran.r-project.org/web/views/ReproducibleResearch.html}{Reproducible Research}と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉ですが、データ分析では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々は「Reproducible Research」とあるように科学的研究の分野で使われている言葉です。他の言語ではこの分野を開発範囲（スコープ）に含めることはほぼありません。\\
+　\textbf{R}はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。\href{https://cran.r-project.org/}{CRAN(The Comprehensive R Archive Network)}と呼ばれる\textbf{R}のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は\href{https://cran.r-project.org/web/views/}{CRAN Task Views}を見て分かるように古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は\href{https://cran.r-project.org/web/views/ReproducibleResearch.html}{Reproducible Research}と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉ですが、データ分析では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々は「Reproducible Research」とあるように科学的研究の分野で使われている言葉です。他の言語ではこの分野を開発範囲（スコープ）に含めることはほぼありません。
+
 　また、\textbf{R}は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）にも適していると言えます。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
 
-　ちなみに本書も\textbf{R}のパッケージである\href{https://bookdown.org/}{\textbf{\texttt{bookdown}}}という文書作成に特化したパッケージを利用して作成してます。
+　ちなみに本書も\textbf{R}のパッケージである\href{https://bookdown.org/}{\textbf{\texttt{bookdown}}}という文書作成に特化したパッケージを利用して\textbf{RStudio}という\textbf{R}用の統合開発環境を用いて作成してます。
 
 \hypertarget{ux5206ux6790ux306eux624bux9806}{%
 \section*{分析の手順}\label{ux5206ux6790ux306eux624bux9806}}
 \addcontentsline{toc}{section}{分析の手順}
 
-では、\textbf{R}を使った分析とはどのような手順になるかを簡単に見てみましょう。\textbf{R}は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。 例えば「フィッシャーのあやめ（Fisher's or Anderson's iris）」を例にとってみましょう。「フィッシャーのあやめ」は\textbf{R}の例題でよく使われる下記のような150行のデータセットでRに標準で組み込まれています。
+　\textbf{R}を使った分析とはどのような手順になるかを簡単に見てみましょう。\textbf{R}は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。
+
+　例えば\href{https://en.wikipedia.org/wiki/Iris_flower_data_set}{フィッシャーのあやめ（Fisher's or Anderson's iris）}を例にとってみましょう。「フィッシャーのあやめ」は\textbf{R}や機械学習の例題として様々な媒体で頻繁に使われる下記のような150行のデータセットです。\textbf{R}に標準で組み込まれています。
 
 \begin{table}[H]
 \centering\begingroup\fontsize{10}{12}\selectfont
@@ -334,7 +337,7 @@
 \endgroup{}
 \end{table}
 
-このデータセットの主な要約統計量は以下のようになり、萼片（Sepal）より花弁（Petal）の方が小さい傾向にあると推測できます。
+　このデータセットの要約統計量は以下で、萼片（Sepal）より花弁（Petal）の方が小さい傾向にあると推測できます。
 
 \begin{verbatim}
 ##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
@@ -353,7 +356,7 @@
 ## 
 \end{verbatim}
 
-この要約の通りか箱ひげ図を描いて確かめてみますが、元のデータ形式では都合が悪いので以下のように変形しておきます。
+　上記の要約統計章を箱ひげ図で表してみます。ただし、元の形式では都合が悪いので以下に変形しておきます。
 
 \begin{table}[H]
 \centering
@@ -382,29 +385,29 @@ virginica & Petal.Length & 5.1\\
 \end{tabular}
 \end{table}
 
-変形したデータを使って部位別の箱ひげ図を描くと確かに 花弁（Petal）の方が 萼片（Sepal）よりも小さい傾向にあることが分かります。
+　変形したデータを使って部位別の箱ひげ図を描くと確かに 花弁（Petal）の方が 萼片（Sepal）よりも小さい傾向にあることが分かります。
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.8\linewidth,]{R_files/figure-latex/unnamed-chunk-5-1} 
+{\centering \includegraphics[width=0.85\linewidth,]{R_files/figure-latex/unnamed-chunk-5-1} 
 
 }
 
 \caption{花弁と萼片の分布}\label{fig:unnamed-chunk-5}
 \end{figure}
 
-次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を見ると花弁（Petal）の幅と長さに相関関係があるように見えます。
+　次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を見てみます。
 
 \begin{figure}[H]
 
-{\centering \subfloat[花弁\label{fig:unnamed-chunk-7-1}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-7-1} }\subfloat[萼片\label{fig:unnamed-chunk-7-2}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-7-2} }
+{\centering \subfloat[花弁\label{fig:unnamed-chunk-6-1}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-6-1} }\subfloat[萼片\label{fig:unnamed-chunk-6-2}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-6-2} }
 
 }
 
-\caption{幅と長さの関係}\label{fig:unnamed-chunk-7}
+\caption{幅と長さの関係}\label{fig:unnamed-chunk-6}
 \end{figure}
 
-そこで、花弁（Petal）の幅（\texttt{Petal.Width}）と長さ（\texttt{Petal.Length}）の回帰関係を求めてみます。
+　花弁（Petal）の幅と長さに相関関係があるように、萼片（Sepal）の方には相関関係がないように見えます。そこで、花弁（Petal）の幅（\texttt{Petal.Width}）と長さ（\texttt{Petal.Length}）の回帰式を求めます。
 
 \begin{verbatim}
 ## 
@@ -427,85 +430,234 @@ virginica & Petal.Length & 5.1\\
 ## F-statistic:  1882 on 1 and 148 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
-モデルの当てはまり具合が良さそうなので、回帰関係を可視化してみます。ついでに萼片（Sepal）の方も可視化してみます。
+　回帰モデルの当てはまり具合がかなり良いので回帰モデルを可視化します。比較として萼片（Sepal）の回帰モデルも可視化します。
 
 \begin{figure}[H]
 
-{\centering \subfloat[花弁の回帰関係\label{fig:unnamed-chunk-9-1}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-9-1} }\subfloat[萼片の回帰関係\label{fig:unnamed-chunk-9-2}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-9-2} }
+{\centering \subfloat[花弁の回帰関係\label{fig:unnamed-chunk-8-1}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-8-1} }\subfloat[萼片の回帰関係\label{fig:unnamed-chunk-8-2}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-8-2} }
 
 }
 
-\caption{幅と長さの関係}\label{fig:unnamed-chunk-9}
+\caption{幅と長さの関係}\label{fig:unnamed-chunk-8}
 \end{figure}
 
-実際にはこれだけではデータ分析はできませんので、分析対象を
+　データ分析では、このような手順で対象のデータに対して可視化と変形、モデルの計算を繰り返すことで適切なモデルを探ります。これが基本となる分析プロセスです。
 
-これがデータサイエンスワークフロー（Data Science Workflow）と呼ばれる分析フローです。
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,]{./fig/DSWF/data_science_workflow_step1} 
+
+}
+
+\caption{基本となる分析プロセス}\label{fig:unnamed-chunk-9}
+\end{figure}
+
+　実際には対象のデータが都合よく\textbf{R}に組み込まれている訳ではありませんので、対象となるデータを読み込み（インポート）、処理がしやすいように整形してから可視化などを行います。最後に分析結果を報告（レポート）しますので、分析プロセスは下図になります。
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,]{./fig/DSWF/data_science_workflow_step2} 
+
+}
+
+\caption{分析プロセス}\label{fig:unnamed-chunk-10}
+\end{figure}
 
 \hypertarget{data-science-workflow}{%
 \section*{Data Science Workflow}\label{data-science-workflow}}
 \addcontentsline{toc}{section}{Data Science Workflow}
 
-データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。
+実際には前節でのプロセスを\textbf{R}などのプログラム（プログラミング）でサポートすることによりプロセス全体を円滑に回せるよう仕組みも必要です。それを加えたものが「Data Science Workflow」と呼ばれるフロー図です。
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=1\linewidth,]{fig/data-science} 
+{\centering \includegraphics[width=0.85\linewidth,]{./fig/DSWF/data_science_workflow} 
 
 }
 
-\caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-11}
+\caption{Data Science Workflow}\label{fig:unnamed-chunk-11}
 \end{figure}
 
-この図は「Data Science Workflow」と呼ばれ、\textbf{R}コミュニティに多大な貢献をしている \href{http://hadley.nz/}{Hadley Wickham}が、その著書\href{https://r4ds.had.co.nz/}{『R for Data Science』}で提唱している概念図です。本書は、このData Science Workflowに基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。
+「Data Science Workflow」自体は\textbf{R}コミュニティに多大な貢献をしている \href{http://hadley.nz/}{Hadley Wickham}が著書\href{https://r4ds.had.co.nz/}{『R for Data Science』}において提唱している概念です。
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,]{fig/data-science} 
+
+}
+
+\caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-12}
+\end{figure}
+
+Hadlyの図には前節の図にはない\textbf{Infer}と\textbf{Automate}すというプロセスが入っていますが、本書では\textbf{Infer}は\textbf{Model}に、\textbf{Automate}は\textbf{Communicate}に含まれるものとして考えています。
+
+次章に移る前に個々のプロセスについて簡単な説明をしておきます。
 
 \hypertarget{program}{%
 \subsection*{Program}\label{program}}
 \addcontentsline{toc}{subsection}{Program}
 
-データ分析のすべてのプロセス（Tidy 〜 Communicate/Automate）で必要となるツールがプログラミングです。プログラミングを覚えることで効率的に分析処理を行えるようになります。
+データ分析のすべてのプロセス（Import〜Communicate）で必要となるツールが\textbf{Program}です。\textbf{R}では様々なパッケージを使うことで外部アプリケーションとの連動を図り、\textbf{R}だけで全てのプロセスが完結するような「R Eco System」と呼べるような体型が出来上がりつつあります。この点は他のプログラミング言語と大きな違いです。
 
 \hypertarget{import}{%
 \subsection*{Import}\label{import}}
 \addcontentsline{toc}{subsection}{Import}
 
-分析対象となるデータを分析環境に取り込み分析をできるようにするのがインポートプロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。
+分析対象となるデータを分析環境に取り込み分析をできるようにするのが\textbf{Import}プロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。
 
 \hypertarget{tidy}{%
 \subsection*{Tidy}\label{tidy}}
 \addcontentsline{toc}{subsection}{Tidy}
 
-インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、一貫した形式（Tidy data）に整理します。 \href{}{Tidy data } はデータ分析において重要な概念です。
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}\{target="\_blank" title=""Jounal of Statistical Software\}はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
+
+\begin{itemize}
+\tightlist
+\item
+  個々の変数が一つの列をなす
+\item
+  個々の観測が一つの行をなす
+\item
+  個々の観測の構成単位の累計が一つの表をなす
+\item
+  個々の値が一つのセルをなす
+\end{itemize}
+
+端的に表現すればデータの「構造と意味が合致する」と言えます。日本語では整然データと呼ばれることもあり、対義語は雑然データ（Messy Data）です。
 
 \hypertarget{transform}{%
 \subsection*{Transform}\label{transform}}
 \addcontentsline{toc}{subsection}{Transform}
 
-整理したデータ（Tidy data）がそのまま状態でデータ分析に使えることは稀です。不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。 　\textbf{Tidy} プロセスと合わせて \textbf{Wrangle} や \textbf{Data wrangling}、前処理と呼ばれることもあります。
+整然データ（Tidy Data）に変換したとしても、データをそのまま状態で分析に使えることは稀です。実際のデータにはデータの一部が欠損していたり、分析には必要のないデータが含まれていたりしますので、不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。これらの変換を事なうのが\textbf{Transform}プロセスです。
+
+\textbf{Tidy}プロセスと合わせて\textbf{Wrangle}や\textbf{Data Wrangling}、前処理などと呼ばれることもあります。本書では\textbf{Import}、\textbf{Tidy}、\textbf{Transform}をあわせて\textbf{Wrangle}と称しています。
 
 \hypertarget{visualize}{%
 \subsection*{Visualize}\label{visualize}}
 \addcontentsline{toc}{subsection}{Visualize}
 
-データを可視化することは様々な示唆を得ることと同義といえます。分析方針を考えるためにもデータがどういう傾向をもっているのかを把握するためのプロセスともいえます。
+文字通りデータの可視化を行うのが\textbf{Visualize}プロセスです。\textbf{R}には伝統的な\texttt{plot()}関数系を用いた可視化に加えて、\textbf{\texttt{ggplot2}}パッケージを用いた統一された文法による可視化があります。
 
 \hypertarget{model}{%
 \subsection*{Model}\label{model}}
 \addcontentsline{toc}{subsection}{Model}
 
-可視化で得られた情報を元に数式可（モデル化）するのプロセスです。モデルは様々な
+データを数式を用いてモデルにするのが\textbf{Model}プロセスです。本書では\textbf{Model}プロセスと\textbf{Infer}プロセスを合わせて\textbf{Model}プロセスと称しています。
 
 \hypertarget{communicate}{%
 \subsection*{Communicate}\label{communicate}}
 \addcontentsline{toc}{subsection}{Communicate}
 
-分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で \href{}{再現可能性（Reproducible research）} が伴っていることも求められます。 \href{http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03}{3つの再現可能性}
+モデルが作成できましたら最後は分析結果を伝え（報告し）なければなりません。この報告のプロセスが\textbf{Communicate}で、プロセスにおいて重要な点が再現可能性（Reproducible research）です。再現可能性の重要性については\href{http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03}{「統計解析の再現可能性を高めるために」}をお読みください。
 
-\hypertarget{tidyverse-eco-system}{%
-\section*{Tidyverse Eco System}\label{tidyverse-eco-system}}
-\addcontentsline{toc}{section}{Tidyverse Eco System}
+\hypertarget{tidyverse-ecosystem}{%
+\section*{Tidyverse Ecosystem}\label{tidyverse-ecosystem}}
+\addcontentsline{toc}{section}{Tidyverse Ecosystem}
 
-　このような Data Science Workflow を R で実現するための手段が Hadley Wickham により開発された tidyverse パッケージ群による Tidyverse Eco System です。tidyverse
+Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickhamが中心となって開発している\textbf{\texttt{tidyverse}}パッケージ群による「Tidyverse Ecosystem」です。
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,]{./fig/DSWF/tidyverse_eco_system} 
+
+}
+
+\caption{Tidyverse Ecosystem}\label{fig:unnamed-chunk-13}
+\end{figure}
+
+ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章をご覧ください。
+
+\hypertarget{import-1}{%
+\subsection*{Import}\label{import-1}}
+\addcontentsline{toc}{subsection}{Import}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{readr}} - 様々なテキスト形式テーブルを読み込むためのパッケージ
+\item
+  \textbf{\texttt{readxl}} - Microsoft Excelのファイルを読み込むためのパッケージ
+\item
+  \textbf{\texttt{rvest}} - Webスクレイピングのためのパッケージ
+\item
+  \textbf{\texttt{googlesheets4}} - Google API v4 経由でスプレッドシートを読み込むためのパッケージ
+\item
+  \textbf{\texttt{DBI}} - SQL系の各種データベースと接続するためのパッケージ
+\end{itemize}
+
+\hypertarget{tidy-1}{%
+\subsection*{Tidy}\label{tidy-1}}
+\addcontentsline{toc}{subsection}{Tidy}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{tidyr}} - Tidy Dataの作成を強力にサポートしてくれるパッケージ
+\item
+  \textbf{\texttt{zoo}} - 時系列（TS）データを効率よく扱うためのパッケージ
+\end{itemize}
+
+\hypertarget{visualize-1}{%
+\subsection*{Visualize}\label{visualize-1}}
+\addcontentsline{toc}{subsection}{Visualize}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{ggplot2}} - 統一された文法で描画が行えるパッケージ
+\item
+  \textbf{\texttt{htmlwidgets}} - JavaScriptのウィジェットを利用できるパッケージ
+\end{itemize}
+
+\hypertarget{transform-1}{%
+\subsection*{Transform}\label{transform-1}}
+\addcontentsline{toc}{subsection}{Transform}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{dplyr}} - Tidy Dataを様々な方法で操作するためのパッケージ
+\item
+  \textbf{\texttt{stringr}} - 文字列処理をするためのパッケージ
+\item
+  \textbf{\texttt{forcats}} - 因子型を操作するためのパッケージ
+\item
+  \textbf{\texttt{lubridate}} - 日付データを簡単に変換するためのパッケージ
+\end{itemize}
+
+\hypertarget{model-1}{%
+\subsection*{Model}\label{model-1}}
+\addcontentsline{toc}{subsection}{Model}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{broom}} - 各種モデリング結果を整然データにするためのパッケージ
+\item
+  \textbf{\texttt{tidymodels}} - 機械学習を中心としたモデリングフレームワーク
+\end{itemize}
+
+\hypertarget{communicate-1}{%
+\subsection{Communicate}\label{communicate-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{knitr}} - \textbf{R}のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ
+\item
+  \textbf{`rmarkdown``} - マークダウン書式を用いてレポートを作成するためのパッケージ
+\item
+  \textbf{\texttt{bookdown}} - 書籍や長いドキュメンを作成するためのパッケージ
+\item
+  \textbf{\texttt{shiny}} - インタラクティブなWebアプリケーションを作成するためのパッケージ
+\end{itemize}
+
+\hypertarget{othres}{%
+\subsection*{Othres}\label{othres}}
+\addcontentsline{toc}{subsection}{Othres}
+
+\textbf{\texttt{magrittr}}パッケージのパイプ演算子（\texttt{\%\textgreater{}\%”}）や\textbf{\texttt{purrr}}パッケージによる反復処理が、分析を円滑に回すハブ・スポーク的な役目を果たします。
 
 \hypertarget{part-program}{%
 \part{Program}\label{part-program}}
@@ -513,7 +665,7 @@ virginica & Petal.Length & 5.1\\
 \hypertarget{ux5206ux6790ux74b0ux5883}{%
 \chapter{分析環境}\label{ux5206ux6790ux74b0ux5883}}
 
-R について学ぶ際には R が使えるような環境を構築しておくべきですが、環境構築は初学者にとって最も厄介な作業です。そこで、本書では環境構築の必要がない\textbf{Google Colab}の利用をおすゝめします。\textbf{RStudio}環境を構築できる方は\textbf{RStudi}でも構いません。
+\textbf{R}について学ぶ際には\textbf{R}が使えるような環境を用意しておくべきですが環境構築は初学者にとって最も厄介な作業です。そこで、初学者の方には環境構築の必要がない\textbf{Google Colab}の利用をおすゝめします。\textbf{RStudio}環境を構築できる方は、構築するのがベストです。
 
 \hypertarget{ux4e3bux306aux5206ux6790ux74b0ux5883}{%
 \section{主な分析環境}\label{ux4e3bux306aux5206ux6790ux74b0ux5883}}
@@ -538,7 +690,7 @@ R について学ぶ際には R が使えるような環境を構築しておく
 \hypertarget{r-commander}{%
 \subsection{R Commander}\label{r-commander}}
 
-\href{https://socialsciences.mcmaster.ca/jfox/Misc/Rcmdr/}{R Commander（以降、\textbf{Rcmdr}）} は、本書ではスコープ外ですが、\href{https://www.juse.or.jp/sqip/workshop/outline/index.html}{SQiP研究会の演習コース ソフトウエアメトリクス（以降、メトリクス演習コース）} におけるデフォルトツールですので簡単に紹介しておきます。 \textbf{Rcmdr}は\textbf{R}のパッケージとして提供されている GUI ベースの対話型分析環境です。分析にあたって\textbf{R}のコードを記述する必要がありませんので、プログラミングの経験のない方でも利用することができます。ただし、実行できる機能（関数）が限定されている点と分析対象のデータの扱いに特有の考え方を用いてる点には注意が必要です。
+\href{https://socialsciences.mcmaster.ca/jfox/Misc/Rcmdr/}{R Commander（以降、\textbf{Rcmdr}）}は、本書ではスコープ外ですが、\href{https://www.juse.or.jp/sqip/workshop/outline/index.html}{SQiP研究会の演習コース ソフトウエアメトリクス（以降、メトリクス演習コース）}におけるデフォルトツールですので簡単に紹介しておきます。 \textbf{Rcmdr}は\textbf{R}のパッケージとして提供されている GUIベースの対話型分析環境です。分析にあたって\textbf{R}のコードを記述する必要がありませんので、プログラミングの経験のない方でも利用することができます。ただし、実行できる機能（関数）が限定されている点と分析対象のデータの扱いに特有の考え方を用いてる点には注意が必要です。
 
 \begin{figure}[H]
 
@@ -546,7 +698,7 @@ R について学ぶ際には R が使えるような環境を構築しておく
 
 }
 
-\caption{Rcmdr, Ubuntu}\label{fig:unnamed-chunk-12}
+\caption{Rcmdr, Ubuntu}\label{fig:unnamed-chunk-14}
 \end{figure}
 
 \hypertarget{google-colab}{%
@@ -560,7 +712,7 @@ R について学ぶ際には R が使えるような環境を構築しておく
 
 }
 
-\caption{Google Colab}\label{fig:unnamed-chunk-13}
+\caption{Google Colab}\label{fig:unnamed-chunk-15}
 \end{figure}
 
 \hypertarget{rstudio}{%
@@ -592,7 +744,7 @@ R について学ぶ際には R が使えるような環境を構築しておく
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-14}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-16}
 \end{figure}
 
 \textbf{RStudio Server}は\textbf{RStudio}をブラウザ経由で使う Linux 上で動作するサーバアプリケーションです。Dockerコンテナとして動作させることも可能ですので、個々の PC での分析環境を固定さたい場合には非常に便利です。
@@ -603,7 +755,7 @@ R について学ぶ際には R が使えるような環境を構築しておく
 
 }
 
-\caption{RStudio Server, Docker}\label{fig:unnamed-chunk-15}
+\caption{RStudio Server, Docker}\label{fig:unnamed-chunk-17}
 \end{figure}
 
 \hypertarget{rstudio-cloud}{%
@@ -617,13 +769,13 @@ R について学ぶ際には R が使えるような環境を構築しておく
 
 }
 
-\caption{RStudio Cloud}\label{fig:unnamed-chunk-16}
+\caption{RStudio Cloud}\label{fig:unnamed-chunk-18}
 \end{figure}
 
 \hypertarget{programing-editor}{%
 \subsection{Programing Editor}\label{programing-editor}}
 
-\textbf{R}の本体ははインタプリタ（対話的に逐次実行する処理系）として提供されていますので、\textbf{R}単体で動作させることが可能です。区別するために単体の\textbf{R}を\textbf{R Console}と呼ぶことがあります。 一部のプログラミングエディタでは機能拡張などを利用して直接\textbf{R Console}と連携して IDE のように\textbf{R}を利用することが可能です。古くは GNU Emacs 用の ESS や最近人気のある Microsoft の VisualStudio Code 用の機能拡張を使えば、お好みのエディタから直接\textbf{R}を使えるようになります。
+\textbf{R}の本体ははインタプリタ（対話的に逐次実行する処理系）として提供されていますので、\textbf{R}単体で動作させることが可能です。区別するために単体の\textbf{R}を\textbf{R Console}と呼ぶことがあります。 一部のプログラミングエディタでは機能拡張などを利用して直接\textbf{R Console}と連携してIDEのように\textbf{R}を利用することが可能です。古くはGNU Emacs用のESSや最近人気のあるMicrosoft VisualStudio Code用の機能拡張を使えば、お好みのエディタから直接\textbf{R}を使えるようになります。
 
 \hypertarget{rux306eux57faux672c}{%
 \chapter{\texorpdfstring{\textbf{R}の基本}{Rの基本}}\label{rux306eux57faux672c}}
@@ -721,13 +873,13 @@ R について学ぶ際には R が使えるような環境を構築しておく
 
 \begin{verbatim}
 ## 
-## Attaching package: 'psych'
+##  次のパッケージを付け加えます: 'psych'
 \end{verbatim}
 
 \begin{verbatim}
-## The following objects are masked from 'package:ggplot2':
+##  以下のオブジェクトは 'package:ggplot2' からマスクされています: 
 ## 
-##     %+%, alpha
+##      %+%, alpha
 \end{verbatim}
 
 環境によっては上記のように他のパッケージの関数をマスクしている旨のメッセージが出力されてますが、今は、あまり気にする必要はありません。 これで\textbf{\texttt{psych}}パッケージを使う準備が整いましたので、\texttt{geometric.mean()}関数で幾何平均を求めます。
@@ -1043,8 +1195,8 @@ R について学ぶ際には R が使えるような環境を構築しておく
 \hypertarget{part-wrangle}{%
 \part{Wrangle}\label{part-wrangle}}
 
-\hypertarget{import-1}{%
-\chapter{Import}\label{import-1}}
+\hypertarget{import-2}{%
+\chapter{Import}\label{import-2}}
 
 　Import は
 
@@ -1069,8 +1221,8 @@ R について学ぶ際には R が使えるような環境を構築しておく
 \hypertarget{pdftools}{%
 \section{pdftools}\label{pdftools}}
 
-\hypertarget{tidy-1}{%
-\chapter{Tidy}\label{tidy-1}}
+\hypertarget{tidy-2}{%
+\chapter{Tidy}\label{tidy-2}}
 
 \hypertarget{tidy-data}{%
 \section{Tidy Data}\label{tidy-data}}
@@ -1081,8 +1233,8 @@ R について学ぶ際には R が使えるような環境を構築しておく
 \hypertarget{wider}{%
 \section{wider}\label{wider}}
 
-\hypertarget{transform-1}{%
-\chapter{Transform}\label{transform-1}}
+\hypertarget{transform-2}{%
+\chapter{Transform}\label{transform-2}}
 
 \hypertarget{filter}{%
 \section{filter}\label{filter}}
@@ -2864,7 +3016,7 @@ NA & データ型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-62}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-64}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -2883,7 +3035,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-63}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-65}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -2897,7 +3049,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-64}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-66}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -2915,7 +3067,7 @@ NA & データ型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-65}
+\caption{Warning dialog}\label{fig:unnamed-chunk-67}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -2941,7 +3093,7 @@ NA & データ型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-66}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-68}
 \end{figure}
 
 　\\
@@ -2974,7 +3126,7 @@ NA & データ型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-67}
+\caption{Initial View}\label{fig:unnamed-chunk-69}
 \end{figure}
 
 　
@@ -2991,7 +3143,7 @@ NA & データ型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-68}
+\caption{Packages Manager}\label{fig:unnamed-chunk-70}
 \end{figure}
 
 　\\
@@ -3004,7 +3156,7 @@ NA & データ型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-69}
+\caption{Install Dialog}\label{fig:unnamed-chunk-71}
 \end{figure}
 
 　\\
@@ -3398,7 +3550,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-77}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-79}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -3409,7 +3561,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-78}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-80}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -3479,7 +3631,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-79}
+\caption{R Notebook file}\label{fig:unnamed-chunk-81}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -3490,7 +3642,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-80}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-82}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -3501,7 +3653,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-81}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-83}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -3512,7 +3664,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-82}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-84}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -3523,7 +3675,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-83}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-85}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -3534,7 +3686,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-84}
+\caption{R Notebook option}\label{fig:unnamed-chunk-86}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -3796,7 +3948,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-85}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-87}
 \end{figure}
 
 　
@@ -3821,7 +3973,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-86}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-88}
 \end{figure}
 
 　

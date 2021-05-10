@@ -1,7 +1,7 @@
 # (PART) Program {-}
 
 # 分析環境
-R について学ぶ際には R が使えるような環境を構築しておくべきですが、環境構築は初学者にとって最も厄介な作業です。そこで、本書では環境構築の必要がない**Google Colab**の利用をおすゝめします。**RStudio**環境を構築できる方は**RStudi**でも構いません。
+**R**について学ぶ際には**R**が使えるような環境を用意しておくべきですが環境構築は初学者にとって最も厄介な作業です。そこで、初学者の方には環境構築の必要がない**Google Colab**の利用をおすゝめします。**RStudio**環境を構築できる方は、構築するのがベストです。
 
 
 ## 主な分析環境
@@ -12,17 +12,17 @@ R について学ぶ際には R が使えるような環境を構築しておく
 初学者     | R Commander         | 不要       | 低         | 本書ではスコープ外
 初学者     | Exploratory         | 不要       | 高         | 同上
 初学・中級者 | Google Colab      | 要         | 高         | 
-中上級者   | RStudio Desktop     | 要         | 高         |
-中上級者   | RStudio Cloud       | 要         | 高         |
-中上級者   | RStudio Server      | 要         | 高         |
+中上級者   | RStudio Desktop     | 要         | 高         | 
+中上級者   | RStudio Cloud       | 要         | 高         | 
+中上級者   | RStudio Server      | 要         | 高         | 
 開発者     | R + VS Code/Emacs   | 要         | 高         | 
 
 
 ### R Commander
-[R Commander（以降、**Rcmdr**）](https://socialsciences.mcmaster.ca/jfox/Misc/Rcmdr/){target="_blank" title=""} は、本書ではスコープ外ですが、[SQiP研究会の演習コース ソフトウエアメトリクス（以降、メトリクス演習コース）](https://www.juse.or.jp/sqip/workshop/outline/index.html){target="_blank" title=""} におけるデフォルトツールですので簡単に紹介しておきます。
-**Rcmdr**は**R**のパッケージとして提供されている GUI ベースの対話型分析環境です。分析にあたって**R**のコードを記述する必要がありませんので、プログラミングの経験のない方でも利用することができます。ただし、実行できる機能（関数）が限定されている点と分析対象のデータの扱いに特有の考え方を用いてる点には注意が必要です。
+[R Commander（以降、**Rcmdr**）](https://socialsciences.mcmaster.ca/jfox/Misc/Rcmdr/){target="_blank" title=""}は、本書ではスコープ外ですが、[SQiP研究会の演習コース ソフトウエアメトリクス（以降、メトリクス演習コース）](https://www.juse.or.jp/sqip/workshop/outline/index.html){target="_blank" title=""}におけるデフォルトツールですので簡単に紹介しておきます。
+**Rcmdr**は**R**のパッケージとして提供されている GUIベースの対話型分析環境です。分析にあたって**R**のコードを記述する必要がありませんので、プログラミングの経験のない方でも利用することができます。ただし、実行できる機能（関数）が限定されている点と分析対象のデータの扱いに特有の考え方を用いてる点には注意が必要です。
 
-```{r, echo=FALSE, out.width="85%", fig.cap="Rcmdr, Ubuntu"}
+```{r, echo=FALSE, fig.cap="Rcmdr, Ubuntu"}
 knitr::include_graphics("./fig/RCmdr.png")
 ```
 
@@ -30,7 +30,7 @@ knitr::include_graphics("./fig/RCmdr.png")
 ### Google Colab
 **Google Colab**は Googleアカウントを持っていれば誰でも利用可能な**Python**向けの環境である**Jupyter Notebook**サービスです。**Jupyter Notebook**は**R**をエンジンとして利用することができますので、環境を構築することなく使い始めることができますので、初学者の演習環境としておすゝめです。
 
-```{r, echo=FALSE, out.width="85%", fig.cap="Google Colab"}
+```{r, echo=FALSE, fig.cap="Google Colab"}
 knitr::include_graphics("./fig/Colab/Firsttime.png")
 ```
 
@@ -48,13 +48,13 @@ knitr::include_graphics("./fig/Colab/Firsttime.png")
 
 などがあります。
 
-```{r, echo=FALSE, out.width="85%", fig.cap="RStudio Desktop, Windows"}
+```{r, echo=FALSE, fig.cap="RStudio Desktop, Windows"}
 knitr::include_graphics("./fig/RStudio/DT.png")
 ```
 
 **RStudio Server**は**RStudio**をブラウザ経由で使う Linux 上で動作するサーバアプリケーションです。Dockerコンテナとして動作させることも可能ですので、個々の PC での分析環境を固定さたい場合には非常に便利です。
 
-```{r, echo=FALSE, out.width="85%", fig.cap="RStudio Server, Docker"}
+```{r, echo=FALSE, fig.cap="RStudio Server, Docker"}
 knitr::include_graphics("./fig/RStudio/RStudioServer.png")
 ```
 
@@ -63,11 +63,11 @@ knitr::include_graphics("./fig/RStudio/RStudioServer.png")
 **RStudio Cloud**は、その名の通りクラウド版の**RStudio**です。商用版の**RStudio Server Pro**をベースしていますので、任意のバージョンの**R**に切り替えて使うことや**RStduio Package Manager**とも連携しています。また、英語版ですがチュートリアル機能が充実しているのも特徴です。
 無料プランが用意されていますが利用時間が15時間/月に限定されていますので、繋げっぱなしでの長時間利用には不向きです。
 
-```{r, echo=FALSE, out.width="85%", fig.cap="RStudio Cloud"}
+```{r, echo=FALSE, fig.cap="RStudio Cloud"}
 knitr::include_graphics("./fig/RStudio/RSCloud_01.png")
 ```
 
 
 ### Programing Editor
 **R**の本体ははインタプリタ（対話的に逐次実行する処理系）として提供されていますので、**R**単体で動作させることが可能です。区別するために単体の**R**を**R Console**と呼ぶことがあります。
-一部のプログラミングエディタでは機能拡張などを利用して直接**R Console**と連携して IDE のように**R**を利用することが可能です。古くは GNU Emacs 用の ESS や最近人気のある Microsoft の VisualStudio Code 用の機能拡張を使えば、お好みのエディタから直接**R**を使えるようになります。
+一部のプログラミングエディタでは機能拡張などを利用して直接**R Console**と連携してIDEのように**R**を利用することが可能です。古くはGNU Emacs用のESSや最近人気のあるMicrosoft VisualStudio Code用の機能拡張を使えば、お好みのエディタから直接**R**を使えるようになります。

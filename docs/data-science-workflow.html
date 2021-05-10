@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Data Science Workflow | Rのすゝめ</title>
-  <meta name="description" content="本書は" />
+  <meta name="description" content="本書はデータ分析勉強会で学んだ成果をまとめたものです" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Data Science Workflow | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="本書は" />
+  <meta property="og:description" content="本書はデータ分析勉強会で学んだ成果をまとめたものです" />
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Data Science Workflow | Rのすゝめ" />
   
-  <meta name="twitter:description" content="本書は" />
+  <meta name="twitter:description" content="本書はデータ分析勉強会で学んだ成果をまとめたものです" />
   
 
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-09" />
+<meta name="date" content="2021-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="分析の手順.html"/>
-<link rel="next" href="tidyverse-eco-system.html"/>
+<link rel="next" href="tidyverse-ecosystem.html"/>
 <script src="assets/header-attrs-2.8/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="想定読者.html"><a href="想定読者.html"><i class="fa fa-check"></i>想定読者</a></li>
 <li class="chapter" data-level="" data-path="表記ルール.html"><a href="表記ルール.html"><i class="fa fa-check"></i>表記ルール</a></li>
-<li><a href="なぜrを使うのか.html#なぜrを使うのか">なぜ<strong>R</strong>を使うのか</a></li>
+<li class="chapter" data-level="" data-path="なぜrか.html"><a href="なぜrか.html"><i class="fa fa-check"></i>なぜRか？</a></li>
 <li class="chapter" data-level="" data-path="分析の手順.html"><a href="分析の手順.html"><i class="fa fa-check"></i>分析の手順</a></li>
 <li class="chapter" data-level="" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i>Data Science Workflow</a>
 <ul>
@@ -156,7 +156,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="data-science-workflow.html"><a href="data-science-workflow.html#model"><i class="fa fa-check"></i>Model</a></li>
 <li class="chapter" data-level="" data-path="data-science-workflow.html"><a href="data-science-workflow.html#communicate"><i class="fa fa-check"></i>Communicate</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="tidyverse-eco-system.html"><a href="tidyverse-eco-system.html"><i class="fa fa-check"></i>Tidyverse Eco System</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html"><i class="fa fa-check"></i>Tidyverse Ecosystem</a>
+<ul>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#import-1"><i class="fa fa-check"></i>Import</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#tidy-1"><i class="fa fa-check"></i>Tidy</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#visualize-1"><i class="fa fa-check"></i>Visualize</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#transform-1"><i class="fa fa-check"></i>Transform</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#model-1"><i class="fa fa-check"></i>Model</a></li>
+<li class="chapter" data-level="0.0.1" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#communicate-1"><i class="fa fa-check"></i><b>0.0.1</b> Communicate</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#othres"><i class="fa fa-check"></i>Othres</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>II Program</b></span></li>
 <li class="chapter" data-level="1" data-path="分析環境.html"><a href="分析環境.html"><i class="fa fa-check"></i><b>1</b> 分析環境</a>
@@ -183,19 +192,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Wrangle</b></span></li>
-<li class="chapter" data-level="3" data-path="import-1.html"><a href="import-1.html"><i class="fa fa-check"></i><b>3</b> Import</a>
+<li class="chapter" data-level="3" data-path="import-2.html"><a href="import-2.html"><i class="fa fa-check"></i><b>3</b> Import</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>3.1</b> readr</a></li>
 <li class="chapter" data-level="3.2" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>3.2</b> readxl</a></li>
 <li class="chapter" data-level="3.3" data-path="pdftools.html"><a href="pdftools.html"><i class="fa fa-check"></i><b>3.3</b> pdftools</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="tidy-1.html"><a href="tidy-1.html"><i class="fa fa-check"></i><b>4</b> Tidy</a>
+<li class="chapter" data-level="4" data-path="tidy-2.html"><a href="tidy-2.html"><i class="fa fa-check"></i><b>4</b> Tidy</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>4.1</b> Tidy Data</a></li>
 <li class="chapter" data-level="4.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>4.2</b> longer</a></li>
 <li class="chapter" data-level="4.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>4.3</b> wider</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="transform-1.html"><a href="transform-1.html"><i class="fa fa-check"></i><b>5</b> Transform</a>
+<li class="chapter" data-level="5" data-path="transform-2.html"><a href="transform-2.html"><i class="fa fa-check"></i><b>5</b> Transform</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>5.1</b> filter</a></li>
 <li class="chapter" data-level="5.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>5.2</b> rename</a></li>
@@ -359,43 +368,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="data-science-workflow" class="section level2 unnumbered">
 <h2>Data Science Workflow</h2>
-<p>データ分析の方法は様々ですが、そのプロセスは下図のように抽象化することができます。</p>
+<p>実際には前節でのプロセスを<strong>R</strong>などのプログラム（プログラミング）でサポートすることによりプロセス全体を円滑に回せるよう仕組みも必要です。それを加えたものが「Data Science Workflow」と呼ばれるフロー図です。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
-<img src="fig/data-science.png" alt="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham" width="100%"  />
+<img src="fig/DSWF/data_science_workflow.png" alt="Data Science Workflow" width="85%"  />
 <p class="caption">
-Fig 0.4: Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham
+Fig 0.6: Data Science Workflow
 </p>
 </div>
-<p>この図は「Data Science Workflow」と呼ばれ、<strong>R</strong>コミュニティに多大な貢献をしている <a href="http://hadley.nz/" target="_blank" title="">Hadley Wickham</a>が、その著書<a href="https://r4ds.had.co.nz/" target="_blank" title="">『R for Data Science』</a>で提唱している概念図です。本書は、このData Science Workflowに基づくページ構成になっており各プロセスのスコープ概略は下記の通りです。</p>
+<p>「Data Science Workflow」自体は<strong>R</strong>コミュニティに多大な貢献をしている <a href="http://hadley.nz/" target="_blank" title="">Hadley Wickham</a>が著書<a href="https://r4ds.had.co.nz/" target="_blank" title="">『R for Data Science』</a>において提唱している概念です。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
+<img src="fig/data-science.png" alt="Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham" width="85%"  />
+<p class="caption">
+Fig 0.7: Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham
+</p>
+</div>
+<p>Hadlyの図には前節の図にはない<strong>Infer</strong>と<strong>Automate</strong>すというプロセスが入っていますが、本書では<strong>Infer</strong>は<strong>Model</strong>に、<strong>Automate</strong>は<strong>Communicate</strong>に含まれるものとして考えています。</p>
+<p>次章に移る前に個々のプロセスについて簡単な説明をしておきます。</p>
 <div id="program" class="section level3 unnumbered">
 <h3>Program</h3>
-<p>データ分析のすべてのプロセス（Tidy 〜 Communicate/Automate）で必要となるツールがプログラミングです。プログラミングを覚えることで効率的に分析処理を行えるようになります。</p>
+<p>データ分析のすべてのプロセス（Import〜Communicate）で必要となるツールが<strong>Program</strong>です。<strong>R</strong>では様々なパッケージを使うことで外部アプリケーションとの連動を図り、<strong>R</strong>だけで全てのプロセスが完結するような「R Eco System」と呼べるような体型が出来上がりつつあります。この点は他のプログラミング言語と大きな違いです。</p>
 </div>
 <div id="import" class="section level3 unnumbered">
 <h3>Import</h3>
-<p>分析対象となるデータを分析環境に取り込み分析をできるようにするのがインポートプロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。</p>
+<p>分析対象となるデータを分析環境に取り込み分析をできるようにするのが<strong>Import</strong>プロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。</p>
 </div>
 <div id="tidy" class="section level3 unnumbered">
 <h3>Tidy</h3>
-<p>インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、一貫した形式（Tidy data）に整理します。 <a href="" target="_blank">Tidy data <i class="fa fa-external-link"></i></a> はデータ分析において重要な概念です。</p>
+<p>インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、<strong>R</strong>で扱いやすいような形式（Tidy Data）にします。<a href="https://www.jstatsoft.org/article/view/v059i10">Tidy Data</a>{target="_blank" title=""Jounal of Statistical Software}はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。</p>
+<ul>
+<li>個々の変数が一つの列をなす</li>
+<li>個々の観測が一つの行をなす</li>
+<li>個々の観測の構成単位の累計が一つの表をなす</li>
+<li>個々の値が一つのセルをなす</li>
+</ul>
+<p>端的に表現すればデータの「構造と意味が合致する」と言えます。日本語では整然データと呼ばれることもあり、対義語は雑然データ（Messy Data）です。</p>
 </div>
 <div id="transform" class="section level3 unnumbered">
 <h3>Transform</h3>
-<p>整理したデータ（Tidy data）がそのまま状態でデータ分析に使えることは稀です。不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。
-　<strong>Tidy</strong> プロセスと合わせて <strong>Wrangle</strong> や <strong>Data wrangling</strong>、前処理と呼ばれることもあります。</p>
+<p>整然データ（Tidy Data）に変換したとしても、データをそのまま状態で分析に使えることは稀です。実際のデータにはデータの一部が欠損していたり、分析には必要のないデータが含まれていたりしますので、不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。これらの変換を事なうのが<strong>Transform</strong>プロセスです。</p>
+<p><strong>Tidy</strong>プロセスと合わせて<strong>Wrangle</strong>や<strong>Data Wrangling</strong>、前処理などと呼ばれることもあります。本書では<strong>Import</strong>、<strong>Tidy</strong>、<strong>Transform</strong>をあわせて<strong>Wrangle</strong>と称しています。</p>
 </div>
 <div id="visualize" class="section level3 unnumbered">
 <h3>Visualize</h3>
-<p>データを可視化することは様々な示唆を得ることと同義といえます。分析方針を考えるためにもデータがどういう傾向をもっているのかを把握するためのプロセスともいえます。</p>
+<p>文字通りデータの可視化を行うのが<strong>Visualize</strong>プロセスです。<strong>R</strong>には伝統的な<code>plot()</code>関数系を用いた可視化に加えて、<strong><code>ggplot2</code></strong>パッケージを用いた統一された文法による可視化があります。</p>
 </div>
 <div id="model" class="section level3 unnumbered">
 <h3>Model</h3>
-<p>可視化で得られた情報を元に数式可（モデル化）するのプロセスです。モデルは様々な</p>
+<p>データを数式を用いてモデルにするのが<strong>Model</strong>プロセスです。本書では<strong>Model</strong>プロセスと<strong>Infer</strong>プロセスを合わせて<strong>Model</strong>プロセスと称しています。</p>
 </div>
 <div id="communicate" class="section level3 unnumbered">
 <h3>Communicate</h3>
-<p>分析結果を他人に伝えるためのプロセスです。結果を他人に伝えるだけでは不十分で <a href="" target="_blank">再現可能性（Reproducible research）</a> が伴っていることも求められます。
-<a href="http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03" target="_blank" title="">3つの再現可能性</a></p>
+<p>モデルが作成できましたら最後は分析結果を伝え（報告し）なければなりません。この報告のプロセスが<strong>Communicate</strong>で、プロセスにおいて重要な点が再現可能性（Reproducible research）です。再現可能性の重要性については<a href="http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03" target="_blank" title="医学界新聞, 医学書院">「統計解析の再現可能性を高めるために」</a>をお読みください。</p>
+<!-- \newpage￥ -->
 </div>
 </div>
             </section>
@@ -404,7 +428,7 @@ Fig 0.4: Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham
         </div>
       </div>
 <a href="分析の手順.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tidyverse-eco-system.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tidyverse-ecosystem.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

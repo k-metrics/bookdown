@@ -4,35 +4,35 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>なぜRを使うのか | Rのすゝめ</title>
-  <meta name="description" content="本書は" />
+  <title>Tidyverse Ecosystem | Rのすゝめ</title>
+  <meta name="description" content="本書はデータ分析勉強会で学んだ成果をまとめたものです" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="なぜRを使うのか | Rのすゝめ" />
+  <meta property="og:title" content="Tidyverse Ecosystem | Rのすゝめ" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="本書は" />
+  <meta property="og:description" content="本書はデータ分析勉強会で学んだ成果をまとめたものです" />
   <meta name="github-repo" content="k-metrics/bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="なぜRを使うのか | Rのすゝめ" />
+  <meta name="twitter:title" content="Tidyverse Ecosystem | Rのすゝめ" />
   
-  <meta name="twitter:description" content="本書は" />
+  <meta name="twitter:description" content="本書はデータ分析勉強会で学んだ成果をまとめたものです" />
   
 
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-09" />
+<meta name="date" content="2021-05-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="表記ルール.html"/>
-<link rel="next" href="分析の手順.html"/>
+<link rel="prev" href="data-science-workflow.html"/>
+<link rel="next" href="分析環境.html"/>
 <script src="assets/header-attrs-2.8/header-attrs.js"></script>
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="想定読者.html"><a href="想定読者.html"><i class="fa fa-check"></i>想定読者</a></li>
 <li class="chapter" data-level="" data-path="表記ルール.html"><a href="表記ルール.html"><i class="fa fa-check"></i>表記ルール</a></li>
-<li><a href="なぜrを使うのか.html#なぜrを使うのか">なぜ<strong>R</strong>を使うのか</a></li>
+<li class="chapter" data-level="" data-path="なぜrか.html"><a href="なぜrか.html"><i class="fa fa-check"></i>なぜRか？</a></li>
 <li class="chapter" data-level="" data-path="分析の手順.html"><a href="分析の手順.html"><i class="fa fa-check"></i>分析の手順</a></li>
 <li class="chapter" data-level="" data-path="data-science-workflow.html"><a href="data-science-workflow.html"><i class="fa fa-check"></i>Data Science Workflow</a>
 <ul>
@@ -156,7 +156,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="data-science-workflow.html"><a href="data-science-workflow.html#model"><i class="fa fa-check"></i>Model</a></li>
 <li class="chapter" data-level="" data-path="data-science-workflow.html"><a href="data-science-workflow.html#communicate"><i class="fa fa-check"></i>Communicate</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="tidyverse-eco-system.html"><a href="tidyverse-eco-system.html"><i class="fa fa-check"></i>Tidyverse Eco System</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html"><i class="fa fa-check"></i>Tidyverse Ecosystem</a>
+<ul>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#import-1"><i class="fa fa-check"></i>Import</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#tidy-1"><i class="fa fa-check"></i>Tidy</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#visualize-1"><i class="fa fa-check"></i>Visualize</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#transform-1"><i class="fa fa-check"></i>Transform</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#model-1"><i class="fa fa-check"></i>Model</a></li>
+<li class="chapter" data-level="0.0.1" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#communicate-1"><i class="fa fa-check"></i><b>0.0.1</b> Communicate</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#othres"><i class="fa fa-check"></i>Othres</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>II Program</b></span></li>
 <li class="chapter" data-level="1" data-path="分析環境.html"><a href="分析環境.html"><i class="fa fa-check"></i><b>1</b> 分析環境</a>
@@ -183,19 +192,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Wrangle</b></span></li>
-<li class="chapter" data-level="3" data-path="import-1.html"><a href="import-1.html"><i class="fa fa-check"></i><b>3</b> Import</a>
+<li class="chapter" data-level="3" data-path="import-2.html"><a href="import-2.html"><i class="fa fa-check"></i><b>3</b> Import</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="readr.html"><a href="readr.html"><i class="fa fa-check"></i><b>3.1</b> readr</a></li>
 <li class="chapter" data-level="3.2" data-path="readxl.html"><a href="readxl.html"><i class="fa fa-check"></i><b>3.2</b> readxl</a></li>
 <li class="chapter" data-level="3.3" data-path="pdftools.html"><a href="pdftools.html"><i class="fa fa-check"></i><b>3.3</b> pdftools</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="tidy-1.html"><a href="tidy-1.html"><i class="fa fa-check"></i><b>4</b> Tidy</a>
+<li class="chapter" data-level="4" data-path="tidy-2.html"><a href="tidy-2.html"><i class="fa fa-check"></i><b>4</b> Tidy</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>4.1</b> Tidy Data</a></li>
 <li class="chapter" data-level="4.2" data-path="longer.html"><a href="longer.html"><i class="fa fa-check"></i><b>4.2</b> longer</a></li>
 <li class="chapter" data-level="4.3" data-path="wider.html"><a href="wider.html"><i class="fa fa-check"></i><b>4.3</b> wider</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="transform-1.html"><a href="transform-1.html"><i class="fa fa-check"></i><b>5</b> Transform</a>
+<li class="chapter" data-level="5" data-path="transform-2.html"><a href="transform-2.html"><i class="fa fa-check"></i><b>5</b> Transform</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>5.1</b> filter</a></li>
 <li class="chapter" data-level="5.2" data-path="rename.html"><a href="rename.html"><i class="fa fa-check"></i><b>5.2</b> rename</a></li>
@@ -357,30 +366,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="なぜrを使うのか" class="section level2 unnumbered">
-<h2>なぜ<strong>R</strong>を使うのか</h2>
-<p>データ分析を行うためには適切な分析ツールが必要不可欠です。<strong>R</strong>は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。<strong>R</strong>がデータ分析に向いている理由をまとめているのが<a href="https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/" target="_blank" title="">“Six Reasons To Learn R For Business”, R Blogger</a>です。</p>
-<blockquote>
-<ol style="list-style-type: decimal">
-<li>R Has The Best <em><strong>Overall Qualities</strong></em></li>
-<li>R Is Data Science <em><strong>For Non-Computer Scientists</strong></em></li>
-<li>Learning R Is <em><strong>Easy With The Tidyverse</strong></em></li>
-<li>R Has <em><strong>Brains, Muscle, And Heart</strong></em></li>
-<li>R Is Built <em><strong>For Business</strong></em></li>
-<li>R <em><strong>Community Support</strong></em></li>
-</ol>
-</blockquote>
-<p><strong>R</strong>はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。<a href="https://cran.r-project.org/" target="_blank" title="">CRAN(The Comprehensive R Archive Network)</a>と呼ばれる<strong>R</strong>のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は<a href="https://cran.r-project.org/web/views/" target="_blank" title="">CRAN Task Views</a>を見て分かるように古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は<a href="https://cran.r-project.org/web/views/ReproducibleResearch.html" target="_blank" title="">Reproducible Research</a>と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉ですが、データ分析では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々は「Reproducible Research」とあるように科学的研究の分野で使われている言葉です。他の言語ではこの分野を開発範囲（スコープ）に含めることはほぼありません。
-また、<strong>R</strong>は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）にも適していると言えます。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。</p>
-<p>ちなみに本書も<strong>R</strong>のパッケージである<a href="https://bookdown.org/" target="_blank" title="Write HTML, PDF, ePub, and Kindle books with R Markdown"><strong><code>bookdown</code></strong></a>という文書作成に特化したパッケージを利用して作成してます。</p>
+<div id="tidyverse-ecosystem" class="section level2 unnumbered">
+<h2>Tidyverse Ecosystem</h2>
+<p>Data Science Workflowを<strong>R</strong>で実現するための手段がHadley Wickhamが中心となって開発している<strong><code>tidyverse</code></strong>パッケージ群による「Tidyverse Ecosystem」です。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
+<img src="fig/DSWF/tidyverse_eco_system.png" alt="Tidyverse Ecosystem" width="85%"  />
+<p class="caption">
+Fig 0.8: Tidyverse Ecosystem
+</p>
 </div>
+<p>ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章をご覧ください。</p>
+<div id="import-1" class="section level3 unnumbered">
+<h3>Import</h3>
+<ul>
+<li><strong><code>readr</code></strong> - 様々なテキスト形式テーブルを読み込むためのパッケージ</li>
+<li><strong><code>readxl</code></strong> - Microsoft Excelのファイルを読み込むためのパッケージ</li>
+<li><strong><code>rvest</code></strong> - Webスクレイピングのためのパッケージ</li>
+<li><strong><code>googlesheets4</code></strong> - Google API v4 経由でスプレッドシートを読み込むためのパッケージ</li>
+<li><strong><code>DBI</code></strong> - SQL系の各種データベースと接続するためのパッケージ</li>
+</ul>
+</div>
+<div id="tidy-1" class="section level3 unnumbered">
+<h3>Tidy</h3>
+<ul>
+<li><strong><code>tidyr</code></strong> - Tidy Dataの作成を強力にサポートしてくれるパッケージ</li>
+<li><strong><code>zoo</code></strong> - 時系列（TS）データを効率よく扱うためのパッケージ</li>
+</ul>
+</div>
+<div id="visualize-1" class="section level3 unnumbered">
+<h3>Visualize</h3>
+<ul>
+<li><strong><code>ggplot2</code></strong> - 統一された文法で描画が行えるパッケージ</li>
+<li><strong><code>htmlwidgets</code></strong> - JavaScriptのウィジェットを利用できるパッケージ</li>
+</ul>
+</div>
+<div id="transform-1" class="section level3 unnumbered">
+<h3>Transform</h3>
+<ul>
+<li><strong><code>dplyr</code></strong> - Tidy Dataを様々な方法で操作するためのパッケージ</li>
+<li><strong><code>stringr</code></strong> - 文字列処理をするためのパッケージ</li>
+<li><strong><code>forcats</code></strong> - 因子型を操作するためのパッケージ</li>
+<li><strong><code>lubridate</code></strong> - 日付データを簡単に変換するためのパッケージ</li>
+</ul>
+</div>
+<div id="model-1" class="section level3 unnumbered">
+<h3>Model</h3>
+<ul>
+<li><strong><code>broom</code></strong> - 各種モデリング結果を整然データにするためのパッケージ</li>
+<li><strong><code>tidymodels</code></strong> - 機械学習を中心としたモデリングフレームワーク</li>
+</ul>
+</div>
+<div id="communicate-1" class="section level3 unnumberd" number="0.0.1">
+<h3><span class="header-section-number">0.0.1</span> Communicate</h3>
+<ul>
+<li><strong><code>knitr</code></strong> - <strong>R</strong>のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ</li>
+<li><strong>`rmarkdown``</strong> - マークダウン書式を用いてレポートを作成するためのパッケージ</li>
+<li><strong><code>bookdown</code></strong> - 書籍や長いドキュメンを作成するためのパッケージ</li>
+<li><strong><code>shiny</code></strong> - インタラクティブなWebアプリケーションを作成するためのパッケージ</li>
+</ul>
+</div>
+<div id="othres" class="section level3 unnumbered">
+<h3>Othres</h3>
+<p><strong><code>magrittr</code></strong>パッケージのパイプ演算子（<code>%&gt;%”</code>）や<strong><code>purrr</code></strong>パッケージによる反復処理が、分析を円滑に回すハブ・スポーク的な役目を果たします。</p>
+
+</div>
+</div>
+<!-- </div> -->
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="表記ルール.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="分析の手順.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-science-workflow.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="分析環境.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
