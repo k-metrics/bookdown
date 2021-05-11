@@ -205,16 +205,17 @@ knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
 
 ### Import {.unnumbered}
 
-* **`readr`** - 様々なテキスト形式テーブルを読み込むためのパッケージ
-* **`readxl `** - Microsoft Excelのファイルを読み込むためのパッケージ
-* **`rvest`** - Webスクレイピングのためのパッケージ
-* **`googlesheets4`** - Google API v4 経由でスプレッドシートを読み込むためのパッケージ
-* **`DBI`** - SQL系の各種データベースと接続するためのパッケージ
+* **`readr`** - 様々なテキスト形式テーブルを読み込むためのパッケージ[@R-readr]
+* **`readxl`** - Microsoft Excelのファイルを読み込むためのパッケージ[@R-readxl]
+* **`rvest`** - Webスクレイピングのためのパッケージ[@R-rvest]
+* **`googlesheets4`** - Google API v4 経由でスプレッドシートを読み込むためのパッケージ[@R-googlesheets4]
+* **`DBI`** - SQL系の各種データベースと接続するためのパッケージ[@R-DBI]
 
 
 ### Tidy {.unnumbered}
 
 * **`tidyr`** - Tidy Dataの作成を強力にサポートしてくれるパッケージ
+* **`tibble`** - より厳密にTidy Dataを扱うためのパッケージ
 * **`zoo`** - 時系列（TS）データを効率よく扱うためのパッケージ
 
 
@@ -235,13 +236,13 @@ knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
 * **`tidymodels`** - 機械学習を中心としたモデリングフレームワーク
 
 
-### Communicate {.unnumberd}
+### Communicate {.unnumbered}
 * **`knitr`** - **R**のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ
-* **`rmarkdown``** - マークダウン書式を用いてレポートを作成するためのパッケージ
+* **`rmarkdown`** - マークダウン書式を用いてレポートを作成するためのパッケージ
 * **`bookdown`** - 書籍や長いドキュメンを作成するためのパッケージ
 * **`shiny`** - インタラクティブなWebアプリケーションを作成するためのパッケージ
 
 
 ### Othres {.unnumbered}
-**`magrittr`**パッケージのパイプ演算子（`%>%”`）や**`purrr`**パッケージによる反復処理が、分析を円滑に回すハブ・スポーク的な役目を果たします。
+**`magrittr`**パッケージのパイプ演算子（`%>%`）や**`purrr`**パッケージによる反復処理が、分析を円滑に回すハブ・スポーク的な役目を果たします。
 

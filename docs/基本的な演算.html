@@ -185,7 +185,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#visualize-1"><i class="fa fa-check"></i>Visualize</a></li>
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#transform-1"><i class="fa fa-check"></i>Transform</a></li>
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#model-1"><i class="fa fa-check"></i>Model</a></li>
-<li class="chapter" data-level="0.0.1" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#communicate-1"><i class="fa fa-check"></i><b>0.0.1</b> Communicate</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#communicate-1"><i class="fa fa-check"></i>Communicate</a></li>
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#othres"><i class="fa fa-check"></i>Othres</a></li>
 </ul></li>
 </ul></li>
@@ -390,47 +390,47 @@ div.csl-indent {
 <div id="算術演算" class="section level3" number="13.1.1">
 <h3><span class="header-section-number">A.1.1</span> 算術演算</h3>
 <p>算術演算の基本である加減乗除算の四則演算は他のプログラミング言語や OS に付属の電卓アプリなどと同じです。</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="基本的な演算.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>     <span class="co"># 加算</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="基本的な演算.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>     <span class="co"># 加算</span></span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="基本的な演算.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">-</span> <span class="dv">3</span>     <span class="co"># 減算</span></span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="基本的な演算.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">-</span> <span class="dv">3</span>     <span class="co"># 減算</span></span></code></pre></div>
 <pre><code>## [1] -1</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="基本的な演算.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span>     <span class="co"># 乗算</span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="基本的な演算.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span>     <span class="co"># 乗算</span></span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="基本的な演算.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">/</span> <span class="dv">5</span>     <span class="co"># 除算</span></span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="基本的な演算.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">/</span> <span class="dv">5</span>     <span class="co"># 除算</span></span></code></pre></div>
 <pre><code>## [1] 0.8</code></pre>
 </div>
 <div id="代入" class="section level3" number="13.1.2">
 <h3><span class="header-section-number">A.1.2</span> 代入</h3>
 <p>上記の演算結果を変数に代入してみます。代入には代入演算子（<code>&lt;-</code>）を用います。変数を使うための変数宣言は不要です。</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="基本的な演算.html#cb79-1" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb79-2"><a href="基本的な演算.html#cb79-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span></span>
-<span id="cb79-3"><a href="基本的な演算.html#cb79-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">4</span></span>
-<span id="cb79-4"><a href="基本的な演算.html#cb79-4" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="sc">/</span> <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="基本的な演算.html#cb83-1" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb83-2"><a href="基本的な演算.html#cb83-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span></span>
+<span id="cb83-3"><a href="基本的な演算.html#cb83-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">4</span></span>
+<span id="cb83-4"><a href="基本的な演算.html#cb83-4" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="sc">/</span> <span class="dv">5</span></span></code></pre></div>
 </div>
 <div id="代入結果の確認" class="section level3" number="13.1.3">
 <h3><span class="header-section-number">A.1.3</span> 代入結果の確認</h3>
 <p>代入結果を確認するには変数名だけで実行するか <code>print()</code> 関数を用います。</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="基本的な演算.html#cb80-1" aria-hidden="true" tabindex="-1"></a>w</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="基本的な演算.html#cb84-1" aria-hidden="true" tabindex="-1"></a>w</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="基本的な演算.html#cb82-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="基本的な演算.html#cb86-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="基本的な演算.html#cb84-1" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="基本的な演算.html#cb88-1" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
 <pre><code>## [1] -1</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="基本的な演算.html#cb86-1" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="基本的な演算.html#cb90-1" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
 <pre><code>## [1] 0.8</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="基本的な演算.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(w)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="基本的な演算.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(w)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="基本的な演算.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="基本的な演算.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="基本的な演算.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="基本的な演算.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span></code></pre></div>
 <pre><code>## [1] -1</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="基本的な演算.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="基本的な演算.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(z)</span></code></pre></div>
 <pre><code>## [1] 0.8</code></pre>
 </div>
 <div id="合算" class="section level3" number="13.1.4">
 <h3><span class="header-section-number">A.1.4</span> 合算</h3>
 <p>全ての変数を合算します。単純に加算演算子（<code>+</code>）を用いても構いませんが、<code>sum()</code>という関数が用意されていますので、これを使います。</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="基本的な演算.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(w, x, y, z)    <span class="co"># 3 + 6 + -1 + 0.8</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="基本的な演算.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(w, x, y, z)    <span class="co"># 3 + 6 + -1 + 0.8</span></span></code></pre></div>
 <pre><code>## [1] 8.8</code></pre>
 </div>
 <div id="平均-1" class="section level3" number="13.1.5">
@@ -442,18 +442,18 @@ div.csl-indent {
 <li>トリム平均</li>
 </ul>
 <p>がありますが、ここでは算術平均の値を求めます。算術平均の値を求めるには<code>mean()</code>という関数を用います。</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="基本的な演算.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(w, x, y, z)   <span class="co"># (3 + 6 + -1 + 0.8) / 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="基本的な演算.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(w, x, y, z)   <span class="co"># (3 + 6 + -1 + 0.8) / 4</span></span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p><code>sum()</code>関数と同じ指定をすると計算結果が期待と違います。これは<code>mean()</code>関数がとる引数が<code>sum()</code>関数と異なりひとつに限られるためです。そこで、ベクトル変数を作成する<code>c()</code>関数を用いて以下のように記述します。</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="基本的な演算.html#cb100-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(w, x, y, z)</span>
-<span id="cb100-2"><a href="基本的な演算.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="基本的な演算.html#cb104-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(w, x, y, z)</span>
+<span id="cb104-2"><a href="基本的な演算.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div>
 <pre><code>## [1] 2.2</code></pre>
 <p>これで期待通りの値を得ることができました。</p>
 </div>
 <div id="変数の上書き" class="section level3" number="13.1.6">
 <h3><span class="header-section-number">A.1.6</span> 変数の上書き</h3>
 <p>さて、最初に<code>x</code>に代入した値は<code>6</code>でしたが、この時点では以下のように複数の値が代入されています。</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="基本的な演算.html#cb102-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="基本的な演算.html#cb106-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1]  3.0  6.0 -1.0  0.8</code></pre>
 <p>これは平均値を求める際に<code>x</code>という変数を再利用したためですが、このように<strong>R</strong>では警告なしに既存の変数を上書きすることができます。注意してください。</p>
 <p>このように<strong>R</strong>での演算は、他の言語と同様に何らかの値を変数に入れたり、何らかの値を関数で処理したりします。</p>

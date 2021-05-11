@@ -185,7 +185,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#visualize-1"><i class="fa fa-check"></i>Visualize</a></li>
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#transform-1"><i class="fa fa-check"></i>Transform</a></li>
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#model-1"><i class="fa fa-check"></i>Model</a></li>
-<li class="chapter" data-level="0.0.1" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#communicate-1"><i class="fa fa-check"></i><b>0.0.1</b> Communicate</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#communicate-1"><i class="fa fa-check"></i>Communicate</a></li>
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#othres"><i class="fa fa-check"></i>Othres</a></li>
 </ul></li>
 </ul></li>
@@ -417,27 +417,27 @@ div.csl-indent {
 <div id="if-else" class="section level4" number="13.6.1.1">
 <h4><span class="header-section-number">A.6.1.1</span> if, else</h4>
 <p><code>if</code> 文と <code>else</code> 文は最も基本的な条件分岐です。評価式には論理演算子または論理型変数を用います。コーディングスタイルとして以下のどちらも可能です。</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="制御文.html#cb223-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb223-2"><a href="制御文.html#cb223-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb223-3"><a href="制御文.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">!=</span> <span class="cn">TRUE</span>) <span class="fu">print</span>(<span class="st">&quot;TRUE&quot;</span>) <span class="cf">else</span> <span class="fu">print</span>(<span class="st">&quot;FALSE&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="制御文.html#cb227-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb227-2"><a href="制御文.html#cb227-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb227-3"><a href="制御文.html#cb227-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">!=</span> <span class="cn">TRUE</span>) <span class="fu">print</span>(<span class="st">&quot;TRUE&quot;</span>) <span class="cf">else</span> <span class="fu">print</span>(<span class="st">&quot;FALSE&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;TRUE&quot;</code></pre>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="制御文.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
-<span id="cb225-2"><a href="制御文.html#cb225-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;TRUE&quot;</span>)</span>
-<span id="cb225-3"><a href="制御文.html#cb225-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb225-4"><a href="制御文.html#cb225-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;FALSE&quot;</span>)</span>
-<span id="cb225-5"><a href="制御文.html#cb225-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="制御文.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb229-2"><a href="制御文.html#cb229-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;TRUE&quot;</span>)</span>
+<span id="cb229-3"><a href="制御文.html#cb229-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb229-4"><a href="制御文.html#cb229-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;FALSE&quot;</span>)</span>
+<span id="cb229-5"><a href="制御文.html#cb229-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;FALSE&quot;</code></pre>
 <p><code>if</code> 文は入れ子にしたり <code>else if</code> 文として組み合わせて使うことも可能です。</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="制御文.html#cb227-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> 10L</span>
-<span id="cb227-2"><a href="制御文.html#cb227-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb227-3"><a href="制御文.html#cb227-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-4"><a href="制御文.html#cb227-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> ((x <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">&amp;&amp;</span> (y <span class="sc">&lt;</span> x)) {</span>
-<span id="cb227-5"><a href="制御文.html#cb227-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;match, (x &gt; 5) &amp;&amp; (y &lt; x)&quot;</span>)</span>
-<span id="cb227-6"><a href="制御文.html#cb227-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> ((x <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">&amp;&amp;</span> (y <span class="sc">&gt;=</span> x)) {</span>
-<span id="cb227-7"><a href="制御文.html#cb227-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;match, (x &gt; 5) &amp;&amp; (y &gt;= x)&quot;</span>)</span>
-<span id="cb227-8"><a href="制御文.html#cb227-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb227-9"><a href="制御文.html#cb227-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;else&quot;</span>)</span>
-<span id="cb227-10"><a href="制御文.html#cb227-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="制御文.html#cb231-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> 10L</span>
+<span id="cb231-2"><a href="制御文.html#cb231-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb231-3"><a href="制御文.html#cb231-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb231-4"><a href="制御文.html#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> ((x <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">&amp;&amp;</span> (y <span class="sc">&lt;</span> x)) {</span>
+<span id="cb231-5"><a href="制御文.html#cb231-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;match, (x &gt; 5) &amp;&amp; (y &lt; x)&quot;</span>)</span>
+<span id="cb231-6"><a href="制御文.html#cb231-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> ((x <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">&amp;&amp;</span> (y <span class="sc">&gt;=</span> x)) {</span>
+<span id="cb231-7"><a href="制御文.html#cb231-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;match, (x &gt; 5) &amp;&amp; (y &gt;= x)&quot;</span>)</span>
+<span id="cb231-8"><a href="制御文.html#cb231-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb231-9"><a href="制御文.html#cb231-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(<span class="st">&quot;else&quot;</span>)</span>
+<span id="cb231-10"><a href="制御文.html#cb231-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;match, (x &gt; 5) &amp;&amp; (y &lt; x)&quot;</code></pre>
 <p>　</p>
 </div>
@@ -448,37 +448,37 @@ div.csl-indent {
 <div id="引数が整数の場合" class="section level5" number="13.6.1.2.1">
 <h5><span class="header-section-number">A.6.1.2.1</span> 引数が整数の場合</h5>
 <p>引数に整数 <span class="math inline">\(n\)</span> を指定した場合、<span class="math inline">\(n\)</span> 番目の処理文の結果が返ります。</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="制御文.html#cb229-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb229-2"><a href="制御文.html#cb229-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(x,                 <span class="co"># 分岐のための引数</span></span>
-<span id="cb229-3"><a href="制御文.html#cb229-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is 1&quot;</span>,          <span class="co"># 1番目の処理文</span></span>
-<span id="cb229-4"><a href="制御文.html#cb229-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is 2&quot;</span>,          <span class="co"># 2番目の処理文</span></span>
-<span id="cb229-5"><a href="制御文.html#cb229-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;Error&quot;</span>)           <span class="co"># 3番目の処理文</span></span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="制御文.html#cb233-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb233-2"><a href="制御文.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(x,                 <span class="co"># 分岐のための引数</span></span>
+<span id="cb233-3"><a href="制御文.html#cb233-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is 1&quot;</span>,          <span class="co"># 1番目の処理文</span></span>
+<span id="cb233-4"><a href="制御文.html#cb233-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is 2&quot;</span>,          <span class="co"># 2番目の処理文</span></span>
+<span id="cb233-5"><a href="制御文.html#cb233-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;Error&quot;</span>)           <span class="co"># 3番目の処理文</span></span></code></pre></div>
 <pre><code>## [1] &quot;x is 2&quot;</code></pre>
 <p>注意しなければならないのは条件分岐数と一致しない場合は<code>NULL</code>が返される点です。</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="制御文.html#cb231-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> 5L</span>
-<span id="cb231-2"><a href="制御文.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.null</span>(<span class="cf">switch</span>(x,         <span class="co"># 分岐のための引数</span></span>
-<span id="cb231-3"><a href="制御文.html#cb231-3" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;x is 1&quot;</span>,  <span class="co"># 1番目の処理文</span></span>
-<span id="cb231-4"><a href="制御文.html#cb231-4" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;x is 2&quot;</span>,  <span class="co"># 2番目の処理文</span></span>
-<span id="cb231-5"><a href="制御文.html#cb231-5" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;Error&quot;</span>))  <span class="co"># 3番目の処理文</span></span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="制御文.html#cb235-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> 5L</span>
+<span id="cb235-2"><a href="制御文.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.null</span>(<span class="cf">switch</span>(x,         <span class="co"># 分岐のための引数</span></span>
+<span id="cb235-3"><a href="制御文.html#cb235-3" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;x is 1&quot;</span>,  <span class="co"># 1番目の処理文</span></span>
+<span id="cb235-4"><a href="制御文.html#cb235-4" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;x is 2&quot;</span>,  <span class="co"># 2番目の処理文</span></span>
+<span id="cb235-5"><a href="制御文.html#cb235-5" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot;Error&quot;</span>))  <span class="co"># 3番目の処理文</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>　</p>
 </div>
 <div id="引数が文字の場合" class="section level5" number="13.6.1.2.2">
 <h5><span class="header-section-number">A.6.1.2.2</span> 引数が文字の場合</h5>
 <p>一方、引数が文字の場合、<code>if/else</code>文と同様の処理が行われます。<code>if/else</code>文と異なるのは<code>else</code>文に相当する分岐が途中になっていても正しく処理してくれる点です。</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="制御文.html#cb233-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;2&quot;</span></span>
-<span id="cb233-2"><a href="制御文.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(x,</span>
-<span id="cb233-3"><a href="制御文.html#cb233-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 1&quot;</span>,    <span class="co"># 引数が&quot;1&quot;と一致する場合（`if (x == &quot;1&quot;)` に等価）</span></span>
-<span id="cb233-4"><a href="制御文.html#cb233-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is others&quot;</span>,     <span class="co"># 一致するものがない場合（`else` に等価）</span></span>
-<span id="cb233-5"><a href="制御文.html#cb233-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;2&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 2&quot;</span>)    <span class="co"># 引数が&quot;2&quot;と一致する場合（`if (x == &quot;2&quot;)` に等価）</span></span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="制御文.html#cb237-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;2&quot;</span></span>
+<span id="cb237-2"><a href="制御文.html#cb237-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(x,</span>
+<span id="cb237-3"><a href="制御文.html#cb237-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 1&quot;</span>,    <span class="co"># 引数が&quot;1&quot;と一致する場合（`if (x == &quot;1&quot;)` に等価）</span></span>
+<span id="cb237-4"><a href="制御文.html#cb237-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is others&quot;</span>,     <span class="co"># 一致するものがない場合（`else` に等価）</span></span>
+<span id="cb237-5"><a href="制御文.html#cb237-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;2&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 2&quot;</span>)    <span class="co"># 引数が&quot;2&quot;と一致する場合（`if (x == &quot;2&quot;)` に等価）</span></span></code></pre></div>
 <pre><code>## [1] &quot;x is 2&quot;</code></pre>
 <p>　<br />
 引数に整数を指定しても動作しますが、引数が整数の場合と同様の動きをします。</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="制御文.html#cb235-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb235-2"><a href="制御文.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(x,                 <span class="co"># 分岐のための引数が整数になると</span></span>
-<span id="cb235-3"><a href="制御文.html#cb235-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 1&quot;</span>,    <span class="co"># 1番目の処理文</span></span>
-<span id="cb235-4"><a href="制御文.html#cb235-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is others&quot;</span>,     <span class="co"># 2番目の処理文</span></span>
-<span id="cb235-5"><a href="制御文.html#cb235-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;2&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 2&quot;</span>)    <span class="co"># 3番目の処理文</span></span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="制御文.html#cb239-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb239-2"><a href="制御文.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span>(x,                 <span class="co"># 分岐のための引数が整数になると</span></span>
+<span id="cb239-3"><a href="制御文.html#cb239-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 1&quot;</span>,    <span class="co"># 1番目の処理文</span></span>
+<span id="cb239-4"><a href="制御文.html#cb239-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;x is others&quot;</span>,     <span class="co"># 2番目の処理文</span></span>
+<span id="cb239-5"><a href="制御文.html#cb239-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;2&quot;</span> <span class="ot">=</span> <span class="st">&quot;x is 2&quot;</span>)    <span class="co"># 3番目の処理文</span></span></code></pre></div>
 <pre><code>## [1] &quot;x is 2&quot;</code></pre>
 <p>　</p>
 </div>
@@ -486,7 +486,7 @@ div.csl-indent {
 <div id="ifelse" class="section level4" number="13.6.1.3">
 <h4><span class="header-section-number">A.6.1.3</span> ifelse</h4>
 <p><code>base::ifelse()</code>は予約語でなく関数です。<code>if/else</code>文と異なるのはベクトル型の評価が一度に行える点です。第一引数に<code>TRUE</code>か<code>FALSE</code>が返る評価式であればベクトル型でも構いません。</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="制御文.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="cn">TRUE</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="制御文.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(<span class="cn">TRUE</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span></code></pre></div>
 <p>　</p>
 </div>
 </div>
@@ -540,15 +540,15 @@ div.csl-indent {
 <div id="for" class="section level4" number="13.6.2.1">
 <h4><span class="header-section-number">A.6.2.1</span> for</h4>
 <p><code>for</code>文は最も基本となる繰り返し処理で、条件式としてベクトルやリストを指定できる点が他の言語と異なる点です。</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="制御文.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span><span class="sc">:</span><span class="dv">15</span>)) {</span>
-<span id="cb238-2"><a href="制御文.html#cb238-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">4</span>) {</span>
-<span id="cb238-3"><a href="制御文.html#cb238-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
-<span id="cb238-4"><a href="制御文.html#cb238-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (i <span class="sc">&gt;=</span> <span class="dv">10</span>) {</span>
-<span id="cb238-5"><a href="制御文.html#cb238-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
-<span id="cb238-6"><a href="制御文.html#cb238-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb238-7"><a href="制御文.html#cb238-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">as.character</span>(i))</span>
-<span id="cb238-8"><a href="制御文.html#cb238-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb238-9"><a href="制御文.html#cb238-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="制御文.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span><span class="sc">:</span><span class="dv">15</span>)) {</span>
+<span id="cb242-2"><a href="制御文.html#cb242-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">4</span>) {</span>
+<span id="cb242-3"><a href="制御文.html#cb242-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb242-4"><a href="制御文.html#cb242-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (i <span class="sc">&gt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb242-5"><a href="制御文.html#cb242-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb242-6"><a href="制御文.html#cb242-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb242-7"><a href="制御文.html#cb242-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">as.character</span>(i))</span>
+<span id="cb242-8"><a href="制御文.html#cb242-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb242-9"><a href="制御文.html#cb242-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;1&quot;
 ## [1] &quot;2&quot;
 ## [1] &quot;3&quot;

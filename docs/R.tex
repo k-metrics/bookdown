@@ -595,15 +595,15 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \begin{itemize}
 \tightlist
 \item
-  \textbf{\texttt{readr}} - 様々なテキスト形式テーブルを読み込むためのパッケージ
+  \textbf{\texttt{readr}} - 様々なテキスト形式テーブルを読み込むためのパッケージ\citep{R-readr}
 \item
-  \textbf{\texttt{readxl}} - Microsoft Excelのファイルを読み込むためのパッケージ
+  \textbf{\texttt{readxl}} - Microsoft Excelのファイルを読み込むためのパッケージ\citep{R-readxl}
 \item
-  \textbf{\texttt{rvest}} - Webスクレイピングのためのパッケージ
+  \textbf{\texttt{rvest}} - Webスクレイピングのためのパッケージ\citep{R-rvest}
 \item
-  \textbf{\texttt{googlesheets4}} - Google API v4 経由でスプレッドシートを読み込むためのパッケージ
+  \textbf{\texttt{googlesheets4}} - Google API v4 経由でスプレッドシートを読み込むためのパッケージ\citep{R-googlesheets4}
 \item
-  \textbf{\texttt{DBI}} - SQL系の各種データベースと接続するためのパッケージ
+  \textbf{\texttt{DBI}} - SQL系の各種データベースと接続するためのパッケージ\citep{R-DBI}
 \end{itemize}
 
 \hypertarget{tidy-1}{%
@@ -614,6 +614,8 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \tightlist
 \item
   \textbf{\texttt{tidyr}} - Tidy Dataの作成を強力にサポートしてくれるパッケージ
+\item
+  \textbf{\texttt{tibble}} - より厳密にTidy Dataを扱うためのパッケージ
 \item
   \textbf{\texttt{zoo}} - 時系列（TS）データを効率よく扱うためのパッケージ
 \end{itemize}
@@ -659,14 +661,15 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{itemize}
 
 \hypertarget{communicate-1}{%
-\subsection{Communicate}\label{communicate-1}}
+\subsection*{Communicate}\label{communicate-1}}
+\addcontentsline{toc}{subsection}{Communicate}
 
 \begin{itemize}
 \tightlist
 \item
   \textbf{\texttt{knitr}} - \textbf{R}のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ
 \item
-  \textbf{`rmarkdown``} - マークダウン書式を用いてレポートを作成するためのパッケージ
+  \textbf{\texttt{rmarkdown}} - マークダウン書式を用いてレポートを作成するためのパッケージ
 \item
   \textbf{\texttt{bookdown}} - 書籍や長いドキュメンを作成するためのパッケージ
 \item
@@ -677,7 +680,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \subsection*{Othres}\label{othres}}
 \addcontentsline{toc}{subsection}{Othres}
 
-\textbf{\texttt{magrittr}}パッケージのパイプ演算子（\texttt{\%\textgreater{}\%”}）や\textbf{\texttt{purrr}}パッケージによる反復処理が、分析を円滑に回すハブ・スポーク的な役目を果たします。
+\textbf{\texttt{magrittr}}パッケージのパイプ演算子（\texttt{\%\textgreater{}\%}）や\textbf{\texttt{purrr}}パッケージによる反復処理が、分析を円滑に回すハブ・スポーク的な役目を果たします。
 
 \hypertarget{part-program}{%
 \part{Program}\label{part-program}}
@@ -1144,9 +1147,47 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 1 9
 \end{verbatim}
 
-このような場合、下式で求められる標準偏差（Standard Deviation）を使うと特徴が見えてくることがあります。 \[\sigma = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n} - \bar{x}^2 }\]
+母分散（\(\sigma^2\)）これは分からない
 
-標準偏差は\texttt{sd()}関数で求めることができます。
+標本分散（\(s^2\)） 標本から求められる
+
+母分散の不偏推定量（\(\hat{\sigma}^2\)）不偏標本分散・不偏分散ともいい、標本から推定する
+
+このような場合、下式で求められる標準偏差（Standard Deviation）を使うと特徴が見えてくることがあります。
+
+\[S = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n} - \bar{x}^2 }\]
+
+\textbf{R}に標準で用意されている\texttt{sd()}関数は不偏標準偏差を求める関数です。 \[s = \sqrt{\frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n - 1} - \bar{x}^2 }\]
+
+標本標準偏差（\(\sigma\)）を求めるには不偏分散（\(s^2\)）を求める\texttt{var()}関数を用いて標本分散（\(\sigma^2\)）を求めた後に平方根（\(\sqrt{}\)）を取ります。データの長さ（\(n\)）を求める関数は\texttt{length()}関数ですので標本分散は以下の通りとなります。
+
+\[s^2 = \frac{n - 1}{n}\hat{\sigma}^2 = \frac{length(x) - 1}{length(x)}var(x)\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{variance }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(x)}
+  \FunctionTok{return}\NormalTok{ ((n }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ n }\SpecialCharTok{*} \FunctionTok{var}\NormalTok{(x))}
+\NormalTok{\}}
+
+
+\FunctionTok{var}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{variance}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6.4
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1167,6 +1208,13 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \begin{verbatim}
 ## [1] 4
 \end{verbatim}
+
+\begin{quote}
+演習\\
+\texttt{x}に\texttt{NA}が含まれる場合、\texttt{var()}関数では\texttt{na.rm\ =\ TRUE}オプションを指定すれば\texttt{NA}を除いて計算してくれます。これを踏まえて上で定義している\texttt{variance()}関数の引数に\texttt{na.rm}オプションを追加して\texttt{NA}が含まれている場合でも標本分散を求められるように改修してください。\\
+　\\
+\texttt{variance\ \textless{}-\ function(x,\ na.rm\ =\ FALSE)\ \{...\}}
+\end{quote}
 
 \hypertarget{ux6700ux983bux5024}{%
 \subsection{最頻値}\label{ux6700ux983bux5024}}

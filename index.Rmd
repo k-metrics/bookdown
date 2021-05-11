@@ -54,7 +54,7 @@ monofontoptions: "Scale=0.8"
 # monofontoptions: "Scale=0.96"
 CJKoptions: "Scale=1.0"
 ## Windows環境でNotoフォントを指定したい場合は以下のように個別に指定する
-## 必要があるが、以下だけでは太字が表示できないので追加記述が必要（調査中）
+## 必要があるが、以下だけでは太字が表示できないので追記が必要（調査中）
 # mainfont: NotoSerifCJKjp-Regular.otf
 # mainfontoptions: Scale=MatchUppercase
 # sansfont: NotoSansCJKjp-Regular.otf
@@ -97,6 +97,11 @@ if (!is.null(output)) {
                           dev.args = list(family = "Noto Serif"))
   }
 }
+
+# make bib file
+tidyverse::tidyverse_packages() %>% 
+  c(., "knitr", "rmarkdown","bookdown", "DBI", "zoo", "htmlwidgets", "shiny") %>% 
+  knitr::write_bib("./bib/packages.bib")
 
 ## 出力によりテーブル表記を変更する
 # HTML format use rmarkdown::paged_table

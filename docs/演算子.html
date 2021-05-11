@@ -185,7 +185,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#visualize-1"><i class="fa fa-check"></i>Visualize</a></li>
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#transform-1"><i class="fa fa-check"></i>Transform</a></li>
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#model-1"><i class="fa fa-check"></i>Model</a></li>
-<li class="chapter" data-level="0.0.1" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#communicate-1"><i class="fa fa-check"></i><b>0.0.1</b> Communicate</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#communicate-1"><i class="fa fa-check"></i>Communicate</a></li>
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#othres"><i class="fa fa-check"></i>Othres</a></li>
 </ul></li>
 </ul></li>
@@ -394,28 +394,28 @@ div.csl-indent {
 <h4><span class="header-section-number">A.5.1.1</span> <code>[</code>演算子</h4>
 <p>ベクトル型の特定位置の値を参照する演算子です。記述の際は<code>[]</code>と閉じる必要があります。</p>
 <p>演算子はベクトル型系の要素を参照するための演算子です。例えば <span class="math inline">\(5\)</span> 番目の値を参照するには以下のようにします。</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="演算子.html#cb140-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb140-2"><a href="演算子.html#cb140-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="演算子.html#cb144-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb144-2"><a href="演算子.html#cb144-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="演算子.html#cb142-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="演算子.html#cb146-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">5</span>]</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>　マトリクス型では、行・列・セルの三通りの参照が可能です。</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="演算子.html#cb144-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>), <span class="at">nrow =</span> <span class="dv">3</span>)</span>
-<span id="cb144-2"><a href="演算子.html#cb144-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="演算子.html#cb148-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>), <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb148-2"><a href="演算子.html#cb148-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
 ## [3,]    3    6    9   12</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="演算子.html#cb146-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="演算子.html#cb150-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>, ]</span></code></pre></div>
 <pre><code>## [1]  1  4  7 10</code></pre>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="演算子.html#cb148-1" aria-hidden="true" tabindex="-1"></a>x[, <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="演算子.html#cb152-1" aria-hidden="true" tabindex="-1"></a>x[, <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="演算子.html#cb150-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="演算子.html#cb154-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p>　<br />
 　アレイ型でも同様の参照が可能です。ただし、マトリクス型とは異なり次元が絡んできますので、表示は少しややこしくなります。以下の <span class="math inline">\(2 \times 2\)</span> の <span class="math inline">\(4\)</span> 次元アレイで説明します。</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="演算子.html#cb152-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>), <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>))</span>
-<span id="cb152-2"><a href="演算子.html#cb152-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="演算子.html#cb156-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>), <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>))</span>
+<span id="cb156-2"><a href="演算子.html#cb156-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2]
@@ -440,53 +440,53 @@ div.csl-indent {
 ## [1,]   13   15
 ## [2,]   14   16</code></pre>
 <p>　第 <span class="math inline">\(1\)</span> 次元を参照します。</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="演算子.html#cb154-1" aria-hidden="true" tabindex="-1"></a>x[, , <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="演算子.html#cb158-1" aria-hidden="true" tabindex="-1"></a>x[, , <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    3
 ## [2,]    2    4</code></pre>
 <p>　第 <span class="math inline">\(1\)</span> 次元の <span class="math inline">\(1\)</span> 行目を参照します。</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="演算子.html#cb156-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>, , <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="演算子.html#cb160-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>, , <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] 1 3</code></pre>
 <p>　第 <span class="math inline">\(1\)</span> 次元の <span class="math inline">\(1\)</span> 列目を参照します。</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="演算子.html#cb158-1" aria-hidden="true" tabindex="-1"></a>x[,<span class="dv">1</span> , <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="演算子.html#cb162-1" aria-hidden="true" tabindex="-1"></a>x[,<span class="dv">1</span> , <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
 <p>　全次元の <span class="math inline">\(1\)</span> 行目を参照します。参照結果は列が各次元になる点に注意してください。</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="演算子.html#cb160-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>, , ]</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="演算子.html#cb164-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>, , ]</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    5    9   13
 ## [2,]    3    7   11   15</code></pre>
 <p>　全次元の <span class="math inline">\(1\)</span> 列目を参照します。行の参照と同様に参照結果は列が各次元になります。</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="演算子.html#cb162-1" aria-hidden="true" tabindex="-1"></a>x[, <span class="dv">1</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="演算子.html#cb166-1" aria-hidden="true" tabindex="-1"></a>x[, <span class="dv">1</span>, ]</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    5    9   13
 ## [2,]    2    6   10   14</code></pre>
 <p>　全次元の <span class="math inline">\(1\)</span> 行 <span class="math inline">\(1\)</span> 列目を参照します。</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="演算子.html#cb164-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>, <span class="dv">1</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="演算子.html#cb168-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>, <span class="dv">1</span>, ]</span></code></pre></div>
 <pre><code>## [1]  1  5  9 13</code></pre>
 <p>　</p>
 </div>
 <div id="演算子-2" class="section level4" number="13.5.1.2">
 <h4><span class="header-section-number">A.5.1.2</span> <code>$</code>演算子</h4>
 <p><code>$</code> 演算子はデータフレーム型やリスト型の要素を参照するための演算子です。</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="演算子.html#cb166-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">blood =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;A&quot;</span>), <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">25</span>, <span class="dv">22</span>, <span class="dv">35</span>, <span class="dv">19</span>))</span>
-<span id="cb166-2"><a href="演算子.html#cb166-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="演算子.html#cb170-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">blood =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;A&quot;</span>), <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">25</span>, <span class="dv">22</span>, <span class="dv">35</span>, <span class="dv">19</span>))</span>
+<span id="cb170-2"><a href="演算子.html#cb170-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>##   blood age
 ## 1     A  18
 ## 2     B  25
 ## 3     A  22
 ## 4     O  35
 ## 5     A  19</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="演算子.html#cb168-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>blood</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="演算子.html#cb172-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>blood</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;O&quot; &quot;A&quot;</code></pre>
 <p>　さらに要素内を参照するには前述の <code>[</code> 演算子と組み合わせます。</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="演算子.html#cb170-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>blood[<span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="演算子.html#cb174-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>blood[<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot;</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="演算子.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="do">##### Operators ###############################################################</span></span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="演算子.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="do">##### Operators ###############################################################</span></span></code></pre></div>
 <p>　リスト型を <code>$</code> 演算子で参照するの場合は 要素が <code>names</code> 属性を持っていることが前提です。以下のリスト型変数では <code>$</code> 表示の後ろに要素名が表示されいている <code>blood</code>, <code>data</code> が <code>$</code> 演算子で参照可能です。</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="演算子.html#cb173-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">blood =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;O&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
-<span id="cb173-2"><a href="演算子.html#cb173-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">blood =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;A&quot;</span>),</span>
-<span id="cb173-3"><a href="演算子.html#cb173-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">25</span>, <span class="dv">22</span>, <span class="dv">35</span>, <span class="dv">19</span>)))</span>
-<span id="cb173-4"><a href="演算子.html#cb173-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="演算子.html#cb177-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">blood =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;O&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
+<span id="cb177-2"><a href="演算子.html#cb177-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">blood =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;A&quot;</span>),</span>
+<span id="cb177-3"><a href="演算子.html#cb177-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">25</span>, <span class="dv">22</span>, <span class="dv">35</span>, <span class="dv">19</span>)))</span>
+<span id="cb177-4"><a href="演算子.html#cb177-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)</span></code></pre></div>
 <pre><code>## List of 3
 ##  $ blood: chr [1:4] &quot;A&quot; &quot;B&quot; &quot;AB&quot; &quot;O&quot;
 ##  $      : chr [1:2] &quot;M&quot; &quot;F&quot;
@@ -494,27 +494,27 @@ div.csl-indent {
 ##   ..$ blood: chr [1:5] &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;O&quot; ...
 ##   ..$ age  : num [1:5] 18 25 22 35 19</code></pre>
 <p>　要素名が表示されていない二番目の要素を参照するには <code>[[</code> 演算子を用います。</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="演算子.html#cb175-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="演算子.html#cb179-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>## [1] &quot;M&quot; &quot;F&quot;</code></pre>
 <p>　さらに要素内の値を参照する場合は前述のデータフレーム型同様に <code>[</code> 演算子を用います。</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="演算子.html#cb177-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>blood[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="演算子.html#cb181-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>blood[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;B&quot;</code></pre>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="演算子.html#cb179-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]][<span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="演算子.html#cb183-1" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">2</span>]][<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;M&quot;</code></pre>
 </div>
 </div>
 <div id="単項演算子" class="section level3" number="13.5.2">
 <h3><span class="header-section-number">A.5.2</span> 単項演算子</h3>
 <p>単項演算子は文字通り一つの項に作用する演算子です。単項演算子には算術演算子の<code>-</code>（マイナス）と論理型演算子の<code>!</code>（否定, NOT）があります。</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="演算子.html#cb181-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
-<span id="cb181-2"><a href="演算子.html#cb181-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
-<pre><code>## [1] 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="演算子.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span>x</span></code></pre></div>
-<pre><code>## [1] -1 -2 -3 -4 -5</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="演算子.html#cb185-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="演算子.html#cb185-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
 <span id="cb185-2"><a href="演算子.html#cb185-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="演算子.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span>x</span></code></pre></div>
+<pre><code>## [1] -1 -2 -3 -4 -5</code></pre>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="演算子.html#cb189-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb189-2"><a href="演算子.html#cb189-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE  TRUE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="演算子.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>x</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="演算子.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>x</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE FALSE  TRUE FALSE</code></pre>
 <p>単項演算子</p>
 </div>
@@ -524,26 +524,26 @@ div.csl-indent {
 <div id="算術演算子" class="section level4" number="13.5.3.1">
 <h4><span class="header-section-number">A.5.3.1</span> 算術演算子</h4>
 <p>演算子は四則演算（加算、減算、乗算、除算）ならびに、べき算（べき乗算）、整数除算（商、剰余）の六つがあります。</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="演算子.html#cb189-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb189-2"><a href="演算子.html#cb189-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">1</span>)</span>
-<span id="cb189-3"><a href="演算子.html#cb189-3" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="演算子.html#cb193-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb193-2"><a href="演算子.html#cb193-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb193-3"><a href="演算子.html#cb193-3" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="演算子.html#cb191-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="演算子.html#cb195-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
 <pre><code>##  [1] 10  9  8  7  6  5  4  3  2  1</code></pre>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="演算子.html#cb193-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b         <span class="co"># 加算</span></span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="演算子.html#cb197-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b         <span class="co"># 加算</span></span></code></pre></div>
 <pre><code>##  [1] 11 11 11 11 11 11 11 11 11 11</code></pre>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="演算子.html#cb195-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">-</span> b         <span class="co"># 減算</span></span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="演算子.html#cb199-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">-</span> b         <span class="co"># 減算</span></span></code></pre></div>
 <pre><code>##  [1] -9 -7 -5 -3 -1  1  3  5  7  9</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="演算子.html#cb197-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">*</span> b         <span class="co"># 乗算</span></span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="演算子.html#cb201-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">*</span> b         <span class="co"># 乗算</span></span></code></pre></div>
 <pre><code>##  [1] 10 18 24 28 30 30 28 24 18 10</code></pre>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="演算子.html#cb199-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">/</span> b         <span class="co"># 除算</span></span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="演算子.html#cb203-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">/</span> b         <span class="co"># 除算</span></span></code></pre></div>
 <pre><code>##  [1]  0.1000000  0.2222222  0.3750000  0.5714286  0.8333333  1.2000000
 ##  [7]  1.7500000  2.6666667  4.5000000 10.0000000</code></pre>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="演算子.html#cb201-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">^</span> b         <span class="co"># べき乗算</span></span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="演算子.html#cb205-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">^</span> b         <span class="co"># べき乗算</span></span></code></pre></div>
 <pre><code>##  [1]     1   512  6561 16384 15625  7776  2401   512    81    10</code></pre>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="演算子.html#cb203-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%/%</span> b       <span class="co"># 整数除算（商）</span></span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="演算子.html#cb207-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%/%</span> b       <span class="co"># 整数除算（商）</span></span></code></pre></div>
 <pre><code>##  [1]  0  0  0  0  0  1  1  2  4 10</code></pre>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="演算子.html#cb205-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%%</span> b        <span class="co"># 整数除算（剰余）</span></span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="演算子.html#cb209-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%%</span> b        <span class="co"># 整数除算（剰余）</span></span></code></pre></div>
 <pre><code>##  [1] 1 2 3 4 5 1 3 2 1 0</code></pre>
 </div>
 <div id="比較演算子" class="section level4" number="13.5.3.2">
@@ -572,21 +572,21 @@ div.csl-indent {
 </tbody>
 </table>
 <p>例えば以下の二つのベクトル型変数に対する比較を行ってみます。</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="演算子.html#cb207-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="演算子.html#cb211-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="演算子.html#cb209-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="演算子.html#cb213-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
 <pre><code>##  [1] 10  9  8  7  6  5  4  3  2  1</code></pre>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="演算子.html#cb211-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&lt;</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="演算子.html#cb215-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&lt;</span> b</span></code></pre></div>
 <pre><code>##  [1]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="演算子.html#cb213-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&gt;</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="演算子.html#cb217-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&gt;</span> b</span></code></pre></div>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="演算子.html#cb215-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&lt;=</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="演算子.html#cb219-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&lt;=</span> b</span></code></pre></div>
 <pre><code>##  [1]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="演算子.html#cb217-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&gt;=</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="演算子.html#cb221-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">&gt;=</span> b</span></code></pre></div>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="演算子.html#cb219-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">==</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="演算子.html#cb223-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">==</span> b</span></code></pre></div>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="演算子.html#cb221-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">!=</span> b</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="演算子.html#cb225-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">!=</span> b</span></code></pre></div>
 <pre><code>##  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
 <p>　</p>
 </div>

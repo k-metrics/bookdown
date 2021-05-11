@@ -17,10 +17,10 @@
 \contentsline {subsection}{Import}{22}{section*.28}%
 \contentsline {subsection}{Tidy}{22}{section*.29}%
 \contentsline {subsection}{Visualize}{22}{section*.30}%
-\contentsline {subsection}{Transform}{22}{section*.31}%
+\contentsline {subsection}{Transform}{23}{section*.31}%
 \contentsline {subsection}{Model}{23}{section*.32}%
-\contentsline {subsection}{\numberline {0.0.1}Communicate}{23}{subsection.0.0.1}%
-\contentsline {subsection}{Othres}{23}{section*.33}%
+\contentsline {subsection}{Communicate}{23}{section*.33}%
+\contentsline {subsection}{Othres}{23}{section*.34}%
 \contentsline {part}{II\hspace {1em}Program}{25}{part.2}%
 \contentsline {chapter}{\numberline {1}分析環境}{27}{chapter.1}%
 \contentsline {section}{\numberline {1.1}主な分析環境}{27}{section.1.1}%
@@ -68,8 +68,8 @@
 \contentsline {part}{VII\hspace {1em}Automate}{67}{part.7}%
 \contentsline {chapter}{\numberline {12}shiny}{69}{chapter.12}%
 \contentsline {part}{VIII\hspace {1em}APPENDIX}{71}{part.8}%
-\contentsline {chapter}{Appendix}{73}{section*.39}%
-\contentsline {chapter}{References}{73}{appendix*.40}%
+\contentsline {chapter}{Appendix}{73}{section*.40}%
+\contentsline {chapter}{References}{73}{appendix*.41}%
 \contentsline {chapter}{\numberline {A}R Basics}{75}{appendix.A}%
 \contentsline {section}{\numberline {A.1}基本的な演算}{76}{section.A.1}%
 \contentsline {subsection}{\numberline {A.1.1}算術演算}{76}{subsection.A.1.1}%

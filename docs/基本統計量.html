@@ -185,7 +185,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#visualize-1"><i class="fa fa-check"></i>Visualize</a></li>
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#transform-1"><i class="fa fa-check"></i>Transform</a></li>
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#model-1"><i class="fa fa-check"></i>Model</a></li>
-<li class="chapter" data-level="0.0.1" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#communicate-1"><i class="fa fa-check"></i><b>0.0.1</b> Communicate</a></li>
+<li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#communicate-1"><i class="fa fa-check"></i>Communicate</a></li>
 <li class="chapter" data-level="" data-path="tidyverse-ecosystem.html"><a href="tidyverse-ecosystem.html#othres"><i class="fa fa-check"></i>Othres</a></li>
 </ul></li>
 </ul></li>
@@ -492,26 +492,56 @@ div.csl-indent {
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="基本統計量.html#cb53-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>)</span>
 <span id="cb53-2"><a href="基本統計量.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(y)</span></code></pre></div>
 <pre><code>## [1] 1 9</code></pre>
-<p>このような場合、下式で求められる標準偏差（Standard Deviation）を使うと特徴が見えてくることがあります。
-<span class="math display">\[\sigma = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n} - \bar{x}^2 }\]</span></p>
-<p>標準偏差は<code>sd()</code>関数で求めることができます。</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="基本統計量.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
+<p>母分散（<span class="math inline">\(\sigma^2\)</span>）これは分からない</p>
+<p>標本分散（<span class="math inline">\(s^2\)</span>） 標本から求められる</p>
+<p>母分散の不偏推定量（<span class="math inline">\(\hat{\sigma}^2\)</span>）不偏標本分散・不偏分散ともいい、標本から推定する</p>
+<p>このような場合、下式で求められる標準偏差（Standard Deviation）を使うと特徴が見えてくることがあります。</p>
+<p><span class="math display">\[S = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n} - \bar{x}^2 }\]</span></p>
+<p><strong>R</strong>に標準で用意されている<code>sd()</code>関数は不偏標準偏差を求める関数です。
+<span class="math display">\[s = \sqrt{\frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n - 1} - \bar{x}^2 }\]</span></p>
+<p>標本標準偏差（<span class="math inline">\(\sigma\)</span>）を求めるには不偏分散（<span class="math inline">\(s^2\)</span>）を求める<code>var()</code>関数を用いて標本分散（<span class="math inline">\(\sigma^2\)</span>）を求めた後に平方根（<span class="math inline">\(\sqrt{}\)</span>）を取ります。データの長さ（<span class="math inline">\(n\)</span>）を求める関数は<code>length()</code>関数ですので標本分散は以下の通りとなります。</p>
+<p><span class="math display">\[s^2 = \frac{n - 1}{n}\hat{\sigma}^2 = \frac{length(x) - 1}{length(x)}var(x)\]</span></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="基本統計量.html#cb55-1" aria-hidden="true" tabindex="-1"></a>variance <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb55-2"><a href="基本統計量.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb55-3"><a href="基本統計量.html#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> ((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n <span class="sc">*</span> <span class="fu">var</span>(x))</span>
+<span id="cb55-4"><a href="基本統計量.html#cb55-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb55-5"><a href="基本統計量.html#cb55-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-6"><a href="基本統計量.html#cb55-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-7"><a href="基本統計量.html#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="基本統計量.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">variance</span>(x)</span></code></pre></div>
+<pre><code>## [1] 6.4</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="基本統計量.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code></pre></div>
 <pre><code>## [1] 2.828427</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="基本統計量.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="基本統計量.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(y)</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
+<blockquote>
+<p>演習<br />
+<code>x</code>に<code>NA</code>が含まれる場合、<code>var()</code>関数では<code>na.rm = TRUE</code>オプションを指定すれば<code>NA</code>を除いて計算してくれます。これを踏まえて上で定義している<code>variance()</code>関数の引数に<code>na.rm</code>オプションを追加して<code>NA</code>が含まれている場合でも標本分散を求められるように改修してください。<br />
+　<br />
+<code>variance &lt;- function(x, na.rm = FALSE) {...}</code></p>
+</blockquote>
+<!-- variance <- function(x, na.rm = FALSE) { -->
+<!--   if (na.rm = TRUE) { -->
+<!--     n <- sum(!is.na(x)) -->
+<!--   } else { -->
+<!--     n <- length(x) -->
+<!--   } -->
+<!--   return ((n - 1) / n * var(x, na.rm)) -->
+<!-- } -->
 </div>
 <div id="最頻値" class="section level3" number="2.1.6">
 <h3><span class="header-section-number">2.1.6</span> 最頻値</h3>
 <p>最頻値とはデータの中で最も頻繁に出てくる値のことで、モードとも呼ばれます。最頻値を求める関数は標準では用意されていませんので<code>modeest</code>パッケージを用います。</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="基本統計量.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modeest&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="基本統計量.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modeest)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="基本統計量.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modeest&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="基本統計量.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modeest)</span></code></pre></div>
 <pre><code>## Registered S3 methods overwritten by &#39;rmutil&#39;:
 ##   method         from 
 ##   plot.residuals psych
 ##   print.response httr</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="基本統計量.html#cb62-1" aria-hidden="true" tabindex="-1"></a>modeest<span class="sc">::</span><span class="fu">mfv</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="基本統計量.html#cb66-1" aria-hidden="true" tabindex="-1"></a>modeest<span class="sc">::</span><span class="fu">mfv</span>(x)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="基本統計量.html#cb64-1" aria-hidden="true" tabindex="-1"></a>modeest<span class="sc">::</span><span class="fu">mfv</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="基本統計量.html#cb68-1" aria-hidden="true" tabindex="-1"></a>modeest<span class="sc">::</span><span class="fu">mfv</span>(y)</span></code></pre></div>
 <pre><code>## [1] 1 9</code></pre>
 
 </div>

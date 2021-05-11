@@ -111,8 +111,6 @@ range(x)
 ```
 
 
-
-
 ### レンジ（範囲）
 データのばらつきを見るためにレンジと呼ばれる範囲を用いることがあります。以下の`x`と`y`は同じ平均値をとるデータです。
 ```{r}
@@ -144,14 +142,53 @@ y <- c(1, 1, 5, 9, 9)
 range(y)
 ```
 
-このような場合、下式で求められる標準偏差（Standard Deviation）を使うと特徴が見えてくることがあります。
-$$\sigma = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n} - \bar{x}^2 }$$
 
-標準偏差は`sd()`関数で求めることができます。
+母分散（$\sigma^2$）これは分からない
+
+標本分散（$s^2$） 標本から求められる
+
+母分散の不偏推定量（$\hat{\sigma}^2$）不偏標本分散・不偏分散ともいい、標本から推定する
+
+
+
+このような場合、下式で求められる標準偏差（Standard Deviation）を使うと特徴が見えてくることがあります。
+
+$$S = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n} - \bar{x}^2 }$$
+
+**R**に標準で用意されている`sd()`関数は不偏標準偏差を求める関数です。
+$$s = \sqrt{\frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n - 1} - \bar{x}^2 }$$
+
+標本標準偏差（$\sigma$）を求めるには不偏分散（$s^2$）を求める`var()`関数を用いて標本分散（$\sigma^2$）を求めた後に平方根（$\sqrt{}$）を取ります。データの長さ（$n$）を求める関数は`length()`関数ですので標本分散は以下の通りとなります。
+
+$$s^2 = \frac{n - 1}{n}\hat{\sigma}^2 = \frac{length(x) - 1}{length(x)}var(x)$$
+
 ```{r}
+variance <- function(x) {
+  n <- length(x)
+  return ((n - 1) / n * var(x))
+}
+
+
+var(x)
+variance(x)
+
 sd(x)
 sd(y)
 ```
+
+> 演習  
+> `x`に`NA`が含まれる場合、`var()`関数では`na.rm = TRUE`オプションを指定すれば`NA`を除いて計算してくれます。これを踏まえて上で定義している`variance()`関数の引数に`na.rm`オプションを追加して`NA`が含まれている場合でも標本分散を求められるように改修してください。  
+> 　  
+> `variance <- function(x, na.rm = FALSE) {...}`
+
+<!-- variance <- function(x, na.rm = FALSE) { -->
+<!--   if (na.rm = TRUE) { -->
+<!--     n <- sum(!is.na(x)) -->
+<!--   } else { -->
+<!--     n <- length(x) -->
+<!--   } -->
+<!--   return ((n - 1) / n * var(x, na.rm)) -->
+<!-- } -->
 
 
 ### 最頻値
