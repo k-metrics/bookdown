@@ -2,8 +2,19 @@
 
 # (APPENDIX) Appendix {-}
 
-# Refereneces
+# References {-}
 
-## Book
+<div id="refs"></div>
 
-## Site
+`r if (knitr::is_latex_output()) '
+See Bibliography page
+'`
+
+<!-- 
+　Bibliographyによる参考文献一覧は以下に出力される
+　  HTML出力の場合はココに
+　  PDF出力の場合は最終ページ（Bibliography）に
+　BibTeXの書き方
+　  https://ja.wikipedia.org/wiki/BibTeX
+　
+-->

@@ -160,6 +160,26 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \title{Rのすゝめ}
 \usepackage{etoolbox}
@@ -170,7 +190,7 @@
 \makeatother
 \subtitle{- Rによるデータ分析事始め -}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-10}
+\date{2021-05-11}
 
 \begin{document}
 \maketitle
@@ -389,22 +409,22 @@ virginica & Petal.Length & 5.1\\
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.85\linewidth,]{R_files/figure-latex/unnamed-chunk-5-1} 
+{\centering \includegraphics[width=0.85\linewidth,]{R_files/figure-latex/unnamed-chunk-6-1} 
 
 }
 
-\caption{花弁と萼片の分布}\label{fig:unnamed-chunk-5}
+\caption{花弁と萼片の分布}\label{fig:unnamed-chunk-6}
 \end{figure}
 
 　次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を見てみます。
 
 \begin{figure}[H]
 
-{\centering \subfloat[花弁\label{fig:unnamed-chunk-6-1}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-6-1} }\subfloat[萼片\label{fig:unnamed-chunk-6-2}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-6-2} }
+{\centering \subfloat[花弁\label{fig:unnamed-chunk-7-1}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-7-1} }\subfloat[萼片\label{fig:unnamed-chunk-7-2}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-7-2} }
 
 }
 
-\caption{幅と長さの関係}\label{fig:unnamed-chunk-6}
+\caption{幅と長さの関係}\label{fig:unnamed-chunk-7}
 \end{figure}
 
 　花弁（Petal）の幅と長さに相関関係があるように、萼片（Sepal）の方には相関関係がないように見えます。そこで、花弁（Petal）の幅（\texttt{Petal.Width}）と長さ（\texttt{Petal.Length}）の回帰式を求めます。
@@ -434,11 +454,11 @@ virginica & Petal.Length & 5.1\\
 
 \begin{figure}[H]
 
-{\centering \subfloat[花弁の回帰関係\label{fig:unnamed-chunk-8-1}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-8-1} }\subfloat[萼片の回帰関係\label{fig:unnamed-chunk-8-2}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-8-2} }
+{\centering \subfloat[花弁の回帰関係\label{fig:unnamed-chunk-9-1}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-9-1} }\subfloat[萼片の回帰関係\label{fig:unnamed-chunk-9-2}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-9-2} }
 
 }
 
-\caption{幅と長さの関係}\label{fig:unnamed-chunk-8}
+\caption{幅と長さの関係}\label{fig:unnamed-chunk-9}
 \end{figure}
 
 　データ分析では、このような手順で対象のデータに対して可視化と変形、モデルの計算を繰り返すことで適切なモデルを探ります。これが基本となる分析プロセスです。
@@ -449,7 +469,7 @@ virginica & Petal.Length & 5.1\\
 
 }
 
-\caption{基本となる分析プロセス}\label{fig:unnamed-chunk-9}
+\caption{基本となる分析プロセス}\label{fig:unnamed-chunk-10}
 \end{figure}
 
 　実際には対象のデータが都合よく\textbf{R}に組み込まれている訳ではありませんので、対象となるデータを読み込み（インポート）、処理がしやすいように整形してから可視化などを行います。最後に分析結果を報告（レポート）しますので、分析プロセスは下図になります。
@@ -460,7 +480,7 @@ virginica & Petal.Length & 5.1\\
 
 }
 
-\caption{分析プロセス}\label{fig:unnamed-chunk-10}
+\caption{分析プロセス}\label{fig:unnamed-chunk-11}
 \end{figure}
 
 \hypertarget{data-science-workflow}{%
@@ -475,7 +495,7 @@ virginica & Petal.Length & 5.1\\
 
 }
 
-\caption{Data Science Workflow}\label{fig:unnamed-chunk-11}
+\caption{Data Science Workflow}\label{fig:unnamed-chunk-12}
 \end{figure}
 
 「Data Science Workflow」自体は\textbf{R}コミュニティに多大な貢献をしている \href{http://hadley.nz/}{Hadley Wickham}が著書\href{https://r4ds.had.co.nz/}{『R for Data Science』}において提唱している概念です。
@@ -486,7 +506,7 @@ virginica & Petal.Length & 5.1\\
 
 }
 
-\caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-12}
+\caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-13}
 \end{figure}
 
 Hadlyの図には前節の図にはない\textbf{Infer}と\textbf{Automate}すというプロセスが入っていますが、本書では\textbf{Infer}は\textbf{Model}に、\textbf{Automate}は\textbf{Communicate}に含まれるものとして考えています。
@@ -563,10 +583,10 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 }
 
-\caption{Tidyverse Ecosystem}\label{fig:unnamed-chunk-13}
+\caption{Tidyverse Ecosystem}\label{fig:unnamed-chunk-14}
 \end{figure}
 
-ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章をご覧ください。
+ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』\citep{RStartHere}をご覧ください。
 
 \hypertarget{import-1}{%
 \subsection*{Import}\label{import-1}}
@@ -698,7 +718,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 }
 
-\caption{Rcmdr, Ubuntu}\label{fig:unnamed-chunk-14}
+\caption{Rcmdr, Ubuntu}\label{fig:unnamed-chunk-15}
 \end{figure}
 
 \hypertarget{google-colab}{%
@@ -712,7 +732,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 }
 
-\caption{Google Colab}\label{fig:unnamed-chunk-15}
+\caption{Google Colab}\label{fig:unnamed-chunk-16}
 \end{figure}
 
 \hypertarget{rstudio}{%
@@ -744,7 +764,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-16}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-17}
 \end{figure}
 
 \textbf{RStudio Server}は\textbf{RStudio}をブラウザ経由で使う Linux 上で動作するサーバアプリケーションです。Dockerコンテナとして動作させることも可能ですので、個々の PC での分析環境を固定さたい場合には非常に便利です。
@@ -755,7 +775,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 }
 
-\caption{RStudio Server, Docker}\label{fig:unnamed-chunk-17}
+\caption{RStudio Server, Docker}\label{fig:unnamed-chunk-18}
 \end{figure}
 
 \hypertarget{rstudio-cloud}{%
@@ -769,7 +789,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 }
 
-\caption{RStudio Cloud}\label{fig:unnamed-chunk-18}
+\caption{RStudio Cloud}\label{fig:unnamed-chunk-19}
 \end{figure}
 
 \hypertarget{programing-editor}{%
@@ -780,7 +800,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{rux306eux57faux672c}{%
 \chapter{\texorpdfstring{\textbf{R}の基本}{Rの基本}}\label{rux306eux57faux672c}}
 
-\textbf{R}の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から\textbf{R}のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』（大村平著、日科技連出版社）や『統計解析のはなし【改訂版】』（大村平著、日科技連出版社）を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。 なお、基本文法については\protect\hyperlink{Appendix-RBasics}{Appendix B}をご覧ください。
+\textbf{R}の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から\textbf{R}のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』\citep{ToukeinoHanashi}や『統計解析のはなし【改訂版】』\citep{ToukeiKaisekinoHanashi}を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。 なお、基本文法については\protect\hyperlink{Appendix-RBasics}{Appendix R Basics}をご覧ください。
 
 \hypertarget{ux57faux672cux7d71ux8a08ux91cf}{%
 \section{基本統計量}\label{ux57faux672cux7d71ux8a08ux91cf}}
@@ -1303,14 +1323,15 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \appendix \addcontentsline{toc}{chapter}{\appendixname}}
 
 
-\hypertarget{refereneces}{%
-\chapter{Refereneces}\label{refereneces}}
+\hypertarget{references}{%
+\chapter*{References}\label{references}}
+\addcontentsline{toc}{chapter}{References}
 
-\hypertarget{book}{%
-\section{Book}\label{book}}
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\end{CSLReferences}
 
-\hypertarget{site}{%
-\section{Site}\label{site}}
+See Bibliography page
 
 \hypertarget{Appendix-RBasics}{%
 \chapter{R Basics}\label{Appendix-RBasics}}
@@ -3016,7 +3037,7 @@ NA & データ型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-64}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-65}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -3035,7 +3056,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-65}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-66}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -3049,7 +3070,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-66}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-67}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -3067,7 +3088,7 @@ NA & データ型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-67}
+\caption{Warning dialog}\label{fig:unnamed-chunk-68}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -3093,7 +3114,7 @@ NA & データ型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-68}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-69}
 \end{figure}
 
 　\\
@@ -3126,7 +3147,7 @@ NA & データ型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-69}
+\caption{Initial View}\label{fig:unnamed-chunk-70}
 \end{figure}
 
 　
@@ -3143,7 +3164,7 @@ NA & データ型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-70}
+\caption{Packages Manager}\label{fig:unnamed-chunk-71}
 \end{figure}
 
 　\\
@@ -3156,7 +3177,7 @@ NA & データ型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-71}
+\caption{Install Dialog}\label{fig:unnamed-chunk-72}
 \end{figure}
 
 　\\
@@ -3550,7 +3571,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-79}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-80}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -3561,7 +3582,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-80}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-81}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -3631,7 +3652,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-81}
+\caption{R Notebook file}\label{fig:unnamed-chunk-82}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -3642,7 +3663,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-82}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-83}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -3653,7 +3674,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-83}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-84}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -3664,7 +3685,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-84}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-85}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -3675,7 +3696,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-85}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-86}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -3686,7 +3707,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-86}
+\caption{R Notebook option}\label{fig:unnamed-chunk-87}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -3948,7 +3969,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-87}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-88}
 \end{figure}
 
 　
@@ -3973,7 +3994,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-88}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-89}
 \end{figure}
 
 　
@@ -3989,5 +4010,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 　Google Colab や RStudio Cloud・Exploratoy などと異なりアカウントを取得する必要はありませんが、専用の環境を構築するわけではなく、あくまでも一時的な試用環境である点に注意してください。継続的に使える環境が必要な場合は ローカルに環境を構築するか RStudio Cloud のようなクラウドサービスを利用してください。
 
 　
+
+  \bibliography{./bib/references.bib,./bib/packages.bib}
 
 \end{document}

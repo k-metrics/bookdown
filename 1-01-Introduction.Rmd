@@ -201,7 +201,7 @@ Data Science Workflowを**R**で実現するための手段がHadley Wickhamが�
 knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
 ```
 
-ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章をご覧ください。
+ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』[@RStartHere]をご覧ください。
 
 ### Import {.unnumbered}
 

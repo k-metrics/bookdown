@@ -8,6 +8,7 @@ site: bookdown::bookdown_site
 github-repo: k-metrics/bookdown
 # LaTeX関連の設定はベースとなるRmdに記述しないと正しく認識されません
 always_allow_html: true  # 一種の呪文
+bibliography: [./bib/references.bib, ./bib/packages.bib]
 colorlinks: true         # ハイパーリンクを色分けする
 # documentclass: krantz
 fig_crop: false
@@ -155,11 +156,21 @@ df_print <- function(df = NULL, n = 3L, caption = NULL, scale_down = FALSE,
 
     -   もしあなたがこの資料をリミックスしたり、改変したり、加工した場合には、あなたはあなたの貢献部分を元の作品と同じライセンスの下に頒布しなければなりません。
 
-<!-- 下記の一行は"out.width"オプションを使う場合には呪文として必須。この一行が無いとknitrパッケージに"out.width"オプション指定時に図の格納先を見失うバグが残ってる模様。詳細は下記URLにて
+<!-- PDF出力において下記の一行は"out.width"オプションを使う場合には呪文として必須。この一行が無いとknitrパッケージに"out.width"オプション指定時に図の格納先を見失うバグが残ってる模様。詳細は下記URLにて
 https://stackoverflow.com/questions/40470290/r-markdown-pdf-output-figure-with-out-width-90-generating-the-wrong-path-with
 https://github.com/rstudio/rmarkdown/issues/2024
 -->
+<!-- ![CC 4.0 BY-NC-SA]("./fig/by-nc-sa.png") -->
+
+`r if (knitr::is_latex_output()) '
 ![CC 4.0 BY-NC-SA]("./fig/by-nc-sa.png")
+'`
+
+```{r, echo=FALSE, out.width="20%", eval=knitr::is_html_output()}
+if (knitr::is_html_output(excludes = c("epub"))) {
+  knitr::include_graphics("./fig/by-nc-sa.png")
+}
+```
 
 　ただし、本書にて引用している文書、図、ロゴなどの権利は原著作者が保有しています。
 
