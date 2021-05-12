@@ -15,12 +15,12 @@
 \contentsline {subsection}{Communicate}{21}{section*.25}%
 \contentsline {section}{Tidyverse Ecosystem}{21}{section*.26}%
 \contentsline {subsection}{Import}{22}{section*.28}%
-\contentsline {subsection}{Tidy}{22}{section*.29}%
-\contentsline {subsection}{Visualize}{22}{section*.30}%
+\contentsline {subsection}{Tidy}{23}{section*.29}%
+\contentsline {subsection}{Visualize}{23}{section*.30}%
 \contentsline {subsection}{Transform}{23}{section*.31}%
-\contentsline {subsection}{Model}{23}{section*.32}%
-\contentsline {subsection}{Communicate}{23}{section*.33}%
-\contentsline {subsection}{Othres}{23}{section*.34}%
+\contentsline {subsection}{Model}{24}{section*.32}%
+\contentsline {subsection}{Communicate}{24}{section*.33}%
+\contentsline {subsection}{Othres}{24}{section*.34}%
 \contentsline {part}{II\hspace {1em}Program}{25}{part.2}%
 \contentsline {chapter}{\numberline {1}分析環境}{27}{chapter.1}%
 \contentsline {section}{\numberline {1.1}主な分析環境}{27}{section.1.1}%
@@ -29,7 +29,7 @@
 \contentsline {subsection}{\numberline {1.1.3}RStudio}{28}{subsection.1.1.3}%
 \contentsline {subsection}{\numberline {1.1.4}RStudio Cloud}{30}{subsection.1.1.4}%
 \contentsline {subsection}{\numberline {1.1.5}Programing Editor}{30}{subsection.1.1.5}%
-\contentsline {chapter}{\numberline {2}\textbf {R}の基本}{33}{chapter.2}%
+\contentsline {chapter}{\numberline {2}Rの基本}{33}{chapter.2}%
 \contentsline {section}{\numberline {2.1}基本統計量}{33}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}平均}{33}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}中央値}{36}{subsection.2.1.2}%

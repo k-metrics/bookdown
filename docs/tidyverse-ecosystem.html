@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-11" />
+<meta name="date" content="2021-05-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ div.csl-indent {
 <li class="chapter" data-level="1.1.5" data-path="主な分析環境.html"><a href="主な分析環境.html#programing-editor"><i class="fa fa-check"></i><b>1.1.5</b> Programing Editor</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="rの基本.html"><a href="rの基本.html"><i class="fa fa-check"></i><b>2</b> <strong>R</strong>の基本</a>
+<li class="chapter" data-level="2" data-path="rの基本.html"><a href="rの基本.html"><i class="fa fa-check"></i><b>2</b> Rの基本</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="基本統計量.html"><a href="基本統計量.html"><i class="fa fa-check"></i><b>2.1</b> 基本統計量</a>
 <ul>
@@ -397,56 +397,130 @@ Fig 0.8: Tidyverse Ecosystem
 <div id="import-1" class="section level3 unnumbered">
 <h3>Import</h3>
 <ul>
-<li><strong><code>readr</code></strong> - 様々なテキスト形式テーブルを読み込むためのパッケージ<span class="citation">(Wickham and Hester 2020)</span></li>
-<li><strong><code>readxl</code></strong> - Microsoft Excelのファイルを読み込むためのパッケージ<span class="citation">(Wickham and Bryan 2019)</span></li>
-<li><strong><code>rvest</code></strong> - Webスクレイピングのためのパッケージ<span class="citation">(Wickham 2021)</span></li>
-<li><strong><code>googlesheets4</code></strong> - Google API v4 経由でスプレッドシートを読み込むためのパッケージ<span class="citation">(Bryan 2021)</span></li>
-<li><strong><code>DBI</code></strong> - SQL系の各種データベースと接続するためのパッケージ<span class="citation">(R Special Interest Group on Databases (R-SIG-DB), Wickham, and Müller 2021)</span></li>
+<li><strong><code>readr</code></strong>
+<ul>
+<li>様々なテキスト形式テーブルを読み込むためのパッケージ</li>
+</ul></li>
+<li><strong><code>readxl</code></strong>
+<ul>
+<li>Microsoft Excelのファイルを読み込むためのパッケージ</li>
+</ul></li>
+<li><strong><code>rvest</code></strong>
+<ul>
+<li>Webスクレイピングのためのパッケージ</li>
+</ul></li>
+<li><strong><code>googlesheets4</code></strong>
+<ul>
+<li>Google API v4 経由でスプレッドシートを読み込むためのパッケージ</li>
+</ul></li>
+<li><strong><code>DBI</code></strong>
+<ul>
+<li>SQL系の各種データベースと接続するためのパッケージ</li>
+</ul></li>
 </ul>
 </div>
 <div id="tidy-1" class="section level3 unnumbered">
 <h3>Tidy</h3>
 <ul>
-<li><strong><code>tidyr</code></strong> - Tidy Dataの作成を強力にサポートしてくれるパッケージ</li>
-<li><strong><code>tibble</code></strong> - より厳密にTidy Dataを扱うためのパッケージ</li>
-<li><strong><code>zoo</code></strong> - 時系列（TS）データを効率よく扱うためのパッケージ</li>
+<li><strong><code>tidyr</code></strong>
+<ul>
+<li>Tidy Dataの作成を強力にサポートしてくれるパッケージ</li>
+</ul></li>
+<li><strong><code>tibble</code></strong>
+<ul>
+<li>より厳密にTidy Dataを扱うためのパッケージ</li>
+</ul></li>
+<li><strong><code>zoo</code></strong>
+<ul>
+<li>時系列（TS）データを効率よく扱うためのパッケージ</li>
+</ul></li>
 </ul>
 </div>
 <div id="visualize-1" class="section level3 unnumbered">
 <h3>Visualize</h3>
 <ul>
-<li><strong><code>ggplot2</code></strong> - 統一された文法で描画が行えるパッケージ</li>
-<li><strong><code>htmlwidgets</code></strong> - JavaScriptのウィジェットを利用できるパッケージ</li>
+<li><strong><code>ggplot2</code></strong>
+<ul>
+<li>統一された文法で描画が行えるパッケージ</li>
+</ul></li>
+<li><strong><code>htmlwidgets</code></strong>
+<ul>
+<li>JavaScriptのウィジェットを利用できるパッケージ</li>
+</ul></li>
+<li><strong><code>patchwork</code></strong>
+<ul>
+<li><strong><code>ggplot2</code></strong>オブジェクトをひとつにまとめてレイアウトするためのパッケージ</li>
+</ul></li>
 </ul>
 </div>
 <div id="transform-1" class="section level3 unnumbered">
 <h3>Transform</h3>
 <ul>
-<li><strong><code>dplyr</code></strong> - Tidy Dataを様々な方法で操作するためのパッケージ</li>
-<li><strong><code>stringr</code></strong> - 文字列処理をするためのパッケージ</li>
-<li><strong><code>forcats</code></strong> - 因子型を操作するためのパッケージ</li>
-<li><strong><code>lubridate</code></strong> - 日付データを簡単に変換するためのパッケージ</li>
+<li><strong><code>dplyr</code></strong>
+<ul>
+<li>Tidy Dataを様々な方法で操作するためのパッケージ</li>
+</ul></li>
+<li><strong><code>stringr</code></strong>
+<ul>
+<li>文字列処理をするためのパッケージ</li>
+</ul></li>
+<li><strong><code>forcats</code></strong>
+<ul>
+<li>因子型を操作するためのパッケージ</li>
+</ul></li>
+<li><strong><code>lubridate</code></strong>
+<ul>
+<li>日付データを簡単に変換するためのパッケージ</li>
+</ul></li>
 </ul>
 </div>
 <div id="model-1" class="section level3 unnumbered">
 <h3>Model</h3>
 <ul>
-<li><strong><code>broom</code></strong> - 各種モデリング結果を整然データにするためのパッケージ</li>
-<li><strong><code>tidymodels</code></strong> - 機械学習を中心としたモデリングフレームワーク</li>
+<li><strong><code>broom</code></strong>
+<ul>
+<li>各種モデリング結果を整然データにするためのパッケージ</li>
+</ul></li>
+<li><strong><code>tidymodels</code></strong>
+<ul>
+<li>機械学習を中心としたモデリングフレームワーク</li>
+</ul></li>
 </ul>
 </div>
 <div id="communicate-1" class="section level3 unnumbered">
 <h3>Communicate</h3>
 <ul>
-<li><strong><code>knitr</code></strong> - <strong>R</strong>のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ</li>
-<li><strong><code>rmarkdown</code></strong> - マークダウン書式を用いてレポートを作成するためのパッケージ</li>
-<li><strong><code>bookdown</code></strong> - 書籍や長いドキュメンを作成するためのパッケージ</li>
-<li><strong><code>shiny</code></strong> - インタラクティブなWebアプリケーションを作成するためのパッケージ</li>
+<li><strong><code>knitr</code></strong>
+<ul>
+<li><strong>R</strong>のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ</li>
+</ul></li>
+<li><strong><code>rmarkdown</code></strong>
+<ul>
+<li>マークダウン書式を用いてレポートを作成するためのパッケージ</li>
+</ul></li>
+<li><strong><code>bookdown</code></strong>
+<ul>
+<li>書籍や長いドキュメンを作成するためのパッケージ</li>
+</ul></li>
+<li><strong><code>shiny</code></strong>
+<ul>
+<li>インタラクティブなWebアプリケーションを作成するためのパッケージ</li>
+</ul></li>
 </ul>
 </div>
 <div id="othres" class="section level3 unnumbered">
 <h3>Othres</h3>
-<p><strong><code>magrittr</code></strong>パッケージのパイプ演算子（<code>%&gt;%</code>）や<strong><code>purrr</code></strong>パッケージによる反復処理が、分析を円滑に回すハブ・スポーク的な役目を果たします。</p>
+<p>上記に加えてプロセスのハブ・スポークを担うパッケージもあります。</p>
+<ul>
+<li><strong><code>magrittr</code></strong>
+<ul>
+<li>パイプ演算子（<code>%&gt;%</code>）によるスムースな処理を実現するパッケージ</li>
+</ul></li>
+<li><strong><code>purrr</code></strong>
+<ul>
+<li>関数型プログラミングによる反復処理を提供するパッケージ</li>
+</ul></li>
+</ul>
 
 </div>
 </div>

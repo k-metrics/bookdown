@@ -190,7 +190,7 @@
 \makeatother
 \subtitle{- Rによるデータ分析事始め -}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-11}
+\date{2021-05-13}
 
 \begin{document}
 \maketitle
@@ -278,20 +278,23 @@
 対象 & 表記方法 & 表記例 \\
 \midrule
 \endhead
-ハイパーリンク & 脚注にURL表記（PDFのみ） & CRAN\textsuperscript{No.} \\
-パス・ファイル名 & モノフォント\textsuperscript{a} & \texttt{sample/sample.Rmd} \\
+ハイパーリンク\textsuperscript{a} & 脚注にURL表記 & CRAN\textsuperscript{No.} \\
+パス・ファイル名 & モノフォント\textsuperscript{b} & \texttt{sample/sample.Rmd} \\
 パッケージ名 & 太字のモノフォント & \textbf{\texttt{tidyverse}} \\
 変数・オブジェクト名 & モノフォント & \texttt{Sepela.Width} \\
-関数名 & モノフォントで()付き表記 & \texttt{print()} \\
+関数名 & モノフォントで()付き & \texttt{print()} \\
 コード & モノフォント（プロンプトなし） & \texttt{library(tidyverse)} \\
-コードの実行結果 & モノフォント（\texttt{\#\#} プロンプトあり） & \texttt{\#\#\ output...} \\
-キーボードのキー & モノフォントで{[}{]}付き表記 & {[}\texttt{Ctrl}{]}+{[}\texttt{S}{]} \\
+コードの実行結果 & モノフォント（\texttt{\#\#} プロンプト） & \texttt{\#\#\ output...} \\
+キーボードのキー & モノフォントで{[}{]}付き & {[}\texttt{Ctrl}{]}+{[}\texttt{S}{]} \\
 数式 & \LaTeX 数式（math mode） & \(y = ax^2 + b\) \\
-サービス名など & 太字 & \textbf{Google Colab} \\
+製品サービス名など & 太字 & \textbf{Google Colab} \\
+参考文献・資料\textsuperscript{c} & {[}著者・作者, 作成年{]} & {[}Wickham, 2021{]} \\
 \bottomrule
 \end{longtable}
 
-\textsuperscript{a} タイプライタフォントとも呼ばれる等幅フォントのこと
+\textsuperscript{a} PDF形式のみ、\textsuperscript{No.}の部分は章ごとの通し番号\\
+\textsuperscript{b} タイプライタフォントとも呼ばれる等幅フォント\\
+\textsuperscript{c} PDF形式のみ、{[}{]}内は文書内ハイパーリンク
 
 \hypertarget{ux306aux305crux304b}{%
 \section*{なぜRか？}\label{ux306aux305crux304b}}
@@ -595,15 +598,45 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \begin{itemize}
 \tightlist
 \item
-  \textbf{\texttt{readr}} - 様々なテキスト形式テーブルを読み込むためのパッケージ\citep{R-readr}
+  \textbf{\texttt{readr}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    様々なテキスト形式テーブルを読み込むためのパッケージ\citep{R-readr}
+  \end{itemize}
 \item
-  \textbf{\texttt{readxl}} - Microsoft Excelのファイルを読み込むためのパッケージ\citep{R-readxl}
+  \textbf{\texttt{readxl}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Microsoft Excelのファイルを読み込むためのパッケージ\citep{R-readxl}
+  \end{itemize}
 \item
-  \textbf{\texttt{rvest}} - Webスクレイピングのためのパッケージ\citep{R-rvest}
+  \textbf{\texttt{rvest}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Webスクレイピングのためのパッケージ\citep{R-rvest}
+  \end{itemize}
 \item
-  \textbf{\texttt{googlesheets4}} - Google API v4 経由でスプレッドシートを読み込むためのパッケージ\citep{R-googlesheets4}
+  \textbf{\texttt{googlesheets4}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Google API v4 経由でスプレッドシートを読み込むためのパッケージ\citep{R-googlesheets4}
+  \end{itemize}
 \item
-  \textbf{\texttt{DBI}} - SQL系の各種データベースと接続するためのパッケージ\citep{R-DBI}
+  \textbf{\texttt{DBI}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    SQL系の各種データベースと接続するためのパッケージ\citep{R-DBI}
+  \end{itemize}
 \end{itemize}
 
 \hypertarget{tidy-1}{%
@@ -613,11 +646,29 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \begin{itemize}
 \tightlist
 \item
-  \textbf{\texttt{tidyr}} - Tidy Dataの作成を強力にサポートしてくれるパッケージ
+  \textbf{\texttt{tidyr}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Tidy Dataの作成を強力にサポートしてくれるパッケージ\citep{R-tidyr}
+  \end{itemize}
 \item
-  \textbf{\texttt{tibble}} - より厳密にTidy Dataを扱うためのパッケージ
+  \textbf{\texttt{tibble}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    より厳密にTidy Dataを扱うためのパッケージ\citep{R-tibble}
+  \end{itemize}
 \item
-  \textbf{\texttt{zoo}} - 時系列（TS）データを効率よく扱うためのパッケージ
+  \textbf{\texttt{zoo}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    時系列（TS）データを効率よく扱うためのパッケージ\citep{R-zoo}
+  \end{itemize}
 \end{itemize}
 
 \hypertarget{visualize-1}{%
@@ -627,9 +678,29 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \begin{itemize}
 \tightlist
 \item
-  \textbf{\texttt{ggplot2}} - 統一された文法で描画が行えるパッケージ
+  \textbf{\texttt{ggplot2}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    統一された文法で描画が行えるパッケージ\citep{R-ggplot2}
+  \end{itemize}
 \item
-  \textbf{\texttt{htmlwidgets}} - JavaScriptのウィジェットを利用できるパッケージ
+  \textbf{\texttt{htmlwidgets}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    JavaScriptのウィジェットを利用できるパッケージ\citep{R-htmlwidgets}
+  \end{itemize}
+\item
+  \textbf{\texttt{patchwork}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{\texttt{ggplot2}}オブジェクトをひとつにまとめてレイアウトするためのパッケージ\citep{R-patchwork}
+  \end{itemize}
 \end{itemize}
 
 \hypertarget{transform-1}{%
@@ -639,13 +710,37 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \begin{itemize}
 \tightlist
 \item
-  \textbf{\texttt{dplyr}} - Tidy Dataを様々な方法で操作するためのパッケージ
+  \textbf{\texttt{dplyr}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Tidy Dataを様々な方法で操作するためのパッケージ\citep{R-dplyr}
+  \end{itemize}
 \item
-  \textbf{\texttt{stringr}} - 文字列処理をするためのパッケージ
+  \textbf{\texttt{stringr}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    文字列処理をするためのパッケージ\citep{R-stringr}
+  \end{itemize}
 \item
-  \textbf{\texttt{forcats}} - 因子型を操作するためのパッケージ
+  \textbf{\texttt{forcats}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    因子型を操作するためのパッケージ\citep{R-forcats}
+  \end{itemize}
 \item
-  \textbf{\texttt{lubridate}} - 日付データを簡単に変換するためのパッケージ
+  \textbf{\texttt{lubridate}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    日付データを簡単に変換するためのパッケージ\citep{R-lubridate}
+  \end{itemize}
 \end{itemize}
 
 \hypertarget{model-1}{%
@@ -655,9 +750,21 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \begin{itemize}
 \tightlist
 \item
-  \textbf{\texttt{broom}} - 各種モデリング結果を整然データにするためのパッケージ
+  \textbf{\texttt{broom}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    各種モデリング結果を整然データにするためのパッケージ\citep{R-broom}
+  \end{itemize}
 \item
-  \textbf{\texttt{tidymodels}} - 機械学習を中心としたモデリングフレームワーク
+  \textbf{\texttt{tidymodels}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    機械学習を中心としたモデリングフレームワーク\citep{tidymodels2020, R-tidymodels}
+  \end{itemize}
 \end{itemize}
 
 \hypertarget{communicate-1}{%
@@ -667,20 +774,64 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \begin{itemize}
 \tightlist
 \item
-  \textbf{\texttt{knitr}} - \textbf{R}のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ
+  \textbf{\texttt{knitr}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{R}のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ\citep{knitr2014, R-knitr}
+  \end{itemize}
 \item
-  \textbf{\texttt{rmarkdown}} - マークダウン書式を用いてレポートを作成するためのパッケージ
+  \textbf{\texttt{rmarkdown}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    マークダウン書式を用いてレポートを作成するためのパッケージ\citep{R-rmarkdown}
+  \end{itemize}
 \item
-  \textbf{\texttt{bookdown}} - 書籍や長いドキュメンを作成するためのパッケージ
+  \textbf{\texttt{bookdown}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    書籍や長いドキュメンを作成するためのパッケージ\citep{bookdown2016, R-bookdown}
+  \end{itemize}
 \item
-  \textbf{\texttt{shiny}} - インタラクティブなWebアプリケーションを作成するためのパッケージ
+  \textbf{\texttt{shiny}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    インタラクティブなWebアプリケーションを作成するためのパッケージ\citep{R-shiny}
+  \end{itemize}
 \end{itemize}
 
 \hypertarget{othres}{%
 \subsection*{Othres}\label{othres}}
 \addcontentsline{toc}{subsection}{Othres}
 
-\textbf{\texttt{magrittr}}パッケージのパイプ演算子（\texttt{\%\textgreater{}\%}）や\textbf{\texttt{purrr}}パッケージによる反復処理が、分析を円滑に回すハブ・スポーク的な役目を果たします。
+上記に加えてプロセスのハブ・スポークを担うパッケージもあります。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{magrittr}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    パイプ演算子（\texttt{\%\textgreater{}\%}）によるスムースな処理を実現するパッケージ\citep{R-magrittr}
+  \end{itemize}
+\item
+  \textbf{\texttt{purrr}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    関数型プログラミングによる反復処理を提供するパッケージ\citep{R-purrr}
+  \end{itemize}
+\end{itemize}
 
 \hypertarget{part-program}{%
 \part{Program}\label{part-program}}
@@ -801,7 +952,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \textbf{R}の本体ははインタプリタ（対話的に逐次実行する処理系）として提供されていますので、\textbf{R}単体で動作させることが可能です。区別するために単体の\textbf{R}を\textbf{R Console}と呼ぶことがあります。 一部のプログラミングエディタでは機能拡張などを利用して直接\textbf{R Console}と連携してIDEのように\textbf{R}を利用することが可能です。古くはGNU Emacs用のESSや最近人気のあるMicrosoft VisualStudio Code用の機能拡張を使えば、お好みのエディタから直接\textbf{R}を使えるようになります。
 
 \hypertarget{rux306eux57faux672c}{%
-\chapter{\texorpdfstring{\textbf{R}の基本}{Rの基本}}\label{rux306eux57faux672c}}
+\chapter{Rの基本}\label{rux306eux57faux672c}}
 
 \textbf{R}の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から\textbf{R}のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』\citep{ToukeinoHanashi}や『統計解析のはなし【改訂版】』\citep{ToukeiKaisekinoHanashi}を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。 なお、基本文法については\protect\hyperlink{Appendix-RBasics}{Appendix R Basics}をご覧ください。
 
@@ -905,7 +1056,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ##      %+%, alpha
 \end{verbatim}
 
-環境によっては上記のように他のパッケージの関数をマスクしている旨のメッセージが出力されてますが、今は、あまり気にする必要はありません。 これで\textbf{\texttt{psych}}パッケージを使う準備が整いましたので、\texttt{geometric.mean()}関数で幾何平均を求めます。
+環境によっては上記のように他のパッケージの関数をマスクしている旨のメッセージが出力されてますが、今は気にする必要ありません。 これで\textbf{\texttt{psych}}パッケージを使う準備が整いましたので、\texttt{geometric.mean()}関数で幾何平均を求めます。
 
 \begin{Shaded}
 \begin{Highlighting}[]

@@ -18,19 +18,21 @@
 
 対象                 | 表記方法                            | 表記例
 ---------------------|-------------------------------------|-------------------
-ハイパーリンク       | 脚注にURL表記（PDFのみ）            | CRAN^No.^
-パス・ファイル名     | モノフォント^a^                     | `sample/sample.Rmd`
+ハイパーリンク^a^    | 脚注にURL表記                       | CRAN^No.^
+パス・ファイル名     | モノフォント^b^                     | `sample/sample.Rmd`
 パッケージ名         | 太字のモノフォント                  | **`tidyverse`**
 変数・オブジェクト名 | モノフォント                        | `Sepela.Width`
-関数名               | モノフォントで()付き表記            | `print()`
+関数名               | モノフォントで()付き                | `print()`
 コード               | モノフォント（プロンプトなし）      | `library(tidyverse)`
-コードの実行結果     | モノフォント（`##` プロンプトあり） | `## output...`
-キーボードのキー     | モノフォントで[]付き表記            | [`Ctrl`]+[`S`]
+コードの実行結果     | モノフォント（`##` プロンプト）     | `## output...`
+キーボードのキー     | モノフォントで[]付き                | [`Ctrl`]+[`S`]
 数式                 | \LaTeX 数式（math mode）            | $y = ax^2 + b$
-サービス名など       | 太字                                | **Google Colab**
+製品サービス名など   | 太字                                | **Google Colab**
+参考文献・資料^c^    | [著者・作者, 作成年]                | [Wickham, 2021]
 
-^a^ タイプライタフォントとも呼ばれる等幅フォントのこと
-
+^a^ PDF形式のみ、^No.^の部分は章ごとの通し番号  
+^b^ タイプライタフォントとも呼ばれる等幅フォント  
+^c^ PDF形式のみ、[]内は文書内ハイパーリンク  
 
 <!-- \newpage -->
 
@@ -205,44 +207,71 @@ knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
 
 ### Import {.unnumbered}
 
-* **`readr`** - 様々なテキスト形式テーブルを読み込むためのパッケージ[@R-readr]
-* **`readxl`** - Microsoft Excelのファイルを読み込むためのパッケージ[@R-readxl]
-* **`rvest`** - Webスクレイピングのためのパッケージ[@R-rvest]
-* **`googlesheets4`** - Google API v4 経由でスプレッドシートを読み込むためのパッケージ[@R-googlesheets4]
-* **`DBI`** - SQL系の各種データベースと接続するためのパッケージ[@R-DBI]
+* **`readr`** 
+    - 様々なテキスト形式テーブルを読み込むためのパッケージ`r if (knitr::is_latex_output()) '[@R-readr]'`
+* **`readxl`**
+    - Microsoft Excelのファイルを読み込むためのパッケージ`r if (knitr::is_latex_output())'[@R-readxl]'`
+* **`rvest`**
+    - Webスクレイピングのためのパッケージ`r if (knitr::is_latex_output())'[@R-rvest]'`
+* **`googlesheets4`**
+    - Google API v4 経由でスプレッドシートを読み込むためのパッケージ`r if (knitr::is_latex_output())'[@R-googlesheets4]'`
+* **`DBI`**
+    - SQL系の各種データベースと接続するためのパッケージ`r if (knitr::is_latex_output())'[@R-DBI]'`
 
 
 ### Tidy {.unnumbered}
 
-* **`tidyr`** - Tidy Dataの作成を強力にサポートしてくれるパッケージ
-* **`tibble`** - より厳密にTidy Dataを扱うためのパッケージ
-* **`zoo`** - 時系列（TS）データを効率よく扱うためのパッケージ
+* **`tidyr`**
+    - Tidy Dataの作成を強力にサポートしてくれるパッケージ`r if (knitr::is_latex_output())'[@R-tidyr]'`
+* **`tibble`**
+    - より厳密にTidy Dataを扱うためのパッケージ`r if (knitr::is_latex_output())'[@R-tibble]'`
+* **`zoo`**
+    - 時系列（TS）データを効率よく扱うためのパッケージ`r if (knitr::is_latex_output())'[@R-zoo]'`
 
 
 ### Visualize {.unnumbered}
-* **`ggplot2`** - 統一された文法で描画が行えるパッケージ
-* **`htmlwidgets`** - JavaScriptのウィジェットを利用できるパッケージ
+* **`ggplot2`**
+    - 統一された文法で描画が行えるパッケージ`r if (knitr::is_latex_output())'[@R-ggplot2]'`
+* **`htmlwidgets`**
+    - JavaScriptのウィジェットを利用できるパッケージ`r if (knitr::is_latex_output())'[@R-htmlwidgets]'`
+* **`patchwork`**
+    - **`ggplot2`**オブジェクトをひとつにまとめてレイアウトするためのパッケージ`r if (knitr::is_latex_output())'[@R-patchwork]'`
 
 
 ### Transform {.unnumbered}
-* **`dplyr`** - Tidy Dataを様々な方法で操作するためのパッケージ
-* **`stringr`** - 文字列処理をするためのパッケージ
-* **`forcats`** - 因子型を操作するためのパッケージ
-* **`lubridate`** - 日付データを簡単に変換するためのパッケージ
+* **`dplyr`**
+    - Tidy Dataを様々な方法で操作するためのパッケージ`r if (knitr::is_latex_output())'[@R-dplyr]'`
+* **`stringr`**
+    - 文字列処理をするためのパッケージ`r if (knitr::is_latex_output())'[@R-stringr]'`
+* **`forcats`**
+    - 因子型を操作するためのパッケージ`r if (knitr::is_latex_output())'[@R-forcats]'`
+* **`lubridate`**
+    - 日付データを簡単に変換するためのパッケージ`r if (knitr::is_latex_output())'[@R-lubridate]'`
 
 
 ### Model {.unnumbered}
-* **`broom`** - 各種モデリング結果を整然データにするためのパッケージ
-* **`tidymodels`** - 機械学習を中心としたモデリングフレームワーク
+* **`broom`** 
+    - 各種モデリング結果を整然データにするためのパッケージ`r if (knitr::is_latex_output())'[@R-broom]'`
+* **`tidymodels`**
+    - 機械学習を中心としたモデリングフレームワーク`r if (knitr::is_latex_output())'[@tidymodels2020; @R-tidymodels]'`
 
 
 ### Communicate {.unnumbered}
-* **`knitr`** - **R**のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ
-* **`rmarkdown`** - マークダウン書式を用いてレポートを作成するためのパッケージ
-* **`bookdown`** - 書籍や長いドキュメンを作成するためのパッケージ
-* **`shiny`** - インタラクティブなWebアプリケーションを作成するためのパッケージ
+* **`knitr`**
+    - **R**のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ`r if (knitr::is_latex_output())'[@knitr2014; @R-knitr]'`
+* **`rmarkdown`**
+    - マークダウン書式を用いてレポートを作成するためのパッケージ`r if (knitr::is_latex_output())'[@R-rmarkdown]'`
+* **`bookdown`**
+    - 書籍や長いドキュメンを作成するためのパッケージ`r if (knitr::is_latex_output())'[@bookdown2016; @R-bookdown]'`
+* **`shiny`**
+    - インタラクティブなWebアプリケーションを作成するためのパッケージ`r if (knitr::is_latex_output())'[@R-shiny]'`
 
 
 ### Othres {.unnumbered}
-**`magrittr`**パッケージのパイプ演算子（`%>%`）や**`purrr`**パッケージによる反復処理が、分析を円滑に回すハブ・スポーク的な役目を果たします。
+上記に加えてプロセスのハブ・スポークを担うパッケージもあります。
+
+* **`magrittr`**
+    - パイプ演算子（`%>%`）によるスムースな処理を実現するパッケージ`r if (knitr::is_latex_output())'[@R-magrittr]'`
+* **`purrr`**
+    - 関数型プログラミングによる反復処理を提供するパッケージ`r if (knitr::is_latex_output())'[@R-purrr]'`
 

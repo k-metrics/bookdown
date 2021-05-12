@@ -98,9 +98,11 @@ if (!is.null(output)) {
   }
 }
 
-# make bib file
+# Update packages.bib file
 tidyverse::tidyverse_packages() %>% 
-  c(., "knitr", "rmarkdown","bookdown", "DBI", "zoo", "htmlwidgets", "shiny") %>% 
+  c(., tidymodels::tidymodels_packages(), "knitr", "rmarkdown","bookdown",
+    "DBI", "zoo", "htmlwidgets", "shiny", "modeest", "patchwork", "Rcmdr") %>% 
+  sort() %>% unique() %>% 
   knitr::write_bib("./bib/packages.bib")
 
 ## 出力によりテーブル表記を変更する
