@@ -42,11 +42,12 @@ header-includes: |
   \usepackage{fontawesome5}
   \usepackage{subfig}
   \usepackage{xeCJK}
-  \usepackage[noto]{zxjafont}
+  \usepackage[haranoaji]{zxjafont}
   \usepackage{zxjatype}
 ## Windows環境では上記の設定ではNotoフォントが認識されないので以下の行と
 ## 入れ替えてIPAフォントを利用するのが楽
 # \usepackage[ipaex]{zxjafont}
+# \usepackage[noto]{zxjafont}
 ## モノフォントのみ入れ替えフォントのスケーリングを調整する
 mainfontoptions: "Scale=MatchUppercase"
 monofont: "Source Han Code JP"
