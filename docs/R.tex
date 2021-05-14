@@ -188,7 +188,7 @@
   \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
 \makeatother
-\subtitle{- Rによるデータ分析事始め -}
+\subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
 \date{2021-05-14}
 
@@ -528,7 +528,7 @@ Hadlyの図には前節の図にはない\textbf{Infer}と\textbf{Automate}す�
 \subsection*{Tidy}\label{tidy}}
 \addcontentsline{toc}{subsection}{Tidy}
 
-インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}\{target="\_blank" title=""Jounal of Statistical Software\}はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}\citep{R-TidyData}はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
 
 \begin{itemize}
 \tightlist
@@ -542,7 +542,7 @@ Hadlyの図には前節の図にはない\textbf{Infer}と\textbf{Automate}す�
   個々の値が一つのセルをなす
 \end{itemize}
 
-端的に表現すればデータの「構造と意味が合致する」と言えます。日本語では整然データと呼ばれることもあり、対義語は雑然データ（Messy Data）です。
+端的に表現すればデータの「構造と意味が合致する」と言えます。日本語では整然データと呼ばれることもあり、対義語は雑然データ（Messy Data）となります。
 
 \hypertarget{transform}{%
 \subsection*{Transform}\label{transform}}
@@ -960,7 +960,17 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{ux5e73ux5747}{%
 \subsection{平均}\label{ux5e73ux5747}}
 
-算術平均（相加平均）は要約統計量の中でよく使われ、下式で求められます。 \[\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i\] 算術平均以外にも幾何平均（相乗平均）や \[\sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i}\] 体操競技などで使われる得点の最小値と最大値を除いた得点の平均であるトリム平均などがあります。平均といってもこのように様々な求め方があります。では、\textbf{R}を使ってこれらの平均を求めてみます。
+算術平均（相加平均）は要約統計量の中でよく使われ、下式で求められます。
+
+\begin{equation}
+  \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i
+\end{equation}
+
+算術平均以外にも幾何平均（相乗平均）や \begin{equation}
+  \sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i}
+\end{equation}
+
+体操競技などで使われる得点の最小値と最大値を除いた得点の平均であるトリム平均などがあります。平均といってもこのように様々な求め方があります。では、\textbf{R}を使ってこれらの平均を求めてみます。
 
 以降、灰色に網掛けされた部分が\textbf{R}のコード、コードの下の\texttt{\#\#}で始まる部分が実行結果（出力）になります。コードによっては実行結果が出力されない場合もあります。
 
@@ -1054,13 +1064,13 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 \begin{verbatim}
 ## 
-## Attaching package: 'psych'
+##  次のパッケージを付け加えます: 'psych'
 \end{verbatim}
 
 \begin{verbatim}
-## The following objects are masked from 'package:ggplot2':
+##  以下のオブジェクトは 'package:ggplot2' からマスクされています: 
 ## 
-##     %+%, alpha
+##      %+%, alpha
 \end{verbatim}
 
 環境によっては上記のように他のパッケージの関数をマスクしている旨のメッセージが出力されますが、今は気にする必要ありません。
@@ -1138,7 +1148,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{ux5206ux6563ux6a19ux6e96ux504fux5dee}{%
 \subsection{分散・標準偏差}\label{ux5206ux6563ux6a19ux6e96ux504fux5dee}}
 
-データの重心と言える平均が求められましたので、次はデータの散らばり具合である分散・標準偏差です。
+データの散らばり具合を見るには分散・標準偏差がよく使われます。例えば、以下の\texttt{x}と\texttt{y}が取る値の範囲は同一ですが、同じ散らばり具合と言えるでしょうか？
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1162,73 +1172,56 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 1 9
 \end{verbatim}
 
-母分散（\(\sigma^2\)）これは分からない
+この散らばり具合を見るためにデータの個々の値と平均値との差の二乗の算術平均を分散（標本分散）、単位を戻すために分散の平方根をとったものを標準偏差（標本標準偏差）と呼びます。
 
-標本分散（\(s^2\)） 標本から求められる
+\begin{equation}
+  s^2 = \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2
+\end{equation}
 
-母分散の不偏推定量（\(\hat{\sigma}^2\)）不偏標本分散・不偏分散ともいい、標本から推定する
+\begin{equation}
+  s = \sqrt{s^2} = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2}
+\end{equation}
 
-このような場合、下式で求められる標準偏差（Standard Deviation）を使うと特徴が見えてくることがあります。
+しかし、\textbf{R}にはこの標本分散（\(s^2\)）を求める関数は用意されていませんが、不偏分散（\(\hat{\sigma}^2\)または\(u^2\)）を求める\texttt{var()}関数が用意されています。
 
-\[S = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n} - \bar{x}^2 }\]
+\begin{equation}
+  \hat{\sigma}^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2 = var(x)
+\end{equation}
 
-\textbf{R}に標準で用意されている\texttt{sd()}関数は不偏標準偏差を求める関数です。 \[s = \sqrt{\frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2} = \sqrt{\frac{\sum_{i = 1}^{n}x_{i}^2}{n - 1} - \bar{x}^2 }\]
+標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）には上の二つの式から以下の関係があることが分かります。
 
-標本標準偏差（\(\sigma\)）を求めるには不偏分散（\(s^2\)）を求める\texttt{var()}関数を用いて標本分散（\(\sigma^2\)）を求めた後に平方根（\(\sqrt{}\)）を取ります。データの長さ（\(n\)）を求める関数は\texttt{length()}関数ですので標本分散は以下の通りとなります。
+\begin{equation}
+  s^2 = \frac{n - 1}{n}\hat{\sigma}^2
+  \label{eq:variance}
+\end{equation}
 
-\[s^2 = \frac{n - 1}{n}\hat{\sigma}^2 = \frac{length(x) - 1}{length(x)}var(x)\]
+\hypertarget{ux6f14ux7fd2-1}{%
+\subsubsection*{演習 1}\label{ux6f14ux7fd2-1}}
+\addcontentsline{toc}{subsubsection}{演習 1}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{variance }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
-\NormalTok{  n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(x)}
-  \FunctionTok{return}\NormalTok{ ((n }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ n }\SpecialCharTok{*} \FunctionTok{var}\NormalTok{(x))}
-\NormalTok{\}}
-
-
-\FunctionTok{var}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 8
-\end{verbatim}
+標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の関係式\eqref{eq:variance}を用いて\textbf{R}で以下の二つのデータの標本分散を求めなさい。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{variance}\NormalTok{(x)}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{9}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## [1] 6.4
-\end{verbatim}
+\hypertarget{ux6f14ux7fd2-2}{%
+\subsubsection*{演習 2}\label{ux6f14ux7fd2-2}}
+\addcontentsline{toc}{subsubsection}{演習 2}
+
+欠損値を含む以下のデータの平均値（\(\bar{x}\)）、不偏分散（\(\hat{\sigma}^2\)）ならびに標本分散（\(s^2\)）を求めなさい。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{sd}\NormalTok{(x)}
+\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## [1] 2.828427
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{sd}\NormalTok{(y)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 4
-\end{verbatim}
 
 \begin{quote}
-演習\\
-\texttt{x}に\texttt{NA}が含まれる場合、\texttt{var()}関数では\texttt{na.rm\ =\ TRUE}オプションを指定すれば\texttt{NA}を除いて計算してくれます。これを踏まえて上で定義している\texttt{variance()}関数の引数に\texttt{na.rm}オプションを追加して\texttt{NA}が含まれている場合でも標本分散を求められるように改修してください。\\
-　\\
-\texttt{variance\ \textless{}-\ function(x,\ na.rm\ =\ FALSE)\ \{...\}}
+ヒント：\texttt{na.rm}オプションを使います
 \end{quote}
 
 \hypertarget{ux4e2dux592eux5024}{%
@@ -3187,6 +3180,198 @@ NA & データ型 \\
 
 \texttt{while}文と\texttt{repeat}文については、あまり使うこともないと思いますので省略します。
 
+\hypertarget{ux6f14ux7fd2ux56deux7b54}{%
+\chapter{演習回答}\label{ux6f14ux7fd2ux56deux7b54}}
+
+\hypertarget{ux6f14ux7fd2-1-1}{%
+\section*{演習 1}\label{ux6f14ux7fd2-1-1}}
+\addcontentsline{toc}{section}{演習 1}
+
+標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の関係式\eqref{eq:variance}を用いて\textbf{R}で以下の二つのデータの標本分散を求めなさい。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux89e3ux7b54ux4f8b}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b}}
+\addcontentsline{toc}{subsection}{解答例}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(x)}
+\NormalTok{(n }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ n }\SpecialCharTok{*} \FunctionTok{var}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(y)}
+\NormalTok{(n }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ n }\SpecialCharTok{*} \FunctionTok{var}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 12.8
+\end{verbatim}
+
+参考までに不偏分散は以下の通りです。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{var}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{var}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 16
+\end{verbatim}
+
+\hypertarget{ux6f14ux7fd2-2-1}{%
+\section*{演習 2}\label{ux6f14ux7fd2-2-1}}
+\addcontentsline{toc}{section}{演習 2}
+
+欠損値を含む以下のデータの平均値（\(\bar{x}\)）、不偏分散（\(\hat{\sigma}^2\)）ならびに標本分散（\(s^2\)）を求めなさい。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+ヒント：\texttt{na.rm}オプションを使います
+\end{quote}
+
+\hypertarget{ux89e3ux7b54ux4f8b-1}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b-1}}
+\addcontentsline{toc}{subsection}{解答例}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(z, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{var}\NormalTok{(z, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11.66667
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{variance }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{FALSE}\NormalTok{) \{}
+\NormalTok{  n }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(x))}
+  \FunctionTok{return}\NormalTok{ ((n }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ n }\SpecialCharTok{*} \FunctionTok{var}\NormalTok{(x, }\AttributeTok{na.rm =}\NormalTok{ na.rm))}
+\NormalTok{\}}
+\FunctionTok{variance}\NormalTok{(z, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8.75
+\end{verbatim}
+
+\hypertarget{ux88dcux8db3}{%
+\subsection*{補足}\label{ux88dcux8db3}}
+\addcontentsline{toc}{subsection}{補足}
+
+\texttt{length()}関数は指定したデータの長さ（値の個数）を求める関数です。欠損値（\texttt{NA}）も値としてカウントされます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  5 NA  7  9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+そこで、値が\texttt{NA}か否かを調べる\texttt{is.na()}関数を用います。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.na}\NormalTok{(z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE  TRUE FALSE FALSE
+\end{verbatim}
+
+返り値は論理型（\texttt{TRUE}/\texttt{FALSE}）ですが、\texttt{TRUE}は\(1\)、\texttt{FALSE}は\(0\)と等価であることを利用し、論理演算子の否定（\texttt{!}）と合計を求める\texttt{sum()}関数を組み合わせると\texttt{NA}を除くデータの長さを求めることができます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(z))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+不偏分散を求める\texttt{var()}関数は\texttt{NA}が含まれるデータを指定する場合は、\texttt{NA}を除外するか否かを指定する\texttt{na.rm}オプションを指定する必要があります。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{var}\NormalTok{(z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\texttt{na.rm\ =\ TRUE}オプションを指定することで、\texttt{NA}を含むデータの不偏分散を求めることができます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{var}\NormalTok{(z, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11.66667
+\end{verbatim}
+
 \hypertarget{environments-2}{%
 \chapter{Environments 2}\label{environments-2}}
 
@@ -3251,7 +3436,7 @@ NA & データ型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-65}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-77}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -3270,7 +3455,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-66}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-78}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -3284,7 +3469,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-67}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-79}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -3302,7 +3487,7 @@ NA & データ型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-68}
+\caption{Warning dialog}\label{fig:unnamed-chunk-80}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -3328,7 +3513,7 @@ NA & データ型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-69}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-81}
 \end{figure}
 
 　\\
@@ -3361,7 +3546,7 @@ NA & データ型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-70}
+\caption{Initial View}\label{fig:unnamed-chunk-82}
 \end{figure}
 
 　
@@ -3378,7 +3563,7 @@ NA & データ型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-71}
+\caption{Packages Manager}\label{fig:unnamed-chunk-83}
 \end{figure}
 
 　\\
@@ -3391,7 +3576,7 @@ NA & データ型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-72}
+\caption{Install Dialog}\label{fig:unnamed-chunk-84}
 \end{figure}
 
 　\\
@@ -3785,7 +3970,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-80}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-92}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -3796,7 +3981,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-81}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-93}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -3866,7 +4051,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-82}
+\caption{R Notebook file}\label{fig:unnamed-chunk-94}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -3877,7 +4062,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-83}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-95}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -3888,7 +4073,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-84}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-96}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -3899,7 +4084,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-85}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-97}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -3910,7 +4095,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-86}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-98}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -3921,7 +4106,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-87}
+\caption{R Notebook option}\label{fig:unnamed-chunk-99}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -4183,7 +4368,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-88}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-100}
 \end{figure}
 
 　
@@ -4208,7 +4393,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-89}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-101}
 \end{figure}
 
 　

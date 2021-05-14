@@ -1,0 +1,84 @@
+# 演習回答
+
+## 演習 1 {.unnumbered}
+標本分散（$s^2$）と不偏分散（$\hat{\sigma}^2$）の関係式`r if (knitr::is_latex_output())'\\@ref(eq:variance)'`を用いて**R**で以下の二つのデータの標本分散を求めなさい。
+
+```{r}
+x <- c(1, 5, 5, 5, 9)
+y <- c(1, 1, 5, 9, 9)
+```
+
+
+### 解答例 {.unnumbered}
+```{r}
+n <- length(x)
+(n - 1) / n * var(x)
+```
+
+```{r}
+n <- length(y)
+(n - 1) / n * var(y)
+```
+
+参考までに不偏分散は以下の通りです。
+```{r}
+var(x)
+var(y)
+```
+
+
+
+## 演習 2 {.unnumbered}
+欠損値を含む以下のデータの平均値（$\bar{x}$）、不偏分散（$\hat{\sigma}^2$）ならびに標本分散（$s^2$）を求めなさい。
+
+```{r}
+z <- c(1, 5, NA, 7, 9)
+```
+
+> ヒント：`na.rm`オプションを使います
+
+
+### 解答例 {.unnumbered}
+```{r}
+mean(z, na.rm = TRUE)
+var(z, na.rm = TRUE)
+
+variance <- function(x, na.rm = FALSE) {
+  n <- sum(!is.na(x))
+  return ((n - 1) / n * var(x, na.rm = na.rm))
+}
+variance(z, na.rm = TRUE)
+```
+
+
+### 補足 {.unnumbered}
+`length()`関数は指定したデータの長さ（値の個数）を求める関数です。欠損値（`NA`）も値としてカウントされます。
+```{r}
+z
+length(z)
+```
+
+そこで、値が`NA`か否かを調べる`is.na()`関数を用います。
+
+```{r}
+is.na(z)
+```
+
+返り値は論理型（`TRUE`/`FALSE`）ですが、`TRUE`は$1$、`FALSE`は$0$と等価であることを利用し、論理演算子の否定（`!`）と合計を求める`sum()`関数を組み合わせると`NA`を除くデータの長さを求めることができます。
+
+```{r}
+sum(!is.na(z))
+```
+
+不偏分散を求める`var()`関数は`NA`が含まれるデータを指定する場合は、`NA`を除外するか否かを指定する`na.rm`オプションを指定する必要があります。
+
+```{r}
+var(z)
+```
+
+`na.rm = TRUE`オプションを指定することで、`NA`を含むデータの不偏分散を求めることができます。
+
+```{r}
+var(z, na.rm = TRUE)
+```
+

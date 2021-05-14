@@ -1,7 +1,7 @@
 bookdown::gitbook:
   css: style.css
   # df_print: paged
-  # highlight: tango
+  highlight: haddock       # default tango pygments kate haddock
   lib_dir: assets
   md_extensions: -ascii_identifiers
   number_sections: TRUE
@@ -21,11 +21,15 @@ bookdown::gitbook:
       theme: night  # "white" or "sepia" or "night"
       family: serif # "serif" or "sans"
 
-bookdown::epub_book: default
+bookdown::epub_book:
+  epub_version: epub3
+  md_extensions: -ascii_identifiers
+  pandoc_args: [--mathml]
 
 bookdown::pdf_book:
   citation_package: natbib
   keep_tex: true
+  highlight: default       # tango pygments kate haddock
   highlight_bw: false
   latex_engine: xelatex
   link-citations: true

@@ -163,14 +163,14 @@ Hadlyの図には前節の図にはない**Infer**と**Automate**すというプ
 
 
 ### Tidy {.unnumbered}
-インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、**R**で扱いやすいような形式（Tidy Data）にします。[Tidy Data](https://www.jstatsoft.org/article/view/v059i10){target="_blank" title=""Jounal of Statistical Software}はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、**R**で扱いやすいような形式（Tidy Data）にします。[Tidy Data](https://www.jstatsoft.org/article/view/v059i10){target="_blank" title="Jounal of Statistical Software"}`r if (knitr::is_latex_output())'[@R-TidyData]'`はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
 
 * 個々の変数が一つの列をなす
 * 個々の観測が一つの行をなす
 * 個々の観測の構成単位の累計が一つの表をなす
 * 個々の値が一つのセルをなす
 
-端的に表現すればデータの「構造と意味が合致する」と言えます。日本語では整然データと呼ばれることもあり、対義語は雑然データ（Messy Data）です。
+端的に表現すればデータの「構造と意味が合致する」と言えます。日本語では整然データと呼ばれることもあり、対義語は雑然データ（Messy Data）となります。
 
 
 ### Transform {.unnumbered}
