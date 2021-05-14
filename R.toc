@@ -118,7 +118,7 @@
 \contentsline {subsection}{\numberline {A.6.2}繰り返し}{99}{subsection.A.6.2}%
 \contentsline {subsubsection}{\numberline {A.6.2.1}for}{100}{subsubsection.A.6.2.1}%
 \contentsline {subsubsection}{\numberline {A.6.2.2}while, repeat}{100}{subsubsection.A.6.2.2}%
-\contentsline {chapter}{\numberline {B}演習回答}{101}{appendix.B}%
+\contentsline {chapter}{\numberline {B}演習解答例}{101}{appendix.B}%
 \contentsline {section}{演習 1}{101}{section*.47}%
 \contentsline {subsection}{解答例}{101}{section*.48}%
 \contentsline {section}{演習 2}{102}{section*.49}%

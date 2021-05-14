@@ -1,6 +1,7 @@
 bookdown::gitbook:
   css: style.css
   # df_print: paged
+  # ダークテーマでも読みやすいハイライト
   highlight: haddock       # default tango pygments kate haddock
   lib_dir: assets
   md_extensions: -ascii_identifiers
@@ -21,6 +22,7 @@ bookdown::gitbook:
       theme: night  # "white" or "sepia" or "night"
       family: serif # "serif" or "sans"
 
+## ePUB形式でLaTeX数式が表示されない問題あり
 bookdown::epub_book:
   epub_version: epub3
   md_extensions: -ascii_identifiers

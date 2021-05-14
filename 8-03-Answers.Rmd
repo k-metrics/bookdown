@@ -1,4 +1,4 @@
-# 演習回答
+# 演習解答例
 
 ## 演習 1 {.unnumbered}
 標本分散（$s^2$）と不偏分散（$\hat{\sigma}^2$）の関係式`r if (knitr::is_latex_output())'\\@ref(eq:variance)'`を用いて**R**で以下の二つのデータの標本分散を求めなさい。
