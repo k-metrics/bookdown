@@ -14,7 +14,7 @@ colorlinks: true         # ハイパーリンクを色分けする
 fig_crop: false
 fontsize: 12pt           # 本文のフォントサイズ
 # highlight: tango       # default tango pygments kate haddoc
-linestretch: 1.1        # 行間の指定
+linestretch: 1.1         # 行間の指定
 links-as-notes: true     # ハイパーリンク先を脚注に記載
 ## 日本語とtufte, kableExtraを使うために必要なTeXパッケージ群
 # A4 210mm x 297mm
@@ -68,13 +68,23 @@ CJKoptions: "Scale=1.0"
 # \setmonofont{SourceCodePro-Regular.ttf}[BoldFont=SourceCodePro-Bold.ttf]
 ---
 
-
 ```{css, include=FALSE}
 # local CSS for gitbook
 ```
 
 ```{r setup, include=FALSE}
 require(tidyverse)
+
+knitr::opts_chunk$set(echo = TRUE, fig_caption = TRUE, fig.align = 'center',
+                      warning = FALSE, out.width = "85%")
+
+# 出力がPDF(LaTeX)の場合は図をPDF形式としフォントをNotoにする、また、図の配置を
+# 自動調整しないようにする
+if (knitr::is_latex_output()) {
+    knitr::opts_chunk$set(dev = "cairo_pdf",
+                          dev.args = list(family = "Noto Serif"),
+                          fig.pos = "H", out.extra = "")
+}
 
 # 図の描画位置調整については以下を参照
 # https://gedevan-aleksizde.github.io/rmarkdown-cookbook/figure-placement.html#force-floats-forward
@@ -86,19 +96,16 @@ require(tidyverse)
 # !: LaTex が「良い」フロートの位置を決定するための内部パラメータ上書きします.
 # H: フロートを正確に LaTex コード上と同じ位置に配置します. float パッケージが必要です (\usepackage{float}).
 
-knitr::opts_chunk$set(echo = TRUE, fig_caption = TRUE, fig.align = 'center',
-                      warning = FALSE, fig.pos = "H", out.extra = "",
-                      out.width = "85%")
-
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 
-output <- knitr::opts_knit$get("rmarkdown.pandoc.to")
-if (!is.null(output)) {
-  if (output == "latex") {
-    knitr::opts_chunk$set(dev = "cairo_pdf",
-                          dev.args = list(family = "Noto Serif"))
-  }
-}
+# output <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+# if (!is.null(output)) {
+#   if (output == "latex") {
+#     knitr::opts_chunk$set(dev = "cairo_pdf",
+#                           dev.args = list(family = "Noto Serif"))
+#   }
+# }
+
 
 # Update packages.bib file
 tidyverse::tidyverse_packages() %>% 
@@ -142,8 +149,8 @@ df_print <- function(df = NULL, n = 3L, caption = NULL, scale_down = FALSE,
     return(NULL)
   }
 }
-
 ```
+
 
 # License {.unnumbered}
 
