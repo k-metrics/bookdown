@@ -190,7 +190,7 @@
 \makeatother
 \subtitle{- Rによるデータ分析事始め -}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-13}
+\date{2021-05-14}
 
 \begin{document}
 \maketitle
@@ -278,8 +278,8 @@
 対象 & 表記方法 & 表記例 \\
 \midrule
 \endhead
-ハイパーリンク\textsuperscript{a} & 脚注にURL表記 & CRAN\textsuperscript{No.} \\
-パス・ファイル名 & モノフォント\textsuperscript{b} & \texttt{sample/sample.Rmd} \\
+ハイパーリンク\footnote{PDF形式のみ、\textsuperscript{No.}の部分は章ごとの通し番号} & 脚注にURL表記 & CRAN\textsuperscript{No.} \\
+パス・ファイル名 & モノフォント\footnote{タイプライタフォントとも呼ばれる等幅フォント} & \texttt{sample/sample.Rmd} \\
 パッケージ名 & 太字のモノフォント & \textbf{\texttt{tidyverse}} \\
 変数・オブジェクト名 & モノフォント & \texttt{Sepela.Width} \\
 関数名 & モノフォントで()付き & \texttt{print()} \\
@@ -288,13 +288,9 @@
 キーボードのキー & モノフォントで{[}{]}付き & {[}\texttt{Ctrl}{]}+{[}\texttt{S}{]} \\
 数式 & \LaTeX 数式（math mode） & \(y = ax^2 + b\) \\
 製品サービス名など & 太字 & \textbf{Google Colab} \\
-参考文献・資料\textsuperscript{c} & {[}著者・作者, 作成年{]} & {[}Wickham, 2021{]} \\
+参考文献・資料\footnote{PDF形式のみ、{[}{]}内は文書内ハイパーリンク} & {[}著者・作者, 作成年{]} & {[}Wickham, 2021{]} \\
 \bottomrule
 \end{longtable}
-
-\textsuperscript{a} PDF形式のみ、\textsuperscript{No.}の部分は章ごとの通し番号\\
-\textsuperscript{b} タイプライタフォントとも呼ばれる等幅フォント\\
-\textsuperscript{c} PDF形式のみ、{[}{]}内は文書内ハイパーリンク
 
 \hypertarget{ux306aux305crux304b}{%
 \section*{なぜRか？}\label{ux306aux305crux304b}}
@@ -956,17 +952,22 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 \textbf{R}の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から\textbf{R}のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』\citep{ToukeinoHanashi}や『統計解析のはなし【改訂版】』\citep{ToukeiKaisekinoHanashi}を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。 なお、基本文法については\protect\hyperlink{Appendix-RBasics}{Appendix R Basics}をご覧ください。
 
-\hypertarget{ux57faux672cux7d71ux8a08ux91cf}{%
-\section{基本統計量}\label{ux57faux672cux7d71ux8a08ux91cf}}
+\hypertarget{ux8981ux7d04ux7d71ux8a08ux91cf}{%
+\section{要約統計量}\label{ux8981ux7d04ux7d71ux8a08ux91cf}}
 
-データを分析する前には対象となるデータがどのような特徴を持っているか確認しておくことが重要であるとよく言われます。データの特徴を見るには基本統計量を用いる分かりやすいと思います。
+データを分析する前には分析対象となるデータがどのような特徴を持っているか確認しておくことが重要であるとよく言われます。この特徴を見るには要約統計量を使う場合が多いです。要約統計量はデータの分布の特徴を表すもので、記述統計量や基本統計量と呼ばれることもあります。
 
 \hypertarget{ux5e73ux5747}{%
 \subsection{平均}\label{ux5e73ux5747}}
 
-統計量の中でよく使われるのが平均です。平均というと下式で表される算術平均を思い浮かべる方が多いと思いますが、 \[\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i\] 算術平均以外にも下式で表される幾何平均（相乗平均）や \[\sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i}\] 体操競技などで使われる複数審判が出す得点の最小値と最大値を除いた得点の平均であるトリム平均などがあります。以降、灰色に網掛けされた部分が\textbf{R}のコード、コードの下の\texttt{\#\#}で始まる部分が実行結果ですので、コード部分をコピペして\textbf{R}のコンソールで実行してみてください。
+算術平均（相加平均）は要約統計量の中でよく使われ、下式で求められます。 \[\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i\] 算術平均以外にも幾何平均（相乗平均）や \[\sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i}\] 体操競技などで使われる得点の最小値と最大値を除いた得点の平均であるトリム平均などがあります。平均といってもこのように様々な求め方があります。では、\textbf{R}を使ってこれらの平均を求めてみます。
 
-\textbf{R}では算術平均とトリム平均は\texttt{mean()}関数で求めることができます。最初に平均の計算対象となるデータを作成します。
+以降、灰色に網掛けされた部分が\textbf{R}のコード、コードの下の\texttt{\#\#}で始まる部分が実行結果（出力）になります。コードによっては実行結果が出力されない場合もあります。
+
+\hypertarget{ux7b97ux8853ux5e73ux5747}{%
+\subsubsection{算術平均}\label{ux7b97ux8853ux5e73ux5747}}
+
+算術平均は\texttt{mean()}関数で求めることができます。最初に平均の計算対象となるデータ（変数）を\texttt{c()}関数で作成します。\texttt{c()}関数はベクトル型の変数を作成する関数です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -974,7 +975,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{Highlighting}
 \end{Shaded}
 
-ここで\texttt{x}は5つの値を格納（代入）するための変数、\texttt{\textless{}-}は値を変数に格納するための代入演算子、\texttt{c()}関数はベクトルデータを作成する関数です。代入結果を確認するには以下を実行します。
+\texttt{x}は値を代入（格納）する変数、\texttt{\textless{}-}は代入演算子（\textbf{R}では代入に\texttt{=}は使わないのが基本です）、\texttt{c()}関数はベクトルデータを作成する関数です。代入結果を確認するには以下を実行します。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -986,7 +987,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 1 3 3 5 7
 \end{verbatim}
 
-算出平均は\texttt{mean()}関数に計算対象である\texttt{x}を指定します。
+算出平均は\texttt{mean()}関数に計算対象となる\texttt{x}を指定して実行します。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -998,7 +999,10 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 3.8
 \end{verbatim}
 
-トリム平均は上記のコードに\texttt{trim}オプションを指定します。\texttt{trim}オプションは計算対象外にする割合を指定するオプションです。今回は五つのデータから最小値・最大値の二つを除いてトリム平均を求めるので\(\frac{2}{5} = 0.2\)を指定します。
+\hypertarget{ux30c8ux30eaux30e0ux5e73ux5747}{%
+\subsubsection{トリム平均}\label{ux30c8ux30eaux30e0ux5e73ux5747}}
+
+トリム平均は算術平均のコードに\texttt{trim}オプションを指定するだけです。\texttt{trim}オプションは計算対象外にする割合を指定するオプションです。今回は五つのデータから最小値・最大値の二つを除いてトリム平均を求めますので\(\frac{2}{5} = 0.2\)を指定します。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1010,7 +1014,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 3.666667
 \end{verbatim}
 
-ヘルプを見たい場合は\texttt{?}に続いて関数名を\texttt{()}付きで打ち込んで実行してください。
+関数に指定できるオプションを確認した場合場\texttt{?}に続いて関数名を\texttt{()}付きで打ち込んで実行してください。ヘルプが表示されます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1018,7 +1022,10 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{Highlighting}
 \end{Shaded}
 
-幾何平均を求める関数は標準では用意されていませんのでインストールする必要があり、ここでは\textbf{\texttt{psych}}パッケージを使います。パッケージをインストールして使えるようにするには以下の手順が必要です。
+\hypertarget{ux5e7eux4f55ux5e73ux5747}{%
+\subsubsection{幾何平均}\label{ux5e7eux4f55ux5e73ux5747}}
+
+幾何平均（相乗平均）を求める関数は標準では用意されていません。パッケージを追加インストールする必要があります。ここでは\textbf{\texttt{psych}}パッケージを下記の手順でインストールして使います。なお、インストールに際してはインターネット接続が必要です。
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1029,7 +1036,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   パッケージを読み込む
 \end{enumerate}
 
-パッケージのインストールは\texttt{install.packages()}関数を用います。インターネットに接続している必要があります。\texttt{install.packages()}関数を実行すると環境によってはCRANミラーサイトの選択を促される場合があります。その場合は、お住まいの地域に最も近い地域のミラーサイトを選択してください。なお、パッケージのインストールは一度だけでよく、次からはインストール不要になります。
+パッケージのインストールは\texttt{install.packages()}関数を用います。\texttt{install.packages()}関数を実行すると環境によってはCRANミラーサイトの選択を促される場合があります。その場合は、最も近い地域のミラーサイトを選択してください。なお、パッケージのインストールは一度行えば次からのインストールは不要です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1037,7 +1044,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{Highlighting}
 \end{Shaded}
 
-インストールが完了したらパッケージが提供する関数などを使えるように\texttt{library()}関数を使ってパッケージを使えるようにします。
+インストールが完了しましたら\texttt{library()}関数を使ってパッケージを読み込みます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1047,16 +1054,18 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 \begin{verbatim}
 ## 
-##  次のパッケージを付け加えます: 'psych'
+## Attaching package: 'psych'
 \end{verbatim}
 
 \begin{verbatim}
-##  以下のオブジェクトは 'package:ggplot2' からマスクされています: 
+## The following objects are masked from 'package:ggplot2':
 ## 
-##      %+%, alpha
+##     %+%, alpha
 \end{verbatim}
 
-環境によっては上記のように他のパッケージの関数をマスクしている旨のメッセージが出力されてますが、今は気にする必要ありません。 これで\textbf{\texttt{psych}}パッケージを使う準備が整いましたので、\texttt{geometric.mean()}関数で幾何平均を求めます。
+環境によっては上記のように他のパッケージの関数をマスクしている旨のメッセージが出力されますが、今は気にする必要ありません。
+
+これで\textbf{\texttt{psych}}パッケージを使う準備が整いましたので、\texttt{geometric.mean()}関数で幾何平均を求めます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1068,7 +1077,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 3.159818
 \end{verbatim}
 
-インストールしたパッケージの関数を使う場合、どのパッケージの関数を使っているかを明示的に示すために下記のように\texttt{::}演算子（名前空間へのアクセス演算子）でパッケージ名と関数名をつなげて記述することもできます。
+インストールしたパッケージの関数を使う場合、どのパッケージの関数を使っているかを明示的に示すために下記のように\texttt{::}演算子（名前空間へのアクセス演算子という）でパッケージ名と関数名をつなげて記述することもできます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1080,13 +1089,17 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 3.159818
 \end{verbatim}
 
-この表記方法については賛否ありますが、どのパッケージの関数を使っているかを明示できるので、本書ではこの記述方法を用います。
+この表記方法については賛否ありますが、どのパッケージの関数を使っているかが分かりやすいので本書ではこの記述方法を用います。
 
-ところで、この程度の幾何平均であればパッケージをインストールしなくても総積を求める\texttt{prod()}関数とべき乗演算子（\texttt{\^{}}）を使えば計算は可能です、
+\hypertarget{ux9591ux8a71}{%
+\subsubsection*{閑話}\label{ux9591ux8a71}}
+\addcontentsline{toc}{subsubsection}{閑話}
+
+幾何平均を求めるために\texttt{psych}パッケージを利用しましたが、\textbf{R}には総積（\(x_1 \times x_2 \times \cdots \times x_n\)）を求める\texttt{prod()}関数と累乗根（\(x^{\frac{1}{n}}\)）を求めるべき乗演算子（\texttt{\^{}}）がありますので、これを組み合わせれば幾何平均を求めることが可能です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{prod}\NormalTok{(x)}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{5}\NormalTok{)}
+\FunctionTok{prod}\NormalTok{(x)}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(x))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1094,7 +1107,9 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 3.159818
 \end{verbatim}
 
-ただし、幾何平均ではデータの値を全て乗算しなければならないためデータ数が多い場合や値が大きい（または、小さい）場合に\texttt{prod()}関数でオーバーフロー（または、アンダーフロー）が起こるという問題があります。
+\texttt{length()}関数は変数\texttt{x}の長さ（変数\texttt{x}の中にある値の個数）を求める関数です。ただし、この計算には注意が必要です。
+
+幾何平均は全ての値を\texttt{prod()}関数で乗算しますので、データの数が多い場合やデータの値が大きい（または、小さい）場合に\texttt{prod()}関数がオーバーフロー（または、アンダーフロー）を起こしてしまうことがあります。例えば、\(1\)から\(200\)までを乗算するだけでオーバーフローを起こしてしまいます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1106,7 +1121,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] Inf
 \end{verbatim}
 
-一方、\texttt{geometric.mean()}関数ではオーバーフロー（または、アンダーフロー）対策が施されていますので正しい値を求めることができます。
+一方、\texttt{geometric.mean()}関数はフロー対策が施されていますのでオーバーフローを起こすことなく幾何平均を求めることができます。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1118,163 +1133,12 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 74.90045
 \end{verbatim}
 
-つまり、パッケージ、特にCRANに登録されているパッケージは登録にあたり審査による検証が行われていますので、使わないより使う方が楽で確実なことが多いのです。
+このように既にパッケージとして提供されている関数があれば、自分でコードを組むよりはパッケージを導入した方が早くて確実です（ここでの本来の目的は幾何平均を求めることでなくデータの特徴を掴むことです）。特に\textbf{CRAN}に登録されているパッケージは審査が行われていますので、使わないよりは使った方が確実に目的を達成しやすくなります。\textbf{R}には先人の知恵が結集していますので、車輪の再発明に挑戦するより先人の知恵を活用する方をおすゝめします。
 
-\hypertarget{ux4e2dux592eux5024}{%
-\subsection{中央値}\label{ux4e2dux592eux5024}}
+\hypertarget{ux5206ux6563ux6a19ux6e96ux504fux5dee}{%
+\subsection{分散・標準偏差}\label{ux5206ux6563ux6a19ux6e96ux504fux5dee}}
 
-平均値と並んで比較的よく使われるのが中央値です。中央値はデータの分布が歪んでいる場合に使われることが多いように比較的ロバスト（データの分布に左右されにくい）な統計量です。 中央値
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{x}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 1 3 3 5 7
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{median}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 3
-\end{verbatim}
-
-\hypertarget{ux6700ux5c0fux6700ux5927ux5024}{%
-\subsection{最小・最大値}\label{ux6700ux5c0fux6700ux5927ux5024}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{x}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 1 3 3 5 7
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{min}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 1
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{max}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 7
-\end{verbatim}
-
-\textbf{R}には\texttt{range()}関数という最小値を最大値を一度に求めることができる便利な関数があります。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{x}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 1 3 3 5 7
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{range}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 1 7
-\end{verbatim}
-
-\hypertarget{ux30ecux30f3ux30b8ux7bc4ux56f2}{%
-\subsection{レンジ（範囲）}\label{ux30ecux30f3ux30b8ux7bc4ux56f2}}
-
-データのばらつきを見るためにレンジと呼ばれる範囲を用いることがあります。以下の\texttt{x}と\texttt{y}は同じ平均値をとるデータです。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{8}\NormalTok{)}
-\FunctionTok{mean}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 5
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
-\FunctionTok{mean}\NormalTok{(y)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 5
-\end{verbatim}
-
-レンジを求めるには\texttt{range()}関数を用います。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{range}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 2 8
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{range}\NormalTok{(y)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 1 9
-\end{verbatim}
-
-\texttt{range()}関数は最小値と最大値を求める関数ですので\texttt{diff()}関数を用いて最小値と最大値の幅を求めます。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(x))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 6
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(y))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 8
-\end{verbatim}
-
-\hypertarget{ux6a19ux6e96ux504fux5dee}{%
-\subsection{標準偏差}\label{ux6a19ux6e96ux504fux5dee}}
-
-レンジは比較的簡単に計算できますが、以下のように同じレンジを持つデータの特徴が同じと言えるでしょうか？
+データの重心と言える平均が求められましたので、次はデータの散らばり具合である分散・標準偏差です。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1367,6 +1231,157 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \texttt{variance\ \textless{}-\ function(x,\ na.rm\ =\ FALSE)\ \{...\}}
 \end{quote}
 
+\hypertarget{ux4e2dux592eux5024}{%
+\subsection{中央値}\label{ux4e2dux592eux5024}}
+
+平均値と並んで比較的よく使われるのが中央値です。中央値はデータの分布が歪んでいる場合に使われることが多いように比較的ロバスト（データの分布に左右されにくい）な統計量です。 中央値
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 5 5 5 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{median}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\hypertarget{ux6700ux5c0fux6700ux5927ux5024}{%
+\subsection{最小・最大値}\label{ux6700ux5c0fux6700ux5927ux5024}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 5 5 5 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{min}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{max}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\textbf{R}には\texttt{range()}関数という最小値を最大値を一度に求めることができる便利な関数があります。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 5 5 5 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{range}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 9
+\end{verbatim}
+
+\hypertarget{ux30ecux30f3ux30b8ux7bc4ux56f2}{%
+\subsection{レンジ（範囲）}\label{ux30ecux30f3ux30b8ux7bc4ux56f2}}
+
+データのばらつきを見るためにレンジと呼ばれる範囲を用いることがあります。以下の\texttt{x}と\texttt{y}は同じ平均値をとるデータです。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{8}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+レンジを求めるには\texttt{range()}関数を用います。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{range}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{range}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 9
+\end{verbatim}
+
+\texttt{range()}関数は最小値と最大値を求める関数ですので\texttt{diff()}関数を用いて最小値と最大値の幅を求めます。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(y))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+\end{verbatim}
+
 \hypertarget{ux6700ux983bux5024}{%
 \subsection{最頻値}\label{ux6700ux983bux5024}}
 
@@ -1398,7 +1413,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 5
+## [1] 2 8
 \end{verbatim}
 
 \begin{Shaded}
@@ -1408,7 +1423,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1 9
+## [1] 5
 \end{verbatim}
 
 \hypertarget{part-wrangle}{%
