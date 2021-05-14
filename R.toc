@@ -76,101 +76,101 @@
 \contentsline {part}{VIII\hspace {1em}APPENDIX}{71}{part.8}%
 \contentsline {chapter}{Appendix}{73}{section*.43}%
 \contentsline {chapter}{References}{73}{appendix*.44}%
-\contentsline {chapter}{\numberline {A}R Basics}{75}{appendix.A}%
-\contentsline {section}{\numberline {A.1}基本的な演算}{76}{section.A.1}%
-\contentsline {subsection}{\numberline {A.1.1}算術演算}{76}{subsection.A.1.1}%
-\contentsline {subsection}{\numberline {A.1.2}代入}{77}{subsection.A.1.2}%
-\contentsline {subsection}{\numberline {A.1.3}代入結果の確認}{77}{subsection.A.1.3}%
-\contentsline {subsection}{\numberline {A.1.4}合算}{78}{subsection.A.1.4}%
-\contentsline {subsection}{\numberline {A.1.5}平均}{78}{subsection.A.1.5}%
-\contentsline {subsection}{\numberline {A.1.6}変数の上書き}{78}{subsection.A.1.6}%
-\contentsline {section}{\numberline {A.2}変数}{79}{section.A.2}%
-\contentsline {subsection}{\numberline {A.2.1}予約語}{79}{subsection.A.2.1}%
-\contentsline {subsection}{\numberline {A.2.2}データ型}{79}{subsection.A.2.2}%
-\contentsline {subsection}{\numberline {A.2.3}変数型}{80}{subsection.A.2.3}%
-\contentsline {subsubsection}{\numberline {A.2.3.1}ベクトル型}{80}{subsubsection.A.2.3.1}%
-\contentsline {subsubsection}{\numberline {A.2.3.2}因子型}{81}{subsubsection.A.2.3.2}%
-\contentsline {subsubsection}{\numberline {A.2.3.3}マトリクス型}{82}{subsubsection.A.2.3.3}%
-\contentsline {subsubsection}{\numberline {A.2.3.4}アレイ型}{83}{subsubsection.A.2.3.4}%
-\contentsline {subsubsection}{\numberline {A.2.3.5}データフレーム型}{83}{subsubsection.A.2.3.5}%
-\contentsline {subsubsection}{\numberline {A.2.3.6}リスト型}{85}{subsubsection.A.2.3.6}%
-\contentsline {section}{\numberline {A.3}定数}{86}{section.A.3}%
-\contentsline {subsection}{\numberline {A.3.1}\texttt {NA}の型}{86}{subsection.A.3.1}%
-\contentsline {section}{\numberline {A.4}検査・変換}{87}{section.A.4}%
-\contentsline {section}{\numberline {A.5}演算子}{87}{section.A.5}%
-\contentsline {subsection}{\numberline {A.5.1}参照演算子}{88}{subsection.A.5.1}%
-\contentsline {subsubsection}{\numberline {A.5.1.1}\texttt {{[}}演算子}{88}{subsubsection.A.5.1.1}%
-\contentsline {subsubsection}{\numberline {A.5.1.2}\texttt {\$}演算子}{90}{subsubsection.A.5.1.2}%
-\contentsline {subsection}{\numberline {A.5.2}単項演算子}{92}{subsection.A.5.2}%
-\contentsline {subsection}{\numberline {A.5.3}二項演算子}{93}{subsection.A.5.3}%
-\contentsline {subsubsection}{\numberline {A.5.3.1}算術演算子}{93}{subsubsection.A.5.3.1}%
-\contentsline {subsubsection}{\numberline {A.5.3.2}比較演算子}{94}{subsubsection.A.5.3.2}%
-\contentsline {subsubsection}{\numberline {A.5.3.3}論理演算子}{95}{subsubsection.A.5.3.3}%
-\contentsline {subsection}{\numberline {A.5.4}特殊演算子}{95}{subsection.A.5.4}%
-\contentsline {subsection}{\numberline {A.5.5}優先順位}{96}{subsection.A.5.5}%
-\contentsline {section}{\numberline {A.6}制御文}{96}{section.A.6}%
-\contentsline {subsection}{\numberline {A.6.1}条件分岐}{96}{subsection.A.6.1}%
-\contentsline {subsubsection}{\numberline {A.6.1.1}if, else}{97}{subsubsection.A.6.1.1}%
-\contentsline {subsubsection}{\numberline {A.6.1.2}switch}{98}{subsubsection.A.6.1.2}%
-\contentsline {paragraph}{\numberline {A.6.1.2.1}引数が整数の場合}{98}{paragraph.A.6.1.2.1}%
-\contentsline {paragraph}{\numberline {A.6.1.2.2}引数が文字の場合}{98}{paragraph.A.6.1.2.2}%
-\contentsline {subsubsection}{\numberline {A.6.1.3}ifelse}{99}{subsubsection.A.6.1.3}%
-\contentsline {subsection}{\numberline {A.6.2}繰り返し}{99}{subsection.A.6.2}%
-\contentsline {subsubsection}{\numberline {A.6.2.1}for}{100}{subsubsection.A.6.2.1}%
-\contentsline {subsubsection}{\numberline {A.6.2.2}while, repeat}{100}{subsubsection.A.6.2.2}%
-\contentsline {chapter}{\numberline {B}演習解答例}{101}{appendix.B}%
-\contentsline {section}{演習 1}{101}{section*.47}%
-\contentsline {subsection}{解答例}{101}{section*.48}%
-\contentsline {section}{演習 2}{102}{section*.49}%
-\contentsline {subsection}{解答例}{102}{section*.50}%
-\contentsline {subsection}{補足}{102}{section*.51}%
-\contentsline {chapter}{\numberline {C}Environments 2}{105}{appendix.C}%
-\contentsline {section}{\numberline {C.1}Google Colaboratory}{105}{section.C.1}%
-\contentsline {subsection}{\numberline {C.1.1}Login Google}{106}{subsection.C.1.1}%
-\contentsline {subsection}{\numberline {C.1.2}Open Google Colab}{106}{subsection.C.1.2}%
-\contentsline {subsection}{\numberline {C.1.3}Upload Template}{107}{subsection.C.1.3}%
-\contentsline {subsection}{\numberline {C.1.4}Run R code}{108}{subsection.C.1.4}%
-\contentsline {subsection}{\numberline {C.1.5}Save File}{109}{subsection.C.1.5}%
-\contentsline {section}{\numberline {C.2}RStudio Cloud}{109}{section.C.2}%
-\contentsline {subsection}{\numberline {C.2.1}Create Project}{110}{subsection.C.2.1}%
-\contentsline {subsection}{\numberline {C.2.2}Install Packages}{111}{subsection.C.2.2}%
-\contentsline {chapter}{\numberline {D}Install R/RStudio}{113}{appendix.D}%
-\contentsline {section}{\numberline {D.1}Install R}{114}{section.D.1}%
-\contentsline {subsection}{\numberline {D.1.1}Windows}{114}{subsection.D.1.1}%
-\contentsline {subsubsection}{\numberline {D.1.1.1}Rtools}{114}{subsubsection.D.1.1.1}%
-\contentsline {subsection}{\numberline {D.1.2}macOS (OS X)}{114}{subsection.D.1.2}%
-\contentsline {subsection}{\numberline {D.1.3}Linux}{115}{subsection.D.1.3}%
-\contentsline {section}{\numberline {D.2}Install RStudio Desktop}{115}{section.D.2}%
-\contentsline {subsection}{\numberline {D.2.1}動作確認}{115}{subsection.D.2.1}%
-\contentsline {section}{\numberline {D.3}Install R packages}{115}{section.D.3}%
-\contentsline {subsection}{\numberline {D.3.1}Linux環境の場合}{116}{subsection.D.3.1}%
-\contentsline {section}{\numberline {D.4}Install Git}{117}{section.D.4}%
-\contentsline {subsection}{\numberline {D.4.1}Git}{117}{subsection.D.4.1}%
-\contentsline {subsection}{\numberline {D.4.2}Git Client}{117}{subsection.D.4.2}%
-\contentsline {chapter}{\numberline {E}RStudio Server}{119}{appendix.E}%
-\contentsline {section}{\numberline {E.1}Setup RStudio Sever with Docker}{120}{section.E.1}%
-\contentsline {subsection}{\numberline {E.1.1}Enable Hyper-V (Windows Only)}{120}{subsection.E.1.1}%
-\contentsline {subsection}{\numberline {E.1.2}Download and Install Docker Desktop}{120}{subsection.E.1.2}%
-\contentsline {subsection}{\numberline {E.1.3}Download Docker Image}{120}{subsection.E.1.3}%
-\contentsline {subsection}{\numberline {E.1.4}Run Container}{121}{subsection.E.1.4}%
-\contentsline {chapter}{\numberline {F}RStudio IDE}{123}{appendix.F}%
-\contentsline {section}{\numberline {F.1}Overview}{124}{section.F.1}%
-\contentsline {section}{\numberline {F.2}Keyboard Shortcuts}{126}{section.F.2}%
-\contentsline {section}{\numberline {F.3}Writing R code}{126}{section.F.3}%
-\contentsline {section}{\numberline {F.4}Global Options}{129}{section.F.4}%
-\contentsline {subsection}{\numberline {F.4.1}General}{129}{subsection.F.4.1}%
-\contentsline {subsection}{\numberline {F.4.2}Code}{130}{subsection.F.4.2}%
-\contentsline {subsection}{\numberline {F.4.3}Appearance}{130}{subsection.F.4.3}%
-\contentsline {subsection}{\numberline {F.4.4}Pane Layout}{131}{subsection.F.4.4}%
-\contentsline {subsection}{\numberline {F.4.5}Packages}{131}{subsection.F.4.5}%
-\contentsline {subsection}{\numberline {F.4.6}R Markdown}{132}{subsection.F.4.6}%
-\contentsline {subsection}{\numberline {F.4.7}Sweave}{132}{subsection.F.4.7}%
-\contentsline {subsection}{\numberline {F.4.8}Spelling}{133}{subsection.F.4.8}%
-\contentsline {subsection}{\numberline {F.4.9}Git/SVN}{133}{subsection.F.4.9}%
-\contentsline {subsection}{\numberline {F.4.10}Publishing}{133}{subsection.F.4.10}%
-\contentsline {subsection}{\numberline {F.4.11}Terminal}{133}{subsection.F.4.11}%
-\contentsline {section}{\numberline {F.5}Project Options}{133}{section.F.5}%
-\contentsline {chapter}{\numberline {G}Cloud IDE}{135}{appendix.G}%
-\contentsline {section}{\numberline {G.1}RStudio Cloud GA}{135}{section.G.1}%
-\contentsline {section}{\numberline {G.2}Exploratory}{136}{section.G.2}%
-\contentsline {section}{\numberline {G.3}binder}{137}{section.G.3}%
+\contentsline {chapter}{\numberline {A}R Basics}{77}{appendix.A}%
+\contentsline {section}{\numberline {A.1}基本的な演算}{78}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}算術演算}{78}{subsection.A.1.1}%
+\contentsline {subsection}{\numberline {A.1.2}代入}{79}{subsection.A.1.2}%
+\contentsline {subsection}{\numberline {A.1.3}代入結果の確認}{79}{subsection.A.1.3}%
+\contentsline {subsection}{\numberline {A.1.4}合算}{80}{subsection.A.1.4}%
+\contentsline {subsection}{\numberline {A.1.5}平均}{80}{subsection.A.1.5}%
+\contentsline {subsection}{\numberline {A.1.6}変数の上書き}{80}{subsection.A.1.6}%
+\contentsline {section}{\numberline {A.2}変数}{81}{section.A.2}%
+\contentsline {subsection}{\numberline {A.2.1}予約語}{81}{subsection.A.2.1}%
+\contentsline {subsection}{\numberline {A.2.2}データ型}{81}{subsection.A.2.2}%
+\contentsline {subsection}{\numberline {A.2.3}変数型}{82}{subsection.A.2.3}%
+\contentsline {subsubsection}{\numberline {A.2.3.1}ベクトル型}{82}{subsubsection.A.2.3.1}%
+\contentsline {subsubsection}{\numberline {A.2.3.2}因子型}{83}{subsubsection.A.2.3.2}%
+\contentsline {subsubsection}{\numberline {A.2.3.3}マトリクス型}{84}{subsubsection.A.2.3.3}%
+\contentsline {subsubsection}{\numberline {A.2.3.4}アレイ型}{85}{subsubsection.A.2.3.4}%
+\contentsline {subsubsection}{\numberline {A.2.3.5}データフレーム型}{85}{subsubsection.A.2.3.5}%
+\contentsline {subsubsection}{\numberline {A.2.3.6}リスト型}{87}{subsubsection.A.2.3.6}%
+\contentsline {section}{\numberline {A.3}定数}{88}{section.A.3}%
+\contentsline {subsection}{\numberline {A.3.1}\texttt {NA}の型}{88}{subsection.A.3.1}%
+\contentsline {section}{\numberline {A.4}検査・変換}{89}{section.A.4}%
+\contentsline {section}{\numberline {A.5}演算子}{89}{section.A.5}%
+\contentsline {subsection}{\numberline {A.5.1}参照演算子}{90}{subsection.A.5.1}%
+\contentsline {subsubsection}{\numberline {A.5.1.1}\texttt {{[}}演算子}{90}{subsubsection.A.5.1.1}%
+\contentsline {subsubsection}{\numberline {A.5.1.2}\texttt {\$}演算子}{92}{subsubsection.A.5.1.2}%
+\contentsline {subsection}{\numberline {A.5.2}単項演算子}{94}{subsection.A.5.2}%
+\contentsline {subsection}{\numberline {A.5.3}二項演算子}{95}{subsection.A.5.3}%
+\contentsline {subsubsection}{\numberline {A.5.3.1}算術演算子}{95}{subsubsection.A.5.3.1}%
+\contentsline {subsubsection}{\numberline {A.5.3.2}比較演算子}{96}{subsubsection.A.5.3.2}%
+\contentsline {subsubsection}{\numberline {A.5.3.3}論理演算子}{97}{subsubsection.A.5.3.3}%
+\contentsline {subsection}{\numberline {A.5.4}特殊演算子}{97}{subsection.A.5.4}%
+\contentsline {subsection}{\numberline {A.5.5}優先順位}{98}{subsection.A.5.5}%
+\contentsline {section}{\numberline {A.6}制御文}{98}{section.A.6}%
+\contentsline {subsection}{\numberline {A.6.1}条件分岐}{98}{subsection.A.6.1}%
+\contentsline {subsubsection}{\numberline {A.6.1.1}if, else}{99}{subsubsection.A.6.1.1}%
+\contentsline {subsubsection}{\numberline {A.6.1.2}switch}{100}{subsubsection.A.6.1.2}%
+\contentsline {paragraph}{\numberline {A.6.1.2.1}引数が整数の場合}{100}{paragraph.A.6.1.2.1}%
+\contentsline {paragraph}{\numberline {A.6.1.2.2}引数が文字の場合}{100}{paragraph.A.6.1.2.2}%
+\contentsline {subsubsection}{\numberline {A.6.1.3}ifelse}{101}{subsubsection.A.6.1.3}%
+\contentsline {subsection}{\numberline {A.6.2}繰り返し}{101}{subsection.A.6.2}%
+\contentsline {subsubsection}{\numberline {A.6.2.1}for}{102}{subsubsection.A.6.2.1}%
+\contentsline {subsubsection}{\numberline {A.6.2.2}while, repeat}{102}{subsubsection.A.6.2.2}%
+\contentsline {chapter}{\numberline {B}演習解答例}{103}{appendix.B}%
+\contentsline {section}{演習 1}{103}{section*.47}%
+\contentsline {subsection}{解答例}{103}{section*.48}%
+\contentsline {section}{演習 2}{104}{section*.49}%
+\contentsline {subsection}{解答例}{104}{section*.50}%
+\contentsline {subsection}{補足}{104}{section*.51}%
+\contentsline {chapter}{\numberline {C}Environments 2}{107}{appendix.C}%
+\contentsline {section}{\numberline {C.1}Google Colaboratory}{107}{section.C.1}%
+\contentsline {subsection}{\numberline {C.1.1}Login Google}{108}{subsection.C.1.1}%
+\contentsline {subsection}{\numberline {C.1.2}Open Google Colab}{108}{subsection.C.1.2}%
+\contentsline {subsection}{\numberline {C.1.3}Upload Template}{109}{subsection.C.1.3}%
+\contentsline {subsection}{\numberline {C.1.4}Run R code}{110}{subsection.C.1.4}%
+\contentsline {subsection}{\numberline {C.1.5}Save File}{111}{subsection.C.1.5}%
+\contentsline {section}{\numberline {C.2}RStudio Cloud}{111}{section.C.2}%
+\contentsline {subsection}{\numberline {C.2.1}Create Project}{112}{subsection.C.2.1}%
+\contentsline {subsection}{\numberline {C.2.2}Install Packages}{113}{subsection.C.2.2}%
+\contentsline {chapter}{\numberline {D}Install R/RStudio}{115}{appendix.D}%
+\contentsline {section}{\numberline {D.1}Install R}{116}{section.D.1}%
+\contentsline {subsection}{\numberline {D.1.1}Windows}{116}{subsection.D.1.1}%
+\contentsline {subsubsection}{\numberline {D.1.1.1}Rtools}{116}{subsubsection.D.1.1.1}%
+\contentsline {subsection}{\numberline {D.1.2}macOS (OS X)}{116}{subsection.D.1.2}%
+\contentsline {subsection}{\numberline {D.1.3}Linux}{117}{subsection.D.1.3}%
+\contentsline {section}{\numberline {D.2}Install RStudio Desktop}{117}{section.D.2}%
+\contentsline {subsection}{\numberline {D.2.1}動作確認}{117}{subsection.D.2.1}%
+\contentsline {section}{\numberline {D.3}Install R packages}{117}{section.D.3}%
+\contentsline {subsection}{\numberline {D.3.1}Linux環境の場合}{118}{subsection.D.3.1}%
+\contentsline {section}{\numberline {D.4}Install Git}{119}{section.D.4}%
+\contentsline {subsection}{\numberline {D.4.1}Git}{119}{subsection.D.4.1}%
+\contentsline {subsection}{\numberline {D.4.2}Git Client}{119}{subsection.D.4.2}%
+\contentsline {chapter}{\numberline {E}RStudio Server}{121}{appendix.E}%
+\contentsline {section}{\numberline {E.1}Setup RStudio Sever with Docker}{122}{section.E.1}%
+\contentsline {subsection}{\numberline {E.1.1}Enable Hyper-V (Windows Only)}{122}{subsection.E.1.1}%
+\contentsline {subsection}{\numberline {E.1.2}Download and Install Docker Desktop}{122}{subsection.E.1.2}%
+\contentsline {subsection}{\numberline {E.1.3}Download Docker Image}{122}{subsection.E.1.3}%
+\contentsline {subsection}{\numberline {E.1.4}Run Container}{123}{subsection.E.1.4}%
+\contentsline {chapter}{\numberline {F}RStudio IDE}{125}{appendix.F}%
+\contentsline {section}{\numberline {F.1}Overview}{126}{section.F.1}%
+\contentsline {section}{\numberline {F.2}Keyboard Shortcuts}{128}{section.F.2}%
+\contentsline {section}{\numberline {F.3}Writing R code}{128}{section.F.3}%
+\contentsline {section}{\numberline {F.4}Global Options}{131}{section.F.4}%
+\contentsline {subsection}{\numberline {F.4.1}General}{131}{subsection.F.4.1}%
+\contentsline {subsection}{\numberline {F.4.2}Code}{132}{subsection.F.4.2}%
+\contentsline {subsection}{\numberline {F.4.3}Appearance}{132}{subsection.F.4.3}%
+\contentsline {subsection}{\numberline {F.4.4}Pane Layout}{133}{subsection.F.4.4}%
+\contentsline {subsection}{\numberline {F.4.5}Packages}{133}{subsection.F.4.5}%
+\contentsline {subsection}{\numberline {F.4.6}R Markdown}{134}{subsection.F.4.6}%
+\contentsline {subsection}{\numberline {F.4.7}Sweave}{134}{subsection.F.4.7}%
+\contentsline {subsection}{\numberline {F.4.8}Spelling}{135}{subsection.F.4.8}%
+\contentsline {subsection}{\numberline {F.4.9}Git/SVN}{135}{subsection.F.4.9}%
+\contentsline {subsection}{\numberline {F.4.10}Publishing}{135}{subsection.F.4.10}%
+\contentsline {subsection}{\numberline {F.4.11}Terminal}{135}{subsection.F.4.11}%
+\contentsline {section}{\numberline {F.5}Project Options}{135}{section.F.5}%
+\contentsline {chapter}{\numberline {G}Cloud IDE}{137}{appendix.G}%
+\contentsline {section}{\numberline {G.1}RStudio Cloud GA}{137}{section.G.1}%
+\contentsline {section}{\numberline {G.2}Exploratory}{138}{section.G.2}%
+\contentsline {section}{\numberline {G.3}binder}{139}{section.G.3}%

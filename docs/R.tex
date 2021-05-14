@@ -158,8 +158,6 @@
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\usepackage[]{natbib}
-\bibliographystyle{plainnat}
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
@@ -190,7 +188,7 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-14}
+\date{2021-05-15}
 
 \begin{document}
 \maketitle
@@ -296,7 +294,7 @@
 \section*{なぜRか？}\label{ux306aux305crux304b}}
 \addcontentsline{toc}{section}{なぜRか？}
 
-　データ分析を行うためには適切な分析ツールが必要不可欠です。\textbf{R}は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。\textbf{R}がデータ分析に向いている理由をまとめているのが\href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business'', R Blogger}です。
+　データ分析を行うためには適切な分析ツールが必要不可欠です。\textbf{R}は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。\textbf{R}がデータ分析に向いている理由をまとめているのが\href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business,'' R Blogger}です。
 
 \begin{quote}
 \begin{enumerate}
@@ -528,7 +526,7 @@ Hadlyの図には前節の図にはない\textbf{Infer}と\textbf{Automate}す�
 \subsection*{Tidy}\label{tidy}}
 \addcontentsline{toc}{subsection}{Tidy}
 
-インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}\citep{R-TidyData}はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}(Wickham 2014)はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
 
 \begin{itemize}
 \tightlist
@@ -585,7 +583,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \caption{Tidyverse Ecosystem}\label{fig:unnamed-chunk-14}
 \end{figure}
 
-ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』\citep{RStartHere}をご覧ください。
+ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』(RStudio, PBC 2021)をご覧ください。
 
 \hypertarget{import-1}{%
 \subsection*{Import}\label{import-1}}
@@ -599,7 +597,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    様々なテキスト形式テーブルを読み込むためのパッケージ\citep{R-readr}
+    様々なテキスト形式テーブルを読み込むためのパッケージ(Wickham and Hester 2020)
   \end{itemize}
 \item
   \textbf{\texttt{readxl}}
@@ -607,7 +605,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Microsoft Excelのファイルを読み込むためのパッケージ\citep{R-readxl}
+    Microsoft Excelのファイルを読み込むためのパッケージ(Wickham and Bryan 2019)
   \end{itemize}
 \item
   \textbf{\texttt{rvest}}
@@ -615,7 +613,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Webスクレイピングのためのパッケージ\citep{R-rvest}
+    Webスクレイピングのためのパッケージ(Wickham 2021b)
   \end{itemize}
 \item
   \textbf{\texttt{googlesheets4}}
@@ -623,7 +621,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Google API v4 経由でスプレッドシートを読み込むためのパッケージ\citep{R-googlesheets4}
+    Google API v4 経由でスプレッドシートを読み込むためのパッケージ(Bryan 2021)
   \end{itemize}
 \item
   \textbf{\texttt{DBI}}
@@ -631,7 +629,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    SQL系の各種データベースと接続するためのパッケージ\citep{R-DBI}
+    SQL系の各種データベースと接続するためのパッケージ(R Special Interest Group on Databases (R-SIG-DB), Wickham, and Müller 2021)
   \end{itemize}
 \end{itemize}
 
@@ -647,7 +645,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Tidy Dataの作成を強力にサポートしてくれるパッケージ\citep{R-tidyr}
+    Tidy Dataの作成を強力にサポートしてくれるパッケージ(Wickham 2021c)
   \end{itemize}
 \item
   \textbf{\texttt{tibble}}
@@ -655,7 +653,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    より厳密にTidy Dataを扱うためのパッケージ\citep{R-tibble}
+    より厳密にTidy Dataを扱うためのパッケージ(Müller and Wickham 2021)
   \end{itemize}
 \item
   \textbf{\texttt{zoo}}
@@ -663,7 +661,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    時系列（TS）データを効率よく扱うためのパッケージ\citep{R-zoo}
+    時系列（TS）データを効率よく扱うためのパッケージ(Zeileis, Grothendieck, and Ryan 2021)
   \end{itemize}
 \end{itemize}
 
@@ -679,7 +677,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    統一された文法で描画が行えるパッケージ\citep{R-ggplot2}
+    統一された文法で描画が行えるパッケージ(Wickham et al. 2020)
   \end{itemize}
 \item
   \textbf{\texttt{htmlwidgets}}
@@ -687,7 +685,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    JavaScriptのウィジェットを利用できるパッケージ\citep{R-htmlwidgets}
+    JavaScriptのウィジェットを利用できるパッケージ(Vaidyanathan et al. 2020)
   \end{itemize}
 \item
   \textbf{\texttt{patchwork}}
@@ -695,7 +693,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    \textbf{\texttt{ggplot2}}オブジェクトをひとつにまとめてレイアウトするためのパッケージ\citep{R-patchwork}
+    \textbf{\texttt{ggplot2}}オブジェクトをひとつにまとめてレイアウトするためのパッケージ(Pedersen 2020)
   \end{itemize}
 \end{itemize}
 
@@ -711,7 +709,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Tidy Dataを様々な方法で操作するためのパッケージ\citep{R-dplyr}
+    Tidy Dataを様々な方法で操作するためのパッケージ(Wickham et al. 2021)
   \end{itemize}
 \item
   \textbf{\texttt{stringr}}
@@ -719,7 +717,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    文字列処理をするためのパッケージ\citep{R-stringr}
+    文字列処理をするためのパッケージ(Wickham 2019)
   \end{itemize}
 \item
   \textbf{\texttt{forcats}}
@@ -727,7 +725,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    因子型を操作するためのパッケージ\citep{R-forcats}
+    因子型を操作するためのパッケージ(Wickham 2021a)
   \end{itemize}
 \item
   \textbf{\texttt{lubridate}}
@@ -735,7 +733,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    日付データを簡単に変換するためのパッケージ\citep{R-lubridate}
+    日付データを簡単に変換するためのパッケージ(Spinu, Grolemund, and Wickham 2021)
   \end{itemize}
 \end{itemize}
 
@@ -751,7 +749,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    各種モデリング結果を整然データにするためのパッケージ\citep{R-broom}
+    各種モデリング結果を整然データにするためのパッケージ(Robinson, Hayes, and Couch 2021)
   \end{itemize}
 \item
   \textbf{\texttt{tidymodels}}
@@ -759,7 +757,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    機械学習を中心としたモデリングフレームワーク\citep{tidymodels2020, R-tidymodels}
+    機械学習を中心としたモデリングフレームワーク(Kuhn and Wickham 2020, 2021)
   \end{itemize}
 \end{itemize}
 
@@ -775,7 +773,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    \textbf{R}のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ\citep{knitr2014, R-knitr}
+    \textbf{R}のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ(Xie 2014, 2021b)
   \end{itemize}
 \item
   \textbf{\texttt{rmarkdown}}
@@ -783,7 +781,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    マークダウン書式を用いてレポートを作成するためのパッケージ\citep{R-rmarkdown}
+    マークダウン書式を用いてレポートを作成するためのパッケージ(Allaire et al. 2021)
   \end{itemize}
 \item
   \textbf{\texttt{bookdown}}
@@ -791,7 +789,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    書籍や長いドキュメンを作成するためのパッケージ\citep{bookdown2016, R-bookdown}
+    書籍や長いドキュメンを作成するためのパッケージ(Xie 2016, 2021a)
   \end{itemize}
 \item
   \textbf{\texttt{shiny}}
@@ -799,7 +797,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    インタラクティブなWebアプリケーションを作成するためのパッケージ\citep{R-shiny}
+    インタラクティブなWebアプリケーションを作成するためのパッケージ(Chang et al. 2021)
   \end{itemize}
 \end{itemize}
 
@@ -817,7 +815,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    パイプ演算子（\texttt{\%\textgreater{}\%}）によるスムースな処理を実現するパッケージ\citep{R-magrittr}
+    パイプ演算子（\texttt{\%\textgreater{}\%}）によるスムースな処理を実現するパッケージ(Bache and Wickham 2020)
   \end{itemize}
 \item
   \textbf{\texttt{purrr}}
@@ -825,7 +823,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    関数型プログラミングによる反復処理を提供するパッケージ\citep{R-purrr}
+    関数型プログラミングによる反復処理を提供するパッケージ(Henry and Wickham 2020)
   \end{itemize}
 \end{itemize}
 
@@ -950,7 +948,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{rux306eux57faux672c}{%
 \chapter{Rの基本}\label{rux306eux57faux672c}}
 
-\textbf{R}の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から\textbf{R}のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』\citep{ToukeinoHanashi}や『統計解析のはなし【改訂版】』\citep{ToukeiKaisekinoHanashi}を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。 なお、基本文法については\protect\hyperlink{Appendix-RBasics}{Appendix R Basics}をご覧ください。
+\textbf{R}の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から\textbf{R}のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』(大村 2020)や『統計解析のはなし【改訂版】』(大平 2006)を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。 なお、基本文法については\protect\hyperlink{Appendix-RBasics}{Appendix R Basics}をご覧ください。
 
 \hypertarget{ux8981ux7d04ux7d71ux8a08ux91cf}{%
 \section{要約統計量}\label{ux8981ux7d04ux7d71ux8a08ux91cf}}
@@ -1535,7 +1533,97 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \addcontentsline{toc}{chapter}{References}
 
 \hypertarget{refs}{}
-\begin{CSLReferences}{0}{0}
+\begin{CSLReferences}{1}{0}
+\leavevmode\hypertarget{ref-R-rmarkdown}{}%
+Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2021. \emph{Rmarkdown: Dynamic Documents for r}. \url{https://CRAN.R-project.org/package=rmarkdown}.
+
+\leavevmode\hypertarget{ref-R-magrittr}{}%
+Bache, Stefan Milton, and Hadley Wickham. 2020. \emph{Magrittr: A Forward-Pipe Operator for r}. \url{https://CRAN.R-project.org/package=magrittr}.
+
+\leavevmode\hypertarget{ref-R-googlesheets4}{}%
+Bryan, Jennifer. 2021. \emph{Googlesheets4: Access Google Sheets Using the Sheets API V4}. \url{https://github.com/tidyverse/googlesheets4}.
+
+\leavevmode\hypertarget{ref-R-shiny}{}%
+Chang, Winston, Joe Cheng, JJ Allaire, Carson Sievert, Barret Schloerke, Yihui Xie, Jeff Allen, Jonathan McPherson, Alan Dipert, and Barbara Borges. 2021. \emph{Shiny: Web Application Framework for r}. \url{https://shiny.rstudio.com/}.
+
+\leavevmode\hypertarget{ref-R-purrr}{}%
+Henry, Lionel, and Hadley Wickham. 2020. \emph{Purrr: Functional Programming Tools}. \url{https://CRAN.R-project.org/package=purrr}.
+
+\leavevmode\hypertarget{ref-tidymodels2020}{}%
+Kuhn, Max, and Hadley Wickham. 2020. \emph{Tidymodels: A Collection of Packages for Modeling and Machine Learning Using Tidyverse Principles.} \url{https://www.tidymodels.org}.
+
+\leavevmode\hypertarget{ref-R-tidymodels}{}%
+---------. 2021. \emph{Tidymodels: Easily Install and Load the Tidymodels Packages}. \url{https://CRAN.R-project.org/package=tidymodels}.
+
+\leavevmode\hypertarget{ref-R-tibble}{}%
+Müller, Kirill, and Hadley Wickham. 2021. \emph{Tibble: Simple Data Frames}. \url{https://CRAN.R-project.org/package=tibble}.
+
+\leavevmode\hypertarget{ref-R-patchwork}{}%
+Pedersen, Thomas Lin. 2020. \emph{Patchwork: The Composer of Plots}. \url{https://CRAN.R-project.org/package=patchwork}.
+
+\leavevmode\hypertarget{ref-R-DBI}{}%
+R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, and Kirill Müller. 2021. \emph{DBI: R Database Interface}. \url{https://CRAN.R-project.org/package=DBI}.
+
+\leavevmode\hypertarget{ref-R-broom}{}%
+Robinson, David, Alex Hayes, and Simon Couch. 2021. \emph{Broom: Convert Statistical Objects into Tidy Tibbles}. \url{https://CRAN.R-project.org/package=broom}.
+
+\leavevmode\hypertarget{ref-RStartHere}{}%
+RStudio, PBC. 2021. \emph{RStartHere}. \url{https://github.com/rstudio/RStartHere}.
+
+\leavevmode\hypertarget{ref-R-lubridate}{}%
+Spinu, Vitalie, Garrett Grolemund, and Hadley Wickham. 2021. \emph{Lubridate: Make Dealing with Dates a Little Easier}. \url{https://CRAN.R-project.org/package=lubridate}.
+
+\leavevmode\hypertarget{ref-R-htmlwidgets}{}%
+Vaidyanathan, Ramnath, Yihui Xie, JJ Allaire, Joe Cheng, Carson Sievert, and Kenton Russell. 2020. \emph{Htmlwidgets: HTML Widgets for r}. \url{https://github.com/ramnathv/htmlwidgets}.
+
+\leavevmode\hypertarget{ref-R-TidyData}{}%
+Wickham, Hadley. 2014. {``Tidy Data.''} \emph{Journal of Statistical Software} 59. \url{https://www.jstatsoft.org/article/view/v059i10}.
+
+\leavevmode\hypertarget{ref-R-stringr}{}%
+---------. 2019. \emph{Stringr: Simple, Consistent Wrappers for Common String Operations}. \url{https://CRAN.R-project.org/package=stringr}.
+
+\leavevmode\hypertarget{ref-R-forcats}{}%
+---------. 2021a. \emph{Forcats: Tools for Working with Categorical Variables (Factors)}. \url{https://CRAN.R-project.org/package=forcats}.
+
+\leavevmode\hypertarget{ref-R-rvest}{}%
+---------. 2021b. \emph{Rvest: Easily Harvest (Scrape) Web Pages}. \url{https://CRAN.R-project.org/package=rvest}.
+
+\leavevmode\hypertarget{ref-R-tidyr}{}%
+---------. 2021c. \emph{Tidyr: Tidy Messy Data}. \url{https://CRAN.R-project.org/package=tidyr}.
+
+\leavevmode\hypertarget{ref-R-readxl}{}%
+Wickham, Hadley, and Jennifer Bryan. 2019. \emph{Readxl: Read Excel Files}. \url{https://CRAN.R-project.org/package=readxl}.
+
+\leavevmode\hypertarget{ref-R-ggplot2}{}%
+Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2020. \emph{Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics}. \url{https://CRAN.R-project.org/package=ggplot2}.
+
+\leavevmode\hypertarget{ref-R-dplyr}{}%
+Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2021. \emph{Dplyr: A Grammar of Data Manipulation}. \url{https://CRAN.R-project.org/package=dplyr}.
+
+\leavevmode\hypertarget{ref-R-readr}{}%
+Wickham, Hadley, and Jim Hester. 2020. \emph{Readr: Read Rectangular Text Data}. \url{https://CRAN.R-project.org/package=readr}.
+
+\leavevmode\hypertarget{ref-knitr2014}{}%
+Xie, Yihui. 2014. {``Knitr: A Comprehensive Tool for Reproducible Research in {R}.''} In \emph{Implementing Reproducible Computational Research}, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. Chapman; Hall/CRC. \url{http://www.crcpress.com/product/isbn/9781466561595}.
+
+\leavevmode\hypertarget{ref-bookdown2016}{}%
+---------. 2016. \emph{Bookdown: Authoring Books and Technical Documents with {R} Markdown}. Boca Raton, Florida: Chapman; Hall/CRC. \url{https://bookdown.org/yihui/bookdown}.
+
+\leavevmode\hypertarget{ref-R-bookdown}{}%
+---------. 2021a. \emph{Bookdown: Authoring Books and Technical Documents with r Markdown}. \url{https://CRAN.R-project.org/package=bookdown}.
+
+\leavevmode\hypertarget{ref-R-knitr}{}%
+---------. 2021b. \emph{Knitr: A General-Purpose Package for Dynamic Report Generation in r}. \url{https://yihui.org/knitr/}.
+
+\leavevmode\hypertarget{ref-R-zoo}{}%
+Zeileis, Achim, Gabor Grothendieck, and Jeffrey A. Ryan. 2021. \emph{Zoo: S3 Infrastructure for Regular and Irregular Time Series (z's Ordered Observations)}. \url{https://zoo.R-Forge.R-project.org/}.
+
+\leavevmode\hypertarget{ref-ToukeiKaisekinoHanashi}{}%
+大平. 2006. \emph{『統計解析のはなし』}. 改訂版. 日科技連出版. \url{https://www.juse-p.co.jp/products/view/196}.
+
+\leavevmode\hypertarget{ref-ToukeinoHanashi}{}%
+大村. 2020. \emph{『統計のはなし』}. 改訂版. 日科技連出版. \url{https://www.juse-p.co.jp/products/view/191}.
+
 \end{CSLReferences}
 
 See Bibliography page
@@ -4409,7 +4497,5 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 　Google Colab や RStudio Cloud・Exploratoy などと異なりアカウントを取得する必要はありませんが、専用の環境を構築するわけではなく、あくまでも一時的な試用環境である点に注意してください。継続的に使える環境が必要な場合は ローカルに環境を構築するか RStudio Cloud のようなクラウドサービスを利用してください。
 
 　
-
-  \bibliography{./bib/references.bib,./bib/packages.bib}
 
 \end{document}

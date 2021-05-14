@@ -9,11 +9,11 @@ github-repo: k-metrics/bookdown
 # LaTeX関連の設定はベースとなるRmdに記述しないと正しく認識されません
 always_allow_html: true  # 一種の呪文
 bibliography: [./bib/references.bib, ./bib/packages.bib]
+citation_package: natbib
 colorlinks: true         # ハイパーリンクを色分けする
 # documentclass: krantz
 fig_crop: false
 fontsize: 12pt           # 本文のフォントサイズ
-# highlight: tango       # default tango pygments kate haddoc
 linestretch: 1.1         # 行間の指定
 links-as-notes: true     # ハイパーリンク先を脚注に記載
 ## 日本語とtufte, kableExtraを使うために必要なTeXパッケージ群

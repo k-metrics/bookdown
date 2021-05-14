@@ -1,7 +1,7 @@
 bookdown::gitbook:
   css: style.css
   # df_print: paged
-  # ダークテーマでも読みやすいハイライト
+  # ダークテーマでも読みやすいハイライト設定
   highlight: haddock       # default tango pygments kate haddock
   lib_dir: assets
   md_extensions: -ascii_identifiers
@@ -26,10 +26,10 @@ bookdown::gitbook:
 bookdown::epub_book:
   epub_version: epub3
   md_extensions: -ascii_identifiers
-  pandoc_args: [--mathml]
+つ  pandoc_args: [--mathml]
 
 bookdown::pdf_book:
-  citation_package: natbib
+# base_format: rmarkdown::pdf_document
   keep_tex: true
   highlight: default       # tango pygments kate haddock
   highlight_bw: false
@@ -40,5 +40,5 @@ bookdown::pdf_book:
   quote_footer: ["\\VA{", "}{}"]
   template: null
   toc_appendix: true
+# toc_unnumbered: true
   toc_depth: 3
-# toc_unnumbered: no
