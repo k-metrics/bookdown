@@ -28,7 +28,7 @@
 キーボードのキー     | モノフォントで[]付き                | [`Ctrl`]+[`S`]
 数式                 | \LaTeX 数式（math mode）            | $y = ax^2 + b$
 製品サービス名など   | 太字                                | **Google Colab**
-参考文献・資料^[PDF形式のみ、[]内は文書内ハイパーリンク]    | [著者・作者, 作成年]                | [Wickham, 2021]
+参考文献・資料^[PDF形式のみ表示、()内は文書内ハイパーリンク]    | (著者・作者, 作成年)                | (Wickham, 2021)
 
 <!-- \newpage -->
 
@@ -199,7 +199,7 @@ Data Science Workflowを**R**で実現するための手段がHadley Wickhamが�
 knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
 ```
 
-ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』[@RStartHere]をご覧ください。
+ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』[@RStartHere:GitHub]をご覧ください。
 
 ### Import {.unnumbered}
 

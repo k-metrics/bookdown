@@ -188,14 +188,14 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-15}
+\date{2021-05-17}
 
 \begin{document}
 \maketitle
 
 {
 \hypersetup{linkcolor=}
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{3}
 \tableofcontents
 }
 \setstretch{1.1}
@@ -286,7 +286,7 @@
 キーボードのキー & モノフォントで{[}{]}付き & {[}\texttt{Ctrl}{]}+{[}\texttt{S}{]} \\
 数式 & \LaTeX 数式（math mode） & \(y = ax^2 + b\) \\
 製品サービス名など & 太字 & \textbf{Google Colab} \\
-参考文献・資料\footnote{PDF形式のみ、{[}{]}内は文書内ハイパーリンク} & {[}著者・作者, 作成年{]} & {[}Wickham, 2021{]} \\
+参考文献・資料\footnote{PDF形式のみ表示、()内は文書内ハイパーリンク} & (著者・作者, 作成年) & (Wickham, 2021) \\
 \bottomrule
 \end{longtable}
 
@@ -526,7 +526,7 @@ Hadlyの図には前節の図にはない\textbf{Infer}と\textbf{Automate}す�
 \subsection*{Tidy}\label{tidy}}
 \addcontentsline{toc}{subsection}{Tidy}
 
-インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}(Wickham 2014)はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}(\protect\hyperlink{ref-R-TidyData}{Wickham 2014})はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
 
 \begin{itemize}
 \tightlist
@@ -583,7 +583,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \caption{Tidyverse Ecosystem}\label{fig:unnamed-chunk-14}
 \end{figure}
 
-ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』(RStudio, PBC 2021)をご覧ください。
+ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』(\protect\hyperlink{ref-RStartHere:GitHub}{RStudio, PBC 2021})をご覧ください。
 
 \hypertarget{import-1}{%
 \subsection*{Import}\label{import-1}}
@@ -597,7 +597,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    様々なテキスト形式テーブルを読み込むためのパッケージ(Wickham and Hester 2020)
+    様々なテキスト形式テーブルを読み込むためのパッケージ(\protect\hyperlink{ref-R-readr}{Wickham and Hester 2020})
   \end{itemize}
 \item
   \textbf{\texttt{readxl}}
@@ -605,7 +605,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Microsoft Excelのファイルを読み込むためのパッケージ(Wickham and Bryan 2019)
+    Microsoft Excelのファイルを読み込むためのパッケージ(\protect\hyperlink{ref-R-readxl}{Wickham and Bryan 2019})
   \end{itemize}
 \item
   \textbf{\texttt{rvest}}
@@ -613,7 +613,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Webスクレイピングのためのパッケージ(Wickham 2021b)
+    Webスクレイピングのためのパッケージ(\protect\hyperlink{ref-R-rvest}{Wickham 2021b})
   \end{itemize}
 \item
   \textbf{\texttt{googlesheets4}}
@@ -621,7 +621,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Google API v4 経由でスプレッドシートを読み込むためのパッケージ(Bryan 2021)
+    Google API v4 経由でスプレッドシートを読み込むためのパッケージ(\protect\hyperlink{ref-R-googlesheets4}{Bryan 2021})
   \end{itemize}
 \item
   \textbf{\texttt{DBI}}
@@ -629,7 +629,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    SQL系の各種データベースと接続するためのパッケージ(R Special Interest Group on Databases (R-SIG-DB), Wickham, and Müller 2021)
+    SQL系の各種データベースと接続するためのパッケージ(\protect\hyperlink{ref-R-DBI}{R Special Interest Group on Databases (R-SIG-DB), Wickham, and Müller 2021})
   \end{itemize}
 \end{itemize}
 
@@ -645,7 +645,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Tidy Dataの作成を強力にサポートしてくれるパッケージ(Wickham 2021c)
+    Tidy Dataの作成を強力にサポートしてくれるパッケージ(\protect\hyperlink{ref-R-tidyr}{Wickham 2021c})
   \end{itemize}
 \item
   \textbf{\texttt{tibble}}
@@ -653,7 +653,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    より厳密にTidy Dataを扱うためのパッケージ(Müller and Wickham 2021)
+    より厳密にTidy Dataを扱うためのパッケージ(\protect\hyperlink{ref-R-tibble}{Müller and Wickham 2021})
   \end{itemize}
 \item
   \textbf{\texttt{zoo}}
@@ -661,7 +661,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    時系列（TS）データを効率よく扱うためのパッケージ(Zeileis, Grothendieck, and Ryan 2021)
+    時系列（TS）データを効率よく扱うためのパッケージ(\protect\hyperlink{ref-R-zoo}{Zeileis, Grothendieck, and Ryan 2021})
   \end{itemize}
 \end{itemize}
 
@@ -677,7 +677,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    統一された文法で描画が行えるパッケージ(Wickham et al. 2020)
+    統一された文法で描画が行えるパッケージ(\protect\hyperlink{ref-R-ggplot2}{Wickham et al. 2020})
   \end{itemize}
 \item
   \textbf{\texttt{htmlwidgets}}
@@ -685,7 +685,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    JavaScriptのウィジェットを利用できるパッケージ(Vaidyanathan et al. 2020)
+    JavaScriptのウィジェットを利用できるパッケージ(\protect\hyperlink{ref-R-htmlwidgets}{Vaidyanathan et al. 2020})
   \end{itemize}
 \item
   \textbf{\texttt{patchwork}}
@@ -693,7 +693,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    \textbf{\texttt{ggplot2}}オブジェクトをひとつにまとめてレイアウトするためのパッケージ(Pedersen 2020)
+    \textbf{\texttt{ggplot2}}オブジェクトをひとつにまとめてレイアウトするためのパッケージ(\protect\hyperlink{ref-R-patchwork}{Pedersen 2020})
   \end{itemize}
 \end{itemize}
 
@@ -709,7 +709,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Tidy Dataを様々な方法で操作するためのパッケージ(Wickham et al. 2021)
+    Tidy Dataを様々な方法で操作するためのパッケージ(\protect\hyperlink{ref-R-dplyr}{Wickham et al. 2021})
   \end{itemize}
 \item
   \textbf{\texttt{stringr}}
@@ -717,7 +717,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    文字列処理をするためのパッケージ(Wickham 2019)
+    文字列処理をするためのパッケージ(\protect\hyperlink{ref-R-stringr}{Wickham 2019})
   \end{itemize}
 \item
   \textbf{\texttt{forcats}}
@@ -725,7 +725,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    因子型を操作するためのパッケージ(Wickham 2021a)
+    因子型を操作するためのパッケージ(\protect\hyperlink{ref-R-forcats}{Wickham 2021a})
   \end{itemize}
 \item
   \textbf{\texttt{lubridate}}
@@ -733,7 +733,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    日付データを簡単に変換するためのパッケージ(Spinu, Grolemund, and Wickham 2021)
+    日付データを簡単に変換するためのパッケージ(\protect\hyperlink{ref-R-lubridate}{Spinu, Grolemund, and Wickham 2021})
   \end{itemize}
 \end{itemize}
 
@@ -749,7 +749,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    各種モデリング結果を整然データにするためのパッケージ(Robinson, Hayes, and Couch 2021)
+    各種モデリング結果を整然データにするためのパッケージ(\protect\hyperlink{ref-R-broom}{Robinson, Hayes, and Couch 2021})
   \end{itemize}
 \item
   \textbf{\texttt{tidymodels}}
@@ -757,7 +757,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    機械学習を中心としたモデリングフレームワーク(Kuhn and Wickham 2020, 2021)
+    機械学習を中心としたモデリングフレームワーク(\protect\hyperlink{ref-tidymodels2020}{Kuhn and Wickham 2020}, \protect\hyperlink{ref-R-tidymodels}{2021})
   \end{itemize}
 \end{itemize}
 
@@ -773,7 +773,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    \textbf{R}のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ(Xie 2014, 2021b)
+    \textbf{R}のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ(\protect\hyperlink{ref-knitr2014}{Xie 2014}, \protect\hyperlink{ref-R-knitr}{2021b})
   \end{itemize}
 \item
   \textbf{\texttt{rmarkdown}}
@@ -781,7 +781,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    マークダウン書式を用いてレポートを作成するためのパッケージ(Allaire et al. 2021)
+    マークダウン書式を用いてレポートを作成するためのパッケージ(\protect\hyperlink{ref-R-rmarkdown}{Allaire et al. 2021})
   \end{itemize}
 \item
   \textbf{\texttt{bookdown}}
@@ -789,7 +789,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    書籍や長いドキュメンを作成するためのパッケージ(Xie 2016, 2021a)
+    書籍や長いドキュメンを作成するためのパッケージ(\protect\hyperlink{ref-bookdown2016}{Xie 2016}, \protect\hyperlink{ref-R-bookdown}{2021a})
   \end{itemize}
 \item
   \textbf{\texttt{shiny}}
@@ -797,7 +797,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    インタラクティブなWebアプリケーションを作成するためのパッケージ(Chang et al. 2021)
+    インタラクティブなWebアプリケーションを作成するためのパッケージ(\protect\hyperlink{ref-R-shiny}{Chang et al. 2021})
   \end{itemize}
 \end{itemize}
 
@@ -815,7 +815,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    パイプ演算子（\texttt{\%\textgreater{}\%}）によるスムースな処理を実現するパッケージ(Bache and Wickham 2020)
+    パイプ演算子（\texttt{\%\textgreater{}\%}）によるスムースな処理を実現するパッケージ(\protect\hyperlink{ref-R-magrittr}{Bache and Wickham 2020})
   \end{itemize}
 \item
   \textbf{\texttt{purrr}}
@@ -823,7 +823,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    関数型プログラミングによる反復処理を提供するパッケージ(Henry and Wickham 2020)
+    関数型プログラミングによる反復処理を提供するパッケージ(\protect\hyperlink{ref-R-purrr}{Henry and Wickham 2020})
   \end{itemize}
 \end{itemize}
 
@@ -948,7 +948,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{rux306eux57faux672c}{%
 \chapter{Rの基本}\label{rux306eux57faux672c}}
 
-\textbf{R}の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から\textbf{R}のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』(大村 2020)や『統計解析のはなし【改訂版】』(大平 2006)を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。 なお、基本文法については\protect\hyperlink{Appendix-RBasics}{Appendix R Basics}をご覧ください。
+\textbf{R}の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から\textbf{R}のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』(\protect\hyperlink{ref-ToukeinoHanashi}{大村 2020})や『統計解析のはなし【改訂版】』(\protect\hyperlink{ref-ToukeiKaisekinoHanashi}{大平 2006})を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。 なお、基本文法については\protect\hyperlink{Appendix-RBasics}{Appendix R Basics}をご覧ください。
 
 \hypertarget{ux8981ux7d04ux7d71ux8a08ux91cf}{%
 \section{要約統計量}\label{ux8981ux7d04ux7d71ux8a08ux91cf}}
@@ -1170,34 +1170,38 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 1 9
 \end{verbatim}
 
-この散らばり具合を見るためにデータの個々の値と平均値との差の二乗の算術平均を分散（標本分散）、単位を戻すために分散の平方根をとったものを標準偏差（標本標準偏差）と呼びます。
+散らばり具合を見るためにデータの個々の値と平均値との差の二乗の算術平均を分散（標本分散\(s^2\)）、
 
 \begin{equation}
   s^2 = \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2
+  \label{eq:variance}
 \end{equation}
+
+単位を戻すために分散の平方根をとったものを標準偏差（標本標準偏差\(s\)）と呼びます。
 
 \begin{equation}
   s = \sqrt{s^2} = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2}
 \end{equation}
 
-しかし、\textbf{R}にはこの標本分散（\(s^2\)）を求める関数は用意されていませんが、不偏分散（\(\hat{\sigma}^2\)または\(u^2\)）を求める\texttt{var()}関数が用意されています。
+しかし、\textbf{R}にはこの標本分散（\(s^2\)）を求める関数は用意されていませんが、不偏分散（\(\hat{\sigma}^2\)）を求める\texttt{var()}関数が用意されています。
 
 \begin{equation}
   \hat{\sigma}^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2 = var(x)
+  \label{eq:var}
 \end{equation}
 
-標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）には上の二つの式から以下の関係があることが分かります。
+標本分散（\(s^2\)）の定義式\eqref{eq:variance}と不偏分散（\(\hat{\sigma}^2\)）の定義式\eqref{eq:var}から標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の間には関係があることが分かります。
 
 \begin{equation}
   s^2 = \frac{n - 1}{n}\hat{\sigma}^2
-  \label{eq:variance}
+  \label{eq:variance-var}
 \end{equation}
 
 \hypertarget{ux6f14ux7fd2-1}{%
 \subsubsection*{演習 1}\label{ux6f14ux7fd2-1}}
 \addcontentsline{toc}{subsubsection}{演習 1}
 
-標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の関係式\eqref{eq:variance}を用いて\textbf{R}で以下の二つのデータの標本分散を求めなさい。
+標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の関係式\eqref{eq:variance-var}を用いて\textbf{R}で以下の二つのデータの標本分散を求めなさい。
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1222,8 +1226,58 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ヒント：\texttt{na.rm}オプションを使います
 \end{quote}
 
+\hypertarget{ux9591ux8a71-1}{%
+\subsubsection*{閑話}\label{ux9591ux8a71-1}}
+\addcontentsline{toc}{subsubsection}{閑話}
+
+平均（分布の重心）と分散（分布の広がり）は、歪度（分布の左右非対称度合い）、尖度（分布の峰の尖り度合い）を含めて「モーメントから求められる要約統計量」と言われることがあります。 n個のデータの平均値を
+
+\[\bar{x} = \frac{1}{n}\sum_{i = 1}^{n}x_i\] \begin{equation}
+\end{equation}
+
+とした場合、平均値まわりの\(m\)次の中央モーメント\(\bar{x}_m\)を
+
+\[\bar{x}_m = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^m　　(m = 2, 3, 4)\] \begin{equation}
+\end{equation}
+
+と定義します。\(m = 2\)の場合、
+
+\[\bar{x}_2 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^2 = s^2\] \begin{equation}
+\end{equation}
+
+となりますので、\(\bar{x}_2\)は分散\(s^2\)であることがわかります。\(m = 3\)の場合、
+
+\[\bar{x}_3 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^3\] \begin{equation}
+\end{equation}
+
+となり、これを標準偏差の三乗（\(s^3\)）で割ったもの
+
+\[\gamma_1 = \frac{\bar{x}_3}{s^3}\] \begin{equation}
+\end{equation}
+
+を歪度（\(\gamma_1\)）と呼びます。\(m = 4\)の場合、
+
+\[\bar{x}_4 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^4\] \begin{equation}
+\end{equation}
+
+となり、これを標準偏差の四乗、または、分散の二乗（\(s^4\)）で割ったもの
+
+\begin{equation}
+  \gamma_2 = \frac{\bar{x}_4}{s^4}
+\end{equation}
+
+を尖度（\(\gamma_2\)）と呼びます。
+
+\hypertarget{ux30b3ux30e9ux30e0ux82f1ux8a9e-or-ux30aeux30eaux30b7ux30e3ux8a9e}{%
+\subsubsection*{コラム）英語 or ギリシャ語}\label{ux30b3ux30e9ux30e0ux82f1ux8a9e-or-ux30aeux30eaux30b7ux30e3ux8a9e}}
+\addcontentsline{toc}{subsubsection}{コラム）英語 or ギリシャ語}
+
+統計では様々な統計量を英語で表記する場合とギリシャ語で表記する場合があり混乱しやすいのですが、統計量を英語で表記されている場合は（標本）統計量、ギリシャ語で表記されている場合は母数の推定統計量（推定量）を意味しています。推定量を表記する場合、推定量であることを意味するハット（\(\hat{}\)）という記号をつけて表記します（例えば、平均値は\(\hat{\mu}\)、分散は\(\hat{\sigma}\)と表記）。ハット（\(\hat{}\)）を省略している書籍や資料も散見されますので混乱しないように注意してください。詳しくは『統計的方法のしくみ』(\protect\hyperlink{ref-ToukeitekiHouhounoSikumi:jbook}{永田 1996})の「3. 母数と統計量の区別」を参照してください。
+
 \hypertarget{ux4e2dux592eux5024}{%
 \subsection{中央値}\label{ux4e2dux592eux5024}}
+
+平均値や分散・標準偏差
 
 平均値と並んで比較的よく使われるのが中央値です。中央値はデータの分布が歪んでいる場合に使われることが多いように比較的ロバスト（データの分布に左右されにくい）な統計量です。 中央値
 
@@ -1567,7 +1621,7 @@ R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, and Kirill Mü
 \leavevmode\hypertarget{ref-R-broom}{}%
 Robinson, David, Alex Hayes, and Simon Couch. 2021. \emph{Broom: Convert Statistical Objects into Tidy Tibbles}. \url{https://CRAN.R-project.org/package=broom}.
 
-\leavevmode\hypertarget{ref-RStartHere}{}%
+\leavevmode\hypertarget{ref-RStartHere:GitHub}{}%
 RStudio, PBC. 2021. \emph{RStartHere}. \url{https://github.com/rstudio/RStartHere}.
 
 \leavevmode\hypertarget{ref-R-lubridate}{}%
@@ -1624,9 +1678,10 @@ Zeileis, Achim, Gabor Grothendieck, and Jeffrey A. Ryan. 2021. \emph{Zoo: S3 Inf
 \leavevmode\hypertarget{ref-ToukeinoHanashi}{}%
 大村. 2020. \emph{『統計のはなし』}. 改訂版. 日科技連出版. \url{https://www.juse-p.co.jp/products/view/191}.
 
-\end{CSLReferences}
+\leavevmode\hypertarget{ref-ToukeitekiHouhounoSikumi:jbook}{}%
+永田. 1996. \emph{『統計的方法のしくみ』}. First. 日科技連出版. \url{https://www.juse-p.co.jp/products/view/27}.
 
-See Bibliography page
+\end{CSLReferences}
 
 \hypertarget{Appendix-RBasics}{%
 \chapter{R Basics}\label{Appendix-RBasics}}

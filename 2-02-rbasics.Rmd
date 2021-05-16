@@ -130,32 +130,35 @@ y <- c(1, 1, 5, 9, 9)
 range(y)
 ```
 
-この散らばり具合を見るためにデータの個々の値と平均値との差の二乗の算術平均を分散（標本分散）、単位を戻すために分散の平方根をとったものを標準偏差（標本標準偏差）と呼びます。
+散らばり具合を見るためにデータの個々の値と平均値との差の二乗の算術平均を分散（標本分散$s^2$）、
 
 <!-- $$s^2 = \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2$$￥ -->
 <!-- $$s = \sqrt{s^2} = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2}$$ -->
 \begin{equation}
   s^2 = \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2
+  \label{eq:variance}
 \end{equation}
+
+単位を戻すために分散の平方根をとったものを標準偏差（標本標準偏差$s$）と呼びます。
 
 \begin{equation}
   s = \sqrt{s^2} = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2}
 \end{equation}
 
-しかし、**R**にはこの標本分散（$s^2$）を求める関数は用意されていませんが、不偏分散（$\hat{\sigma}^2$または$u^2$）を求める`var()`関数が用意されています。
+しかし、**R**にはこの標本分散（$s^2$）を求める関数は用意されていませんが、不偏分散（$\hat{\sigma}^2$）を求める`var()`関数が用意されています。
 
 <!-- $$\hat{\sigma}^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2 = var(x)$$ -->
 \begin{equation}
   \hat{\sigma}^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2 = var(x)
+  \label{eq:var}
 \end{equation}
 
-
-標本分散（$s^2$）と不偏分散（$\hat{\sigma}^2$）には上の二つの式から以下の関係があることが分かります。
+標本分散（$s^2$）の定義式`r if (knitr::is_latex_output())'\\@ref(eq:variance)'`と不偏分散（$\hat{\sigma}^2$）の定義式`r if (knitr::is_latex_output())'\\@ref(eq:var)'`から標本分散（$s^2$）と不偏分散（$\hat{\sigma}^2$）の間には関係があることが分かります。
 
 <!-- $$s^2 = \frac{n - 1}{n}\hat{\sigma}^2$$ -->
 \begin{equation}
   s^2 = \frac{n - 1}{n}\hat{\sigma}^2
-  \label{eq:variance}
+  \label{eq:variance-var}
 \end{equation}
 
 <!-- 母分散（$\sigma^2$）これは分からない -->
@@ -166,7 +169,7 @@ range(y)
 
 
 #### 演習 1 {.unnumbered}
-標本分散（$s^2$）と不偏分散（$\hat{\sigma}^2$）の関係式`r if (knitr::is_latex_output())'\\@ref(eq:variance)'`を用いて**R**で以下の二つのデータの標本分散を求めなさい。
+標本分散（$s^2$）と不偏分散（$\hat{\sigma}^2$）の関係式`r if (knitr::is_latex_output())'\\@ref(eq:variance-var)'`を用いて**R**で以下の二つのデータの標本分散を求めなさい。
 
 ```{r}
 x <- c(1, 5, 5, 5, 9)
@@ -184,7 +187,64 @@ z <- c(1, 5, NA, 7, 9)
 > ヒント：`na.rm`オプションを使います
 
 
+#### 閑話 {.unnumbered}
+平均（分布の重心）と分散（分布の広がり）は、歪度（分布の左右非対称度合い）、尖度（分布の峰の尖り度合い）を含めて「モーメントから求められる要約統計量」と言われることがあります。
+n個のデータの平均値を
+
+$$\bar{x} = \frac{1}{n}\sum_{i = 1}^{n}x_i$$
+\begin{equation}
+\end{equation}
+
+とした場合、平均値まわりの$m$次の中央モーメント$\bar{x}_m$を
+
+$$\bar{x}_m = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^m　　(m = 2, 3, 4)$$
+\begin{equation}
+\end{equation}
+
+と定義します。$m = 2$の場合、
+
+$$\bar{x}_2 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^2 = s^2$$
+\begin{equation}
+\end{equation}
+
+となりますので、$\bar{x}_2$は分散$s^2$であることがわかります。$m = 3$の場合、
+
+$$\bar{x}_3 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^3$$
+\begin{equation}
+\end{equation}
+
+となり、これを標準偏差の三乗（$s^3$）で割ったもの
+
+$$\gamma_1 = \frac{\bar{x}_3}{s^3}$$
+\begin{equation}
+\end{equation}
+
+を歪度（$\gamma_1$）と呼びます。$m = 4$の場合、
+
+$$\bar{x}_4 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^4$$
+\begin{equation}
+\end{equation}
+
+となり、これを標準偏差の四乗、または、分散の二乗（$s^4$）で割ったもの
+
+<!-- $$\gamma_2 = \frac{\bar{x}_4}{s^4}$$ -->
+\begin{equation}
+  \gamma_2 = \frac{\bar{x}_4}{s^4}
+\end{equation}
+
+を尖度（$\gamma_2$）と呼びます。
+
+
+
+#### コラム）英語 or ギリシャ語 {.unnumbered}
+<!-- 平均は$\bar{x}$と記すのか$\hat{\mu}$と記すのか？ -->
+統計では様々な統計量を英語で表記する場合とギリシャ語で表記する場合があり混乱しやすいのですが、統計量を英語で表記されている場合は（標本）統計量、ギリシャ語で表記されている場合は母数の推定統計量（推定量）を意味しています。推定量を表記する場合、推定量であることを意味するハット（$\hat{}$）という記号をつけて表記します（例えば、平均値は$\hat{\mu}$、分散は$\hat{\sigma}$と表記）。ハット（$\hat{}$）を省略している書籍や資料も散見されますので混乱しないように注意してください。詳しくは『統計的方法のしくみ』`r if(knitr::is_latex_output())'[@ToukeitekiHouhounoSikumi:jbook]'`の「3. 母数と統計量の区別」を参照してください。
+
+
+
 ### 中央値
+平均値や分散・標準偏差
+
 平均値と並んで比較的よく使われるのが中央値です。中央値はデータの分布が歪んでいる場合に使われることが多いように比較的ロバスト（データの分布に左右されにくい）な統計量です。
 中央値
 ```{r}

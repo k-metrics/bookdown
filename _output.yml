@@ -26,7 +26,7 @@ bookdown::gitbook:
 bookdown::epub_book:
   epub_version: epub3
   md_extensions: -ascii_identifiers
-つ  pandoc_args: [--mathml]
+  pandoc_args: [--mathml]
 
 bookdown::pdf_book:
 # base_format: rmarkdown::pdf_document
@@ -34,11 +34,10 @@ bookdown::pdf_book:
   highlight: default       # tango pygments kate haddock
   highlight_bw: false
   latex_engine: xelatex
-  link-citations: true
   pandoc_args: [--top-level-division=chapter, --wrap=none]
 # pandoc_args: [--top-level-division=chapter]
   quote_footer: ["\\VA{", "}{}"]
   template: null
   toc_appendix: true
 # toc_unnumbered: true
-  toc_depth: 3
+  toc_depth: 4
