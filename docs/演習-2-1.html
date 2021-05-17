@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-14" />
+<meta name="date" content="2021-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -394,41 +394,41 @@ div.csl-indent {
 <div id="演習-2-1" class="section level2 unnumbered">
 <h2>演習 2</h2>
 <p>欠損値を含む以下のデータの平均値（<span class="math inline">\(\bar{x}\)</span>）、不偏分散（<span class="math inline">\(\hat{\sigma}^2\)</span>）ならびに標本分散（<span class="math inline">\(s^2\)</span>）を求めなさい。</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="演習-2-1.html#cb247-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="cn">NA</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb247-1"><a href="演習-2-1.html#cb247-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="cn">NA</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span></code></pre></div>
 <blockquote>
 <p>ヒント：<code>na.rm</code>オプションを使います</p>
 </blockquote>
 <div id="解答例-1" class="section level3 unnumbered">
 <h3>解答例</h3>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="演習-2-1.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(z, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb248-1"><a href="演習-2-1.html#cb248-1"></a><span class="fu">mean</span>(z, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 5.5</code></pre>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="演習-2-1.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(z, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb250-1"><a href="演習-2-1.html#cb250-1"></a><span class="fu">var</span>(z, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 11.66667</code></pre>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="演習-2-1.html#cb252-1" aria-hidden="true" tabindex="-1"></a>variance <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb252-2"><a href="演習-2-1.html#cb252-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(x))</span>
-<span id="cb252-3"><a href="演習-2-1.html#cb252-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> ((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n <span class="sc">*</span> <span class="fu">var</span>(x, <span class="at">na.rm =</span> na.rm))</span>
-<span id="cb252-4"><a href="演習-2-1.html#cb252-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb252-5"><a href="演習-2-1.html#cb252-5" aria-hidden="true" tabindex="-1"></a><span class="fu">variance</span>(z, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb252-1"><a href="演習-2-1.html#cb252-1"></a>variance <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb252-2"><a href="演習-2-1.html#cb252-2"></a>  n <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(x))</span>
+<span id="cb252-3"><a href="演習-2-1.html#cb252-3"></a>  <span class="fu">return</span> ((n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n <span class="sc">*</span> <span class="fu">var</span>(x, <span class="at">na.rm =</span> na.rm))</span>
+<span id="cb252-4"><a href="演習-2-1.html#cb252-4"></a>}</span>
+<span id="cb252-5"><a href="演習-2-1.html#cb252-5"></a><span class="fu">variance</span>(z, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 8.75</code></pre>
 </div>
 <div id="補足" class="section level3 unnumbered">
 <h3>補足</h3>
 <p><code>length()</code>関数は指定したデータの長さ（値の個数）を求める関数です。欠損値（<code>NA</code>）も値としてカウントされます。</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="演習-2-1.html#cb254-1" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb254-1"><a href="演習-2-1.html#cb254-1"></a>z</span></code></pre></div>
 <pre><code>## [1]  1  5 NA  7  9</code></pre>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="演習-2-1.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(z)</span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb256-1"><a href="演習-2-1.html#cb256-1"></a><span class="fu">length</span>(z)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>そこで、値が<code>NA</code>か否かを調べる<code>is.na()</code>関数を用います。</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="演習-2-1.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(z)</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb258-1"><a href="演習-2-1.html#cb258-1"></a><span class="fu">is.na</span>(z)</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE  TRUE FALSE FALSE</code></pre>
 <p>返り値は論理型（<code>TRUE</code>/<code>FALSE</code>）ですが、<code>TRUE</code>は<span class="math inline">\(1\)</span>、<code>FALSE</code>は<span class="math inline">\(0\)</span>と等価であることを利用し、論理演算子の否定（<code>!</code>）と合計を求める<code>sum()</code>関数を組み合わせると<code>NA</code>を除くデータの長さを求めることができます。</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="演習-2-1.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(z))</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb260-1"><a href="演習-2-1.html#cb260-1"></a><span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(z))</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>不偏分散を求める<code>var()</code>関数は<code>NA</code>が含まれるデータを指定する場合は、<code>NA</code>を除外するか否かを指定する<code>na.rm</code>オプションを指定する必要があります。</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="演習-2-1.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(z)</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb262-1"><a href="演習-2-1.html#cb262-1"></a><span class="fu">var</span>(z)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p><code>na.rm = TRUE</code>オプションを指定することで、<code>NA</code>を含むデータの不偏分散を求めることができます。</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="演習-2-1.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(z, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb264-1"><a href="演習-2-1.html#cb264-1"></a><span class="fu">var</span>(z, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 11.66667</code></pre>
 
 <!-- # (PART) Appendix {-} -->

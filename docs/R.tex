@@ -18,7 +18,6 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-  \setmonofont[Scale=0.8]{Source Han Code JP}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -118,28 +117,115 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
+% --- 参考資料 ----------------------------------------------------------------
+% https://github.com/Gedevan-Aleksizde/Japan.R2019/blob/master/latex/preamble.tex
+% https://teastat.blogspot.com/2019/01/bookdown.html
+
+
+% --- Packages ----------------------------------------------------------------
+% 日本語とtufte, kableExtraを使うために必要なTeXパッケージ指定
+%  A4 210mm x 297mm
+%   \usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
+%   \usepackage{indentfirst}   # tinytexのリポジトリには存在しない？
+
 \usepackage[a4paper, total={160mm, 247mm}, left=25mm, top=25mm]{geometry}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{inputenc}
-\usepackage{makecell}
-\usepackage{xcolor}
-\usepackage{amsmath}
-\usepackage{fontawesome5}
+% \usepackage[pdfbox,tombo]{gentombow}  % トンボを設定する場合は有効にする
+\usepackage{ifthen}                     % 条件分岐用 \ifthenelse{条件}{T}{F}
+\usepackage{booktabs}                   % ここからkableExtra用パッケージ
+\usepackage{longtable}                  % 
+\usepackage{array}                      % 
+\usepackage{multirow}                   % 
+\usepackage{wrapfig}                    % 
+\usepackage{float}                      % 
+\usepackage{colortbl}                   % 
+\usepackage{pdflscape}                  % 
+\usepackage{tabu}                       % 
+\usepackage{threeparttable}             % 
+\usepackage{threeparttablex}            % 
+\usepackage[normalem]{ulem}             % 
+\usepackage{inputenc}                   % 
+\usepackage{makecell}                   % 
+\usepackage{xcolor}                     % ここまでkableExtra用
+\usepackage{amsmath}                    % 
+\usepackage{fontawesome5}               % fontawesomeを使うために必要
 \usepackage{subfig}
-\usepackage{xeCJK}
-\usepackage[noto]{zxjafont}
+\usepackage{xeCJK}                      % 以下、日本語フォント用に必要
+\usepackage[noto]{zxjafont}             % Linux環境ではこちを指定
+% \usepackage[haranoaji]{zxjafont}      % Windows環境ではこちらを指定する
 \usepackage{zxjatype}
+\usepackage{pxrubrica}                  % ルビ用
+
+% --- Fonts -------------------------------------------------------------------
+% フォントしては index.html でも可能（pandoc用オプションは index.htmlにて）
+\setmonofont{Source Han Code JP}
+\setjamonofont{Source Han Code JP}
+
+% ## 日本語フォントの扱いについてはzxjafontパッケージの解説を参照のこと
+% # https://mirror.las.iastate.edu/tex-archive/language/japanese/zxjafont/zxjafont.pdf
+% #
+% ## Windows環境ではなぜかNotoフォントが認識されないので源ノシリーズベースの
+% ## 原ノ味フォントかIPAexフォントを利用する（原ノ味はtlmgrでインストール可）
+% # \usepackage[haranoaji]{zxjafont}
+% # \usepackage[ipaex]{zxjafont}
+% #
+% ## Windows環境でNotoフォントを指定したい場合は以下のようにheader-includeで
+% ## 個別に指定する（setCJKxxxfotnの指定は必要？）
+% # \setmainfont{NotoSerifCJKjp-Regular.otf}[BoldFont=NotoSerifCJKjp-Bold.otf]
+% # \setsansfont{NotoSansCJKjp-Regular.otf}[BoldFont=NotoSansCJKjp-Bold.otf]
+% # \setmonofont{NotoSansMonoCJKjp-Regular.otf}[BoldFont=NotoSansMonoCJKjp-Bold.otf]
+% ## モノフォントは源ノ角コード(Source Code Proの日本語版)がおすゝめ
+% # \setmonofont{SourceHanCodeJP-Regular.otf}[BoldFont=SourceHanCodeJPS-Bold.otf]
+% ## モノフォントのみ入れ替えフォントのスケーリングを調整する
+% \mainfontoptions: "Scale=MatchUppercase"
+% \setmonofontoptions{Scale=0.8}      % 0.96がベストらしいが…
+% \setCJKoptions{Scale=1.0"}
+% ## Windows環境でモノフォントを変更するにはheader-inludeで以下の指定を行う
+% # \setmonofont{SourceCodePro-Regular.ttf}[BoldFont=SourceCodePro-Bold.ttf]
+
+
+% --- 空ページにヘッダーを設定する（機能していない）
+
+\makeatletter
+\def\emptypage@emptypage{
+    \hbox{}
+    \thispagestyle{headings}
+    \newpage
+}
+\def\cleardoublepage{
+        \clearpage
+        \if@twoside
+            \ifodd\c@page
+                % do nothing
+            \else
+                \emptypage@emptypage
+            \fi
+        \fi
+    }
+\makeatother
+
+
+% --- 参考文献一覧を目次に表示させる ------------------------------------------
+\makeatletter
+\renewenvironment{thebibliography}[1]
+{\chapter*{\bibname\@mkboth{\bibname}{\bibname}}
+   \addcontentsline{toc}{chapter}{\bibname}%
+   \list{\@biblabel{\@arabic\c@enumiv}}%
+        {\settowidth\labelwidth{\@biblabel{#1}}%
+         \leftmargin\labelwidth
+         \advance\leftmargin\labelsep
+         \@openbib@code
+         \usecounter{enumiv}%
+         \let\p@enumiv\@empty
+         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+   \sloppy
+   \clubpenalty4000
+   \@clubpenalty\clubpenalty
+   \widowpenalty4000%
+   \sfcode`\.\@m}
+  {\def\@noitemerr
+    {\@latex@warning{Empty `thebibliography' environment}}%
+   \endlist}
+\makeatother
 
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -158,6 +244,8 @@
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
@@ -198,6 +286,8 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
+\listoftables
+\listoffigures
 \setstretch{1.1}
 \hypertarget{license}{%
 \chapter*{License}\label{license}}
@@ -276,7 +366,7 @@
 対象 & 表記方法 & 表記例 \\
 \midrule
 \endhead
-ハイパーリンク\footnote{PDF形式のみ、\textsuperscript{No.}の部分は章ごとの通し番号} & 脚注にURL表記 & CRAN\textsuperscript{No.} \\
+ハイパーリンク & 脚注にURL表記\footnote{PDF形式のみ。\textsuperscript{No.}の部分は章ごとの通し番号} & CRAN\textsuperscript{No.} \\
 パス・ファイル名 & モノフォント\footnote{タイプライタフォントとも呼ばれる等幅フォント} & \texttt{sample/sample.Rmd} \\
 パッケージ名 & 太字のモノフォント & \textbf{\texttt{tidyverse}} \\
 変数・オブジェクト名 & モノフォント & \texttt{Sepela.Width} \\
@@ -285,8 +375,7 @@
 コードの実行結果 & モノフォント（\texttt{\#\#} プロンプト） & \texttt{\#\#\ output...} \\
 キーボードのキー & モノフォントで{[}{]}付き & {[}\texttt{Ctrl}{]}+{[}\texttt{S}{]} \\
 数式 & \LaTeX 数式（math mode） & \(y = ax^2 + b\) \\
-製品サービス名など & 太字 & \textbf{Google Colab} \\
-参考文献・資料\footnote{PDF形式のみ表示、()内は文書内ハイパーリンク} & (著者・作者, 作成年) & (Wickham, 2021) \\
+参考文献・資料\footnote{カッコ内は参考文献一覧への文書内ハイパーリンク} & {[}{]}または()付き & {[}Wickham, 2021{]} \\
 \bottomrule
 \end{longtable}
 
@@ -294,7 +383,7 @@
 \section*{なぜRか？}\label{ux306aux305crux304b}}
 \addcontentsline{toc}{section}{なぜRか？}
 
-　データ分析を行うためには適切な分析ツールが必要不可欠です。\textbf{R}は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。\textbf{R}がデータ分析に向いている理由をまとめているのが\href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business,'' R Blogger}です。
+　データ分析を行うためには適切な分析ツールが必要不可欠です。\textbf{R}は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。\textbf{R}がデータ分析に向いている理由をまとめているのが\href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business'', R Blogger}です。
 
 \begin{quote}
 \begin{enumerate}
@@ -526,7 +615,7 @@ Hadlyの図には前節の図にはない\textbf{Infer}と\textbf{Automate}す�
 \subsection*{Tidy}\label{tidy}}
 \addcontentsline{toc}{subsection}{Tidy}
 
-インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}(\protect\hyperlink{ref-R-TidyData}{Wickham 2014})はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}\citep{R-TidyData}はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
 
 \begin{itemize}
 \tightlist
@@ -583,7 +672,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \caption{Tidyverse Ecosystem}\label{fig:unnamed-chunk-14}
 \end{figure}
 
-ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』(\protect\hyperlink{ref-RStartHere:GitHub}{RStudio, PBC 2021})をご覧ください。
+ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』\citep{RStartHere:GitHub}をご覧ください。
 
 \hypertarget{import-1}{%
 \subsection*{Import}\label{import-1}}
@@ -597,7 +686,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    様々なテキスト形式テーブルを読み込むためのパッケージ(\protect\hyperlink{ref-R-readr}{Wickham and Hester 2020})
+    様々なテキスト形式テーブルを読み込むためのパッケージ\citep{R-readr}\citep{R-readr}
   \end{itemize}
 \item
   \textbf{\texttt{readxl}}
@@ -605,7 +694,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Microsoft Excelのファイルを読み込むためのパッケージ(\protect\hyperlink{ref-R-readxl}{Wickham and Bryan 2019})
+    Microsoft Excelのファイルを読み込むためのパッケージ\citep{R-readxl}
   \end{itemize}
 \item
   \textbf{\texttt{rvest}}
@@ -613,7 +702,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Webスクレイピングのためのパッケージ(\protect\hyperlink{ref-R-rvest}{Wickham 2021b})
+    Webスクレイピングのためのパッケージ\citep{R-rvest}
   \end{itemize}
 \item
   \textbf{\texttt{googlesheets4}}
@@ -621,7 +710,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Google API v4 経由でスプレッドシートを読み込むためのパッケージ(\protect\hyperlink{ref-R-googlesheets4}{Bryan 2021})
+    Google API v4 経由でスプレッドシートを読み込むためのパッケージ\citep{R-googlesheets4}
   \end{itemize}
 \item
   \textbf{\texttt{DBI}}
@@ -629,7 +718,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    SQL系の各種データベースと接続するためのパッケージ(\protect\hyperlink{ref-R-DBI}{R Special Interest Group on Databases (R-SIG-DB), Wickham, and Müller 2021})
+    SQL系の各種データベースと接続するためのパッケージ\citep{R-DBI}
   \end{itemize}
 \end{itemize}
 
@@ -645,7 +734,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Tidy Dataの作成を強力にサポートしてくれるパッケージ(\protect\hyperlink{ref-R-tidyr}{Wickham 2021c})
+    Tidy Dataの作成を強力にサポートしてくれるパッケージ\citep{R-tidyr}
   \end{itemize}
 \item
   \textbf{\texttt{tibble}}
@@ -653,7 +742,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    より厳密にTidy Dataを扱うためのパッケージ(\protect\hyperlink{ref-R-tibble}{Müller and Wickham 2021})
+    より厳密にTidy Dataを扱うためのパッケージ\citep{R-tibble}
   \end{itemize}
 \item
   \textbf{\texttt{zoo}}
@@ -661,7 +750,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    時系列（TS）データを効率よく扱うためのパッケージ(\protect\hyperlink{ref-R-zoo}{Zeileis, Grothendieck, and Ryan 2021})
+    時系列（TS）データを効率よく扱うためのパッケージ\citep{R-zoo}
   \end{itemize}
 \end{itemize}
 
@@ -677,7 +766,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    統一された文法で描画が行えるパッケージ(\protect\hyperlink{ref-R-ggplot2}{Wickham et al. 2020})
+    統一された文法で描画が行えるパッケージ\citep{R-ggplot2}
   \end{itemize}
 \item
   \textbf{\texttt{htmlwidgets}}
@@ -685,7 +774,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    JavaScriptのウィジェットを利用できるパッケージ(\protect\hyperlink{ref-R-htmlwidgets}{Vaidyanathan et al. 2020})
+    JavaScriptのウィジェットを利用できるパッケージ\citep{R-htmlwidgets}
   \end{itemize}
 \item
   \textbf{\texttt{patchwork}}
@@ -693,7 +782,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    \textbf{\texttt{ggplot2}}オブジェクトをひとつにまとめてレイアウトするためのパッケージ(\protect\hyperlink{ref-R-patchwork}{Pedersen 2020})
+    \textbf{\texttt{ggplot2}}オブジェクトをひとつにまとめてレイアウトするためのパッケージ\citep{R-patchwork}
   \end{itemize}
 \end{itemize}
 
@@ -709,7 +798,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    Tidy Dataを様々な方法で操作するためのパッケージ(\protect\hyperlink{ref-R-dplyr}{Wickham et al. 2021})
+    Tidy Dataを様々な方法で操作するためのパッケージ\citep{R-dplyr}
   \end{itemize}
 \item
   \textbf{\texttt{stringr}}
@@ -717,7 +806,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    文字列処理をするためのパッケージ(\protect\hyperlink{ref-R-stringr}{Wickham 2019})
+    文字列処理をするためのパッケージ\citep{R-stringr}
   \end{itemize}
 \item
   \textbf{\texttt{forcats}}
@@ -725,7 +814,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    因子型を操作するためのパッケージ(\protect\hyperlink{ref-R-forcats}{Wickham 2021a})
+    因子型を操作するためのパッケージ\citep{R-forcats}
   \end{itemize}
 \item
   \textbf{\texttt{lubridate}}
@@ -733,7 +822,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    日付データを簡単に変換するためのパッケージ(\protect\hyperlink{ref-R-lubridate}{Spinu, Grolemund, and Wickham 2021})
+    日付データを簡単に変換するためのパッケージ\citep{R-lubridate}
   \end{itemize}
 \end{itemize}
 
@@ -749,7 +838,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    各種モデリング結果を整然データにするためのパッケージ(\protect\hyperlink{ref-R-broom}{Robinson, Hayes, and Couch 2021})
+    各種モデリング結果を整然データにするためのパッケージ\citep{R-broom}
   \end{itemize}
 \item
   \textbf{\texttt{tidymodels}}
@@ -757,7 +846,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    機械学習を中心としたモデリングフレームワーク(\protect\hyperlink{ref-tidymodels2020}{Kuhn and Wickham 2020}, \protect\hyperlink{ref-R-tidymodels}{2021})
+    機械学習を中心としたモデリングフレームワーク\citep{tidymodels2020, R-tidymodels}
   \end{itemize}
 \end{itemize}
 
@@ -773,7 +862,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    \textbf{R}のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ(\protect\hyperlink{ref-knitr2014}{Xie 2014}, \protect\hyperlink{ref-R-knitr}{2021b})
+    \textbf{R}のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ\citep{knitr2014, R-knitr}
   \end{itemize}
 \item
   \textbf{\texttt{rmarkdown}}
@@ -781,7 +870,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    マークダウン書式を用いてレポートを作成するためのパッケージ(\protect\hyperlink{ref-R-rmarkdown}{Allaire et al. 2021})
+    マークダウン書式を用いてレポートを作成するためのパッケージ\citep{R-rmarkdown}
   \end{itemize}
 \item
   \textbf{\texttt{bookdown}}
@@ -789,7 +878,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    書籍や長いドキュメンを作成するためのパッケージ(\protect\hyperlink{ref-bookdown2016}{Xie 2016}, \protect\hyperlink{ref-R-bookdown}{2021a})
+    書籍や長いドキュメンを作成するためのパッケージ\citep{bookdown2016, R-bookdown}
   \end{itemize}
 \item
   \textbf{\texttt{shiny}}
@@ -797,7 +886,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    インタラクティブなWebアプリケーションを作成するためのパッケージ(\protect\hyperlink{ref-R-shiny}{Chang et al. 2021})
+    インタラクティブなWebアプリケーションを作成するためのパッケージ\citep{R-shiny}
   \end{itemize}
 \end{itemize}
 
@@ -815,7 +904,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    パイプ演算子（\texttt{\%\textgreater{}\%}）によるスムースな処理を実現するパッケージ(\protect\hyperlink{ref-R-magrittr}{Bache and Wickham 2020})
+    パイプ演算子（\texttt{\%\textgreater{}\%}）によるスムースな処理を実現するパッケージ\citep{R-magrittr}
   \end{itemize}
 \item
   \textbf{\texttt{purrr}}
@@ -823,7 +912,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \begin{itemize}
   \tightlist
   \item
-    関数型プログラミングによる反復処理を提供するパッケージ(\protect\hyperlink{ref-R-purrr}{Henry and Wickham 2020})
+    関数型プログラミングによる反復処理を提供するパッケージ\citep{R-purrr}
   \end{itemize}
 \end{itemize}
 
@@ -948,7 +1037,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{rux306eux57faux672c}{%
 \chapter{Rの基本}\label{rux306eux57faux672c}}
 
-\textbf{R}の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から\textbf{R}のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』(\protect\hyperlink{ref-ToukeinoHanashi}{大村 2020})や『統計解析のはなし【改訂版】』(\protect\hyperlink{ref-ToukeiKaisekinoHanashi}{大平 2006})を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。 なお、基本文法については\protect\hyperlink{Appendix-RBasics}{Appendix R Basics}をご覧ください。
+\textbf{R}の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から\textbf{R}のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』\citep{ToukeinoHanashi}や『統計解析のはなし【改訂版】』\citep{ToukeiKaisekinoHanashi}を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。 なお、基本文法については\protect\hyperlink{Appendix-RBasics}{Appendix R Basics}をご覧ください。
 
 \hypertarget{ux8981ux7d04ux7d71ux8a08ux91cf}{%
 \section{要約統計量}\label{ux8981ux7d04ux7d71ux8a08ux91cf}}
@@ -978,7 +1067,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 算術平均は\texttt{mean()}関数で求めることができます。最初に平均の計算対象となるデータ（変数）を\texttt{c()}関数で作成します。\texttt{c()}関数はベクトル型の変数を作成する関数です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -986,7 +1075,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \texttt{x}は値を代入（格納）する変数、\texttt{\textless{}-}は代入演算子（\textbf{R}では代入に\texttt{=}は使わないのが基本です）、\texttt{c()}関数はベクトルデータを作成する関数です。代入結果を確認するには以下を実行します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x}
 \end{Highlighting}
 \end{Shaded}
@@ -998,7 +1087,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 算出平均は\texttt{mean()}関数に計算対象となる\texttt{x}を指定して実行します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{mean}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -1013,7 +1102,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 トリム平均は算術平均のコードに\texttt{trim}オプションを指定するだけです。\texttt{trim}オプションは計算対象外にする割合を指定するオプションです。今回は五つのデータから最小値・最大値の二つを除いてトリム平均を求めますので\(\frac{2}{5} = 0.2\)を指定します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{mean}\NormalTok{(x, }\AttributeTok{trim =} \FloatTok{0.2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1025,7 +1114,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 関数に指定できるオプションを確認した場合場\texttt{?}に続いて関数名を\texttt{()}付きで打ち込んで実行してください。ヘルプが表示されます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{?}\FunctionTok{mean}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -1047,7 +1136,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 パッケージのインストールは\texttt{install.packages()}関数を用います。\texttt{install.packages()}関数を実行すると環境によってはCRANミラーサイトの選択を促される場合があります。その場合は、最も近い地域のミラーサイトを選択してください。なお、パッケージのインストールは一度行えば次からのインストールは不要です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{"psych"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1055,7 +1144,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 インストールが完了しましたら\texttt{library()}関数を使ってパッケージを読み込みます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{library}\NormalTok{(psych)}
 \end{Highlighting}
 \end{Shaded}
@@ -1076,7 +1165,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 これで\textbf{\texttt{psych}}パッケージを使う準備が整いましたので、\texttt{geometric.mean()}関数で幾何平均を求めます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{geometric.mean}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -1088,7 +1177,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 インストールしたパッケージの関数を使う場合、どのパッケージの関数を使っているかを明示的に示すために下記のように\texttt{::}演算子（名前空間へのアクセス演算子という）でパッケージ名と関数名をつなげて記述することもできます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{psych}\SpecialCharTok{::}\FunctionTok{geometric.mean}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -1106,7 +1195,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 幾何平均を求めるために\texttt{psych}パッケージを利用しましたが、\textbf{R}には総積（\(x_1 \times x_2 \times \cdots \times x_n\)）を求める\texttt{prod()}関数と累乗根（\(x^{\frac{1}{n}}\)）を求めるべき乗演算子（\texttt{\^{}}）がありますので、これを組み合わせれば幾何平均を求めることが可能です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{prod}\NormalTok{(x)}\SpecialCharTok{\^{}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(x))}
 \end{Highlighting}
 \end{Shaded}
@@ -1120,7 +1209,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 幾何平均は全ての値を\texttt{prod()}関数で乗算しますので、データの数が多い場合やデータの値が大きい（または、小さい）場合に\texttt{prod()}関数がオーバーフロー（または、アンダーフロー）を起こしてしまうことがあります。例えば、\(1\)から\(200\)までを乗算するだけでオーバーフローを起こしてしまいます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{prod}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{200}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -1132,7 +1221,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 一方、\texttt{geometric.mean()}関数はフロー対策が施されていますのでオーバーフローを起こすことなく幾何平均を求めることができます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{psych}\SpecialCharTok{::}\FunctionTok{geometric.mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{200}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -1149,7 +1238,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 データの散らばり具合を見るには分散・標準偏差がよく使われます。例えば、以下の\texttt{x}と\texttt{y}が取る値の範囲は同一ですが、同じ散らばり具合と言えるでしょうか？
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
 \FunctionTok{range}\NormalTok{(x)}
 \end{Highlighting}
@@ -1160,7 +1249,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{9}\NormalTok{)}
 \FunctionTok{range}\NormalTok{(y)}
 \end{Highlighting}
@@ -1204,7 +1293,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の関係式\eqref{eq:variance-var}を用いて\textbf{R}で以下の二つのデータの標本分散を求めなさい。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
 \NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{9}\NormalTok{)}
 \end{Highlighting}
@@ -1217,7 +1306,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 欠損値を含む以下のデータの平均値（\(\bar{x}\)）、不偏分散（\(\hat{\sigma}^2\)）ならびに標本分散（\(s^2\)）を求めなさい。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1268,11 +1357,11 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 を尖度（\(\gamma_2\)）と呼びます。
 
-\hypertarget{ux30b3ux30e9ux30e0ux82f1ux8a9e-or-ux30aeux30eaux30b7ux30e3ux8a9e}{%
-\subsubsection*{コラム）英語 or ギリシャ語}\label{ux30b3ux30e9ux30e0ux82f1ux8a9e-or-ux30aeux30eaux30b7ux30e3ux8a9e}}
-\addcontentsline{toc}{subsubsection}{コラム）英語 or ギリシャ語}
+\hypertarget{ux30b3ux30e9ux30e0ux82f1ux6587ux5b57ux30aeux30eaux30b7ux30e3ux6587ux5b57}{%
+\subsubsection*{【コラム】英文字？ギリシャ文字？}\label{ux30b3ux30e9ux30e0ux82f1ux6587ux5b57ux30aeux30eaux30b7ux30e3ux6587ux5b57}}
+\addcontentsline{toc}{subsubsection}{【コラム】英文字？ギリシャ文字？}
 
-統計では様々な統計量を英語で表記する場合とギリシャ語で表記する場合があり混乱しやすいのですが、統計量を英語で表記されている場合は（標本）統計量、ギリシャ語で表記されている場合は母数の推定統計量（推定量）を意味しています。推定量を表記する場合、推定量であることを意味するハット（\(\hat{}\)）という記号をつけて表記します（例えば、平均値は\(\hat{\mu}\)、分散は\(\hat{\sigma}\)と表記）。ハット（\(\hat{}\)）を省略している書籍や資料も散見されますので混乱しないように注意してください。詳しくは『統計的方法のしくみ』(\protect\hyperlink{ref-ToukeitekiHouhounoSikumi:jbook}{永田 1996})の「3. 母数と統計量の区別」を参照してください。
+統計では様々な統計量を英語で表記する場合とギリシャ語で表記する場合があり混乱しやすいのですが、統計量を英語で表記されている場合は（標本）統計量、ギリシャ語で表記されている場合は母数の推定統計量（推定量）を意味しています。推定量を表記する場合、推定量であることを意味するハット（\(\hat{}\)）という記号をつけて表記します（例えば、平均値は\(\hat{\mu}\)、分散は\(\hat{\sigma}^2\)と表記）。ハット（\(\hat{}\)）を省略している書籍や資料も散見されますので混乱しないように注意してください。詳しくは『統計的方法のしくみ』\citep{ToukeitekiHouhounoSikumi:jbook}の「3. 母数と統計量の区別」\citep{ToukeitekiHouhounoSikumi:jbook}を参照してください。
 
 \hypertarget{ux4e2dux592eux5024}{%
 \subsection{中央値}\label{ux4e2dux592eux5024}}
@@ -1282,7 +1371,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 平均値と並んで比較的よく使われるのが中央値です。中央値はデータの分布が歪んでいる場合に使われることが多いように比較的ロバスト（データの分布に左右されにくい）な統計量です。 中央値
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x}
 \end{Highlighting}
 \end{Shaded}
@@ -1292,7 +1381,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{median}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -1305,7 +1394,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \subsection{最小・最大値}\label{ux6700ux5c0fux6700ux5927ux5024}}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x}
 \end{Highlighting}
 \end{Shaded}
@@ -1315,7 +1404,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{min}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -1325,7 +1414,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{max}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -1337,7 +1426,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \textbf{R}には\texttt{range()}関数という最小値を最大値を一度に求めることができる便利な関数があります。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x}
 \end{Highlighting}
 \end{Shaded}
@@ -1347,7 +1436,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{range}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -1362,7 +1451,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 データのばらつきを見るためにレンジと呼ばれる範囲を用いることがあります。以下の\texttt{x}と\texttt{y}は同じ平均値をとるデータです。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{8}\NormalTok{)}
 \FunctionTok{mean}\NormalTok{(x)}
 \end{Highlighting}
@@ -1373,7 +1462,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
 \FunctionTok{mean}\NormalTok{(y)}
 \end{Highlighting}
@@ -1386,7 +1475,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 レンジを求めるには\texttt{range()}関数を用います。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{range}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -1396,7 +1485,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{range}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
@@ -1408,7 +1497,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \texttt{range()}関数は最小値と最大値を求める関数ですので\texttt{diff()}関数を用いて最小値と最大値の幅を求めます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(x))}
 \end{Highlighting}
 \end{Shaded}
@@ -1418,7 +1507,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(y))}
 \end{Highlighting}
 \end{Shaded}
@@ -1433,13 +1522,13 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 最頻値とはデータの中で最も頻繁に出てくる値のことで、モードとも呼ばれます。最頻値を求める関数は標準では用意されていませんので\texttt{modeest}パッケージを用います。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{"modeest"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{library}\NormalTok{(modeest)}
 \end{Highlighting}
 \end{Shaded}
@@ -1452,7 +1541,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{modeest}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -1462,7 +1551,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{modeest}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
@@ -1587,101 +1676,10 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \addcontentsline{toc}{chapter}{References}
 
 \hypertarget{refs}{}
-\begin{CSLReferences}{1}{0}
-\leavevmode\hypertarget{ref-R-rmarkdown}{}%
-Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2021. \emph{Rmarkdown: Dynamic Documents for r}. \url{https://CRAN.R-project.org/package=rmarkdown}.
-
-\leavevmode\hypertarget{ref-R-magrittr}{}%
-Bache, Stefan Milton, and Hadley Wickham. 2020. \emph{Magrittr: A Forward-Pipe Operator for r}. \url{https://CRAN.R-project.org/package=magrittr}.
-
-\leavevmode\hypertarget{ref-R-googlesheets4}{}%
-Bryan, Jennifer. 2021. \emph{Googlesheets4: Access Google Sheets Using the Sheets API V4}. \url{https://github.com/tidyverse/googlesheets4}.
-
-\leavevmode\hypertarget{ref-R-shiny}{}%
-Chang, Winston, Joe Cheng, JJ Allaire, Carson Sievert, Barret Schloerke, Yihui Xie, Jeff Allen, Jonathan McPherson, Alan Dipert, and Barbara Borges. 2021. \emph{Shiny: Web Application Framework for r}. \url{https://shiny.rstudio.com/}.
-
-\leavevmode\hypertarget{ref-R-purrr}{}%
-Henry, Lionel, and Hadley Wickham. 2020. \emph{Purrr: Functional Programming Tools}. \url{https://CRAN.R-project.org/package=purrr}.
-
-\leavevmode\hypertarget{ref-tidymodels2020}{}%
-Kuhn, Max, and Hadley Wickham. 2020. \emph{Tidymodels: A Collection of Packages for Modeling and Machine Learning Using Tidyverse Principles.} \url{https://www.tidymodels.org}.
-
-\leavevmode\hypertarget{ref-R-tidymodels}{}%
----------. 2021. \emph{Tidymodels: Easily Install and Load the Tidymodels Packages}. \url{https://CRAN.R-project.org/package=tidymodels}.
-
-\leavevmode\hypertarget{ref-R-tibble}{}%
-Müller, Kirill, and Hadley Wickham. 2021. \emph{Tibble: Simple Data Frames}. \url{https://CRAN.R-project.org/package=tibble}.
-
-\leavevmode\hypertarget{ref-R-patchwork}{}%
-Pedersen, Thomas Lin. 2020. \emph{Patchwork: The Composer of Plots}. \url{https://CRAN.R-project.org/package=patchwork}.
-
-\leavevmode\hypertarget{ref-R-DBI}{}%
-R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, and Kirill Müller. 2021. \emph{DBI: R Database Interface}. \url{https://CRAN.R-project.org/package=DBI}.
-
-\leavevmode\hypertarget{ref-R-broom}{}%
-Robinson, David, Alex Hayes, and Simon Couch. 2021. \emph{Broom: Convert Statistical Objects into Tidy Tibbles}. \url{https://CRAN.R-project.org/package=broom}.
-
-\leavevmode\hypertarget{ref-RStartHere:GitHub}{}%
-RStudio, PBC. 2021. \emph{RStartHere}. \url{https://github.com/rstudio/RStartHere}.
-
-\leavevmode\hypertarget{ref-R-lubridate}{}%
-Spinu, Vitalie, Garrett Grolemund, and Hadley Wickham. 2021. \emph{Lubridate: Make Dealing with Dates a Little Easier}. \url{https://CRAN.R-project.org/package=lubridate}.
-
-\leavevmode\hypertarget{ref-R-htmlwidgets}{}%
-Vaidyanathan, Ramnath, Yihui Xie, JJ Allaire, Joe Cheng, Carson Sievert, and Kenton Russell. 2020. \emph{Htmlwidgets: HTML Widgets for r}. \url{https://github.com/ramnathv/htmlwidgets}.
-
-\leavevmode\hypertarget{ref-R-TidyData}{}%
-Wickham, Hadley. 2014. {``Tidy Data.''} \emph{Journal of Statistical Software} 59. \url{https://www.jstatsoft.org/article/view/v059i10}.
-
-\leavevmode\hypertarget{ref-R-stringr}{}%
----------. 2019. \emph{Stringr: Simple, Consistent Wrappers for Common String Operations}. \url{https://CRAN.R-project.org/package=stringr}.
-
-\leavevmode\hypertarget{ref-R-forcats}{}%
----------. 2021a. \emph{Forcats: Tools for Working with Categorical Variables (Factors)}. \url{https://CRAN.R-project.org/package=forcats}.
-
-\leavevmode\hypertarget{ref-R-rvest}{}%
----------. 2021b. \emph{Rvest: Easily Harvest (Scrape) Web Pages}. \url{https://CRAN.R-project.org/package=rvest}.
-
-\leavevmode\hypertarget{ref-R-tidyr}{}%
----------. 2021c. \emph{Tidyr: Tidy Messy Data}. \url{https://CRAN.R-project.org/package=tidyr}.
-
-\leavevmode\hypertarget{ref-R-readxl}{}%
-Wickham, Hadley, and Jennifer Bryan. 2019. \emph{Readxl: Read Excel Files}. \url{https://CRAN.R-project.org/package=readxl}.
-
-\leavevmode\hypertarget{ref-R-ggplot2}{}%
-Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2020. \emph{Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics}. \url{https://CRAN.R-project.org/package=ggplot2}.
-
-\leavevmode\hypertarget{ref-R-dplyr}{}%
-Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2021. \emph{Dplyr: A Grammar of Data Manipulation}. \url{https://CRAN.R-project.org/package=dplyr}.
-
-\leavevmode\hypertarget{ref-R-readr}{}%
-Wickham, Hadley, and Jim Hester. 2020. \emph{Readr: Read Rectangular Text Data}. \url{https://CRAN.R-project.org/package=readr}.
-
-\leavevmode\hypertarget{ref-knitr2014}{}%
-Xie, Yihui. 2014. {``Knitr: A Comprehensive Tool for Reproducible Research in {R}.''} In \emph{Implementing Reproducible Computational Research}, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. Chapman; Hall/CRC. \url{http://www.crcpress.com/product/isbn/9781466561595}.
-
-\leavevmode\hypertarget{ref-bookdown2016}{}%
----------. 2016. \emph{Bookdown: Authoring Books and Technical Documents with {R} Markdown}. Boca Raton, Florida: Chapman; Hall/CRC. \url{https://bookdown.org/yihui/bookdown}.
-
-\leavevmode\hypertarget{ref-R-bookdown}{}%
----------. 2021a. \emph{Bookdown: Authoring Books and Technical Documents with r Markdown}. \url{https://CRAN.R-project.org/package=bookdown}.
-
-\leavevmode\hypertarget{ref-R-knitr}{}%
----------. 2021b. \emph{Knitr: A General-Purpose Package for Dynamic Report Generation in r}. \url{https://yihui.org/knitr/}.
-
-\leavevmode\hypertarget{ref-R-zoo}{}%
-Zeileis, Achim, Gabor Grothendieck, and Jeffrey A. Ryan. 2021. \emph{Zoo: S3 Infrastructure for Regular and Irregular Time Series (z's Ordered Observations)}. \url{https://zoo.R-Forge.R-project.org/}.
-
-\leavevmode\hypertarget{ref-ToukeiKaisekinoHanashi}{}%
-大平. 2006. \emph{『統計解析のはなし』}. 改訂版. 日科技連出版. \url{https://www.juse-p.co.jp/products/view/196}.
-
-\leavevmode\hypertarget{ref-ToukeinoHanashi}{}%
-大村. 2020. \emph{『統計のはなし』}. 改訂版. 日科技連出版. \url{https://www.juse-p.co.jp/products/view/191}.
-
-\leavevmode\hypertarget{ref-ToukeitekiHouhounoSikumi:jbook}{}%
-永田. 1996. \emph{『統計的方法のしくみ』}. First. 日科技連出版. \url{https://www.juse-p.co.jp/products/view/27}.
-
+\begin{CSLReferences}{0}{0}
 \end{CSLReferences}
+
+See Bibliography page
 
 \hypertarget{Appendix-RBasics}{%
 \chapter{R Basics}\label{Appendix-RBasics}}
@@ -1698,7 +1696,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 コードの表記は以下のように灰色で網掛けされた部分が実行するコード、\texttt{\#\#} から始まる部分が実行結果となります。実行結果の表示がない場合は、次に実行するコードとあわせてコードが表示されます。なお、コード内の\texttt{\#}で始まる部分はコメントですので実行されません。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{1}        \CommentTok{\# 変数への代入時は実行結果は表示されない}
 \NormalTok{x             }\CommentTok{\# 表示させたい場合は、別途、変数のみで実行する}
 \end{Highlighting}
@@ -1709,7 +1707,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{print}\NormalTok{(x)      }\CommentTok{\# もしくはprint()関数を用いる}
 \end{Highlighting}
 \end{Shaded}
@@ -1744,7 +1742,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 算術演算の基本である加減乗除算の四則演算は他のプログラミング言語や OS に付属の電卓アプリなどと同じです。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \DecValTok{1} \SpecialCharTok{+} \DecValTok{2}     \CommentTok{\# 加算}
 \end{Highlighting}
 \end{Shaded}
@@ -1754,7 +1752,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \DecValTok{2} \SpecialCharTok{{-}} \DecValTok{3}     \CommentTok{\# 減算}
 \end{Highlighting}
 \end{Shaded}
@@ -1764,7 +1762,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \DecValTok{3} \SpecialCharTok{*} \DecValTok{4}     \CommentTok{\# 乗算}
 \end{Highlighting}
 \end{Shaded}
@@ -1774,7 +1772,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \DecValTok{4} \SpecialCharTok{/} \DecValTok{5}     \CommentTok{\# 除算}
 \end{Highlighting}
 \end{Shaded}
@@ -1789,7 +1787,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 上記の演算結果を変数に代入してみます。代入には代入演算子（\texttt{\textless{}-}）を用います。変数を使うための変数宣言は不要です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{w }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{+} \DecValTok{2}
 \NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*} \DecValTok{3}
 \NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{3} \SpecialCharTok{{-}} \DecValTok{4}
@@ -1803,7 +1801,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 代入結果を確認するには変数名だけで実行するか \texttt{print()} 関数を用います。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{w}
 \end{Highlighting}
 \end{Shaded}
@@ -1813,7 +1811,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x}
 \end{Highlighting}
 \end{Shaded}
@@ -1823,7 +1821,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{y}
 \end{Highlighting}
 \end{Shaded}
@@ -1833,7 +1831,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{z}
 \end{Highlighting}
 \end{Shaded}
@@ -1843,7 +1841,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{print}\NormalTok{(w)}
 \end{Highlighting}
 \end{Shaded}
@@ -1853,7 +1851,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{print}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -1863,7 +1861,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{print}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
@@ -1873,7 +1871,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{print}\NormalTok{(z)}
 \end{Highlighting}
 \end{Shaded}
@@ -1888,7 +1886,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 全ての変数を合算します。単純に加算演算子（\texttt{+}）を用いても構いませんが、\texttt{sum()}という関数が用意されていますので、これを使います。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{sum}\NormalTok{(w, x, y, z)    }\CommentTok{\# 3 + 6 + {-}1 + 0.8}
 \end{Highlighting}
 \end{Shaded}
@@ -1915,7 +1913,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 がありますが、ここでは算術平均の値を求めます。算術平均の値を求めるには\texttt{mean()}という関数を用います。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{mean}\NormalTok{(w, x, y, z)   }\CommentTok{\# (3 + 6 + {-}1 + 0.8) / 4}
 \end{Highlighting}
 \end{Shaded}
@@ -1927,7 +1925,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \texttt{sum()}関数と同じ指定をすると計算結果が期待と違います。これは\texttt{mean()}関数がとる引数が\texttt{sum()}関数と異なりひとつに限られるためです。そこで、ベクトル変数を作成する\texttt{c()}関数を用いて以下のように記述します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(w, x, y, z)}
 \FunctionTok{mean}\NormalTok{(x)}
 \end{Highlighting}
@@ -1945,7 +1943,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 さて、最初に\texttt{x}に代入した値は\texttt{6}でしたが、この時点では以下のように複数の値が代入されています。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x}
 \end{Highlighting}
 \end{Shaded}
@@ -2033,7 +2031,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 ベクトル型は基本となる変数型です。ベクトル型には一種類のデータ型のデータ（値）しか格納することができません。格納できる個数は任意です。 ベクトル型の変数を作成するには\texttt{c()}関数を用います。代入して\texttt{str()}関数でクラス、長さ（値の個数）と値を確認してみます。長さが1の場合は\texttt{c()}関数を省略することができます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 2L                 }\CommentTok{\# 一つだけ代入する場合 \textasciigrave{}c()\textasciigrave{} は省略可能}
 \FunctionTok{str}\NormalTok{(x)                  }\CommentTok{\# 値が一つだけの場合は長さ表示が省略}
 \end{Highlighting}
@@ -2046,7 +2044,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 　
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)         }\CommentTok{\# 実数の 1 から 3 の三つの値が代入}
 \FunctionTok{str}\NormalTok{(x)                  }\CommentTok{\# []の部分が長さ表示}
 \end{Highlighting}
@@ -2059,7 +2057,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 文字（型）を代入する場合はクォート（ダブルまはたシングル）で囲みます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}\NormalTok{, }\StringTok{\textquotesingle{}2\textquotesingle{}}\NormalTok{, }\StringTok{"3"}\NormalTok{)   }\CommentTok{\# 文字として数字を代入}
 \FunctionTok{str}\NormalTok{(x)}
 \end{Highlighting}
@@ -2072,7 +2070,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 では文字（型）と数字（型）を混在させたらどうなるでしょう？
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(1L, }\DecValTok{2}\NormalTok{, }\StringTok{"3"}\NormalTok{)      }\CommentTok{\# 整数、実数、文字としての数字を代入}
 \FunctionTok{str}\NormalTok{(x)                  }\CommentTok{\# 強制型変換により最も柔軟度の高い文字型に}
 \end{Highlighting}
@@ -2090,7 +2088,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 因子型は名義尺度や順序尺度の変数を扱う際に便利な変数型です。前述のベクトル型変数に格納された値を識別するためのインデックスがついたデータベーステーブルのような仕組みを持っています。 因子型を作成するには\texttt{factor()}関数を使う順序なしの因子型と\texttt{ordered()}関数を使う順序ありの因子型があります。どちらも\texttt{levels}（水準）という属性がつきます。この水準にインデックスとしての役割があります。後述のデータフレーム型の中で使うと「層別」という処理が楽になります。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"AB"}\NormalTok{, }\StringTok{"O"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{))}
 \FunctionTok{str}\NormalTok{(x)}
 \end{Highlighting}
@@ -2101,7 +2099,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{levels}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -2113,7 +2111,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \texttt{ordered}型は\texttt{levels}に順序がついている点が\texttt{factor}型と異なる点です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{ordered}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"AB"}\NormalTok{, }\StringTok{"O"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{))}
 \FunctionTok{str}\NormalTok{(x)}
 \end{Highlighting}
@@ -2124,7 +2122,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{levels}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -2139,7 +2137,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 マトリクス型は文字通り二次元配列を扱うための変数型です。作成するには\texttt{matrix()}関数を利用します。引数のベクトル型を列方向から二次元に展開します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{60}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)     }\CommentTok{\# 2行3列のマトリクス型}
 \end{Highlighting}
 \end{Shaded}
@@ -2153,7 +2151,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 展開方向を変えるには引数自体を変える方法もありますが\texttt{byrow}オプションを利用する方がスマートです。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DecValTok{40}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{60}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -2167,7 +2165,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 整数型や実数型の数値だけでなく文字型など他のデータ型も扱えます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"x"}\NormalTok{, }\StringTok{"y"}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -2179,7 +2177,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"x"}\NormalTok{, }\StringTok{"y"}\NormalTok{), }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -2198,7 +2196,7 @@ Rの一番悪いところは統計学者が作っているところだ。
 アレイ型はマトリクス型を複数ならべたような多次元配列を扱うための変数型です。作成するには\texttt{array()}関数を利用します。第一引数で指定したベクトル型のデータを第二引数で指定した構造（行数, 列数, 次元数）にしたがって多次元配列に展開します。展開は列方向のみで\texttt{matrix()}関数がもつ\texttt{byrow}オプションはありません。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{array}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -2276,7 +2274,7 @@ Maserati Bora & 15 & 8 & 301 & 335 & 3.54 & 3.57 & 14.6 & 0 & 1 & 5 & 8\\
 このようにデータフレーム型は表形式のデータを扱うのに非常に便利な変数型です。データフレーム型を作成するには\texttt{data.frame()}関数を用います。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{col1 =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{),}
                 \AttributeTok{col2 =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{, }\StringTok{"D"}\NormalTok{, }\StringTok{"E"}\NormalTok{),}
                 \AttributeTok{col3 =} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{14}\NormalTok{),}
@@ -2294,7 +2292,7 @@ Maserati Bora & 15 & 8 & 301 & 335 & 3.54 & 3.57 & 14.6 & 0 & 1 & 5 & 8\\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x}
 \end{Highlighting}
 \end{Shaded}
@@ -2316,7 +2314,7 @@ Maserati Bora & 15 & 8 & 301 & 335 & 3.54 & 3.57 & 14.6 & 0 & 1 & 5 & 8\\
 リスト型はデータ格納の自由度が高いため関数の返り値として使われることが多い変数型です。データフレーム型との大きな違いは不等長のベクトル型を複数格納できる点にあります。さらにマトリクス型やデータフレーム型、リスト型など基本的に全ての変数型をリスト型内に格納可能です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\FloatTok{0.5}\SpecialCharTok{:}\FloatTok{5.5}\NormalTok{), }\FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{0.2}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"AB"}\NormalTok{, }\StringTok{"O"}\NormalTok{), x)}
 \FunctionTok{str}\NormalTok{(x)}
 \end{Highlighting}
@@ -2336,7 +2334,7 @@ Maserati Bora & 15 & 8 & 301 & 335 & 3.54 & 3.57 & 14.6 & 0 & 1 & 5 & 8\\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x}
 \end{Highlighting}
 \end{Shaded}
@@ -2387,7 +2385,7 @@ Maserati Bora & 15 & 8 & 301 & 335 & 3.54 & 3.57 & 14.6 & 0 & 1 & 5 & 8\\
 \texttt{NULL}を除く定数はデータ型のクラスですので強制型変換の対象となります。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{c}\NormalTok{(10L, }\FloatTok{2.5}\NormalTok{, }\DecValTok{3} \SpecialCharTok{+}\NormalTok{ 4i, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{NaN}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\ConstantTok{Inf}\NormalTok{, }\SpecialCharTok{{-}}\ConstantTok{Inf}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -2481,7 +2479,7 @@ NA & データ型 \\
 演算子はベクトル型系の要素を参照するための演算子です。例えば \(5\) 番目の値を参照するには以下のようにします。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
 \NormalTok{x}
 \end{Highlighting}
@@ -2492,7 +2490,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x[}\DecValTok{5}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
@@ -2504,7 +2502,7 @@ NA & データ型 \\
 　マトリクス型では、行・列・セルの三通りの参照が可能です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{)}
 \NormalTok{x}
 \end{Highlighting}
@@ -2518,7 +2516,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x[}\DecValTok{1}\NormalTok{, ]}
 \end{Highlighting}
 \end{Shaded}
@@ -2528,7 +2526,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x[, }\DecValTok{1}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
@@ -2538,7 +2536,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x[}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
@@ -2551,7 +2549,7 @@ NA & データ型 \\
 　アレイ型でも同様の参照が可能です。ただし、マトリクス型とは異なり次元が絡んできますので、表示は少しややこしくなります。以下の \(2 \times 2\) の \(4\) 次元アレイで説明します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{array}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{16}\NormalTok{), }\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{))}
 \NormalTok{x}
 \end{Highlighting}
@@ -2586,7 +2584,7 @@ NA & データ型 \\
 　第 \(1\) 次元を参照します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x[, , }\DecValTok{1}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
@@ -2600,7 +2598,7 @@ NA & データ型 \\
 　第 \(1\) 次元の \(1\) 行目を参照します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x[}\DecValTok{1}\NormalTok{, , }\DecValTok{1}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
@@ -2612,7 +2610,7 @@ NA & データ型 \\
 　第 \(1\) 次元の \(1\) 列目を参照します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x[,}\DecValTok{1}\NormalTok{ , }\DecValTok{1}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
@@ -2624,7 +2622,7 @@ NA & データ型 \\
 　全次元の \(1\) 行目を参照します。参照結果は列が各次元になる点に注意してください。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x[}\DecValTok{1}\NormalTok{, , ]}
 \end{Highlighting}
 \end{Shaded}
@@ -2638,7 +2636,7 @@ NA & データ型 \\
 　全次元の \(1\) 列目を参照します。行の参照と同様に参照結果は列が各次元になります。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x[, }\DecValTok{1}\NormalTok{, ]}
 \end{Highlighting}
 \end{Shaded}
@@ -2652,7 +2650,7 @@ NA & データ型 \\
 　全次元の \(1\) 行 \(1\) 列目を参照します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, ]}
 \end{Highlighting}
 \end{Shaded}
@@ -2669,7 +2667,7 @@ NA & データ型 \\
 \texttt{\$} 演算子はデータフレーム型やリスト型の要素を参照するための演算子です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{blood =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"O"}\NormalTok{, }\StringTok{"A"}\NormalTok{), }\AttributeTok{age =} \FunctionTok{c}\NormalTok{(}\DecValTok{18}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{35}\NormalTok{, }\DecValTok{19}\NormalTok{))}
 \NormalTok{x}
 \end{Highlighting}
@@ -2685,7 +2683,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x}\SpecialCharTok{$}\NormalTok{blood}
 \end{Highlighting}
 \end{Shaded}
@@ -2697,7 +2695,7 @@ NA & データ型 \\
 　さらに要素内を参照するには前述の \texttt{{[}} 演算子と組み合わせます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x}\SpecialCharTok{$}\NormalTok{blood[}\DecValTok{3}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
@@ -2707,7 +2705,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \DocumentationTok{\#\#\#\#\# Operators \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
 \end{Highlighting}
 \end{Shaded}
@@ -2715,7 +2713,7 @@ NA & データ型 \\
 　リスト型を \texttt{\$} 演算子で参照するの場合は 要素が \texttt{names} 属性を持っていることが前提です。以下のリスト型変数では \texttt{\$} 表示の後ろに要素名が表示されいている \texttt{blood}, \texttt{data} が \texttt{\$} 演算子で参照可能です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{blood =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"AB"}\NormalTok{, }\StringTok{"O"}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"M"}\NormalTok{, }\StringTok{"F"}\NormalTok{),}
           \AttributeTok{data =} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{blood =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"A"}\NormalTok{, }\StringTok{"O"}\NormalTok{, }\StringTok{"A"}\NormalTok{),}
                             \AttributeTok{age =} \FunctionTok{c}\NormalTok{(}\DecValTok{18}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{35}\NormalTok{, }\DecValTok{19}\NormalTok{)))}
@@ -2735,7 +2733,7 @@ NA & データ型 \\
 　要素名が表示されていない二番目の要素を参照するには \texttt{{[}{[}} 演算子を用います。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x[[}\DecValTok{2}\NormalTok{]]}
 \end{Highlighting}
 \end{Shaded}
@@ -2747,7 +2745,7 @@ NA & データ型 \\
 　さらに要素内の値を参照する場合は前述のデータフレーム型同様に \texttt{{[}} 演算子を用います。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x}\SpecialCharTok{$}\NormalTok{blood[}\DecValTok{2}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
@@ -2757,7 +2755,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x[[}\DecValTok{2}\NormalTok{]][}\DecValTok{1}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
@@ -2772,7 +2770,7 @@ NA & データ型 \\
 単項演算子は文字通り一つの項に作用する演算子です。単項演算子には算術演算子の\texttt{-}（マイナス）と論理型演算子の\texttt{!}（否定, NOT）があります。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)}
 \NormalTok{x}
 \end{Highlighting}
@@ -2783,7 +2781,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \SpecialCharTok{{-}}\NormalTok{x}
 \end{Highlighting}
 \end{Shaded}
@@ -2793,7 +2791,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
 \NormalTok{x}
 \end{Highlighting}
@@ -2804,7 +2802,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \SpecialCharTok{!}\NormalTok{x}
 \end{Highlighting}
 \end{Shaded}
@@ -2826,7 +2824,7 @@ NA & データ型 \\
 演算子は四則演算（加算、減算、乗算、除算）ならびに、べき算（べき乗算）、整数除算（商、剰余）の六つがあります。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
 \NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\SpecialCharTok{:}\DecValTok{1}\NormalTok{)}
 \NormalTok{a}
@@ -2838,7 +2836,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{b}
 \end{Highlighting}
 \end{Shaded}
@@ -2848,7 +2846,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{+}\NormalTok{ b         }\CommentTok{\# 加算}
 \end{Highlighting}
 \end{Shaded}
@@ -2858,7 +2856,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{{-}}\NormalTok{ b         }\CommentTok{\# 減算}
 \end{Highlighting}
 \end{Shaded}
@@ -2868,7 +2866,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{*}\NormalTok{ b         }\CommentTok{\# 乗算}
 \end{Highlighting}
 \end{Shaded}
@@ -2878,7 +2876,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{/}\NormalTok{ b         }\CommentTok{\# 除算}
 \end{Highlighting}
 \end{Shaded}
@@ -2889,7 +2887,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{\^{}}\NormalTok{ b         }\CommentTok{\# べき乗算}
 \end{Highlighting}
 \end{Shaded}
@@ -2899,7 +2897,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{\%/\%}\NormalTok{ b       }\CommentTok{\# 整数除算（商）}
 \end{Highlighting}
 \end{Shaded}
@@ -2909,7 +2907,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{\%\%}\NormalTok{ b        }\CommentTok{\# 整数除算（剰余）}
 \end{Highlighting}
 \end{Shaded}
@@ -2935,7 +2933,7 @@ NA & データ型 \\
 例えば以下の二つのベクトル型変数に対する比較を行ってみます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a}
 \end{Highlighting}
 \end{Shaded}
@@ -2945,7 +2943,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{b}
 \end{Highlighting}
 \end{Shaded}
@@ -2955,7 +2953,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{\textless{}}\NormalTok{ b}
 \end{Highlighting}
 \end{Shaded}
@@ -2965,7 +2963,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{\textgreater{}}\NormalTok{ b}
 \end{Highlighting}
 \end{Shaded}
@@ -2975,7 +2973,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{\textless{}=}\NormalTok{ b}
 \end{Highlighting}
 \end{Shaded}
@@ -2985,7 +2983,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{\textgreater{}=}\NormalTok{ b}
 \end{Highlighting}
 \end{Shaded}
@@ -2995,7 +2993,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{==}\NormalTok{ b}
 \end{Highlighting}
 \end{Shaded}
@@ -3005,7 +3003,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{a }\SpecialCharTok{!=}\NormalTok{ b}
 \end{Highlighting}
 \end{Shaded}
@@ -3116,7 +3114,7 @@ NA & データ型 \\
 \texttt{if} 文と \texttt{else} 文は最も基本的な条件分岐です。評価式には論理演算子または論理型変数を用います。コーディングスタイルとして以下のどちらも可能です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \ConstantTok{FALSE}
 
 \ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{!=} \ConstantTok{TRUE}\NormalTok{) }\FunctionTok{print}\NormalTok{(}\StringTok{"TRUE"}\NormalTok{) }\ControlFlowTok{else} \FunctionTok{print}\NormalTok{(}\StringTok{"FALSE"}\NormalTok{)}
@@ -3128,7 +3126,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{==} \ConstantTok{TRUE}\NormalTok{) \{}
   \FunctionTok{print}\NormalTok{(}\StringTok{"TRUE"}\NormalTok{)}
 \NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
@@ -3144,7 +3142,7 @@ NA & データ型 \\
 \texttt{if} 文は入れ子にしたり \texttt{else\ if} 文として組み合わせて使うことも可能です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 10L}
 \NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{5}
 
@@ -3176,7 +3174,7 @@ NA & データ型 \\
 引数に整数 \(n\) を指定した場合、\(n\) 番目の処理文の結果が返ります。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{2}
 \ControlFlowTok{switch}\NormalTok{(x,                 }\CommentTok{\# 分岐のための引数}
        \StringTok{"x is 1"}\NormalTok{,          }\CommentTok{\# 1番目の処理文}
@@ -3192,7 +3190,7 @@ NA & データ型 \\
 注意しなければならないのは条件分岐数と一致しない場合は\texttt{NULL}が返される点です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 5L}
 \FunctionTok{is.null}\NormalTok{(}\ControlFlowTok{switch}\NormalTok{(x,         }\CommentTok{\# 分岐のための引数}
                \StringTok{"x is 1"}\NormalTok{,  }\CommentTok{\# 1番目の処理文}
@@ -3213,7 +3211,7 @@ NA & データ型 \\
 一方、引数が文字の場合、\texttt{if/else}文と同様の処理が行われます。\texttt{if/else}文と異なるのは\texttt{else}文に相当する分岐が途中になっていても正しく処理してくれる点です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"2"}
 \ControlFlowTok{switch}\NormalTok{(x,}
        \StringTok{"1"} \OtherTok{=} \StringTok{"x is 1"}\NormalTok{,    }\CommentTok{\# 引数が"1"と一致する場合（\textasciigrave{}if (x == "1")\textasciigrave{} に等価）}
@@ -3230,7 +3228,7 @@ NA & データ型 \\
 引数に整数を指定しても動作しますが、引数が整数の場合と同様の動きをします。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{3}
 \ControlFlowTok{switch}\NormalTok{(x,                 }\CommentTok{\# 分岐のための引数が整数になると}
        \StringTok{"1"} \OtherTok{=} \StringTok{"x is 1"}\NormalTok{,    }\CommentTok{\# 1番目の処理文}
@@ -3251,7 +3249,7 @@ NA & データ型 \\
 \texttt{base::ifelse()}は予約語でなく関数です。\texttt{if/else}文と異なるのはベクトル型の評価が一度に行える点です。第一引数に\texttt{TRUE}か\texttt{FALSE}が返る評価式であればベクトル型でも構いません。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{ifelse}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -3296,7 +3294,7 @@ NA & データ型 \\
 \texttt{for}文は最も基本となる繰り返し処理で、条件式としてベクトルやリストを指定できる点が他の言語と異なる点です。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\SpecialCharTok{:}\DecValTok{15}\NormalTok{)) \{}
   \ControlFlowTok{if}\NormalTok{ (i }\SpecialCharTok{==} \DecValTok{4}\NormalTok{) \{}
     \ControlFlowTok{next}
@@ -3333,7 +3331,7 @@ NA & データ型 \\
 標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の関係式\eqref{eq:variance}を用いて\textbf{R}で以下の二つのデータの標本分散を求めなさい。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
 \NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{9}\NormalTok{)}
 \end{Highlighting}
@@ -3344,7 +3342,7 @@ NA & データ型 \\
 \addcontentsline{toc}{subsection}{解答例}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(x)}
 \NormalTok{(n }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ n }\SpecialCharTok{*} \FunctionTok{var}\NormalTok{(x)}
 \end{Highlighting}
@@ -3355,7 +3353,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(y)}
 \NormalTok{(n }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ n }\SpecialCharTok{*} \FunctionTok{var}\NormalTok{(y)}
 \end{Highlighting}
@@ -3368,7 +3366,7 @@ NA & データ型 \\
 参考までに不偏分散は以下の通りです。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{var}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -3378,7 +3376,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{var}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
@@ -3394,7 +3392,7 @@ NA & データ型 \\
 欠損値を含む以下のデータの平均値（\(\bar{x}\)）、不偏分散（\(\hat{\sigma}^2\)）ならびに標本分散（\(s^2\)）を求めなさい。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -3408,7 +3406,7 @@ NA & データ型 \\
 \addcontentsline{toc}{subsection}{解答例}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{mean}\NormalTok{(z, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -3418,7 +3416,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{var}\NormalTok{(z, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -3428,7 +3426,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{variance }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, }\AttributeTok{na.rm =} \ConstantTok{FALSE}\NormalTok{) \{}
 \NormalTok{  n }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(x))}
   \FunctionTok{return}\NormalTok{ ((n }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{/}\NormalTok{ n }\SpecialCharTok{*} \FunctionTok{var}\NormalTok{(x, }\AttributeTok{na.rm =}\NormalTok{ na.rm))}
@@ -3448,7 +3446,7 @@ NA & データ型 \\
 \texttt{length()}関数は指定したデータの長さ（値の個数）を求める関数です。欠損値（\texttt{NA}）も値としてカウントされます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{z}
 \end{Highlighting}
 \end{Shaded}
@@ -3458,7 +3456,7 @@ NA & データ型 \\
 \end{verbatim}
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{length}\NormalTok{(z)}
 \end{Highlighting}
 \end{Shaded}
@@ -3470,7 +3468,7 @@ NA & データ型 \\
 そこで、値が\texttt{NA}か否かを調べる\texttt{is.na()}関数を用います。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{is.na}\NormalTok{(z)}
 \end{Highlighting}
 \end{Shaded}
@@ -3482,7 +3480,7 @@ NA & データ型 \\
 返り値は論理型（\texttt{TRUE}/\texttt{FALSE}）ですが、\texttt{TRUE}は\(1\)、\texttt{FALSE}は\(0\)と等価であることを利用し、論理演算子の否定（\texttt{!}）と合計を求める\texttt{sum()}関数を組み合わせると\texttt{NA}を除くデータの長さを求めることができます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{sum}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(z))}
 \end{Highlighting}
 \end{Shaded}
@@ -3494,7 +3492,7 @@ NA & データ型 \\
 不偏分散を求める\texttt{var()}関数は\texttt{NA}が含まれるデータを指定する場合は、\texttt{NA}を除外するか否かを指定する\texttt{na.rm}オプションを指定する必要があります。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{var}\NormalTok{(z)}
 \end{Highlighting}
 \end{Shaded}
@@ -3506,7 +3504,7 @@ NA & データ型 \\
 \texttt{na.rm\ =\ TRUE}オプションを指定することで、\texttt{NA}を含むデータの不偏分散を求めることができます。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{var}\NormalTok{(z, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -3801,7 +3799,7 @@ NA & データ型 \\
 　\textbf{Console} ペインのプロンプト（\texttt{\textgreater{}}表示）の部分に\texttt{2\ *\ 3}と打ち込んで［Enter］キーを押し\texttt{{[}1{]}\ 6}と表示されることを確認してください。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \DecValTok{2} \SpecialCharTok{*} \DecValTok{3}
 \end{Highlighting}
 \end{Shaded}
@@ -3818,7 +3816,7 @@ NA & データ型 \\
 　次に必要となるいくつかのパッケージをインストールします。パッケージをインストールする場合はインターネットに接続されている必要があります。 \textbf{Console} ペインのプロンプトに以下のコードを入力し {[}Enter{]}キーを押して実行します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -3826,7 +3824,7 @@ NA & データ型 \\
 　インストールが終わりましたらパッケージが正しくインストールされていることを確認するために \textbf{Console} ペインに以下のコードを入力して実行します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \end{Highlighting}
 \end{Shaded}
@@ -3834,7 +3832,7 @@ NA & データ型 \\
 　以下のようなメッセージが表示されることを確認します。インストール時期によってはバージョン表記などが下記と異なる場合があります。なお、日本語版 Windows 環境では一部の文字が化けします。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{Loading required package}\SpecialCharTok{:}\NormalTok{ tidyverse}
 \NormalTok{─ Attaching packages ─────────────────────────────── tidyverse }\DecValTok{1}\NormalTok{.}\FloatTok{3.0}\NormalTok{ ─}
 \NormalTok{✔ ggplot2 }\DecValTok{3}\NormalTok{.}\FloatTok{2.1}\NormalTok{     ✔ purrr   }\DecValTok{0}\NormalTok{.}\FloatTok{3.3}
@@ -3852,7 +3850,7 @@ NA & データ型 \\
 　続いて \href{https://rmarkdown.rstudio.com/}{rmarkdown } パッケージをインストールします。\texttt{tidyverse} パッケージのときと同様に以下のコードを \textbf{Console} ペインに入力して実行します。
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{"rmarkdown"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -3865,7 +3863,7 @@ NA & データ型 \\
 　
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \ExtensionTok{apt{-}get}\NormalTok{ install }\AttributeTok{{-}y}\NormalTok{ libicu{-}dev}
 \ExtensionTok{apt{-}get}\NormalTok{ install }\AttributeTok{{-}y}\NormalTok{ make}
 \ExtensionTok{apt{-}get}\NormalTok{ install }\AttributeTok{{-}y}\NormalTok{ libcurl4{-}openssl{-}dev}
@@ -4022,7 +4020,7 @@ Image & Description \\
 　
 
 \begin{Shaded}
-\begin{Highlighting}[]
+\begin{Highlighting}[numbers=left,,]
 \ExtensionTok{docker}\NormalTok{ pull rocker/tidyverse}
 \end{Highlighting}
 \end{Shaded}
@@ -4552,5 +4550,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 　Google Colab や RStudio Cloud・Exploratoy などと異なりアカウントを取得する必要はありませんが、専用の環境を構築するわけではなく、あくまでも一時的な試用環境である点に注意してください。継続的に使える環境が必要な場合は ローカルに環境を構築するか RStudio Cloud のようなクラウドサービスを利用してください。
 
 　
+
+  \bibliography{bib/references.bib,bib/packages.bib}
 
 \end{document}

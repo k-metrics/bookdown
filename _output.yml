@@ -24,20 +24,24 @@ bookdown::gitbook:
 
 ## ePUB形式でLaTeX数式が表示されない問題あり
 bookdown::epub_book:
-  epub_version: epub3
+  dev: svglite
+  # epub_version: epub3
   md_extensions: -ascii_identifiers
   pandoc_args: [--mathml]
 
 bookdown::pdf_book:
+  includes:
+    in_header: latex/preamble.tex # 必要なパッケージやフォントの設定
+  latex_engine: xelatex
 # base_format: rmarkdown::pdf_document
   keep_tex: true
-  highlight: default       # tango pygments kate haddock
-  highlight_bw: false
-  latex_engine: xelatex
+  citation_package: natbib        # 参考文献の引用スタイル
+  template: null                  # テンプレートファイル
+  highlight: default              # tango pygments kate haddock から選択
+  highlight_bw: false             # ハイライト指定をグレースケールに変換する
   pandoc_args: [--top-level-division=chapter, --wrap=none]
 # pandoc_args: [--top-level-division=chapter]
-  quote_footer: ["\\VA{", "}{}"]
-  template: null
-  toc_appendix: true
-# toc_unnumbered: true
-  toc_depth: 4
+  quote_footer: ["\\VA{", "}{}"]  # 引用ブロック
+  toc_unnumbered: true            # ?
+  toc_appendix: true              # 
+  toc_depth: 4                    # 目次(TOC)に表示する階層

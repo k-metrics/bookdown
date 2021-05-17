@@ -8,69 +8,22 @@ site: bookdown::bookdown_site
 github-repo: k-metrics/bookdown
 # LaTeX関連の設定はベースとなるRmdに記述しないと正しく認識されません
 always_allow_html: true  # 一種の呪文
-# # Include tex file
-# includes:
-#   in_header: preamble.tex
 # 参考文献の引用に関する設定
-bibliography: [./bib/references.bib, ./bib/packages.bib]
-citation_package: natbib
-link-citations: true
+bibliography: [bib/references.bib, bib/packages.bib]
+link-citations: true     # 参考文献一覧へのリンクを有効化
 colorlinks: true         # ハイパーリンクを色分けする
+lot: true                # 表一覧(List of tables)の出力
+lof: true                # 図一覧(List of figures)の出力
 # documentclass: krantz
 fig_crop: false
 fontsize: 12pt           # 本文のフォントサイズ
 linestretch: 1.1         # 行間の指定
 links-as-notes: true     # ハイパーリンク先を脚注に記載
-## 日本語とtufte, kableExtraを使うために必要なTeXパッケージ群
-# A4 210mm x 297mm
-#  \usepackage[a4paper, total={6.5in, 9.5in}]{geometry}
-#  \usepackage[pdfbox,tombo]{gentombow}  # トンボを設定
-#  \usepackage{indentfirst}   # tinytexのリポジトリには存在しない？
-header-includes: |
-  \usepackage[a4paper, total={160mm, 247mm}, left=25mm, top=25mm]{geometry}
-  \usepackage{booktabs}
-  \usepackage{longtable}
-  \usepackage{array}
-  \usepackage{multirow}
-  \usepackage{wrapfig}
-  \usepackage{float}
-  \usepackage{colortbl}
-  \usepackage{pdflscape}
-  \usepackage{tabu}
-  \usepackage{threeparttable}
-  \usepackage{threeparttablex}
-  \usepackage[normalem]{ulem}
-  \usepackage{inputenc}
-  \usepackage{makecell}
-  \usepackage{xcolor}
-  \usepackage{amsmath}
-  \usepackage{fontawesome5}
-  \usepackage{subfig}
-  \usepackage{xeCJK}
-  \usepackage[noto]{zxjafont}
-  \usepackage{zxjatype}
-## 日本語フォントの扱いについてはzxjafontパッケージの解説を参照のこと
-# https://mirror.las.iastate.edu/tex-archive/language/japanese/zxjafont/zxjafont.pdf
-#
-## Windows環境ではなぜかNotoフォントが認識されないので源ノシリーズベースの
-## 原ノ味フォントかIPAexフォントを利用する（原ノ味はtlmgrでインストール可）
-# \usepackage[haranoaji]{zxjafont}
-# \usepackage[ipaex]{zxjafont}
-#
-## Windows環境でNotoフォントを指定したい場合は以下のようにheader-includeで
-## 個別に指定する（setCJKxxxfotnの指定は必要？）
-# \setmainfont{NotoSerifCJKjp-Regular.otf}[BoldFont=NotoSerifCJKjp-Bold.otf]
-# \setsansfont{NotoSansCJKjp-Regular.otf}[BoldFont=NotoSansCJKjp-Bold.otf]
-# \setmonofont{NotoSansMonoCJKjp-Regular.otf}[BoldFont=NotoSansMonoCJKjp-Bold.otf]
-## モノフォントは源ノ角コード(Source Code Proの日本語版)がおすゝめ
-# \setmonofont{SourceHanCodeJP-Regular.otf}[BoldFont=SourceHanCodeJPS-Bold.otf]
-## モノフォントのみ入れ替えフォントのスケーリングを調整する
+# LaTeXのパッケージ指定とフォントは latex/preamble.tex に移動
+# 以下はLaTeXでなくpandocのオプションらしい
 mainfontoptions: "Scale=MatchUppercase"
-monofont: "Source Han Code JP"
 monofontoptions: "Scale=0.8"      # 0.96がベストらしいが…
 CJKoptions: "Scale=1.0"
-## Windows環境でモノフォントを変更するにはheader-inludeで以下の指定を行う
-# \setmonofont{SourceCodePro-Regular.ttf}[BoldFont=SourceCodePro-Bold.ttf]
 ---
 
 ```{css, include=FALSE}
@@ -80,15 +33,25 @@ CJKoptions: "Scale=1.0"
 ```{r setup, include=FALSE}
 require(tidyverse)
 
-knitr::opts_chunk$set(echo = TRUE, fig_caption = TRUE, fig.align = 'center',
-                      warning = FALSE, out.width = "85%")
+knitr::opts_chunk$set(echo = TRUE,                 # Rコードを出力する
+                      warning = FALSE,             # Rの警告を抑止する
+                      fig_caption = TRUE,
+                      fig.align = 'center',        # 図を中央揃えにする
+                      attr.source='.numberLines',  # Rコードに行番号表示
+                      out.width = "85%"            # 画像のデフォルトサイズ
+                      )
 
 # 出力がPDF(LaTeX)の場合は図をPDF形式としフォントをNotoにする、また、図の配置を
 # 自動調整しないようにする
 if (knitr::is_latex_output()) {
     knitr::opts_chunk$set(dev = "cairo_pdf",
                           dev.args = list(family = "Noto Serif"),
-                          fig.pos = "H", out.extra = "")
+                          fig.pos = "H",
+                          out.extra = "",
+                          tinytex.verbose = TRUE   # コード折り返し設定
+                          )
+} else if (!knitr::is_html_output(excludes = "epub")) { #ePUB形式の場合
+    knitr::opts_chunk$set(dev = "svglite")
 }
 
 # 図の描画位置調整については以下を参照

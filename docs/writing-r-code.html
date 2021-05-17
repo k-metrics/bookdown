@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-14" />
+<meta name="date" content="2021-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -396,42 +396,42 @@ div.csl-indent {
 <p>　では、実際に RStudio を利用して簡単なコードを書いてみましょう。初学者が学習のために R のコードを記述するには R Notebook 形式が便利です。 R Notebook 形式は マークダウン言語とコードを混在できる R Markdown 形式を簡易にしたものです。コード以外に説明などを記述できるのでアウトプットしながらの学習が可能です。
 　R Notebook 形式を使うにはメニューから［File］-［New File］-［R Notebook］を実行します。すると下図のようなソースエディタ（以降、エディタ）が開きます。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-94"></span>
-<img src="fig/RStudio/DT_RN.png" alt="R Notebook file" width="80%"  />
+<img src="fig/RStudio/DT_RN.png" alt="R Notebook file" width="80%" />
 <p class="caption">
 Fig F.3: R Notebook file
 </p>
 </div>
 <p>　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As…］を実行して適当な場所に適当な名前で保存しておきます。ここでは <code>test</code> という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は <code>test.Rmd</code> となります。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-95"></span>
-<img src="fig/RStudio/DT_RN_Saved.png" alt="R Notebook saved file" width="80%"  />
+<img src="fig/RStudio/DT_RN_Saved.png" alt="R Notebook saved file" width="80%" />
 <p class="caption">
 Fig F.4: R Notebook saved file
 </p>
 </div>
 <p>　ファイルを保存したら 6 行目の「This is an　…」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-96"></span>
-<img src="fig/RStudio/DT_RN_Insert_Chunk.png" alt="R Notebook insert chunk" width="80%"  />
+<img src="fig/RStudio/DT_RN_Insert_Chunk.png" alt="R Notebook insert chunk" width="80%" />
 <p class="caption">
 Fig F.5: R Notebook insert chunk
 </p>
 </div>
 <p>　すると上図のように三連のバッククォート（<code>```</code>）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-97"></span>
-<img src="fig/RStudio/DT_RN_First_Code.png" alt="R Notebook first code" width="80%"  />
+<img src="fig/RStudio/DT_RN_First_Code.png" alt="R Notebook first code" width="80%" />
 <p class="caption">
 Fig F.6: R Notebook first code
 </p>
 </div>
 <p>　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-98"></span>
-<img src="fig/RStudio/DT_RN_Run_Code.png" alt="R Notebook run code" width="80%"  />
+<img src="fig/RStudio/DT_RN_Run_Code.png" alt="R Notebook run code" width="80%" />
 <p class="caption">
 Fig F.7: R Notebook run code
 </p>
 </div>
 <p>　コードチャンクの下と <strong>Console</strong> ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから <code>Chunk Output Inline</code> にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-99"></span>
-<img src="fig/RStudio/DT_RN_Option.png" alt="R Notebook option" width="80%"  />
+<img src="fig/RStudio/DT_RN_Option.png" alt="R Notebook option" width="80%" />
 <p class="caption">
 Fig F.8: R Notebook option
 </p>

@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-14" />
+<meta name="date" content="2021-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -424,14 +424,14 @@ div.csl-indent {
 </div>
 <p>　変形したデータを使って部位別の箱ひげ図を描くと確かに 花弁（Petal）の方が 萼片（Sepal）よりも小さい傾向にあることが分かります。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
-<img src="R_files/figure-html/unnamed-chunk-6-1.png" alt="花弁と萼片の分布" width="85%"  />
+<img src="R_files/figure-html/unnamed-chunk-6-1.png" alt="花弁と萼片の分布" width="85%" />
 <p class="caption">
 Fig 0.1: 花弁と萼片の分布
 </p>
 </div>
 <p>　次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を見てみます。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
-<img src="R_files/figure-html/unnamed-chunk-7-1.png" alt="幅と長さの関係" width="40%"  /><img src="R_files/figure-html/unnamed-chunk-7-2.png" alt="幅と長さの関係" width="40%"  />
+<img src="R_files/figure-html/unnamed-chunk-7-1.png" alt="幅と長さの関係" width="40%" /><img src="R_files/figure-html/unnamed-chunk-7-2.png" alt="幅と長さの関係" width="40%" />
 <p class="caption">
 Fig 0.2: 幅と長さの関係
 </p>
@@ -457,21 +457,21 @@ Fig 0.2: 幅と長さの関係
 ## F-statistic:  1882 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>　回帰モデルの当てはまり具合がかなり良いので回帰モデルを可視化します。比較として萼片（Sepal）の回帰モデルも可視化します。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
-<img src="R_files/figure-html/unnamed-chunk-9-1.png" alt="幅と長さの関係" width="40%"  /><img src="R_files/figure-html/unnamed-chunk-9-2.png" alt="幅と長さの関係" width="40%"  />
+<img src="R_files/figure-html/unnamed-chunk-9-1.png" alt="幅と長さの関係" width="40%" /><img src="R_files/figure-html/unnamed-chunk-9-2.png" alt="幅と長さの関係" width="40%" />
 <p class="caption">
 Fig 0.3: 幅と長さの関係
 </p>
 </div>
 <p>　データ分析では、このような手順で対象のデータに対して可視化と変形、モデルの計算を繰り返すことで適切なモデルを探ります。これが基本となる分析プロセスです。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
-<img src="fig/DSWF/data_science_workflow_step1.png" alt="基本となる分析プロセス" width="85%"  />
+<img src="fig/DSWF/data_science_workflow_step1.png" alt="基本となる分析プロセス" width="85%" />
 <p class="caption">
 Fig 0.4: 基本となる分析プロセス
 </p>
 </div>
 <p>　実際には対象のデータが都合よく<strong>R</strong>に組み込まれている訳ではありませんので、対象となるデータを読み込み（インポート）、処理がしやすいように整形してから可視化などを行います。最後に分析結果を報告（レポート）しますので、分析プロセスは下図になります。</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
-<img src="fig/DSWF/data_science_workflow_step2.png" alt="分析プロセス" width="85%"  />
+<img src="fig/DSWF/data_science_workflow_step2.png" alt="分析プロセス" width="85%" />
 <p class="caption">
 Fig 0.5: 分析プロセス
 </p>

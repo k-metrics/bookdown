@@ -18,8 +18,8 @@
 
 対象                 | 表記方法                            | 表記例
 ---------------------|-------------------------------------|-------------------
-ハイパーリンク^[PDF形式のみ、^No.^の部分は章ごとの通し番号]    | 脚注にURL表記                       | CRAN^No.^
-パス・ファイル名     | モノフォント^[タイプライタフォントとも呼ばれる等幅フォント]                     | `sample/sample.Rmd`
+ハイパーリンク       | 脚注にURL表記[^1]                   | CRAN^No.^
+パス・ファイル名     | モノフォント[^2]                    | `sample/sample.Rmd`
 パッケージ名         | 太字のモノフォント                  | **`tidyverse`**
 変数・オブジェクト名 | モノフォント                        | `Sepela.Width`
 関数名               | モノフォントで()付き                | `print()`
@@ -27,8 +27,15 @@
 コードの実行結果     | モノフォント（`##` プロンプト）     | `## output...`
 キーボードのキー     | モノフォントで[]付き                | [`Ctrl`]+[`S`]
 数式                 | \LaTeX 数式（math mode）            | $y = ax^2 + b$
-製品サービス名など   | 太字                                | **Google Colab**
-参考文献・資料^[PDF形式のみ表示、()内は文書内ハイパーリンク]    | (著者・作者, 作成年)                | (Wickham, 2021)
+参考文献・資料[^3]   | []または()付き                      | [Wickham, 2021]
+
+<!-- 参考文献・資料[^3]   | [著者・作者, 作成年]                | [Wickham, 2021] -->
+<!-- 参考文献・資料[^4]   | (著者・作者, 作成年)                | (Wickham, 2021) -->
+<!-- 製品サービス名など   | 太字                                | **Google Colab** -->
+
+[^1]: PDF形式のみ。^No.^の部分は章ごとの通し番号
+[^2]: タイプライタフォントとも呼ばれる等幅フォント
+[^3]: カッコ内は参考文献一覧への文書内ハイパーリンク
 
 <!-- \newpage -->
 
@@ -204,15 +211,15 @@ knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
 ### Import {.unnumbered}
 
 * **`readr`** 
-    - 様々なテキスト形式テーブルを読み込むためのパッケージ`r if (knitr::is_latex_output()) '[@R-readr]'`
+    - 様々なテキスト形式テーブルを読み込むためのパッケージ`r if (knitr::is_latex_output()) '[@R-readr]'`[@R-readr]
 * **`readxl`**
-    - Microsoft Excelのファイルを読み込むためのパッケージ`r if (knitr::is_latex_output())'[@R-readxl]'`
+    - Microsoft Excelのファイルを読み込むためのパッケージ`r if (knitr::is_latex_output())''`[@R-readxl]
 * **`rvest`**
-    - Webスクレイピングのためのパッケージ`r if (knitr::is_latex_output())'[@R-rvest]'`
+    - Webスクレイピングのためのパッケージ`r if (knitr::is_latex_output())''`[@R-rvest]
 * **`googlesheets4`**
-    - Google API v4 経由でスプレッドシートを読み込むためのパッケージ`r if (knitr::is_latex_output())'[@R-googlesheets4]'`
+    - Google API v4 経由でスプレッドシートを読み込むためのパッケージ`r if (knitr::is_latex_output())''`[@R-googlesheets4]
 * **`DBI`**
-    - SQL系の各種データベースと接続するためのパッケージ`r if (knitr::is_latex_output())'[@R-DBI]'`
+    - SQL系の各種データベースと接続するためのパッケージ`r if (knitr::is_latex_output())''`[@R-DBI]
 
 
 ### Tidy {.unnumbered}
