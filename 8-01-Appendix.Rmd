@@ -4,11 +4,11 @@
 
 # References {-}
 
-<div id="refs"></div>
+<!-- <div id="refs"></div> -->
 
-`r if (knitr::is_latex_output()) '
-See Bibliography page
-'`
+<!-- `r if (knitr::is_latex_output()) ' -->
+<!-- See Bibliography page -->
+<!-- '` -->
 
 <!-- 
 　Bibliographyによる参考文献一覧は以下に出力される

@@ -2,6 +2,17 @@
 % https://github.com/Gedevan-Aleksizde/Japan.R2019/blob/master/latex/preamble.tex
 % https://teastat.blogspot.com/2019/01/bookdown.html
 
+% --- 未解決事項 --------------------------------------------------------------
+% 1)knitr時に以下のワーニングが出る
+%  警告メッセージ: 
+% Package xeCJK Warning: Redefining CJKfamily `\CJKttdefault'
+% (xeCJK)                (NotoSansCJKjp-Regular). 
+% 
+% 2) Bibliographyページを目次に表示できない
+% 
+% 3) 文頭一文字インデントを有効にできない
+%    \usepackage{indentfirst}   # インストールできない
+% 
 
 % --- Packages ----------------------------------------------------------------
 % 日本語とtufte, kableExtraを使うために必要なTeXパッケージ指定
@@ -38,8 +49,9 @@
 
 % --- Fonts -------------------------------------------------------------------
 % フォントしては index.html でも可能（pandoc用オプションは index.htmlにて）
+\setCJKmonofont{Source Han Code JP}
 \setmonofont{Source Han Code JP}
-\setjamonofont{Source Han Code JP}
+% \setjamonofont{Source Han Code JP}
 
 % ## 日本語フォントの扱いについてはzxjafontパッケージの解説を参照のこと
 % # https://mirror.las.iastate.edu/tex-archive/language/japanese/zxjafont/zxjafont.pdf
@@ -56,12 +68,6 @@
 % # \setmonofont{NotoSansMonoCJKjp-Regular.otf}[BoldFont=NotoSansMonoCJKjp-Bold.otf]
 % ## モノフォントは源ノ角コード(Source Code Proの日本語版)がおすゝめ
 % # \setmonofont{SourceHanCodeJP-Regular.otf}[BoldFont=SourceHanCodeJPS-Bold.otf]
-% ## モノフォントのみ入れ替えフォントのスケーリングを調整する
-% \mainfontoptions: "Scale=MatchUppercase"
-% \setmonofontoptions{Scale=0.8}      % 0.96がベストらしいが…
-% \setCJKoptions{Scale=1.0"}
-% ## Windows環境でモノフォントを変更するにはheader-inludeで以下の指定を行う
-% # \setmonofont{SourceCodePro-Regular.ttf}[BoldFont=SourceCodePro-Bold.ttf]
 
 
 % --- 空ページにヘッダーを設定する（機能していない） --------------------------
@@ -107,3 +113,62 @@
 %    \endlist}
 % \makeatother
 
+% --- 特殊ブロックをLaTeXで表現するためのマクロ -------------------------------
+% https://github.com/Gedevan-Aleksizde/Japan.R2019/blob/master/latex/preamble.tex
+\makeatletter
+\newenvironment{kframe}{%
+\medskip{}
+\setlength{\fboxsep}{.8em}
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\makeatletter
+\@ifundefined{Shaded}{
+}{\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}}
+\makeatother
+
+\newenvironment{rmdblock}[1]
+  {
+  \begin{itemize}
+  \renewcommand{\labelitemi}{
+    \raisebox{-.7\height}[0pt][0pt]{
+      % {\setkeys{Gin}{width=3em,keepaspectratio}\includegraphics{images/#1}}
+      {\setkeys{Gin}{width=3em,keepaspectratio}}
+    }
+  }
+  \setlength{\fboxsep}{1em}
+  \begin{kframe}
+  \item
+  }
+  {
+  \end{kframe}
+  \end{itemize}
+  }
+\newenvironment{rmdnote}
+  {\begin{rmdblock}{note}}
+  {\end{rmdblock}}
+\newenvironment{rmdcaution}
+  {\begin{rmdblock}{caution}}
+  {\end{rmdblock}}
+\newenvironment{rmdimportant}
+  {\begin{rmdblock}{important}}
+  {\end{rmdblock}}
+\newenvironment{rmdtip}
+  {\begin{rmdblock}{tip}}
+  {\end{rmdblock}}
+\newenvironment{rmdwarning}
+  {\begin{rmdblock}{warning}}
+  {\end{rmdblock}}

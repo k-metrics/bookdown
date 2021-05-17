@@ -121,6 +121,17 @@
 % https://github.com/Gedevan-Aleksizde/Japan.R2019/blob/master/latex/preamble.tex
 % https://teastat.blogspot.com/2019/01/bookdown.html
 
+% --- 未解決事項 --------------------------------------------------------------
+% 1)knitr時に以下のワーニングが出る
+%  警告メッセージ: 
+% Package xeCJK Warning: Redefining CJKfamily `\CJKttdefault'
+% (xeCJK)                (NotoSansCJKjp-Regular). 
+% 
+% 2) Bibliographyページを目次に表示できない
+% 
+% 3) 文頭一文字インデントを有効にできない
+%    \usepackage{indentfirst}   # インストールできない
+% 
 
 % --- Packages ----------------------------------------------------------------
 % 日本語とtufte, kableExtraを使うために必要なTeXパッケージ指定
@@ -157,8 +168,9 @@
 
 % --- Fonts -------------------------------------------------------------------
 % フォントしては index.html でも可能（pandoc用オプションは index.htmlにて）
+\setCJKmonofont{Source Han Code JP}
 \setmonofont{Source Han Code JP}
-\setjamonofont{Source Han Code JP}
+% \setjamonofont{Source Han Code JP}
 
 % ## 日本語フォントの扱いについてはzxjafontパッケージの解説を参照のこと
 % # https://mirror.las.iastate.edu/tex-archive/language/japanese/zxjafont/zxjafont.pdf
@@ -175,58 +187,110 @@
 % # \setmonofont{NotoSansMonoCJKjp-Regular.otf}[BoldFont=NotoSansMonoCJKjp-Bold.otf]
 % ## モノフォントは源ノ角コード(Source Code Proの日本語版)がおすゝめ
 % # \setmonofont{SourceHanCodeJP-Regular.otf}[BoldFont=SourceHanCodeJPS-Bold.otf]
-% ## モノフォントのみ入れ替えフォントのスケーリングを調整する
-% \mainfontoptions: "Scale=MatchUppercase"
-% \setmonofontoptions{Scale=0.8}      % 0.96がベストらしいが…
-% \setCJKoptions{Scale=1.0"}
-% ## Windows環境でモノフォントを変更するにはheader-inludeで以下の指定を行う
-% # \setmonofont{SourceCodePro-Regular.ttf}[BoldFont=SourceCodePro-Bold.ttf]
 
 
-% --- 空ページにヘッダーを設定する（機能していない）
-
-\makeatletter
-\def\emptypage@emptypage{
-    \hbox{}
-    \thispagestyle{headings}
-    \newpage
-}
-\def\cleardoublepage{
-        \clearpage
-        \if@twoside
-            \ifodd\c@page
-                % do nothing
-            \else
-                \emptypage@emptypage
-            \fi
-        \fi
-    }
-\makeatother
+% --- 空ページにヘッダーを設定する（機能していない） --------------------------
+% \makeatletter
+% \def\emptypage@emptypage{
+%     \hbox{}
+%     \thispagestyle{headings}
+%     \newpage
+% }
+% \def\cleardoublepage{
+%         \clearpage
+%         \if@twoside
+%             \ifodd\c@page
+%                 % do nothing
+%             \else
+%                 \emptypage@emptypage
+%             \fi
+%         \fi
+%     }
+% \makeatother
 
 
 % --- 参考文献一覧を目次に表示させる ------------------------------------------
+% \makeatletter
+% \renewenvironment{thebibliography}[1]
+% {\chapter*{\bibname\@mkboth{\bibname}{\bibname}}
+%    \addcontentsline{toc}{chapter}{\bibname}%
+%    \list{\@biblabel{\@arabic\c@enumiv}}%
+%         {\settowidth\labelwidth{\@biblabel{#1}}%
+%          \leftmargin\labelwidth
+%          \advance\leftmargin\labelsep
+%          \@openbib@code
+%          \usecounter{enumiv}%
+%          \let\p@enumiv\@empty
+%          \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+%    \sloppy
+%    \clubpenalty4000
+%    \@clubpenalty\clubpenalty
+%    \widowpenalty4000%
+%    \sfcode`\.\@m}
+%   {\def\@noitemerr
+%     {\@latex@warning{Empty `thebibliography' environment}}%
+%    \endlist}
+% \makeatother
+
+% --- 特殊ブロックをLaTeXで表現するためのマクロ -------------------------------
+% https://github.com/Gedevan-Aleksizde/Japan.R2019/blob/master/latex/preamble.tex
 \makeatletter
-\renewenvironment{thebibliography}[1]
-{\chapter*{\bibname\@mkboth{\bibname}{\bibname}}
-   \addcontentsline{toc}{chapter}{\bibname}%
-   \list{\@biblabel{\@arabic\c@enumiv}}%
-        {\settowidth\labelwidth{\@biblabel{#1}}%
-         \leftmargin\labelwidth
-         \advance\leftmargin\labelsep
-         \@openbib@code
-         \usecounter{enumiv}%
-         \let\p@enumiv\@empty
-         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-   \sloppy
-   \clubpenalty4000
-   \@clubpenalty\clubpenalty
-   \widowpenalty4000%
-   \sfcode`\.\@m}
-  {\def\@noitemerr
-    {\@latex@warning{Empty `thebibliography' environment}}%
-   \endlist}
+\newenvironment{kframe}{%
+\medskip{}
+\setlength{\fboxsep}{.8em}
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
 \makeatother
 
+\makeatletter
+\@ifundefined{Shaded}{
+}{\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}}
+\makeatother
+
+\newenvironment{rmdblock}[1]
+  {
+  \begin{itemize}
+  \renewcommand{\labelitemi}{
+    \raisebox{-.7\height}[0pt][0pt]{
+      % {\setkeys{Gin}{width=3em,keepaspectratio}\includegraphics{images/#1}}
+      {\setkeys{Gin}{width=3em,keepaspectratio}}
+    }
+  }
+  \setlength{\fboxsep}{1em}
+  \begin{kframe}
+  \item
+  }
+  {
+  \end{kframe}
+  \end{itemize}
+  }
+\newenvironment{rmdnote}
+  {\begin{rmdblock}{note}}
+  {\end{rmdblock}}
+\newenvironment{rmdcaution}
+  {\begin{rmdblock}{caution}}
+  {\end{rmdblock}}
+\newenvironment{rmdimportant}
+  {\begin{rmdblock}{important}}
+  {\end{rmdblock}}
+\newenvironment{rmdtip}
+  {\begin{rmdblock}{tip}}
+  {\end{rmdblock}}
+\newenvironment{rmdwarning}
+  {\begin{rmdblock}{warning}}
+  {\end{rmdblock}}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -246,26 +310,6 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
-  \fi
- }%
- {}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \title{Rのすゝめ}
 \usepackage{etoolbox}
@@ -283,7 +327,7 @@
 
 {
 \hypersetup{linkcolor=}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{2}
 \tableofcontents
 }
 \listoftables
@@ -674,247 +718,237 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』\citep{RStartHere:GitHub}をご覧ください。
 
-\hypertarget{import-1}{%
-\subsection*{Import}\label{import-1}}
-\addcontentsline{toc}{subsection}{Import}
-
 \begin{itemize}
 \tightlist
 \item
-  \textbf{\texttt{readr}}
+  \textbf{Import}
 
   \begin{itemize}
   \tightlist
   \item
-    様々なテキスト形式テーブルを読み込むためのパッケージ\citep{R-readr}\citep{R-readr}
+    \textbf{\texttt{readr}} \citep{R-readr}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      様々なテキスト形式テーブルを読み込むためのパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{readxl}} \citep{R-readxl}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Microsoft Excelのファイルを読み込むためのパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{rvest}} \citep{R-rvest}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Webスクレイピングのためのパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{googlesheets4}} \citep{R-googlesheets4}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Google API v4 経由でスプレッドシートを読み込むためのパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{DBI}} \citep{R-DBI}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      SQL系の各種データベースと接続するためのパッケージ
+    \end{itemize}
   \end{itemize}
 \item
-  \textbf{\texttt{readxl}}
+  \textbf{Tidy}
 
   \begin{itemize}
   \tightlist
   \item
-    Microsoft Excelのファイルを読み込むためのパッケージ\citep{R-readxl}
+    \textbf{\texttt{tidyr}} \citep{R-tidyr}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Tidy Dataの作成を強力にサポートしてくれるパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{tibble}} \citep{R-tibble}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      より厳密にTidy Dataを扱うためのパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{zoo}} \citep{R-zoo}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      時系列（TS）データを効率よく扱うためのパッケージ
+    \end{itemize}
   \end{itemize}
 \item
-  \textbf{\texttt{rvest}}
+  \textbf{Visualize}
 
   \begin{itemize}
   \tightlist
   \item
-    Webスクレイピングのためのパッケージ\citep{R-rvest}
+    \textbf{\texttt{ggplot2}}\citep{R-ggplot2}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      統一された文法で描画が行えるパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{htmlwidgets}}\citep{R-htmlwidgets}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      JavaScriptのウィジェットを利用できるパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{patchwork}}\citep{R-patchwork}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \textbf{\texttt{ggplot2}}オブジェクトをひとつにまとめてレイアウトするためのパッケージ
+    \end{itemize}
   \end{itemize}
 \item
-  \textbf{\texttt{googlesheets4}}
+  \textbf{Transform}
 
   \begin{itemize}
   \tightlist
   \item
-    Google API v4 経由でスプレッドシートを読み込むためのパッケージ\citep{R-googlesheets4}
+    \textbf{\texttt{dplyr}}\citep{R-dplyr}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Tidy Dataを様々な方法で操作するためのパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{stringr}}\citep{R-stringr}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      文字列処理をするためのパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{forcats}}\citep{R-forcats}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      因子型を操作するためのパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{lubridate}}\citep{R-lubridate}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      日付データを簡単に変換するためのパッケージ
+    \end{itemize}
   \end{itemize}
 \item
-  \textbf{\texttt{DBI}}
+  \textbf{Model}
 
   \begin{itemize}
   \tightlist
   \item
-    SQL系の各種データベースと接続するためのパッケージ\citep{R-DBI}
+    \textbf{\texttt{broom}}\citep{R-broom}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      各種モデリング結果を整然データにするためのパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{tidymodels}}\citep{tidymodels2020, R-tidymodels}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      機械学習を中心としたモデリングフレームワーク
+    \end{itemize}
+  \end{itemize}
+\item
+  \textbf{Communicate}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{\texttt{knitr}}\citep{knitr2014, R-knitr}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \textbf{R}のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{rmarkdown}}\citep{R-rmarkdown}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      マークダウン書式を用いてレポートを作成するためのパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{bookdown}}\citep{bookdown2016, R-bookdown}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      書籍や長いドキュメンを作成するためのパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{shiny}}\citep{R-shiny}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      インタラクティブなWebアプリケーションを作成するためのパッケージ
+    \end{itemize}
+  \end{itemize}
+\item
+  \textbf{Othres}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{\texttt{magrittr}}\citep{R-magrittr}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      パイプ演算子（\texttt{\%\textgreater{}\%}）によるスムースな処理を実現するパッケージ
+    \end{itemize}
+  \item
+    \textbf{\texttt{purrr}}\citep{R-purrr}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      関数型プログラミングによる反復処理を提供するパッケージ
+    \end{itemize}
   \end{itemize}
 \end{itemize}
 
-\hypertarget{tidy-1}{%
-\subsection*{Tidy}\label{tidy-1}}
-\addcontentsline{toc}{subsection}{Tidy}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{\texttt{tidyr}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Tidy Dataの作成を強力にサポートしてくれるパッケージ\citep{R-tidyr}
-  \end{itemize}
-\item
-  \textbf{\texttt{tibble}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    より厳密にTidy Dataを扱うためのパッケージ\citep{R-tibble}
-  \end{itemize}
-\item
-  \textbf{\texttt{zoo}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    時系列（TS）データを効率よく扱うためのパッケージ\citep{R-zoo}
-  \end{itemize}
-\end{itemize}
-
-\hypertarget{visualize-1}{%
-\subsection*{Visualize}\label{visualize-1}}
-\addcontentsline{toc}{subsection}{Visualize}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{\texttt{ggplot2}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    統一された文法で描画が行えるパッケージ\citep{R-ggplot2}
-  \end{itemize}
-\item
-  \textbf{\texttt{htmlwidgets}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    JavaScriptのウィジェットを利用できるパッケージ\citep{R-htmlwidgets}
-  \end{itemize}
-\item
-  \textbf{\texttt{patchwork}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \textbf{\texttt{ggplot2}}オブジェクトをひとつにまとめてレイアウトするためのパッケージ\citep{R-patchwork}
-  \end{itemize}
-\end{itemize}
-
-\hypertarget{transform-1}{%
-\subsection*{Transform}\label{transform-1}}
-\addcontentsline{toc}{subsection}{Transform}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{\texttt{dplyr}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Tidy Dataを様々な方法で操作するためのパッケージ\citep{R-dplyr}
-  \end{itemize}
-\item
-  \textbf{\texttt{stringr}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    文字列処理をするためのパッケージ\citep{R-stringr}
-  \end{itemize}
-\item
-  \textbf{\texttt{forcats}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    因子型を操作するためのパッケージ\citep{R-forcats}
-  \end{itemize}
-\item
-  \textbf{\texttt{lubridate}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    日付データを簡単に変換するためのパッケージ\citep{R-lubridate}
-  \end{itemize}
-\end{itemize}
-
-\hypertarget{model-1}{%
-\subsection*{Model}\label{model-1}}
-\addcontentsline{toc}{subsection}{Model}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{\texttt{broom}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    各種モデリング結果を整然データにするためのパッケージ\citep{R-broom}
-  \end{itemize}
-\item
-  \textbf{\texttt{tidymodels}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    機械学習を中心としたモデリングフレームワーク\citep{tidymodels2020, R-tidymodels}
-  \end{itemize}
-\end{itemize}
-
-\hypertarget{communicate-1}{%
-\subsection*{Communicate}\label{communicate-1}}
-\addcontentsline{toc}{subsection}{Communicate}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{\texttt{knitr}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \textbf{R}のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ\citep{knitr2014, R-knitr}
-  \end{itemize}
-\item
-  \textbf{\texttt{rmarkdown}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    マークダウン書式を用いてレポートを作成するためのパッケージ\citep{R-rmarkdown}
-  \end{itemize}
-\item
-  \textbf{\texttt{bookdown}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    書籍や長いドキュメンを作成するためのパッケージ\citep{bookdown2016, R-bookdown}
-  \end{itemize}
-\item
-  \textbf{\texttt{shiny}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    インタラクティブなWebアプリケーションを作成するためのパッケージ\citep{R-shiny}
-  \end{itemize}
-\end{itemize}
-
-\hypertarget{othres}{%
-\subsection*{Othres}\label{othres}}
-\addcontentsline{toc}{subsection}{Othres}
-
-上記に加えてプロセスのハブ・スポークを担うパッケージもあります。
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{\texttt{magrittr}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    パイプ演算子（\texttt{\%\textgreater{}\%}）によるスムースな処理を実現するパッケージ\citep{R-magrittr}
-  \end{itemize}
-\item
-  \textbf{\texttt{purrr}}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    関数型プログラミングによる反復処理を提供するパッケージ\citep{R-purrr}
-  \end{itemize}
-\end{itemize}
+　プロセスのハブ・スポークを担うパッケージもEcosystemの一部です。
 
 \hypertarget{part-program}{%
 \part{Program}\label{part-program}}
@@ -1188,9 +1222,9 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 この表記方法については賛否ありますが、どのパッケージの関数を使っているかが分かりやすいので本書ではこの記述方法を用います。
 
-\hypertarget{ux9591ux8a71}{%
-\subsubsection*{閑話}\label{ux9591ux8a71}}
-\addcontentsline{toc}{subsubsection}{閑話}
+\hypertarget{ux9591ux8a71-ux30d1ux30c3ux30b1ux30fcux30b8ux56dbux65b9ux5c71ux8a71}{%
+\subsubsection*{【閑話】 パッケージ四方山話}\label{ux9591ux8a71-ux30d1ux30c3ux30b1ux30fcux30b8ux56dbux65b9ux5c71ux8a71}}
+\addcontentsline{toc}{subsubsection}{【閑話】 パッケージ四方山話}
 
 幾何平均を求めるために\texttt{psych}パッケージを利用しましたが、\textbf{R}には総積（\(x_1 \times x_2 \times \cdots \times x_n\)）を求める\texttt{prod()}関数と累乗根（\(x^{\frac{1}{n}}\)）を求めるべき乗演算子（\texttt{\^{}}）がありますので、これを組み合わせれば幾何平均を求めることが可能です。
 
@@ -1286,38 +1320,9 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   \label{eq:variance-var}
 \end{equation}
 
-\hypertarget{ux6f14ux7fd2-1}{%
-\subsubsection*{演習 1}\label{ux6f14ux7fd2-1}}
-\addcontentsline{toc}{subsubsection}{演習 1}
-
-標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の関係式\eqref{eq:variance-var}を用いて\textbf{R}で以下の二つのデータの標本分散を求めなさい。
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
-\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{9}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{ux6f14ux7fd2-2}{%
-\subsubsection*{演習 2}\label{ux6f14ux7fd2-2}}
-\addcontentsline{toc}{subsubsection}{演習 2}
-
-欠損値を含む以下のデータの平均値（\(\bar{x}\)）、不偏分散（\(\hat{\sigma}^2\)）ならびに標本分散（\(s^2\)）を求めなさい。
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{quote}
-ヒント：\texttt{na.rm}オプションを使います
-\end{quote}
-
-\hypertarget{ux9591ux8a71-1}{%
-\subsubsection*{閑話}\label{ux9591ux8a71-1}}
-\addcontentsline{toc}{subsubsection}{閑話}
+\hypertarget{ux9591ux8a71-ux30e2ux30fcux30e1ux30f3ux30c8}{%
+\subsubsection*{閑話 モーメント}\label{ux9591ux8a71-ux30e2ux30fcux30e1ux30f3ux30c8}}
+\addcontentsline{toc}{subsubsection}{閑話 モーメント}
 
 平均（分布の重心）と分散（分布の広がり）は、歪度（分布の左右非対称度合い）、尖度（分布の峰の尖り度合い）を含めて「モーメントから求められる要約統計量」と言われることがあります。 n個のデータの平均値を
 
@@ -1357,11 +1362,9 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 を尖度（\(\gamma_2\)）と呼びます。
 
-\hypertarget{ux30b3ux30e9ux30e0ux82f1ux6587ux5b57ux30aeux30eaux30b7ux30e3ux6587ux5b57}{%
-\subsubsection*{【コラム】英文字？ギリシャ文字？}\label{ux30b3ux30e9ux30e0ux82f1ux6587ux5b57ux30aeux30eaux30b7ux30e3ux6587ux5b57}}
-\addcontentsline{toc}{subsubsection}{【コラム】英文字？ギリシャ文字？}
-
-統計では様々な統計量を英語で表記する場合とギリシャ語で表記する場合があり混乱しやすいのですが、統計量を英語で表記されている場合は（標本）統計量、ギリシャ語で表記されている場合は母数の推定統計量（推定量）を意味しています。推定量を表記する場合、推定量であることを意味するハット（\(\hat{}\)）という記号をつけて表記します（例えば、平均値は\(\hat{\mu}\)、分散は\(\hat{\sigma}^2\)と表記）。ハット（\(\hat{}\)）を省略している書籍や資料も散見されますので混乱しないように注意してください。詳しくは『統計的方法のしくみ』\citep{ToukeitekiHouhounoSikumi:jbook}の「3. 母数と統計量の区別」\citep{ToukeitekiHouhounoSikumi:jbook}を参照してください。
+\begin{rmdnote}
+\textbf{【コラム】英字？ギリシャ文字？}\\
+　統計の書籍では様々な統計量を英字で表記する場合とギリシャ文字で表記する場合があり混乱しやすいのですが、英字（アルファベット）で表記されている場合は標本統計量（単に統計量という場合も）、ギリシャ文字で表記されている場合は母数の推定統計量（単に推定量という場合も）を意味しています。推定統計量を表記する場合、推定であることを意味するハット（ \(\hat{}\) ）という記号をつけて表記します（例えば、平均値は\(\hat{\mu}\)、分散は\(\hat{\sigma}^2\)と表記）。ハット（ \(\hat{}\) ）を省略している書籍や資料も散見されますので混乱しないように注意してください。詳しくは『統計的方法のしくみ』\citep{ToukeitekiHouhounoSikumi:jbook}の「3. 母数と統計量の区別」を参照してください。 \end{rmdnote}
 
 \hypertarget{ux4e2dux592eux5024}{%
 \subsection{中央値}\label{ux4e2dux592eux5024}}
@@ -1560,11 +1563,40 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 5
 \end{verbatim}
 
+\hypertarget{ux6f14ux7fd2-1}{%
+\subsection*{演習 1}\label{ux6f14ux7fd2-1}}
+\addcontentsline{toc}{subsection}{演習 1}
+
+標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の関係式\eqref{eq:variance-var}を用いて\textbf{R}で以下の二つのデータの標本分散を求めなさい。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6f14ux7fd2-2}{%
+\subsection*{演習 2}\label{ux6f14ux7fd2-2}}
+\addcontentsline{toc}{subsection}{演習 2}
+
+欠損値を含む以下のデータの平均値（\(\bar{x}\)）、不偏分散（\(\hat{\sigma}^2\)）ならびに標本分散（\(s^2\)）を求めなさい。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+\texttt{na.rm}オプションを使います
+\end{quote}
+
 \hypertarget{part-wrangle}{%
 \part{Wrangle}\label{part-wrangle}}
 
-\hypertarget{import-2}{%
-\chapter{Import}\label{import-2}}
+\hypertarget{import-1}{%
+\chapter{Import}\label{import-1}}
 
 　Import は
 
@@ -1589,8 +1621,8 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{pdftools}{%
 \section{pdftools}\label{pdftools}}
 
-\hypertarget{tidy-2}{%
-\chapter{Tidy}\label{tidy-2}}
+\hypertarget{tidy-1}{%
+\chapter{Tidy}\label{tidy-1}}
 
 \hypertarget{tidy-data}{%
 \section{Tidy Data}\label{tidy-data}}
@@ -1601,8 +1633,8 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{wider}{%
 \section{wider}\label{wider}}
 
-\hypertarget{transform-2}{%
-\chapter{Transform}\label{transform-2}}
+\hypertarget{transform-1}{%
+\chapter{Transform}\label{transform-1}}
 
 \hypertarget{filter}{%
 \section{filter}\label{filter}}
@@ -1674,12 +1706,6 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{references}{%
 \chapter*{References}\label{references}}
 \addcontentsline{toc}{chapter}{References}
-
-\hypertarget{refs}{}
-\begin{CSLReferences}{0}{0}
-\end{CSLReferences}
-
-See Bibliography page
 
 \hypertarget{Appendix-RBasics}{%
 \chapter{R Basics}\label{Appendix-RBasics}}
@@ -3577,7 +3603,7 @@ NA & データ型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-77}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-78}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -3596,7 +3622,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-78}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-79}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -3610,7 +3636,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-79}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-80}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -3628,7 +3654,7 @@ NA & データ型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-80}
+\caption{Warning dialog}\label{fig:unnamed-chunk-81}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -3654,7 +3680,7 @@ NA & データ型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-81}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-82}
 \end{figure}
 
 　\\
@@ -3687,7 +3713,7 @@ NA & データ型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-82}
+\caption{Initial View}\label{fig:unnamed-chunk-83}
 \end{figure}
 
 　
@@ -3704,7 +3730,7 @@ NA & データ型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-83}
+\caption{Packages Manager}\label{fig:unnamed-chunk-84}
 \end{figure}
 
 　\\
@@ -3717,7 +3743,7 @@ NA & データ型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-84}
+\caption{Install Dialog}\label{fig:unnamed-chunk-85}
 \end{figure}
 
 　\\
@@ -4111,7 +4137,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-92}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-93}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -4122,7 +4148,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-93}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-94}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -4192,7 +4218,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-94}
+\caption{R Notebook file}\label{fig:unnamed-chunk-95}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -4203,7 +4229,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-95}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-96}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -4214,7 +4240,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-96}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-97}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -4225,7 +4251,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-97}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-98}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -4236,7 +4262,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-98}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-99}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -4247,7 +4273,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-99}
+\caption{R Notebook option}\label{fig:unnamed-chunk-100}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -4509,7 +4535,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-100}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-101}
 \end{figure}
 
 　
@@ -4534,7 +4560,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-101}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-102}
 \end{figure}
 
 　

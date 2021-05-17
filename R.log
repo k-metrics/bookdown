@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.5.16)  17 MAY 2021 12:43
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.5.17)  17 MAY 2021 19:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **R.tex
 (./R.tex
 LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-05-07> (/home/sampo/.TinyTeX/texmf-dist/tex/latex/ba
+L3 programming layer <2021-05-11> (/home/sampo/.TinyTeX/texmf-dist/tex/latex/ba
 se/book.cls
 Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
 (/home/sampo/.TinyTeX/texmf-dist/tex/latex/base/bk12.clo
@@ -129,7 +129,7 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 ) (/home/sampo/.TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (/ho
 me/sampo/.TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2021-05-07 L3 programming layer (loader) 
+Package: expl3 2021-05-11 L3 programming layer (loader) 
 (/home/sampo/.TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2021-05-07 L3 backend support: XeTeX
 (|extractbb --version)
@@ -735,6 +735,10 @@ Package: pxrubrica 2021/03/06 v1.3d PX Japanese-style ruby
 \pxrr@boxr=\box75
 )
 
+Package xeCJK Warning: Redefining CJKfamily `\CJKttdefault'
+(xeCJK)                (NotoSansCJKjp-Regular).
+
+
 Package fontspec Info: Source Han Code JP scale = 0.7981463428418034.
 
 
@@ -837,56 +841,49 @@ Package fontspec Info: Font family 'SourceHanCodeJP(1)' created for font
 
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/lmtt/m/n --> TU/SourceHanCodeJP(1)/m/n on input lin
-e 161.
+e 174.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/lmtt/m/n --> TU/SourceHanCodeJP(1)/bx/n on input li
-ne 161.
-
-Package xeCJK Warning: Redefining CJKfamily `\CJKttdefault'
-(xeCJK)                (NotoSansCJKjp-Regular).
-
+ne 174.
 (/home/sampo/.TinyTeX/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip82
 \bibsep=\skip83
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count349
-)
-\cslhangindent=\skip84
-\csllabelwidth=\skip85
-(./R.aux)
+) (./R.aux)
 \openout1 = `R.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 281.
-LaTeX Font Info:    ... okay on input line 281.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 281.
-LaTeX Font Info:    ... okay on input line 281.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 281.
-LaTeX Font Info:    ... okay on input line 281.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 281.
-LaTeX Font Info:    ... okay on input line 281.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 281.
-LaTeX Font Info:    ... okay on input line 281.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 281.
-LaTeX Font Info:    ... okay on input line 281.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 281.
-LaTeX Font Info:    ... okay on input line 281.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 281.
-LaTeX Font Info:    ... okay on input line 281.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 281.
-LaTeX Font Info:    ... okay on input line 281.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 281.
-LaTeX Font Info:    ... okay on input line 281.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 325.
+LaTeX Font Info:    ... okay on input line 325.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 325.
+LaTeX Font Info:    ... okay on input line 325.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 325.
+LaTeX Font Info:    ... okay on input line 325.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 325.
+LaTeX Font Info:    ... okay on input line 325.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 325.
+LaTeX Font Info:    ... okay on input line 325.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 325.
+LaTeX Font Info:    ... okay on input line 325.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 325.
+LaTeX Font Info:    ... okay on input line 325.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 325.
+LaTeX Font Info:    ... okay on input line 325.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 325.
+LaTeX Font Info:    ... okay on input line 325.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 325.
+LaTeX Font Info:    ... okay on input line 325.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 281.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 325.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 281.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 325.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 281.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 325.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 281.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 325.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 281.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 325.
 
 Package fontspec Info: latinmodern-math scale = 0.9999970497384594.
 
@@ -915,7 +912,7 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 281.
+(Font)              scaled to size 12.0pt on input line 325.
 
 Package fontspec Info: latinmodern-math scale = 0.9999970497384594.
 
@@ -954,18 +951,18 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 281.
+(Font)              scaled to size 12.0pt on input line 325.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 281.
+(Font)              `operators' in the math version `normal' on input line 325.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 281.
+ line 325.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 281.
+(Font)              `operators' in the math version `bold' on input line 325.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 281.
+t line 325.
 
 Package fontspec Info: latinmodern-math scale = 0.9999970497384594.
 
@@ -1052,15 +1049,15 @@ t=math;language=dflt;"
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 281.
+(Font)              `symbols' in the math version `normal' on input line 325.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 281.
+t line 325.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 281.
+(Font)              `symbols' in the math version `bold' on input line 325.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 281.
+t line 325.
 
 Package fontspec Info: latinmodern-math scale = 0.9999970497384594.
 
@@ -1129,18 +1126,18 @@ pt=math;language=dflt;"
 (fontspec)             =7.2pt\relax \fontdimen 13\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 2
-81.
+(Font)              `largesymbols' in the math version `normal' on input line 3
+25.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 281.
+t line 325.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 281
+(Font)              `largesymbols' in the math version `bold' on input line 325
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 281.
-Package hyperref Info: Link coloring ON on input line 281.
+t line 325.
+Package hyperref Info: Link coloring ON on input line 325.
 (/home/sampo/.TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 (/home/sampo/.TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1151,9 +1148,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count350
 )
-LaTeX Info: Redefining \ref on input line 281.
-LaTeX Info: Redefining \pageref on input line 281.
-LaTeX Info: Redefining \nameref on input line 281.
+LaTeX Info: Redefining \ref on input line 325.
+LaTeX Info: Redefining \pageref on input line 325.
+LaTeX Info: Redefining \nameref on input line 325.
 (./R.out) (./R.out)
 \@outlinefile=\write4
 \openout4 = `R.out'.
@@ -1236,40 +1233,40 @@ Package fontspec Info: Font family 'SourceHanCodeJP(2)' created for font
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(2)/m/n' will be
-(Font)              scaled to size 9.5777pt on input line 281.
+(Font)              scaled to size 9.5777pt on input line 325.
 LaTeX Font Info:    Font shape `TU/NotoSerifCJKjp-Regular(0)/m/n' will be
-(Font)              scaled to size 20.74pt on input line 283.
+(Font)              scaled to size 20.74pt on input line 327.
 LaTeX Font Info:    Font shape `TU/NotoSerifCJKjp-Regular(0)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 283.
+(Font)              scaled to size 14.4pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 283.
+(Font)              scaled to size 14.4pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 283.
+(Font)              scaled to size 10.0pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 283.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-83.
+(Font)              scaled to size 7.0pt on input line 327.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3
+27.
 (/home/sampo/.TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 283.
+(Font)              scaled to size 14.4013pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 283.
+(Font)              scaled to size 10.00092pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 283.
+(Font)              scaled to size 7.00064pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 283.
+(Font)              scaled to size 14.39845pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 283.
+(Font)              scaled to size 9.99893pt on input line 327.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 283.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 283
+(Font)              scaled to size 6.99925pt on input line 327.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 327
 .
 (/home/sampo/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 283
+LaTeX Font Info:    Trying to load font information for U+msb on input line 327
 .
 (/home/sampo/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1299,20 +1296,20 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 8.3991pt on input line 4.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 5.99936pt on input line 4.
-[3] [4] [5]
+[3] [4]
 LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/m/n' will be
-(Font)              scaled to size 9.5777pt on input line 100.
-[6] [7])
+(Font)              scaled to size 9.5777pt on input line 92.
+[5] [6])
 \tf@toc=\write5
 \openout5 = `R.toc'.
 
-[8] (./R.lot)
+[7] [8
+
+] (./R.lot)
 \tf@lot=\write6
 \openout6 = `R.lot'.
 
-[9
-
-] [10
+[9] [10
 
 ] (./R.lof [11])
 \tf@lof=\write7
@@ -1320,11 +1317,11 @@ LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/m/n' will be
 
 [12]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 298.
+(Font)              scaled to size 5.0pt on input line 342.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 298.
+(Font)              scaled to size 5.00046pt on input line 342.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 298.
+(Font)              scaled to size 4.99947pt on input line 342.
 File: ./fig/by-nc-sa.png Graphic file (type bmp)
 <./fig/by-nc-sa.png>
 [13
@@ -1333,13 +1330,13 @@ File: ./fig/by-nc-sa.png Graphic file (type bmp)
 
 ] [15] [16]
 LaTeX Font Info:    Font shape `TU/NotoSerifCJKjp-Regular(0)/b/n' will be
-(Font)              scaled to size 24.88pt on input line 343.
+(Font)              scaled to size 24.88pt on input line 387.
 LaTeX Font Info:    Font shape `TU/NotoSerifCJKjp-Regular(0)/b/n' will be
-(Font)              scaled to size 17.28pt on input line 353.
+(Font)              scaled to size 17.28pt on input line 397.
 LaTeX Font Info:    Font shape `TU/NotoSerifCJKjp-Regular(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 369.
+(Font)              scaled to size 10.0pt on input line 413.
 LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/b/n' will be
-(Font)              scaled to size 9.5777pt on input line 371.
+(Font)              scaled to size 9.5777pt on input line 415.
 [17
 
 ] [18] [19]
@@ -1376,17 +1373,17 @@ Underfull \vbox (badness 1331) has occurred while \output is active []
 [23] [24]
 File: ./fig/DSWF/tidyverse_eco_system.png Graphic file (type bmp)
 <./fig/DSWF/tidyverse_eco_system.png>
-[25] [26] [27] [28] [29
+[25] [26] [27] [28
 
-] [30]
+] [29] [30]
 Chapter 1.
 
-Overfull \hbox (3.45593pt too wide) in alignment at lines 932--936
+Overfull \hbox (3.45593pt too wide) in alignment at lines 966--970
  [] [] [] [] [] 
  []
 
 
-Overfull \hbox (3.45593pt too wide) in alignment at lines 936--945
+Overfull \hbox (3.45593pt too wide) in alignment at lines 970--979
  [] [] [] [] [] 
  []
 
@@ -1400,7 +1397,7 @@ File: ./fig/Colab/Firsttime.png Graphic file (type bmp)
 
 LaTeX Font Warning: Font shape `TU/NotoSerifCJKjp-Regular(0)/m/sl' undefined
 (Font)              using `TU/NotoSerifCJKjp-Regular(0)/m/n' instead on input l
-ine 985.
+ine 1019.
 
 [32]
 File: ./fig/RStudio/DT.png Graphic file (type bmp)
@@ -1418,9 +1415,9 @@ File: ./fig/RStudio/RSCloud_01.png Graphic file (type bmp)
 ]
 Chapter 2.
 LaTeX Font Info:    Font shape `TU/NotoSerifCJKjp-Regular(0)/b/n' will be
-(Font)              scaled to size 14.4pt on input line 1048.
+(Font)              scaled to size 14.4pt on input line 1082.
 [37] [38]
-Underfull \hbox (badness 1430) in paragraph at lines 1136--1137
+Underfull \hbox (badness 1430) in paragraph at lines 1170--1171
 []\TU/NotoSerifCJKjp-Regular(0)/m/n/12 パ ッ ケ ー ジ の イ ン ス ト ー ル は \TU/SourceHanC
 odeJP(0)/m/n/12 install.packages() \TU/NotoSerifCJKjp-Regular(0)/m/n/12 関 数 を 用
  い ま す。| \TU/SourceHanCodeJP(0)/m/n/12 in-
@@ -1431,107 +1428,104 @@ Missing character: There is no 　 (U+3000) in font [latinmodern-math.otf]/OT:sc
 ipt=math;language=dflt;!
 Missing character: There is no 　 (U+3000) in font [latinmodern-math.otf]/OT:scr
 ipt=math;language=dflt;!
-[42] [43] [44] [45] [46] [47
+[42] [43] [44] [45] [46] [47] [48
 
-] [48]
+] [49] [50]
 Chapter 3.
-[49
+[51
 
-] [50
+] [52
 
 ]
 Chapter 4.
-[51] [52
+[53] [54
 
 ]
 Chapter 5.
-[53] [54
+[55] [56
 
-] [55] [56]
+] [57] [58]
 Chapter 6.
-[57
+[59
 
-] [58
+] [60
 
 ]
 Chapter 7.
-[59] [60
+[61] [62
 
-] [61] [62]
+] [63] [64]
 Chapter 8.
-[63
+[65
 
-] [64
+] [66
 
 ]
 Chapter 9.
-[65] [66
+[67] [68
 
 ]
 Chapter 10.
-[67] [68
+[69] [70
 
-] [69] [70]
+] [71] [72]
 Chapter 11.
-[71
+[73
 
-] [72
+] [74
 
-] [73] [74]
+] [75] [76]
 Chapter 12.
-[75
+[77
 
-] [76
+] [78
 
-] [77] [78]
+] [79] [80]
 
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 1671.
+(hyperref)                be the same. Added a new anchor on input line 1703.
 
-[79
+[81
 
-] [80
+] [82
 
 ]
 Appendix A.
 LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/m/it' will be
-(Font)              scaled to size 9.5777pt on input line 1700.
+(Font)              scaled to size 9.5777pt on input line 1726.
 LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(2)/m/it' will be
-(Font)              scaled to size 9.5777pt on input line 1700.
-[81] [82] [83] [84] [85] [86] [87] [88] [89] [90] [91]
+(Font)              scaled to size 9.5777pt on input line 1726.
+[83] [84] [85] [86] [87] [88] [89] [90] [91] [92] [93] [94]
 LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/b/n' will be
-(Font)              scaled to size 11.49323pt on input line 2398.
-
-Overfull \vbox (10.4617pt too high) has occurred while \output is active []
-
-[92]
-Underfull \vbox (badness 1546) has occurred while \output is active []
-
-[93] [94] [95] [96]
+(Font)              scaled to size 11.49323pt on input line 2424.
+[95] [96] [97] [98] [99] [100]
 LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/b/it' will be
-(Font)              scaled to size 9.5777pt on input line 2709.
-[97] [98] [99] [100] [101]
-Overfull \hbox (28.80188pt too wide) in alignment at lines 3062--3066
+(Font)              scaled to size 9.5777pt on input line 2735.
+[101] [102] [103] [104] [105]
+Overfull \hbox (28.80188pt too wide) in alignment at lines 3088--3092
  [] [] [] 
  []
 
 
-Overfull \hbox (28.80188pt too wide) in alignment at lines 3066--3083
+Overfull \hbox (28.80188pt too wide) in alignment at lines 3092--3109
  [] [] [] 
  []
 
-[102] [103] [104] [105] [106]
-Appendix B.
-[107
+[106] [107] [108] [109]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-] [108] [109] [110
+[110] [111] [112
 
 ]
+Appendix B.
+[113] [114] [115] [116]
 Appendix C.
-[111]
+[117
+
+]
 File: fig/Colab/welcome.png Graphic file (type bmp)
 <fig/Colab/welcome.png>
-[112]
+[118]
 File: fig/Colab/upload_notebook.png Graphic file (type bmp)
 <fig/Colab/upload_notebook.png>
 File: fig/Colab/upload_dialog.png Graphic file (type bmp)
@@ -1539,54 +1533,54 @@ File: fig/Colab/upload_dialog.png Graphic file (type bmp)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[113]
+[119]
 File: fig/Colab/run_dialog.png Graphic file (type bmp)
 <fig/Colab/run_dialog.png>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[114]
-Underfull \hbox (badness 10000) in paragraph at lines 3648--3650
+[120]
+Underfull \hbox (badness 10000) in paragraph at lines 3674--3676
 
  []
 
 File: fig/RStudio/RSCloud_00.png Graphic file (type bmp)
 <fig/RStudio/RSCloud_00.png>
-[115]
-Underfull \hbox (badness 10000) in paragraph at lines 3680--3683
+[121]
+Underfull \hbox (badness 10000) in paragraph at lines 3706--3709
 
  []
 
 File: fig/RStudio/RSCloud_01.png Graphic file (type bmp)
 <fig/RStudio/RSCloud_01.png>
-[116]
-Underfull \hbox (badness 10000) in paragraph at lines 3698--3700
+[122]
+Underfull \hbox (badness 10000) in paragraph at lines 3724--3726
 
  []
 
 File: fig/RStudio/RSCloud_02.png Graphic file (type bmp)
 <fig/RStudio/RSCloud_02.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 3710--3713
+Underfull \hbox (badness 10000) in paragraph at lines 3736--3739
 
  []
 
-[117]
+[123]
 File: fig/RStudio/RSCloud_03.png Graphic file (type bmp)
 <fig/RStudio/RSCloud_03.png>
-[118]
+[124]
 Appendix D.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[119
+[125
 
-] [120]
-Underfull \hbox (badness 10000) in paragraph at lines 3796--3798
+] [126]
+Underfull \hbox (badness 10000) in paragraph at lines 3822--3824
 
  []
 
-[121]
+[127]
 Missing character: There is no ✔ (U+2714) in font Source Han Code JP R/OT:scrip
 t=latn;language=dflt;!
 Missing character: There is no ✔ (U+2714) in font Source Han Code JP R/OT:scrip
@@ -1607,40 +1601,40 @@ Missing character: There is no ✖ (U+2716) in font Source Han Code JP R/OT:scri
 t=latn;language=dflt;!
 Missing character: There is no ✖ (U+2716) in font Source Han Code JP R/OT:scrip
 t=latn;language=dflt;!
-[122] [123] [124]
+[128] [129] [130]
 Appendix E.
-[125
+[131
 
-] [126] [127] [128
+] [132] [133] [134
 
 ]
 Appendix F.
-[129]
+[135]
 File: fig/RStudio/DT_Area.png Graphic file (type bmp)
 <fig/RStudio/DT_Area.png>
-[130]
+[136]
 File: fig/RStudio/DT_Pane.png Graphic file (type bmp)
 <fig/RStudio/DT_Pane.png>
 
-Overfull \hbox (152.37595pt too wide) in alignment at lines 4131--4135
+Overfull \hbox (152.37595pt too wide) in alignment at lines 4157--4161
  [] [] [] [] 
  []
 
 
-Overfull \hbox (152.37595pt too wide) in alignment at lines 4135--4153
+Overfull \hbox (152.37595pt too wide) in alignment at lines 4161--4179
  [] [] [] [] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[131]
-Overfull \hbox (94.45195pt too wide) in alignment at lines 4163--4167
+[137]
+Overfull \hbox (94.45195pt too wide) in alignment at lines 4189--4193
  [] [] 
  []
 
 
-Overfull \hbox (94.45195pt too wide) in alignment at lines 4167--4178
+Overfull \hbox (94.45195pt too wide) in alignment at lines 4193--4204
  [] [] 
  []
 
@@ -1649,14 +1643,14 @@ File: fig/RStudio/DT_RN.png Graphic file (type bmp)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[132]
+[138]
 File: fig/RStudio/DT_RN_Saved.png Graphic file (type bmp)
 <fig/RStudio/DT_RN_Saved.png>
 File: fig/RStudio/DT_RN_Insert_Chunk.png Graphic file (type bmp)
 <fig/RStudio/DT_RN_Insert_Chunk.png>
 File: fig/RStudio/DT_RN_First_Code.png Graphic file (type bmp)
 <fig/RStudio/DT_RN_First_Code.png>
-[133]
+[139]
 File: fig/RStudio/DT_RN_Run_Code.png Graphic file (type bmp)
 <fig/RStudio/DT_RN_Run_Code.png>
 File: fig/RStudio/DT_RN_Option.png Graphic file (type bmp)
@@ -1664,109 +1658,109 @@ File: fig/RStudio/DT_RN_Option.png Graphic file (type bmp)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[134]
-Overfull \hbox (107.45996pt too wide) in alignment at lines 4267--4271
+[140]
+Overfull \hbox (107.45996pt too wide) in alignment at lines 4293--4297
  [] [] [] [] 
  []
 
 
-Overfull \hbox (107.45996pt too wide) in alignment at lines 4271--4279
+Overfull \hbox (107.45996pt too wide) in alignment at lines 4297--4305
  [] [] [] [] 
  []
 
-[135]
-Overfull \hbox (96.528pt too wide) in alignment at lines 4292--4296
- [] [] [] [] 
- []
-
-
-Overfull \hbox (96.528pt too wide) in alignment at lines 4296--4317
- [] [] [] [] 
- []
-
-[136]
-Overfull \hbox (4.19652pt too wide) in alignment at lines 4370--4374
+[141]
+Overfull \hbox (96.528pt too wide) in alignment at lines 4318--4322
  [] [] [] [] 
  []
 
 
-Overfull \hbox (4.19652pt too wide) in alignment at lines 4374--4380
+Overfull \hbox (96.528pt too wide) in alignment at lines 4322--4343
+ [] [] [] [] 
+ []
+
+[142]
+Overfull \hbox (4.19652pt too wide) in alignment at lines 4396--4400
  [] [] [] [] 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[137]
-Overfull \hbox (4.19652pt too wide) in alignment at lines 4397--4401
- [] [] [] [] 
- []
-
-
-Overfull \hbox (4.19652pt too wide) in alignment at lines 4401--4411
+Overfull \hbox (4.19652pt too wide) in alignment at lines 4400--4406
  [] [] [] [] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[138]
-Overfull \hbox (103.27194pt too wide) in alignment at lines 4457--4461
+[143]
+Overfull \hbox (4.19652pt too wide) in alignment at lines 4423--4427
  [] [] [] [] 
  []
 
 
-Overfull \hbox (103.27194pt too wide) in alignment at lines 4461--4465
+Overfull \hbox (4.19652pt too wide) in alignment at lines 4427--4437
  [] [] [] [] 
  []
 
-[139] [140]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[144]
+Overfull \hbox (103.27194pt too wide) in alignment at lines 4483--4487
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (103.27194pt too wide) in alignment at lines 4487--4491
+ [] [] [] [] 
+ []
+
+[145] [146]
 Appendix G.
 
-Underfull \hbox (badness 10000) in paragraph at lines 4504--4505
+Underfull \hbox (badness 10000) in paragraph at lines 4530--4531
 
  []
 
 File: fig/RStudio/Cloud.png Graphic file (type bmp)
 <fig/RStudio/Cloud.png>
-[141
+[147
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 4526--4526
+Underfull \hbox (badness 10000) in paragraph at lines 4552--4552
 [][][][][]$[][][][][] [] [] [] [][][][][][][][][][][] [] [][] [] [][][][][][][]
  [] [][][][] [] [][][][][][] [] [][][] [] [][][][][][][][][][][][][][][] [] [][
 ][][][] [] [][][][][] [][] [][] [] [][][][][] [] [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4529--4530
+Underfull \hbox (badness 10000) in paragraph at lines 4555--4556
 
  []
 
 File: fig/Exploratory.png Graphic file (type bmp)
 <fig/Exploratory.png>
-[142] (./R.bbl [143] [144
+[148] (./R.bbl [149] [150
 
-] [145] [146]
+] [151] [152]
 
 LaTeX Font Warning: Font shape `TU/NotoSerifCJKjp-Regular(0)/m/it' undefined
 (Font)              using `TU/NotoSerifCJKjp-Regular(0)/m/n' instead on input l
 ine 201.
 
-) [147] (./R.aux)
+) [153] (./R.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `R.out' has not changed.
-(rerunfilecheck)             Checksum: 58604E049007DBC29A6F1C79DF2AD9E9;18696.
+(rerunfilecheck)             Checksum: 441A2BDC082020C72E72CBF0BCF7DEDF;15480.
  ) 
 Here is how much of TeX's memory you used:
- 25924 strings out of 478774
- 495840 string characters out of 5864296
- 974678 words of memory out of 5000000
- 45436 multiletter control sequences out of 15000+600000
+ 25912 strings out of 478764
+ 495627 string characters out of 5864127
+ 973942 words of memory out of 5000000
+ 45434 multiletter control sequences out of 15000+600000
  411316 words of font info for 133 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 85i,12n,144p,695b,919s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 85i,12n,144p,695b,886s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on R.pdf (147 pages).
+Output written on R.pdf (153 pages).

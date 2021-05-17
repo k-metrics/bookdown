@@ -170,7 +170,7 @@ Hadlyの図には前節の図にはない**Infer**と**Automate**すというプ
 
 
 ### Tidy {.unnumbered}
-インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、**R**で扱いやすいような形式（Tidy Data）にします。[Tidy Data](https://www.jstatsoft.org/article/view/v059i10){target="_blank" title="Jounal of Statistical Software"}`r if (knitr::is_latex_output())'[@R-TidyData]'`はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、**R**で扱いやすいような形式（Tidy Data）にします。[Tidy Data](https://www.jstatsoft.org/article/view/v059i10){target="_blank" title="Jounal of Statistical Software"}[@R-TidyData]はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
 
 * 個々の変数が一つの列をなす
 * 個々の観測が一つの行をなす
@@ -208,73 +208,71 @@ knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
 
 ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』[@RStartHere:GitHub]をご覧ください。
 
-### Import {.unnumbered}
-
-* **`readr`** 
-    - 様々なテキスト形式テーブルを読み込むためのパッケージ`r if (knitr::is_latex_output()) '[@R-readr]'`[@R-readr]
-* **`readxl`**
-    - Microsoft Excelのファイルを読み込むためのパッケージ`r if (knitr::is_latex_output())''`[@R-readxl]
-* **`rvest`**
-    - Webスクレイピングのためのパッケージ`r if (knitr::is_latex_output())''`[@R-rvest]
-* **`googlesheets4`**
-    - Google API v4 経由でスプレッドシートを読み込むためのパッケージ`r if (knitr::is_latex_output())''`[@R-googlesheets4]
-* **`DBI`**
-    - SQL系の各種データベースと接続するためのパッケージ`r if (knitr::is_latex_output())''`[@R-DBI]
-
-
-### Tidy {.unnumbered}
-
-* **`tidyr`**
-    - Tidy Dataの作成を強力にサポートしてくれるパッケージ`r if (knitr::is_latex_output())'[@R-tidyr]'`
-* **`tibble`**
-    - より厳密にTidy Dataを扱うためのパッケージ`r if (knitr::is_latex_output())'[@R-tibble]'`
-* **`zoo`**
-    - 時系列（TS）データを効率よく扱うためのパッケージ`r if (knitr::is_latex_output())'[@R-zoo]'`
+* **Import**
+  * **`readr`** [@R-readr]
+      - 様々なテキスト形式テーブルを読み込むためのパッケージ
+  * **`readxl`** [@R-readxl]
+      - Microsoft Excelのファイルを読み込むためのパッケージ
+  * **`rvest`** [@R-rvest]
+      - Webスクレイピングのためのパッケージ
+  * **`googlesheets4`** [@R-googlesheets4]
+      - Google API v4 経由でスプレッドシートを読み込むためのパッケージ
+  * **`DBI`** [@R-DBI]
+      - SQL系の各種データベースと接続するためのパッケージ
 
 
-### Visualize {.unnumbered}
-* **`ggplot2`**
-    - 統一された文法で描画が行えるパッケージ`r if (knitr::is_latex_output())'[@R-ggplot2]'`
-* **`htmlwidgets`**
-    - JavaScriptのウィジェットを利用できるパッケージ`r if (knitr::is_latex_output())'[@R-htmlwidgets]'`
-* **`patchwork`**
-    - **`ggplot2`**オブジェクトをひとつにまとめてレイアウトするためのパッケージ`r if (knitr::is_latex_output())'[@R-patchwork]'`
+* **Tidy**
+  * **`tidyr`** [@R-tidyr]
+      - Tidy Dataの作成を強力にサポートしてくれるパッケージ
+  * **`tibble`** [@R-tibble]
+      - より厳密にTidy Dataを扱うためのパッケージ
+  * **`zoo`** [@R-zoo]
+      - 時系列（TS）データを効率よく扱うためのパッケージ
 
 
-### Transform {.unnumbered}
-* **`dplyr`**
-    - Tidy Dataを様々な方法で操作するためのパッケージ`r if (knitr::is_latex_output())'[@R-dplyr]'`
-* **`stringr`**
-    - 文字列処理をするためのパッケージ`r if (knitr::is_latex_output())'[@R-stringr]'`
-* **`forcats`**
-    - 因子型を操作するためのパッケージ`r if (knitr::is_latex_output())'[@R-forcats]'`
-* **`lubridate`**
-    - 日付データを簡単に変換するためのパッケージ`r if (knitr::is_latex_output())'[@R-lubridate]'`
+* **Visualize**
+  * **`ggplot2`**[@R-ggplot2]
+      - 統一された文法で描画が行えるパッケージ
+  * **`htmlwidgets`**[@R-htmlwidgets]
+      - JavaScriptのウィジェットを利用できるパッケージ
+  * **`patchwork`**[@R-patchwork]
+      - **`ggplot2`**オブジェクトをひとつにまとめてレイアウトするためのパッケージ
 
 
-### Model {.unnumbered}
-* **`broom`** 
-    - 各種モデリング結果を整然データにするためのパッケージ`r if (knitr::is_latex_output())'[@R-broom]'`
-* **`tidymodels`**
-    - 機械学習を中心としたモデリングフレームワーク`r if (knitr::is_latex_output())'[@tidymodels2020; @R-tidymodels]'`
+* **Transform**
+  * **`dplyr`**[@R-dplyr]
+      - Tidy Dataを様々な方法で操作するためのパッケージ
+  * **`stringr`**[@R-stringr]
+      - 文字列処理をするためのパッケージ
+  * **`forcats`**[@R-forcats]
+      - 因子型を操作するためのパッケージ
+  * **`lubridate`**[@R-lubridate]
+      - 日付データを簡単に変換するためのパッケージ
 
 
-### Communicate {.unnumbered}
-* **`knitr`**
-    - **R**のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ`r if (knitr::is_latex_output())'[@knitr2014; @R-knitr]'`
-* **`rmarkdown`**
-    - マークダウン書式を用いてレポートを作成するためのパッケージ`r if (knitr::is_latex_output())'[@R-rmarkdown]'`
-* **`bookdown`**
-    - 書籍や長いドキュメンを作成するためのパッケージ`r if (knitr::is_latex_output())'[@bookdown2016; @R-bookdown]'`
-* **`shiny`**
-    - インタラクティブなWebアプリケーションを作成するためのパッケージ`r if (knitr::is_latex_output())'[@R-shiny]'`
+* **Model**
+  * **`broom`**[@R-broom]
+      - 各種モデリング結果を整然データにするためのパッケージ
+  * **`tidymodels`**[@tidymodels2020; @R-tidymodels]
+      - 機械学習を中心としたモデリングフレームワーク
 
 
-### Othres {.unnumbered}
-上記に加えてプロセスのハブ・スポークを担うパッケージもあります。
+* **Communicate**
+  * **`knitr`**[@knitr2014; @R-knitr]
+      - **R**のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ
+  * **`rmarkdown`**[@R-rmarkdown]
+      - マークダウン書式を用いてレポートを作成するためのパッケージ
+  * **`bookdown`**[@bookdown2016; @R-bookdown]
+      - 書籍や長いドキュメンを作成するためのパッケージ
+  * **`shiny`**[@R-shiny]
+      - インタラクティブなWebアプリケーションを作成するためのパッケージ
 
-* **`magrittr`**
-    - パイプ演算子（`%>%`）によるスムースな処理を実現するパッケージ`r if (knitr::is_latex_output())'[@R-magrittr]'`
-* **`purrr`**
-    - 関数型プログラミングによる反復処理を提供するパッケージ`r if (knitr::is_latex_output())'[@R-purrr]'`
+
+* **Othres**
+  * **`magrittr`**[@R-magrittr]
+      - パイプ演算子（`%>%`）によるスムースな処理を実現するパッケージ
+  * **`purrr`**[@R-purrr]
+      - 関数型プログラミングによる反復処理を提供するパッケージ
+
+　プロセスのハブ・スポークを担うパッケージもEcosystemの一部です。
 
