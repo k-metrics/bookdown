@@ -231,47 +231,47 @@ knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
 
 
 * **Visualize**
-  * **`ggplot2`**[@R-ggplot2]
+  * **`ggplot2`** [@R-ggplot2]
       - 統一された文法で描画が行えるパッケージ
-  * **`htmlwidgets`**[@R-htmlwidgets]
+  * **`htmlwidgets`** [@R-htmlwidgets]
       - JavaScriptのウィジェットを利用できるパッケージ
-  * **`patchwork`**[@R-patchwork]
+  * **`patchwork`** [@R-patchwork]
       - **`ggplot2`**オブジェクトをひとつにまとめてレイアウトするためのパッケージ
 
 
 * **Transform**
-  * **`dplyr`**[@R-dplyr]
+  * **`dplyr`** [@R-dplyr]
       - Tidy Dataを様々な方法で操作するためのパッケージ
-  * **`stringr`**[@R-stringr]
+  * **`stringr`** [@R-stringr]
       - 文字列処理をするためのパッケージ
-  * **`forcats`**[@R-forcats]
+  * **`forcats`** [@R-forcats]
       - 因子型を操作するためのパッケージ
-  * **`lubridate`**[@R-lubridate]
+  * **`lubridate`** [@R-lubridate]
       - 日付データを簡単に変換するためのパッケージ
 
 
 * **Model**
-  * **`broom`**[@R-broom]
+  * **`broom`** [@R-broom]
       - 各種モデリング結果を整然データにするためのパッケージ
   * **`tidymodels`**[@tidymodels2020; @R-tidymodels]
       - 機械学習を中心としたモデリングフレームワーク
 
 
 * **Communicate**
-  * **`knitr`**[@knitr2014; @R-knitr]
+  * **`knitr`** [@knitr2014; @R-knitr]
       - **R**のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ
-  * **`rmarkdown`**[@R-rmarkdown]
+  * **`rmarkdown`** [@R-rmarkdown]
       - マークダウン書式を用いてレポートを作成するためのパッケージ
-  * **`bookdown`**[@bookdown2016; @R-bookdown]
+  * **`bookdown`** [@bookdown2016; @R-bookdown]
       - 書籍や長いドキュメンを作成するためのパッケージ
-  * **`shiny`**[@R-shiny]
+  * **`shiny`** [@R-shiny]
       - インタラクティブなWebアプリケーションを作成するためのパッケージ
 
 
 * **Othres**
-  * **`magrittr`**[@R-magrittr]
+  * **`magrittr`** [@R-magrittr]
       - パイプ演算子（`%>%`）によるスムースな処理を実現するパッケージ
-  * **`purrr`**[@R-purrr]
+  * **`purrr`** [@R-purrr]
       - 関数型プログラミングによる反復処理を提供するパッケージ
 
 　プロセスのハブ・スポークを担うパッケージもEcosystemの一部です。

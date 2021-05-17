@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.5.17)  17 MAY 2021 19:29
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.5.17)  17 MAY 2021 23:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1296,20 +1296,20 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 8.3991pt on input line 4.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 5.99936pt on input line 4.
-[3] [4]
+[3] [4] [5]
 LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/m/n' will be
-(Font)              scaled to size 9.5777pt on input line 92.
-[5] [6])
+(Font)              scaled to size 9.5777pt on input line 100.
+[6] [7])
 \tf@toc=\write5
 \openout5 = `R.toc'.
 
-[7] [8
-
-] (./R.lot)
+[8] (./R.lot)
 \tf@lot=\write6
 \openout6 = `R.lot'.
 
-[9] [10
+[9
+
+] [10
 
 ] (./R.lof [11])
 \tf@lof=\write7
@@ -1428,104 +1428,105 @@ Missing character: There is no 　 (U+3000) in font [latinmodern-math.otf]/OT:sc
 ipt=math;language=dflt;!
 Missing character: There is no 　 (U+3000) in font [latinmodern-math.otf]/OT:scr
 ipt=math;language=dflt;!
-[42] [43] [44] [45] [46] [47] [48
+[42] [43]
+LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/m/it' will be
+(Font)              scaled to size 9.5777pt on input line 1427.
+LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(2)/m/it' will be
+(Font)              scaled to size 9.5777pt on input line 1427.
+[44] [45] [46] [47] [48] [49] [50
 
-] [49] [50]
+] [51] [52]
 Chapter 3.
-[51
+[53
 
-] [52
+] [54
 
 ]
 Chapter 4.
-[53] [54
+[55] [56
 
 ]
 Chapter 5.
-[55] [56
+[57] [58
 
-] [57] [58]
+] [59] [60]
 Chapter 6.
-[59
+[61
 
-] [60
+] [62
 
 ]
 Chapter 7.
-[61] [62
+[63] [64
 
-] [63] [64]
+] [65] [66]
 Chapter 8.
-[65
+[67
 
-] [66
+] [68
 
 ]
 Chapter 9.
-[67] [68
+[69] [70
 
 ]
 Chapter 10.
-[69] [70
+[71] [72
 
-] [71] [72]
+] [73] [74]
 Chapter 11.
-[73
+[75
 
-] [74
+] [76
 
-] [75] [76]
+] [77] [78]
 Chapter 12.
-[77
+[79
 
-] [78
+] [80
 
-] [79] [80]
+] [81] [82]
 
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 1703.
+(hyperref)                be the same. Added a new anchor on input line 1840.
 
-[81
+[83
 
-] [82
+] [84
 
 ]
 Appendix A.
-LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/m/it' will be
-(Font)              scaled to size 9.5777pt on input line 1726.
-LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(2)/m/it' will be
-(Font)              scaled to size 9.5777pt on input line 1726.
-[83] [84] [85] [86] [87] [88] [89] [90] [91] [92] [93] [94]
+[85] [86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96]
 LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/b/n' will be
-(Font)              scaled to size 11.49323pt on input line 2424.
-[95] [96] [97] [98] [99] [100]
+(Font)              scaled to size 11.49323pt on input line 2561.
+[97] [98] [99] [100] [101] [102]
 LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/b/it' will be
-(Font)              scaled to size 9.5777pt on input line 2735.
-[101] [102] [103] [104] [105]
-Overfull \hbox (28.80188pt too wide) in alignment at lines 3088--3092
+(Font)              scaled to size 9.5777pt on input line 2872.
+[103] [104] [105] [106] [107]
+Overfull \hbox (28.80188pt too wide) in alignment at lines 3225--3229
  [] [] [] 
  []
 
 
-Overfull \hbox (28.80188pt too wide) in alignment at lines 3092--3109
+Overfull \hbox (28.80188pt too wide) in alignment at lines 3229--3246
  [] [] [] 
  []
 
-[106] [107] [108] [109]
+[108] [109] [110] [111]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[110] [111] [112
+[112] [113] [114
 
 ]
 Appendix B.
-[113] [114] [115] [116]
+[115] [116] [117] [118]
 Appendix C.
-[117
+[119
 
 ]
 File: fig/Colab/welcome.png Graphic file (type bmp)
 <fig/Colab/welcome.png>
-[118]
+[120]
 File: fig/Colab/upload_notebook.png Graphic file (type bmp)
 <fig/Colab/upload_notebook.png>
 File: fig/Colab/upload_dialog.png Graphic file (type bmp)
@@ -1533,54 +1534,54 @@ File: fig/Colab/upload_dialog.png Graphic file (type bmp)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[119]
+[121]
 File: fig/Colab/run_dialog.png Graphic file (type bmp)
 <fig/Colab/run_dialog.png>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[120]
-Underfull \hbox (badness 10000) in paragraph at lines 3674--3676
+[122]
+Underfull \hbox (badness 10000) in paragraph at lines 3811--3813
 
  []
 
 File: fig/RStudio/RSCloud_00.png Graphic file (type bmp)
 <fig/RStudio/RSCloud_00.png>
-[121]
-Underfull \hbox (badness 10000) in paragraph at lines 3706--3709
+[123]
+Underfull \hbox (badness 10000) in paragraph at lines 3843--3846
 
  []
 
 File: fig/RStudio/RSCloud_01.png Graphic file (type bmp)
 <fig/RStudio/RSCloud_01.png>
-[122]
-Underfull \hbox (badness 10000) in paragraph at lines 3724--3726
+[124]
+Underfull \hbox (badness 10000) in paragraph at lines 3861--3863
 
  []
 
 File: fig/RStudio/RSCloud_02.png Graphic file (type bmp)
 <fig/RStudio/RSCloud_02.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 3736--3739
+Underfull \hbox (badness 10000) in paragraph at lines 3873--3876
 
  []
 
-[123]
+[125]
 File: fig/RStudio/RSCloud_03.png Graphic file (type bmp)
 <fig/RStudio/RSCloud_03.png>
-[124]
+[126]
 Appendix D.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[125
+[127
 
-] [126]
-Underfull \hbox (badness 10000) in paragraph at lines 3822--3824
+] [128]
+Underfull \hbox (badness 10000) in paragraph at lines 3959--3961
 
  []
 
-[127]
+[129]
 Missing character: There is no ✔ (U+2714) in font Source Han Code JP R/OT:scrip
 t=latn;language=dflt;!
 Missing character: There is no ✔ (U+2714) in font Source Han Code JP R/OT:scrip
@@ -1601,40 +1602,40 @@ Missing character: There is no ✖ (U+2716) in font Source Han Code JP R/OT:scri
 t=latn;language=dflt;!
 Missing character: There is no ✖ (U+2716) in font Source Han Code JP R/OT:scrip
 t=latn;language=dflt;!
-[128] [129] [130]
+[130] [131] [132]
 Appendix E.
-[131
+[133
 
-] [132] [133] [134
+] [134] [135] [136
 
 ]
 Appendix F.
-[135]
+[137]
 File: fig/RStudio/DT_Area.png Graphic file (type bmp)
 <fig/RStudio/DT_Area.png>
-[136]
+[138]
 File: fig/RStudio/DT_Pane.png Graphic file (type bmp)
 <fig/RStudio/DT_Pane.png>
 
-Overfull \hbox (152.37595pt too wide) in alignment at lines 4157--4161
+Overfull \hbox (152.37595pt too wide) in alignment at lines 4294--4298
  [] [] [] [] 
  []
 
 
-Overfull \hbox (152.37595pt too wide) in alignment at lines 4161--4179
+Overfull \hbox (152.37595pt too wide) in alignment at lines 4298--4316
  [] [] [] [] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[137]
-Overfull \hbox (94.45195pt too wide) in alignment at lines 4189--4193
+[139]
+Overfull \hbox (94.45195pt too wide) in alignment at lines 4326--4330
  [] [] 
  []
 
 
-Overfull \hbox (94.45195pt too wide) in alignment at lines 4193--4204
+Overfull \hbox (94.45195pt too wide) in alignment at lines 4330--4341
  [] [] 
  []
 
@@ -1643,14 +1644,14 @@ File: fig/RStudio/DT_RN.png Graphic file (type bmp)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[138]
+[140]
 File: fig/RStudio/DT_RN_Saved.png Graphic file (type bmp)
 <fig/RStudio/DT_RN_Saved.png>
 File: fig/RStudio/DT_RN_Insert_Chunk.png Graphic file (type bmp)
 <fig/RStudio/DT_RN_Insert_Chunk.png>
 File: fig/RStudio/DT_RN_First_Code.png Graphic file (type bmp)
 <fig/RStudio/DT_RN_First_Code.png>
-[139]
+[141]
 File: fig/RStudio/DT_RN_Run_Code.png Graphic file (type bmp)
 <fig/RStudio/DT_RN_Run_Code.png>
 File: fig/RStudio/DT_RN_Option.png Graphic file (type bmp)
@@ -1658,109 +1659,109 @@ File: fig/RStudio/DT_RN_Option.png Graphic file (type bmp)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[140]
-Overfull \hbox (107.45996pt too wide) in alignment at lines 4293--4297
- [] [] [] [] 
- []
-
-
-Overfull \hbox (107.45996pt too wide) in alignment at lines 4297--4305
- [] [] [] [] 
- []
-
-[141]
-Overfull \hbox (96.528pt too wide) in alignment at lines 4318--4322
- [] [] [] [] 
- []
-
-
-Overfull \hbox (96.528pt too wide) in alignment at lines 4322--4343
- [] [] [] [] 
- []
-
 [142]
-Overfull \hbox (4.19652pt too wide) in alignment at lines 4396--4400
+Overfull \hbox (107.45996pt too wide) in alignment at lines 4430--4434
  [] [] [] [] 
  []
 
 
-Overfull \hbox (4.19652pt too wide) in alignment at lines 4400--4406
+Overfull \hbox (107.45996pt too wide) in alignment at lines 4434--4442
  [] [] [] [] 
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [143]
-Overfull \hbox (4.19652pt too wide) in alignment at lines 4423--4427
+Overfull \hbox (96.528pt too wide) in alignment at lines 4455--4459
  [] [] [] [] 
  []
 
 
-Overfull \hbox (4.19652pt too wide) in alignment at lines 4427--4437
+Overfull \hbox (96.528pt too wide) in alignment at lines 4459--4480
+ [] [] [] [] 
+ []
+
+[144]
+Overfull \hbox (4.19652pt too wide) in alignment at lines 4533--4537
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (4.19652pt too wide) in alignment at lines 4537--4543
  [] [] [] [] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[144]
-Overfull \hbox (103.27194pt too wide) in alignment at lines 4483--4487
+[145]
+Overfull \hbox (4.19652pt too wide) in alignment at lines 4560--4564
  [] [] [] [] 
  []
 
 
-Overfull \hbox (103.27194pt too wide) in alignment at lines 4487--4491
+Overfull \hbox (4.19652pt too wide) in alignment at lines 4564--4574
  [] [] [] [] 
  []
 
-[145] [146]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[146]
+Overfull \hbox (103.27194pt too wide) in alignment at lines 4620--4624
+ [] [] [] [] 
+ []
+
+
+Overfull \hbox (103.27194pt too wide) in alignment at lines 4624--4628
+ [] [] [] [] 
+ []
+
+[147] [148]
 Appendix G.
 
-Underfull \hbox (badness 10000) in paragraph at lines 4530--4531
+Underfull \hbox (badness 10000) in paragraph at lines 4667--4668
 
  []
 
 File: fig/RStudio/Cloud.png Graphic file (type bmp)
 <fig/RStudio/Cloud.png>
-[147
+[149
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 4552--4552
+Underfull \hbox (badness 10000) in paragraph at lines 4689--4689
 [][][][][]$[][][][][] [] [] [] [][][][][][][][][][][] [] [][] [] [][][][][][][]
  [] [][][][] [] [][][][][][] [] [][][] [] [][][][][][][][][][][][][][][] [] [][
 ][][][] [] [][][][][] [][] [][] [] [][][][][] [] [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4555--4556
+Underfull \hbox (badness 10000) in paragraph at lines 4692--4693
 
  []
 
 File: fig/Exploratory.png Graphic file (type bmp)
 <fig/Exploratory.png>
-[148] (./R.bbl [149] [150
+[150] (./R.bbl [151] [152
 
-] [151] [152]
+] [153] [154]
 
 LaTeX Font Warning: Font shape `TU/NotoSerifCJKjp-Regular(0)/m/it' undefined
 (Font)              using `TU/NotoSerifCJKjp-Regular(0)/m/n' instead on input l
 ine 201.
 
-) [153] (./R.aux)
+) [155] (./R.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `R.out' has not changed.
-(rerunfilecheck)             Checksum: 441A2BDC082020C72E72CBF0BCF7DEDF;15480.
+(rerunfilecheck)             Checksum: 9F31B6288D86D79800B370F80A85E3BC;18476.
  ) 
 Here is how much of TeX's memory you used:
- 25912 strings out of 478764
- 495627 string characters out of 5864127
- 973942 words of memory out of 5000000
- 45434 multiletter control sequences out of 15000+600000
+ 25932 strings out of 478764
+ 495872 string characters out of 5864127
+ 974283 words of memory out of 5000000
+ 45454 multiletter control sequences out of 15000+600000
  411316 words of font info for 133 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  85i,12n,144p,695b,886s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on R.pdf (153 pages).
+Output written on R.pdf (155 pages).

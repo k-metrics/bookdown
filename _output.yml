@@ -44,4 +44,5 @@ bookdown::pdf_book:
   quote_footer: ["\\VA{", "}{}"]  # 引用ブロック
   toc_unnumbered: true            # ?
   toc_appendix: true              # 
-  toc_depth: 3                    # 目次(TOC)に表示する階層
+  toc_depth: 4                    # 目次(TOC)に表示する階層
+                                  # Part(編・部)からなので項に該当する4まで
