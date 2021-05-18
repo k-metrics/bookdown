@@ -2,7 +2,7 @@
 
 # (APPENDIX) Appendix {-}
 
-# References {-}
+# References
 
 <!-- <div id="refs"></div> -->
 <!-- `r if (knitr::is_latex_output()) ' -->
@@ -16,15 +16,19 @@
 　  https://ja.wikipedia.org/wiki/BibTeX
 -->
 
-文中で参考している文献・資料に関しては文献一覧（Bibliography）のページを参照してください。
+　文中で参照している文献・資料に関しては文献一覧のページを参照してください。なお、文献一覧はPDF版では巻末に「Bibliography」として、HTML版では参照ページの下部の「References」項にまとめてあります。
 
 
-## 環境構築関連資料
-
-* RとRStudioのインストールと初期設定(PDF) 高知工科大学 矢内
+* RとRStudioのインストールと初期設定(PDF), 矢内 高知工科大学
    * [Windows編](https://yukiyanai.github.io/jp/resources/docs/install-R_ubuntu.pdf)
    * [macOS編](https://yukiyanai.github.io/jp/resources/docs/install-R_macOS.pdf)
    * [Linux(Ubuntu)編](https://yukiyanai.github.io/jp/resources/docs/install-R_ubuntu.pdf)
 
+
+* [総務省 ICTスキル総合習得プログラム](https://www.soumu.go.jp/ict_skill/)
+   * 2017年度総務省「総務省 ICTスキル総合習得プログラム」事業の成果資料
+
+
 * [r-wakalang](https://github.com/tokyor/r-wakalang)
    * 国内最大？のslackコミュニティ
+

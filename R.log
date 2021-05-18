@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.5.17)  17 MAY 2021 23:56
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021) (preloaded format=xelatex 2021.5.17)  18 MAY 2021 19:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1490,25 +1490,26 @@ Chapter 12.
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
 (hyperref)                be the same. Added a new anchor on input line 1840.
 
+Appendix A.
 [83
 
 ] [84
 
 ]
-Appendix A.
+Appendix B.
 [85] [86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96]
 LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/b/n' will be
-(Font)              scaled to size 11.49323pt on input line 2561.
+(Font)              scaled to size 11.49323pt on input line 2594.
 [97] [98] [99] [100] [101] [102]
 LaTeX Font Info:    Font shape `TU/SourceHanCodeJP(0)/b/it' will be
-(Font)              scaled to size 9.5777pt on input line 2872.
+(Font)              scaled to size 9.5777pt on input line 2905.
 [103] [104] [105] [106] [107]
-Overfull \hbox (28.80188pt too wide) in alignment at lines 3225--3229
+Overfull \hbox (28.80188pt too wide) in alignment at lines 3258--3262
  [] [] [] 
  []
 
 
-Overfull \hbox (28.80188pt too wide) in alignment at lines 3229--3246
+Overfull \hbox (28.80188pt too wide) in alignment at lines 3262--3279
  [] [] [] 
  []
 
@@ -1518,9 +1519,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [112] [113] [114
 
 ]
-Appendix B.
-[115] [116] [117] [118]
 Appendix C.
+[115] [116] [117] [118]
+Appendix D.
 [119
 
 ]
@@ -1541,28 +1542,28 @@ File: fig/Colab/run_dialog.png Graphic file (type bmp)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [122]
-Underfull \hbox (badness 10000) in paragraph at lines 3811--3813
+Underfull \hbox (badness 10000) in paragraph at lines 3844--3846
 
  []
 
 File: fig/RStudio/RSCloud_00.png Graphic file (type bmp)
 <fig/RStudio/RSCloud_00.png>
 [123]
-Underfull \hbox (badness 10000) in paragraph at lines 3843--3846
+Underfull \hbox (badness 10000) in paragraph at lines 3876--3879
 
  []
 
 File: fig/RStudio/RSCloud_01.png Graphic file (type bmp)
 <fig/RStudio/RSCloud_01.png>
 [124]
-Underfull \hbox (badness 10000) in paragraph at lines 3861--3863
+Underfull \hbox (badness 10000) in paragraph at lines 3894--3896
 
  []
 
 File: fig/RStudio/RSCloud_02.png Graphic file (type bmp)
 <fig/RStudio/RSCloud_02.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 3873--3876
+Underfull \hbox (badness 10000) in paragraph at lines 3906--3909
 
  []
 
@@ -1570,14 +1571,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 3873--3876
 File: fig/RStudio/RSCloud_03.png Graphic file (type bmp)
 <fig/RStudio/RSCloud_03.png>
 [126]
-Appendix D.
+Appendix E.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [127
 
 ] [128]
-Underfull \hbox (badness 10000) in paragraph at lines 3959--3961
+Underfull \hbox (badness 10000) in paragraph at lines 3992--3994
 
  []
 
@@ -1603,13 +1604,13 @@ t=latn;language=dflt;!
 Missing character: There is no ✖ (U+2716) in font Source Han Code JP R/OT:scrip
 t=latn;language=dflt;!
 [130] [131] [132]
-Appendix E.
+Appendix F.
 [133
 
 ] [134] [135] [136
 
 ]
-Appendix F.
+Appendix G.
 [137]
 File: fig/RStudio/DT_Area.png Graphic file (type bmp)
 <fig/RStudio/DT_Area.png>
@@ -1617,12 +1618,12 @@ File: fig/RStudio/DT_Area.png Graphic file (type bmp)
 File: fig/RStudio/DT_Pane.png Graphic file (type bmp)
 <fig/RStudio/DT_Pane.png>
 
-Overfull \hbox (152.37595pt too wide) in alignment at lines 4294--4298
+Overfull \hbox (152.37595pt too wide) in alignment at lines 4327--4331
  [] [] [] [] 
  []
 
 
-Overfull \hbox (152.37595pt too wide) in alignment at lines 4298--4316
+Overfull \hbox (152.37595pt too wide) in alignment at lines 4331--4349
  [] [] [] [] 
  []
 
@@ -1630,12 +1631,12 @@ Overfull \hbox (152.37595pt too wide) in alignment at lines 4298--4316
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [139]
-Overfull \hbox (94.45195pt too wide) in alignment at lines 4326--4330
+Overfull \hbox (94.45195pt too wide) in alignment at lines 4359--4363
  [] [] 
  []
 
 
-Overfull \hbox (94.45195pt too wide) in alignment at lines 4330--4341
+Overfull \hbox (94.45195pt too wide) in alignment at lines 4363--4374
  [] [] 
  []
 
@@ -1660,32 +1661,32 @@ File: fig/RStudio/DT_RN_Option.png Graphic file (type bmp)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [142]
-Overfull \hbox (107.45996pt too wide) in alignment at lines 4430--4434
+Overfull \hbox (107.45996pt too wide) in alignment at lines 4463--4467
  [] [] [] [] 
  []
 
 
-Overfull \hbox (107.45996pt too wide) in alignment at lines 4434--4442
+Overfull \hbox (107.45996pt too wide) in alignment at lines 4467--4475
  [] [] [] [] 
  []
 
 [143]
-Overfull \hbox (96.528pt too wide) in alignment at lines 4455--4459
+Overfull \hbox (96.528pt too wide) in alignment at lines 4488--4492
  [] [] [] [] 
  []
 
 
-Overfull \hbox (96.528pt too wide) in alignment at lines 4459--4480
+Overfull \hbox (96.528pt too wide) in alignment at lines 4492--4513
  [] [] [] [] 
  []
 
 [144]
-Overfull \hbox (4.19652pt too wide) in alignment at lines 4533--4537
+Overfull \hbox (4.19652pt too wide) in alignment at lines 4566--4570
  [] [] [] [] 
  []
 
 
-Overfull \hbox (4.19652pt too wide) in alignment at lines 4537--4543
+Overfull \hbox (4.19652pt too wide) in alignment at lines 4570--4576
  [] [] [] [] 
  []
 
@@ -1693,12 +1694,12 @@ Overfull \hbox (4.19652pt too wide) in alignment at lines 4537--4543
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [145]
-Overfull \hbox (4.19652pt too wide) in alignment at lines 4560--4564
+Overfull \hbox (4.19652pt too wide) in alignment at lines 4593--4597
  [] [] [] [] 
  []
 
 
-Overfull \hbox (4.19652pt too wide) in alignment at lines 4564--4574
+Overfull \hbox (4.19652pt too wide) in alignment at lines 4597--4607
  [] [] [] [] 
  []
 
@@ -1706,19 +1707,19 @@ Overfull \hbox (4.19652pt too wide) in alignment at lines 4564--4574
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [146]
-Overfull \hbox (103.27194pt too wide) in alignment at lines 4620--4624
+Overfull \hbox (103.27194pt too wide) in alignment at lines 4653--4657
  [] [] [] [] 
  []
 
 
-Overfull \hbox (103.27194pt too wide) in alignment at lines 4624--4628
+Overfull \hbox (103.27194pt too wide) in alignment at lines 4657--4661
  [] [] [] [] 
  []
 
 [147] [148]
-Appendix G.
+Appendix H.
 
-Underfull \hbox (badness 10000) in paragraph at lines 4667--4668
+Underfull \hbox (badness 10000) in paragraph at lines 4700--4701
 
  []
 
@@ -1727,14 +1728,14 @@ File: fig/RStudio/Cloud.png Graphic file (type bmp)
 [149
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 4689--4689
+Underfull \hbox (badness 10000) in paragraph at lines 4722--4722
 [][][][][]$[][][][][] [] [] [] [][][][][][][][][][][] [] [][] [] [][][][][][][]
  [] [][][][] [] [][][][][][] [] [][][] [] [][][][][][][][][][][][][][][] [] [][
 ][][][] [] [][][][][] [][] [][] [] [][][][][] [] [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4692--4693
+Underfull \hbox (badness 10000) in paragraph at lines 4725--4726
 
  []
 
@@ -1753,12 +1754,12 @@ ine 201.
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `R.out' has not changed.
-(rerunfilecheck)             Checksum: 9F31B6288D86D79800B370F80A85E3BC;18476.
+(rerunfilecheck)             Checksum: DA95120EBD6DB4C6B3A130025031E482;18474.
  ) 
 Here is how much of TeX's memory you used:
  25932 strings out of 478764
  495872 string characters out of 5864127
- 974283 words of memory out of 5000000
+ 974278 words of memory out of 5000000
  45454 multiletter control sequences out of 15000+600000
  411316 words of font info for 133 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
