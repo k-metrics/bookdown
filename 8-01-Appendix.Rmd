@@ -5,16 +5,26 @@
 # References {-}
 
 <!-- <div id="refs"></div> -->
-
 <!-- `r if (knitr::is_latex_output()) ' -->
 <!-- See Bibliography page -->
 <!-- '` -->
-
 <!-- 
 　Bibliographyによる参考文献一覧は以下に出力される
 　  HTML出力の場合はココに
 　  PDF出力の場合は最終ページ（Bibliography）に
 　BibTeXの書き方
 　  https://ja.wikipedia.org/wiki/BibTeX
-　
 -->
+
+文中で参考している文献・資料に関しては文献一覧（Bibliography）のページを参照してください。
+
+
+## 環境構築関連資料
+
+* RとRStudioのインストールと初期設定(PDF) 高知工科大学 矢内
+   * [Windows編](https://yukiyanai.github.io/jp/resources/docs/install-R_ubuntu.pdf)
+   * [macOS編](https://yukiyanai.github.io/jp/resources/docs/install-R_macOS.pdf)
+   * [Linux(Ubuntu)編](https://yukiyanai.github.io/jp/resources/docs/install-R_ubuntu.pdf)
+
+* [r-wakalang](https://github.com/tokyor/r-wakalang)
+   * 国内最大？のslackコミュニティ
