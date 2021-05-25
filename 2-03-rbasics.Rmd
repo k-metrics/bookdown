@@ -10,13 +10,27 @@
 
 <!-- \newpage -->
 
-## まとめ
+### まとめ
 
 
 <!-- \newpage -->
 
-## 演習
-### 演習 3 {.unnumbered}
+### 演習
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
 
+#### 演習 `r eqn` {.unnumbered}
 
-### 演習 4 {.unnumbered}
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+#### 演習 `r eqn` {.unnumbered}
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+#### 演習 `r eqn` {.unnumbered}
+

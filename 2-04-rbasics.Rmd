@@ -1,0 +1,27 @@
+## 分散分析
+<!-- \newpage -->
+
+### まとめ
+
+
+<!-- \newpage -->
+
+### 演習
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+#### 演習 `r eqn` {.unnumbered}
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+#### 演習 `r eqn` {.unnumbered}
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+#### 演習 `r eqn` {.unnumbered}
+

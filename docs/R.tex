@@ -320,7 +320,7 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-18}
+\date{2021-05-25}
 
 \begin{document}
 \maketitle
@@ -1084,21 +1084,23 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 算術平均（相加平均）は要約統計量の中でよく使われ、下式で求められます。
 
 \begin{equation}
-  \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i
+  \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i \label{eq:arithmetic-mean}
 \end{equation}
 
 算術平均以外にも幾何平均（相乗平均）や \begin{equation}
-  \sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i}
+  \sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i} \label{eq:geometric-mean}
 \end{equation}
 
-体操競技などで使われる得点の最小値と最大値を除いた得点の平均であるトリム平均などがあります。平均といってもこのように様々な求め方があります。では、\textbf{R}を使ってこれらの平均を求めてみます。
+下位・上位をある割合で除いて平均（算術平均）を求めるトリム平均もあります。トリム平均は異常値や外れ値がある場合にそれらの影響を排除して平均を求めたい場合に利用されます。刈込み平均や調整平均とも呼ばれます。 体操競技などで極端な点数を出す審査員の影響を排除するために使われています。比較的多いのが全員の得点から最小値と最大値を除いたものから平均値を求め、その平均値を得点する方法です。
+
+平均といってもこのように様々な求め方があります。では、\textbf{R}を使ってこれらの平均を求めてみます。
 
 以降、灰色に網掛けされた部分が\textbf{R}のコード、コードの下の\texttt{\#\#}で始まる部分が実行結果（出力）になります。コードによっては実行結果が出力されない場合もあります。
 
 \hypertarget{ux7b97ux8853ux5e73ux5747}{%
 \subsubsection{算術平均}\label{ux7b97ux8853ux5e73ux5747}}
 
-算術平均は\texttt{mean()}関数で求めることができます。最初に平均の計算対象となるデータ（変数）を\texttt{c()}関数で作成します。\texttt{c()}関数はベクトル型の変数を作成する関数です。
+式\eqref{eq:arithmetic-mean}の算術平均は\texttt{mean()}関数で求めることができます。最初に平均の計算対象となるデータ（変数）を\texttt{c()}関数で作成します。\texttt{c()}関数はベクトル型の変数を作成する関数です。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1106,7 +1108,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{Highlighting}
 \end{Shaded}
 
-\texttt{x}は値を代入（格納）する変数、\texttt{\textless{}-}は代入演算子（\textbf{R}では代入に\texttt{=}は使わないのが基本です）、\texttt{c()}関数はベクトルデータを作成する関数です。代入結果を確認するには以下を実行します。
+\texttt{x}は値を代入（格納）する変数、\texttt{\textless{}-}は代入演算子\footnote{\textbf{R}では代入に\texttt{=}を使わないようにしてください}、\texttt{c()}関数はベクトルデータを作成する関数です。代入結果を確認するには以下を実行します。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1156,7 +1158,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{ux5e7eux4f55ux5e73ux5747}{%
 \subsubsection{幾何平均}\label{ux5e7eux4f55ux5e73ux5747}}
 
-幾何平均（相乗平均）を求める関数は標準では用意されていません。パッケージを追加インストールする必要があります。ここでは\textbf{\texttt{psych}}パッケージを下記の手順でインストールして使います。なお、インストールに際してはインターネット接続が必要です。
+式\eqref{eq:geometric-mean}の幾何平均（相乗平均）を求める関数は標準では用意されていません。パッケージを追加インストールする必要があります。ここでは\textbf{\texttt{psych}}パッケージを下記の手順でインストールして使います。なお、インストールに際してはインターネット接続が必要です。
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1185,13 +1187,13 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 \begin{verbatim}
 ## 
-## Attaching package: 'psych'
+##  次のパッケージを付け加えます: 'psych'
 \end{verbatim}
 
 \begin{verbatim}
-## The following objects are masked from 'package:ggplot2':
+##  以下のオブジェクトは 'package:ggplot2' からマスクされています: 
 ## 
-##     %+%, alpha
+##      %+%, alpha
 \end{verbatim}
 
 環境によっては上記のように他のパッケージの関数をマスクしている旨のメッセージが出力されますが、今は気にする必要ありません。
@@ -1226,7 +1228,8 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \subsubsection*{閑話}\label{ux9591ux8a71}}
 \addcontentsline{toc}{subsubsection}{閑話}
 
-\textbf{パッケージ四方山話} ＊ 幾何平均を求めるために\texttt{psych}パッケージを利用しましたが、\textbf{R}には総積（\(x_1 \times x_2 \times \cdots \times x_n\)）を求める\texttt{prod()}関数と累乗根（\(x^{\frac{1}{n}}\)）を求めるべき乗演算子（\texttt{\^{}}）がありますので、これを組み合わせれば幾何平均を求めることが可能です。
+\textbf{パッケージ四方山話}\\
+　幾何平均を求めるために\texttt{psych}パッケージを利用しましたが、\textbf{R}には総積（\(x_1 \times x_2 \times \cdots \times x_n\)）を求める\texttt{prod()}関数と累乗根（\(x^{\frac{1}{n}}\)）を求めるべき乗演算子（\texttt{\^{}}）がありますので、これを組み合わせれば幾何平均を求めることが可能です。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1296,96 +1299,187 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 散らばり具合を見るためにデータの個々の値と平均値との差の二乗の算術平均を分散（標本分散\(s^2\)）、
 
 \begin{equation}
-  s^2 = \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2
-  \label{eq:variance}
+  s^2 = \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2 \label{eq:variance}
 \end{equation}
 
 単位を戻すために分散の平方根をとったものを標準偏差（標本標準偏差\(s\)）と呼びます。
 
 \begin{equation}
-  s = \sqrt{s^2} = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2}
+  s = \sqrt{s^2} = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} \label{eq:standatd-deviation}
 \end{equation}
 
 しかし、\textbf{R}にはこの標本分散（\(s^2\)）を求める関数は用意されていませんが、不偏分散（\(\hat{\sigma}^2\)）を求める\texttt{var()}関数が用意されています。
 
 \begin{equation}
-  \hat{\sigma}^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2 = var(x)
-  \label{eq:var}
+  \hat{\sigma}^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2 = var(x) \label{eq:var}
 \end{equation}
 
-標本分散（\(s^2\)）の定義式\eqref{eq:variance}と不偏分散（\(\hat{\sigma}^2\)）の定義式\eqref{eq:var}から標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の間には関係があることが分かります。
+この二式\eqref{eq:variance}\eqref{eq:var}から標本分散（\(s^2\)）は
 
 \begin{equation}
-  s^2 = \frac{n - 1}{n}\hat{\sigma}^2
-  \label{eq:variance-var}
+  s^2 = \frac{n - 1}{n}\hat{\sigma}^2 = \frac{length(x) - 1}{length(x)}var(x) \label{eq:variance-var}
 \end{equation}
 
+で求めることができます。また、標本標準偏差（\(s\)）は式\eqref{eq:variance-var}の平方根で求められます。
+
 \hypertarget{ux30e2ux30fcux30e1ux30f3ux30c8}{%
-\subsection*{モーメント}\label{ux30e2ux30fcux30e1ux30f3ux30c8}}
-\addcontentsline{toc}{subsection}{モーメント}
+\subsection{モーメント}\label{ux30e2ux30fcux30e1ux30f3ux30c8}}
 
-本節は\textbf{R}のコードに関わる説明はありませんので、読み飛ばしても構いません。
+本節の内容はデータ分析ではあまり使いませんので読み飛ばして頂いても結構です。
 
-平均（分布の重心）と分散（分布の広がり）は、歪度（分布の左右非対称度合い）、尖度（分布の峰の尖り度合い）を含めて「モーメントから求められる要約統計量」と言われることがあります。 n個のデータの平均値を
+平均（分布の重心）と分散（分布の広がり）は、歪度（分布の左右非対称度合い）、尖度（分布の峰の尖り度合い）を含めて「モーメントから求められる要約統計量」と呼ぶことがあります。
 
-\[\bar{x} = \frac{1}{n}\sum_{i = 1}^{n}x_i\] \begin{equation}
+\(n\)個のデータの平均値を
+
+\begin{equation}
+  \bar{x} = \frac{1}{n}\sum_{i = 1}^{n}x_i \label{eq:moment1}
 \end{equation}
 
 とした場合、平均値まわりの\(m\)次の中央モーメント\(\bar{x}_m\)を
 
-\[\bar{x}_m = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^m　　(m = 2, 3, 4)\] \begin{equation}
+\begin{equation}
+  \bar{x}_m = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^m　　(m = 2, 3, 4) \label{eq:moment}
 \end{equation}
 
 と定義します。\(m = 2\)の場合、
 
-\[\bar{x}_2 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^2 = s^2\] \begin{equation}
+\begin{equation}
+  \bar{x}_2 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^2 = s^2 \label{eq:moment2}
 \end{equation}
 
 となりますので、\(\bar{x}_2\)は分散\(s^2\)であることがわかります。\(m = 3\)の場合、
 
-\[\bar{x}_3 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^3\] \begin{equation}
+\begin{equation}
+  \bar{x}_3 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^3 \label{eq:moment3}
 \end{equation}
 
 となり、これを標準偏差の三乗（\(s^3\)）で割ったもの
 
-\[\gamma_1 = \frac{\bar{x}_3}{s^3}\] \begin{equation}
+\begin{equation}
+  \gamma_1 = \frac{\bar{x}_3}{s^3} \label{eq:skewness}
 \end{equation}
 
 を歪度（\(\gamma_1\)）と呼びます。\(m = 4\)の場合、
 
-\[\bar{x}_4 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^4\] \begin{equation}
+\begin{equation}
+  \bar{x}_4 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^4  \label{eq:moment4}
 \end{equation}
 
 となり、これを標準偏差の四乗、または、分散の二乗（\(s^4\)）で割ったもの
 
 \begin{equation}
-  \gamma_2 = \frac{\bar{x}_4}{s^4}
+  \gamma_2 = \frac{\bar{x}_4}{s^4} \label{eq:kurtosise}
 \end{equation}
 
 を尖度（\(\gamma_2\)）と呼びます。
 
-\begin{rmdnote}
-\textbf{【コラム】英字？ギリシャ文字？}\\
-　統計の書籍では様々な統計量を英字で表記する場合とギリシャ文字で表記する場合があり混乱しやすいのですが、英字（アルファベット）で表記されている場合は標本統計量、ギリシャ文字で表記されている場合は母集団の統計量もしくは母集団の推定統計量を意味しています。 　推定統計量を表記する場合、推定であることを意味するハット（ \(\hat{}\) ）という記号をつけます。 　平均と分散・標準偏差を使って整理すると下表のようになります。
+歪度や尖度を求める関数は標準では用意されていませんので\textbf{\texttt{e1071}}パッケージを用います。
 
-\begin{longtable}[]{@{}lcccl@{}}
-\toprule
-統計量 & 平均 & 分散 & 標準偏差 & 備考 \\
-\midrule
-\endhead
-母集団の統計量 & \(\mu\) & \(\sigma^2\) & \(\sigma\) & 神のみぞ知る統計量 \\
-（不偏）推定量 & \(\hat{\mu}\) & \(\hat{\sigma}^2\) & \(\hat{\sigma}\) & 標本から母集団を推定した統計量 \\
-標本統計量 & \(\bar{x}\) & \(s^2\) & \(s\) & 標本から求める統計量 \\
-\bottomrule
-\end{longtable}
-　ハット（ \(\hat{}\) ）を省略している書籍や資料も散見されますので混乱しないように注意してください。詳しくは『統計的方法のしくみ』\citep{ToukeitekiHouhounoSikumi:jbook}の「3. 母数と統計量の区別」や『統計解析のはなし』\citep{ToukeiKaisekinoHanashi}の「2. 素人探偵物語」などを参照してください。 \end{rmdnote}
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"e1071"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(e1071)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6b6aux5ea6}{%
+\subsubsection{歪度}\label{ux6b6aux5ea6}}
+
+歪度はデータ分布の左右対象度合いです。左右対象となるデータ分布であれば\(0\)、右に歪んでいれば正の値を、左に歪んでいれば負の値を取ります。例えば下図のような分布を持つデータでは
+
+\begin{center}\includegraphics[width=0.85\linewidth,]{R_files/figure-latex/unnamed-chunk-34-1} \end{center}
+
+歪度は、ほぼゼロの値となります。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.04548819
+\end{verbatim}
+
+大きく右に歪んだ（左に偏った）カイ二乗分布のようなデータでは
+
+\begin{center}\includegraphics[width=0.85\linewidth,]{R_files/figure-latex/unnamed-chunk-36-1} \end{center}
+
+歪度は正の値をとります。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.318739
+\end{verbatim}
+
+逆に左に歪んだ（右に偏った）データでは
+
+\begin{center}\includegraphics[width=0.85\linewidth,]{R_files/figure-latex/unnamed-chunk-38-1} \end{center}
+
+負の値をとります。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{skewness}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1.318739
+\end{verbatim}
+
+\hypertarget{ux5c16ux5ea6}{%
+\subsubsection{尖度}\label{ux5c16ux5ea6}}
+
+尖度はデータ分布の尖り具合です。標準正規分布と等しければ\(0\)、標準正規分布より尖ったt分布のような分布では正の値、広がった分布であれば負の値をとります。
+
+\begin{center}\includegraphics[width=0.85\linewidth,]{R_files/figure-latex/unnamed-chunk-40-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{kurtosis}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.01457407
+\end{verbatim}
+
+\begin{center}\includegraphics[width=0.85\linewidth,]{R_files/figure-latex/unnamed-chunk-42-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{kurtosis}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7919764
+\end{verbatim}
+
+\begin{center}\includegraphics[width=0.85\linewidth,]{R_files/figure-latex/unnamed-chunk-44-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{e1071}\SpecialCharTok{::}\FunctionTok{kurtosis}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.3767132
+\end{verbatim}
 
 \hypertarget{ux4e2dux592eux5024}{%
 \subsection{中央値}\label{ux4e2dux592eux5024}}
 
-平均値や分散・標準偏差はデータの分布が平均値を中心に左右対象になっている場合は有用な統計量ですが、データの分布が大きく歪んでいる場合は、あまり有用とは言えない場合があります。このような場合、平均値に代わり中央値や最頻値、分散・標準偏差に代わり範囲・分位範囲（分位値）を用いるます。これらの統計量はデータの中の位置を用いますので、データの分布に影響されることが小さいロバストネス（頑健性の高い）な統計量です。
+平均値や分散・標準偏差はデータの分布が平均値を中心に左右対象になっているような場合は有用な統計量ですが、データの分布が大きく歪んでいる対象に対しては適した統計量とは言えません。このような場合、平均値の代わりに中央値（中位数）や最頻値、分散・標準偏差に代わり範囲・分位範囲（分位値）を用いるます。これらの統計量はデータの中の位置を用いますので、データの分布に影響されることが少ないロバストネス（頑健性の高い）な統計量です。
 
-中央値は文字通り中央（真ん中）に位置する値で、\texttt{median()}関数を使うことで求めることができます。データが順番に並んでいなくても\texttt{median()}関数でソート処理を行います。
+中央値は文字通り中央（真ん中）に位置する値です。データを小さい順に並べて真ん中に位置する値で、\texttt{median()}関数を使って求めます。データが順番に並んでいなくても\texttt{median()}関数内でソート処理を行います。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1462,8 +1556,8 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 9.2
 \end{verbatim}
 
-\hypertarget{ux7bc4ux56f2ux30ecux30f3ux30b8}{%
-\subsection{範囲（レンジ）}\label{ux7bc4ux56f2ux30ecux30f3ux30b8}}
+\hypertarget{ux7bc4ux56f2}{%
+\subsection{範囲}\label{ux7bc4ux56f2}}
 
 前述の\texttt{x}と\texttt{y}は、中央値で見る限りと同じデータになってしまいます。この結論はいささか不合理ですので、データのばらつきを範囲（レンジ）で見てみます。範囲を求めるには、その名の通りの\texttt{range()}を用います。
 
@@ -1543,10 +1637,71 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 27
 \end{verbatim}
 
+\hypertarget{ux56dbux5206ux4f4dux6570ux56dbux5206ux4f4dux7bc4ux56f2}{%
+\subsection{四分位数・四分位範囲}\label{ux56dbux5206ux4f4dux6570ux56dbux5206ux4f4dux7bc4ux56f2}}
+
+中央値は中位数と呼ばれるようにデータを二分の一にした場所にあるデータです。さらに細かくして全体を四分の一にしたの場所にあるデータを四分位数と呼びます。小さい方から見て最初の四分の一にある値を第一四分位数（\(25\%\)点、\(Q_1\)）、次の四分の一にある値を第二四分位数（\(50\%\)点、\(Q_2\)）、次の四分の一にある値を第三四分位数（\(75\%\)点、\(Q_3\)）といいます。第二四分位数（\(50%
+\)点、\(Q_2\)）は中央値（中位数）とイコールです。 四分位数にも範囲があり、四分位範囲（\(IQR\), interquartile range）と呼ばれ以下のように定義されます、
+
+\begin{equation}
+  IQR = Q_3 - Q_1 \label{eq:IQR}
+\end{equation}
+
+四分位数は\texttt{quantile()}関数で求めることができます。オプションを指定しなければ第一〜第三四分位数に加えて最小値（\(0\%点\)）・最大値（\(100\%点\)）を加えた五つの値が返ってきます。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{quantile}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   0%  25%  50%  75% 100% 
+##    1    3    5    7    9
+\end{verbatim}
+
+任意の四分位数を求めたい場合は\texttt{prob}オプションを指定します。\texttt{prob}は\(0\)〜\(1\)の間で指定する点に中位してください。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{quantile}\NormalTok{(x, }\AttributeTok{prob =} \FloatTok{0.25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 25% 
+##   3
+\end{verbatim}
+
+複数の四分位数を同時に求めことも可能です。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{quantile}\NormalTok{(x, }\AttributeTok{prob =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.75}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 25% 75% 
+##   3   7
+\end{verbatim}
+
+四分位範囲（\(IQR\)）を求める場合は\texttt{IQR()}関数が便利です。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{IQR}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
 \hypertarget{ux6700ux983bux5024}{%
 \subsection{最頻値}\label{ux6700ux983bux5024}}
 
-以下の\texttt{x}と\texttt{y}は、平均値、中央値、範囲は全て同じ値になるデータです。
+最頻値（モード）とは文字通り、最も頻繁に出てくる値のことです。例えば、以下の\texttt{x}と\texttt{y}は、平均値・中央値・範囲は全て同じ値になるデータです。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1610,17 +1765,18 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 8
 \end{verbatim}
 
-このようなデータの特徴を見るには最頻値という統計量があります。最頻値とはデータの中で最も頻繁に出てくる値のことで、モードとも呼ばれます。最頻値を求める関数は標準では用意されていませんので\texttt{modeest}パッケージを用います。
+このようなデータに対しては最頻値を用いると平均値・中央値・範囲では見えなかった差異が見える場合があります。最頻値を求める関数は標準では用意されていませんので\texttt{modeest}パッケージを用います。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{"modeest"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(modeest)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\FunctionTok{library}\NormalTok{(modeest)}
+\NormalTok{modeest}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1630,12 +1786,6 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ##   plot.residuals psych
 ##   print.response httr
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\NormalTok{modeest}\SpecialCharTok{::}\FunctionTok{mfv}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## [1] 1
@@ -1652,7 +1802,9 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{verbatim}
 
 \hypertarget{ux307eux3068ux3081}{%
-\section{まとめ}\label{ux307eux3068ux3081}}
+\subsection{まとめ}\label{ux307eux3068ux3081}}
+
+本節に出てきた要約統計量と関数は下表の通りです。
 
 \begin{longtable}[]{@{}lcl@{}}
 \toprule
@@ -1660,26 +1812,31 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \midrule
 \endhead
 標本平均 & \(\bar{x}\) & \texttt{mean(x)} \\
-トリム平均 & & \texttt{mean(x,\ trim\ =\ k),\ k\ =\ 0\ to\ 0.5} \\
+トリム平均 & & \texttt{mean(x,\ trim\ =\ t),\ t\ =\ 0\ to\ 0.5} \\
 幾何平均 & & \texttt{psych::geometric.mean(x)} \\
 標本分散 & \(s^2\) & \texttt{(length(x)\ -\ 1)\ /\ length(x)\ *\ var(x)} \\
 不偏分散 & \(\hat{\sigma}^2\) & \texttt{var(x)} \\
-標本標準偏差 & \(s\) & \texttt{sqrt((length(x)\ -\ 1)\ /\ length(x))\ *\ sd(x)} \\
+標本標準偏差 & \(s\) & \texttt{sqrt((length(x)\ -\ 1)\ /\ length(x)\ *\ var(x))} \\
 不偏標本偏差 & \(\hat{\sigma}\) & \texttt{sd(x)} \\
+歪度 & \(\gamma_1\) & \texttt{e1071::skewness(x)} \\
+尖度 & \(\gamma_2\) & \texttt{e1071::kurtosis} \\
 中央値 & & \texttt{median(x)} \\
-範囲（レンジ） & \(R\)\footnote{重相関計数を意味する場合もあり} & \texttt{range(x)} or \texttt{diff(range(x))} \\
+範囲 & \(R\)\footnote{重相関計数を意味する場合もあり} & \texttt{range(x)} or \texttt{diff(range(x))} \\
+四分位数 & \(Q_n\) & \texttt{quantile(x)} \\
+第\(n\)四分位数 & \(Q_n\) & \texttt{quantile(x,\ prob\ =\ p),\ p\ =\ 0.25n} \\
+四分位範囲 & \(IQR\) & \texttt{IQR(x)} \\
 最頻値 & & \texttt{modeest::mfv(x)} \\
 \bottomrule
 \end{longtable}
 
 \hypertarget{ux6f14ux7fd2}{%
-\section{演習}\label{ux6f14ux7fd2}}
+\subsection{演習}\label{ux6f14ux7fd2}}
 
 \hypertarget{ux6f14ux7fd2-1}{%
-\subsection*{演習 1}\label{ux6f14ux7fd2-1}}
-\addcontentsline{toc}{subsection}{演習 1}
+\subsubsection*{演習 1}\label{ux6f14ux7fd2-1}}
+\addcontentsline{toc}{subsubsection}{演習 1}
 
-標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の関係式\eqref{eq:variance-var}を用いて\textbf{R}で以下の二つのデータの標本分散を求めなさい。
+標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の関係式\eqref{eq:variance-var}を用いて\textbf{R}で以下の二つのデータの標本分散（\(s^2\)）を求めなさい。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1689,8 +1846,8 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{Shaded}
 
 \hypertarget{ux6f14ux7fd2-2}{%
-\subsection*{演習 2}\label{ux6f14ux7fd2-2}}
-\addcontentsline{toc}{subsection}{演習 2}
+\subsubsection*{演習 2}\label{ux6f14ux7fd2-2}}
+\addcontentsline{toc}{subsubsection}{演習 2}
 
 欠損値を含む以下のデータの平均値（\(\bar{x}\)）、不偏分散（\(\hat{\sigma}^2\)）ならびに標本分散（\(s^2\)）を求めなさい。
 
@@ -1704,6 +1861,64 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \texttt{na.rm}オプションを使います
 \end{quote}
 
+\hypertarget{ux6f14ux7fd2-3}{%
+\subsubsection*{演習 3}\label{ux6f14ux7fd2-3}}
+\addcontentsline{toc}{subsubsection}{演習 3}
+
+\newpage
+
+\hypertarget{ux30b3ux30e9ux30e0}{%
+\subsection*{コラム}\label{ux30b3ux30e9ux30e0}}
+\addcontentsline{toc}{subsection}{コラム}
+
+\begin{rmdnote} \textbf{英字？ギリシャ文字？}\\
+　統計の書籍では様々な統計量を英字で表記する場合とギリシャ文字で表記する場合があり混乱しやすいのですが、英字（アルファベット）で表記されている場合は標本統計量、ギリシャ文字で表記されている場合は母集団の統計量もしくは母集団の推定統計量を意味しています。\\
+　推定統計量を表記する場合、推定であることを意味するハット（ \(\hat{}\) ）という記号をつけます。\\
+　平均と分散・標準偏差を使って整理すると下表のようになります。
+
+\begin{longtable}[]{@{}lcccl@{}}
+\toprule
+統計量 & 平均 & 分散 & 標準偏差 & 備考 \\
+\midrule
+\endhead
+母集団の統計量 & \(\mu\) & \(\sigma^2\) & \(\sigma\) & 神のみぞ知る統計量 \\
+（不偏）推定量 & \(\hat{\mu}\) & \(\hat{\sigma}^2\) & \(\hat{\sigma}\) & 標本から母集団を推定した統計量 \\
+標本統計量 & \(\bar{x}\) & \(s^2\) & \(s\) & 標本から求める統計量 \\
+\bottomrule
+\end{longtable}
+　ハット（ \(\hat{}\) ）を省略している書籍や資料も散見されますので混乱しないように注意してください。詳しくは『統計的方法のしくみ』\citep{ToukeitekiHouhounoSikumi:jbook}の「3. 母数と統計量の区別」や『統計解析のはなし』\citep{ToukeiKaisekinoHanashi}の「2. 素人探偵物語」などを参照してください。 \end{rmdnote}
+
+\newpage
+
+\hypertarget{ux63a8ux5b9a}{%
+\section{推定}\label{ux63a8ux5b9a}}
+
+データを分析する前には分析対象となるデータがどのような特徴を持っているか確認しておくことが重要であるとよく言われます。この特徴を見るには要約統計量を使う場合が多いです。要約統計量はデータの分布の特徴を表すもので、記述統計量や基本統計量と呼ばれることもあります。
+
+\hypertarget{ux70b9ux63a8ux5b9a}{%
+\subsection{点推定}\label{ux70b9ux63a8ux5b9a}}
+
+\hypertarget{ux533aux9593ux63a8ux5b9a}{%
+\subsection{区間推定}\label{ux533aux9593ux63a8ux5b9a}}
+
+\hypertarget{ux307eux3068ux3081-1}{%
+\subsection{まとめ}\label{ux307eux3068ux3081-1}}
+
+\hypertarget{ux6f14ux7fd2-4}{%
+\subsection{演習}\label{ux6f14ux7fd2-4}}
+
+\hypertarget{ux6f14ux7fd2-4-1}{%
+\subsubsection*{演習 4}\label{ux6f14ux7fd2-4-1}}
+\addcontentsline{toc}{subsubsection}{演習 4}
+
+\hypertarget{ux6f14ux7fd2-5}{%
+\subsubsection*{演習 5}\label{ux6f14ux7fd2-5}}
+\addcontentsline{toc}{subsubsection}{演習 5}
+
+\hypertarget{ux6f14ux7fd2-6}{%
+\subsubsection*{演習 6}\label{ux6f14ux7fd2-6}}
+\addcontentsline{toc}{subsubsection}{演習 6}
+
 \hypertarget{ux691cux5b9a}{%
 \section{検定}\label{ux691cux5b9a}}
 
@@ -1715,19 +1930,65 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{ux4e8cux9805ux691cux5b9a}{%
 \subsection{二項検定}\label{ux4e8cux9805ux691cux5b9a}}
 
-\hypertarget{ux307eux3068ux3081-1}{%
-\section{まとめ}\label{ux307eux3068ux3081-1}}
+\hypertarget{ux307eux3068ux3081-2}{%
+\subsection{まとめ}\label{ux307eux3068ux3081-2}}
 
-\hypertarget{ux6f14ux7fd2-3}{%
-\section{演習}\label{ux6f14ux7fd2-3}}
+\hypertarget{ux6f14ux7fd2-7}{%
+\subsection{演習}\label{ux6f14ux7fd2-7}}
 
-\hypertarget{ux6f14ux7fd2-3-1}{%
-\subsection*{演習 3}\label{ux6f14ux7fd2-3-1}}
-\addcontentsline{toc}{subsection}{演習 3}
+\hypertarget{ux6f14ux7fd2-7-1}{%
+\subsubsection*{演習 7}\label{ux6f14ux7fd2-7-1}}
+\addcontentsline{toc}{subsubsection}{演習 7}
 
-\hypertarget{ux6f14ux7fd2-4}{%
-\subsection*{演習 4}\label{ux6f14ux7fd2-4}}
-\addcontentsline{toc}{subsection}{演習 4}
+\hypertarget{ux6f14ux7fd2-8}{%
+\subsubsection*{演習 8}\label{ux6f14ux7fd2-8}}
+\addcontentsline{toc}{subsubsection}{演習 8}
+
+\hypertarget{ux6f14ux7fd2-9}{%
+\subsubsection*{演習 9}\label{ux6f14ux7fd2-9}}
+\addcontentsline{toc}{subsubsection}{演習 9}
+
+\hypertarget{ux5206ux6563ux5206ux6790}{%
+\section{分散分析}\label{ux5206ux6563ux5206ux6790}}
+
+\hypertarget{ux307eux3068ux3081-3}{%
+\subsection{まとめ}\label{ux307eux3068ux3081-3}}
+
+\hypertarget{ux6f14ux7fd2-10}{%
+\subsection{演習}\label{ux6f14ux7fd2-10}}
+
+\hypertarget{ux6f14ux7fd2-10-1}{%
+\subsubsection*{演習 10}\label{ux6f14ux7fd2-10-1}}
+\addcontentsline{toc}{subsubsection}{演習 10}
+
+\hypertarget{ux6f14ux7fd2-11}{%
+\subsubsection*{演習 11}\label{ux6f14ux7fd2-11}}
+\addcontentsline{toc}{subsubsection}{演習 11}
+
+\hypertarget{ux6f14ux7fd2-12}{%
+\subsubsection*{演習 12}\label{ux6f14ux7fd2-12}}
+\addcontentsline{toc}{subsubsection}{演習 12}
+
+\hypertarget{ux56deux5e30ux5206ux6790}{%
+\section{回帰分析}\label{ux56deux5e30ux5206ux6790}}
+
+\hypertarget{ux307eux3068ux3081-4}{%
+\subsection{まとめ}\label{ux307eux3068ux3081-4}}
+
+\hypertarget{ux6f14ux7fd2-13}{%
+\subsection{演習}\label{ux6f14ux7fd2-13}}
+
+\hypertarget{ux6f14ux7fd2-13-1}{%
+\subsubsection*{演習 13}\label{ux6f14ux7fd2-13-1}}
+\addcontentsline{toc}{subsubsection}{演習 13}
+
+\hypertarget{ux6f14ux7fd2-14}{%
+\subsubsection*{演習 14}\label{ux6f14ux7fd2-14}}
+\addcontentsline{toc}{subsubsection}{演習 14}
+
+\hypertarget{ux6f14ux7fd2-15}{%
+\subsubsection*{演習 15}\label{ux6f14ux7fd2-15}}
+\addcontentsline{toc}{subsubsection}{演習 15}
 
 \hypertarget{part-wrangle}{%
 \part{Wrangle}\label{part-wrangle}}
@@ -1843,7 +2104,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{references}{%
 \chapter{References}\label{references}}
 
-文中で参照している文献・資料に関しては文献一覧のページを参照してください。なお、文献一覧はPDF版では巻末に「Bibliography」として、HTML版では参照ページの下部の「References」項にあります。
+　文中で参照している文献・資料に関しては文献一覧のページを参照してください。なお、文献一覧はPDF版では巻末に「Bibliography」として、HTML版では参照ページの下部の「References」項にまとめてあります。
 
 \begin{itemize}
 \tightlist
@@ -3709,6 +3970,94 @@ NA & データ型 \\
 ## [1] 11.66667
 \end{verbatim}
 
+\hypertarget{ux6f14ux7fd2-3-1}{%
+\section*{演習 3}\label{ux6f14ux7fd2-3-1}}
+\addcontentsline{toc}{section}{演習 3}
+
+\hypertarget{ux89e3ux7b54ux4f8b-2}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b-2}}
+\addcontentsline{toc}{subsection}{解答例}
+
+\hypertarget{ux6f14ux7fd2-4-2}{%
+\section*{演習 4}\label{ux6f14ux7fd2-4-2}}
+\addcontentsline{toc}{section}{演習 4}
+
+\hypertarget{ux89e3ux7b54ux4f8b-3}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b-3}}
+\addcontentsline{toc}{subsection}{解答例}
+
+\hypertarget{ux6f14ux7fd2-5-1}{%
+\section*{演習 5}\label{ux6f14ux7fd2-5-1}}
+\addcontentsline{toc}{section}{演習 5}
+
+\hypertarget{ux89e3ux7b54ux4f8b-4}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b-4}}
+\addcontentsline{toc}{subsection}{解答例}
+
+\hypertarget{ux6f14ux7fd2-6-1}{%
+\section*{演習 6}\label{ux6f14ux7fd2-6-1}}
+\addcontentsline{toc}{section}{演習 6}
+
+\hypertarget{ux89e3ux7b54ux4f8b-5}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b-5}}
+\addcontentsline{toc}{subsection}{解答例}
+
+\hypertarget{ux6f14ux7fd2-7-2}{%
+\section*{演習 7}\label{ux6f14ux7fd2-7-2}}
+\addcontentsline{toc}{section}{演習 7}
+
+\hypertarget{ux89e3ux7b54ux4f8b-6}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b-6}}
+\addcontentsline{toc}{subsection}{解答例}
+
+\hypertarget{ux6f14ux7fd2-8-1}{%
+\section*{演習 8}\label{ux6f14ux7fd2-8-1}}
+\addcontentsline{toc}{section}{演習 8}
+
+\hypertarget{ux89e3ux7b54ux4f8b-7}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b-7}}
+\addcontentsline{toc}{subsection}{解答例}
+
+\hypertarget{ux6f14ux7fd2-9-1}{%
+\section*{演習 9}\label{ux6f14ux7fd2-9-1}}
+\addcontentsline{toc}{section}{演習 9}
+
+\hypertarget{ux89e3ux7b54ux4f8b-8}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b-8}}
+\addcontentsline{toc}{subsection}{解答例}
+
+\hypertarget{ux6f14ux7fd2-10-2}{%
+\section*{演習 10}\label{ux6f14ux7fd2-10-2}}
+\addcontentsline{toc}{section}{演習 10}
+
+\hypertarget{ux89e3ux7b54ux4f8b-9}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b-9}}
+\addcontentsline{toc}{subsection}{解答例}
+
+\hypertarget{ux6f14ux7fd2-11-1}{%
+\section*{演習 11}\label{ux6f14ux7fd2-11-1}}
+\addcontentsline{toc}{section}{演習 11}
+
+\hypertarget{ux89e3ux7b54ux4f8b-10}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b-10}}
+\addcontentsline{toc}{subsection}{解答例}
+
+\hypertarget{ux6f14ux7fd2-12-1}{%
+\section*{演習 12}\label{ux6f14ux7fd2-12-1}}
+\addcontentsline{toc}{section}{演習 12}
+
+\hypertarget{ux89e3ux7b54ux4f8b-11}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b-11}}
+\addcontentsline{toc}{subsection}{解答例}
+
+\hypertarget{ux6f14ux7fd2-13-2}{%
+\section*{演習 13}\label{ux6f14ux7fd2-13-2}}
+\addcontentsline{toc}{section}{演習 13}
+
+\hypertarget{ux89e3ux7b54ux4f8b-12}{%
+\subsection*{解答例}\label{ux89e3ux7b54ux4f8b-12}}
+\addcontentsline{toc}{subsection}{解答例}
+
 \hypertarget{environments-2}{%
 \chapter{Environments 2}\label{environments-2}}
 
@@ -3773,7 +4122,7 @@ NA & データ型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-80}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-124}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -3792,7 +4141,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-81}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-125}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -3806,7 +4155,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-82}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-126}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -3824,7 +4173,7 @@ NA & データ型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-83}
+\caption{Warning dialog}\label{fig:unnamed-chunk-127}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -3850,7 +4199,7 @@ NA & データ型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-84}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-128}
 \end{figure}
 
 　\\
@@ -3883,7 +4232,7 @@ NA & データ型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-85}
+\caption{Initial View}\label{fig:unnamed-chunk-129}
 \end{figure}
 
 　
@@ -3900,7 +4249,7 @@ NA & データ型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-86}
+\caption{Packages Manager}\label{fig:unnamed-chunk-130}
 \end{figure}
 
 　\\
@@ -3913,7 +4262,7 @@ NA & データ型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-87}
+\caption{Install Dialog}\label{fig:unnamed-chunk-131}
 \end{figure}
 
 　\\
@@ -4307,7 +4656,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-95}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-139}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -4318,7 +4667,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-96}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-140}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -4388,7 +4737,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-97}
+\caption{R Notebook file}\label{fig:unnamed-chunk-141}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -4399,7 +4748,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-98}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-142}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -4410,7 +4759,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-99}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-143}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -4421,7 +4770,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-100}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-144}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -4432,7 +4781,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-101}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-145}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -4443,7 +4792,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-102}
+\caption{R Notebook option}\label{fig:unnamed-chunk-146}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -4705,7 +5054,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-103}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-147}
 \end{figure}
 
 　
@@ -4730,7 +5079,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-104}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-148}
 \end{figure}
 
 　

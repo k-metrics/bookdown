@@ -1,6 +1,10 @@
 # 演習解答例
 
-## 演習 1 {.unnumbered}
+```{r, include=FALSE}
+eqn <- 1
+```
+
+## 演習 `r eqn` {.unnumbered}
 標本分散（$s^2$）と不偏分散（$\hat{\sigma}^2$）の関係式`r if (knitr::is_latex_output())'\\@ref(eq:variance)'`を用いて**R**で以下の二つのデータの標本分散を求めなさい。
 
 ```{r}
@@ -28,7 +32,11 @@ var(y)
 
 
 
-## 演習 2 {.unnumbered}
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+## 演習 `r eqn` {.unnumbered}
 欠損値を含む以下のデータの平均値（$\bar{x}$）、不偏分散（$\hat{\sigma}^2$）ならびに標本分散（$s^2$）を求めなさい。
 
 ```{r}
@@ -81,4 +89,105 @@ var(z)
 ```{r}
 var(z, na.rm = TRUE)
 ```
+
+
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+## 演習 `r eqn` {.unnumbered}
+
+### 解答例 {.unnumbered}
+
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+## 演習 `r eqn` {.unnumbered}
+
+### 解答例 {.unnumbered}
+
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+## 演習 `r eqn` {.unnumbered}
+
+### 解答例 {.unnumbered}
+
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+## 演習 `r eqn` {.unnumbered}
+
+### 解答例 {.unnumbered}
+
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+## 演習 `r eqn` {.unnumbered}
+
+### 解答例 {.unnumbered}
+
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+## 演習 `r eqn` {.unnumbered}
+
+### 解答例 {.unnumbered}
+
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+## 演習 `r eqn` {.unnumbered}
+
+### 解答例 {.unnumbered}
+
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+## 演習 `r eqn` {.unnumbered}
+
+### 解答例 {.unnumbered}
+
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+## 演習 `r eqn` {.unnumbered}
+
+### 解答例 {.unnumbered}
+
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+## 演習 `r eqn` {.unnumbered}
+
+### 解答例 {.unnumbered}
+
+
+```{r, include=FALSE}
+eqn <- eqn + 1
+```
+
+## 演習 `r eqn` {.unnumbered}
+
+### 解答例 {.unnumbered}
+
 
