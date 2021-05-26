@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-26" />
+<meta name="date" content="2021-05-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -469,9 +469,8 @@ div.csl-indent {
 <span class="math display" id="eq:geometric-mean">\[\begin{equation}
   \sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i} \tag{2.2}
 \end{equation}\]</span></p>
-<p>下位・上位をある割合で除いて平均（算術平均）を求めるトリム平均もあります。トリム平均は異常値や外れ値がある場合にそれらの影響を排除して平均を求めたい場合に利用されます。刈込み平均や調整平均とも呼ばれます。
-体操競技などで極端な点数を出す審査員の影響を排除するために使われています。比較的多いのが全員の得点から最小値と最大値を除いたものから平均値を求め、その平均値を得点する方法です。</p>
-<p>平均といってもこのように様々な求め方があります。では、<strong>R</strong>を使ってこれらの平均を求めてみます。</p>
+<p>上記の他に値の下位・上位を任意の割合で除き平均（算術平均）を求めるトリム平均（刈込み平均・調整平均）という平均もあります。トリム平均は異常値や外れ値の影響を排除して平均を求めたい場合に利用されます。例えば体操競技で極端な点数を出す審査員の影響を排除するために使われます。この場合は全審査員の得点から最小と最大を除いたものから平均値を求め、その平均値を得点します。</p>
+<p>平均といってもこのように様々な求め方がありますので、実際に<strong>R</strong>を使ってこれらの平均を求めてみます。</p>
 <p>以降、灰色に網掛けされた部分が<strong>R</strong>のコード、コードの下の<code>##</code>で始まる部分が実行結果（出力）になります。コードによっては実行結果が出力されない場合もあります。</p>
 <div id="算術平均" class="section level4" number="2.1.1.1">
 <h4><span class="header-section-number">2.1.1.1</span> 算術平均</h4>
@@ -617,17 +616,17 @@ div.csl-indent {
 <div id="歪度" class="section level4" number="2.1.3.1">
 <h4><span class="header-section-number">2.1.3.1</span> 歪度</h4>
 <p>歪度はデータ分布の左右対象度合いです。左右対象となるデータ分布であれば<span class="math inline">\(0\)</span>、右に歪んでいれば正の値を、左に歪んでいれば負の値を取ります。例えば下図のような分布を持つデータでは
-<img src="R_files/figure-html/unnamed-chunk-34-1.png" width="85%" style="display: block; margin: auto;" />
+<img src="R_files/figure-html/unnamed-chunk-32-1.png" width="90%" style="display: block; margin: auto;" />
 歪度は、ほぼゼロの値となります。</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb30-1"><a href="要約統計量.html#cb30-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(x)</span></code></pre></div>
 <pre><code>## [1] 0.04548819</code></pre>
 <p>大きく右に歪んだ（左に偏った）カイ二乗分布のようなデータでは
-<img src="R_files/figure-html/unnamed-chunk-36-1.png" width="85%" style="display: block; margin: auto;" />
+<img src="R_files/figure-html/unnamed-chunk-34-1.png" width="90%" style="display: block; margin: auto;" />
 歪度は正の値をとります。</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb32-1"><a href="要約統計量.html#cb32-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(x)</span></code></pre></div>
 <pre><code>## [1] 1.318739</code></pre>
 <p>逆に左に歪んだ（右に偏った）データでは
-<img src="R_files/figure-html/unnamed-chunk-38-1.png" width="85%" style="display: block; margin: auto;" /></p>
+<img src="R_files/figure-html/unnamed-chunk-36-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>負の値をとります。</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb34-1"><a href="要約統計量.html#cb34-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(x)</span></code></pre></div>
 <pre><code>## [1] -1.318739</code></pre>
@@ -635,13 +634,13 @@ div.csl-indent {
 <div id="尖度" class="section level4" number="2.1.3.2">
 <h4><span class="header-section-number">2.1.3.2</span> 尖度</h4>
 <p>尖度はデータ分布の尖り具合です。標準正規分布と等しければ<span class="math inline">\(0\)</span>、標準正規分布より尖ったt分布のような分布では正の値、広がった分布であれば負の値をとります。
-<img src="R_files/figure-html/unnamed-chunk-40-1.png" width="85%" style="display: block; margin: auto;" /></p>
+<img src="R_files/figure-html/unnamed-chunk-38-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb36-1"><a href="要約統計量.html#cb36-1"></a>e1071<span class="sc">::</span><span class="fu">kurtosis</span>(x)</span></code></pre></div>
 <pre><code>## [1] 0.01457407</code></pre>
-<p><img src="R_files/figure-html/unnamed-chunk-42-1.png" width="85%" style="display: block; margin: auto;" /></p>
+<p><img src="R_files/figure-html/unnamed-chunk-40-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb38-1"><a href="要約統計量.html#cb38-1"></a>e1071<span class="sc">::</span><span class="fu">kurtosis</span>(x)</span></code></pre></div>
 <pre><code>## [1] 0.7919764</code></pre>
-<p><img src="R_files/figure-html/unnamed-chunk-44-1.png" width="85%" style="display: block; margin: auto;" /></p>
+<p><img src="R_files/figure-html/unnamed-chunk-42-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb40-1"><a href="要約統計量.html#cb40-1"></a>e1071<span class="sc">::</span><span class="fu">kurtosis</span>(x)</span></code></pre></div>
 <pre><code>## [1] -0.3767132</code></pre>
 <!-- \newpage -->
@@ -841,7 +840,7 @@ div.csl-indent {
 <h3><span class="header-section-number">2.1.9</span> 演習</h3>
 <div id="演習-1" class="section level4 unnumbered">
 <h4>演習 1</h4>
-<p>標本分散（<span class="math inline">\(s^2\)</span>）と不偏分散（<span class="math inline">\(\hat{\sigma}^2\)</span>）の関係式<a href="要約統計量.html#eq:variance-var">(2.6)</a>を用いて<strong>R</strong>で以下の二つのデータの標本分散（<span class="math inline">\(s^2\)</span>）を求めなさい。</p>
+<p>標本分散（<span class="math inline">\(s^2\)</span>）と不偏分散（<span class="math inline">\(\hat{\sigma}^2\)</span>）の関係式<a href="要約統計量.html#eq:variance-var">(2.6)</a>を用いて以下の二つのデータの標本分散（<span class="math inline">\(s^2\)</span>）を求めなさい。</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb95-1"><a href="要約統計量.html#cb95-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>)</span>
 <span id="cb95-2"><a href="要約統計量.html#cb95-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>)</span></code></pre></div>
 </div>

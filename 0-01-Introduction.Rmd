@@ -61,9 +61,9 @@
 
 　例えば[フィッシャーのあやめ（Fisher's or Anderson's iris）](https://en.wikipedia.org/wiki/Iris_flower_data_set){target="_blank" title="Iris flower data set, Wikipedia"}を例にとってみましょう。「フィッシャーのあやめ」は**R**や機械学習の例題として様々な媒体で頻繁に使われる下記のような150行のデータセットです。**R**に標準で組み込まれています。
 
-```{r, echo=FALSE}
+```{r iris, echo=FALSE}
 iris %>% 
-  df_print(font_size = 10)
+  df_print(font_size = 10, caption = "iris dataset")
 ```
 
 <!-- \newpage -->
@@ -76,10 +76,10 @@ summary(iris)
 
 　上記の要約統計章を箱ひげ図で表してみます。ただし、元の形式では都合が悪いので以下に変形しておきます。
 
-```{r, echo=FALSE}
+```{r irislonger, echo=FALSE}
 iris %>%
   tidyr::pivot_longer(cols = -Species, names_to = "part", values_to = "value") %>% 
-  df_print(n = 4L)
+  df_print(n = 4L, caption = "iris dataset, longer style")
 ```
 
 　変形したデータを使って部位別の箱ひげ図を描くと確かに 花弁（Petal）の方が 萼片（Sepal）よりも小さい傾向にあることが分かります。

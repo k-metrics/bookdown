@@ -39,20 +39,22 @@ knitr::opts_chunk$set(echo = TRUE,                 # Rコードを出力する
                       fig_caption = TRUE,
                       fig.align = 'center',        # 図を中央揃えにする
                       attr.source='.numberLines',  # Rコードに行番号表示
-                      out.width = "85%"            # 画像のデフォルトサイズ
+                      out.width = "90%"            # 画像幅のデフォルト
                       )
 
-# 出力がPDF(LaTeX)の場合は図をPDF形式としフォントをNotoにする、また、図の配置を
-# 自動調整しないようにする
+# 出力がPDF(LaTeX)の場合の追加設定
 if (knitr::is_latex_output()) {
-    knitr::opts_chunk$set(dev = "cairo_pdf",
-                          dev.args = list(family = "Noto Serif"),
-                          fig.pos = "H",
+    knitr::opts_chunk$set(dev = "cairo_pdf",       # 図の出力にPDFデバイスを使う
+                          # dev.args = list(family = "Noto Serif"),
+                          dev.args = list(family = "Source Han Code JP"),
+                                                   # 図のフォントを指定する
+                          fig.pos = "H",           # 図をその場で表示させる
                           out.extra = "",
-                          tinytex.verbose = TRUE   # コード折り返し設定
+                          tinytex.verbose = TRUE   # デバッグ用メッセージを出力
                           )
-} else if (!knitr::is_html_output(excludes = "epub")) { #ePUB形式の場合
-    knitr::opts_chunk$set(dev = "svglite")
+# ePUB形式の場合の追加設定
+} else if (!knitr::is_html_output(excludes = "epub")) {
+    knitr::opts_chunk$set(dev = "jpeg")            # 図の出力にJPEGデバイスを使う
 }
 
 # 図の描画位置調整については以下を参照
@@ -66,15 +68,6 @@ if (knitr::is_latex_output()) {
 # H: フロートを正確に LaTex コード上と同じ位置に配置します. float パッケージが必要です (\usepackage{float}).
 
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
-
-# output <- knitr::opts_knit$get("rmarkdown.pandoc.to")
-# if (!is.null(output)) {
-#   if (output == "latex") {
-#     knitr::opts_chunk$set(dev = "cairo_pdf",
-#                           dev.args = list(family = "Noto Serif"))
-#   }
-# }
-
 
 # Update packages.bib file
 tidyverse::tidyverse_packages() %>% 
@@ -114,7 +107,7 @@ df_print <- function(df = NULL, n = 3L, caption = NULL, scale_down = FALSE,
         psych::headTail(top = n, bottom = n) %>% 
         kableExtra::kbl(caption  = caption, ...)
     }
-  }　else {
+  }　else {   # 出力タイプ不明の場合
     return(NULL)
   }
 }

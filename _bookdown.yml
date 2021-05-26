@@ -3,8 +3,8 @@ repo: https://github.com/k-metrics/bookdown
 output_dir: "docs"
 language:
   label:
-    fig: "Fig "
-    tab: "Table "
+    fig: "Fig. "
+    tab: "Tab. "
   ui:
     chapter_name: ["Chapter ", ":"]
     appendix_name: ["Appendix ", ":"]

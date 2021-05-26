@@ -2,6 +2,16 @@
   本章で使っている"Number and reference equations"(番号付き数式とその参照)に
   ついては以下のページで解説されています。
   https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html
+  
+  図番号・表番号とその参照については
+  https://speakerdeck.com/ktgrstsh/introduction-to-r-markdown-for-everyone?slide=58
+  https://speakerdeck.com/ktgrstsh/introduction-to-r-markdown-for-everyone?slide=60
+  
+  \@ref(fig:チャンクラベル)
+  \@ref(tab:チャンクラベル)
+  
+  数式記述のequation（1行のみ）, eqnarray（=位置を揃える）, align（中央揃え）
+  http://robomixcom.hatenablog.com/entry/2017/08/16/202606
 -->
 
 # Rの基本
