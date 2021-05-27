@@ -33,6 +33,9 @@ CJKoptions: "Scale=1.0"
 
 ```{r setup, include=FALSE}
 require(tidyverse)
+require(psych)
+require(e1071)
+require(modeest)
 
 knitr::opts_chunk$set(echo = TRUE,                 # Rコードを出力する
                       warning = FALSE,             # Rの警告を抑止する
@@ -111,6 +114,9 @@ df_print <- function(df = NULL, n = 3L, caption = NULL, scale_down = FALSE,
     return(NULL)
   }
 }
+
+# 演習の番号に使う変数
+eqn <- 1
 ```
 
 

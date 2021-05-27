@@ -97,8 +97,35 @@ eqn <- eqn + 1
 ```
 
 ## 演習 `r eqn` {.unnumbered}
+`iris`データセットの各変量に対する四分位数を求めなさい。
 
 ### 解答例 {.unnumbered}
+`iris`データセットは**R**に標準で組み込まれているサンプルデータです。`iris`と実行するだけでデータを表示することができますが、全てを表示すると長いのでここでは先頭の六行だけを`head()`関数を用いて表示します。
+
+```{r}
+head(iris)
+```
+
+一番上の行は変量名（変数名）で、一番右側の`Species`は文字変量ですので、これを除いた四変量（`Sepal.Length`, `Sepal.Width`, `Petal.Length`, `Petal.Width`）に対して四分位数を求める`quantile()`関数を適用します。
+
+```{r}
+quantile(iris$Sepal.Length, probs = c(0.25, 0.50, 0.75))
+quantile(iris$Sepal.Width, probs = c(0.25, 0.50, 0.75))
+quantile(iris$Petal.Length, probs = c(0.25, 0.50, 0.75))
+quantile(iris$Petal.Width, probs = c(0.25, 0.50, 0.75))
+```
+
+`$`は参照演算子と呼ばれるデータセットの変量名を用いてデータを参照するための演算子です。
+
+
+### 補足 {.unnumbered}
+解答例のように個々の変量毎に`quantile()`関数を適用するより`apply()`関数による繰り返し処理を用いた方が簡単です。`apply()`関数は`iris`データセットのような形式のデータに対して行方向（`MARGINE = 1`）、または、列方向（`MARGIN = 2`）に`FUN`オプションで指定する関数を適用します。`FUN`オプションの後ろには`FUN`オプションで指定した関数（この場合は`quantile()`関数）へ渡す引数を指定することができます。`iris`データセットは五列目の`Species`が文字変量ですので`iris[-5]`と指定することで取り除きます。
+
+```{r}
+apply(iris[-5], MARGIN = 2, FUN = quantile, probs = c(0.25, 0.50, 0.75))
+```
+
+このように`apply()`関数は同じ処理を繰り返したい場合には非常に有用な関数ですので憶えておいて損はありません。
 
 
 ```{r, include=FALSE}

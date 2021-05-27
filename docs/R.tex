@@ -1086,13 +1086,13 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 算術平均（相加平均）は要約統計量の中でよく使われ、下式で求められます。
 
-\begin{equation}
+\begin{align}
   \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i \label{eq:arithmetic-mean}
-\end{equation}
+\end{align}
 
-算術平均以外にも幾何平均（相乗平均）や \begin{equation}
+算術平均以外にも幾何平均（相乗平均）や \begin{align}
   \sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i} \label{eq:geometric-mean}
-\end{equation}
+\end{align}
 
 上記の他に値の下位・上位を任意の割合で除き平均（算術平均）を求めるトリム平均（刈込み平均・調整平均）という平均もあります。トリム平均は異常値や外れ値の影響を排除して平均を求めたい場合に利用されます。例えば体操競技で極端な点数を出す審査員の影響を排除するために使われます。この場合は全審査員の得点から最小と最大を除いたものから平均値を求め、その平均値を得点します。
 
@@ -1188,18 +1188,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## 
-##  次のパッケージを付け加えます: 'psych'
-\end{verbatim}
-
-\begin{verbatim}
-##  以下のオブジェクトは 'package:ggplot2' からマスクされています: 
-## 
-##      %+%, alpha
-\end{verbatim}
-
-環境によっては上記のように他のパッケージの関数をマスクしている旨のメッセージが出力されますが、今は気にする必要ありません。
+使用している環境によっては他のパッケージの関数をマスクしているなどのメッセージが出力されますが、今は気にする必要ありません。
 
 これで\textbf{\texttt{psych}}パッケージを使う準備が整いましたので、\texttt{geometric.mean()}関数で幾何平均を求めます。
 
@@ -1301,29 +1290,31 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 散らばり具合を見るためにデータの個々の値と平均値との差の二乗の算術平均を分散（標本分散\(s^2\)）、
 
-\begin{equation}
+\begin{align}
   s^2 = \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2 \label{eq:variance}
-\end{equation}
+\end{align}
 
 単位を戻すために分散の平方根をとったものを標準偏差（標本標準偏差\(s\)）と呼びます。
 
-\begin{equation}
+\begin{align}
   s = \sqrt{s^2} = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} \label{eq:standatd-deviation}
-\end{equation}
+\end{align}
 
-しかし、\textbf{R}にはこの標本分散（\(s^2\)）を求める関数は用意されていませんが、不偏分散（\(\hat{\sigma}^2\)）を求める\texttt{var()}関数が用意されています。
+しかし、\textbf{R}にはこの標本分散（\(s^2\)）を求める関数は用意されていません。代わりに不偏分散（\(\hat{\sigma}^2\)）を求める\texttt{var()}関数が用意されています。
 
-\begin{equation}
-  \hat{\sigma}^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2 = var(x) \label{eq:var}
-\end{equation}
+\begin{align}
+  \hat{\sigma}^2 &= \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2 \label{eq:var} \\
+  &= var(x) \notag
+\end{align}
 
-この二式\eqref{eq:variance}\eqref{eq:var}から標本分散（\(s^2\)）は
+式\eqref{eq:variance}\eqref{eq:var}から標本分散（\(s^2\)）は\texttt{var()}関数を用いると
 
-\begin{equation}
-  s^2 = \frac{n - 1}{n}\hat{\sigma}^2 = \frac{length(x) - 1}{length(x)}var(x) \label{eq:variance-var}
-\end{equation}
+\begin{align}
+  s^2 &= \frac{n - 1}{n}\hat{\sigma}^2 \label{eq:variance-var} \\
+  &= \frac{length(x) - 1}{length(x)} \times var(x) \notag
+\end{align}
 
-で求めることができます。また、標本標準偏差（\(s\)）は式\eqref{eq:variance-var}の平方根で求められます。
+のように求めることができます。標本標準偏差（\(s\)）は式\eqref{eq:variance-var}の平方根を取ればいいこともわかります。
 
 \hypertarget{ux30e2ux30fcux30e1ux30f3ux30c8}{%
 \subsection{モーメント}\label{ux30e2ux30fcux30e1ux30f3ux30c8}}
@@ -1334,45 +1325,45 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 \(n\)個のデータの平均値を
 
-\begin{equation}
+\begin{align}
   \bar{x} = \frac{1}{n}\sum_{i = 1}^{n}x_i \label{eq:moment1}
-\end{equation}
+\end{align}
 
 とした場合、平均値まわりの\(m\)次の中央モーメント\(\bar{x}_m\)を
 
-\begin{equation}
+\begin{align}
   \bar{x}_m = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^m　　(m = 2, 3, 4) \label{eq:moment}
-\end{equation}
+\end{align}
 
 と定義します。\(m = 2\)の場合、
 
-\begin{equation}
+\begin{align}
   \bar{x}_2 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^2 = s^2 \label{eq:moment2}
-\end{equation}
+\end{align}
 
 となりますので、\(\bar{x}_2\)は分散\(s^2\)であることがわかります。\(m = 3\)の場合、
 
-\begin{equation}
+\begin{align}
   \bar{x}_3 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^3 \label{eq:moment3}
-\end{equation}
+\end{align}
 
 となり、これを標準偏差の三乗（\(s^3\)）で割ったもの
 
-\begin{equation}
+\begin{align}
   \gamma_1 = \frac{\bar{x}_3}{s^3} \label{eq:skewness}
-\end{equation}
+\end{align}
 
 を歪度（\(\gamma_1\)）と呼びます。\(m = 4\)の場合、
 
-\begin{equation}
+\begin{align}
   \bar{x}_4 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^4  \label{eq:moment4}
-\end{equation}
+\end{align}
 
 となり、これを標準偏差の四乗、または、分散の二乗（\(s^4\)）で割ったもの
 
-\begin{equation}
+\begin{align}
   \gamma_2 = \frac{\bar{x}_4}{s^4} \label{eq:kurtosise}
-\end{equation}
+\end{align}
 
 を尖度（\(\gamma_2\)）と呼びます。
 
@@ -1643,12 +1634,11 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{ux56dbux5206ux4f4dux6570ux56dbux5206ux4f4dux7bc4ux56f2}{%
 \subsection{四分位数・四分位範囲}\label{ux56dbux5206ux4f4dux6570ux56dbux5206ux4f4dux7bc4ux56f2}}
 
-中央値は中位数と呼ばれるようにデータを二分の一にした場所にあるデータです。さらに細かくして全体を四分の一にしたの場所にあるデータを四分位数と呼びます。小さい方から見て最初の四分の一にある値を第一四分位数（\(25\%\)点、\(Q_1\)）、次の四分の一にある値を第二四分位数（\(50\%\)点、\(Q_2\)）、次の四分の一にある値を第三四分位数（\(75\%\)点、\(Q_3\)）といいます。第二四分位数（\(50%
-\)点、\(Q_2\)）は中央値（中位数）とイコールです。 四分位数にも範囲があり、四分位範囲（\(IQR\), interquartile range）と呼ばれ以下のように定義されます、
+中央値は中位数と呼ばれるようにデータを二分の一にした場所にあるデータです。さらに細かくして全体を四分の一にしたの場所にあるデータを四分位数と呼びます。小さい方から見て最初の四分の一にある値を第一四分位数（\(25\%\)点、\(Q_1\)）、次の四分の一にある値を第二四分位数（\(50\%\)点、\(Q_2\)）、次の四分の一にある値を第三四分位数（\(75\%\)点、\(Q_3\)）といいます。第二四分位数（\(50\%\)点、\(Q_2\)）は中央値（中位数）とイコールです。 四分位数にも範囲があり、四分位範囲（\(IQR\), interquartile range）と呼ばれ以下のように定義されます、
 
-\begin{equation}
+\begin{align}
   IQR = Q_3 - Q_1 \label{eq:IQR}
-\end{equation}
+\end{align}
 
 四分位数は\texttt{quantile()}関数で求めることができます。オプションを指定しなければ第一〜第三四分位数に加えて最小値（\(0\%点\)）・最大値（\(100\%点\)）を加えた五つの値が返ってきます。
 
@@ -1784,13 +1774,6 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{Shaded}
 
 \begin{verbatim}
-## Registered S3 methods overwritten by 'rmutil':
-##   method         from 
-##   plot.residuals psych
-##   print.response httr
-\end{verbatim}
-
-\begin{verbatim}
 ## [1] 1
 \end{verbatim}
 
@@ -1867,6 +1850,8 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{ux6f14ux7fd2-3}{%
 \subsubsection*{演習 3}\label{ux6f14ux7fd2-3}}
 \addcontentsline{toc}{subsubsection}{演習 3}
+
+\texttt{iris}データセットの各変量に対する四分位数を求めなさい。
 
 \newpage
 
@@ -3977,9 +3962,98 @@ NA & データ型 \\
 \section*{演習 3}\label{ux6f14ux7fd2-3-1}}
 \addcontentsline{toc}{section}{演習 3}
 
+\texttt{iris}データセットの各変量に対する四分位数を求めなさい。
+
 \hypertarget{ux89e3ux7b54ux4f8b-2}{%
 \subsection*{解答例}\label{ux89e3ux7b54ux4f8b-2}}
 \addcontentsline{toc}{subsection}{解答例}
+
+\texttt{iris}データセットは\textbf{R}に標準で組み込まれているサンプルデータです。\texttt{iris}と実行するだけでデータを表示することができますが、全てを表示すると長いのでここでは先頭の六行だけを\texttt{head()}関数を用いて表示します。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{head}\NormalTok{(iris)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+\end{verbatim}
+
+一番上の行は変量名（変数名）で、一番右側の\texttt{Species}は文字変量ですので、これを除いた四変量（\texttt{Sepal.Length}, \texttt{Sepal.Width}, \texttt{Petal.Length}, \texttt{Petal.Width}）に対して四分位数を求める\texttt{quantile()}関数を適用します。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{quantile}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.50}\NormalTok{, }\FloatTok{0.75}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 25% 50% 75% 
+## 5.1 5.8 6.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{quantile}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Width, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.50}\NormalTok{, }\FloatTok{0.75}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 25% 50% 75% 
+## 2.8 3.0 3.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{quantile}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Length, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.50}\NormalTok{, }\FloatTok{0.75}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  25%  50%  75% 
+## 1.60 4.35 5.10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{quantile}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Width, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.50}\NormalTok{, }\FloatTok{0.75}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 25% 50% 75% 
+## 0.3 1.3 1.8
+\end{verbatim}
+
+\texttt{\$}は参照演算子と呼ばれるデータセットの変量名を用いてデータを参照するための演算子です。
+
+\hypertarget{ux88dcux8db3-1}{%
+\subsection*{補足}\label{ux88dcux8db3-1}}
+\addcontentsline{toc}{subsection}{補足}
+
+解答例のように個々の変量毎に\texttt{quantile()}関数を適用するより\texttt{apply()}関数による繰り返し処理を用いた方が簡単です。\texttt{apply()}関数は\texttt{iris}データセットのような形式のデータに対して行方向（\texttt{MARGINE\ =\ 1}）、または、列方向（\texttt{MARGIN\ =\ 2}）に\texttt{FUN}オプションで指定する関数を適用します。\texttt{FUN}オプションの後ろには\texttt{FUN}オプションで指定した関数（この場合は\texttt{quantile()}関数）へ渡す引数を指定することができます。\texttt{iris}データセットは五列目の\texttt{Species}が文字変量ですので\texttt{iris{[}-5{]}}と指定することで取り除きます。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{apply}\NormalTok{(iris[}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{], }\AttributeTok{MARGIN =} \DecValTok{2}\NormalTok{, }\AttributeTok{FUN =}\NormalTok{ quantile, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.50}\NormalTok{, }\FloatTok{0.75}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width
+## 25%          5.1         2.8         1.60         0.3
+## 50%          5.8         3.0         4.35         1.3
+## 75%          6.4         3.3         5.10         1.8
+\end{verbatim}
+
+このように\texttt{apply()}関数は同じ処理を繰り返したい場合には非常に有用な関数ですので憶えておいて損はありません。
 
 \hypertarget{ux6f14ux7fd2-4-2}{%
 \section*{演習 4}\label{ux6f14ux7fd2-4-2}}
@@ -4125,7 +4199,7 @@ NA & データ型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-122}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-124}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -4144,7 +4218,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-123}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-125}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -4158,7 +4232,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-124}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-126}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -4176,7 +4250,7 @@ NA & データ型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-125}
+\caption{Warning dialog}\label{fig:unnamed-chunk-127}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -4202,7 +4276,7 @@ NA & データ型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-126}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-128}
 \end{figure}
 
 　\\
@@ -4235,7 +4309,7 @@ NA & データ型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-127}
+\caption{Initial View}\label{fig:unnamed-chunk-129}
 \end{figure}
 
 　
@@ -4252,7 +4326,7 @@ NA & データ型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-128}
+\caption{Packages Manager}\label{fig:unnamed-chunk-130}
 \end{figure}
 
 　\\
@@ -4265,7 +4339,7 @@ NA & データ型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-129}
+\caption{Install Dialog}\label{fig:unnamed-chunk-131}
 \end{figure}
 
 　\\
@@ -4659,7 +4733,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-137}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-139}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -4670,7 +4744,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-138}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-140}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -4740,7 +4814,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-139}
+\caption{R Notebook file}\label{fig:unnamed-chunk-141}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -4751,7 +4825,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-140}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-142}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -4762,7 +4836,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-141}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-143}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -4773,7 +4847,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-142}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-144}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -4784,7 +4858,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-143}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-145}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -4795,7 +4869,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-144}
+\caption{R Notebook option}\label{fig:unnamed-chunk-146}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -5057,7 +5131,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-145}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-147}
 \end{figure}
 
 　
@@ -5082,7 +5156,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-146}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-148}
 \end{figure}
 
 　

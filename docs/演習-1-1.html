@@ -320,6 +320,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="演習-3-1.html"><a href="演習-3-1.html"><i class="fa fa-check"></i>演習 3</a>
 <ul>
 <li class="chapter" data-level="" data-path="演習-3-1.html"><a href="演習-3-1.html#解答例-2"><i class="fa fa-check"></i>解答例</a></li>
+<li class="chapter" data-level="" data-path="演習-3-1.html"><a href="演習-3-1.html#補足-1"><i class="fa fa-check"></i>補足</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="演習-4-2.html"><a href="演習-4-2.html"><i class="fa fa-check"></i>演習 4</a>
 <ul>
@@ -457,20 +458,20 @@ div.csl-indent {
 <div id="演習-1-1" class="section level2 unnumbered">
 <h2>演習 1</h2>
 <p>標本分散（<span class="math inline">\(s^2\)</span>）と不偏分散（<span class="math inline">\(\hat{\sigma}^2\)</span>）の関係式を用いて<strong>R</strong>で以下の二つのデータの標本分散を求めなさい。</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb271-1"><a href="演習-1-1.html#cb271-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>)</span>
-<span id="cb271-2"><a href="演習-1-1.html#cb271-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb268-1"><a href="演習-1-1.html#cb268-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">9</span>)</span>
+<span id="cb268-2"><a href="演習-1-1.html#cb268-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>)</span></code></pre></div>
 <div id="解答例" class="section level3 unnumbered">
 <h3>解答例</h3>
-<div class="sourceCode" id="cb272"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb272-1"><a href="演習-1-1.html#cb272-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="cb272-2"><a href="演習-1-1.html#cb272-2"></a>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n <span class="sc">*</span> <span class="fu">var</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb269-1"><a href="演習-1-1.html#cb269-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb269-2"><a href="演習-1-1.html#cb269-2"></a>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n <span class="sc">*</span> <span class="fu">var</span>(x)</span></code></pre></div>
 <pre><code>## [1] 6.4</code></pre>
-<div class="sourceCode" id="cb274"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb274-1"><a href="演習-1-1.html#cb274-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
-<span id="cb274-2"><a href="演習-1-1.html#cb274-2"></a>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n <span class="sc">*</span> <span class="fu">var</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb271-1"><a href="演習-1-1.html#cb271-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb271-2"><a href="演習-1-1.html#cb271-2"></a>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> n <span class="sc">*</span> <span class="fu">var</span>(y)</span></code></pre></div>
 <pre><code>## [1] 12.8</code></pre>
 <p>参考までに不偏分散は以下の通りです。</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb276-1"><a href="演習-1-1.html#cb276-1"></a><span class="fu">var</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb273-1"><a href="演習-1-1.html#cb273-1"></a><span class="fu">var</span>(x)</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
-<div class="sourceCode" id="cb278"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb278-1"><a href="演習-1-1.html#cb278-1"></a><span class="fu">var</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb275-1"><a href="演習-1-1.html#cb275-1"></a><span class="fu">var</span>(y)</span></code></pre></div>
 <pre><code>## [1] 16</code></pre>
 </div>
 </div>

@@ -320,6 +320,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="演習-3-1.html"><a href="演習-3-1.html"><i class="fa fa-check"></i>演習 3</a>
 <ul>
 <li class="chapter" data-level="" data-path="演習-3-1.html"><a href="演習-3-1.html#解答例-2"><i class="fa fa-check"></i>解答例</a></li>
+<li class="chapter" data-level="" data-path="演習-3-1.html"><a href="演習-3-1.html#補足-1"><i class="fa fa-check"></i>補足</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="演習-4-2.html"><a href="演習-4-2.html"><i class="fa fa-check"></i>演習 4</a>
 <ul>
@@ -467,10 +468,10 @@ Rの一番悪いところは統計学者が作っているところだ。</p>
 しかし、<strong>R</strong>の便利な点は統計的コンピューティングを行うに際して必須と言えるベクトル演算がデフォルトで使えることにあります。
 まずは、このベクトル演算に慣れることから始めます。</p>
 <p>コードの表記は以下のように灰色で網掛けされた部分が実行するコード、<code>##</code> から始まる部分が実行結果となります。実行結果の表示がない場合は、次に実行するコードとあわせてコードが表示されます。なお、コード内の<code>#</code>で始まる部分はコメントですので実行されません。</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb97-1"><a href="Appendix-RBasics.html#cb97-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span>        <span class="co"># 変数への代入時は実行結果は表示されない</span></span>
-<span id="cb97-2"><a href="Appendix-RBasics.html#cb97-2"></a>x             <span class="co"># 表示させたい場合は、別途、変数のみで実行する</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb94-1"><a href="Appendix-RBasics.html#cb94-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span>        <span class="co"># 変数への代入時は実行結果は表示されない</span></span>
+<span id="cb94-2"><a href="Appendix-RBasics.html#cb94-2"></a>x             <span class="co"># 表示させたい場合は、別途、変数のみで実行する</span></span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb99-1"><a href="Appendix-RBasics.html#cb99-1"></a><span class="fu">print</span>(x)      <span class="co"># もしくはprint()関数を用いる</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb96-1"><a href="Appendix-RBasics.html#cb96-1"></a><span class="fu">print</span>(x)      <span class="co"># もしくはprint()関数を用いる</span></span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>実行結果の <code>##</code> の後に表示されている <code>[]</code> 内の数値は実行結果の出力の数を示すためのインデックスです。実行環境の表示幅により表示される値が変わります。例えば 1 から 100 までの数字を表示した場合</p>
 <pre><code>##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18

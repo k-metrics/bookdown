@@ -10,7 +10,8 @@
   \@ref(fig:チャンクラベル)
   \@ref(tab:チャンクラベル)
   
-  数式記述のequation（1行のみ）, eqnarray（=位置を揃える）, align（中央揃え）
+  数式記述のequation（1行のみ）, eqnarray（中央揃え？上手く揃わない）,
+  align（&=位置を揃える）
   http://robomixcom.hatenablog.com/entry/2017/08/16/202606
 -->
 
@@ -27,15 +28,15 @@
 算術平均（相加平均）は要約統計量の中でよく使われ、下式で求められます。
 <!-- $$\bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i$$ -->
 
-\begin{equation}
+\begin{align}
   \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i (\#eq:arithmetic-mean)
-\end{equation}
+\end{align}
 
 算術平均以外にも幾何平均（相乗平均）や
 <!-- $$\sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i}$$ -->
-\begin{equation}
+\begin{align}
   \sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i} (\#eq:geometric-mean)
-\end{equation}
+\end{align}
 
 上記の他に値の下位・上位を任意の割合で除き平均（算術平均）を求めるトリム平均（刈込み平均・調整平均）という平均もあります。トリム平均は異常値や外れ値の影響を排除して平均を求めたい場合に利用されます。例えば体操競技で極端な点数を出す審査員の影響を排除するために使われます。この場合は全審査員の得点から最小と最大を除いたものから平均値を求め、その平均値を得点します。
 
@@ -95,11 +96,11 @@ install.packages("psych")
 
 インストールが完了しましたら`library()`関数を使ってパッケージを読み込みます。
 
-```{r}
+```{r, eval=FALSE}
 library(psych)
 ```
 
-環境によっては上記のように他のパッケージの関数をマスクしている旨のメッセージが出力されますが、今は気にする必要ありません。
+使用している環境によっては他のパッケージの関数をマスクしているなどのメッセージが出力されますが、今は気にする必要ありません。
 
 これで**`psych`**パッケージを使う準備が整いましたので、`geometric.mean()`関数で幾何平均を求めます。
 
@@ -157,31 +158,33 @@ range(y)
 
 <!-- $$s^2 = \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2$$￥ -->
 <!-- $$s = \sqrt{s^2} = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2}$$ -->
-\begin{equation}
+\begin{align}
   s^2 = \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2 (\#eq:variance)
-\end{equation}
+\end{align}
 
 単位を戻すために分散の平方根をとったものを標準偏差（標本標準偏差$s$）と呼びます。
 
-\begin{equation}
+\begin{align}
   s = \sqrt{s^2} = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} (\#eq:standatd-deviation)
-\end{equation}
+\end{align}
 
-しかし、**R**にはこの標本分散（$s^2$）を求める関数は用意されていませんが、不偏分散（$\hat{\sigma}^2$）を求める`var()`関数が用意されています。
+しかし、**R**にはこの標本分散（$s^2$）を求める関数は用意されていません。代わりに不偏分散（$\hat{\sigma}^2$）を求める`var()`関数が用意されています。
 
 <!-- $$\hat{\sigma}^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2 = var(x)$$ -->
-\begin{equation}
-  \hat{\sigma}^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2 = var(x) (\#eq:var)
-\end{equation}
+\begin{align}
+  \hat{\sigma}^2 &= \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2 (\#eq:var) \\
+  &= var(x) \notag
+\end{align}
 
-この二式\@ref(eq:variance)\@ref(eq:var)から標本分散（$s^2$）は
+式\@ref(eq:variance)\@ref(eq:var)から標本分散（$s^2$）は`var()`関数を用いると
 
 <!-- $$s^2 = \frac{n - 1}{n}\hat{\sigma}^2$$ -->
-\begin{equation}
-  s^2 = \frac{n - 1}{n}\hat{\sigma}^2 = \frac{length(x) - 1}{length(x)}var(x) (\#eq:variance-var)
-\end{equation}
+\begin{align}
+  s^2 &= \frac{n - 1}{n}\hat{\sigma}^2 (\#eq:variance-var) \\
+  &= \frac{length(x) - 1}{length(x)} \times var(x) \notag
+\end{align}
 
-で求めることができます。また、標本標準偏差（$s$）は式\@ref(eq:variance-var)の平方根で求められます。
+のように求めることができます。標本標準偏差（$s$）は式\@ref(eq:variance-var)の平方根を取ればいいこともわかります。
 
 <!-- 母分散（$\sigma^2$）これは分からない -->
 
@@ -198,51 +201,51 @@ range(y)
 $n$個のデータの平均値を
 
 <!-- $$\bar{x} = \frac{1}{n}\sum_{i = 1}^{n}x_i$$ -->
-\begin{equation}
+\begin{align}
   \bar{x} = \frac{1}{n}\sum_{i = 1}^{n}x_i (\#eq:moment1)
-\end{equation}
+\end{align}
 
 とした場合、平均値まわりの$m$次の中央モーメント$\bar{x}_m$を
 
 <!-- $$\bar{x}_m = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^m　　(m = 2, 3, 4)$$ -->
-\begin{equation}
+\begin{align}
   \bar{x}_m = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^m　　(m = 2, 3, 4) (\#eq:moment)
-\end{equation}
+\end{align}
 
 と定義します。$m = 2$の場合、
 
 <!-- $$\bar{x}_2 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^2 = s^2$$ -->
-\begin{equation}
+\begin{align}
   \bar{x}_2 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^2 = s^2 (\#eq:moment2)
-\end{equation}
+\end{align}
 
 となりますので、$\bar{x}_2$は分散$s^2$であることがわかります。$m = 3$の場合、
 
 <!-- $$\bar{x}_3 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^3$$ -->
-\begin{equation}
+\begin{align}
   \bar{x}_3 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^3 (\#eq:moment3)
-\end{equation}
+\end{align}
 
 となり、これを標準偏差の三乗（$s^3$）で割ったもの
 
 <!-- $$\gamma_1 = \frac{\bar{x}_3}{s^3}$$ -->
-\begin{equation}
+\begin{align}
   \gamma_1 = \frac{\bar{x}_3}{s^3} (\#eq:skewness)
-\end{equation}
+\end{align}
 
 を歪度（$\gamma_1$）と呼びます。$m = 4$の場合、
 
 <!-- $$\bar{x}_4 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^4$$ -->
-\begin{equation}
+\begin{align}
   \bar{x}_4 = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^4  (\#eq:moment4)
-\end{equation}
+\end{align}
 
 となり、これを標準偏差の四乗、または、分散の二乗（$s^4$）で割ったもの
 
 <!-- $$\gamma_2 = \frac{\bar{x}_4}{s^4}$$ -->
-\begin{equation}
+\begin{align}
   \gamma_2 = \frac{\bar{x}_4}{s^4} (\#eq:kurtosise)
-\end{equation}
+\end{align}
 
 <!-- \begin{align} -->
 <!--   \gamma_2 &= \frac{\bar{x}_4}{s^4} (\#eq:kurtosis) -->
@@ -387,13 +390,13 @@ diff(range(y))
 
 
 ### 四分位数・四分位範囲
-中央値は中位数と呼ばれるようにデータを二分の一にした場所にあるデータです。さらに細かくして全体を四分の一にしたの場所にあるデータを四分位数と呼びます。小さい方から見て最初の四分の一にある値を第一四分位数（$25\%$点、$Q_1$）、次の四分の一にある値を第二四分位数（$50\%$点、$Q_2$）、次の四分の一にある値を第三四分位数（$75\%$点、$Q_3$）といいます。第二四分位数（$50%$点、$Q_2$）は中央値（中位数）とイコールです。
+中央値は中位数と呼ばれるようにデータを二分の一にした場所にあるデータです。さらに細かくして全体を四分の一にしたの場所にあるデータを四分位数と呼びます。小さい方から見て最初の四分の一にある値を第一四分位数（$25\%$点、$Q_1$）、次の四分の一にある値を第二四分位数（$50\%$点、$Q_2$）、次の四分の一にある値を第三四分位数（$75\%$点、$Q_3$）といいます。第二四分位数（$50\%$点、$Q_2$）は中央値（中位数）とイコールです。
 四分位数にも範囲があり、四分位範囲（$IQR$, interquartile range）と呼ばれ以下のように定義されます、
 
 <!-- $$IQR = Q_3 - Q_1$$ -->
-\begin{equation}
+\begin{align}
   IQR = Q_3 - Q_1 (\#eq:IQR)
-\end{equation}
+\end{align}
 
 四分位数は`quantile()`関数で求めることができます。オプションを指定しなければ第一〜第三四分位数に加えて最小値（$0\%点$）・最大値（$100\%点$）を加えた五つの値が返ってきます。
 ```{r}
@@ -468,9 +471,7 @@ modeest::mfv(y)
 <!-- \newpage -->
 
 ### 演習
-```{r, include=FALSE}
-eqn <- 1
-```
+
 
 #### 演習 `r eqn` {.unnumbered}
 標本分散（$s^2$）と不偏分散（$\hat{\sigma}^2$）の関係式\@ref(eq:variance-var)を用いて以下の二つのデータの標本分散（$s^2$）を求めなさい。
@@ -484,6 +485,7 @@ y <- c(1, 1, 5, 9, 9)
 ```{r, include=FALSE}
 eqn <- eqn + 1
 ```
+
 
 #### 演習 `r eqn` {.unnumbered}
 欠損値を含む以下のデータの平均値（$\bar{x}$）、不偏分散（$\hat{\sigma}^2$）ならびに標本分散（$s^2$）を求めなさい。
@@ -499,7 +501,9 @@ z <- c(1, 5, NA, 7, 9)
 eqn <- eqn + 1
 ```
 
+
 #### 演習 `r eqn` {.unnumbered}
+`iris`データセットの各変量に対する四分位数を求めなさい。
 
 \newpage
 
