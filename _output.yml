@@ -25,13 +25,14 @@ bookdown::gitbook:
 ## ePUB形式でLaTeX数式が表示されない
 bookdown::epub_book:
   dev: svglite                       # 有効になっていない？
-  # epub_version: epub3
+  epub_version: epub3
   md_extensions: -ascii_identifiers  # 目次で日本語を有効にする
   pandoc_args: [--mathml]            # 有効になっていない
 
 bookdown::pdf_book:
   includes:
     in_header: latex/preamble.tex # 必要なパッケージやフォントの設定
+    after_body: latex/after_body.tex
   latex_engine: xelatex
 # base_format: rmarkdown::pdf_document
   keep_tex: true

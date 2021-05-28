@@ -166,6 +166,16 @@
 \usepackage{zxjatype}
 \usepackage{pxrubrica}                  % ルビ用
 
+% --- Table of Contentes ------------------------------------------------------
+% TOCにLOT(List of Tables), LOF(List of Figures), Bibliography, Indexを表示
+\usepackage[nottoc]{tocbibind}
+
+% --- Index ------------------------------------------------------------------
+% https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90
+% これを指定するとIndex(索引)は作成されるが参照ページがズレている
+\usepackage{makeidx}
+\makeindex
+
 % --- Fonts -------------------------------------------------------------------
 % フォントしては index.html でも可能（pandoc用オプションは index.htmlにて）
 % \setCJKmonofont{Source Han Code JP}
@@ -320,7 +330,7 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-27}
+\date{2021-05-28}
 
 \begin{document}
 \maketitle
@@ -397,7 +407,7 @@
 \section*{想定読者}\label{ux60f3ux5b9aux8aadux8005}}
 \addcontentsline{toc}{section}{想定読者}
 
-　本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有しており\textbf{R}を用いて分析を行いたいと考えている方々を読者として想定しています。本書では\textbf{R}を実行するための環境構築に関する詳細な解説は行いませんので、インストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえず\textbf{R}を使ってみたいという方は \href{https://colab.research.google.com/notebook\#create=true\&language=r}{Google Colaboratory（以降、\textbf{Google Colab}）}の利用をおすゝめします。
+　本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有しており\textbf{R}を用いて分析を行いたいと考えている方々を読者として想定しています。本書では\textbf{R}を実行するための環境構築に関する詳細な解説は行いませんので、インストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえず\textbf{R}を使ってみたいという方は \href{https://colab.research.google.com/notebook\#create=true\&language=r}{Google Colaboratory（以降、\textbf{Google Colab}）}\index{Google Colaboratory}の利用をおすゝめします。
 
 \hypertarget{ux8868ux8a18ux30ebux30fcux30eb}{%
 \section*{表記ルール}\label{ux8868ux8a18ux30ebux30fcux30eb}}
@@ -452,7 +462,7 @@
 
 　また、\textbf{R}は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）にも適していると言えます。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
 
-　ちなみに本書も\textbf{R}のパッケージである\href{https://bookdown.org/}{\textbf{\texttt{bookdown}}}という文書作成に特化したパッケージを利用して\textbf{RStudio}という\textbf{R}用の統合開発環境を用いて作成してます。
+　ちなみに本書も\textbf{R}のパッケージである\href{https://bookdown.org/}{\textbf{\texttt{bookdown}}}という文書作成に特化したパッケージを利用して\textbf{RStudio}\index{RStudio}という\textbf{R}用の統合開発環境を用いて作成してます。
 
 \hypertarget{ux5206ux6790ux306eux624bux9806}{%
 \section*{分析の手順}\label{ux5206ux6790ux306eux624bux9806}}
@@ -460,7 +470,7 @@
 
 　\textbf{R}を使った分析とはどのような手順になるかを簡単に見てみましょう。\textbf{R}は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。
 
-　例えば\href{https://en.wikipedia.org/wiki/Iris_flower_data_set}{フィッシャーのあやめ（Fisher's or Anderson's iris）}を例にとってみましょう。「フィッシャーのあやめ」は\textbf{R}や機械学習の例題として様々な媒体で頻繁に使われる下記のような150行のデータセットです。\textbf{R}に標準で組み込まれています。
+　例えば\href{https://en.wikipedia.org/wiki/Iris_flower_data_set}{フィッシャーのあやめ（Fisher's or Anderson's iris）}\index{iris dataset}を例にとってみましょう。「フィッシャーのあやめ」は\textbf{R}や機械学習の例題として様々な媒体で頻繁に使われる下記のような150行のデータセットです。\textbf{R}に標準で組み込まれています。
 
 \begin{table}[H]
 
@@ -662,7 +672,7 @@ Hadlyの図には前節の図にはない\textbf{Infer}と\textbf{Automate}す�
 \subsection*{Tidy}\label{tidy}}
 \addcontentsline{toc}{subsection}{Tidy}
 
-インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}\citep{R-TidyData}はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}\citep{R-TidyData}\index{Tidy Data}はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
 
 \begin{itemize}
 \tightlist
@@ -5174,5 +5184,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 　
 
   \bibliography{bib/references.bib,bib/packages.bib}
+
+\printindex
 
 \end{document}

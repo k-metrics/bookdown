@@ -9,7 +9,7 @@
 
 
 ## 想定読者 {.unnumbered}
-　本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有しており**R**を用いて分析を行いたいと考えている方々を読者として想定しています。本書では**R**を実行するための環境構築に関する詳細な解説は行いませんので、インストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえず**R**を使ってみたいという方は [Google Colaboratory（以降、**Google Colab**）](https://colab.research.google.com/notebook#create=true&language=r){target="_blank" title="Lunch Google Colab with R engine"}の利用をおすゝめします。
+　本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有しており**R**を用いて分析を行いたいと考えている方々を読者として想定しています。本書では**R**を実行するための環境構築に関する詳細な解説は行いませんので、インストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえず**R**を使ってみたいという方は [Google Colaboratory（以降、**Google Colab**）](https://colab.research.google.com/notebook#create=true&language=r){target="_blank" title="Lunch Google Colab with R engine"}\index{Google Colaboratory}の利用をおすゝめします。
 
 <!-- \newpage -->
 
@@ -53,13 +53,13 @@
 
 　また、**R**は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）にも適していると言えます。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
 
-　ちなみに本書も**R**のパッケージである[**`bookdown`**](https://bookdown.org/){target="_blank" title="Write HTML, PDF, ePub, and Kindle books with R Markdown"}という文書作成に特化したパッケージを利用して**RStudio**という**R**用の統合開発環境を用いて作成してます。
+　ちなみに本書も**R**のパッケージである[**`bookdown`**](https://bookdown.org/){target="_blank" title="Write HTML, PDF, ePub, and Kindle books with R Markdown"}という文書作成に特化したパッケージを利用して**RStudio**\index{RStudio}という**R**用の統合開発環境を用いて作成してます。
 
 
 ## 分析の手順 {.unnumbered}
 　**R**を使った分析とはどのような手順になるかを簡単に見てみましょう。**R**は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。
 
-　例えば[フィッシャーのあやめ（Fisher's or Anderson's iris）](https://en.wikipedia.org/wiki/Iris_flower_data_set){target="_blank" title="Iris flower data set, Wikipedia"}を例にとってみましょう。「フィッシャーのあやめ」は**R**や機械学習の例題として様々な媒体で頻繁に使われる下記のような150行のデータセットです。**R**に標準で組み込まれています。
+　例えば[フィッシャーのあやめ（Fisher's or Anderson's iris）](https://en.wikipedia.org/wiki/Iris_flower_data_set){target="_blank" title="Iris flower data set, Wikipedia"}\index{iris dataset}を例にとってみましょう。「フィッシャーのあやめ」は**R**や機械学習の例題として様々な媒体で頻繁に使われる下記のような150行のデータセットです。**R**に標準で組み込まれています。
 
 ```{r iris, echo=FALSE}
 iris %>% 
@@ -170,7 +170,7 @@ Hadlyの図には前節の図にはない**Infer**と**Automate**すというプ
 
 
 ### Tidy {.unnumbered}
-インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、**R**で扱いやすいような形式（Tidy Data）にします。[Tidy Data](https://www.jstatsoft.org/article/view/v059i10){target="_blank" title="Jounal of Statistical Software"}[@R-TidyData]はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
+インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、**R**で扱いやすいような形式（Tidy Data）にします。[Tidy Data](https://www.jstatsoft.org/article/view/v059i10){target="_blank" title="Jounal of Statistical Software"}[@R-TidyData]\index{Tidy Data}はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
 
 * 個々の変数が一つの列をなす
 * 個々の観測が一つの行をなす

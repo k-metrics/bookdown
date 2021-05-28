@@ -47,6 +47,16 @@
 \usepackage{zxjatype}
 \usepackage{pxrubrica}                  % ルビ用
 
+% --- Table of Contentes ------------------------------------------------------
+% TOCにLOT(List of Tables), LOF(List of Figures), Bibliography, Indexを表示
+\usepackage[nottoc]{tocbibind}
+
+% --- Index ------------------------------------------------------------------
+% https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90
+% これを指定するとIndex(索引)は作成されるが参照ページがズレている
+\usepackage{makeidx}
+\makeindex
+
 % --- Fonts -------------------------------------------------------------------
 % フォントしては index.html でも可能（pandoc用オプションは index.htmlにて）
 % \setCJKmonofont{Source Han Code JP}
