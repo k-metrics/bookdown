@@ -333,7 +333,7 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-28}
+\date{2021-05-29}
 
 \begin{document}
 \maketitle
@@ -419,6 +419,11 @@
 　本書では以下の表記ルールを用いています。
 
 \begin{longtable}[]{@{}lll@{}}
+\caption{表記ルール}\tabularnewline
+\toprule
+対象 & 表記方法 & 表記例 \\
+\midrule
+\endfirsthead
 \toprule
 対象 & 表記方法 & 表記例 \\
 \midrule
@@ -427,7 +432,7 @@
 パス・ファイル名 & モノフォント\footnote{タイプライタフォントとも呼ばれる等幅フォント} & \texttt{sample/sample.Rmd} \\
 パッケージ名 & 太字のモノフォント & \textbf{\texttt{tidyverse}} \\
 変数・オブジェクト名 & モノフォント & \texttt{Sepela.Width} \\
-関数名 & モノフォントで()付き & \texttt{print()} \\
+関数名 & モノフォントで()付き\footnote{3} & \texttt{print()} \\
 コード & モノフォント（プロンプトなし） & \texttt{library(tidyverse)} \\
 コードの実行結果 & モノフォント（\texttt{\#\#} プロンプト） & \texttt{\#\#\ output...} \\
 キーボードのキー & モノフォントで{[}{]}付き & {[}\texttt{Ctrl}{]}+{[}\texttt{S}{]} \\
@@ -980,6 +985,11 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \textbf{R}を利用した分析環境には以下のようなものがあります。
 
 \begin{longtable}[]{@{}llccl@{}}
+\caption{主な想定利用者と分析環境}\tabularnewline
+\toprule
+想定利用者 & 環境 & コード記述 & 再現可能性 & 備考 \\
+\midrule
+\endfirsthead
 \toprule
 想定利用者 & 環境 & コード記述 & 再現可能性 & 備考 \\
 \midrule
@@ -990,7 +1000,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 中上級者 & RStudio Desktop & 要 & 高 & \\
 中上級者 & RStudio Cloud & 要 & 高 & \\
 中上級者 & RStudio Server & 要 & 高 & \\
-開発者 & R + VS Code/Emacs & 要 & 高 & \\
+開発者 & R + VS Code/Emacs & 要 & 高 & 本書ではスコープ外 \\
 \bottomrule
 \end{longtable}
 
@@ -1151,7 +1161,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{ux30c8ux30eaux30e0ux5e73ux5747}{%
 \subsubsection{トリム平均}\label{ux30c8ux30eaux30e0ux5e73ux5747}}
 
-トリム平均は算術平均のコードに\texttt{trim}オプションを指定するだけです。\texttt{trim}オプションは計算対象外にする割合を指定するオプションです。今回は五つのデータから最小値・最大値の二つを除いてトリム平均を求めますので\(\frac{2}{5} = 0.2\)を指定します。
+トリム平均は算術平均のコードに引数\texttt{trim}を指定するだけです。引数\texttt{trim}は計算対象外にする割合を指定するオプションです。今回は五つのデータから最小値・最大値の二つを除いてトリム平均を求めますので\(\frac{2}{5} = 0.2\)を指定します。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1163,7 +1173,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 3.666667
 \end{verbatim}
 
-関数に指定できるオプションを確認した場合場\texttt{?}に続いて関数名を\texttt{()}付きで打ち込んで実行してください。ヘルプが表示されます。
+関数に指定できるオプションの引数を確認した場合場\texttt{?}に続いて関数名を\texttt{()}付きで打ち込んで実行してください。ヘルプが表示されます。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1392,11 +1402,18 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{ux6b6aux5ea6}{%
 \subsubsection{歪度}\label{ux6b6aux5ea6}}
 
-歪度はデータ分布の左右対象度合いです。左右対象となるデータ分布であれば\(0\)、右に歪んでいれば正の値を、左に歪んでいれば負の値を取ります。例えば下図のような分布を持つデータでは
+歪度はデータ分布の左右対象度合いです。左右対象となるデータ分布であれば\(0\)、右に歪んでいれば正の値を、左に歪んでいれば負の値を取ります。例えば下図のような分布では
 
-\begin{center}\includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-32-1} \end{center}
+\begin{figure}[H]
 
-歪度は、ほぼゼロの値となります。
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-32-1} 
+
+}
+
+\caption{正規分布に近い分布}\label{fig:unnamed-chunk-32}
+\end{figure}
+
+歪度はゼロに近い値となります。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1408,9 +1425,16 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 0.04548819
 \end{verbatim}
 
-大きく右に歪んだ（左に偏った）カイ二乗分布のようなデータでは
+次に下図のような分布では
 
-\begin{center}\includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-34-1} \end{center}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-34-1} 
+
+}
+
+\caption{右に歪んだ分布（左に偏った分布）}\label{fig:unnamed-chunk-34}
+\end{figure}
 
 歪度は正の値をとります。
 
@@ -1424,11 +1448,18 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 1.318739
 \end{verbatim}
 
-逆に左に歪んだ（右に偏った）データでは
+上図とは逆の分布では
 
-\begin{center}\includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-36-1} \end{center}
+\begin{figure}[H]
 
-負の値をとります。
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-36-1} 
+
+}
+
+\caption{左に歪んだ分布（右に偏った分布）}\label{fig:unnamed-chunk-36}
+\end{figure}
+
+歪度は負の値をとります。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1445,7 +1476,14 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 尖度はデータ分布の尖り具合です。標準正規分布と等しければ\(0\)、標準正規分布より尖ったt分布のような分布では正の値、広がった分布であれば負の値をとります。
 
-\begin{center}\includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-38-1} \end{center}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-38-1} 
+
+}
+
+\caption{正規分布に近い分布}\label{fig:unnamed-chunk-38}
+\end{figure}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1457,7 +1495,14 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 0.01457407
 \end{verbatim}
 
-\begin{center}\includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-40-1} \end{center}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-40-1} 
+
+}
+
+\caption{中心部が高く幅の狭い尖った分布}\label{fig:unnamed-chunk-40}
+\end{figure}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1469,7 +1514,14 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 0.7919764
 \end{verbatim}
 
-\begin{center}\includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-42-1} \end{center}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-42-1} 
+
+}
+
+\caption{中心部が低く横に広がった分布}\label{fig:unnamed-chunk-42}
+\end{figure}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1653,7 +1705,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
   IQR = Q_3 - Q_1 \label{eq:IQR}
 \end{align}
 
-四分位数は\texttt{quantile()}関数で求めることができます。オプションを指定しなければ第一〜第三四分位数に加えて最小値（\(0\%点\)）・最大値（\(100\%点\)）を加えた五つの値が返ってきます。
+四分位数は\texttt{quantile()}関数で求めることができます。オプションの引数を指定しなければ第一〜第三四分位数に加えて最小値（\(0\%点\)）・最大値（\(100\%点\)）を加えた五つの値が返ってきます。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1666,7 +1718,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ##    1    3    5    7    9
 \end{verbatim}
 
-任意の四分位数を求めたい場合は\texttt{prob}オプションを指定します。\texttt{prob}は\(0\)〜\(1\)の間で指定する点に中位してください。
+任意の四分位数を求めたい場合は引数\texttt{prob}を指定します。\texttt{prob}は\(0\)〜\(1\)の間で指定する点に中位してください。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1800,14 +1852,21 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 ## [1] 3
 \end{verbatim}
 
+\newpage
+
 \hypertarget{ux307eux3068ux3081}{%
 \subsection{まとめ}\label{ux307eux3068ux3081}}
 
 本節に出てきた要約統計量と関数は下表の通りです。
 
 \begin{longtable}[]{@{}lcl@{}}
+\caption{要約統計量のまとめ}\tabularnewline
 \toprule
-要約統計量 & 表記 & 関数 \\
+要約統計量 & 表記 & \textbf{R}での求め方\footnote{引数\texttt{x}は計算対象となる数値データが格納されたベクトル型の変数} \\
+\midrule
+\endfirsthead
+\toprule
+要約統計量 & 表記 & \textbf{R}での求め方{} \\
 \midrule
 \endhead
 標本平均 & \(\bar{x}\) & \texttt{mean(x)} \\
@@ -1818,15 +1877,17 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 標本標準偏差 & \(s\) & \texttt{sqrt((length(x)\ -\ 1)\ /\ length(x)\ *\ var(x))} \\
 不偏標本偏差 & \(\hat{\sigma}\) & \texttt{sd(x)} \\
 歪度 & \(\gamma_1\) & \texttt{e1071::skewness(x)} \\
-尖度 & \(\gamma_2\) & \texttt{e1071::kurtosis} \\
+尖度 & \(\gamma_2\) & \texttt{e1071::kurtosis(x)} \\
 中央値 & & \texttt{median(x)} \\
 範囲 & \(R\)\footnote{重相関計数を意味する場合もあり} & \texttt{range(x)} or \texttt{diff(range(x))} \\
 四分位数 & \(Q_n\) & \texttt{quantile(x)} \\
-第\(n\)四分位数 & \(Q_n\) & \texttt{quantile(x,\ prob\ =\ p),\ p\ =\ 0.25n} \\
+第\(n\)四分位数 & \(Q_n\) & \texttt{quantile(x,\ probs\ =\ u),\ u\ =\ 0.25*n,\ n\ =\ 1,\ 2,\ 3}\footnote{引数\texttt{probs}はベクトル指定も可能（例：\texttt{probs\ =\ c(0.25,\ 0.75)}）} \\
 四分位範囲 & \(IQR\) & \texttt{IQR(x)} \\
 最頻値 & & \texttt{modeest::mfv(x)} \\
 \bottomrule
 \end{longtable}
+
+\newpage
 
 \hypertarget{ux6f14ux7fd2}{%
 \subsection{演習}\label{ux6f14ux7fd2}}
@@ -1857,7 +1918,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \end{Shaded}
 
 \begin{quote}
-\texttt{na.rm}オプションを使います
+引数\texttt{na.rm}を指定します
 \end{quote}
 
 \hypertarget{ux6f14ux7fd2-3}{%
@@ -1878,6 +1939,11 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 　推定統計量を表記する場合、推定であることを意味するハット（ \(\hat{}\) ）という記号をつけます。平均と分散・標準偏差を使って整理すると下表のようになります。
 
 \begin{longtable}[]{@{}lcccl@{}}
+\caption{統計量の表記ルール}\tabularnewline
+\toprule
+統計量 & 平均 & 分散 & 標準偏差 & 備考 \\
+\midrule
+\endfirsthead
 \toprule
 統計量 & 平均 & 分散 & 標準偏差 & 備考 \\
 \midrule
