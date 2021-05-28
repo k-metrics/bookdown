@@ -14,7 +14,7 @@ link-citations: true     # 参考文献一覧へのリンクを有効化
 colorlinks: true         # ハイパーリンクを色分けする
 lot: true                # 表一覧(List of tables)の出力
 lof: true                # 図一覧(List of figures)の出力
-# documentclass: krantz
+# documentclass: ./latex/krantz    # ドキュメントクラス
 fig_crop: false
 fontsize: 12pt           # 本文のフォントサイズ
 linestretch: 1.1         # 行間の指定

@@ -165,16 +165,19 @@
 % \usepackage[haranoaji]{zxjafont}      % Windows環境ではこちらを指定する
 \usepackage{zxjatype}
 \usepackage{pxrubrica}                  % ルビ用
+\usepackage{hyperref}                   % ハイパーリンク用必要？
+
+% --- Index ------------------------------------------------------------------
+% https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90
+% これを指定するとIndex(索引)は作成されるが参照ページがズレる
+% 中間ファイルの.indではページはズレていないので、その後の結合処理がおかしい
+% \usepackage{makeidx}
+% \makeindex
+% \usepackage{showidx}                  % 索引確認用
 
 % --- Table of Contentes ------------------------------------------------------
 % TOCにLOT(List of Tables), LOF(List of Figures), Bibliography, Indexを表示
 \usepackage[nottoc]{tocbibind}
-
-% --- Index ------------------------------------------------------------------
-% https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90
-% これを指定するとIndex(索引)は作成されるが参照ページがズレている
-\usepackage{makeidx}
-\makeindex
 
 % --- Fonts -------------------------------------------------------------------
 % フォントしては index.html でも可能（pandoc用オプションは index.htmlにて）
@@ -5185,6 +5188,9 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
   \bibliography{bib/references.bib,bib/packages.bib}
 
-\printindex
+% --- Index(索引一覧)を作成する（ページがずれるバグあり）
+% \cleardoublepage
+% \phantomsection
+% \printindex
 
 \end{document}
