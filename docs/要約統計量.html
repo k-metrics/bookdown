@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2021-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -204,10 +204,11 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="推定.html"><a href="推定.html"><i class="fa fa-check"></i><b>2.2</b> 推定</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="推定.html"><a href="推定.html#点推定"><i class="fa fa-check"></i><b>2.2.1</b> 点推定</a></li>
-<li class="chapter" data-level="2.2.2" data-path="推定.html"><a href="推定.html#区間推定"><i class="fa fa-check"></i><b>2.2.2</b> 区間推定</a></li>
-<li class="chapter" data-level="2.2.3" data-path="推定.html"><a href="推定.html#まとめ-1"><i class="fa fa-check"></i><b>2.2.3</b> まとめ</a></li>
-<li class="chapter" data-level="2.2.4" data-path="推定.html"><a href="推定.html#演習-4"><i class="fa fa-check"></i><b>2.2.4</b> 演習</a></li>
+<li class="chapter" data-level="2.2.1" data-path="推定.html"><a href="推定.html#母集団と標本"><i class="fa fa-check"></i><b>2.2.1</b> 母集団と標本</a></li>
+<li class="chapter" data-level="2.2.2" data-path="推定.html"><a href="推定.html#点推定"><i class="fa fa-check"></i><b>2.2.2</b> 点推定</a></li>
+<li class="chapter" data-level="2.2.3" data-path="推定.html"><a href="推定.html#区間推定"><i class="fa fa-check"></i><b>2.2.3</b> 区間推定</a></li>
+<li class="chapter" data-level="2.2.4" data-path="推定.html"><a href="推定.html#まとめ-1"><i class="fa fa-check"></i><b>2.2.4</b> まとめ</a></li>
+<li class="chapter" data-level="2.2.5" data-path="推定.html"><a href="推定.html#演習-4"><i class="fa fa-check"></i><b>2.2.5</b> 演習</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="検定.html"><a href="検定.html"><i class="fa fa-check"></i><b>2.3</b> 検定</a>
 <ul>
@@ -486,10 +487,10 @@ div.csl-indent {
 </div>
 <div id="トリム平均" class="section level4" number="2.1.1.2">
 <h4><span class="header-section-number">2.1.1.2</span> トリム平均</h4>
-<p>トリム平均は算術平均のコードに<code>trim</code>オプションを指定するだけです。<code>trim</code>オプションは計算対象外にする割合を指定するオプションです。今回は五つのデータから最小値・最大値の二つを除いてトリム平均を求めますので<span class="math inline">\(\frac{2}{5} = 0.2\)</span>を指定します。</p>
+<p>トリム平均は算術平均のコードに引数<code>trim</code>を指定するだけです。引数<code>trim</code>は計算対象外にする割合を指定するオプションです。今回は五つのデータから最小値・最大値の二つを除いてトリム平均を求めますので<span class="math inline">\(\frac{2}{5} = 0.2\)</span>を指定します。</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb8-1"><a href="要約統計量.html#cb8-1"></a><span class="fu">mean</span>(x, <span class="at">trim =</span> <span class="fl">0.2</span>)</span></code></pre></div>
 <pre><code>## [1] 3.666667</code></pre>
-<p>関数に指定できるオプションを確認した場合場<code>?</code>に続いて関数名を<code>()</code>付きで打ち込んで実行してください。ヘルプが表示されます。</p>
+<p>関数に指定できるオプションの引数を確認した場合場<code>?</code>に続いて関数名を<code>()</code>付きで打ち込んで実行してください。ヘルプが表示されます。</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb10-1"><a href="要約統計量.html#cb10-1"></a>?<span class="fu">mean</span>()</span></code></pre></div>
 </div>
 <div id="幾何平均" class="section level4" number="2.1.1.3">
@@ -613,32 +614,62 @@ div.csl-indent {
 <span id="cb27-2"><a href="要約統計量.html#cb27-2"></a><span class="fu">library</span>(e1071)</span></code></pre></div>
 <div id="歪度" class="section level4" number="2.1.3.1">
 <h4><span class="header-section-number">2.1.3.1</span> 歪度</h4>
-<p>歪度はデータ分布の左右対象度合いです。左右対象となるデータ分布であれば<span class="math inline">\(0\)</span>、右に歪んでいれば正の値を、左に歪んでいれば負の値を取ります。例えば下図のような分布を持つデータでは
-<img src="R_files/figure-html/unnamed-chunk-32-1.png" width="90%" style="display: block; margin: auto;" />
-歪度は、ほぼゼロの値となります。</p>
+<p>歪度はデータ分布の左右対象度合いです。左右対象となるデータ分布であれば<span class="math inline">\(0\)</span>、右に歪んでいれば正の値を、左に歪んでいれば負の値を取ります。例えば下図のような分布では</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-32"></span>
+<img src="R_files/figure-html/unnamed-chunk-32-1.png" alt="正規分布に近い分布" width="90%" />
+<p class="caption">
+Fig. 2.1: 正規分布に近い分布
+</p>
+</div>
+<p>歪度はゼロに近い値となります。</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb28-1"><a href="要約統計量.html#cb28-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(x)</span></code></pre></div>
 <pre><code>## [1] 0.04548819</code></pre>
-<p>大きく右に歪んだ（左に偏った）カイ二乗分布のようなデータでは
-<img src="R_files/figure-html/unnamed-chunk-34-1.png" width="90%" style="display: block; margin: auto;" />
-歪度は正の値をとります。</p>
+<p>次に下図のような分布では</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-34"></span>
+<img src="R_files/figure-html/unnamed-chunk-34-1.png" alt="右に歪んだ分布（左に偏った分布）" width="90%" />
+<p class="caption">
+Fig. 2.2: 右に歪んだ分布（左に偏った分布）
+</p>
+</div>
+<p>歪度は正の値をとります。</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb30-1"><a href="要約統計量.html#cb30-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(x)</span></code></pre></div>
 <pre><code>## [1] 1.318739</code></pre>
-<p>逆に左に歪んだ（右に偏った）データでは
-<img src="R_files/figure-html/unnamed-chunk-36-1.png" width="90%" style="display: block; margin: auto;" /></p>
-<p>負の値をとります。</p>
+<p>上図とは逆の分布では</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-36"></span>
+<img src="R_files/figure-html/unnamed-chunk-36-1.png" alt="左に歪んだ分布（右に偏った分布）" width="90%" />
+<p class="caption">
+Fig. 2.3: 左に歪んだ分布（右に偏った分布）
+</p>
+</div>
+<p>歪度は負の値をとります。</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb32-1"><a href="要約統計量.html#cb32-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(x)</span></code></pre></div>
 <pre><code>## [1] -1.318739</code></pre>
 </div>
 <div id="尖度" class="section level4" number="2.1.3.2">
 <h4><span class="header-section-number">2.1.3.2</span> 尖度</h4>
-<p>尖度はデータ分布の尖り具合です。標準正規分布と等しければ<span class="math inline">\(0\)</span>、標準正規分布より尖ったt分布のような分布では正の値、広がった分布であれば負の値をとります。
-<img src="R_files/figure-html/unnamed-chunk-38-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p>尖度はデータ分布の尖り具合です。標準正規分布と等しければ<span class="math inline">\(0\)</span>、標準正規分布より尖ったt分布のような分布では正の値、広がった分布であれば負の値をとります。</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-38"></span>
+<img src="R_files/figure-html/unnamed-chunk-38-1.png" alt="正規分布に近い分布" width="90%" />
+<p class="caption">
+Fig. 2.4: 正規分布に近い分布
+</p>
+</div>
 <div class="sourceCode" id="cb34"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb34-1"><a href="要約統計量.html#cb34-1"></a>e1071<span class="sc">::</span><span class="fu">kurtosis</span>(x)</span></code></pre></div>
 <pre><code>## [1] 0.01457407</code></pre>
-<p><img src="R_files/figure-html/unnamed-chunk-40-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-40"></span>
+<img src="R_files/figure-html/unnamed-chunk-40-1.png" alt="中心部が高く幅の狭い尖った分布" width="90%" />
+<p class="caption">
+Fig. 2.5: 中心部が高く幅の狭い尖った分布
+</p>
+</div>
 <div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb36-1"><a href="要約統計量.html#cb36-1"></a>e1071<span class="sc">::</span><span class="fu">kurtosis</span>(x)</span></code></pre></div>
 <pre><code>## [1] 0.7919764</code></pre>
-<p><img src="R_files/figure-html/unnamed-chunk-42-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-42"></span>
+<img src="R_files/figure-html/unnamed-chunk-42-1.png" alt="中心部が低く横に広がった分布" width="90%" />
+<p class="caption">
+Fig. 2.6: 中心部が低く横に広がった分布
+</p>
+</div>
 <div class="sourceCode" id="cb38"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb38-1"><a href="要約統計量.html#cb38-1"></a>e1071<span class="sc">::</span><span class="fu">kurtosis</span>(x)</span></code></pre></div>
 <pre><code>## [1] -0.3767132</code></pre>
 <!-- \newpage -->
@@ -697,11 +728,11 @@ div.csl-indent {
 <p><span class="math display" id="eq:IQR">\[\begin{align}
   IQR = Q_3 - Q_1 \tag{2.14}
 \end{align}\]</span></p>
-<p>四分位数は<code>quantile()</code>関数で求めることができます。オプションを指定しなければ第一〜第三四分位数に加えて最小値（<span class="math inline">\(0\%点\)</span>）・最大値（<span class="math inline">\(100\%点\)</span>）を加えた五つの値が返ってきます。</p>
+<p>四分位数は<code>quantile()</code>関数で求めることができます。オプションの引数を指定しなければ第一〜第三四分位数に加えて最小値（<span class="math inline">\(0\%点\)</span>）・最大値（<span class="math inline">\(100\%点\)</span>）を加えた五つの値が返ってきます。</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb67-1"><a href="要約統計量.html#cb67-1"></a><span class="fu">quantile</span>(x)</span></code></pre></div>
 <pre><code>##   0%  25%  50%  75% 100% 
 ##    1    3    5    7    9</code></pre>
-<p>任意の四分位数を求めたい場合は<code>prob</code>オプションを指定します。<code>prob</code>は<span class="math inline">\(0\)</span>〜<span class="math inline">\(1\)</span>の間で指定する点に中位してください。</p>
+<p>任意の四分位数を求めたい場合は引数<code>prob</code>を指定します。<code>prob</code>は<span class="math inline">\(0\)</span>〜<span class="math inline">\(1\)</span>の間で指定する点に中位してください。</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb69-1"><a href="要約統計量.html#cb69-1"></a><span class="fu">quantile</span>(x, <span class="at">prob =</span> <span class="fl">0.25</span>)</span></code></pre></div>
 <pre><code>## 25% 
 ##   3</code></pre>
@@ -737,17 +768,18 @@ div.csl-indent {
 <pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb90"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb90-1"><a href="要約統計量.html#cb90-1"></a>modeest<span class="sc">::</span><span class="fu">mfv</span>(y)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<!-- \newpage -->
+<div style="page-break-after: always;"></div>
 </div>
 <div id="まとめ" class="section level3" number="2.1.8">
 <h3><span class="header-section-number">2.1.8</span> まとめ</h3>
 <p>本節に出てきた要約統計量と関数は下表の通りです。</p>
 <table>
+<caption>要約統計量のまとめ</caption>
 <thead>
 <tr class="header">
 <th>要約統計量</th>
 <th align="center">表記</th>
-<th>関数</th>
+<th><strong>R</strong>での求め方<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></th>
 </tr>
 </thead>
 <tbody>
@@ -794,7 +826,7 @@ div.csl-indent {
 <tr class="odd">
 <td>尖度</td>
 <td align="center"><span class="math inline">\(\gamma_2\)</span></td>
-<td><code>e1071::kurtosis</code></td>
+<td><code>e1071::kurtosis(x)</code></td>
 </tr>
 <tr class="even">
 <td>中央値</td>
@@ -803,7 +835,7 @@ div.csl-indent {
 </tr>
 <tr class="odd">
 <td>範囲</td>
-<td align="center"><span class="math inline">\(R\)</span><a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></td>
+<td align="center"><span class="math inline">\(R\)</span><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></td>
 <td><code>range(x)</code> or <code>diff(range(x))</code></td>
 </tr>
 <tr class="even">
@@ -814,7 +846,7 @@ div.csl-indent {
 <tr class="odd">
 <td>第<span class="math inline">\(n\)</span>四分位数</td>
 <td align="center"><span class="math inline">\(Q_n\)</span></td>
-<td><code>quantile(x, prob = p), p = 0.25n</code></td>
+<td><code>quantile(x, probs = u), u = 0.25*n, n = 1, 2, 3</code><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></td>
 </tr>
 <tr class="even">
 <td>四分位範囲</td>
@@ -828,7 +860,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<!-- \newpage -->
+<div style="page-break-after: always;"></div>
 </div>
 <div id="演習" class="section level3" number="2.1.9">
 <h3><span class="header-section-number">2.1.9</span> 演習</h3>
@@ -843,7 +875,7 @@ div.csl-indent {
 <p>欠損値を含む以下のデータの平均値（<span class="math inline">\(\bar{x}\)</span>）、不偏分散（<span class="math inline">\(\hat{\sigma}^2\)</span>）ならびに標本分散（<span class="math inline">\(s^2\)</span>）を求めなさい。</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb93-1"><a href="要約統計量.html#cb93-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="cn">NA</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span></code></pre></div>
 <blockquote>
-<p><code>na.rm</code>オプションを使います</p>
+<p>引数<code>na.rm</code>を指定します</p>
 </blockquote>
 </div>
 <div id="演習-3" class="section level4 unnumbered">
@@ -861,6 +893,7 @@ div.csl-indent {
 　統計の書籍では様々な統計量を英字で表記する場合とギリシャ文字で表記する場合があり混乱しやすいのですが、英字（アルファベット）で表記されている場合は標本統計量、ギリシャ文字で表記されている場合は母集団の統計量もしくは母集団の推定統計量を意味しています。<br />
 　推定統計量を表記する場合、推定であることを意味するハット（ <span class="math inline">\(\hat{}\)</span> ）という記号をつけます。平均と分散・標準偏差を使って整理すると下表のようになります。</p>
 <table>
+<caption>統計量の表記ルール</caption>
 <thead>
 <tr class="header">
 <th>統計量</th>
@@ -913,7 +946,9 @@ div.csl-indent {
 <hr />
 <ol start="5">
 <li id="fn5"><p><strong>R</strong>では代入に<code>=</code>を使わないようにしてください<a href="要約統計量.html#fnref5" class="footnote-back">↩︎</a></p></li>
-<li id="fn6"><p>重相関計数を意味する場合もあり<a href="要約統計量.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>引数<code>x</code>は計算対象となる数値データが格納されたベクトル型の変数<a href="要約統計量.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>重相関計数を意味する場合もあり<a href="要約統計量.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>引数<code>probs</code>はベクトル指定も可能（例：<code>probs = c(0.25, 0.75)</code>）<a href="要約統計量.html#fnref8" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

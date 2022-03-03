@@ -1,16 +1,27 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
   12pt,
 ]{book}
+\title{Rのすゝめ}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{〜 Rによるデータ分析事始め 〜}
+\author{Sampo Suzuki, CC 4.0 BY-NC-SA}
+\date{2022-03-03}
+
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{setspace}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -42,10 +53,10 @@
   pdftitle={Rのすゝめ},
   pdfauthor={Sampo Suzuki, CC 4.0 BY-NC-SA},
   colorlinks=true,
-  linkcolor=Maroon,
-  filecolor=Maroon,
-  citecolor=Blue,
-  urlcolor=Blue,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
@@ -166,6 +177,7 @@
 \usepackage{zxjatype}
 \usepackage{pxrubrica}                  % ルビ用
 \usepackage{hyperref}                   % ハイパーリンク用必要？
+% \usepackage{tcolorbox}                  % 色付き囲い
 
 % --- Index ------------------------------------------------------------------
 % https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90
@@ -201,6 +213,18 @@
 % ## モノフォントは源ノ角コード(Source Code Proの日本語版)がおすゝめ
 % # \setmonofont{SourceHanCodeJP-Regular.otf}[BoldFont=SourceHanCodeJPS-Bold.otf]
 
+% --- Fonts -------------------------------------------------------------------
+% https://teastat.blogspot.com/2019/01/bookdown.html
+% 図の位置を固定する
+\floatplacement{figure}{H}    % 図位置を固定する
+\floatplacement{table}{H}     % 表位置を固定する
+
+% 引数の意味
+%   H：絶対に指定箇所に置く（float.sty の効果）
+%   h：できれば指定箇所に置く。少しでも無理ならあきらめて次の候補へ
+%   t：版面上端に置く
+%   b：版面下端に置く
+%   p：単独のページに置く
 
 % --- 空ページにヘッダーを設定する（機能していない） --------------------------
 % \makeatletter
@@ -221,6 +245,10 @@
 %     }
 % \makeatother
 
+% --- 色付き囲いの定義（上手く動かない...）
+% \newtcolorbox{info-box}{colback=cyan!5!white,arc=0pt,outer arc=0pt,colframe=cyan!60!black}
+% \newtcolorbox{warning-box}{colback=orange!5!white,arc=0pt,outer arc=0pt,colframe=orange!80!black}
+% \newtcolorbox{error-box}{colback=red!5!white,arc=0pt,outer arc=0pt,colframe=red!75!black}
 
 % --- 参考文献一覧を目次に表示させる ------------------------------------------
 % \makeatletter
@@ -318,22 +346,11 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
-\ifluatex
+\ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
-
-\title{Rのすゝめ}
-\usepackage{etoolbox}
-\makeatletter
-\providecommand{\subtitle}[1]{% add subtitle to \maketitle
-  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
-}
-\makeatother
-\subtitle{〜 Rによるデータ分析事始め 〜}
-\author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2021-05-29}
 
 \begin{document}
 \maketitle
@@ -343,8 +360,8 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
-\listoftables
 \listoffigures
+\listoftables
 \setstretch{1.1}
 \hypertarget{license}{%
 \chapter*{License}\label{license}}
@@ -432,7 +449,7 @@
 パス・ファイル名 & モノフォント\footnote{タイプライタフォントとも呼ばれる等幅フォント} & \texttt{sample/sample.Rmd} \\
 パッケージ名 & 太字のモノフォント & \textbf{\texttt{tidyverse}} \\
 変数・オブジェクト名 & モノフォント & \texttt{Sepela.Width} \\
-関数名 & モノフォントで()付き\footnote{3} & \texttt{print()} \\
+関数名 & モノフォントで()付き\footnote{数式内に関数がある場合は数式に同じ} & \texttt{print()} \\
 コード & モノフォント（プロンプトなし） & \texttt{library(tidyverse)} \\
 コードの実行結果 & モノフォント（\texttt{\#\#} プロンプト） & \texttt{\#\#\ output...} \\
 キーボードのキー & モノフォントで{[}{]}付き & {[}\texttt{Ctrl}{]}+{[}\texttt{S}{]} \\
@@ -485,24 +502,15 @@
 \caption{\label{tab:iris}iris dataset}
 \centering
 \fontsize{10}{12}\selectfont
-\begin{tabular}[t]{l|l|l|l|l|l}
-\hline
-  & Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
-\hline
-\cellcolor{gray!6}{1} & \cellcolor{gray!6}{5.1} & \cellcolor{gray!6}{3.5} & \cellcolor{gray!6}{1.4} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
-\hline
-2 & 4.9 & 3 & 1.4 & 0.2 & setosa\\
-\hline
-\cellcolor{gray!6}{3} & \cellcolor{gray!6}{4.7} & \cellcolor{gray!6}{3.2} & \cellcolor{gray!6}{1.3} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
-\hline
-... & ... & ... & ... & ... & NA\\
-\hline
-\cellcolor{gray!6}{148} & \cellcolor{gray!6}{6.5} & \cellcolor{gray!6}{3} & \cellcolor{gray!6}{5.2} & \cellcolor{gray!6}{2} & \cellcolor{gray!6}{virginica}\\
-\hline
-149 & 6.2 & 3.4 & 5.4 & 2.3 & virginica\\
-\hline
-\cellcolor{gray!6}{150} & \cellcolor{gray!6}{5.9} & \cellcolor{gray!6}{3} & \cellcolor{gray!6}{5.1} & \cellcolor{gray!6}{1.8} & \cellcolor{gray!6}{virginica}\\
-\hline
+\begin{tabular}[t]{lllll}
+\toprule
+Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
+\midrule
+\cellcolor{gray!6}{5.1} & \cellcolor{gray!6}{3.5} & \cellcolor{gray!6}{1.4} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
+4.9 & 3 & 1.4 & 0.2 & setosa\\
+\cellcolor{gray!6}{4.7} & \cellcolor{gray!6}{3.2} & \cellcolor{gray!6}{1.3} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
+... & ... & ... & ... & NA\\
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -531,28 +539,16 @@
 
 \caption{\label{tab:irislonger}iris dataset, longer style}
 \centering
-\begin{tabular}[t]{l|l|l}
-\hline
+\begin{tabular}[t]{lll}
+\toprule
 Species & part & value\\
-\hline
+\midrule
 \cellcolor{gray!6}{setosa} & \cellcolor{gray!6}{Sepal.Length} & \cellcolor{gray!6}{5.1}\\
-\hline
 setosa & Sepal.Width & 3.5\\
-\hline
 \cellcolor{gray!6}{setosa} & \cellcolor{gray!6}{Petal.Length} & \cellcolor{gray!6}{1.4}\\
-\hline
 setosa & Petal.Width & 0.2\\
-\hline
 \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{...}\\
-\hline
-virginica & Sepal.Length & 5.9\\
-\hline
-\cellcolor{gray!6}{virginica} & \cellcolor{gray!6}{Sepal.Width} & \cellcolor{gray!6}{3}\\
-\hline
-virginica & Petal.Length & 5.1\\
-\hline
-\cellcolor{gray!6}{virginica} & \cellcolor{gray!6}{Petal.Width} & \cellcolor{gray!6}{1.8}\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -1098,6 +1094,100 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \chapter{Rの基本}\label{rux306eux57faux672c}}
 
 \textbf{R}の文法説明が延々と続いてもつまらないので、本書では少し実用的な面から\textbf{R}のプログラミングを説明します。本チャプターでは『統計のはなし【改訂版】』\citep{ToukeinoHanashi}や『統計解析のはなし【改訂版】』\citep{ToukeiKaisekinoHanashi}を参考書として説明します。個々の詳細については、これらの書籍などを参照してください。 なお、基本文法については\protect\hyperlink{Appendix-RBasics}{Appendix R Basics}をご覧ください。
+
+\hypertarget{ux5c3aux5ea6ux3068ux30c7ux30fcux30bfux578b}{%
+\section{尺度とデータ型}\label{ux5c3aux5ea6ux3068ux30c7ux30fcux30bfux578b}}
+
+分析対象となるデータは質的データと量的データに分類することができます。質的データは性別や品名、会社名など主に文字で表すことができる非数値データです。量的データは、温度や身長・体重、売上金額といった数値で表すことができるデータです。
+
+\hypertarget{ux5c3aux5ea6ux6c34ux6e96}{%
+\subsection{尺度水準}\label{ux5c3aux5ea6ux6c34ux6e96}}
+
+質的データや量的データはデータ自体がもつ意味により下記のような尺度と呼ばれる水準で分類することができます。
+
+\begin{itemize}
+\tightlist
+\item
+  名義尺度
+
+  \begin{itemize}
+  \tightlist
+  \item
+    区別のためのラベルとしての意味を持つデータ
+  \item
+    同値か否かの比較しかできない
+  \end{itemize}
+\item
+  順序尺度
+
+  \begin{itemize}
+  \tightlist
+  \item
+    区別のためのラベルとしての意味に加えて順番や大小関係の意味を持つデータ
+  \item
+    順番や大小の間隔には意味がない
+  \item
+    同値または大小比較の比較演算が可能
+  \end{itemize}
+\item
+  間隔尺度
+
+  \begin{itemize}
+  \tightlist
+  \item
+    大小関係に加えて数値の差に意味をもつデータ
+  \item
+    数値の間隔には意味がありゼロは相対的な意味しかもたない
+  \item
+    比較演算に加えて加減算が可能
+  \end{itemize}
+\item
+  比例尺度
+
+  \begin{itemize}
+  \tightlist
+  \item
+    大小関係、数値の差に加えて数値の比にも意味をもつデータ
+  \item
+    数値の間隔に意味がありゼロは原点としての（絶対的な）意味をもつ
+  \item
+    比較演算に加えて加減乗除が可能
+  \item
+    比尺度とも呼ばれる
+  \end{itemize}
+\end{itemize}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+尺度水準 & 可能な演算 & データの例 \\
+\midrule
+\endhead
+名義尺度 & 同値比較 & 名前、性別、背番号、血液型など \\
+順序尺度 & 比較演算 & 着順、ランキング、段階評価など \\
+間隔尺度 & 比較演算、加減算 & 温度、時刻、日付など \\
+比例尺度 & 比較演算、加減乗除算 & 長さ、重さ、金額など \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux540dux7fa9ux5c3aux5ea6ux306eux30c7ux30fcux30bfux578b}{%
+\subsubsection{名義尺度のデータ型}\label{ux540dux7fa9ux5c3aux5ea6ux306eux30c7ux30fcux30bfux578b}}
+
+名義尺度を扱うには順序なし因子型（\texttt{factor}）というデータ型を用いるのが便利です。因子型は文字でも数字でも扱えます。 ただ、因子型では水準の追加・削除操作が厄介ですので、文字型、数値型
+
+\hypertarget{ux9806ux5e8fux5c3aux5ea6ux306eux30c7ux30fcux30bfux578b}{%
+\subsubsection{順序尺度のデータ型}\label{ux9806ux5e8fux5c3aux5ea6ux306eux30c7ux30fcux30bfux578b}}
+
+順序尺度は名義尺度のデータに順番や大小関係という属性を付与したデータと言えますので、順序付き因子型（\texttt{ordered}）というデータ型を用いるのが便利です。
+
+\hypertarget{ux9593ux9694ux5c3aux5ea6ux306eux30c7ux30fcux30bfux578b}{%
+\subsubsection{間隔尺度のデータ型}\label{ux9593ux9694ux5c3aux5ea6ux306eux30c7ux30fcux30bfux578b}}
+
+間隔尺度は数値のデータになりまので、データが取る値に合わせて、整数型（\texttt{integer}）、実数型（\texttt{numeric}）、日付型（\texttt{Date}）のデータ型を用います。
+
+\hypertarget{ux6bd4ux4f8bux5c3aux5ea6ux306eux30c7ux30fcux30bfux578b}{%
+\subsubsection{比例尺度のデータ型}\label{ux6bd4ux4f8bux5c3aux5ea6ux306eux30c7ux30fcux30bfux578b}}
+
+比例尺度は間隔尺度と同様に整数型（\texttt{integer}）や実数型（\texttt{numeric}）のデータ型を用います。
 
 \hypertarget{ux8981ux7d04ux7d71ux8a08ux91cf}{%
 \section{要約統計量}\label{ux8981ux7d04ux7d71ux8a08ux91cf}}
@@ -1960,13 +2050,38 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 \hypertarget{ux63a8ux5b9a}{%
 \section{推定}\label{ux63a8ux5b9a}}
 
-データを分析する前には分析対象となるデータがどのような特徴を持っているか確認しておくことが重要であるとよく言われます。この特徴を見るには要約統計量を使う場合が多いです。要約統計量はデータの分布の特徴を表すもので、記述統計量や基本統計量と呼ばれることもあります。
+　前節で扱った要約統計量は与えられたデータに関する特徴を求めるもので、一般的には\textbf{記述統計}と呼ばれる手法に分類されます。一部、不偏推定量の記述がありますが、こちらは確率変数と確率分布の確率論をベースとした\textbf{推測統計}と呼ばれる手法に分類されます。推測統計は大きく統計的推定と統計的仮説検定に二分されます。本節では前者の統計的\textbf{推定}を扱います。
+
+\hypertarget{ux6bcdux96c6ux56e3ux3068ux6a19ux672c}{%
+\subsection{母集団と標本}\label{ux6bcdux96c6ux56e3ux3068ux6a19ux672c}}
+
+　母集団とは分析の結果をもって説明したいデータの全体集合です。母集団の全てのデータを調べることができれば前述の記述統計の手法を適用することができますが、大抵の場合、母集団はとてつもなく大きな集団であったり、全数調査が困難\footnote{例えばテレビの世帯視聴率のように全世帯のデータを集めるとコスト的に見合わないような調査}だったりします。 そこで、標本と呼ばれる母集団から抽出した部分集合のデータが示す特徴を用いて母集団の特徴を推測することになります。しかしながら、標本のとり方よってはデータが偏ってしまい母集団の特徴からずれてしまう可能性がありす。そこで、確率論を用いて標本と母集団とのずれ（誤差の大きさ）を評価し信頼度つきで母集団の特徴を推測する推測統計の出番です。
 
 \hypertarget{ux70b9ux63a8ux5b9a}{%
 \subsection{点推定}\label{ux70b9ux63a8ux5b9a}}
 
+　点推定は標本から求められる一つの推定値をもって母集団の特徴となる統計量の推定値とする方法です。例えば、前節で出てきた不偏分散は、まさにこの点推定の結果です。不偏推定値と言われることもあります。
+
+母平均、母分散
+
 \hypertarget{ux533aux9593ux63a8ux5b9a}{%
 \subsection{区間推定}\label{ux533aux9593ux63a8ux5b9a}}
+
+　一方、区間推定は文字通り幅を持たせて母集団の特徴となる統計量を推定する方法です。この幅を信頼区間（CI: Confidence Interval）と呼びます。
+
+母平均、母比率、母分散
+
+母平均の区間推定には大きく以下の二つの方法があります。
+
+\begin{itemize}
+\tightlist
+\item
+  母分散が既知の場合
+\item
+  母分散が未知の場合
+\end{itemize}
+
+通常は
 
 \hypertarget{ux307eux3068ux3081-1}{%
 \subsection{まとめ}\label{ux307eux3068ux3081-1}}
@@ -2748,24 +2863,15 @@ Rの一番悪いところは統計学者が作っているところだ。
 
 \begin{table}[H]
 \centering
-\begin{tabular}[t]{l|l|l|l|l|l}
-\hline
-  & Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
-\hline
-\cellcolor{gray!6}{1} & \cellcolor{gray!6}{5.1} & \cellcolor{gray!6}{3.5} & \cellcolor{gray!6}{1.4} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
-\hline
-2 & 4.9 & 3 & 1.4 & 0.2 & setosa\\
-\hline
-\cellcolor{gray!6}{3} & \cellcolor{gray!6}{4.7} & \cellcolor{gray!6}{3.2} & \cellcolor{gray!6}{1.3} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
-\hline
-... & ... & ... & ... & ... & NA\\
-\hline
-\cellcolor{gray!6}{148} & \cellcolor{gray!6}{6.5} & \cellcolor{gray!6}{3} & \cellcolor{gray!6}{5.2} & \cellcolor{gray!6}{2} & \cellcolor{gray!6}{virginica}\\
-\hline
-149 & 6.2 & 3.4 & 5.4 & 2.3 & virginica\\
-\hline
-\cellcolor{gray!6}{150} & \cellcolor{gray!6}{5.9} & \cellcolor{gray!6}{3} & \cellcolor{gray!6}{5.1} & \cellcolor{gray!6}{1.8} & \cellcolor{gray!6}{virginica}\\
-\hline
+\begin{tabular}[t]{lllll}
+\toprule
+Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
+\midrule
+\cellcolor{gray!6}{5.1} & \cellcolor{gray!6}{3.5} & \cellcolor{gray!6}{1.4} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
+4.9 & 3 & 1.4 & 0.2 & setosa\\
+\cellcolor{gray!6}{4.7} & \cellcolor{gray!6}{3.2} & \cellcolor{gray!6}{1.3} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
+... & ... & ... & ... & NA\\
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -2774,24 +2880,15 @@ Rの一番悪いところは統計学者が作っているところだ。
 \begin{table}[H]
 \centering
 \resizebox{\linewidth}{!}{
-\begin{tabular}[t]{l|l|l|l|l|l|l|l|l|l|l|l}
-\hline
+\begin{tabular}[t]{llllllllllll}
+\toprule
   & mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb\\
-\hline
+\midrule
 \cellcolor{gray!6}{Mazda RX4} & \cellcolor{gray!6}{21} & \cellcolor{gray!6}{6} & \cellcolor{gray!6}{160} & \cellcolor{gray!6}{110} & \cellcolor{gray!6}{3.9} & \cellcolor{gray!6}{2.62} & \cellcolor{gray!6}{16.46} & \cellcolor{gray!6}{0} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{4} & \cellcolor{gray!6}{4}\\
-\hline
 Mazda RX4 Wag & 21 & 6 & 160 & 110 & 3.9 & 2.88 & 17.02 & 0 & 1 & 4 & 4\\
-\hline
 \cellcolor{gray!6}{Datsun 710} & \cellcolor{gray!6}{22.8} & \cellcolor{gray!6}{4} & \cellcolor{gray!6}{108} & \cellcolor{gray!6}{93} & \cellcolor{gray!6}{3.85} & \cellcolor{gray!6}{2.32} & \cellcolor{gray!6}{18.61} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{4} & \cellcolor{gray!6}{1}\\
-\hline
 ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ... & ...\\
-\hline
-\cellcolor{gray!6}{Ferrari Dino} & \cellcolor{gray!6}{19.7} & \cellcolor{gray!6}{6} & \cellcolor{gray!6}{145} & \cellcolor{gray!6}{175} & \cellcolor{gray!6}{3.62} & \cellcolor{gray!6}{2.77} & \cellcolor{gray!6}{15.5} & \cellcolor{gray!6}{0} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{5} & \cellcolor{gray!6}{6}\\
-\hline
-Maserati Bora & 15 & 8 & 301 & 335 & 3.54 & 3.57 & 14.6 & 0 & 1 & 5 & 8\\
-\hline
-\cellcolor{gray!6}{Volvo 142E} & \cellcolor{gray!6}{21.4} & \cellcolor{gray!6}{4} & \cellcolor{gray!6}{121} & \cellcolor{gray!6}{109} & \cellcolor{gray!6}{4.11} & \cellcolor{gray!6}{2.78} & \cellcolor{gray!6}{18.6} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{1} & \cellcolor{gray!6}{4} & \cellcolor{gray!6}{2}\\
-\hline
+\bottomrule
 \end{tabular}}
 \end{table}
 
@@ -4302,7 +4399,7 @@ NA & データ型 \\
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
 
-\texttt{https://gist.github.com/k-metrics/464ffbbd4d00e328560cd55966e7d4b8}~\\
+\texttt{https://gist.github.com/k-metrics/464ffbbd4d00e328560cd55966e7d4b8}\strut \\
 　
 
 \begin{figure}[H]
@@ -4648,7 +4745,13 @@ Git GUI Client & Ubuntu & Mac & Windows & Memo \\
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.50}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.36}}@{}}
 \toprule
-OS & Docker app & System Requirements \\
+\begin{minipage}[b]{\linewidth}\raggedright
+OS
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Docker app
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+System Requirements
+\end{minipage} \\
 \midrule
 \endhead
 macOS & Docker Desktop for Mac & \href{https://docs.docker.com/docker-for-mac/install/}{refer docker docs } \\
@@ -5070,7 +5173,15 @@ N/A & N/A & Editor font & 任意の日本語等幅フォント \\
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.42}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.22}}@{}}
 \toprule
-大項目(Tab) & 中項目(太文字) & 設定項目 & 推奨設定 \\
+\begin{minipage}[b]{\linewidth}\raggedright
+大項目(Tab)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+中項目(太文字)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+設定項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+推奨設定
+\end{minipage} \\
 \midrule
 \endhead
 Management & Package Management & Primary CRAN repository & 任意のhttpsサイト\textsuperscript{1} \\
@@ -5097,7 +5208,15 @@ Management & Package Management & Use Internet Explorer library/proxy for HTTP &
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.42}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.22}}@{}}
 \toprule
-大項目(Tab) & 中項目(太文字) & 設定項目 & 推奨設定 \\
+\begin{minipage}[b]{\linewidth}\raggedright
+大項目(Tab)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+中項目(太文字)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+設定項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+推奨設定
+\end{minipage} \\
 \midrule
 \endhead
 N/A & R Markdown & Show inline toolbar for R code chunk & Checked \\
@@ -5181,7 +5300,15 @@ N/A & Connection & Connect with WebSockts & Terminalが起動しない場合は�
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.38}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.22}}@{}}
 \toprule
-大項目 & 中項目（太文字） & 設定項目 & 推奨設定 \\
+\begin{minipage}[b]{\linewidth}\raggedright
+大項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+中項目（太文字）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+設定項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+推奨設定
+\end{minipage} \\
 \midrule
 \endhead
 Build Tools & N/A & Project build tools & ``Website'' \\
@@ -5257,6 +5384,26 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 % --- Index(索引一覧)を作成する（ページがずれるバグあり）
 % \cleardoublepage
 % \phantomsection
-% \printindex
+% \printindex       % can be used to include the sorted and formatted index in the document.
+% \see              % can used in the index to cross reference to other items.
+
+% \cleardoublepage
+% \phantomsection
+% % \clearpage
+% \vspace*{\stretch{1}}
+% \begin{flushright}
+% \begin{minipage}{0.5\hsize}
+% \begin{description}
+%   \item{著者：} Sampo Suzuki
+%   % \item{表紙：} ASDF
+%   \item{発行：} 2021年月日
+%   % \item{サークル名：} ASDF
+%   % \item{連絡先：} ASDF
+%   % \item{印刷：} ASDF
+% \end{description}
+% \end{minipage}
+% \end{flushright}
+% \cleardoublepage
+% % \clearpage
 
 \end{document}

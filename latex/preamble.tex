@@ -47,6 +47,7 @@
 \usepackage{zxjatype}
 \usepackage{pxrubrica}                  % ルビ用
 \usepackage{hyperref}                   % ハイパーリンク用必要？
+% \usepackage{tcolorbox}                  % 色付き囲い
 
 % --- Index ------------------------------------------------------------------
 % https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90
@@ -82,6 +83,18 @@
 % ## モノフォントは源ノ角コード(Source Code Proの日本語版)がおすゝめ
 % # \setmonofont{SourceHanCodeJP-Regular.otf}[BoldFont=SourceHanCodeJPS-Bold.otf]
 
+% --- Fonts -------------------------------------------------------------------
+% https://teastat.blogspot.com/2019/01/bookdown.html
+% 図の位置を固定する
+\floatplacement{figure}{H}    % 図位置を固定する
+\floatplacement{table}{H}     % 表位置を固定する
+
+% 引数の意味
+%   H：絶対に指定箇所に置く（float.sty の効果）
+%   h：できれば指定箇所に置く。少しでも無理ならあきらめて次の候補へ
+%   t：版面上端に置く
+%   b：版面下端に置く
+%   p：単独のページに置く
 
 % --- 空ページにヘッダーを設定する（機能していない） --------------------------
 % \makeatletter
@@ -102,6 +115,10 @@
 %     }
 % \makeatother
 
+% --- 色付き囲いの定義（上手く動かない...）
+% \newtcolorbox{info-box}{colback=cyan!5!white,arc=0pt,outer arc=0pt,colframe=cyan!60!black}
+% \newtcolorbox{warning-box}{colback=orange!5!white,arc=0pt,outer arc=0pt,colframe=orange!80!black}
+% \newtcolorbox{error-box}{colback=red!5!white,arc=0pt,outer arc=0pt,colframe=red!75!black}
 
 % --- 参考文献一覧を目次に表示させる ------------------------------------------
 % \makeatletter

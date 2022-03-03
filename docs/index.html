@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Rのすゝめ</title>
   <meta name="description" content="本書はデータ分析勉強会で学んだ成果をまとめたものです" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Rのすゝめ" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2022-02-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,9 @@
   
 
 <link rel="next" href="はじめに.html"/>
-<script src="assets/header-attrs-2.8/header-attrs.js"></script>
-<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<script src="assets/header-attrs-2.11/header-attrs.js"></script>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,97 +51,13 @@
 
 
 
-
 <link href="assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="assets/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="assets/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="assets/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
-<link href="assets/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="assets/pagedtable-1.1/js/pagedtable.js"></script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; } /* Alert */
-code span.an { color: #008000; } /* Annotation */
-code span.at { } /* Attribute */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #0000ff; } /* ControlFlow */
-code span.ch { color: #008080; } /* Char */
-code span.cn { } /* Constant */
-code span.co { color: #008000; } /* Comment */
-code span.cv { color: #008000; } /* CommentVar */
-code span.do { color: #008000; } /* Documentation */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.im { } /* Import */
-code span.in { color: #008000; } /* Information */
-code span.kw { color: #0000ff; } /* Keyword */
-code span.op { } /* Operator */
-code span.ot { color: #ff4000; } /* Other */
-code span.pp { color: #ff4000; } /* Preprocessor */
-code span.sc { color: #008080; } /* SpecialChar */
-code span.ss { color: #008080; } /* SpecialString */
-code span.st { color: #008080; } /* String */
-code span.va { } /* Variable */
-code span.vs { color: #008080; } /* VerbatimString */
-code span.wa { color: #008000; font-weight: bold; } /* Warning */
-</style>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -189,42 +106,47 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2" data-path="rの基本.html"><a href="rの基本.html"><i class="fa fa-check"></i><b>2</b> Rの基本</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="要約統計量.html"><a href="要約統計量.html"><i class="fa fa-check"></i><b>2.1</b> 要約統計量</a>
+<li class="chapter" data-level="2.1" data-path="尺度とデータ型.html"><a href="尺度とデータ型.html"><i class="fa fa-check"></i><b>2.1</b> 尺度とデータ型</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="要約統計量.html"><a href="要約統計量.html#平均"><i class="fa fa-check"></i><b>2.1.1</b> 平均</a></li>
-<li class="chapter" data-level="2.1.2" data-path="要約統計量.html"><a href="要約統計量.html#分散標準偏差"><i class="fa fa-check"></i><b>2.1.2</b> 分散・標準偏差</a></li>
-<li class="chapter" data-level="2.1.3" data-path="要約統計量.html"><a href="要約統計量.html#モーメント"><i class="fa fa-check"></i><b>2.1.3</b> モーメント</a></li>
-<li class="chapter" data-level="2.1.4" data-path="要約統計量.html"><a href="要約統計量.html#中央値"><i class="fa fa-check"></i><b>2.1.4</b> 中央値</a></li>
-<li class="chapter" data-level="2.1.5" data-path="要約統計量.html"><a href="要約統計量.html#範囲"><i class="fa fa-check"></i><b>2.1.5</b> 範囲</a></li>
-<li class="chapter" data-level="2.1.6" data-path="要約統計量.html"><a href="要約統計量.html#四分位数四分位範囲"><i class="fa fa-check"></i><b>2.1.6</b> 四分位数・四分位範囲</a></li>
-<li class="chapter" data-level="2.1.7" data-path="要約統計量.html"><a href="要約統計量.html#最頻値"><i class="fa fa-check"></i><b>2.1.7</b> 最頻値</a></li>
-<li class="chapter" data-level="2.1.8" data-path="要約統計量.html"><a href="要約統計量.html#まとめ"><i class="fa fa-check"></i><b>2.1.8</b> まとめ</a></li>
-<li class="chapter" data-level="2.1.9" data-path="要約統計量.html"><a href="要約統計量.html#演習"><i class="fa fa-check"></i><b>2.1.9</b> 演習</a></li>
+<li class="chapter" data-level="2.1.1" data-path="尺度とデータ型.html"><a href="尺度とデータ型.html#尺度水準"><i class="fa fa-check"></i><b>2.1.1</b> 尺度水準</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="要約統計量.html"><a href="要約統計量.html"><i class="fa fa-check"></i><b>2.2</b> 要約統計量</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="要約統計量.html"><a href="要約統計量.html#平均"><i class="fa fa-check"></i><b>2.2.1</b> 平均</a></li>
+<li class="chapter" data-level="2.2.2" data-path="要約統計量.html"><a href="要約統計量.html#分散標準偏差"><i class="fa fa-check"></i><b>2.2.2</b> 分散・標準偏差</a></li>
+<li class="chapter" data-level="2.2.3" data-path="要約統計量.html"><a href="要約統計量.html#モーメント"><i class="fa fa-check"></i><b>2.2.3</b> モーメント</a></li>
+<li class="chapter" data-level="2.2.4" data-path="要約統計量.html"><a href="要約統計量.html#中央値"><i class="fa fa-check"></i><b>2.2.4</b> 中央値</a></li>
+<li class="chapter" data-level="2.2.5" data-path="要約統計量.html"><a href="要約統計量.html#範囲"><i class="fa fa-check"></i><b>2.2.5</b> 範囲</a></li>
+<li class="chapter" data-level="2.2.6" data-path="要約統計量.html"><a href="要約統計量.html#四分位数四分位範囲"><i class="fa fa-check"></i><b>2.2.6</b> 四分位数・四分位範囲</a></li>
+<li class="chapter" data-level="2.2.7" data-path="要約統計量.html"><a href="要約統計量.html#最頻値"><i class="fa fa-check"></i><b>2.2.7</b> 最頻値</a></li>
+<li class="chapter" data-level="2.2.8" data-path="要約統計量.html"><a href="要約統計量.html#まとめ"><i class="fa fa-check"></i><b>2.2.8</b> まとめ</a></li>
+<li class="chapter" data-level="2.2.9" data-path="要約統計量.html"><a href="要約統計量.html#演習"><i class="fa fa-check"></i><b>2.2.9</b> 演習</a></li>
 <li class="chapter" data-level="" data-path="要約統計量.html"><a href="要約統計量.html#コラム"><i class="fa fa-check"></i>コラム</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="推定.html"><a href="推定.html"><i class="fa fa-check"></i><b>2.2</b> 推定</a>
+<li class="chapter" data-level="2.3" data-path="推定.html"><a href="推定.html"><i class="fa fa-check"></i><b>2.3</b> 推定</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="推定.html"><a href="推定.html#点推定"><i class="fa fa-check"></i><b>2.2.1</b> 点推定</a></li>
-<li class="chapter" data-level="2.2.2" data-path="推定.html"><a href="推定.html#区間推定"><i class="fa fa-check"></i><b>2.2.2</b> 区間推定</a></li>
-<li class="chapter" data-level="2.2.3" data-path="推定.html"><a href="推定.html#まとめ-1"><i class="fa fa-check"></i><b>2.2.3</b> まとめ</a></li>
-<li class="chapter" data-level="2.2.4" data-path="推定.html"><a href="推定.html#演習-4"><i class="fa fa-check"></i><b>2.2.4</b> 演習</a></li>
+<li class="chapter" data-level="2.3.1" data-path="推定.html"><a href="推定.html#母集団と標本"><i class="fa fa-check"></i><b>2.3.1</b> 母集団と標本</a></li>
+<li class="chapter" data-level="2.3.2" data-path="推定.html"><a href="推定.html#点推定"><i class="fa fa-check"></i><b>2.3.2</b> 点推定</a></li>
+<li class="chapter" data-level="2.3.3" data-path="推定.html"><a href="推定.html#区間推定"><i class="fa fa-check"></i><b>2.3.3</b> 区間推定</a></li>
+<li class="chapter" data-level="2.3.4" data-path="推定.html"><a href="推定.html#まとめ-1"><i class="fa fa-check"></i><b>2.3.4</b> まとめ</a></li>
+<li class="chapter" data-level="2.3.5" data-path="推定.html"><a href="推定.html#演習-2"><i class="fa fa-check"></i><b>2.3.5</b> 演習</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="検定.html"><a href="検定.html"><i class="fa fa-check"></i><b>2.3</b> 検定</a>
+<li class="chapter" data-level="2.4" data-path="検定.html"><a href="検定.html"><i class="fa fa-check"></i><b>2.4</b> 検定</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="検定.html"><a href="検定.html#f検定"><i class="fa fa-check"></i><b>2.3.1</b> F検定</a></li>
-<li class="chapter" data-level="2.3.2" data-path="検定.html"><a href="検定.html#二項検定"><i class="fa fa-check"></i><b>2.3.2</b> 二項検定</a></li>
-<li class="chapter" data-level="2.3.3" data-path="検定.html"><a href="検定.html#まとめ-2"><i class="fa fa-check"></i><b>2.3.3</b> まとめ</a></li>
-<li class="chapter" data-level="2.3.4" data-path="検定.html"><a href="検定.html#演習-7"><i class="fa fa-check"></i><b>2.3.4</b> 演習</a></li>
+<li class="chapter" data-level="2.4.1" data-path="検定.html"><a href="検定.html#f検定"><i class="fa fa-check"></i><b>2.4.1</b> F検定</a></li>
+<li class="chapter" data-level="2.4.2" data-path="検定.html"><a href="検定.html#二項検定"><i class="fa fa-check"></i><b>2.4.2</b> 二項検定</a></li>
+<li class="chapter" data-level="2.4.3" data-path="検定.html"><a href="検定.html#まとめ-2"><i class="fa fa-check"></i><b>2.4.3</b> まとめ</a></li>
+<li class="chapter" data-level="2.4.4" data-path="検定.html"><a href="検定.html#演習-3"><i class="fa fa-check"></i><b>2.4.4</b> 演習</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>2.4</b> 分散分析</a>
+<li class="chapter" data-level="2.5" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>2.5</b> 分散分析</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="分散分析.html"><a href="分散分析.html#まとめ-3"><i class="fa fa-check"></i><b>2.4.1</b> まとめ</a></li>
-<li class="chapter" data-level="2.4.2" data-path="分散分析.html"><a href="分散分析.html#演習-10"><i class="fa fa-check"></i><b>2.4.2</b> 演習</a></li>
+<li class="chapter" data-level="2.5.1" data-path="分散分析.html"><a href="分散分析.html#まとめ-3"><i class="fa fa-check"></i><b>2.5.1</b> まとめ</a></li>
+<li class="chapter" data-level="2.5.2" data-path="分散分析.html"><a href="分散分析.html#演習-4"><i class="fa fa-check"></i><b>2.5.2</b> 演習</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="回帰分析.html"><a href="回帰分析.html"><i class="fa fa-check"></i><b>2.5</b> 回帰分析</a>
+<li class="chapter" data-level="2.6" data-path="回帰分析.html"><a href="回帰分析.html"><i class="fa fa-check"></i><b>2.6</b> 回帰分析</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="回帰分析.html"><a href="回帰分析.html#まとめ-4"><i class="fa fa-check"></i><b>2.5.1</b> まとめ</a></li>
-<li class="chapter" data-level="2.5.2" data-path="回帰分析.html"><a href="回帰分析.html#演習-13"><i class="fa fa-check"></i><b>2.5.2</b> 演習</a></li>
+<li class="chapter" data-level="2.6.1" data-path="回帰分析.html"><a href="回帰分析.html#まとめ-4"><i class="fa fa-check"></i><b>2.6.1</b> まとめ</a></li>
+<li class="chapter" data-level="2.6.2" data-path="回帰分析.html"><a href="回帰分析.html#演習-5"><i class="fa fa-check"></i><b>2.6.2</b> 演習</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Wrangle</b></span></li>
@@ -308,59 +230,59 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="C" data-path="演習解答例.html"><a href="演習解答例.html"><i class="fa fa-check"></i><b>C</b> 演習解答例</a>
 <ul>
-<li class="chapter" data-level="" data-path="演習-1-1.html"><a href="演習-1-1.html"><i class="fa fa-check"></i>演習 1</a>
+<li class="chapter" data-level="" data-path="演習-7-1.html"><a href="演習-7-1.html"><i class="fa fa-check"></i>演習 7</a>
 <ul>
-<li class="chapter" data-level="" data-path="演習-1-1.html"><a href="演習-1-1.html#解答例"><i class="fa fa-check"></i>解答例</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="演習-2-1.html"><a href="演習-2-1.html"><i class="fa fa-check"></i>演習 2</a>
-<ul>
-<li class="chapter" data-level="" data-path="演習-2-1.html"><a href="演習-2-1.html#解答例-1"><i class="fa fa-check"></i>解答例</a></li>
-<li class="chapter" data-level="" data-path="演習-2-1.html"><a href="演習-2-1.html#補足"><i class="fa fa-check"></i>補足</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="演習-3-1.html"><a href="演習-3-1.html"><i class="fa fa-check"></i>演習 3</a>
-<ul>
-<li class="chapter" data-level="" data-path="演習-3-1.html"><a href="演習-3-1.html#解答例-2"><i class="fa fa-check"></i>解答例</a></li>
-<li class="chapter" data-level="" data-path="演習-3-1.html"><a href="演習-3-1.html#補足-1"><i class="fa fa-check"></i>補足</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="演習-4-2.html"><a href="演習-4-2.html"><i class="fa fa-check"></i>演習 4</a>
-<ul>
-<li class="chapter" data-level="" data-path="演習-4-2.html"><a href="演習-4-2.html#解答例-3"><i class="fa fa-check"></i>解答例</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="演習-5-1.html"><a href="演習-5-1.html"><i class="fa fa-check"></i>演習 5</a>
-<ul>
-<li class="chapter" data-level="" data-path="演習-5-1.html"><a href="演習-5-1.html#解答例-4"><i class="fa fa-check"></i>解答例</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="演習-6-1.html"><a href="演習-6-1.html"><i class="fa fa-check"></i>演習 6</a>
-<ul>
-<li class="chapter" data-level="" data-path="演習-6-1.html"><a href="演習-6-1.html#解答例-5"><i class="fa fa-check"></i>解答例</a></li>
+<li class="chapter" data-level="" data-path="演習-7-1.html"><a href="演習-7-1.html#解答例"><i class="fa fa-check"></i>解答例</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="演習-7-2.html"><a href="演習-7-2.html"><i class="fa fa-check"></i>演習 7</a>
 <ul>
-<li class="chapter" data-level="" data-path="演習-7-2.html"><a href="演習-7-2.html#解答例-6"><i class="fa fa-check"></i>解答例</a></li>
+<li class="chapter" data-level="" data-path="演習-7-2.html"><a href="演習-7-2.html#解答例-1"><i class="fa fa-check"></i>解答例</a></li>
+<li class="chapter" data-level="" data-path="演習-7-2.html"><a href="演習-7-2.html#補足"><i class="fa fa-check"></i>補足</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="演習-8-1.html"><a href="演習-8-1.html"><i class="fa fa-check"></i>演習 8</a>
+<li class="chapter" data-level="" data-path="演習-7-3.html"><a href="演習-7-3.html"><i class="fa fa-check"></i>演習 7</a>
 <ul>
-<li class="chapter" data-level="" data-path="演習-8-1.html"><a href="演習-8-1.html#解答例-7"><i class="fa fa-check"></i>解答例</a></li>
+<li class="chapter" data-level="" data-path="演習-7-3.html"><a href="演習-7-3.html#解答例-2"><i class="fa fa-check"></i>解答例</a></li>
+<li class="chapter" data-level="" data-path="演習-7-3.html"><a href="演習-7-3.html#補足-1"><i class="fa fa-check"></i>補足</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="演習-9-1.html"><a href="演習-9-1.html"><i class="fa fa-check"></i>演習 9</a>
+<li class="chapter" data-level="" data-path="演習-7-4.html"><a href="演習-7-4.html"><i class="fa fa-check"></i>演習 7</a>
 <ul>
-<li class="chapter" data-level="" data-path="演習-9-1.html"><a href="演習-9-1.html#解答例-8"><i class="fa fa-check"></i>解答例</a></li>
+<li class="chapter" data-level="" data-path="演習-7-4.html"><a href="演習-7-4.html#解答例-3"><i class="fa fa-check"></i>解答例</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="演習-10-2.html"><a href="演習-10-2.html"><i class="fa fa-check"></i>演習 10</a>
+<li class="chapter" data-level="" data-path="演習-7-5.html"><a href="演習-7-5.html"><i class="fa fa-check"></i>演習 7</a>
 <ul>
-<li class="chapter" data-level="" data-path="演習-10-2.html"><a href="演習-10-2.html#解答例-9"><i class="fa fa-check"></i>解答例</a></li>
+<li class="chapter" data-level="" data-path="演習-7-5.html"><a href="演習-7-5.html#解答例-4"><i class="fa fa-check"></i>解答例</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="演習-11-1.html"><a href="演習-11-1.html"><i class="fa fa-check"></i>演習 11</a>
+<li class="chapter" data-level="" data-path="演習-7-6.html"><a href="演習-7-6.html"><i class="fa fa-check"></i>演習 7</a>
 <ul>
-<li class="chapter" data-level="" data-path="演習-11-1.html"><a href="演習-11-1.html#解答例-10"><i class="fa fa-check"></i>解答例</a></li>
+<li class="chapter" data-level="" data-path="演習-7-6.html"><a href="演習-7-6.html#解答例-5"><i class="fa fa-check"></i>解答例</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="演習-12-1.html"><a href="演習-12-1.html"><i class="fa fa-check"></i>演習 12</a>
+<li class="chapter" data-level="" data-path="演習-7-7.html"><a href="演習-7-7.html"><i class="fa fa-check"></i>演習 7</a>
 <ul>
-<li class="chapter" data-level="" data-path="演習-12-1.html"><a href="演習-12-1.html#解答例-11"><i class="fa fa-check"></i>解答例</a></li>
+<li class="chapter" data-level="" data-path="演習-7-7.html"><a href="演習-7-7.html#解答例-6"><i class="fa fa-check"></i>解答例</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="演習-13-2.html"><a href="演習-13-2.html"><i class="fa fa-check"></i>演習 13</a>
+<li class="chapter" data-level="" data-path="演習-7-8.html"><a href="演習-7-8.html"><i class="fa fa-check"></i>演習 7</a>
 <ul>
-<li class="chapter" data-level="" data-path="演習-13-2.html"><a href="演習-13-2.html#解答例-12"><i class="fa fa-check"></i>解答例</a></li>
+<li class="chapter" data-level="" data-path="演習-7-8.html"><a href="演習-7-8.html#解答例-7"><i class="fa fa-check"></i>解答例</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="演習-7-9.html"><a href="演習-7-9.html"><i class="fa fa-check"></i>演習 7</a>
+<ul>
+<li class="chapter" data-level="" data-path="演習-7-9.html"><a href="演習-7-9.html#解答例-8"><i class="fa fa-check"></i>解答例</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="演習-7-10.html"><a href="演習-7-10.html"><i class="fa fa-check"></i>演習 7</a>
+<ul>
+<li class="chapter" data-level="" data-path="演習-7-10.html"><a href="演習-7-10.html#解答例-9"><i class="fa fa-check"></i>解答例</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="演習-7-11.html"><a href="演習-7-11.html"><i class="fa fa-check"></i>演習 7</a>
+<ul>
+<li class="chapter" data-level="" data-path="演習-7-11.html"><a href="演習-7-11.html#解答例-10"><i class="fa fa-check"></i>解答例</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="演習-7-12.html"><a href="演習-7-12.html"><i class="fa fa-check"></i>演習 7</a>
+<ul>
+<li class="chapter" data-level="" data-path="演習-7-12.html"><a href="演習-7-12.html#解答例-11"><i class="fa fa-check"></i>解答例</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="演習-7-13.html"><a href="演習-7-13.html"><i class="fa fa-check"></i>演習 7</a>
+<ul>
+<li class="chapter" data-level="" data-path="演習-7-13.html"><a href="演習-7-13.html#解答例-12"><i class="fa fa-check"></i>解答例</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="D" data-path="environments-2.html"><a href="environments-2.html"><i class="fa fa-check"></i><b>D</b> Environments 2</a>
@@ -400,43 +322,40 @@ div.csl-indent {
 <li class="chapter" data-level="E.4.1" data-path="install-git.html"><a href="install-git.html#git"><i class="fa fa-check"></i><b>E.4.1</b> Git</a></li>
 <li class="chapter" data-level="E.4.2" data-path="install-git.html"><a href="install-git.html#git-client"><i class="fa fa-check"></i><b>E.4.2</b> Git Client</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="F" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>F</b> RStudio Server</a>
+<li class="chapter" data-level="E.5" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html"><i class="fa fa-check"></i><b>E.5</b> Setup RStudio Sever with Docker</a>
 <ul>
-<li class="chapter" data-level="F.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html"><i class="fa fa-check"></i><b>F.1</b> Setup RStudio Sever with Docker</a>
-<ul>
-<li class="chapter" data-level="F.1.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#enable-hyper-v-windows-only"><i class="fa fa-check"></i><b>F.1.1</b> Enable Hyper-V (Windows Only)</a></li>
-<li class="chapter" data-level="F.1.2" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-and-install-docker-desktop"><i class="fa fa-check"></i><b>F.1.2</b> Download and Install Docker Desktop</a></li>
-<li class="chapter" data-level="F.1.3" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-docker-image"><i class="fa fa-check"></i><b>F.1.3</b> Download Docker Image</a></li>
-<li class="chapter" data-level="F.1.4" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#run-container"><i class="fa fa-check"></i><b>F.1.4</b> Run Container</a></li>
+<li class="chapter" data-level="E.5.1" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#enable-hyper-v-windows-only"><i class="fa fa-check"></i><b>E.5.1</b> Enable Hyper-V (Windows Only)</a></li>
+<li class="chapter" data-level="E.5.2" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-and-install-docker-desktop"><i class="fa fa-check"></i><b>E.5.2</b> Download and Install Docker Desktop</a></li>
+<li class="chapter" data-level="E.5.3" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#download-docker-image"><i class="fa fa-check"></i><b>E.5.3</b> Download Docker Image</a></li>
+<li class="chapter" data-level="E.5.4" data-path="setup-rstudio-sever-with-docker.html"><a href="setup-rstudio-sever-with-docker.html#run-container"><i class="fa fa-check"></i><b>E.5.4</b> Run Container</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="G" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>G</b> RStudio IDE</a>
+<li class="chapter" data-level="F" data-path="rstudio-ide.html"><a href="rstudio-ide.html"><i class="fa fa-check"></i><b>F</b> RStudio IDE</a>
 <ul>
-<li class="chapter" data-level="G.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>G.1</b> Overview</a></li>
-<li class="chapter" data-level="G.2" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i><b>G.2</b> Keyboard Shortcuts</a></li>
-<li class="chapter" data-level="G.3" data-path="writing-r-code.html"><a href="writing-r-code.html"><i class="fa fa-check"></i><b>G.3</b> Writing R code</a></li>
-<li class="chapter" data-level="G.4" data-path="global-options.html"><a href="global-options.html"><i class="fa fa-check"></i><b>G.4</b> Global Options</a>
+<li class="chapter" data-level="F.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>F.1</b> Overview</a></li>
+<li class="chapter" data-level="F.2" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i><b>F.2</b> Keyboard Shortcuts</a></li>
+<li class="chapter" data-level="F.3" data-path="writing-r-code.html"><a href="writing-r-code.html"><i class="fa fa-check"></i><b>F.3</b> Writing R code</a></li>
+<li class="chapter" data-level="F.4" data-path="global-options.html"><a href="global-options.html"><i class="fa fa-check"></i><b>F.4</b> Global Options</a>
 <ul>
-<li class="chapter" data-level="G.4.1" data-path="global-options.html"><a href="global-options.html#general"><i class="fa fa-check"></i><b>G.4.1</b> General</a></li>
-<li class="chapter" data-level="G.4.2" data-path="global-options.html"><a href="global-options.html#code"><i class="fa fa-check"></i><b>G.4.2</b> Code</a></li>
-<li class="chapter" data-level="G.4.3" data-path="global-options.html"><a href="global-options.html#appearance"><i class="fa fa-check"></i><b>G.4.3</b> Appearance</a></li>
-<li class="chapter" data-level="G.4.4" data-path="global-options.html"><a href="global-options.html#pane-layout"><i class="fa fa-check"></i><b>G.4.4</b> Pane Layout</a></li>
-<li class="chapter" data-level="G.4.5" data-path="global-options.html"><a href="global-options.html#packages"><i class="fa fa-check"></i><b>G.4.5</b> Packages</a></li>
-<li class="chapter" data-level="G.4.6" data-path="global-options.html"><a href="global-options.html#r-markdown-1"><i class="fa fa-check"></i><b>G.4.6</b> R Markdown</a></li>
-<li class="chapter" data-level="G.4.7" data-path="global-options.html"><a href="global-options.html#sweave"><i class="fa fa-check"></i><b>G.4.7</b> Sweave</a></li>
-<li class="chapter" data-level="G.4.8" data-path="global-options.html"><a href="global-options.html#spelling"><i class="fa fa-check"></i><b>G.4.8</b> Spelling</a></li>
-<li class="chapter" data-level="G.4.9" data-path="global-options.html"><a href="global-options.html#gitsvn"><i class="fa fa-check"></i><b>G.4.9</b> Git/SVN</a></li>
-<li class="chapter" data-level="G.4.10" data-path="global-options.html"><a href="global-options.html#publishing"><i class="fa fa-check"></i><b>G.4.10</b> Publishing</a></li>
-<li class="chapter" data-level="G.4.11" data-path="global-options.html"><a href="global-options.html#terminal"><i class="fa fa-check"></i><b>G.4.11</b> Terminal</a></li>
+<li class="chapter" data-level="F.4.1" data-path="global-options.html"><a href="global-options.html#general"><i class="fa fa-check"></i><b>F.4.1</b> General</a></li>
+<li class="chapter" data-level="F.4.2" data-path="global-options.html"><a href="global-options.html#code"><i class="fa fa-check"></i><b>F.4.2</b> Code</a></li>
+<li class="chapter" data-level="F.4.3" data-path="global-options.html"><a href="global-options.html#appearance"><i class="fa fa-check"></i><b>F.4.3</b> Appearance</a></li>
+<li class="chapter" data-level="F.4.4" data-path="global-options.html"><a href="global-options.html#pane-layout"><i class="fa fa-check"></i><b>F.4.4</b> Pane Layout</a></li>
+<li class="chapter" data-level="F.4.5" data-path="global-options.html"><a href="global-options.html#packages"><i class="fa fa-check"></i><b>F.4.5</b> Packages</a></li>
+<li class="chapter" data-level="F.4.6" data-path="global-options.html"><a href="global-options.html#r-markdown-1"><i class="fa fa-check"></i><b>F.4.6</b> R Markdown</a></li>
+<li class="chapter" data-level="F.4.7" data-path="global-options.html"><a href="global-options.html#sweave"><i class="fa fa-check"></i><b>F.4.7</b> Sweave</a></li>
+<li class="chapter" data-level="F.4.8" data-path="global-options.html"><a href="global-options.html#spelling"><i class="fa fa-check"></i><b>F.4.8</b> Spelling</a></li>
+<li class="chapter" data-level="F.4.9" data-path="global-options.html"><a href="global-options.html#gitsvn"><i class="fa fa-check"></i><b>F.4.9</b> Git/SVN</a></li>
+<li class="chapter" data-level="F.4.10" data-path="global-options.html"><a href="global-options.html#publishing"><i class="fa fa-check"></i><b>F.4.10</b> Publishing</a></li>
+<li class="chapter" data-level="F.4.11" data-path="global-options.html"><a href="global-options.html#terminal"><i class="fa fa-check"></i><b>F.4.11</b> Terminal</a></li>
 </ul></li>
-<li class="chapter" data-level="G.5" data-path="project-options.html"><a href="project-options.html"><i class="fa fa-check"></i><b>G.5</b> Project Options</a></li>
+<li class="chapter" data-level="F.5" data-path="project-options.html"><a href="project-options.html"><i class="fa fa-check"></i><b>F.5</b> Project Options</a></li>
 </ul></li>
-<li class="chapter" data-level="H" data-path="cloud-ide.html"><a href="cloud-ide.html"><i class="fa fa-check"></i><b>H</b> Cloud IDE</a>
+<li class="chapter" data-level="G" data-path="cloud-ide.html"><a href="cloud-ide.html"><i class="fa fa-check"></i><b>G</b> Cloud IDE</a>
 <ul>
-<li class="chapter" data-level="H.1" data-path="rstudio-cloud-ga.html"><a href="rstudio-cloud-ga.html"><i class="fa fa-check"></i><b>H.1</b> RStudio Cloud GA</a></li>
-<li class="chapter" data-level="H.2" data-path="exploratory.html"><a href="exploratory.html"><i class="fa fa-check"></i><b>H.2</b> Exploratory</a></li>
-<li class="chapter" data-level="H.3" data-path="binder.html"><a href="binder.html"><i class="fa fa-check"></i><b>H.3</b> binder</a></li>
+<li class="chapter" data-level="G.1" data-path="rstudio-cloud-ga.html"><a href="rstudio-cloud-ga.html"><i class="fa fa-check"></i><b>G.1</b> RStudio Cloud GA</a></li>
+<li class="chapter" data-level="G.2" data-path="exploratory.html"><a href="exploratory.html"><i class="fa fa-check"></i><b>G.2</b> Exploratory</a></li>
+<li class="chapter" data-level="G.3" data-path="binder.html"><a href="binder.html"><i class="fa fa-check"></i><b>G.3</b> binder</a></li>
 </ul></li>
 </ul>
 
@@ -459,7 +378,7 @@ div.csl-indent {
 <h1 class="title">Rのすゝめ</h1>
 <h2 class="subtitle"><em>〜 Rによるデータ分析事始め 〜</em></h2>
 <p class="author"><em>Sampo Suzuki, CC 4.0 BY-NC-SA</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-05-28</em></p>
+<p class="date"><em>2022-02-27</em></p>
 </div>
 <div id="license" class="section level1 unnumbered">
 <h1>License</h1>
@@ -503,7 +422,6 @@ https://github.com/rstudio/rmarkdown/issues/2024
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
-<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
 <script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -540,32 +458,21 @@ gitbook.start({
 "text": null
 },
 "download": ["R.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
 },
 "toolbar": {
 "position": "fixed"
-},
-"search": true
+}
 });
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

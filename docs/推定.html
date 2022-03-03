@@ -24,7 +24,7 @@
 <meta name="author" content="Sampo Suzuki, CC 4.0 BY-NC-SA" />
 
 
-<meta name="date" content="2021-05-28" />
+<meta name="date" content="2021-05-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -204,10 +204,11 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="推定.html"><a href="推定.html"><i class="fa fa-check"></i><b>2.2</b> 推定</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="推定.html"><a href="推定.html#点推定"><i class="fa fa-check"></i><b>2.2.1</b> 点推定</a></li>
-<li class="chapter" data-level="2.2.2" data-path="推定.html"><a href="推定.html#区間推定"><i class="fa fa-check"></i><b>2.2.2</b> 区間推定</a></li>
-<li class="chapter" data-level="2.2.3" data-path="推定.html"><a href="推定.html#まとめ-1"><i class="fa fa-check"></i><b>2.2.3</b> まとめ</a></li>
-<li class="chapter" data-level="2.2.4" data-path="推定.html"><a href="推定.html#演習-4"><i class="fa fa-check"></i><b>2.2.4</b> 演習</a></li>
+<li class="chapter" data-level="2.2.1" data-path="推定.html"><a href="推定.html#母集団と標本"><i class="fa fa-check"></i><b>2.2.1</b> 母集団と標本</a></li>
+<li class="chapter" data-level="2.2.2" data-path="推定.html"><a href="推定.html#点推定"><i class="fa fa-check"></i><b>2.2.2</b> 点推定</a></li>
+<li class="chapter" data-level="2.2.3" data-path="推定.html"><a href="推定.html#区間推定"><i class="fa fa-check"></i><b>2.2.3</b> 区間推定</a></li>
+<li class="chapter" data-level="2.2.4" data-path="推定.html"><a href="推定.html#まとめ-1"><i class="fa fa-check"></i><b>2.2.4</b> まとめ</a></li>
+<li class="chapter" data-level="2.2.5" data-path="推定.html"><a href="推定.html#演習-4"><i class="fa fa-check"></i><b>2.2.5</b> 演習</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="検定.html"><a href="検定.html"><i class="fa fa-check"></i><b>2.3</b> 検定</a>
 <ul>
@@ -457,19 +458,25 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="推定" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> 推定</h2>
-<p>データを分析する前には分析対象となるデータがどのような特徴を持っているか確認しておくことが重要であるとよく言われます。この特徴を見るには要約統計量を使う場合が多いです。要約統計量はデータの分布の特徴を表すもので、記述統計量や基本統計量と呼ばれることもあります。</p>
-<div id="点推定" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> 点推定</h3>
+<p>前節で扱った要約統計量は与えられたデータに関する特徴を求めるもので、一般的には<strong>記述統計</strong>と呼ばれる手法に分類されます。一部、不偏推定量の記述がありますが、こちらは確率変数と確率分布の確率論をベースとした<strong>推測統計</strong>と呼ばれる手法に分類されます。推測統計は大きく統計的推定と統計的仮説検定に二分されます。本節では前者の統計的<strong>推定</strong>を扱います。</p>
+<div id="母集団と標本" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> 母集団と標本</h3>
+<p>母集団とは分析の結果をもって説明したいデータの全体集合です。母集団の全てのデータを調べることができれば前述の記述統計の手法を適用することができますが、大抵の場合、母集団はとてつもなく大きな集団であったり、全数調査が困難<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>だったりします。
+そこで、標本と呼ばれる母集団から抽出した部分集合のデータが示す特徴を用いて母集団の特徴を推測することになります。しかしながら、標本のとり方よってはデータが偏ってしまい母集団の特徴からずれてしまう可能性がありす。そこで、確率論を用いて標本と母集団とのずれ（誤差の大きさ）を評価し信頼度つきで母集団の特徴を推測する推測統計の出番です。</p>
 </div>
-<div id="区間推定" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> 区間推定</h3>
+<div id="点推定" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> 点推定</h3>
+<p>点推定は標本から求められる一つの推定値をもって母集団の特徴とする推定方法です。例えば、前節で出てきた不偏分散は、まさにこの点推定の結果です。</p>
 </div>
-<div id="まとめ-1" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> まとめ</h3>
+<div id="区間推定" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> 区間推定</h3>
+</div>
+<div id="まとめ-1" class="section level3" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> まとめ</h3>
 <!-- \newpage -->
 </div>
-<div id="演習-4" class="section level3" number="2.2.4">
-<h3><span class="header-section-number">2.2.4</span> 演習</h3>
+<div id="演習-4" class="section level3" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> 演習</h3>
 <div id="演習-4-1" class="section level4 unnumbered">
 <h4>演習 4</h4>
 </div>
@@ -481,6 +488,12 @@ div.csl-indent {
 
 </div>
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="9">
+<li id="fn9"><p>例えばテレビの世帯視聴率のように全世帯のデータを集めるとコスト的に見合わないような場合<a href="推定.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 

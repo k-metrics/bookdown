@@ -1,30 +1,27 @@
 ---
 title: "Rのすゝめ"
-subtitle: "〜 Rによるデータ分析事始め 〜"
 author: "Sampo Suzuki, CC 4.0 BY-NC-SA"
 date: "`r format(Sys.Date(), format = '%Y-%m-%d')`"
-description: "本書はデータ分析勉強会で学んだ成果をまとめたものです"
+output: pdf_document
+description: 本書はデータ分析勉強会で学んだ成果をまとめたものです
 site: bookdown::bookdown_site
 github-repo: k-metrics/bookdown
-# LaTeX関連の設定はベースとなるRmdに記述しないと正しく認識されません
-always_allow_html: true  # 一種の呪文
-# 参考文献の引用に関する設定
-bibliography: [bib/references.bib, bib/packages.bib]
-link-citations: true     # 参考文献一覧へのリンクを有効化
-colorlinks: true         # ハイパーリンクを色分けする
-lot: true                # 表一覧(List of tables)の出力
-lof: true                # 図一覧(List of figures)の出力
-# documentclass: ./latex/krantz    # ドキュメントクラス
-fig_crop: false
-fontsize: 12pt           # 本文のフォントサイズ
-linestretch: 1.1         # 行間の指定
-links-as-notes: true     # ハイパーリンク先を脚注に記載
-# LaTeXのパッケージ指定とフォントは latex/preamble.tex に移動
-# 以下はLaTeXでなくpandocのオプションらしい
-## モノフォントのスケーリングを調整する
-mainfontoptions: "Scale=MatchUppercase"
-monofontoptions: "Scale=0.8"      # 0.96がベストらしいが…
-CJKoptions: "Scale=1.0"
+always_allow_html: yes
+bibliography:
+- bib/references.bib
+- bib/packages.bib
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fig_crop: no
+fontsize: 12pt
+linestretch: 1.1
+links-as-notes: yes
+mainfontoptions: Scale=MatchUppercase
+monofontoptions: Scale=0.8
+CJKoptions: Scale=1.0
+subtitle: 〜 Rによるデータ分析事始め 〜
 ---
 
 ```{css, include=FALSE}
