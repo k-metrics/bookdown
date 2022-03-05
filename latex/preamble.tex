@@ -47,14 +47,14 @@
 \usepackage{zxjatype}
 \usepackage{pxrubrica}                  % ルビ用
 \usepackage{hyperref}                   % ハイパーリンク用必要？
-% \usepackage{tcolorbox}                  % 色付き囲い
+\usepackage{tcolorbox}                  % 色付き囲い
 
 % --- Index ------------------------------------------------------------------
 % https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90
 % これを指定するとIndex(索引)は作成されるが参照ページがズレる
 % 中間ファイルの.indではページはズレていないので、その後の結合処理がおかしい
-% \usepackage{makeidx}
-% \makeindex
+\usepackage{makeidx}
+\makeindex
 % \usepackage{showidx}                  % 索引確認用
 
 % --- Table of Contentes ------------------------------------------------------
@@ -96,109 +96,22 @@
 %   b：版面下端に置く
 %   p：単独のページに置く
 
-% --- 空ページにヘッダーを設定する（機能していない） --------------------------
-% \makeatletter
-% \def\emptypage@emptypage{
-%     \hbox{}
-%     \thispagestyle{headings}
-%     \newpage
-% }
-% \def\cleardoublepage{
-%         \clearpage
-%         \if@twoside
-%             \ifodd\c@page
-%                 % do nothing
-%             \else
-%                 \emptypage@emptypage
-%             \fi
-%         \fi
-%     }
-% \makeatother
+% --- 色付き囲いの定義 --------------------------------------------------------
+% https://marukunalufd0123.hatenablog.com/entry/2019/03/15/071717
+% 利用する場合は先頭に全角空白を入れること
+% Round Box
+\newtcolorbox{info-box}[2][]{colback=cyan!5!white, colframe=cyan!60!black,
+title={#2}, #1}
+\newtcolorbox{warning-box}[2][]{colback=orange!5!white, 
+colframe=orange!80!black, title={#2}, #1}
+\newtcolorbox{error-box}[2][]{colback=red!5!white, colframe=red!75!black,
+title={#2}, #1}
 
-% --- 色付き囲いの定義（上手く動かない...）
-% \newtcolorbox{info-box}{colback=cyan!5!white,arc=0pt,outer arc=0pt,colframe=cyan!60!black}
-% \newtcolorbox{warning-box}{colback=orange!5!white,arc=0pt,outer arc=0pt,colframe=orange!80!black}
-% \newtcolorbox{error-box}{colback=red!5!white,arc=0pt,outer arc=0pt,colframe=red!75!black}
+% Square Box
+% \newtcolorbox{info-box}[2][]{colback=cyan!5!white, arc=0pt, outer arc=0pt,
+% colframe=cyan!60!black, title={#2}, #1}
+% \newtcolorbox{warning-box}[2][]{colback=orange!5!white, arc=0pt, outer arc=0pt,
+% colframe=orange!80!black, title={#2}, #1}
+% \newtcolorbox{error-box}[2][]{colback=red!5!white, arc=0pt, outer arc=0pt,
+% colframe=red!75!black, title={#2}, #1}
 
-% --- 参考文献一覧を目次に表示させる ------------------------------------------
-% \makeatletter
-% \renewenvironment{thebibliography}[1]
-% {\chapter*{\bibname\@mkboth{\bibname}{\bibname}}
-%    \addcontentsline{toc}{chapter}{\bibname}%
-%    \list{\@biblabel{\@arabic\c@enumiv}}%
-%         {\settowidth\labelwidth{\@biblabel{#1}}%
-%          \leftmargin\labelwidth
-%          \advance\leftmargin\labelsep
-%          \@openbib@code
-%          \usecounter{enumiv}%
-%          \let\p@enumiv\@empty
-%          \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-%    \sloppy
-%    \clubpenalty4000
-%    \@clubpenalty\clubpenalty
-%    \widowpenalty4000%
-%    \sfcode`\.\@m}
-%   {\def\@noitemerr
-%     {\@latex@warning{Empty `thebibliography' environment}}%
-%    \endlist}
-% \makeatother
-
-% --- 特殊ブロックをLaTeXで表現するためのマクロ -------------------------------
-% https://github.com/Gedevan-Aleksizde/Japan.R2019/blob/master/latex/preamble.tex
-\makeatletter
-\newenvironment{kframe}{%
-\medskip{}
-\setlength{\fboxsep}{.8em}
- \def\at@end@of@kframe{}%
- \ifinner\ifhmode%
-  \def\at@end@of@kframe{\end{minipage}}%
-  \begin{minipage}{\columnwidth}%
- \fi\fi%
- \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
- \colorbox{shadecolor}{##1}\hskip-\fboxsep
-     % There is no \\@totalrightmargin, so:
-     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
- \MakeFramed {\advance\hsize-\width
-   \@totalleftmargin\z@ \linewidth\hsize
-   \@setminipage}}%
- {\par\unskip\endMakeFramed%
- \at@end@of@kframe}
-\makeatother
-
-\makeatletter
-\@ifundefined{Shaded}{
-}{\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}}
-\makeatother
-
-\newenvironment{rmdblock}[1]
-  {
-  \begin{itemize}
-  \renewcommand{\labelitemi}{
-    \raisebox{-.7\height}[0pt][0pt]{
-      % {\setkeys{Gin}{width=3em,keepaspectratio}\includegraphics{images/#1}}
-      {\setkeys{Gin}{width=3em,keepaspectratio}}
-    }
-  }
-  \setlength{\fboxsep}{1em}
-  \begin{kframe}
-  \item
-  }
-  {
-  \end{kframe}
-  \end{itemize}
-  }
-\newenvironment{rmdnote}
-  {\begin{rmdblock}{note}}
-  {\end{rmdblock}}
-\newenvironment{rmdcaution}
-  {\begin{rmdblock}{caution}}
-  {\end{rmdblock}}
-\newenvironment{rmdimportant}
-  {\begin{rmdblock}{important}}
-  {\end{rmdblock}}
-\newenvironment{rmdtip}
-  {\begin{rmdblock}{tip}}
-  {\end{rmdblock}}
-\newenvironment{rmdwarning}
-  {\begin{rmdblock}{warning}}
-  {\end{rmdblock}}

@@ -15,7 +15,7 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2022-03-03}
+\date{2022-03-05}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -177,14 +177,14 @@
 \usepackage{zxjatype}
 \usepackage{pxrubrica}                  % ルビ用
 \usepackage{hyperref}                   % ハイパーリンク用必要？
-% \usepackage{tcolorbox}                  % 色付き囲い
+\usepackage{tcolorbox}                  % 色付き囲い
 
 % --- Index ------------------------------------------------------------------
 % https://texwiki.texjp.org/?%E7%B4%A2%E5%BC%95%E4%BD%9C%E6%88%90
 % これを指定するとIndex(索引)は作成されるが参照ページがズレる
 % 中間ファイルの.indではページはズレていないので、その後の結合処理がおかしい
-% \usepackage{makeidx}
-% \makeindex
+\usepackage{makeidx}
+\makeindex
 % \usepackage{showidx}                  % 索引確認用
 
 % --- Table of Contentes ------------------------------------------------------
@@ -226,6 +226,48 @@
 %   b：版面下端に置く
 %   p：単独のページに置く
 
+% --- 色付き囲いの定義 --------------------------------------------------------
+% https://marukunalufd0123.hatenablog.com/entry/2019/03/15/071717
+% 利用する場合は先頭に全角空白を入れること
+% Round Box
+\newtcolorbox{info-box}[2][]{colback=cyan!5!white, colframe=cyan!60!black,
+title={#2}, #1}
+\newtcolorbox{warning-box}[2][]{colback=orange!5!white, 
+colframe=orange!80!black, title={#2}, #1}
+\newtcolorbox{error-box}[2][]{colback=red!5!white, colframe=red!75!black,
+title={#2}, #1}
+
+% Square Box
+% \newtcolorbox{info-box}[2][]{colback=cyan!5!white, arc=0pt, outer arc=0pt,
+% colframe=cyan!60!black, title={#2}, #1}
+% \newtcolorbox{warning-box}[2][]{colback=orange!5!white, arc=0pt, outer arc=0pt,
+% colframe=orange!80!black, title={#2}, #1}
+% \newtcolorbox{error-box}[2][]{colback=red!5!white, arc=0pt, outer arc=0pt,
+% colframe=red!75!black, title={#2}, #1}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
+\begin{document}
+\maketitle
+
 % --- 空ページにヘッダーを設定する（機能していない） --------------------------
 % \makeatletter
 % \def\emptypage@emptypage{
@@ -245,33 +287,28 @@
 %     }
 % \makeatother
 
-% --- 色付き囲いの定義（上手く動かない...）
-% \newtcolorbox{info-box}{colback=cyan!5!white,arc=0pt,outer arc=0pt,colframe=cyan!60!black}
-% \newtcolorbox{warning-box}{colback=orange!5!white,arc=0pt,outer arc=0pt,colframe=orange!80!black}
-% \newtcolorbox{error-box}{colback=red!5!white,arc=0pt,outer arc=0pt,colframe=red!75!black}
-
 % --- 参考文献一覧を目次に表示させる ------------------------------------------
-% \makeatletter
-% \renewenvironment{thebibliography}[1]
-% {\chapter*{\bibname\@mkboth{\bibname}{\bibname}}
-%    \addcontentsline{toc}{chapter}{\bibname}%
-%    \list{\@biblabel{\@arabic\c@enumiv}}%
-%         {\settowidth\labelwidth{\@biblabel{#1}}%
-%          \leftmargin\labelwidth
-%          \advance\leftmargin\labelsep
-%          \@openbib@code
-%          \usecounter{enumiv}%
-%          \let\p@enumiv\@empty
-%          \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-%    \sloppy
-%    \clubpenalty4000
-%    \@clubpenalty\clubpenalty
-%    \widowpenalty4000%
-%    \sfcode`\.\@m}
-%   {\def\@noitemerr
-%     {\@latex@warning{Empty `thebibliography' environment}}%
-%    \endlist}
-% \makeatother
+\makeatletter
+\renewenvironment{thebibliography}[1]
+{\chapter*{\bibname\@mkboth{\bibname}{\bibname}}
+   \addcontentsline{toc}{chapter}{\bibname}%
+   \list{\@biblabel{\@arabic\c@enumiv}}%
+        {\settowidth\labelwidth{\@biblabel{#1}}%
+         \leftmargin\labelwidth
+         \advance\leftmargin\labelsep
+         \@openbib@code
+         \usecounter{enumiv}%
+         \let\p@enumiv\@empty
+         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+   \sloppy
+   \clubpenalty4000
+   \@clubpenalty\clubpenalty
+   \widowpenalty4000%
+   \sfcode`\.\@m}
+  {\def\@noitemerr
+    {\@latex@warning{Empty `thebibliography' environment}}%
+   \endlist}
+\makeatother
 
 % --- 特殊ブロックをLaTeXで表現するためのマクロ -------------------------------
 % https://github.com/Gedevan-Aleksizde/Japan.R2019/blob/master/latex/preamble.tex
@@ -332,28 +369,6 @@
 \newenvironment{rmdwarning}
   {\begin{rmdblock}{warning}}
   {\end{rmdblock}}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
-\usepackage[]{natbib}
-\bibliographystyle{plainnat}
-
-\begin{document}
-\maketitle
 
 {
 \hypersetup{linkcolor=}
@@ -417,17 +432,19 @@
 \chapter*{はじめに}\label{ux306fux3058ux3081ux306b}}
 \addcontentsline{toc}{chapter}{はじめに}
 
-　ソフトウェア開発において「データに基づく品質管理」が必要と言われるようになってから久しくなりますが、様々な理由でデータに基づく管理を実践している組織はまだまだ少数派ではないでしょうか？しかし、世の中の流れは「データドリブン」というキーワードに代表されるようにデータを使いこなせる組織が優位に立てる時代、数学が利益を生み出す\href{https://www.meti.go.jp/shingikai/economy/risukei_jinzai/20190326_report.html}{数理資本主義}の時代と言われています。
+　最近はデータを使いこなせる者、つまり、数学\footnote{純粋数学、応用数学、統計学、確率論、などの広範囲な概念としての数学を意味します}を使いこなしたものがより優位に立ち利益を手にする\href{https://www.meti.go.jp/shingikai/economy/risukei_jinzai/20190326_report.html}{数理資本主義}の時代と言われています。ソフトウェア開発においてもリリース前品質を担保するための〈データに基づく〉統計的な品質管理が有用であると言われていますが、この統計的品質管理を実践するためには統計分析と分析ツール（統計的コンピューティング）に関する知識が必要になります。
 
-　\href{https://www.juse-p.co.jp/products/view/442}{『データ指向のソフトウェア品質マネジメント』}は、日本のソフトウェア品質管理におけるデータ管理の必要性とデータ分析に必要な知識を解説している数少ない書籍です。この書籍の著者の一人である小池氏が主催している \href{https://sites.google.com/site/kantometrics/home}{データ分析勉強会}では、メトリクス分析に興味をもつ有志が統計分析を実践するために統計的コンピューティングを中心に様々な知識や手法を学んでいます。
+　『データ指向のソフトウェア品質マネジメント』\citep{DataOrientedManagement}は、ソフトウェア開発における統計的品質管理の必要性と品質データの分析に必要となる統計的コンピューティングに関する基本的な知識を解説している数少ない書籍です。この書籍の著者の一人である小池氏が主催し筆者も参加している \href{https://sites.google.com/view/kanto-metrics}{データ分析勉強会}では、統計的コンピューティングに興味をもつ有志が様々な知識や手法を学んでいます。
 
-　本書は実務でメトリクス分析を行いたいソフトウェア品質技術者をはじめとした統計的コンピューティングに興味を持っている方々に \href{https://www.r-project.org/}{R言語（以降、\textbf{R}と記述）}の基本的な知識を紹介しています。データ分析勉強会を通じて学んだ分析手法を実務で実践したい方の一助になれば幸いです。
+　本書は実務でメトリクス分析を行いたいソフトウェア品質技術者をはじめとした統計的コンピューティングに興味を持っている方々に統計に特化した \href{https://www.r-project.org/}{R言語（以降、\textbf{R}と記述）}の基本的な知識を紹介します。
 
 \hypertarget{ux60f3ux5b9aux8aadux8005}{%
 \section*{想定読者}\label{ux60f3ux5b9aux8aadux8005}}
 \addcontentsline{toc}{section}{想定読者}
 
-　本書は統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識を有しており\textbf{R}を用いて分析を行いたいと考えている方々を読者として想定しています。本書では\textbf{R}を実行するための環境構築に関する詳細な解説は行いませんので、インストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえず\textbf{R}を使ってみたいという方は \href{https://colab.research.google.com/notebook\#create=true\&language=r}{Google Colaboratory（以降、\textbf{Google Colab}）}\index{Google Colaboratory}の利用をおすゝめします。
+　本書はデータ分析勉強会を通じて学んだ知識を実務に適用したい方や統計的コンピューティングに興味があり基本的なコンピュータの知識と基礎的な統計の知識\footnote{統計検定4級程度を想定しています}を有している方を想定しています。\textbf{R}を実行するための環境構築に関する詳細な解説は行いませんので、インストール手順などは市販の書籍やインターネットの情報を参考にしてください。なお、環境構築に不安があるけれどもとりあえず\textbf{R}を使ってみたいという方は \href{https://colab.research.google.com/notebook\#create=true\&language=r}{Google Colaboratory（以降、\textbf{Google Colab}）}\index{Google Colaboratory}の利用をおすゝめします。
+
+\newpage
 
 \hypertarget{ux8868ux8a18ux30ebux30fcux30eb}{%
 \section*{表記ルール}\label{ux8868ux8a18ux30ebux30fcux30eb}}
@@ -445,16 +462,16 @@
 対象 & 表記方法 & 表記例 \\
 \midrule
 \endhead
-ハイパーリンク & 脚注にURL表記\footnote{PDF形式のみ。\textsuperscript{No.}の部分は章ごとの通し番号} & CRAN\textsuperscript{No.} \\
-パス・ファイル名 & モノフォント\footnote{タイプライタフォントとも呼ばれる等幅フォント} & \texttt{sample/sample.Rmd} \\
+ハイパーリンク & 脚注にURL表記\footnote{PDF形式のみで\textsuperscript{No.}の部分は章ごとの通し番号になっています} & CRAN\textsuperscript{No.} \\
+パス・ファイル名 & モノフォント\footnote{タイプライタフォントとも呼ばれる等幅フォントです} & \texttt{sample/sample.Rmd} \\
 パッケージ名 & 太字のモノフォント & \textbf{\texttt{tidyverse}} \\
 変数・オブジェクト名 & モノフォント & \texttt{Sepela.Width} \\
-関数名 & モノフォントで()付き\footnote{数式内に関数がある場合は数式に同じ} & \texttt{print()} \\
+関数名 & モノフォントで()付き\footnote{数式内に関数がある場合は数式と同じ表記になります} & \texttt{print()} \\
 コード & モノフォント（プロンプトなし） & \texttt{library(tidyverse)} \\
 コードの実行結果 & モノフォント（\texttt{\#\#} プロンプト） & \texttt{\#\#\ output...} \\
 キーボードのキー & モノフォントで{[}{]}付き & {[}\texttt{Ctrl}{]}+{[}\texttt{S}{]} \\
 数式 & \LaTeX 数式（math mode） & \(y = ax^2 + b\) \\
-参考文献・資料\footnote{カッコ内は参考文献一覧への文書内ハイパーリンク} & {[}{]}または()付き & {[}Wickham, 2021{]} \\
+参考文献・資料\footnote{カッコ内は参考文献一覧への文書内ハイパーリンクです} & {[}{]}または()付き & {[}Wickham, 2021{]} \\
 \bottomrule
 \end{longtable}
 
@@ -462,46 +479,42 @@
 \section*{なぜRか？}\label{ux306aux305crux304b}}
 \addcontentsline{toc}{section}{なぜRか？}
 
-　データ分析を行うためには適切な分析ツールが必要不可欠です。\textbf{R}は統計分析に特化しているオープンソースの言語でデータ分析に最適なツールのひとつです。\textbf{R}がデータ分析に向いている理由をまとめているのが\href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{``Six Reasons To Learn R For Business'', R Blogger}です。
+　統計的コンピューティングには適切なツールが必要不可欠です。\textbf{R}は統計分析に特化しているオープンソースのプログラミング言語です。\textbf{R}がデータ分析に向いている理由を簡潔にまとめているのが\href{https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/}{『Six Reasons To Learn R For Business』, R Blogger}です。
 
 \begin{quote}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  R Has The Best \emph{\textbf{Overall Qualities}}
+  \textbf{R} Has The Best \emph{\textbf{Overall Qualities}}
 \item
-  R Is Data Science \emph{\textbf{For Non-Computer Scientists}}
+  \textbf{R} Is Data Science \emph{\textbf{For Non-Computer Scientists}}
 \item
-  Learning R Is \emph{\textbf{Easy With The Tidyverse}}
+  Learning \textbf{R} Is \emph{\textbf{Easy With The Tidyverse}}
 \item
-  R Has \emph{\textbf{Brains, Muscle, And Heart}}
+  \textbf{R} Has \emph{\textbf{Brains, Muscle, And Heart}}
 \item
-  R Is Built \emph{\textbf{For Business}}
+  \textbf{R} Is Built \emph{\textbf{For Business}}
 \item
-  R \emph{\textbf{Community Support}}
+  \textbf{R} \emph{\textbf{Community Support}}
 \end{enumerate}
 \end{quote}
 
-　\textbf{R}はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。\href{https://cran.r-project.org/}{CRAN(The Comprehensive R Archive Network)}と呼ばれる\textbf{R}のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は\href{https://cran.r-project.org/web/views/}{CRAN Task Views}を見て分かるように古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は\href{https://cran.r-project.org/web/views/ReproducibleResearch.html}{Reproducible Research}と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉ですが、データ分析では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々は「Reproducible Research」とあるように科学的研究の分野で使われている言葉です。他の言語ではこの分野を開発範囲（スコープ）に含めることはほぼありません。
+　\textbf{R}はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。\href{https://cran.r-project.org/}{CRAN(The Comprehensive R Archive Network)}と呼ばれる\textbf{R}のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は\href{https://cran.r-project.org/web/views/}{CRAN Task Views}で整理されています。対象分野は古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は\href{https://cran.r-project.org/web/views/ReproducibleResearch.html}{Reproducible Research}と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉だと思いますが、\textbf{R}の世界では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々はResearchとあるように科学的研究の分野で使われている言葉です。 他のプログラミング言語で、Reproducible Researchをサポートしているという話は聞いたことがありませんので、このあたりは\textbf{R}の大きな特徴といえます。
 
-　また、\textbf{R}は逐次実行のインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）にも適していると言えます。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。
-
-　ちなみに本書も\textbf{R}のパッケージである\href{https://bookdown.org/}{\textbf{\texttt{bookdown}}}という文書作成に特化したパッケージを利用して\textbf{RStudio}\index{RStudio}という\textbf{R}用の統合開発環境を用いて作成してます。
+　また、\textbf{R}は逐次実行するインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適しています。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。ちなみに本書は\textbf{R}\href{https://bookdown.org/}{\textbf{\texttt{bookdown}}}パッケージという文書作成に特化したパッケージを利用して作成してます。
 
 \hypertarget{ux5206ux6790ux306eux624bux9806}{%
 \section*{分析の手順}\label{ux5206ux6790ux306eux624bux9806}}
 \addcontentsline{toc}{section}{分析の手順}
 
-　\textbf{R}を使った分析とはどのような手順になるかを簡単に見てみましょう。\textbf{R}は分析のための単なるツールですので、データ分析の常套手段してはツールに関係なく最初に分析対象となるデータがどのような分布なのか、どのような値の範囲にあるのか、全てのデータが揃っているかなどを俯瞰することからはじめます。
-
-　例えば\href{https://en.wikipedia.org/wiki/Iris_flower_data_set}{フィッシャーのあやめ（Fisher's or Anderson's iris）}\index{iris dataset}を例にとってみましょう。「フィッシャーのあやめ」は\textbf{R}や機械学習の例題として様々な媒体で頻繁に使われる下記のような150行のデータセットです。\textbf{R}に標準で組み込まれています。
+　\textbf{R}で、どのようなことができるかを簡単な分析を通して見てみます。対象データは\href{https://en.wikipedia.org/wiki/Iris_flower_data_set}{フィッシャーのあやめ（Fisher's or Anderson's iris）}\index{iris dataset}呼ばれる150行の下表のようなデータです。
 
 \begin{table}[H]
 
 \caption{\label{tab:iris}iris dataset}
 \centering
-\fontsize{10}{12}\selectfont
+\fontsize{11}{13}\selectfont
 \begin{tabular}[t]{lllll}
 \toprule
 Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
@@ -509,12 +522,23 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
 \cellcolor{gray!6}{5.1} & \cellcolor{gray!6}{3.5} & \cellcolor{gray!6}{1.4} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
 4.9 & 3 & 1.4 & 0.2 & setosa\\
 \cellcolor{gray!6}{4.7} & \cellcolor{gray!6}{3.2} & \cellcolor{gray!6}{1.3} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
-... & ... & ... & ... & NA\\
+4.6 & 3.1 & 1.5 & 0.2 & setosa\\
+\cellcolor{gray!6}{5} & \cellcolor{gray!6}{3.6} & \cellcolor{gray!6}{1.4} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
+\addlinespace
+5.4 & 3.9 & 1.7 & 0.4 & setosa\\
+\cellcolor{gray!6}{4.6} & \cellcolor{gray!6}{3.4} & \cellcolor{gray!6}{1.4} & \cellcolor{gray!6}{0.3} & \cellcolor{gray!6}{setosa}\\
+5 & 3.4 & 1.5 & 0.2 & setosa\\
+\cellcolor{gray!6}{4.4} & \cellcolor{gray!6}{2.9} & \cellcolor{gray!6}{1.4} & \cellcolor{gray!6}{0.2} & \cellcolor{gray!6}{setosa}\\
+4.9 & 3.1 & 1.5 & 0.1 & setosa\\
+\addlinespace
+\cellcolor{gray!6}{...} & \cellcolor{gray!6}{...} & \cellcolor{gray!6}{...} & \cellcolor{gray!6}{...} & \cellcolor{gray!6}{NA}\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-　このデータセットの要約統計量は以下で、萼片（Sepal）より花弁（Petal）の方が小さい傾向にあると推測できます。
+\newpage
+
+　まずは、データがどのような特徴を持っているか要約統計量（記述統計量）で確認します。
 
 \begin{verbatim}
 ##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
@@ -533,26 +557,9 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
 ## 
 \end{verbatim}
 
-　上記の要約統計章を箱ひげ図で表してみます。ただし、元の形式では都合が悪いので以下に変形しておきます。
+　萼片（Sepal）の長さと幅、花弁（Petal）の長さと幅は、量的変数でその最小値（Min.）、第1四分位値（1st Qu.）、中央値（Median）、平均値（Mean）、第3四分位値（3rd Qu.）、最大値（Max.）が表示されているのが分かります。この量的変数から萼片（Sepal）より花弁（Petal）の方が小さい傾向にあると推測できます。一方、品種（Species）は質的変数（カテゴリ変数）なので、その個数が表示されます。三品種あり、どの品種も同じ数だけデータがあることが分かります。
 
-\begin{table}[H]
-
-\caption{\label{tab:irislonger}iris dataset, longer style}
-\centering
-\begin{tabular}[t]{lll}
-\toprule
-Species & part & value\\
-\midrule
-\cellcolor{gray!6}{setosa} & \cellcolor{gray!6}{Sepal.Length} & \cellcolor{gray!6}{5.1}\\
-setosa & Sepal.Width & 3.5\\
-\cellcolor{gray!6}{setosa} & \cellcolor{gray!6}{Petal.Length} & \cellcolor{gray!6}{1.4}\\
-setosa & Petal.Width & 0.2\\
-\cellcolor{gray!6}{NA} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{...}\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-　変形したデータを使って部位別の箱ひげ図を描くと確かに 花弁（Petal）の方が 萼片（Sepal）よりも小さい傾向にあることが分かります。
+　量的変数の傾向の違いを箱ひげ図で可視化して確認してみます。
 
 \begin{figure}[H]
 
@@ -563,18 +570,48 @@ setosa & Petal.Width & 0.2\\
 \caption{花弁と萼片の分布}\label{fig:unnamed-chunk-4}
 \end{figure}
 
-　次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を見てみます。
+　数値で比較するよりグラフ化（可視化）した方が要約統計量の傾向を掴みやすいことが分かります。次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を散布図で可視化して確認します。
 
 \begin{figure}[H]
 
-{\centering \subfloat[花弁\label{fig:unnamed-chunk-5-1}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-5-1} }\subfloat[萼片\label{fig:unnamed-chunk-5-2}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-5-2} }
+{\centering \subfloat[花弁\label{fig:unnamed-chunk-5-1}]{\includegraphics[width=0.5\linewidth,]{R_files/figure-latex/unnamed-chunk-5-1} }\subfloat[萼片\label{fig:unnamed-chunk-5-2}]{\includegraphics[width=0.5\linewidth,]{R_files/figure-latex/unnamed-chunk-5-2} }
 
 }
 
 \caption{幅と長さの関係}\label{fig:unnamed-chunk-5}
 \end{figure}
 
-　花弁（Petal）の幅と長さに相関関係があるように、萼片（Sepal）の方には相関関係がないように見えます。そこで、花弁（Petal）の幅（\texttt{Petal.Width}）と長さ（\texttt{Petal.Length}）の回帰式を求めます。
+　花弁（Petal）の幅と長さに関係があり、萼片（Sepal）の方には関係がないように見えますので、個々の幅と長さの相関関係を見ておきます。
+
+\begin{verbatim}
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  Petal.Width and Petal.Length
+## t = 43.387, df = 148, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.9490525 0.9729853
+## sample estimates:
+##       cor 
+## 0.9628654
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  Sepal.Width and Sepal.Length
+## t = -1.4403, df = 148, p-value = 0.1519
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.27269325  0.04351158
+## sample estimates:
+##        cor 
+## -0.1175698
+\end{verbatim}
+
+　花弁（Petal）の方には強い相関があり、萼片（Sepal）の方には相関がないことが分かります。なお、この出力の結果の読み方は別途、説明します。では、花弁（Petal）の幅と長さの具体的な関係を回帰モデル（回帰式）を用いて表してみましょう。
 
 \begin{verbatim}
 ## 
@@ -601,14 +638,16 @@ setosa & Petal.Width & 0.2\\
 
 \begin{figure}[H]
 
-{\centering \subfloat[花弁の回帰関係\label{fig:unnamed-chunk-7-1}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-7-1} }\subfloat[萼片の回帰関係\label{fig:unnamed-chunk-7-2}]{\includegraphics[width=0.4\linewidth,]{R_files/figure-latex/unnamed-chunk-7-2} }
+{\centering \subfloat[花弁の回帰関係\label{fig:unnamed-chunk-8-1}]{\includegraphics[width=0.5\linewidth,]{R_files/figure-latex/unnamed-chunk-8-1} }\subfloat[萼片の回帰関係\label{fig:unnamed-chunk-8-2}]{\includegraphics[width=0.5\linewidth,]{R_files/figure-latex/unnamed-chunk-8-2} }
 
 }
 
-\caption{幅と長さの関係}\label{fig:unnamed-chunk-7}
+\caption{幅と長さの関係}\label{fig:unnamed-chunk-8}
 \end{figure}
 
-　データ分析では、このような手順で対象のデータに対して可視化と変形、モデルの計算を繰り返すことで適切なモデルを探ります。これが基本となる分析プロセスです。
+\newpage
+
+　探索的データ分析では、このように対象のデータの確認、データの変形と可視化、モデルの作成を繰り返すことで最適な（予測）モデルを探ります。このような流れが基本となる分析プロセスで、下図のような関係があります。
 
 \begin{figure}[H]
 
@@ -616,10 +655,10 @@ setosa & Petal.Width & 0.2\\
 
 }
 
-\caption{基本となる分析プロセス}\label{fig:unnamed-chunk-8}
+\caption{基本となる分析プロセス}\label{fig:unnamed-chunk-9}
 \end{figure}
 
-　実際には対象のデータが都合よく\textbf{R}に組み込まれている訳ではありませんので、対象となるデータを読み込み（インポート）、処理がしやすいように整形してから可視化などを行います。最後に分析結果を報告（レポート）しますので、分析プロセスは下図になります。
+　実際には分析対象のデータが\textbf{R}に組み込まれている訳ではありませんので、対象となるデータを読み込み（インポート）、処理がしやすいように整形してから可視化などを行います。最後に分析結果を報告（レポート）しますので、実際の分析プロセスは下図のようになります。
 
 \begin{figure}[H]
 
@@ -627,14 +666,16 @@ setosa & Petal.Width & 0.2\\
 
 }
 
-\caption{分析プロセス}\label{fig:unnamed-chunk-9}
+\caption{分析プロセス}\label{fig:unnamed-chunk-10}
 \end{figure}
+
+\newpage
 
 \hypertarget{data-science-workflow}{%
 \section*{Data Science Workflow}\label{data-science-workflow}}
 \addcontentsline{toc}{section}{Data Science Workflow}
 
-実際には前節でのプロセスを\textbf{R}などのプログラム（プログラミング）でサポートすることによりプロセス全体を円滑に回せるよう仕組みも必要です。それを加えたものが「Data Science Workflow」と呼ばれるフロー図です。
+　分析プロセスを実際に回すには\textbf{R}などのプログラム（プログラミング）で円滑に回せるよう仕組みが必要となります。それを加えたものが「Data Science Workflow」と呼ばれるフロー図です。
 
 \begin{figure}[H]
 
@@ -642,10 +683,10 @@ setosa & Petal.Width & 0.2\\
 
 }
 
-\caption{Data Science Workflow}\label{fig:unnamed-chunk-10}
+\caption{Data Science Workflow}\label{fig:unnamed-chunk-11}
 \end{figure}
 
-「Data Science Workflow」自体は\textbf{R}コミュニティに多大な貢献をしている \href{http://hadley.nz/}{Hadley Wickham}が著書\href{https://r4ds.had.co.nz/}{『R for Data Science』}において提唱している概念です。
+　「Data Science Workflow」自体は\textbf{R}コミュニティに多大な貢献をしている\href{http://hadley.nz/}{Hadley Wickham}が著書\href{https://r4ds.had.co.nz/}{『R for Data Science』}において提唱している概念です。
 
 \begin{figure}[H]
 
@@ -653,30 +694,30 @@ setosa & Petal.Width & 0.2\\
 
 }
 
-\caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-11}
+\caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-12}
 \end{figure}
 
-Hadlyの図には前節の図にはない\textbf{Infer}と\textbf{Automate}すというプロセスが入っていますが、本書では\textbf{Infer}は\textbf{Model}に、\textbf{Automate}は\textbf{Communicate}に含まれるものとして考えています。
+　Hadlyの図には前節の図にはない\textbf{Infer}と\textbf{Automate}というプロセスが入っていますが、本書では\textbf{Infer}は\textbf{Model}に、\textbf{Automate}は\textbf{Communicate}に含まれるものとして分類しています。
 
-次章に移る前に個々のプロセスについて簡単な説明をしておきます。
+\newpage
 
 \hypertarget{program}{%
 \subsection*{Program}\label{program}}
 \addcontentsline{toc}{subsection}{Program}
 
-データ分析のすべてのプロセス（Import〜Communicate）で必要となるツールが\textbf{Program}です。\textbf{R}では様々なパッケージを使うことで外部アプリケーションとの連動を図り、\textbf{R}だけで全てのプロセスが完結するような「R Eco System」と呼べるような体型が出来上がりつつあります。この点は他のプログラミング言語と大きな違いです。
+　データ分析のすべてのプロセス（\textbf{Import}〜\textbf{Communicate}）で必要となるツールが\textbf{Program}です。\textbf{R}では様々なパッケージを使うことで外部アプリケーションとの連動を図り、\textbf{R}だけで全てのプロセスが完結するR Ecosystemと呼べる体系が出来ています。
 
 \hypertarget{import}{%
 \subsection*{Import}\label{import}}
 \addcontentsline{toc}{subsection}{Import}
 
-分析対象となるデータを分析環境に取り込み分析をできるようにするのが\textbf{Import}プロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。
+　分析対象となるデータを分析環境に取り込むのが\textbf{Import}プロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。
 
 \hypertarget{tidy}{%
 \subsection*{Tidy}\label{tidy}}
 \addcontentsline{toc}{subsection}{Tidy}
 
-インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}\citep{R-TidyData}\index{Tidy Data}はデータ分析において非成に重要な概念で、以下の条件を満たしたデータを意味します。
+　インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、\textbf{R}で扱いやすいような形式（Tidy Data）にします。\href{https://www.jstatsoft.org/article/view/v059i10}{Tidy Data}\citep{R-TidyData}\index{Tidy Data}はデータ分析において非常に重要な概念で、以下の条件を満たしたデータを意味します。
 
 \begin{itemize}
 \tightlist
@@ -690,13 +731,13 @@ Hadlyの図には前節の図にはない\textbf{Infer}と\textbf{Automate}す�
   個々の値が一つのセルをなす
 \end{itemize}
 
-端的に表現すればデータの「構造と意味が合致する」と言えます。日本語では整然データと呼ばれることもあり、対義語は雑然データ（Messy Data）となります。
+　端的に表現すればデータの「構造と意味が合致する」と言えます。日本語では整然データと呼ばれ、対義語は雑然データ（Messy Data）です。
 
 \hypertarget{transform}{%
 \subsection*{Transform}\label{transform}}
 \addcontentsline{toc}{subsection}{Transform}
 
-整然データ（Tidy Data）に変換したとしても、データをそのまま状態で分析に使えることは稀です。実際のデータにはデータの一部が欠損していたり、分析には必要のないデータが含まれていたりしますので、不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。これらの変換を事なうのが\textbf{Transform}プロセスです。
+　整然データ（Tidy Data）に変換したとしても、データをそのまま状態で分析に使えることは稀です。実際のデータにはデータの一部が欠損していたり、分析には必要のないデータが含まれていたりしますので、不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。これらの変換を事なうのが\textbf{Transform}プロセスです。
 
 \textbf{Tidy}プロセスと合わせて\textbf{Wrangle}や\textbf{Data Wrangling}、前処理などと呼ばれることもあります。本書では\textbf{Import}、\textbf{Tidy}、\textbf{Transform}をあわせて\textbf{Wrangle}と称しています。
 
@@ -704,19 +745,19 @@ Hadlyの図には前節の図にはない\textbf{Infer}と\textbf{Automate}す�
 \subsection*{Visualize}\label{visualize}}
 \addcontentsline{toc}{subsection}{Visualize}
 
-文字通りデータの可視化を行うのが\textbf{Visualize}プロセスです。\textbf{R}には伝統的な\texttt{plot()}関数系を用いた可視化に加えて、\textbf{\texttt{ggplot2}}パッケージを用いた統一された文法による可視化があります。
+　文字通りデータの可視化を行うのが\textbf{Visualize}プロセスです。\textbf{R}には伝統的な\texttt{plot()}関数系を用いた可視化に加えて、\textbf{\texttt{ggplot2}}パッケージを用いた統一された文法による可視化があります。
 
 \hypertarget{model}{%
 \subsection*{Model}\label{model}}
 \addcontentsline{toc}{subsection}{Model}
 
-データを数式を用いてモデルにするのが\textbf{Model}プロセスです。本書では\textbf{Model}プロセスと\textbf{Infer}プロセスを合わせて\textbf{Model}プロセスと称しています。
+　データを数式を用いてモデルにするのが\textbf{Model}プロセスです。本書では\textbf{Model}プロセスと\textbf{Infer}プロセスを合わせて\textbf{Model}プロセスと称しています。
 
 \hypertarget{communicate}{%
 \subsection*{Communicate}\label{communicate}}
 \addcontentsline{toc}{subsection}{Communicate}
 
-モデルが作成できましたら最後は分析結果を伝え（報告し）なければなりません。この報告のプロセスが\textbf{Communicate}で、プロセスにおいて重要な点が再現可能性（Reproducible research）です。再現可能性の重要性については\href{http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03}{「統計解析の再現可能性を高めるために」}をお読みください。
+　モデルが作成したら最後は分析結果を伝え（報告し）なければなりません。この報告のプロセスが\textbf{Communicate}で、プロセスにおいて重要な点が再現可能性（Reproducible research）です。再現可能性の重要性については\href{http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03}{「統計解析の再現可能性を高めるために」}をお読みください。
 
 \hypertarget{tidyverse-ecosystem}{%
 \section*{Tidyverse Ecosystem}\label{tidyverse-ecosystem}}
@@ -730,7 +771,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 }
 
-\caption{Tidyverse Ecosystem}\label{fig:unnamed-chunk-12}
+\caption{Tidyverse Ecosystem}\label{fig:unnamed-chunk-13}
 \end{figure}
 
 ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』\citep{RStartHere:GitHub}をご覧ください。
@@ -1011,7 +1052,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 }
 
-\caption{Rcmdr, Ubuntu}\label{fig:unnamed-chunk-13}
+\caption{Rcmdr, Ubuntu}\label{fig:unnamed-chunk-14}
 \end{figure}
 
 \hypertarget{google-colab}{%
@@ -1025,7 +1066,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 }
 
-\caption{Google Colab}\label{fig:unnamed-chunk-14}
+\caption{Google Colab}\label{fig:unnamed-chunk-15}
 \end{figure}
 
 \hypertarget{rstudio}{%
@@ -1057,7 +1098,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-15}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-16}
 \end{figure}
 
 \textbf{RStudio Server}は\textbf{RStudio}をブラウザ経由で使う Linux 上で動作するサーバアプリケーションです。Dockerコンテナとして動作させることも可能ですので、個々の PC での分析環境を固定さたい場合には非常に便利です。
@@ -1068,7 +1109,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 }
 
-\caption{RStudio Server, Docker}\label{fig:unnamed-chunk-16}
+\caption{RStudio Server, Docker}\label{fig:unnamed-chunk-17}
 \end{figure}
 
 \hypertarget{rstudio-cloud}{%
@@ -1082,7 +1123,7 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 }
 
-\caption{RStudio Cloud}\label{fig:unnamed-chunk-17}
+\caption{RStudio Cloud}\label{fig:unnamed-chunk-18}
 \end{figure}
 
 \hypertarget{programing-editor}{%
@@ -1496,11 +1537,11 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-32-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-33-1} 
 
 }
 
-\caption{正規分布に近い分布}\label{fig:unnamed-chunk-32}
+\caption{正規分布に近い分布}\label{fig:unnamed-chunk-33}
 \end{figure}
 
 歪度はゼロに近い値となります。
@@ -1519,11 +1560,11 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-34-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-35-1} 
 
 }
 
-\caption{右に歪んだ分布（左に偏った分布）}\label{fig:unnamed-chunk-34}
+\caption{右に歪んだ分布（左に偏った分布）}\label{fig:unnamed-chunk-35}
 \end{figure}
 
 歪度は正の値をとります。
@@ -1542,11 +1583,11 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-36-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-37-1} 
 
 }
 
-\caption{左に歪んだ分布（右に偏った分布）}\label{fig:unnamed-chunk-36}
+\caption{左に歪んだ分布（右に偏った分布）}\label{fig:unnamed-chunk-37}
 \end{figure}
 
 歪度は負の値をとります。
@@ -1568,11 +1609,11 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-38-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-39-1} 
 
 }
 
-\caption{正規分布に近い分布}\label{fig:unnamed-chunk-38}
+\caption{正規分布に近い分布}\label{fig:unnamed-chunk-39}
 \end{figure}
 
 \begin{Shaded}
@@ -1587,11 +1628,11 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-40-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-41-1} 
 
 }
 
-\caption{中心部が高く幅の狭い尖った分布}\label{fig:unnamed-chunk-40}
+\caption{中心部が高く幅の狭い尖った分布}\label{fig:unnamed-chunk-41}
 \end{figure}
 
 \begin{Shaded}
@@ -1606,11 +1647,11 @@ Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickha
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-42-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-43-1} 
 
 }
 
-\caption{中心部が低く横に広がった分布}\label{fig:unnamed-chunk-42}
+\caption{中心部が低く横に広がった分布}\label{fig:unnamed-chunk-43}
 \end{figure}
 
 \begin{Shaded}
@@ -4375,7 +4416,7 @@ NA & データ型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-124}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-125}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -4394,7 +4435,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-125}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-126}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -4408,7 +4449,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-126}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-127}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -4426,7 +4467,7 @@ NA & データ型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-127}
+\caption{Warning dialog}\label{fig:unnamed-chunk-128}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -4452,7 +4493,7 @@ NA & データ型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-128}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-129}
 \end{figure}
 
 　\\
@@ -4485,7 +4526,7 @@ NA & データ型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-129}
+\caption{Initial View}\label{fig:unnamed-chunk-130}
 \end{figure}
 
 　
@@ -4502,7 +4543,7 @@ NA & データ型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-130}
+\caption{Packages Manager}\label{fig:unnamed-chunk-131}
 \end{figure}
 
 　\\
@@ -4515,7 +4556,7 @@ NA & データ型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-131}
+\caption{Install Dialog}\label{fig:unnamed-chunk-132}
 \end{figure}
 
 　\\
@@ -4915,7 +4956,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-139}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-140}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -4926,7 +4967,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-140}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-141}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -4996,7 +5037,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-141}
+\caption{R Notebook file}\label{fig:unnamed-chunk-142}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -5007,7 +5048,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-142}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-143}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -5018,7 +5059,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-143}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-144}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -5029,7 +5070,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-144}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-145}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -5040,7 +5081,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-145}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-146}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -5051,7 +5092,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-146}
+\caption{R Notebook option}\label{fig:unnamed-chunk-147}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -5337,7 +5378,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-147}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-148}
 \end{figure}
 
 　
@@ -5362,7 +5403,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-148}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-149}
 \end{figure}
 
 　

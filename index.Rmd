@@ -115,7 +115,8 @@ df_print <- function(df = NULL,             # 表示させたいデータをフ�
                                   full_width = full_width,
                                   latex_options = latex_option)
     } else {   # 出力タイプ不明の場合
-      rmarkdown::paged_table()
+      df %>% 
+        rmarkdown::paged_table()
     }
   }
 }
