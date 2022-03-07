@@ -98,14 +98,35 @@
 
 % --- 色付き囲いの定義 --------------------------------------------------------
 % https://marukunalufd0123.hatenablog.com/entry/2019/03/15/071717
-% 利用する場合は先頭に全角空白を入れること
+% https://texmedicine.hatenadiary.jp/entry/2015/12/17/000339
+
+% tcolorbox packageのライブラリを呼びだす
+\tcbuselibrary{breakable, theorems, raster, skins}
+
 % Round Box
-\newtcolorbox{info-box}[2][]{colback=cyan!5!white, colframe=cyan!60!black,
-title={#2}, #1}
-\newtcolorbox{warning-box}[2][]{colback=orange!5!white, 
-colframe=orange!80!black, title={#2}, #1}
-\newtcolorbox{error-box}[2][]{colback=red!5!white, colframe=red!75!black,
-title={#2}, #1}
+% 利用する場合は先頭に全角空白を入れること
+\newtcolorbox{info-box}[2][]{colback = cyan!5!white,
+                             colframe = cyan!60!black, 
+                             title={#2}, #1}
+\newtcolorbox{warning-box}[2][]{colback = orange!5!white, 
+                                colframe = orange!80!black,
+                                title={#2}, #1}
+\newtcolorbox{error-box}[2][]{colback = red!5!white,
+                              colframe=red!75!black, title={#2}, #1}
+
+% 
+\newtcolorbox{hint-box}[1][]{enhanced,
+  before skip = 2mm, after skip = 3mm,
+  boxrule = 0.4pt, left = 5mm, right = 2mm, top = 1mm, bottom = 1mm,
+  % colback = yellow!50, colframe = yellow!20!black,
+  colback = yellow!20, colframe = yellow!20!gray,
+  sharp corners, rounded corners = southeast, arc is angular, arc=3mm,
+  underlay={
+    \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+  drop fuzzy shadow, #1}
 
 % Square Box
 % \newtcolorbox{info-box}[2][]{colback=cyan!5!white, arc=0pt, outer arc=0pt,

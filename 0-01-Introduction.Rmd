@@ -28,18 +28,19 @@
 
 : 表記ルール
 
-対象                 | 表記方法                            | 表記例
----------------------|-------------------------------------|-------------------
-ハイパーリンク       | 脚注にURL表記[^1]                   | CRAN^No.^
-パス・ファイル名     | モノフォント[^2]                    | `sample/sample.Rmd`
-パッケージ名         | 太字のモノフォント                  | **`tidyverse`**
-変数・オブジェクト名 | モノフォント                        | `Sepela.Width`
-関数名               | モノフォントで()付き[^3]            | `print()`
-コード               | モノフォント（プロンプトなし）      | `library(tidyverse)`
-コードの実行結果     | モノフォント（`##` プロンプト）     | `## output...`
-キーボードのキー     | モノフォントで[]付き                | [`Ctrl`]+[`S`]
-数式                 | \LaTeX 数式（math mode）            | $y = ax^2 + b$
-参考文献・資料[^4]   | []または()付き                      | [Wickham, 2021]
+対象                 | 表記方法                       | 表記例
+---------------------|--------------------------------|-------------------
+ハイパーリンク       | 脚注にURL表記[^1]              | CRAN^No.^
+脚注                 | ハイパーリンクに同じ           | キーワード^No.^
+パス・ファイル名     | モノフォント[^2]               | `sample/sample.Rmd`
+パッケージ名         | 太字のモノフォント             | **`tidyverse`**
+変数・オブジェクト名 | モノフォント                   | `Sepela.Width`
+関数名               | モノフォントで()付き[^3]       | `print()`
+コード               | モノフォント（プロンプトなし） | `library(tidyverse)`
+コードの実行結果     | モノフォント（プロンプトあり） | `## output...`
+キーボードのキー     | モノフォントで[]付き           | [`Ctrl`]+[`S`]
+数式                 | \LaTeX 数式（math mode）       | $y = ax^2 + b$
+参考文献・資料[^4]   | []または()付き                 | [Wickham, 2021]
 
 <!-- 参考文献・資料[^3]   | [著者・作者, 作成年]                | [Wickham, 2021] -->
 <!-- 参考文献・資料[^4]   | (著者・作者, 作成年)                | (Wickham, 2021) -->
@@ -62,14 +63,18 @@
 > 5.  **R** Is Built _**For Business**_
 > 6.  **R** _**Community Support**_
 
-　**R**はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができます。[CRAN(The Comprehensive R Archive Network)](https://cran.r-project.org/){target="_blank" title=""}と呼ばれる**R**のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は[CRAN Task Views](https://cran.r-project.org/web/views/){target="_blank" title=""}で整理されています。対象分野は古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は[Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html){target="_blank" title=""}と呼ばれる再現可能性の分野です。再現可能性とは聞き慣れない言葉だと思いますが、**R**の世界では「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々はResearchとあるように科学的研究の分野で使われている言葉です。 他のプログラミング言語で、Reproducible Researchをサポートしているという話は聞いたことがありませんので、このあたりは**R**の大きな特徴といえます。  
+　**R**はデータ分析に必要となるデータのハンドリングや可視化、モデリング、そして、レポートといった様々な機能をほとんど無料で利用することができ、[CRAN(The Comprehensive R Archive Network)](https://cran.r-project.org/){target="_blank" title=""}と呼ばれる**R**のリポジトリには15,000を超えるパッケージ（ライブラリ）が登録されています。それらのパッケージが網羅する分野は[CRAN Task Views](https://cran.r-project.org/web/views/){target="_blank" title=""}で整理されています。対象分野は古典的な統計や金融統計から最新の機械学習・ベイズ統計など40を超えています。その中でも特筆すべき分野は[Reproducible Research](https://cran.r-project.org/web/views/ReproducibleResearch.html){target="_blank" title=""}と呼ばれる再現可能性の分野です。  
 
-　また、**R**は逐次実行するインタプリタ型言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適しています。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。ちなみに本書は**R**[**`bookdown`**](https://bookdown.org/){target="_blank" title="Write HTML, PDF, ePub, and Kindle books with R Markdown"}パッケージという文書作成に特化したパッケージを利用して作成してます。
+　再現可能性とは聞き慣れない言葉だと思いますが、ここでは「ある分析結果を再分析した際に同じ結果が得られること」を意味しています。元々はResearchとあるように科学的研究の分野で使われている言葉です。他のプログラミング言語で、Reproducible Researchをサポートしているという話は聞いたことがありませんので、このあたりは**R**の大きな特徴といえます。  
+
+　また、**R**は逐次実行するインタプリタ型の言語ですのでソフトウェアメトリクス分析のような探索的分析（Exploratory data analysis）に適しています。加えて非常にフレンドリーかつ活発なコミュニティーが日本でも形成されていますので、悩んだ時などに気軽に質問・相談ができるのも大きな強みです。  
+
+　ちなみに本書は**R**の[**`bookdown`**](https://bookdown.org/){target="_blank" title="Write HTML, PDF, ePub, and Kindle books with R Markdown"}パッケージという文書作成をサポートしてくれるパッケージを用いています。このようなパッケージが用意されているということは**R**が単なる分析だけでなく研究やビジネスでのレポート作成にも向いていることが分かると思います。
 
 
-## 分析の手順 {.unnumbered}
-　**R**で、どのようなことができるかを簡単な分析を通して見てみます。対象データは[フィッシャーのあやめ（Fisher's or Anderson's iris）](https://en.wikipedia.org/wiki/Iris_flower_data_set){target="_blank" title="Iris flower data set,
-　Wikipedia"}\index{iris dataset}呼ばれる150行の下表のようなデータです。
+## **R**でなにができるのか？ {.unnumbered}
+　実際にどのようなことができるかを簡単な分析を通して見てみましょう。分析の対象となるデータは[フィッシャーのあやめ（Fisher's or Anderson's iris）](https://en.wikipedia.org/wiki/Iris_flower_data_set){target="_blank" title="Iris flower data set,
+　Wikipedia"}\index{iris dataset}と呼ばれる下表のようなデータで、**R**にサンプルデータとして組み込まれています。
 
 ```{r iris, echo=FALSE}
 iris %>% 
@@ -78,15 +83,15 @@ iris %>%
 
 \newpage
 
-　まずは、データがどのような特徴を持っているか要約統計量（記述統計量）で確認します。
+　まずは、データがどのような特徴を持っているデータなのかを要約統計量（記述統計量）を求めることで確認します。
 
 ```{r, echo=FALSE}
 summary(iris)
 ```
 
-　萼片（Sepal）の長さと幅、花弁（Petal）の長さと幅は、量的変数でその最小値（Min.）、第1四分位値（1st Qu.）、中央値（Median）、平均値（Mean）、第3四分位値（3rd Qu.）、最大値（Max.）が表示されているのが分かります。この量的変数から萼片（Sepal）より花弁（Petal）の方が小さい傾向にあると推測できます。一方、品種（Species）は質的変数（カテゴリ変数）なので、その個数が表示されます。三品種あり、どの品種も同じ数だけデータがあることが分かります。
+　萼片（Sepal）の長さと幅、花弁（Petal）の長さと幅は、量的変数でその最小値（Min.）、第1四分位値（1st Qu.）、中央値（Median）、平均値（Mean）、第3四分位値（3rd Qu.）、最大値（Max.）を比較すると萼片（Sepal）より花弁（Petal）の方が小さい傾向にあると推測できます。品種（Species）は質的変数（カテゴリ変数）であり、三品種それぞれが同じ数のデータを持っていることが分かります。  
 
-　量的変数の傾向の違いを箱ひげ図で可視化して確認してみます。
+　量的変数の傾向の違いを箱ひげ図を用いて可視化してみます。
 
 ```{r irislonger, echo=FALSE, eval=FALSE, include=FALSE}
 iris %>%
@@ -102,7 +107,7 @@ iris %>%
     ggplot2::labs(x = "", y = "")
 ```
 
-　数値で比較するよりグラフ化（可視化）した方が要約統計量の傾向を掴みやすいことが分かります。次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を散布図で可視化して確認します。
+　数値で比較したように萼片（Sepal）より花弁（Petal）の方が小さいことがひと目で分かります。次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を散布図で確認してみましょう。
 
 ```{r, echo=FALSE, fig.cap="幅と長さの関係", fig.subcap=c('花弁', '萼片'), fig.ncol=2, out.width="50%"}
 iris %>%
@@ -114,23 +119,23 @@ iris %>%
     ggplot2::geom_point()
 ```
 
-　花弁（Petal）の幅と長さに関係があり、萼片（Sepal）の方には関係がないように見えますので、個々の幅と長さの相関関係を見ておきます。
+　花弁（Petal）の幅と長さに関係があり、萼片（Sepal）の方には関係がないように見えますので、個々の幅と長さの相関を確認します。
 
 ```{r, echo=FALSE}
 with(iris, cor.test(Petal.Width, Petal.Length))
 with(iris, cor.test(Sepal.Width, Sepal.Length))
 ```
 
-　花弁（Petal）の方には強い相関があり、萼片（Sepal）の方には相関がないことが分かります。なお、この出力の結果の読み方は別途、説明します。では、花弁（Petal）の幅と長さの具体的な関係を回帰モデル（回帰式）を用いて表してみましょう。
+　花弁（Petal）の方には強い相関（相関係数$=`r with(iris, cor.test(Petal.Width, Petal.Length)$estimate)`$）があり、萼片（Sepal）の方には相関があるとは言えないことが分かります。  
+
+　花弁（Petal）の幅と長さの関係を回帰モデル（単回帰式）として求めると下記のようになります。
 
 ```{r, echo=FALSE}
 with(iris, lm(Petal.Length ~ Petal.Width)) %>% 
   summary()
 ```
 
-　回帰モデルの当てはまり具合がかなり良いので回帰モデルを可視化します。比較として萼片（Sepal）の回帰モデルも可視化します。
-
-```{r, echo=FALSE, message=FALSE, fig.cap="幅と長さの関係", fig.subcap=c('花弁の回帰関係', '萼片の回帰関係'), fig.ncol=2, out.width="50%"}
+```{r, echo=FALSE, message=FALSE, fig.cap="幅と長さの関係", fig.subcap=c('花弁の回帰モデル', '萼片の回帰モデル（参考）'), fig.ncol=2, out.width="50%"}
 iris %>%
   ggplot2::ggplot(ggplot2::aes(x = Petal.Width, y = Petal.Length)) +
     ggplot2::geom_point() +
@@ -142,16 +147,18 @@ iris %>%
     ggplot2::geom_smooth(method = "lm", se = FALSE)
 ```
 
+　このように**R**を用いることで比較的簡単にデータを可視化したり統計量を求めることができるのが分かったのではないでしょうか？なお、ここで利用した出力（計算結果）の読み方は別途解説しますので、こういうことができるという点だけは憶えておいてください。
+
 \newpage
 
-　探索的データ分析では、このように対象のデータの確認、データの変形と可視化、モデルの作成を繰り返すことで最適な（予測）モデルを探ります。このような流れが基本となる分析プロセスで、下図のような関係があります。
+　前ページまでの例のような〈探索的〉データ分析では、対象のデータの確認や変形（Transform）、可視化（Visualize）、モデルの作成（Model or Modeling）を繰り返すことで最適な（予測）モデルを探ります。この流れが分析プロセスの基本で下図のように表すことができます。
 
 ```{r, echo=FALSE, fig.cap="基本となる分析プロセス"}
 # Visualize <-> Transform <-> Model
 knitr::include_graphics("./fig/DSWF/data_science_workflow_step1.png")
 ```
 
-　実際には分析対象のデータが**R**に組み込まれている訳ではありませんので、対象となるデータを読み込み（インポート）、処理がしやすいように整形してから可視化などを行います。最後に分析結果を報告（レポート）しますので、実際の分析プロセスは下図のようになります。
+　実際には対象となるデータを読み込み（Import）、処理がしやすいように整形（Tidy）してから可視化などを行います。最後に分析結果を報告（Communicate）しますので、分析プロセスの全体像下図のようになります。
 
 ```{r, echo=FALSE, fig.cap="分析プロセス"}
 # Import -> Tidy -> Visualize <-> Transform <-> Model -> Communicate
@@ -161,7 +168,7 @@ knitr::include_graphics("./fig/DSWF/data_science_workflow_step2.png")
 \newpage
 
 ## Data Science Workflow {.unnumbered}
-　分析プロセスを実際に回すには**R**などのプログラム（プログラミング）で円滑に回せるよう仕組みが必要となります。それを加えたものが「Data Science Workflow」と呼ばれるフロー図です。
+　分析プロセスを円滑に回すためにはプログラム（統計的プログラミング）などの補助的な仕組みが必要です。全ページの分析プロセスにプログラム（統計的プログラミング）を加えたものが「Data Science Workflow」と呼ばれるフロー図です。
 
 ```{r, echo=FALSE, fig.cap="Data Science Workflow"}
 # Import -> Tidy -> Visualize <-> Transform <-> Model -> Infer -> Communicate/Automate
@@ -175,33 +182,33 @@ knitr::include_graphics("./fig/DSWF/data_science_workflow.png")
 knitr::include_graphics("fig/data-science.png")
 ```
 
-　Hadlyの図には前節の図にはない**Infer**と**Automate**というプロセスが入っていますが、本書では**Infer**は**Model**に、**Automate**は**Communicate**に含まれるものとして分類しています。
+　Hadlyの図には**Infer**と**Automate**というプロセスが入っていますが、本書では**Infer**は**Model**に、**Automate**は**Communicate**に含まれるものとして整理しています。
 
 \newpage
 
 ### Program {.unnumbered}
-　データ分析のすべてのプロセス（**Import**〜**Communicate**）で必要となるツールが**Program**です。**R**では様々なパッケージを使うことで外部アプリケーションとの連動を図り、**R**だけで全てのプロセスが完結するR Ecosystemと呼べる体系が出来ています。
+　データ分析のすべてのプロセス（**Import**〜**Communicate**）で必要となるツール（分析環境）が**Program**です。**R**では様々なパッケージを使うことで外部アプリケーションとの連動を図り、**R**を中心に用いることで全てのプロセスを完結させることができるEcosystem（後述）と呼べる体系が出来ています。
 
 
 ### Import {.unnumbered}
-　分析対象となるデータを分析環境に取り込むのが**Import**プロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法でインポートする必要があります。
+　分析対象となるデータを分析環境に取り込むのが**Import**プロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法で取り込む必要があります。
 
 
 ### Tidy {.unnumbered}
-　インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、**R**で扱いやすいような形式（Tidy Data）にします。[Tidy Data](https://www.jstatsoft.org/article/view/v059i10){target="_blank" title="Jounal of Statistical Software"}[@R-TidyData]\index{Tidy Data}はデータ分析において非常に重要な概念で、以下の条件を満たしたデータを意味します。
+　インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、扱いやすいような形式（Tidy Data）に整形します。[Tidy Data](https://www.jstatsoft.org/article/view/v059i10){target="_blank" title="Jounal of Statistical Software"}[@R-TidyData]\index{Tidy Data}はデータ分析において非常に有用で重要な概念で、以下の条件を満たしたデータを意味します。
 
-* 個々の変数が一つの列をなす
-* 個々の観測が一つの行をなす
-* 個々の観測の構成単位の累計が一つの表をなす
-* 個々の値が一つのセルをなす
+* 個々の変数が一つの列をなす（Each variable forms a column.）
+* 個々の観測が一つの行をなす（Each observation forms a row.）
+* 個々の値が一つのセルをなす（Every cell is a single value.）
+* 個々の観測の構成単位の累計が一つの表をなす（Each type of observational unit forms a table.）
 
-　端的に表現すればデータの「構造と意味が合致する」と言えます。日本語では整然データと呼ばれ、対義語は雑然データ（Messy Data）です。
+　端的に表現すればデータの[「構造と意味が合致する」](https://ja.wikipedia.org/wiki/Tidy_data)と言えます。日本語では整然データと呼ばれ、対義語は雑然データ（Messy Data）です。
 
 
 ### Transform {.unnumbered}
-　整然データ（Tidy Data）に変換したとしても、データをそのまま状態で分析に使えることは稀です。実際のデータにはデータの一部が欠損していたり、分析には必要のないデータが含まれていたりしますので、不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。これらの変換を事なうのが**Transform**プロセスです。
+　整然データ（Tidy Data）に変換したとしても、データをそのまま状態で分析に使えることは稀です。実際のデータにはデータの一部が欠損していたり、分析には必要のないデータが含まれていたりしますので、不要なデータを削除したり（クレンジング）、必要なデータだけに絞り込んだり、新しい変数を計算したりする必要があります。これらの変換を事なうのが**Transform**プロセスです。  
 
-**Tidy**プロセスと合わせて**Wrangle**や**Data Wrangling**、前処理などと呼ばれることもあります。本書では**Import**、**Tidy**、**Transform**をあわせて**Wrangle**と称しています。
+　**Tidy**プロセスと合わせて**Wrangle**や**Data Wrangling**、前処理などと呼ばれることもあります。本書では**Import**、**Tidy**、**Transform**をあわせて**Wrangle**と称しています。
 
 
 ### Visualize {.unnumbered}
@@ -215,16 +222,22 @@ knitr::include_graphics("fig/data-science.png")
 ### Communicate {.unnumbered}
 　モデルが作成したら最後は分析結果を伝え（報告し）なければなりません。この報告のプロセスが**Communicate**で、プロセスにおいて重要な点が再現可能性（Reproducible research）です。再現可能性の重要性については[「統計解析の再現可能性を高めるために」](http://www.igaku-shoin.co.jp/paperDetail.do?id=PA03357_03){target="_blank" title="医学界新聞, 医学書院"}をお読みください。
 
-<!-- \newpageｓ -->
+\newpage
 
 ## Tidyverse Ecosystem {.unnumbered}
-Data Science Workflowを**R**で実現するための手段がHadley Wickhamが中心となって開発している**`tidyverse`**パッケージ群による「Tidyverse Ecosystem」です。
+　Data Science Workflowを**R**で実現するための手段がHadley Wickhamが中心となって開発している**`tidyverse`**パッケージ群による「Tidyverse Ecosystem」です。
 
 ```{r, echo=FALSE, fig.cap="Tidyverse Ecosystem"}
 knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
 ```
 
-ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』[@RStartHere:GitHub]をご覧ください。
+\begin{hint-box}
+Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお互いに連携することで利益や効果などを得られるシステムやプロセスなどを生態系になぞらえてEcosystemと呼ぶことがあります。
+\end{hint-box}
+
+　  
+
+　ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』[@RStartHere:GitHub]をご覧ください。
 
 * **Import**
   * **`readr`** [@R-readr]
@@ -238,6 +251,7 @@ knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
   * **`DBI`** [@R-DBI]
       - SQL系の各種データベースと接続するためのパッケージ
 
+\newpage
 
 * **Tidy**
   * **`tidyr`** [@R-tidyr]
@@ -274,6 +288,7 @@ knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
   * **`tidymodels`**[@tidymodels2020; @R-tidymodels]
       - 機械学習を中心としたモデリングフレームワーク
 
+\newpage
 
 * **Communicate**
   * **`knitr`** [@knitr2014; @R-knitr]
@@ -285,6 +300,7 @@ knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
   * **`shiny`** [@R-shiny]
       - インタラクティブなWebアプリケーションを作成するためのパッケージ
 
+　プロセスのハブ・スポークを担うパッケージもEcosystemの一部です。
 
 * **Othres**
   * **`magrittr`** [@R-magrittr]
@@ -292,5 +308,6 @@ knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
   * **`purrr`** [@R-purrr]
       - 関数型プログラミングによる反復処理を提供するパッケージ
 
-　プロセスのハブ・スポークを担うパッケージもEcosystemの一部です。
+　  
 
+　次パートでは、**R**を使うための基礎知識を紹介します。
