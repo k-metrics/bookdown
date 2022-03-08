@@ -22,6 +22,21 @@ mainfontoptions: Scale=MatchUppercase
 monofontoptions: Scale=0.8
 CJKoptions: Scale=1.0
 subtitle: 〜 Rによるデータ分析事始め 〜
+# https://github.com/chdemko/pandoc-latex-environment/
+# header-includes:
+# - |
+#   ```{=latex}
+#   \usepackage{tcolorbox}
+# 
+#   \newtcolorbox{info-box}{colback=cyan!5!white,arc=0pt,outer arc=0pt,colframe=cyan!60!black}
+#   \newtcolorbox{warning-box}{colback=orange!5!white,arc=0pt,outer arc=0pt,colframe=orange!80!black}
+#   \newtcolorbox{error-box}{colback=red!5!white,arc=0pt,outer arc=0pt,colframe=red!75!black}
+#   ```
+# pandoc-latex-environment:
+#   tcolorbox: [box]
+#   info-box: [info]
+#   warning-box: [warning]
+#   error-box: [error]
 ---
 
 ```{css, include=FALSE}
@@ -165,4 +180,3 @@ if (knitr::is_html_output(excludes = c("epub"))) {
 　ただし、本書にて引用している文書、図、ロゴなどの権利は原著作者が保有しています。
 
 -------------------------------------------------------------------------------
-

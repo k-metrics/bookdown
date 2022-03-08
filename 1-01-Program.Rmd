@@ -63,9 +63,9 @@ knitr::include_graphics("./fig/RStudio/DT.png")
 knitr::include_graphics("./fig/RStudio/RStudioServer.png")
 ```
 
-\begin{hint-box}
-Docker Desktopの商用利用は有料です。営利組織内で利用する場合は\href{https://www.docker.com/products/docker-desktop}{利用条件}を確認の上、利用規約に抵触しなようにご注意ください。
-\end{hint-box}
+::: {.hint-box data-latex=""}
+Docker Desktopの商用利用は有料です。営利組織内で利用する場合は[利用条件](https://www.docker.com/products/docker-desktop)を確認の上、利用規約に抵触しなようにご注意ください。
+:::
 
 
 ### RStudio Cloud

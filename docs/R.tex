@@ -15,7 +15,7 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2022-03-07}
+\date{2022-03-08}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -229,6 +229,7 @@
 % --- 色付き囲いの定義 --------------------------------------------------------
 % https://marukunalufd0123.hatenablog.com/entry/2019/03/15/071717
 % https://texmedicine.hatenadiary.jp/entry/2015/12/17/000339
+% https://gedevan-aleksizde.github.io/rmarkdown-cookbook/custom-blocks.html
 
 % tcolorbox packageのライブラリを呼びだす
 \tcbuselibrary{breakable, theorems, raster, skins}
@@ -236,13 +237,11 @@
 % Round Box
 % 利用する場合は先頭に全角空白を入れること
 \newtcolorbox{info-box}[2][]{colback = cyan!5!white,
-                             colframe = cyan!60!black, 
-                             title={#2}, #1}
-\newtcolorbox{warning-box}[2][]{colback = orange!5!white, 
-                                colframe = orange!80!black,
-                                title={#2}, #1}
+  colframe = cyan!60!black, coltitle = white, title={#2}, #1}
+\newtcolorbox{warning-box}[2][]{colback = orange!5!white,
+  colframe = orange!80!black, title={#2}, #1}
 \newtcolorbox{error-box}[2][]{colback = red!5!white,
-                              colframe=red!75!black, title={#2}, #1}
+  colframe=red!75!black, title={#2}, #1}
 
 % 
 \newtcolorbox{hint-box}[1][]{enhanced,
@@ -255,6 +254,7 @@
     \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
     \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
     \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    % \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries i} ([xshift=4mm]interior.north west);
     },
   drop fuzzy shadow, #1}
 
@@ -375,6 +375,7 @@
   \end{kframe}
   \end{itemize}
   }
+% --- RmdNote ---------------------------------------------------------
 \newenvironment{rmdnote}
   {\begin{rmdblock}{note}}
   {\end{rmdblock}}
@@ -1172,6 +1173,7 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 
 \begin{hint-box}
 Docker Desktopの商用利用は有料です。営利組織内で利用する場合は\href{https://www.docker.com/products/docker-desktop}{利用条件}を確認の上、利用規約に抵触しなようにご注意ください。
+
 \end{hint-box}
 
 \hypertarget{rstudio-cloud}{%
@@ -1284,7 +1286,8 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 　
 
 \begin{hint-box}
-以降に出てくる灰色に網掛けされた部分はRのコード、コードの下の`\#\#`で始まる部分は実行結果（出力）です。コードによっては実行結果が出力されない場合もあります。
+以降に出てくる灰色に網掛けされた部分は\textbf{R}のコード、コードの下の\texttt{\#\#}で始まる部分は実行結果（出力）です。コードによっては実行結果が出力されない場合もあります。
+
 \end{hint-box}
 
 　
@@ -1586,11 +1589,11 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 　この表記方法については賛否ありますが、どのパッケージの関数を使っているかが分かりやすいので本書ではこの記述方法を用います。
 
-\hypertarget{ux9591ux8a71}{%
-\subsubsection*{閑話}\label{ux9591ux8a71}}
-\addcontentsline{toc}{subsubsection}{閑話}
+\hypertarget{ux30b3ux30e9ux30e0}{%
+\subsection*{コラム}\label{ux30b3ux30e9ux30e0}}
+\addcontentsline{toc}{subsection}{コラム}
 
-\textbf{なぜパッケージを使うのか？}\\
+\begin{info-box}{なぜパッケージを使うのか？}
 　幾何平均を求めるために\texttt{psych}パッケージを利用しましたが、\textbf{R}には総積（\(x_1 \times x_2 \times \cdots \times x_n\)）を求める\texttt{prod()}関数と累乗根（\(x^{\frac{1}{n}}\)）を求めるべき乗演算子（\texttt{\^{}}）がありますので、これを組み合わせれば幾何平均を求めることが可能です。
 
 \begin{Shaded}
@@ -1630,6 +1633,8 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \end{verbatim}
 
 　このように既にパッケージで提供されている関数があれば、自分でコードを組むよりはパッケージを導入した方が早くて確実です（ここでの本来の目的は幾何平均を求めることでなくデータの特徴を掴むことです）。特に\textbf{CRAN}に登録されているパッケージは審査が行われていますので、使わないよりは使った方が確実に目的を達成しやすくなります。\textbf{R}には先人の知恵が結集していますので、車輪の再発明に挑戦するより先人の知恵を活用する方をおすゝめします。
+
+\end{info-box}
 
 \newpage
 
@@ -1711,7 +1716,8 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \end{verbatim}
 
 \begin{hint-box}
-不偏分散は母分散（$\sigma^2$）の不偏推定量（$\hat{\sigma}^2$）で、不偏標本分散と呼ばれることもあります。母分散は未知の値ですので、標本からの不偏推定量で代用しています。
+不偏分散は母分散（\(\sigma^2\)）の不偏推定量（\(\hat{\sigma}^2\)）で、不偏標本分散と呼ばれることもあります。母分散は未知の値ですので、標本からの不偏推定量で代用しています。
+
 \end{hint-box}
 
 \newpage
@@ -1910,16 +1916,33 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 ## [1] -0.3767132
 \end{verbatim}
 
+　
+
+\begin{hint-box}
+　本項で用いたグラフ（ヒストグラム）は棒グラフとは似て非なるグラフです。ヒストグラムは、
+
+\begin{quote}
+底辺の長さが級の幅（階級幅）に等しく、その面積が級（階級）の度数に比例する〈近接する〉長方形からなる度数分布のグラフ
+\end{quote}
+
+と定義されており、面積に意味があります。級の幅（階級幅）の決め方は任意で必ずしも一定幅である必要はありません。級（階級）の幅が一定幅でなく、任意の幅が混在している状況では特に面積がもっている意味が重要になります。
+
+　某オフィスソフトでは棒グラフのように描かれてしまうので注意が必要です。
+
+\end{hint-box}
+
+\newpage
+
 \hypertarget{ux4e2dux592eux5024}{%
 \subsection{中央値}\label{ux4e2dux592eux5024}}
 
-平均値や分散・標準偏差はデータの分布が平均値を中心に左右対象になっているような場合は有用な統計量ですが、データの分布が大きく歪んでいる対象に対しては適した統計量とは言えません。このような場合、平均値の代わりに中央値（中位数）や最頻値、分散・標準偏差に代わり範囲・分位範囲（分位値）を用いるます。これらの統計量はデータの中の位置を用いますので、データの分布に影響されることが少ないロバストネス（頑健性の高い）な統計量です。
+　平均値や分散・標準偏差はデータの分布が平均値を中心に左右対象になっているような場合は有用な統計量ですが、データの分布が大きく歪んでいる対象に対しては適した統計量とは言えません。このような場合、平均値の代わりに中央値（中位数）や最頻値、分散・標準偏差に代わり範囲・分位範囲（分位値）を用います。これらの統計量はデータを順に並べたときの位置を用いますので、データの分布に影響されることが少ないロバストネス（頑健性の高い）な統計量です。
 
-中央値は文字通り中央（真ん中）に位置する値です。データを小さい順に並べて真ん中に位置する値で、\texttt{median()}関数を使って求めます。データが順番に並んでいなくても\texttt{median()}関数内でソート処理を行います。
+　中央値は文字通り中央（真ん中）に位置する値です。データを小さい順に並べて真ん中に位置する値で、\texttt{median()}関数を使って求めます。データが順番に並んでいなくても\texttt{median()}関数内でソート処理が行われますので並べ直す必要はありません。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{)}
 \FunctionTok{median}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
@@ -1928,7 +1951,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 ## [1] 5
 \end{verbatim}
 
-データの長さ（値の数）が奇数の場合は、単純に中央の値（上記の場合は\(1, 3, 5, 7, 9\)なので中央に位置する\(5\)）を返しますが、データの長さ偶数の場合は中央に近い両側の値の平均値（相加平均）を返します。
+　データの長さ（値の数）が奇数の場合は、単純に中央の値（上記の場合は\(1, 3, 5, 7, 9\)なので中央に位置する\(5\)）を返しますが、データの長さ偶数の場合は中央に近い両側の値の平均値（相加平均）を返します。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1941,20 +1964,45 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 ## [1] 5.5
 \end{verbatim}
 
-例えば、上記のようにデータの長さが偶数（\(6\)）で\(1, 3, 5, 6, 7, 9\)というデータですので、中央に最も近い\(5, 6\)の平均値を中央値としています。
+　例えば、上記のようにデータの長さが偶数（\(6\)）で、ソートすると\(1, 3, 5, 6, 7, 9\)となるデータですので、中央に最も近い\(5, 6\)の平均値を中央値としています。
 
-中央値と平均値を比較すると中央値がデータの分布に影響されにくい（ロバストネス）なことが分かります。
+　中央値と平均値を比較すると中央値がデータの分布に影響されにくい（ロバストネスな）ことが分かります。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{median}\NormalTok{(x)                    }\CommentTok{\# 中央値}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{mean}\NormalTok{(x)                      }\CommentTok{\# 平均値}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
 \NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{28}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\FunctionTok{median}\NormalTok{(x)                    }\CommentTok{\# 中央値の比較}
+\FunctionTok{median}\NormalTok{(y)                    }\CommentTok{\# 中央値（大きい値には引っ張られない）}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1964,27 +2012,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\FunctionTok{median}\NormalTok{(y)                    }\CommentTok{\# 中央値の比較（大きい値には引っ張られない）}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 5
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{mean}\NormalTok{(x)                      }\CommentTok{\# 平均値の比較}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 5
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{mean}\NormalTok{(y)                      }\CommentTok{\# 平均値の比較（大きい値に引っ張られている）}
+\FunctionTok{mean}\NormalTok{(y)                      }\CommentTok{\# 平均値（大きい値に引っ張られている）}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1995,7 +2023,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \hypertarget{ux7bc4ux56f2}{%
 \subsection{範囲}\label{ux7bc4ux56f2}}
 
-前述の\texttt{x}と\texttt{y}は、中央値で見る限りと同じデータになってしまいます。この結論はいささか不合理ですので、データのばらつきを範囲（レンジ）で見てみます。範囲を求めるには、その名の通りの\texttt{range()}を用います。
+　前述の\texttt{x}と\texttt{y}は、中央値で見る限りと同じ特徴を持つデータとなってしまいます。ただ、この結論はいささか不合理ですので、データのばらつきを範囲（レンジ）で見てみます。範囲を求めるには、その名の通りの\texttt{range()}関数を用います。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2037,9 +2065,9 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 ## [1]  1 28
 \end{verbatim}
 
-範囲でみると\texttt{y}の方が\texttt{x}よりばらついていることが分かります。
+　範囲でみると\texttt{y}の方が\texttt{x}よりばらついていることが分かります。
 
-\texttt{range()}関数は最小値と最大値を一度に取得しています。最小値は\texttt{min()}関数、最大値は\texttt{max()}関数で求められますので、\texttt{range()}関数は以下のように処理をしていることが分かります。
+　\texttt{range()}関数は最小値と最大値を一度に取得しています。最小値は\texttt{min()}関数、最大値は\texttt{max()}関数で求められますので、\texttt{range()}関数は以下のように処理をしていることが分かります。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2051,7 +2079,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 ## [1] 1 9
 \end{verbatim}
 
-最小値から最大値の幅を求めたい場合には\texttt{min()}関数と\texttt{max()}関数を用いるよりは\texttt{diff()}関数を用いた方が簡単です。
+　最小値から最大値の幅を求めたい場合には\texttt{min()}関数と\texttt{max()}関数を用いるよりは\texttt{diff()}関数を用いた方が簡単です。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2073,16 +2101,20 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 ## [1] 27
 \end{verbatim}
 
+\newpage
+
 \hypertarget{ux56dbux5206ux4f4dux6570ux56dbux5206ux4f4dux7bc4ux56f2}{%
 \subsection{四分位数・四分位範囲}\label{ux56dbux5206ux4f4dux6570ux56dbux5206ux4f4dux7bc4ux56f2}}
 
-中央値は中位数と呼ばれるようにデータを二分の一にした場所にあるデータです。さらに細かくして全体を四分の一にしたの場所にあるデータを四分位数と呼びます。小さい方から見て最初の四分の一にある値を第一四分位数（\(25\%\)点、\(Q_1\)）、次の四分の一にある値を第二四分位数（\(50\%\)点、\(Q_2\)）、次の四分の一にある値を第三四分位数（\(75\%\)点、\(Q_3\)）といいます。第二四分位数（\(50\%\)点、\(Q_2\)）は中央値（中位数）とイコールです。 四分位数にも範囲があり、四分位範囲（\(IQR\), interquartile range）と呼ばれ以下のように定義されます、
+　中央値は中位数とも呼ばれデータの全体を半分にした位置にあるデータです。さらに細かく全体を四分の一にしたの位置にあるデータを四分位数と呼びます。小さい方から見て最初の四分の一にした位置にある値を第一四分位数（\(25\%\)点、\(Q_1\)）、次の四分の一にした位置にある値を第二四分位数（\(50\%\)点、\(Q_2\)）、次の四分の一にした位置にある値を第三四分位数（\(75\%\)点、\(Q_3\)）といいます。第二四分位数（\(50\%\)点、\(Q_2\)）は中央値（中位数）と同じです。
+
+　四分位数にも範囲があり、四分位範囲（\(IQR\), interquartile range）と呼ばれ以下のように定義されます、
 
 \begin{align}
   IQR = Q_3 - Q_1 \label{eq:IQR}
 \end{align}
 
-四分位数は\texttt{quantile()}関数で求めることができます。オプションの引数を指定しなければ第一〜第三四分位数に加えて最小値（\(0\%点\)）・最大値（\(100\%点\)）を加えた五つの値が返ってきます。
+　四分位数は\texttt{quantile()}関数で求めることができます。オプションの引数を指定しなければ第一〜第三四分位数に加えて最小値（\(0\%\mbox{点}\)）・最大値（\(100\%\mbox{点}\)）を加えた五つの値が返ってきます。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2095,7 +2127,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 ##    1    3    5    7    9
 \end{verbatim}
 
-任意の四分位数を求めたい場合は引数\texttt{prob}を指定します。\texttt{prob}は\(0\)〜\(1\)の間で指定する点に中位してください。
+　任意の四分位数を求めたい場合は引数\texttt{prob}を指定します。\texttt{prob}は\(0\)〜\(1\)の間で指定する点に中位してください。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2108,7 +2140,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 ##   3
 \end{verbatim}
 
-複数の四分位数を同時に求めことも可能です。
+　複数の四分位数を同時に求めことも可能です。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2121,7 +2153,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 ##   3   7
 \end{verbatim}
 
-四分位範囲（\(IQR\)）を求める場合は\texttt{IQR()}関数が便利です。
+　四分位範囲（\(IQR\)）を求める場合は\texttt{IQR()}関数が便利です。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2133,74 +2165,27 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 ## [1] 4
 \end{verbatim}
 
+\newpage
+
 \hypertarget{ux6700ux983bux5024}{%
 \subsection{最頻値}\label{ux6700ux983bux5024}}
 
-最頻値（モード）とは文字通り、最も頻繁に出てくる値のことです。例えば、以下の\texttt{x}と\texttt{y}は、平均値・中央値・範囲は全て同じ値になるデータです。
+　最頻値（モード）とは文字通り、最も頻繁に出てくる値のことです。例えば、以下の\texttt{x}と\texttt{y}は、平均値・中央値・範囲は全て同じ値になるデータです。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{)}
 \NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{9}\NormalTok{)}
-\FunctionTok{mean}\NormalTok{(x)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.8
+##   平均値 中央値 範囲
+## x    3.8      3    8
+## y    3.8      3    8
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{mean}\NormalTok{(y)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 3.8
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{median}\NormalTok{(x)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 3
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{median}\NormalTok{(y)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 3
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(x))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 8
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{diff}\NormalTok{(}\FunctionTok{range}\NormalTok{(y))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 8
-\end{verbatim}
-
-このようなデータに対しては最頻値を用いると平均値・中央値・範囲では見えなかった差異が見える場合があります。最頻値を求める関数は標準では用意されていませんので\texttt{modeest}パッケージを用います。
+　このようなデータに対して最頻値を用いると平均値・中央値・範囲では見えなかった差異が見える場合があります。最頻値を求める関数は標準では用意されていませんので\textbf{\texttt{modeest}}パッケージの\texttt{modeest::mfv()}関数\footnote{\texttt{modeest::mfv()}関数の実体は\textbf{\texttt{statip}}パッケージで定義されています}を用います。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2234,12 +2219,12 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \hypertarget{ux307eux3068ux3081-1}{%
 \subsection{まとめ}\label{ux307eux3068ux3081-1}}
 
-本節に出てきた要約統計量と関数は下表の通りです。
+　標本分散と標本標準偏差を除けば基本的に関数一つで求められます。
 
 \begin{longtable}[]{@{}lcl@{}}
 \caption{要約統計量のまとめ}\tabularnewline
 \toprule
-要約統計量 & 表記 & \textbf{R}での求め方\footnote{引数\texttt{x}は計算対象となる数値データが格納されたベクトル型の変数} \\
+要約統計量 & 表記 & \textbf{R}での求め方\footnote{引数\texttt{x}は計算対象となる数値データが格納されたベクトル型の変数です} \\
 \midrule
 \endfirsthead
 \toprule
@@ -2249,16 +2234,16 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 標本平均 & \(\bar{x}\) & \texttt{mean(x)} \\
 トリム平均 & & \texttt{mean(x,\ trim\ =\ t),\ t\ =\ 0\ to\ 0.5} \\
 幾何平均 & & \texttt{psych::geometric.mean(x)} \\
-標本分散 & \(s^2\) & \texttt{(length(x)\ -\ 1)\ /\ length(x)\ *\ var(x)} \\
 不偏分散 & \(\hat{\sigma}^2\) & \texttt{var(x)} \\
-標本標準偏差 & \(s\) & \texttt{sqrt((length(x)\ -\ 1)\ /\ length(x)\ *\ var(x))} \\
 不偏標本偏差 & \(\hat{\sigma}\) & \texttt{sd(x)} \\
+標本分散 & \(s^2\) & \texttt{(length(x)\ -\ 1)\ /\ length(x)\ *\ var(x)} \\
+標本標準偏差 & \(s\) & \texttt{sqrt((length(x)\ -\ 1)\ /\ length(x)\ *\ var(x))} \\
 歪度 & \(\gamma_1\) & \texttt{e1071::skewness(x)} \\
 尖度 & \(\gamma_2\) & \texttt{e1071::kurtosis(x)} \\
 中央値 & & \texttt{median(x)} \\
-範囲 & \(R\)\footnote{重相関計数を意味する場合もあり} & \texttt{range(x)} or \texttt{diff(range(x))} \\
+範囲 & \(R\)\footnote{重相関計数を意味する場合の方が多いです} & \texttt{range(x)} or \texttt{diff(range(x))} \\
 四分位数 & \(Q_n\) & \texttt{quantile(x)} \\
-第\(n\)四分位数 & \(Q_n\) & \texttt{quantile(x,\ probs\ =\ u),\ u\ =\ 0.25*n,\ n\ =\ 1,\ 2,\ 3}\footnote{引数\texttt{probs}はベクトル指定も可能（例：\texttt{probs\ =\ c(0.25,\ 0.75)}）} \\
+第\(n\)四分位数 & \(Q_n\) & \texttt{quantile(x,\ probs\ =\ u),\ u\ =\ 0.25*n,\ n\ =\ 1,\ 2,\ 3}\footnote{引数\texttt{probs}はベクトル指定も可能です（例：\texttt{probs\ =\ c(0.25,\ 0.75)}）} \\
 四分位範囲 & \(IQR\) & \texttt{IQR(x)} \\
 最頻値 & & \texttt{modeest::mfv(x)} \\
 \bottomrule
@@ -2273,7 +2258,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \subsubsection*{演習 1}\label{ux6f14ux7fd2-1}}
 \addcontentsline{toc}{subsubsection}{演習 1}
 
-標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の関係式\eqref{eq:variance-var}を用いて以下の二つのデータの標本分散（\(s^2\)）を求めなさい。
+　標本分散（\(s^2\)）と不偏分散（\(\hat{\sigma}^2\)）の関係式\eqref{eq:variance-var}を用いて以下の二つのデータの標本分散（\(s^2\)）を求めなさい。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2286,7 +2271,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \subsubsection*{演習 2}\label{ux6f14ux7fd2-2}}
 \addcontentsline{toc}{subsubsection}{演習 2}
 
-欠損値を含む以下のデータの平均値（\(\bar{x}\)）、不偏分散（\(\hat{\sigma}^2\)）ならびに標本分散（\(s^2\)）を求めなさい。
+　欠損値（\texttt{NA}）を含む以下のデータの平均値（\(\bar{x}\)）、不偏分散（\(\hat{\sigma}^2\)）ならびに標本分散（\(s^2\)）を求めなさい。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2294,26 +2279,26 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \end{Highlighting}
 \end{Shaded}
 
-\begin{quote}
-引数\texttt{na.rm}を指定します
-\end{quote}
+\begin{hint-box}
+欠損値（\texttt{NA}）を含むデータを引数にする場合は、引数\texttt{na.rm}を指定します
+
+\end{hint-box}
 
 \hypertarget{ux6f14ux7fd2-3}{%
 \subsubsection*{演習 3}\label{ux6f14ux7fd2-3}}
 \addcontentsline{toc}{subsubsection}{演習 3}
 
-\texttt{iris}データセットの各変量に対する四分位数を求めなさい。
+　\texttt{iris}データセットの各変量に対する四分位数を求めなさい。
 
 \newpage
 
-\hypertarget{ux30b3ux30e9ux30e0}{%
-\subsection*{コラム}\label{ux30b3ux30e9ux30e0}}
+\hypertarget{ux30b3ux30e9ux30e0-1}{%
+\subsection*{コラム}\label{ux30b3ux30e9ux30e0-1}}
 \addcontentsline{toc}{subsection}{コラム}
 
-\begin{rmdnote}
-\textbf{英字？ギリシャ文字？}\\
-　統計の書籍では様々な統計量を英字で表記する場合とギリシャ文字で表記する場合があり混乱しやすいのですが、英字（アルファベット）で表記されている場合は標本統計量、ギリシャ文字で表記されている場合は母集団の統計量もしくは母集団の推定統計量を意味しています。\\
-　推定統計量を表記する場合、推定であることを意味するハット（ \(\hat{}\) ）という記号をつけます。平均と分散・標準偏差を使って整理すると下表のようになります。
+\begin{info-box}{英字？ギリシャ文字？}
+　統計の書籍では様々な統計量を英字（アルファベット）で表記する場合とギリシャ文字で表記する場合があり混乱しやすいのですが、英字で表記されている場合は標本統計量、ギリシャ文字で表記されている場合は母集団の統計量もしくは母集団の推定統計量を意味しています。\\
+　推定統計量を表記する場合、ハット（ \(\hat{}\) ）という記号をつけます。平均と分散・標準偏差を使って整理すると下表のようになります。
 
 \begin{longtable}[]{@{}lcccl@{}}
 \caption{統計量の表記ルール}\tabularnewline
@@ -2330,7 +2315,10 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 標本統計量 & \(\bar{x}\) & \(s^2\) & \(s\) & 標本から求める統計量 \\
 \bottomrule
 \end{longtable}
-　ハット（ \(\hat{}\) ）を省略している書籍や資料も散見されますので混乱しないように注意してください。詳しくは『統計的方法のしくみ』\citep{ToukeitekiHouhounoSikumi:jbook}の「3. 母数と統計量の区別」や『統計解析のはなし』\citep{ToukeiKaisekinoHanashi}の「2. 素人探偵物語」などを参照してください。 \end{rmdnote}
+
+　ハット（ \(\hat{}\) ）を省略している書籍や資料も散見されますので混乱しないように注意してください。詳しくは『統計的方法のしくみ』\citep{ToukeitekiHouhounoSikumi:jbook}の「3. 母数と統計量の区別」や『統計解析のはなし』\citep{ToukeiKaisekinoHanashi}の「2. 素人探偵物語」などを参照してください。
+
+\end{info-box}
 
 \newpage
 
@@ -4305,9 +4293,10 @@ NA & データ型 \\
 \end{Highlighting}
 \end{Shaded}
 
-\begin{quote}
-ヒント：\texttt{na.rm}オプションを使います
-\end{quote}
+\begin{hint-box}
+欠損値（\texttt{NA}）を含むデータを引数にする場合は、引数\texttt{na.rm}を指定します
+
+\end{hint-box}
 
 \hypertarget{ux89e3ux7b54ux4f8b-1}{%
 \subsection*{解答例}\label{ux89e3ux7b54ux4f8b-1}}
@@ -4347,11 +4336,11 @@ NA & データ型 \\
 ## [1] 8.75
 \end{verbatim}
 
-\hypertarget{ux88dcux8db3}{%
-\subsection*{補足}\label{ux88dcux8db3}}
-\addcontentsline{toc}{subsection}{補足}
+\newpage
 
-\texttt{length()}関数は指定したデータの長さ（値の個数）を求める関数です。欠損値（\texttt{NA}）も値としてカウントされます。\texttt{length()}関数には\texttt{na.rm}オプションはありません。
+\begin{info-box}{Tips}
+
+　\texttt{length()}関数は指定したデータの長さ（値の個数）を求める関数ですので、欠損値（\texttt{NA}）も値としてカウントします。\texttt{length()}関数に\texttt{na.rm}オプションはありません。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -4373,7 +4362,7 @@ NA & データ型 \\
 ## [1] 5
 \end{verbatim}
 
-そこで、値が\texttt{NA}か否かを調べる\texttt{is.na()}関数を用います。
+　そこで、値が\texttt{NA}か否かを調べる\texttt{is.na()}関数を用います。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -4385,7 +4374,7 @@ NA & データ型 \\
 ## [1] FALSE FALSE  TRUE FALSE FALSE
 \end{verbatim}
 
-返り値は論理型（\texttt{TRUE}/\texttt{FALSE}）ですが、\texttt{TRUE}は\(1\)、\texttt{FALSE}は\(0\)と等価であることを利用し、論理演算子の否定（\texttt{!}）と合計を求める\texttt{sum()}関数を組み合わせると\texttt{NA}を除くデータの長さを求めることができます。
+　返り値は論理型（\texttt{TRUE}/\texttt{FALSE}）ですが、\texttt{TRUE}は\(1\)、\texttt{FALSE}は\(0\)と等価であることを利用し、否定演算子（\texttt{!}）と合計を求める\texttt{sum()}関数を組み合わせると\texttt{NA}を除くデータの長さを求めることができます。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -4397,7 +4386,7 @@ NA & データ型 \\
 ## [1] 4
 \end{verbatim}
 
-不偏分散を求める\texttt{var()}関数は\texttt{NA}が含まれるデータを指定する場合は、\texttt{NA}を除外するか否かを指定する\texttt{na.rm}オプションを指定する必要があります。
+　不偏分散を求める\texttt{var()}関数は\texttt{NA}が含まれるデータを指定する場合は、\texttt{na.rm}オプションを指定します。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -4409,8 +4398,6 @@ NA & データ型 \\
 ## [1] NA
 \end{verbatim}
 
-\texttt{na.rm\ =\ TRUE}オプションを指定することで、\texttt{NA}を含むデータの不偏分散を求めることができます。
-
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \FunctionTok{var}\NormalTok{(z, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
@@ -4421,17 +4408,21 @@ NA & データ型 \\
 ## [1] 11.66667
 \end{verbatim}
 
+\end{info-box}
+
+\newpage
+
 \hypertarget{ux6f14ux7fd2-3-1}{%
 \section*{演習 3}\label{ux6f14ux7fd2-3-1}}
 \addcontentsline{toc}{section}{演習 3}
 
-\texttt{iris}データセットの各変量に対する四分位数を求めなさい。
+　\texttt{iris}データセットの各変量に対する四分位数を求めなさい。
 
 \hypertarget{ux89e3ux7b54ux4f8b-2}{%
 \subsection*{解答例}\label{ux89e3ux7b54ux4f8b-2}}
 \addcontentsline{toc}{subsection}{解答例}
 
-\texttt{iris}データセットは\textbf{R}に標準で組み込まれているサンプルデータです。\texttt{iris}と実行するだけでデータを表示することができますが、全てを表示すると長いのでここでは先頭の六行だけを\texttt{head()}関数を用いて表示します。
+　\texttt{iris}データセットは\textbf{R}に標準で組み込まれているサンプルデータですので、\texttt{iris}と実行するだけでデータを表示することができますが、全てを表示すると長いのでここでは先頭の6行だけを\texttt{head()}関数を用いて表示します。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -4449,7 +4440,7 @@ NA & データ型 \\
 ## 6          5.4         3.9          1.7         0.4  setosa
 \end{verbatim}
 
-一番上の行は変量名（変数名）で、一番右側の\texttt{Species}は文字変量ですので、これを除いた四変量（\texttt{Sepal.Length}, \texttt{Sepal.Width}, \texttt{Petal.Length}, \texttt{Petal.Width}）に対して四分位数を求める\texttt{quantile()}関数を適用します。
+　一番上の行は変量名（変数名）で、一番右側の\texttt{Species}は文字変量ですので、これを除いた四変量（\texttt{Sepal.Length}, \texttt{Sepal.Width}, \texttt{Petal.Length}, \texttt{Petal.Width}）に対して四分位数を求める\texttt{quantile()}関数を適用します。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -4495,17 +4486,15 @@ NA & データ型 \\
 ## 0.3 1.3 1.8
 \end{verbatim}
 
-\texttt{\$}は参照演算子と呼ばれるデータセットの変量名を用いてデータを参照するための演算子です。
+　\texttt{\$}は参照演算子と呼ばれるデータセットの変量名を用いてデータを参照するための演算子です。
 
-\hypertarget{ux88dcux8db3-1}{%
-\subsection*{補足}\label{ux88dcux8db3-1}}
-\addcontentsline{toc}{subsection}{補足}
-
-解答例のように個々の変量毎に\texttt{quantile()}関数を適用するより\texttt{apply()}関数による繰り返し処理を用いた方が簡単です。\texttt{apply()}関数は\texttt{iris}データセットのような形式のデータに対して行方向（\texttt{MARGINE\ =\ 1}）、または、列方向（\texttt{MARGIN\ =\ 2}）に\texttt{FUN}オプションで指定する関数を適用します。\texttt{FUN}オプションの後ろには\texttt{FUN}オプションで指定した関数（この場合は\texttt{quantile()}関数）へ渡す引数を指定することができます。\texttt{iris}データセットは五列目の\texttt{Species}が文字変量ですので\texttt{iris{[}-5{]}}と指定することで取り除きます。
+\begin{info-box}{Tips}
+　解答例のように個々の変量毎に\texttt{quantile()}関数を適用するより\texttt{apply()}関数による繰り返し処理を用いた方が簡単です。\texttt{apply()}関数は\texttt{iris}データセットのような形式のデータに対して行方向（\texttt{MARGINE\ =\ 1}）、または、列方向（\texttt{MARGIN\ =\ 2}）に\texttt{FUN}オプションで指定する関数を適用します。\texttt{FUN}オプションの後ろには\texttt{FUN}オプションで指定した関数（この場合は\texttt{quantile()}関数）へ渡す引数を指定することができます。\texttt{iris}データセットは五列目の\texttt{Species}が文字変量ですので\texttt{iris{[}-5{]}}と指定することで取り除きます。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\FunctionTok{apply}\NormalTok{(iris[}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{], }\AttributeTok{MARGIN =} \DecValTok{2}\NormalTok{, }\AttributeTok{FUN =}\NormalTok{ quantile, }\AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.50}\NormalTok{, }\FloatTok{0.75}\NormalTok{))}
+\FunctionTok{apply}\NormalTok{(iris[}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{], }\AttributeTok{MARGIN =} \DecValTok{2}\NormalTok{, }\AttributeTok{FUN =}\NormalTok{ quantile,}
+      \AttributeTok{probs =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.50}\NormalTok{, }\FloatTok{0.75}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4516,7 +4505,9 @@ NA & データ型 \\
 ## 75%          6.4         3.3         5.10         1.8
 \end{verbatim}
 
-このように\texttt{apply()}関数は同じ処理を繰り返したい場合には非常に有用な関数ですので憶えておいて損はありません。
+　このように\texttt{apply()}関数は同じ処理を繰り返したい場合には非常に有用な関数です。憶えておいてください。
+
+\end{info-box}
 
 \hypertarget{ux6f14ux7fd2-4-2}{%
 \section*{演習 4}\label{ux6f14ux7fd2-4-2}}
@@ -4662,7 +4653,7 @@ NA & データ型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-135}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-136}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -4681,7 +4672,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-136}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-137}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -4695,7 +4686,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-137}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-138}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -4713,7 +4704,7 @@ NA & データ型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-138}
+\caption{Warning dialog}\label{fig:unnamed-chunk-139}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -4739,7 +4730,7 @@ NA & データ型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-139}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-140}
 \end{figure}
 
 　\\
@@ -4772,7 +4763,7 @@ NA & データ型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-140}
+\caption{Initial View}\label{fig:unnamed-chunk-141}
 \end{figure}
 
 　
@@ -4789,7 +4780,7 @@ NA & データ型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-141}
+\caption{Packages Manager}\label{fig:unnamed-chunk-142}
 \end{figure}
 
 　\\
@@ -4802,7 +4793,7 @@ NA & データ型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-142}
+\caption{Install Dialog}\label{fig:unnamed-chunk-143}
 \end{figure}
 
 　\\
@@ -5202,7 +5193,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-150}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-151}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -5213,7 +5204,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-151}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-152}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -5283,7 +5274,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-152}
+\caption{R Notebook file}\label{fig:unnamed-chunk-153}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -5294,7 +5285,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-153}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-154}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -5305,7 +5296,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-154}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-155}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -5316,7 +5307,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-155}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-156}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -5327,7 +5318,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-156}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-157}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -5338,7 +5329,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-157}
+\caption{R Notebook option}\label{fig:unnamed-chunk-158}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -5624,7 +5615,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-158}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-159}
 \end{figure}
 
 　
@@ -5649,7 +5640,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-159}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-160}
 \end{figure}
 
 　

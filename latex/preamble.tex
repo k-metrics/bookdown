@@ -99,6 +99,7 @@
 % --- 色付き囲いの定義 --------------------------------------------------------
 % https://marukunalufd0123.hatenablog.com/entry/2019/03/15/071717
 % https://texmedicine.hatenadiary.jp/entry/2015/12/17/000339
+% https://gedevan-aleksizde.github.io/rmarkdown-cookbook/custom-blocks.html
 
 % tcolorbox packageのライブラリを呼びだす
 \tcbuselibrary{breakable, theorems, raster, skins}
@@ -106,13 +107,11 @@
 % Round Box
 % 利用する場合は先頭に全角空白を入れること
 \newtcolorbox{info-box}[2][]{colback = cyan!5!white,
-                             colframe = cyan!60!black, 
-                             title={#2}, #1}
-\newtcolorbox{warning-box}[2][]{colback = orange!5!white, 
-                                colframe = orange!80!black,
-                                title={#2}, #1}
+  colframe = cyan!60!black, coltitle = white, title={#2}, #1}
+\newtcolorbox{warning-box}[2][]{colback = orange!5!white,
+  colframe = orange!80!black, title={#2}, #1}
 \newtcolorbox{error-box}[2][]{colback = red!5!white,
-                              colframe=red!75!black, title={#2}, #1}
+  colframe=red!75!black, title={#2}, #1}
 
 % 
 \newtcolorbox{hint-box}[1][]{enhanced,
@@ -125,6 +124,7 @@
     \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
     \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
     \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    % \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries i} ([xshift=4mm]interior.north west);
     },
   drop fuzzy shadow, #1}
 
