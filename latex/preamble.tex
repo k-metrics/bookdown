@@ -55,7 +55,7 @@
 % 中間ファイルの.indではページはズレていないので、その後の結合処理がおかしい
 \usepackage{makeidx}
 \makeindex
-% \usepackage{showidx}                  % 索引確認用
+% \usepackage{showidx}                  % 索引確認用（索引は作成されない）
 
 % --- Table of Contentes ------------------------------------------------------
 % TOCにLOT(List of Tables), LOF(List of Figures), Bibliography, Indexを表示
@@ -113,7 +113,18 @@
 \newtcolorbox{error-box}[2][]{colback = red!5!white,
   colframe=red!75!black, title={#2}, #1}
 
-% 
+% Square Box
+\newtcolorbox{info-square}[2][]{colback = cyan!5!white,
+  arc = 0pt, outer arc = 0pt,
+  colframe = cyan!60!black, title = {#2}, #1}
+\newtcolorbox{warning-square}[2][]{colback = orange!5!white,
+  arc = 0pt, outer arc = 0pt,
+  colframe = orange!80!black, title = {#2}, #1}
+\newtcolorbox{error-square}[2][]{colback = red!5!white,
+  arc = 0pt, outer arc = 0pt,
+  colframe = red!75!black, title = {#2}, #1}
+
+% Hint Box
 \newtcolorbox{hint-box}[1][]{enhanced,
   before skip = 2mm, after skip = 3mm,
   boxrule = 0.4pt, left = 5mm, right = 2mm, top = 1mm, bottom = 1mm,
@@ -128,11 +139,4 @@
     },
   drop fuzzy shadow, #1}
 
-% Square Box
-% \newtcolorbox{info-box}[2][]{colback=cyan!5!white, arc=0pt, outer arc=0pt,
-% colframe=cyan!60!black, title={#2}, #1}
-% \newtcolorbox{warning-box}[2][]{colback=orange!5!white, arc=0pt, outer arc=0pt,
-% colframe=orange!80!black, title={#2}, #1}
-% \newtcolorbox{error-box}[2][]{colback=red!5!white, arc=0pt, outer arc=0pt,
-% colframe=red!75!black, title={#2}, #1}
 

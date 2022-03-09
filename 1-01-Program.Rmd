@@ -22,7 +22,7 @@
 [^P2-1]: 必要に応じてコードを記述することも可能です
 
 
-### R Commander
+### R Commander\index{R Commander, Rcmdr}
 　[R Commander（以降、**Rcmdr**）](https://socialsciences.mcmaster.ca/jfox/Misc/Rcmdr/){target="_blank" title=""}は、本書ではスコープ外ですが、[SQiP研究会のソフトウェアメトリクス演習コース（以降、メトリクス演習コース）](https://www.juse.or.jp/sqip/workshop/outline/index.html){target="_blank" title=""}で利用されるツールですので紹介のみしておきます。  
 
 　**Rcmdr**は**R**のパッケージとして提供されており、起動するとGUIベースの対話型分析環境になります。分析にあたって**R**のコードを記述する必要がありませんので、プログラミングの経験のない方でも手軽に利用することができます。ただし、実行できる機能（関数）が限定されている点と分析対象のデータの扱いが特有な点には注意してください。
@@ -32,7 +32,7 @@ knitr::include_graphics("./fig/RCmdr.png")
 ```
 
 
-### Google Colab
+### Google Colab\index{Google Colaboratory}
 　**Google Colab**は Googleアカウントを持っていれば誰でも利用可能な**Python**向けの**Jupyter Notebook**サービスです。[**Jupyter Notebook**は**R**をエンジンとして利用](https://colab.research.google.com/notebook#create=true&language=r)することができますので、環境を構築することなく使い始めたい方に向いています。プログラミング経験のない初学者の演習環境としては、おすゝめの環境です。
 
 ```{r, echo=FALSE, fig.cap="Google Colab"}
@@ -40,7 +40,7 @@ knitr::include_graphics("./fig/Colab/Firsttime.png")
 ```
 
 
-### RStudio 
+### RStudio\index{RStudio}
 　再現可能性を確保した探索的データ分析を行うのに最も適しているのが[**RStudio**](https://www.rstudio.com/products/rstudio/)です。無償で使えるオープンソース版には、PC上のアプリケーションとして動作する**Desktop**と Webサーバとして動作する**Server**の二種類があります。
 **RStudio**は**R**のデファクトスタンダード的な統合開発環境（IDE）であり、Tidyverse Ecosystemを活かせる分析環境（開発環境）です。その特徴としては、
 
@@ -49,7 +49,7 @@ knitr::include_graphics("./fig/Colab/Firsttime.png")
 * [**R Markdown**](https://rmarkdown.rstudio.com/){target="_blank" title=""}や [**Pandoc**](https://pandoc.org/){target="_blank" title=""} との連携による再現可能性を確保するための仕組みを備えている
 * 外部リソースからのデータを取り込む仕組み（**RStudio Connect**）を備えている
 * 複数の分析をプロジェクト単位で管理する仕組みを備えている
-* [Git](https://git-scm.com/){target="_blank" title=""} などの外部プログラムと連携したソースの版管理の仕組みを備えている
+* \index{Git}[Git](https://git-scm.com/){target="_blank" title=""} などの外部プログラムと連携したソースの版管理の仕組みを備えている
 
 などが挙げられます。
 
@@ -57,7 +57,7 @@ knitr::include_graphics("./fig/Colab/Firsttime.png")
 knitr::include_graphics("./fig/RStudio/DT.png")
 ```
 
-　**RStudio Server**は**RStudio**をブラウザから使う Linux 上で動作するサーバアプリケーションです。Dockerコンテナとして動作させることが可能ですので、個々のPCでの分析環境を固定さたい場合などには非常に便利です。
+　**RStudio Server**は**RStudio**をブラウザから使う Linux 上で動作するサーバアプリケーションです。Docker\index{Docker}コンテナとして動作させることが可能ですので、個々のPCでの分析環境を固定さたい場合などには非常に便利です。
 
 ```{r, echo=FALSE, fig.cap="RStudio Server, Docker Container"}
 knitr::include_graphics("./fig/RStudio/RStudioServer.png")
@@ -68,7 +68,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 :::
 
 
-### RStudio Cloud
+### RStudio Cloud\index{RStudio Cloud}
 　[**RStudio Cloud**](https://rstudio.cloud/)は、その名の通りクラウド版の**RStudio**です。商用版の**RStudio Server Pro**をベースしていますので、任意のバージョンの**R**に切り替えて使ったり**RStduio Package Manager**とも連携していますのでパッケージ管理が楽になっています。また、英語版しかありませんがチュートリアル機能が充実しているのが特徴です。  
 
 　無料プランが用意されていますが利用時間が25時間/月[^P2-2]に限定されていますので、繋げっぱなしでの長時間利用や機械学習などには不向きです。

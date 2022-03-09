@@ -15,7 +15,7 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2022-03-08}
+\date{2022-03-09}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -185,7 +185,7 @@
 % 中間ファイルの.indではページはズレていないので、その後の結合処理がおかしい
 \usepackage{makeidx}
 \makeindex
-% \usepackage{showidx}                  % 索引確認用
+% \usepackage{showidx}                  % 索引確認用（索引は作成されない）
 
 % --- Table of Contentes ------------------------------------------------------
 % TOCにLOT(List of Tables), LOF(List of Figures), Bibliography, Indexを表示
@@ -243,7 +243,18 @@
 \newtcolorbox{error-box}[2][]{colback = red!5!white,
   colframe=red!75!black, title={#2}, #1}
 
-% 
+% Square Box
+\newtcolorbox{info-square}[2][]{colback = cyan!5!white,
+  arc = 0pt, outer arc = 0pt,
+  colframe = cyan!60!black, title = {#2}, #1}
+\newtcolorbox{warning-square}[2][]{colback = orange!5!white,
+  arc = 0pt, outer arc = 0pt,
+  colframe = orange!80!black, title = {#2}, #1}
+\newtcolorbox{error-square}[2][]{colback = red!5!white,
+  arc = 0pt, outer arc = 0pt,
+  colframe = red!75!black, title = {#2}, #1}
+
+% Hint Box
 \newtcolorbox{hint-box}[1][]{enhanced,
   before skip = 2mm, after skip = 3mm,
   boxrule = 0.4pt, left = 5mm, right = 2mm, top = 1mm, bottom = 1mm,
@@ -258,13 +269,6 @@
     },
   drop fuzzy shadow, #1}
 
-% Square Box
-% \newtcolorbox{info-box}[2][]{colback=cyan!5!white, arc=0pt, outer arc=0pt,
-% colframe=cyan!60!black, title={#2}, #1}
-% \newtcolorbox{warning-box}[2][]{colback=orange!5!white, arc=0pt, outer arc=0pt,
-% colframe=orange!80!black, title={#2}, #1}
-% \newtcolorbox{error-box}[2][]{colback=red!5!white, arc=0pt, outer arc=0pt,
-% colframe=red!75!black, title={#2}, #1}
 
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -290,23 +294,23 @@
 \maketitle
 
 % --- 空ページにヘッダーを設定する（機能していない） --------------------------
-% \makeatletter
-% \def\emptypage@emptypage{
-%     \hbox{}
-%     \thispagestyle{headings}
-%     \newpage
-% }
-% \def\cleardoublepage{
-%         \clearpage
-%         \if@twoside
-%             \ifodd\c@page
-%                 % do nothing
-%             \else
-%                 \emptypage@emptypage
-%             \fi
-%         \fi
-%     }
-% \makeatother
+\makeatletter
+\def\emptypage@emptypage{
+    \hbox{}
+    \thispagestyle{headings}
+    \newpage
+}
+\def\cleardoublepage{
+        \clearpage
+        \if@twoside
+            \ifodd\c@page
+                % do nothing
+            \else
+                \emptypage@emptypage
+            \fi
+        \fi
+    }
+\makeatother
 
 % --- 参考文献一覧を目次に表示させる ------------------------------------------
 \makeatletter
@@ -331,67 +335,6 @@
    \endlist}
 \makeatother
 
-% --- 特殊ブロックをLaTeXで表現するためのマクロ -------------------------------
-% https://github.com/Gedevan-Aleksizde/Japan.R2019/blob/master/latex/preamble.tex
-\makeatletter
-\newenvironment{kframe}{%
-\medskip{}
-\setlength{\fboxsep}{.8em}
- \def\at@end@of@kframe{}%
- \ifinner\ifhmode%
-  \def\at@end@of@kframe{\end{minipage}}%
-  \begin{minipage}{\columnwidth}%
- \fi\fi%
- \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
- \colorbox{shadecolor}{##1}\hskip-\fboxsep
-     % There is no \\@totalrightmargin, so:
-     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
- \MakeFramed {\advance\hsize-\width
-   \@totalleftmargin\z@ \linewidth\hsize
-   \@setminipage}}%
- {\par\unskip\endMakeFramed%
- \at@end@of@kframe}
-\makeatother
-
-\makeatletter
-\@ifundefined{Shaded}{
-}{\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}}
-\makeatother
-
-\newenvironment{rmdblock}[1]
-  {
-  \begin{itemize}
-  \renewcommand{\labelitemi}{
-    \raisebox{-.7\height}[0pt][0pt]{
-      % {\setkeys{Gin}{width=3em,keepaspectratio}\includegraphics{images/#1}}
-      {\setkeys{Gin}{width=3em,keepaspectratio}}
-    }
-  }
-  \setlength{\fboxsep}{1em}
-  \begin{kframe}
-  \item
-  }
-  {
-  \end{kframe}
-  \end{itemize}
-  }
-% --- RmdNote ---------------------------------------------------------
-\newenvironment{rmdnote}
-  {\begin{rmdblock}{note}}
-  {\end{rmdblock}}
-\newenvironment{rmdcaution}
-  {\begin{rmdblock}{caution}}
-  {\end{rmdblock}}
-\newenvironment{rmdimportant}
-  {\begin{rmdblock}{important}}
-  {\end{rmdblock}}
-\newenvironment{rmdtip}
-  {\begin{rmdblock}{tip}}
-  {\end{rmdblock}}
-\newenvironment{rmdwarning}
-  {\begin{rmdblock}{warning}}
-  {\end{rmdblock}}
-
 {
 \hypersetup{linkcolor=}
 \setcounter{tocdepth}{3}
@@ -408,7 +351,10 @@
 
 　本書は\href{https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja}{クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス}の下に提供されています。あなたは以下の条件に従う限り自由に共有・翻案することができます。
 
-　あなたの従うべき条件は以下の通りです。
+　あなたの従うべき条件は以下の通りです。\\
+　
+
+\begin{warning-box}
 
 \begin{itemize}
 \item
@@ -437,6 +383,8 @@
   \end{itemize}
 \end{itemize}
 
+\end{warning-box}
+
 \begin{figure}
 \centering
 \includegraphics{"./fig/by-nc-sa.png"}
@@ -444,8 +392,6 @@
 \end{figure}
 
 　ただし、本書にて引用している文書、図、ロゴなどの権利は原著作者が保有しています。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{part-introduction}{%
 \part{Introduction}\label{part-introduction}}
@@ -1099,7 +1045,7 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 \end{longtable}
 
 \hypertarget{r-commander}{%
-\subsection{R Commander}\label{r-commander}}
+\subsection{\texorpdfstring{R Commander\index{R Commander, Rcmdr}}{R Commander}}\label{r-commander}}
 
 　\href{https://socialsciences.mcmaster.ca/jfox/Misc/Rcmdr/}{R Commander（以降、\textbf{Rcmdr}）}は、本書ではスコープ外ですが、\href{https://www.juse.or.jp/sqip/workshop/outline/index.html}{SQiP研究会のソフトウェアメトリクス演習コース（以降、メトリクス演習コース）}で利用されるツールですので紹介のみしておきます。
 
@@ -1115,7 +1061,7 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 \end{figure}
 
 \hypertarget{google-colab}{%
-\subsection{Google Colab}\label{google-colab}}
+\subsection{\texorpdfstring{Google Colab\index{Google Colaboratory}}{Google Colab}}\label{google-colab}}
 
 　\textbf{Google Colab}は Googleアカウントを持っていれば誰でも利用可能な\textbf{Python}向けの\textbf{Jupyter Notebook}サービスです。\href{https://colab.research.google.com/notebook\#create=true\&language=r}{\textbf{Jupyter Notebook}は\textbf{R}をエンジンとして利用}することができますので、環境を構築することなく使い始めたい方に向いています。プログラミング経験のない初学者の演習環境としては、おすゝめの環境です。
 
@@ -1129,7 +1075,7 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 \end{figure}
 
 \hypertarget{rstudio}{%
-\subsection{RStudio}\label{rstudio}}
+\subsection{\texorpdfstring{RStudio\index{RStudio}}{RStudio}}\label{rstudio}}
 
 　再現可能性を確保した探索的データ分析を行うのに最も適しているのが\href{https://www.rstudio.com/products/rstudio/}{\textbf{RStudio}}です。無償で使えるオープンソース版には、PC上のアプリケーションとして動作する\textbf{Desktop}と Webサーバとして動作する\textbf{Server}の二種類があります。 \textbf{RStudio}は\textbf{R}のデファクトスタンダード的な統合開発環境（IDE）であり、Tidyverse Ecosystemを活かせる分析環境（開発環境）です。その特徴としては、
 
@@ -1146,7 +1092,7 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 \item
   複数の分析をプロジェクト単位で管理する仕組みを備えている
 \item
-  \href{https://git-scm.com/}{Git} などの外部プログラムと連携したソースの版管理の仕組みを備えている
+  \index{Git}\href{https://git-scm.com/}{Git} などの外部プログラムと連携したソースの版管理の仕組みを備えている
 \end{itemize}
 
 などが挙げられます。
@@ -1160,7 +1106,7 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 \caption{RStudio Desktop on Windows}\label{fig:unnamed-chunk-16}
 \end{figure}
 
-　\textbf{RStudio Server}は\textbf{RStudio}をブラウザから使う Linux 上で動作するサーバアプリケーションです。Dockerコンテナとして動作させることが可能ですので、個々のPCでの分析環境を固定さたい場合などには非常に便利です。
+　\textbf{RStudio Server}は\textbf{RStudio}をブラウザから使う Linux 上で動作するサーバアプリケーションです。Docker\index{Docker}コンテナとして動作させることが可能ですので、個々のPCでの分析環境を固定さたい場合などには非常に便利です。
 
 \begin{figure}[H]
 
@@ -1177,7 +1123,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \end{hint-box}
 
 \hypertarget{rstudio-cloud}{%
-\subsection{RStudio Cloud}\label{rstudio-cloud}}
+\subsection{\texorpdfstring{RStudio Cloud\index{RStudio Cloud}}{RStudio Cloud}}\label{rstudio-cloud}}
 
 　\href{https://rstudio.cloud/}{\textbf{RStudio Cloud}}は、その名の通りクラウド版の\textbf{RStudio}です。商用版の\textbf{RStudio Server Pro}をベースしていますので、任意のバージョンの\textbf{R}に切り替えて使ったり\textbf{RStduio Package Manager}とも連携していますのでパッケージ管理が楽になっています。また、英語版しかありませんがチュートリアル機能が充実しているのが特徴です。
 
@@ -1210,14 +1156,14 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 　分析対象となるデータは大きく質的データと量的データに分類することができます。質的データは性別や品名、会社名など主に文字で表すことができる非数値データです。量的データは、温度や身長・体重、売上金額といった数値で表すことができるデータです。
 
 \hypertarget{ux5c3aux5ea6ux6c34ux6e96}{%
-\subsection{尺度水準}\label{ux5c3aux5ea6ux6c34ux6e96}}
+\subsection{\texorpdfstring{尺度水準\index{しゃくどすいじゅん@尺度水準}}{尺度水準}}\label{ux5c3aux5ea6ux6c34ux6e96}}
 
 　質的データや量的データはデータ自体がもつ意味により下記のような尺度と呼ばれる水準で分類することができます。
 
 \begin{itemize}
 \tightlist
 \item
-  名義尺度
+  名義尺度\index{めいぎしゃくど@名義尺度}
 
   \begin{itemize}
   \tightlist
@@ -1227,7 +1173,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
     同値か否かの比較しかできない
   \end{itemize}
 \item
-  順序尺度
+  順序尺度\index{じゅんじょしゃくど@順序尺度}
 
   \begin{itemize}
   \tightlist
@@ -1239,7 +1185,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
     同値または大小比較の比較演算が可能
   \end{itemize}
 \item
-  間隔尺度
+  間隔尺度\index{かんかくしゃくど@間隔尺度}
 
   \begin{itemize}
   \tightlist
@@ -1251,7 +1197,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
     比較演算に加えて加減算が可能
   \end{itemize}
 \item
-  比例尺度
+  比例尺度\index{ひれいしゃくど@比例尺度}・比尺度\index{ひしゃくど@比尺度}
 
   \begin{itemize}
   \tightlist
@@ -1296,7 +1242,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \subsubsection*{名義尺度を扱う}\label{ux540dux7fa9ux5c3aux5ea6ux3092ux6271ux3046}}
 \addcontentsline{toc}{subsubsection}{名義尺度を扱う}
 
-　名義尺度を扱うには文字型（\texttt{character}）、もしくは、順序なし因子型（\texttt{factor}）というデータ型を用います。因子型は名義尺度をあつかうのには最も適したデータ型ですが、文字型と異なり、操作が少々厄介なのが難点です。
+　名義尺度\index{めいぎしゃくど@名義尺度}を扱うには文字型（\texttt{character}）、もしくは、順序なし因子型（\texttt{factor}）というデータ型を用います。因子型は名義尺度をあつかうのには最も適したデータ型ですが、文字型と異なり、操作が少々厄介なのが難点です。
 
 　例えば、血液型を文字型として扱う場合、\textbf{R}では以下のようにしてデータを作成します。
 
@@ -1355,7 +1301,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \subsubsection*{順序尺度を扱う}\label{ux9806ux5e8fux5c3aux5ea6ux3092ux6271ux3046}}
 \addcontentsline{toc}{subsubsection}{順序尺度を扱う}
 
-　順序尺度は名義尺度のデータに順番や大小関係という属性を付与したデータですので、順序付き因子型（\texttt{ordered}）というデータ型を用いるのが便利です。
+　順序尺度\index{じゅんじょしゃくど@順序尺度}は名義尺度のデータに順番や大小関係という属性を付与したデータですので、順序付き因子型（\texttt{ordered}）というデータ型を用いるのが便利です。
 
 　例えば、成績のような段階評価は以下のようにしてデータを作成します。
 
@@ -1388,7 +1334,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \subsubsection*{間隔尺度を扱う}\label{ux9593ux9694ux5c3aux5ea6ux3092ux6271ux3046}}
 \addcontentsline{toc}{subsubsection}{間隔尺度を扱う}
 
-　間隔尺度は数値のデータになりますのでデータが取る値に合わせて、整数型（\texttt{integer}）、実数型（\texttt{numeric}）、日付型（\texttt{Date}）のデータ型を用います。
+　間隔尺度\index{かんかくしゃくど@間隔尺度}は数値のデータになりますのでデータが取る値に合わせて、整数型（\texttt{integer}）、実数型（\texttt{numeric}）、日付型（\texttt{Date}）のデータ型を用います。
 
 　整数型（\texttt{integer}）を明示的に指定する場合は数字に\texttt{L}をつけます。
 
@@ -1420,14 +1366,14 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \subsubsection*{比例尺度を扱う}\label{ux6bd4ux4f8bux5c3aux5ea6ux3092ux6271ux3046}}
 \addcontentsline{toc}{subsubsection}{比例尺度を扱う}
 
-　比例尺度は間隔尺度と同様に整数型（\texttt{integer}）や実数型（\texttt{numeric}）のデータ型を用います。データの作成方法は間隔尺度と同じですので省略します。
+　比例尺度\index{ひれいしゃくど@比例尺度}は間隔尺度と同様に整数型（\texttt{integer}）や実数型（\texttt{numeric}）のデータ型を用います。データの作成方法は間隔尺度と同じですので省略します。
 
 \newpage
 
 \hypertarget{ux307eux3068ux3081}{%
 \subsection{まとめ}\label{ux307eux3068ux3081}}
 
-　データ型は扱うデータの尺度水準に応じたものを使うようにすると便利です。\textbf{R}を使いこなしていくうちに自然と理解できると思いますが、因子型変数は文字型変数にはない利点があります。
+　データ型は扱うデータの尺度水準\index{しゃくどすいじゅん@尺度水準}に応じたものを使うようにすると便利です。\textbf{R}を使いこなしていくうちに自然と理解できると思いますが、因子型変数は文字型変数にはない利点があります。
 
 \begin{longtable}[]{@{}lll@{}}
 \caption{尺度水準と使うデータ型の例}\tabularnewline
@@ -1449,30 +1395,30 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \newpage
 
 \hypertarget{ux8981ux7d04ux7d71ux8a08ux91cf}{%
-\section{要約統計量}\label{ux8981ux7d04ux7d71ux8a08ux91cf}}
+\section{\texorpdfstring{要約統計量\index{ようやくとうけいりょう@要約統計量}}{要約統計量}}\label{ux8981ux7d04ux7d71ux8a08ux91cf}}
 
 　データを分析する前には分析対象となるデータがどのような特徴を持っているか確認しておくことが重要です。この特徴を見るために要約統計量を使います。要約統計量はデータの分布の特徴を表すもので、記述統計量や基本統計量と呼ばれることもあります。
 
 \hypertarget{ux5e73ux5747}{%
-\subsection{平均}\label{ux5e73ux5747}}
+\subsection{\texorpdfstring{平均\index{へいきん@平均}}{平均}}\label{ux5e73ux5747}}
 
-　算術平均（相加平均）は要約統計量の中でよく使われ、下式で求められます。
+　算術平均\index{さんじゅつへいきん@算術平均}（相加平均\index{そうかへいきん@相加平均}）は要約統計量の中でよく使われ、下式で求められます。
 
 \begin{align}
   \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} = \frac{1}{n} \sum_{i = 1}^n x_i \label{eq:arithmetic-mean}
 \end{align}
 
-　算術平均以外にも幾何平均（相乗平均）や \begin{align}
+　算術平均以外にも幾何平均\index{きかへいきん@幾何平均}（相乗平均\index{そうじょうへいきん@相乗平均}）や \begin{align}
   \sqrt[n]{x_1 \times x_2 \times \cdots \times x_n} = \sqrt[n]{\prod_{i = 1}^n x_i} \label{eq:geometric-mean}
 \end{align}
 
-　値の下位・上位を任意の割合で除いてから平均（算術平均）を求めるトリム平均（刈込み平均・調整平均）という平均もあります。トリム平均は異常値や外れ値の影響を排除して平均を求めたい場合に利用されます。例えば体操競技では極端な点数を出す審査員の影響を排除するために使われています。
+　値の下位・上位を任意の割合で除いてから平均（算術平均）を求めるトリム平均\index{トリムへいきん@トリム平均}（刈込み平均・調整平均）という平均もあります。トリム平均は異常値や外れ値の影響を排除して平均を求めたい場合に利用されます。例えば体操競技では極端な点数を出す審査員の影響を排除するために使われています。
 
 　平均といってもこのように様々な求め方がありますので、実際に\textbf{R}を使ってこれらの平均を求めてみます。
 
 \hypertarget{ux7b97ux8853ux5e73ux5747}{%
-\subsubsection*{算術平均}\label{ux7b97ux8853ux5e73ux5747}}
-\addcontentsline{toc}{subsubsection}{算術平均}
+\subsubsection*{\texorpdfstring{算術平均\index{さんじゅつへいきん@算術平均}}{算術平均}}\label{ux7b97ux8853ux5e73ux5747}}
+\addcontentsline{toc}{subsubsection}{算術平均\index{さんじゅつへいきん@算術平均}}
 
 　式\eqref{eq:arithmetic-mean}の算術平均は\texttt{mean()}関数で求めることができます。最初に平均の計算対象となるデータ（変数）を\texttt{c()}関数で作成します。\texttt{c()}関数はベクトル型の変数を作成する関数です。
 
@@ -1507,8 +1453,8 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \end{verbatim}
 
 \hypertarget{ux30c8ux30eaux30e0ux5e73ux5747}{%
-\subsubsection*{トリム平均}\label{ux30c8ux30eaux30e0ux5e73ux5747}}
-\addcontentsline{toc}{subsubsection}{トリム平均}
+\subsubsection*{\texorpdfstring{トリム平均\index{トリムへいきん@トリム平均}}{トリム平均}}\label{ux30c8ux30eaux30e0ux5e73ux5747}}
+\addcontentsline{toc}{subsubsection}{トリム平均\index{トリムへいきん@トリム平均}}
 
 　トリム平均は算術平均のコードに引数\texttt{trim}を指定するだけです。引数\texttt{trim}は計算対象外にする割合を指定するオプションです。今回は五つのデータから最小値・最大値の二つを除いてトリム平均を求めますので\(\frac{2}{5} = 0.2\)を指定します。
 
@@ -1531,8 +1477,8 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \end{Shaded}
 
 \hypertarget{ux5e7eux4f55ux5e73ux5747}{%
-\subsubsection*{幾何平均}\label{ux5e7eux4f55ux5e73ux5747}}
-\addcontentsline{toc}{subsubsection}{幾何平均}
+\subsubsection*{\texorpdfstring{幾何平均\index{きかへいきん@幾何平均}}{幾何平均}}\label{ux5e7eux4f55ux5e73ux5747}}
+\addcontentsline{toc}{subsubsection}{幾何平均\index{きかへいきん@幾何平均}}
 
 　式\eqref{eq:geometric-mean}の幾何平均（相乗平均）を求めるにはパッケージを追加インストールする必要があります。幾何平均を求める関数を定義しているパッケージは複数ありますが、ここでは\textbf{\texttt{psych}}パッケージをインストールして使います。なお、インストールに際してはインターネット接続が必要です。パッケージを使えるようにするための手順は下記の通りです。
 
@@ -1639,7 +1585,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \newpage
 
 \hypertarget{ux5206ux6563ux6a19ux6e96ux504fux5dee}{%
-\subsection{分散・標準偏差}\label{ux5206ux6563ux6a19ux6e96ux504fux5dee}}
+\subsection{\texorpdfstring{分散\index{ぶんさん@分散}・標準偏差\index{ひょうじゅんへんさ@標準偏差}}{分散・標準偏差}}\label{ux5206ux6563ux6a19ux6e96ux504fux5dee}}
 
 　データの散らばり具合を見るには分散・標準偏差がよく使われます。例えば、以下の\texttt{x}と\texttt{y}が取る値の範囲は同一ですが、同じ散らばり具合と言えるでしょうか？
 
@@ -1677,7 +1623,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
   s = \sqrt{s^2} = \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})^2} \label{eq:standatd-deviation}
 \end{align}
 
-　しかし、\textbf{R}にはこの標本分散（\(s^2\)）を求める関数が用意されていません。代わりに不偏分散（\(\hat{\sigma}^2\)）を求める\texttt{var()}関数が用意されています。
+　しかし、\textbf{R}にはこの標本分散（\(s^2\)）を求める関数が用意されていません。代わりに不偏分散（\(\hat{\sigma}^2\)）\index{ふへんぶんさん@不偏分散}を求める\texttt{var()}関数が用意されています。
 
 \begin{align}
   \hat{\sigma}^2 &= \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2 \label{eq:var} \\
@@ -1716,26 +1662,26 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \end{verbatim}
 
 \begin{hint-box}
-不偏分散は母分散（\(\sigma^2\)）の不偏推定量（\(\hat{\sigma}^2\)）で、不偏標本分散と呼ばれることもあります。母分散は未知の値ですので、標本からの不偏推定量で代用しています。
+不偏分散\index{ふへんぶんさん@不偏分散}は母分散（\(\sigma^2\)）の不偏推定量（\(\hat{\sigma}^2\)）で、不偏標本分散\index{ふへんひょうほんぶんさん@不偏標本分散}と呼ばれることもあります。母分散は未知の値ですので、標本からの不偏推定量で代用しています。
 
 \end{hint-box}
 
 \newpage
 
 \hypertarget{ux30e2ux30fcux30e1ux30f3ux30c8}{%
-\subsection{モーメント}\label{ux30e2ux30fcux30e1ux30f3ux30c8}}
+\subsection{\texorpdfstring{モーメント\index{モーメント@モーメント}}{モーメント}}\label{ux30e2ux30fcux30e1ux30f3ux30c8}}
 
 　本節の内容はデータ分析ではあまり使いませんので読み飛ばして頂いて構いません。
 
-　平均（分布の重心）と分散（分布の広がり）は、歪度（分布の左右非対称度合い）、尖度（分布の峰の尖り度合い）を含めて「モーメントから求められる要約統計量」と呼ぶことがあります。
+　平均\index{へいきん@平均}（分布の重心）と分散\index{ぶんさん@分散}（分布の広がり）は、歪度\index{わいど@歪度}（分布の左右非対称度合い）、尖度\index{せんど@尖度}（分布の峰の尖り度合い）を含めて「モーメントから求められる要約統計量\index{ようやくとうけいりょう@要約統計量}」と呼ぶことがあります。
 
-　\(n\)個のデータの平均値を
+　\(n\)個のデータの平均を
 
 \begin{align}
   \bar{x} = \frac{1}{n}\sum_{i = 1}^{n}x_i \label{eq:moment1}
 \end{align}
 
-　とした場合、平均値まわりの\(m\)次の中央モーメント\(\bar{x}_m\)を
+　とした場合、平均まわりの\(m\)次の中央モーメント\(\bar{x}_m\)を
 
 \begin{align}
   \bar{x}_m = \frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^m　　(m = 2, 3, 4) \label{eq:moment}
@@ -1785,8 +1731,8 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \end{Shaded}
 
 \hypertarget{ux6b6aux5ea6}{%
-\subsubsection*{歪度}\label{ux6b6aux5ea6}}
-\addcontentsline{toc}{subsubsection}{歪度}
+\subsubsection*{\texorpdfstring{歪度\index{わいど@歪度}}{歪度}}\label{ux6b6aux5ea6}}
+\addcontentsline{toc}{subsubsection}{歪度\index{わいど@歪度}}
 
 　歪度はデータ分布の左右対象度合いです。左右対象となるデータ分布であれば\(0\)、右に歪んでいれば正の値を、左に歪んでいれば負の値を取ります。例えば下図のような分布では
 
@@ -1854,8 +1800,8 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 　負の値をとります。
 
 \hypertarget{ux5c16ux5ea6}{%
-\subsubsection*{尖度}\label{ux5c16ux5ea6}}
-\addcontentsline{toc}{subsubsection}{尖度}
+\subsubsection*{\texorpdfstring{尖度\index{せんど@尖度}}{尖度}}\label{ux5c16ux5ea6}}
+\addcontentsline{toc}{subsubsection}{尖度\index{せんど@尖度}}
 
 　尖度はデータ分布の尖り具合です。標準正規分布と等しければ\(0\)、標準正規分布より尖ったt分布のような分布では正の値、広がった分布であれば負の値をとります。
 
@@ -1934,7 +1880,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \newpage
 
 \hypertarget{ux4e2dux592eux5024}{%
-\subsection{中央値}\label{ux4e2dux592eux5024}}
+\subsection{\texorpdfstring{中央値\index{ちゅうおうち@中央値}}{中央値}}\label{ux4e2dux592eux5024}}
 
 　平均値や分散・標準偏差はデータの分布が平均値を中心に左右対象になっているような場合は有用な統計量ですが、データの分布が大きく歪んでいる対象に対しては適した統計量とは言えません。このような場合、平均値の代わりに中央値（中位数）や最頻値、分散・標準偏差に代わり範囲・分位範囲（分位値）を用います。これらの統計量はデータを順に並べたときの位置を用いますので、データの分布に影響されることが少ないロバストネス（頑健性の高い）な統計量です。
 
@@ -2021,7 +1967,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \end{verbatim}
 
 \hypertarget{ux7bc4ux56f2}{%
-\subsection{範囲}\label{ux7bc4ux56f2}}
+\subsection{\texorpdfstring{範囲\index{はんい@範囲}}{範囲}}\label{ux7bc4ux56f2}}
 
 　前述の\texttt{x}と\texttt{y}は、中央値で見る限りと同じ特徴を持つデータとなってしまいます。ただ、この結論はいささか不合理ですので、データのばらつきを範囲（レンジ）で見てみます。範囲を求めるには、その名の通りの\texttt{range()}関数を用います。
 
@@ -2104,7 +2050,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \newpage
 
 \hypertarget{ux56dbux5206ux4f4dux6570ux56dbux5206ux4f4dux7bc4ux56f2}{%
-\subsection{四分位数・四分位範囲}\label{ux56dbux5206ux4f4dux6570ux56dbux5206ux4f4dux7bc4ux56f2}}
+\subsection{\texorpdfstring{四分位数\index{しぶんいすう@四分位数}・四分位範囲\index{しぶんいはんい@四分位範囲}}{四分位数・四分位範囲}}\label{ux56dbux5206ux4f4dux6570ux56dbux5206ux4f4dux7bc4ux56f2}}
 
 　中央値は中位数とも呼ばれデータの全体を半分にした位置にあるデータです。さらに細かく全体を四分の一にしたの位置にあるデータを四分位数と呼びます。小さい方から見て最初の四分の一にした位置にある値を第一四分位数（\(25\%\)点、\(Q_1\)）、次の四分の一にした位置にある値を第二四分位数（\(50\%\)点、\(Q_2\)）、次の四分の一にした位置にある値を第三四分位数（\(75\%\)点、\(Q_3\)）といいます。第二四分位数（\(50\%\)点、\(Q_2\)）は中央値（中位数）と同じです。
 
@@ -2168,7 +2114,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \newpage
 
 \hypertarget{ux6700ux983bux5024}{%
-\subsection{最頻値}\label{ux6700ux983bux5024}}
+\subsection{\texorpdfstring{最頻値\index{さいひんち@最頻値}}{最頻値}}\label{ux6700ux983bux5024}}
 
 　最頻値（モード）とは文字通り、最も頻繁に出てくる値のことです。例えば、以下の\texttt{x}と\texttt{y}は、平均値・中央値・範囲は全て同じ値になるデータです。
 
@@ -5602,10 +5548,10 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 　開発環境のクラウドサービス化も進んでいます。
 
-\hypertarget{rstudio-cloud-ga}{%
-\section{RStudio Cloud GA}\label{rstudio-cloud-ga}}
+\hypertarget{rstudio-cloud-2}{%
+\section{\texorpdfstring{RStudio Cloud\index{RStudio Cloud}}{RStudio Cloud}}\label{rstudio-cloud-2}}
 
-　\href{https://rstudio.cloud/}{RStudio Colud } は RStudio, PBC が提供している RStudio Server によるクラウドサービスです。2020年2月末時点では無料プランでも無制限のプロジェクトならびにプライベートなプロジェクトの作成が可能です。また、 \texttt{learnr} パッケージを用いた初学者用のチュートリアルなど学習資料が多数用意されているのも特徴です。
+　\href{https://rstudio.cloud/}{RStudio Colud }はRStudio, PBCが提供しているRStudio Serverによるクラウドサービスです。無料プランでは25時間/月の利用制限がありますが、プライベートなプロジェクトの作成が可能です。また、\textbf{\texttt{learnr}}パッケージを用いた初学者用のチュートリアルなど学習資料が多数用意されているのも特徴です。
 
 　\\
 
@@ -5620,17 +5566,18 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 　
 
-　ただし、無料プランで使えるリソースはメモリ 1GB ・ 1CPU と限られていますので、ナイーブ・ベイズのようなメモリを必要とする機械学習プログラミングなどには向いていません。なお、 Google Colab のように24時間でインスタンスが消滅するというようなことは無いようです。
+　ただし、無料プランで使えるリソースはメモリ1GB・1CPUと限られていますので、ナイーブ・ベイズのように大量のメモリを必要とする機械学習プログラミングなどには向いていません。なお、Google Colabのように24時間でインスタンスが消滅するというようなことは無いようです。
 
 　
 
 \hypertarget{exploratory}{%
-\section{Exploratory}\label{exploratory}}
+\section{\texorpdfstring{Exploratory\index{Exploratory}}{Exploratory}}\label{exploratory}}
 
-　\href{https://exploratory.io/}{Exploratory } は BI（Business Intelligence）BI（Business Intelligence）ツールのような操作で R を持ちた探索的データ分析（EDA）が行える利用できる専用クライアントアプリケーションを用いるクラウドサービスです。無料で利用できますがオンライン限定・パブリックシェアオンリーとなりますので注意してください。
+　\href{https://exploratory.io/}{Exploratory }はBI（Business Intelligence）ツールのような操作で\textbf{R}を持ちた探索的データ分析（EDA）が行える利用できる専用クライアントアプリケーションを用いるクラウドサービスです。無料で利用できますがオンライン限定・パブリックシェアオンリーとなりますので注意してください。
 
-　\href{https://exploratory.io/insight?type=note\&q=tag\%3Avisualization\%20tag\%3Ahow-to\%20tag\%3A\%22team\%20exploratory\%22\&sort=top-viewed\&language=ja}{何ができるのか見てみる } ページで多数の分析サンプルが公開されています。\\
-　また、 \href{https://exploratory.io/howto?language=ja}{使い方ガイド } ページにも様々な説明資料が用意されています。
+　\href{https://exploratory.io/insight?type=note\&q=tag\%3Avisualization\%20tag\%3Ahow-to\%20tag\%3A\%22team\%20exploratory\%22\&sort=top-viewed\&language=ja}{何ができるのか見てみる }ページで多数の分析サンプルが公開されています。
+
+　また、 \href{https://exploratory.io/howto?language=ja}{使い方ガイド }ページにも様々な説明資料が用意されています。
 
 　\\
 
@@ -5645,17 +5592,18 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 　
 
-　\href{https://exploratory.io/pricing}{価格 } ページからお好みのプランを選んでアカウントを取得します。クライアントアプリケーションは、mac まはた Windwos でしか動作しません。
+　\href{https://exploratory.io/pricing}{価格 }ページからお好みのプランを選んでアカウントを取得します。クライアントアプリケーションは、mac まはた Windwos でしか動作しません。
 
 　
 
 \hypertarget{binder}{%
-\section{binder}\label{binder}}
+\section{\texorpdfstring{binder\index{binder}}{binder}}\label{binder}}
 
-　\href{https://mybinder.org/}{binder } は 実行環境の再現性を確保するためのクラウドサービスです。指定したGit のリポジトリから自動的に Jupyter Notebook のコード実行環境（Docker イメージ）を構築しクラウド上で実行することによりリポジトリにあるソースコードを動作さあせることができます。リポジトリに設定ファイルを置くことで RStudio Server や Shiny 環境を構築・実行することも可能です。\\
-　Google Colab や RStudio Cloud・Exploratoy などと異なりアカウントを取得する必要はありませんが、専用の環境を構築するわけではなく、あくまでも一時的な試用環境である点に注意してください。継続的に使える環境が必要な場合は ローカルに環境を構築するか RStudio Cloud のようなクラウドサービスを利用してください。
+　\href{https://mybinder.org/}{binder }は実行環境の再現性を確保するためのクラウドサービスです。指定したGit のリポジトリから自動的にJupyter Notebookのコード実行環境（Docker イメージ）を構築しクラウド上で実行することによりリポジトリにあるソースコードを動作さあせることができます。リポジトリに設定ファイルを置くことでRStudio ServerやShiny環境を構築・実行することも可能です。
 
-　
+　Google ColabやRStudio Cloud、Exploratoyなどと異なりアカウントを取得する必要はありませんが、専用の環境を構築するわけではなく、あくまでも一時的な試用環境である点に注意してください。継続的に使える環境が必要な場合は ローカルに環境を構築するかRStudio Cloudのようなクラウドサービスを利用してください。
+
+\printindex
 
   \bibliography{bib/references.bib,bib/packages.bib}
 
