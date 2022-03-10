@@ -126,7 +126,7 @@ with(iris, cor.test(Petal.Width, Petal.Length))
 with(iris, cor.test(Sepal.Width, Sepal.Length))
 ```
 
-　花弁（Petal）の方には強い相関（相関係数$=`r with(iris, cor.test(Petal.Width, Petal.Length)$estimate)`$）があり、萼片（Sepal）の方には相関があるとは言えないことが分かります。  
+　花弁（Petal）の方には強い相関（\index{そうかんけいすう@相関係数}相関係数$=`r with(iris, cor.test(Petal.Width, Petal.Length)$estimate)`$）があり、萼片（Sepal）の方には相関があるとは言えないことが分かります。  
 
 　花弁（Petal）の幅と長さの関係を回帰モデル（単回帰式）として求めると下記のようになります。
 

@@ -87,7 +87,8 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 # Update packages.bib file
 tidyverse::tidyverse_packages() %>% 
   c(., tidymodels::tidymodels_packages(), "knitr", "rmarkdown","bookdown",
-    "DBI", "zoo", "htmlwidgets", "shiny", "modeest", "patchwork", "Rcmdr") %>% 
+    "DBI", "zoo", "htmlwidgets", "shiny", "modeest", "patchwork", "Rcmdr",
+    "e1071", "statip") %>% 
   sort() %>% unique() %>% 
   knitr::write_bib("./bib/packages.bib")
 
