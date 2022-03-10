@@ -225,7 +225,7 @@ knitr::include_graphics("fig/data-science.png")
 \newpage
 
 ## Tidyverse Ecosystem {.unnumbered}
-　Data Science Workflowを**R**で実現するための手段がHadley Wickhamが中心となって開発している**`tidyverse`**パッケージ群による「Tidyverse Ecosystem」です。
+　Data Science Workflowを**R**で実現するための手段がHadley Wickhamが中心となって開発している**`tidyverse`** \index{Package tidyverse}パッケージ群による「Tidyverse Ecosystem」です。
 
 ```{r, echo=FALSE, fig.cap="Tidyverse Ecosystem"}
 knitr::include_graphics("./fig/DSWF/tidyverse_eco_system.png")
@@ -240,72 +240,72 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 　ここでは、主要なパッケージをいくつか紹介するに留めておきます。詳細は各分析プロセスの章、または、『RStartHere』[@RStartHere:GitHub]をご覧ください。
 
 * **Import**
-  * **`readr`** [@R-readr]
+  * **`readr`** [@R-readr] \index{Package readr}
       - 様々なテキスト形式テーブルを読み込むためのパッケージ
-  * **`readxl`** [@R-readxl]
+  * **`readxl`** [@R-readxl] \index{Package readxl}
       - Microsoft Excelのファイルを読み込むためのパッケージ
-  * **`rvest`** [@R-rvest]
+  * **`rvest`** [@R-rvest] \index{Package rvest}
       - Webスクレイピングのためのパッケージ
-  * **`googlesheets4`** [@R-googlesheets4]
+  * **`googlesheets4`** [@R-googlesheets4] \index{Package googlesheets4}
       - Google API v4 経由でスプレッドシートを読み込むためのパッケージ
-  * **`DBI`** [@R-DBI]
+  * **`DBI`** [@R-DBI] \index{Package DBI}
       - SQL系の各種データベースと接続するためのパッケージ
 
 \newpage
 
 * **Tidy**
-  * **`tidyr`** [@R-tidyr]
+  * **`tidyr`** [@R-tidyr] \index{Package tidyr}
       - Tidy Dataの作成を強力にサポートしてくれるパッケージ
-  * **`tibble`** [@R-tibble]
+  * **`tibble`** [@R-tibble] \index{Package tibble}
       - より厳密にTidy Dataを扱うためのパッケージ
-  * **`zoo`** [@R-zoo]
+  * **`zoo`** [@R-zoo] \index{Package zoo}
       - 時系列（TS）データを効率よく扱うためのパッケージ
 
 
 * **Visualize**
-  * **`ggplot2`** [@R-ggplot2]
+  * **`ggplot2`** [@R-ggplot2] \index{Package ggplot2}
       - 統一された文法で描画が行えるパッケージ
-  * **`htmlwidgets`** [@R-htmlwidgets]
+  * **`htmlwidgets`** [@R-htmlwidgets] \index{Package htmlwidgets}
       - JavaScriptのウィジェットを利用できるパッケージ
-  * **`patchwork`** [@R-patchwork]
+  * **`patchwork`** [@R-patchwork] \index{Package patchwork}
       - **`ggplot2`**オブジェクトをひとつにまとめてレイアウトするためのパッケージ
 
 
 * **Transform**
-  * **`dplyr`** [@R-dplyr]
+  * **`dplyr`** [@R-dplyr] \index{Package dplyr}
       - Tidy Dataを様々な方法で操作するためのパッケージ
-  * **`stringr`** [@R-stringr]
+  * **`stringr`** [@R-stringr] \index{Package stringr}
       - 文字列処理をするためのパッケージ
-  * **`forcats`** [@R-forcats]
+  * **`forcats`** [@R-forcats] \index{Package forcats}
       - 因子型を操作するためのパッケージ
-  * **`lubridate`** [@R-lubridate]
+  * **`lubridate`** [@R-lubridate] \index{Package lubridate}
       - 日付データを簡単に変換するためのパッケージ
 
 
 * **Model**
-  * **`broom`** [@R-broom]
+  * **`broom`** [@R-broom] \index{Package broom}
       - 各種モデリング結果を整然データにするためのパッケージ
-  * **`tidymodels`**[@tidymodels2020; @R-tidymodels]
+  * **`tidymodels`**[@tidymodels2020; @R-tidymodels] \index{Package tidymodels}
       - 機械学習を中心としたモデリングフレームワーク
 
 \newpage
 
 * **Communicate**
-  * **`knitr`** [@knitr2014; @R-knitr]
+  * **`knitr`** [@knitr2014; @R-knitr] \index{Package knitr}
       - **R**のコードと実行結果をPDFやHTMLなどに埋め込むためのパッケージ
-  * **`rmarkdown`** [@R-rmarkdown]
+  * **`rmarkdown`** [@R-rmarkdown] \index{Package rmarkdown}
       - マークダウン書式を用いてレポートを作成するためのパッケージ
-  * **`bookdown`** [@bookdown2016; @R-bookdown]
+  * **`bookdown`** [@bookdown2016; @R-bookdown] \index{Package bookdown}
       - 書籍や長いドキュメンを作成するためのパッケージ
-  * **`shiny`** [@R-shiny]
+  * **`shiny`** [@R-shiny] \index{Package shiny}
       - インタラクティブなWebアプリケーションを作成するためのパッケージ
 
 　プロセスのハブ・スポークを担うパッケージもEcosystemの一部です。
 
 * **Othres**
-  * **`magrittr`** [@R-magrittr]
+  * **`magrittr`** [@R-magrittr] \index{Package magrittr}
       - パイプ演算子（`%>%`）によるスムースな処理を実現するパッケージ
-  * **`purrr`** [@R-purrr]
+  * **`purrr`** [@R-purrr] \index{Package purrr}
       - 関数型プログラミングによる反復処理を提供するパッケージ
 
 　  
