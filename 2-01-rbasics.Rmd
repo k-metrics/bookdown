@@ -633,6 +633,55 @@ statip::mfv(y)
 [^24]: 重相関計数を意味する場合の方が多いです
 [^25]: 引数`probs`はベクトル指定も可能です（例：`probs = c(0.25, 0.75)`）
 
+　`iris`データセットの主な要約統計量をまとめると下表のようになります。このように最頻値は常にひとつとは限りません。
+```{r, echo=FALSE}
+iris.mean <- iris %>% 
+  dplyr::select(where(is.numeric)) %>% 
+  purrr::map_df(mean)
+
+iris.median <- iris %>% 
+  dplyr::select(where(is.numeric)) %>% 
+  purrr::map_df(median)
+
+iris.mfv <- iris %>% 
+  dplyr::select(where(is.numeric)) %>% 
+  purrr::map_df(modeest::mfv)
+
+iris.var <- iris %>% 
+  dplyr::select(where(is.numeric)) %>% 
+  purrr::map_df(var)
+
+iris.sd <- iris %>% 
+  dplyr::select(where(is.numeric)) %>% 
+  purrr::map_df(sd)
+
+iris.quantile <- iris %>% 
+  dplyr::select(where(is.numeric)) %>% 
+  purrr::map_df(quantile, prob = c(0, 0.25, 0.75, 1)) %>% 
+  t() %>% as.data.frame() %>% 
+  dplyr::rename(Sepal.Length = V1, Sepal.Width = V2,
+                Petal.Length = V3, Petal.Width = V4)
+
+# iris.iqr <- iris %>% 
+#   dplyr::select(where(is.numeric)) %>% 
+#   purrr::map_df(IQR)
+
+iris.mean %>% 
+  dplyr::bind_rows(iris.median) %>% 
+  dplyr::bind_rows(iris.mfv) %>%
+  dplyr::bind_rows(iris.var) %>%
+  dplyr::bind_rows(iris.sd) %>%
+  dplyr::bind_rows(iris.quantile) %>% 
+  # dplyr::bind_rows(iris.iqr) %>%
+  dplyr::mutate(rowname = c("平均", "中央値", "最頻値1", "最頻値2",
+                            "分散", "標準偏差",
+                            "最小値", "第1四分位値",
+                            "第3四分位値", "最大値")) %>% 
+                            # "四分位範囲")) %>% 
+  tibble::column_to_rownames() %>% 
+  df_print(all = TRUE, caption = "irisデータセットの要約統計量")
+```
+
 \newpage
 
 ### 演習

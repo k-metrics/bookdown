@@ -15,7 +15,7 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2022-03-10}
+\date{2022-03-11}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -773,7 +773,7 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
 \section*{Tidyverse Ecosystem}\label{tidyverse-ecosystem}}
 \addcontentsline{toc}{section}{Tidyverse Ecosystem}
 
-　Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickhamが中心となって開発している\textbf{\texttt{tidyverse}}パッケージ群による「Tidyverse Ecosystem」です。
+　Data Science Workflowを\textbf{R}で実現するための手段がHadley Wickhamが中心となって開発している\textbf{\texttt{tidyverse}} \index{Package tidyverse}パッケージ群による「Tidyverse Ecosystem」です。
 
 \begin{figure}[H]
 
@@ -2260,6 +2260,31 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \bottomrule
 \end{longtable}
 
+　\texttt{iris}データセットの主な要約統計量をまとめると下表のようになります。このように最頻値は常にひとつとは限りません。
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-74}irisデータセットの要約統計量}
+\centering
+\begin{tabular}[t]{lrrrr}
+\toprule
+  & Sepal.Length & Sepal.Width & Petal.Length & Petal.Width\\
+\midrule
+\cellcolor{gray!6}{平均} & \cellcolor{gray!6}{5.8433333} & \cellcolor{gray!6}{3.0573333} & \cellcolor{gray!6}{3.758000} & \cellcolor{gray!6}{1.1993333}\\
+中央値 & 5.8000000 & 3.0000000 & 4.350000 & 1.3000000\\
+\cellcolor{gray!6}{最頻値1} & \cellcolor{gray!6}{5.0000000} & \cellcolor{gray!6}{3.0000000} & \cellcolor{gray!6}{1.400000} & \cellcolor{gray!6}{0.2000000}\\
+最頻値2 & 5.0000000 & 3.0000000 & 1.500000 & 0.2000000\\
+\cellcolor{gray!6}{分散} & \cellcolor{gray!6}{0.6856935} & \cellcolor{gray!6}{0.1899794} & \cellcolor{gray!6}{3.116278} & \cellcolor{gray!6}{0.5810063}\\
+\addlinespace
+標準偏差 & 0.8280661 & 0.4358663 & 1.765298 & 0.7622377\\
+\cellcolor{gray!6}{最小値} & \cellcolor{gray!6}{4.3000000} & \cellcolor{gray!6}{2.0000000} & \cellcolor{gray!6}{1.000000} & \cellcolor{gray!6}{0.1000000}\\
+第1四分位値 & 5.1000000 & 2.8000000 & 1.600000 & 0.3000000\\
+\cellcolor{gray!6}{第3四分位値} & \cellcolor{gray!6}{6.4000000} & \cellcolor{gray!6}{3.3000000} & \cellcolor{gray!6}{5.100000} & \cellcolor{gray!6}{1.8000000}\\
+最大値 & 7.9000000 & 4.4000000 & 6.900000 & 2.5000000\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \newpage
 
 \hypertarget{ux6f14ux7fd2}{%
@@ -2334,10 +2359,50 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 \newpage
 
+\hypertarget{ux8981ux7d04ux7d71ux8a08ux91cfux306eux30b0ux30e9ux30d5ux5316}{%
+\section{要約統計量のグラフ化}\label{ux8981ux7d04ux7d71ux8a08ux91cfux306eux30b0ux30e9ux30d5ux5316}}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{iris }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.numeric)) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  purrr}\SpecialCharTok{::}\FunctionTok{map\_df}\NormalTok{(fivenum)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 4
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+##          <dbl>       <dbl>        <dbl>       <dbl>
+## 1          4.3         2           1            0.1
+## 2          5.1         2.8         1.6          0.3
+## 3          5.8         3           4.35         1.3
+## 4          6.4         3.3         5.1          1.8
+## 5          7.9         4.4         6.9          2.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{iris }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(}\FunctionTok{where}\NormalTok{(is.numeric)) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  purrr}\SpecialCharTok{::}\FunctionTok{map\_df}\NormalTok{(quantile)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 5
+##    `0%` `25%` `50%` `75%` `100%`
+##   <dbl> <dbl> <dbl> <dbl>  <dbl>
+## 1   4.3   5.1  5.8    6.4    7.9
+## 2   2     2.8  3      3.3    4.4
+## 3   1     1.6  4.35   5.1    6.9
+## 4   0.1   0.3  1.3    1.8    2.5
+\end{verbatim}
+
 \hypertarget{ux63a8ux5b9a}{%
 \section{推定}\label{ux63a8ux5b9a}}
 
-　前節で扱った要約統計量は与えられたデータに関する特徴を求めるもので、一般的には\textbf{記述統計}と呼ばれる手法に分類されます。一部、不偏推定量の記述がありますが、こちらは確率変数と確率分布の確率論をベースとした\textbf{推測統計}と呼ばれる手法に分類されます。推測統計は大きく統計的推定と統計的仮説検定に二分されます。本節では前者の統計的\textbf{推定}を扱います。
+　前節で扱った要約統計量は与えられたデータに関する特徴を求めるもので一般的には\textbf{記述統計}と呼ばれる手法に分類されます。前節には不偏推定量の記述もありますが、こちらは確率変数と確率分布の確率論をベースとした\textbf{推測統計}と呼ばれる手法に分類されます。推測統計は大きく統計的推定と統計的仮説検定に二分されます。本節は統計的\textbf{推定}の話です。
 
 \hypertarget{ux6bcdux96c6ux56e3ux3068ux6a19ux672c}{%
 \subsection{母集団と標本}\label{ux6bcdux96c6ux56e3ux3068ux6a19ux672c}}
@@ -2347,7 +2412,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \hypertarget{ux70b9ux63a8ux5b9a}{%
 \subsection{点推定}\label{ux70b9ux63a8ux5b9a}}
 
-　点推定は標本から求められる一つの推定値をもって母集団の特徴となる統計量の推定値とする方法です。例えば、前節で出てきた不偏分散は、まさにこの点推定の結果です。不偏推定値と言われることもあります。
+　点推定は標本から求められる一つの推定値をもって母集団の特徴となる統計量の推定値とする方法です。例えば、前節で出てきた不偏分散は、まさにこの点推定の結果です。不偏推定値と呼ばれることもあります。
 
 母平均、母分散
 
@@ -2391,7 +2456,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \hypertarget{ux691cux5b9a}{%
 \section{検定}\label{ux691cux5b9a}}
 
-データを分析する前には分析対象となるデータがどのような特徴を持っているか確認しておくことが重要であるとよく言われます。この特徴を見るには要約統計量を使う場合が多いです。要約統計量はデータの分布の特徴を表すもので、記述統計量や基本統計量と呼ばれることもあります。
+　データを分析する前には分析対象となるデータがどのような特徴を持っているか確認しておくことが重要であるとよく言われます。この特徴を見るには要約統計量を使う場合が多いです。要約統計量はデータの分布の特徴を表すもので、記述統計量や基本統計量と呼ばれることもあります。
 
 \hypertarget{fux691cux5b9a}{%
 \subsection{F検定}\label{fux691cux5b9a}}
@@ -4665,7 +4730,7 @@ NA & データ型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-138}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-140}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -4684,7 +4749,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-139}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-141}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -4698,7 +4763,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-140}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-142}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -4716,7 +4781,7 @@ NA & データ型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-141}
+\caption{Warning dialog}\label{fig:unnamed-chunk-143}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -4742,7 +4807,7 @@ NA & データ型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-142}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-144}
 \end{figure}
 
 　\\
@@ -4775,7 +4840,7 @@ NA & データ型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-143}
+\caption{Initial View}\label{fig:unnamed-chunk-145}
 \end{figure}
 
 　
@@ -4792,7 +4857,7 @@ NA & データ型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-144}
+\caption{Packages Manager}\label{fig:unnamed-chunk-146}
 \end{figure}
 
 　\\
@@ -4805,7 +4870,7 @@ NA & データ型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-145}
+\caption{Install Dialog}\label{fig:unnamed-chunk-147}
 \end{figure}
 
 　\\
@@ -5205,7 +5270,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-153}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-155}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -5216,7 +5281,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-154}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-156}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -5286,7 +5351,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-155}
+\caption{R Notebook file}\label{fig:unnamed-chunk-157}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -5297,7 +5362,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-156}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-158}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -5308,7 +5373,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-157}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-159}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -5319,7 +5384,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-158}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-160}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -5330,7 +5395,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-159}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-161}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -5341,7 +5406,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-160}
+\caption{R Notebook option}\label{fig:unnamed-chunk-162}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -5627,7 +5692,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-161}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-163}
 \end{figure}
 
 　
@@ -5653,7 +5718,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-162}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-164}
 \end{figure}
 
 　
