@@ -53,7 +53,7 @@
 
 <!-- \newpage -->
 
-## なぜRか？ {.unnumbered}
+## なぜ**R**か？ {.unnumbered}
 　統計的コンピューティングには適切なツールが必要不可欠です。**R**は統計分析に特化しているオープンソースのプログラミング言語です。**R**がデータ分析に向いている理由を簡潔にまとめているのが[『Six Reasons To Learn R For Business』, R Blogger](https://www.r-bloggers.com/six-reasons-to-learn-r-for-business/){target="_blank" title=""}です。
 
 > 1.  **R** Has The Best _**Overall Qualities**_
@@ -71,17 +71,29 @@
 
 　ちなみに本書は**R**の[**`bookdown`**](https://bookdown.org/){target="_blank" title="Write HTML, PDF, ePub, and Kindle books with R Markdown"}パッケージという文書作成をサポートしてくれるパッケージを用いています。このようなパッケージが用意されているということは**R**が単なる分析だけでなく研究やビジネスでのレポート作成にも向いていることが分かると思います。
 
+　  
+
+::: {.hint-box data-latex=""}
+　以降に出てくる灰色に網掛けされて行番号がついている部分は**R**のコード、コードの下の`##`で始まる部分は実行結果（出力）です。コードによっては実行結果が出力されない場合もあります。
+:::
+
+\newpage
+
 
 ## **R**でなにができるのか？ {.unnumbered}
 　実際にどのようなことができるかを簡単な分析を通して見てみましょう。分析の対象となるデータは[フィッシャーのあやめ（Fisher's or Anderson's iris）](https://en.wikipedia.org/wiki/Iris_flower_data_set){target="_blank" title="Iris flower data set,
 　Wikipedia"}\index{iris dataset}と呼ばれる下表のようなデータで、**R**にサンプルデータとして組み込まれています。
 
-```{r iris, echo=FALSE}
+```{r, eval=TRUE}
+head(iris)
+```
+
+```{r iris, echo=FALSE, eval=FALSE}
 iris %>% 
   df_print(n = 10L, font_size = 11, caption = "iris dataset")
 ```
 
-\newpage
+<!-- \newpage -->
 
 　まずは、データがどのような特徴を持っているデータなのかを要約統計量（記述統計量）を求めることで確認します。
 
