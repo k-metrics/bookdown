@@ -8,7 +8,6 @@ iris %>%
 iris %>% 
   dplyr::select(where(is.numeric)) %>% 
   purrr::map_df(quantile)
-
 ```
 
 

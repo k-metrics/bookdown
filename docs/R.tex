@@ -15,7 +15,7 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2022-03-19}
+\date{2022-03-26}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -562,29 +562,64 @@
 
 　萼片（Sepal）の長さと幅、花弁（Petal）の長さと幅は、量的変数でその最小値（Min.）、第1四分位値（1st Qu.）、中央値（Median）、平均値（Mean）、第3四分位値（3rd Qu.）、最大値（Max.）を比較すると萼片（Sepal）より花弁（Petal）の方が小さい傾向にあると推測できます。品種（Species）は質的変数（カテゴリ変数）であり、三品種それぞれが同じ数のデータを持っていることが分かります。
 
+\newpage
+
 　量的変数の傾向の違いを箱ひげ図を用いて可視化してみます。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{boxplot}\NormalTok{(iris[}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-5-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-6-1} 
 
 }
 
-\caption{花弁と萼片の分布}\label{fig:unnamed-chunk-5}
+\caption{花弁と萼片の分布}\label{fig:unnamed-chunk-6}
 \end{figure}
 
 　数値で比較したように萼片（Sepal）より花弁（Petal）の方が小さいことがひと目で分かります。次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を散布図で確認してみましょう。
 
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{with}\NormalTok{(iris, }\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Petal.Width, }\AttributeTok{y =}\NormalTok{ Petal.Length))}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{figure}[H]
 
-{\centering \subfloat[花弁\label{fig:unnamed-chunk-6-1}]{\includegraphics[width=0.5\linewidth,]{R_files/figure-latex/unnamed-chunk-6-1} }\subfloat[萼片\label{fig:unnamed-chunk-6-2}]{\includegraphics[width=0.5\linewidth,]{R_files/figure-latex/unnamed-chunk-6-2} }
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-8-1} 
 
 }
 
-\caption{幅と長さの関係}\label{fig:unnamed-chunk-6}
+\caption{花弁の幅と長さの関係}\label{fig:unnamed-chunk-8}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{with}\NormalTok{(iris, }\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Sepal.Width, }\AttributeTok{y =}\NormalTok{ Sepal.Length))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-9-1} 
+
+}
+
+\caption{萼片の幅と長さの関係}\label{fig:unnamed-chunk-9}
 \end{figure}
 
 　花弁（Petal）の幅と長さに関係があり、萼片（Sepal）の方には関係がないように見えますので、個々の幅と長さの相関を確認します。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{with}\NormalTok{(iris, }\FunctionTok{cor.test}\NormalTok{(Petal.Width, Petal.Length))}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{verbatim}
 ## 
@@ -599,6 +634,14 @@
 ##       cor 
 ## 0.9628654
 \end{verbatim}
+
+\newpage
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{with}\NormalTok{(iris, }\FunctionTok{cor.test}\NormalTok{(Sepal.Width, Sepal.Length))}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{verbatim}
 ## 
@@ -618,10 +661,17 @@
 
 　花弁（Petal）の幅と長さの関係を回帰モデル（単回帰式）として求めると下記のようになります。
 
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{iris.lm }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Petal.Length }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Petal.Width, }\AttributeTok{data =}\NormalTok{ iris)}
+\FunctionTok{summary}\NormalTok{(iris.lm)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
 ## 
 ## Call:
-## lm(formula = Petal.Length ~ Petal.Width)
+## lm(formula = Petal.Length ~ Petal.Width, data = iris)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
@@ -639,20 +689,17 @@
 ## F-statistic:  1882 on 1 and 148 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
-\begin{figure}[H]
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{car}\SpecialCharTok{::}\FunctionTok{scatterplot}\NormalTok{(Petal.Width }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Petal.Length, }\AttributeTok{data =}\NormalTok{ iris, }\AttributeTok{smooth =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-{\centering \subfloat[花弁の回帰モデル\label{fig:unnamed-chunk-9-1}]{\includegraphics[width=0.5\linewidth,]{R_files/figure-latex/unnamed-chunk-9-1} }\subfloat[萼片の回帰モデル（参考）\label{fig:unnamed-chunk-9-2}]{\includegraphics[width=0.5\linewidth,]{R_files/figure-latex/unnamed-chunk-9-2} }
-
-}
-
-\caption{幅と長さの関係}\label{fig:unnamed-chunk-9}
-\end{figure}
+\begin{center}\includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-15-1} \end{center}
 
 　このように\textbf{R}を用いることで比較的簡単にデータを可視化したり統計量を求めることができるのが分かったのではないでしょうか？なお、ここで利用した出力（計算結果）の読み方は別途解説しますので、こういうことができるという点だけは憶えておいてください。
 
-\newpage
-
-　前ページまでの例のような〈探索的〉データ分析では、対象のデータの確認や変形（Transform）、可視化（Visualize）、モデルの作成（Model or Modeling）を繰り返すことで最適な（予測）モデルを探ります。この流れが分析プロセスの基本で下図のように表すことができます。
+　このような〈探索的〉データ分析では、対象のデータの確認や変形（Transform）、可視化（Visualize）、モデルの作成（Model or Modeling）を繰り返すことで最適な（予測）モデルを探ります。この流れが分析プロセスの基本で下図のように表すことができます。
 
 \begin{figure}[H]
 
@@ -660,8 +707,10 @@
 
 }
 
-\caption{基本となる分析プロセス}\label{fig:unnamed-chunk-10}
+\caption{基本となる分析プロセス}\label{fig:unnamed-chunk-16}
 \end{figure}
+
+\newpage
 
 　実際には対象となるデータを読み込み（Import）、処理がしやすいように整形（Tidy）してから可視化などを行います。最後に分析結果を報告（Communicate）しますので、分析プロセスの全体像下図のようになります。
 
@@ -671,10 +720,8 @@
 
 }
 
-\caption{分析プロセス}\label{fig:unnamed-chunk-11}
+\caption{分析プロセス}\label{fig:unnamed-chunk-17}
 \end{figure}
-
-\newpage
 
 \hypertarget{data-science-workflow}{%
 \section*{Data Science Workflow}\label{data-science-workflow}}
@@ -688,8 +735,10 @@
 
 }
 
-\caption{Data Science Workflow}\label{fig:unnamed-chunk-12}
+\caption{Data Science Workflow}\label{fig:unnamed-chunk-18}
 \end{figure}
+
+\newpage
 
 　「Data Science Workflow」自体は\textbf{R}コミュニティに多大な貢献をしている\href{http://hadley.nz/}{Hadley Wickham}が著書\href{https://r4ds.had.co.nz/}{『R for Data Science』}において提唱している概念です。
 
@@ -699,12 +748,10 @@
 
 }
 
-\caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-13}
+\caption{Data Science Workflow, CC BY-NC-ND 3.0 US, Hadley Wickham}\label{fig:unnamed-chunk-19}
 \end{figure}
 
 　Hadlyの図には\textbf{Infer}と\textbf{Automate}というプロセスが入っていますが、本書では\textbf{Infer}は\textbf{Model}に、\textbf{Automate}は\textbf{Communicate}に含まれるものとして整理しています。
-
-\newpage
 
 \hypertarget{program}{%
 \subsection*{Program}\label{program}}
@@ -717,6 +764,8 @@
 \addcontentsline{toc}{subsection}{Import}
 
 　分析対象となるデータを分析環境に取り込むのが\textbf{Import}プロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法で取り込む必要があります。
+
+\newpage
 
 \hypertarget{tidy}{%
 \subsection*{Tidy}\label{tidy}}
@@ -778,7 +827,7 @@
 
 }
 
-\caption{Tidyverse Ecosystem}\label{fig:unnamed-chunk-14}
+\caption{Tidyverse Ecosystem}\label{fig:unnamed-chunk-20}
 \end{figure}
 
 \begin{hint-box}
@@ -1047,7 +1096,7 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 \hypertarget{ux5206ux6790ux74b0ux5883}{%
 \chapter{分析環境}\label{ux5206ux6790ux74b0ux5883}}
 
-　\textbf{R}に限らずプログラミング（言語）を学ぶ際にはプログラミングできる環境を用意しておくべきですが、初学者にとって最も厄介なものが環境構築作業でもあります。そこで、初学者の方には環境構築の必要がない後述の\textbf{Google Colab}の利用をおすゝめします。\textbf{RStudio}の環境構築に関しては書籍や資料が多数ありますので、\textbf{R}に慣れてきたらチャレンジしてみるも良いと思います。
+　\textbf{R}に限らずプログラミング（言語）を学ぶ際にはプログラミングできる環境を用意しておくべきですが、初学者にとって最も厄介なものが環境構築作業です。そこで、初学者の方には環境構築の必要がない後述の\textbf{Google Colab}の利用をおすゝめします。\textbf{RStudio}の環境構築に関しては書籍や資料が多数ありますので、\textbf{R}に慣れてきたらチャレンジしてみるのが良いと思われます。
 
 \hypertarget{ux4e3bux306aux5206ux6790ux74b0ux5883}{%
 \section{主な分析環境}\label{ux4e3bux306aux5206ux6790ux74b0ux5883}}
@@ -1065,14 +1114,20 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 \midrule
 \endhead
 初学者 & R Commander & 不要 & 低 & 本書ではスコープ外 \\
-初学者 & Exploratory & 不要\footnote{必要に応じてコードを記述することも可能です} & 高 & 同上 \\
-初学・中級者 & Google Colab & 要 & 高 & \\
+初学者 & EZR & 不要 & 低 & 同上（Rcmdrベース） \\
+初学者 & R AnalyticFlow & 不要 & 高 & 同上 \\
+初学者 & Exploratory & 不要 & 高 & 同上 \\
+初学者 & Google Colab & 要 & 高 & \\
 中上級者 & RStudio Desktop & 要 & 高 & \\
 中上級者 & RStudio Cloud & 要 & 高 & \\
 中上級者 & RStudio Server & 要 & 高 & Dockerでの利用が前提 \\
 開発者 & R + VS Code/Emacs & 要 & 高 & 本書ではスコープ外 \\
 \bottomrule
 \end{longtable}
+
+コード記述が不要な環境でも必要に応じてコードを記述することが可能な場合があります。
+
+\newpage
 
 \hypertarget{r-commander}{%
 \subsection{\texorpdfstring{R Commander\index{R Commander, Rcmdr}}{R Commander}}\label{r-commander}}
@@ -1087,7 +1142,7 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 
 }
 
-\caption{Rcmdr on Ubuntu(Linux)}\label{fig:unnamed-chunk-15}
+\caption{Rcmdr on Ubuntu(Linux)}\label{fig:unnamed-chunk-21}
 \end{figure}
 
 \hypertarget{google-colab}{%
@@ -1101,7 +1156,7 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 
 }
 
-\caption{Google Colab}\label{fig:unnamed-chunk-16}
+\caption{Google Colab}\label{fig:unnamed-chunk-22}
 \end{figure}
 
 \hypertarget{rstudio}{%
@@ -1133,7 +1188,7 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 
 }
 
-\caption{RStudio Desktop on Windows}\label{fig:unnamed-chunk-17}
+\caption{RStudio Desktop on Windows}\label{fig:unnamed-chunk-23}
 \end{figure}
 
 　\textbf{RStudio Server}は\textbf{RStudio}をブラウザから使う Linux 上で動作するサーバアプリケーションです。Docker\index{Docker}コンテナとして動作させることが可能ですので、個々のPCでの分析環境を固定さたい場合などには非常に便利です。
@@ -1144,7 +1199,7 @@ Ecosystemとは、本来、生態系を意味しますが、ITにおいてはお
 
 }
 
-\caption{RStudio Server, Docker Container}\label{fig:unnamed-chunk-18}
+\caption{RStudio Server, Docker Container}\label{fig:unnamed-chunk-24}
 \end{figure}
 
 \begin{hint-box}
@@ -1165,7 +1220,7 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 }
 
-\caption{RStudio Cloud}\label{fig:unnamed-chunk-19}
+\caption{RStudio Cloud}\label{fig:unnamed-chunk-25}
 \end{figure}
 
 \hypertarget{programing-editor}{%
@@ -1258,8 +1313,6 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 比例尺度 & 比較演算、加減乗除算 & 長さ、重さ、金額など \\
 \bottomrule
 \end{longtable}
-
-　
 
 \hypertarget{ux540dux7fa9ux5c3aux5ea6ux3092ux6271ux3046}{%
 \subsubsection*{名義尺度を扱う}\label{ux540dux7fa9ux5c3aux5ea6ux3092ux6271ux3046}}
@@ -1390,8 +1443,6 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \addcontentsline{toc}{subsubsection}{比例尺度を扱う}
 
 　比例尺度\index{ひれいしゃくど@比例尺度}は間隔尺度と同様に整数型（\texttt{integer}）や実数型（\texttt{numeric}）のデータ型を用います。データの作成方法は間隔尺度と同じですので省略します。
-
-\newpage
 
 \hypertarget{ux307eux3068ux3081}{%
 \subsection{まとめ}\label{ux307eux3068ux3081}}
@@ -1557,6 +1608,8 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \end{verbatim}
 
 　この表記方法については賛否ありますが、どのパッケージの関数を使っているかが分かりやすいので本書ではこの記述方法を用います。
+
+\newpage
 
 \hypertarget{ux30b3ux30e9ux30e0}{%
 \subsection*{コラム}\label{ux30b3ux30e9ux30e0}}
@@ -1761,11 +1814,11 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-44-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-50-1} 
 
 }
 
-\caption{正規分布に近い分布}\label{fig:unnamed-chunk-44}
+\caption{正規分布に近い分布}\label{fig:unnamed-chunk-50}
 \end{figure}
 
 \begin{Shaded}
@@ -1782,11 +1835,11 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-46-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-52-1} 
 
 }
 
-\caption{右に歪んだ分布（左に偏った分布）}\label{fig:unnamed-chunk-46}
+\caption{右に歪んだ分布（左に偏った分布）}\label{fig:unnamed-chunk-52}
 \end{figure}
 
 \begin{Shaded}
@@ -1803,11 +1856,11 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-48-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-54-1} 
 
 }
 
-\caption{左に歪んだ分布（右に偏った分布）}\label{fig:unnamed-chunk-48}
+\caption{左に歪んだ分布（右に偏った分布）}\label{fig:unnamed-chunk-54}
 \end{figure}
 
 \begin{Shaded}
@@ -1830,11 +1883,11 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-50-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-56-1} 
 
 }
 
-\caption{正規分布に近い分布}\label{fig:unnamed-chunk-50}
+\caption{正規分布に近い分布}\label{fig:unnamed-chunk-56}
 \end{figure}
 
 \begin{Shaded}
@@ -1849,11 +1902,11 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-52-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-58-1} 
 
 }
 
-\caption{中心部が高く幅の狭い尖った分布}\label{fig:unnamed-chunk-52}
+\caption{中心部が高く幅の狭い尖った分布}\label{fig:unnamed-chunk-58}
 \end{figure}
 
 \begin{Shaded}
@@ -1868,11 +1921,11 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-54-1} 
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-60-1} 
 
 }
 
-\caption{中心部が低く横に広がった分布}\label{fig:unnamed-chunk-54}
+\caption{中心部が低く横に広がった分布}\label{fig:unnamed-chunk-60}
 \end{figure}
 
 \begin{Shaded}
@@ -1895,8 +1948,6 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \end{quote}
 
 と定義されており、面積に意味があります。級の幅（階級幅）の決め方は任意で必ずしも一定幅である必要はありません。級（階級）の幅が一定幅でなく、任意の幅が混在している状況では特に面積がもっている意味が重要になります。
-
-　某オフィスソフトでは棒グラフのように描かれてしまうので注意が必要です。
 
 \end{hint-box}
 
@@ -2070,8 +2121,6 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 ## [1] 27
 \end{verbatim}
 
-\newpage
-
 \hypertarget{ux56dbux5206ux4f4dux6570ux56dbux5206ux4f4dux7bc4ux56f2}{%
 \subsection{\texorpdfstring{四分位数\index{しぶんいすう@四分位数}・四分位範囲\index{しぶんいはんい@四分位範囲}}{四分位数・四分位範囲}}\label{ux56dbux5206ux4f4dux6570ux56dbux5206ux4f4dux7bc4ux56f2}}
 
@@ -2133,8 +2182,6 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \begin{verbatim}
 ## [1] 4
 \end{verbatim}
-
-\newpage
 
 \hypertarget{ux6700ux983bux5024}{%
 \subsection{\texorpdfstring{最頻値\index{さいひんち@最頻値}}{最頻値}}\label{ux6700ux983bux5024}}
@@ -2250,11 +2297,11 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \bottomrule
 \end{longtable}
 
-　\texttt{iris}データセットの主な要約統計量をまとめると下表のようになります。このように最頻値は常にひとつとは限りません。
+　\texttt{iris}データセットの主な要約統計量をまとめると下表のようになります。最頻値がひとつとは限らない例です。
 
 \begin{table}[H]
 
-\caption{\label{tab:unnamed-chunk-75}irisデータセットの要約統計量}
+\caption{\label{tab:unnamed-chunk-81}irisデータセットの要約統計量}
 \centering
 \begin{tabular}[t]{lrrrr}
 \toprule
@@ -4720,7 +4767,7 @@ NA & データ型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-141}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-147}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -4739,7 +4786,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-142}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-148}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -4753,7 +4800,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-143}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-149}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -4771,7 +4818,7 @@ NA & データ型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-144}
+\caption{Warning dialog}\label{fig:unnamed-chunk-150}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -4797,7 +4844,7 @@ NA & データ型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-145}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-151}
 \end{figure}
 
 　\\
@@ -4830,7 +4877,7 @@ NA & データ型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-146}
+\caption{Initial View}\label{fig:unnamed-chunk-152}
 \end{figure}
 
 　
@@ -4847,7 +4894,7 @@ NA & データ型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-147}
+\caption{Packages Manager}\label{fig:unnamed-chunk-153}
 \end{figure}
 
 　\\
@@ -4860,7 +4907,7 @@ NA & データ型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-148}
+\caption{Install Dialog}\label{fig:unnamed-chunk-154}
 \end{figure}
 
 　\\
@@ -5260,7 +5307,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-156}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-162}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -5271,7 +5318,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-157}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-163}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -5341,7 +5388,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-158}
+\caption{R Notebook file}\label{fig:unnamed-chunk-164}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -5352,7 +5399,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-159}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-165}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -5363,7 +5410,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-160}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-166}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -5374,7 +5421,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-161}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-167}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -5385,7 +5432,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-162}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-168}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -5396,7 +5443,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-163}
+\caption{R Notebook option}\label{fig:unnamed-chunk-169}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -5682,7 +5729,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-164}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-170}
 \end{figure}
 
 　
@@ -5708,7 +5755,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-165}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-171}
 \end{figure}
 
 　

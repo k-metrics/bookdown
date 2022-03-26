@@ -103,6 +103,8 @@ summary(iris)
 
 　萼片（Sepal）の長さと幅、花弁（Petal）の長さと幅は、量的変数でその最小値（Min.）、第1四分位値（1st Qu.）、中央値（Median）、平均値（Mean）、第3四分位値（3rd Qu.）、最大値（Max.）を比較すると萼片（Sepal）より花弁（Petal）の方が小さい傾向にあると推測できます。品種（Species）は質的変数（カテゴリ変数）であり、三品種それぞれが同じ数のデータを持っていることが分かります。  
 
+\newpage
+
 　量的変数の傾向の違いを箱ひげ図を用いて可視化してみます。
 
 ```{r irislonger, echo=FALSE, eval=FALSE, include=FALSE}
@@ -111,7 +113,7 @@ iris %>%
   df_print(n = 4L, caption = "iris dataset, longer style")
 ```
 
-```{r, echo=FALSE, fig.cap="花弁と萼片の分布"}
+```{r, echo=FALSE, eval=FALSE, fig.cap="花弁と萼片の分布"}
 iris %>%
   tidyr::pivot_longer(cols = -Species, names_to = "part", values_to = "value") %>% 
   ggplot2::ggplot(ggplot2::aes(x = part, y = value)) + 
@@ -119,9 +121,13 @@ iris %>%
     ggplot2::labs(x = "", y = "")
 ```
 
+```{r, echo=TRUE, eval=TRUE, fig.cap="花弁と萼片の分布"}
+boxplot(iris[-5])
+```
+
 　数値で比較したように萼片（Sepal）より花弁（Petal）の方が小さいことがひと目で分かります。次に花弁（Petal）と萼片（Sepal）の幅と長さの関係を散布図で確認してみましょう。
 
-```{r, echo=FALSE, fig.cap="幅と長さの関係", fig.subcap=c('花弁', '萼片'), fig.ncol=2, out.width="50%"}
+```{r, echo=FALSE, eval=FALSE, fig.cap="幅と長さの関係", fig.subcap=c('花弁', '萼片'), fig.ncol=2, out.width="50%"}
 iris %>%
   ggplot2::ggplot(ggplot2::aes(x = Petal.Width, y = Petal.Length)) +
     ggplot2::geom_point()
@@ -131,10 +137,23 @@ iris %>%
     ggplot2::geom_point()
 ```
 
+```{r, fig.cap="花弁の幅と長さの関係"}
+with(iris, plot(x = Petal.Width, y = Petal.Length))
+```
+
+```{r, fig.cap="萼片の幅と長さの関係"}
+with(iris, plot(x = Sepal.Width, y = Sepal.Length))
+```
+
 　花弁（Petal）の幅と長さに関係があり、萼片（Sepal）の方には関係がないように見えますので、個々の幅と長さの相関を確認します。
 
-```{r, echo=FALSE}
+```{r, echo=TRUE}
 with(iris, cor.test(Petal.Width, Petal.Length))
+```
+
+\newpage
+
+```{r, echo=TRUE}
 with(iris, cor.test(Sepal.Width, Sepal.Length))
 ```
 
@@ -142,12 +161,17 @@ with(iris, cor.test(Sepal.Width, Sepal.Length))
 
 　花弁（Petal）の幅と長さの関係を回帰モデル（単回帰式）として求めると下記のようになります。
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 with(iris, lm(Petal.Length ~ Petal.Width)) %>% 
   summary()
 ```
 
-```{r, echo=FALSE, message=FALSE, fig.cap="幅と長さの関係", fig.subcap=c('花弁の回帰モデル', '萼片の回帰モデル（参考）'), fig.ncol=2, out.width="50%"}
+```{r}
+iris.lm <- lm(Petal.Length ~ Petal.Width, data = iris)
+summary(iris.lm)
+```
+
+```{r, echo=FALSE, eval=FALSE, message=FALSE, fig.cap="幅と長さの関係", fig.subcap=c('花弁の回帰モデル', '萼片の回帰モデル（参考）'), fig.ncol=2, out.width="50%"}
 iris %>%
   ggplot2::ggplot(ggplot2::aes(x = Petal.Width, y = Petal.Length)) +
     ggplot2::geom_point() +
@@ -159,16 +183,20 @@ iris %>%
     ggplot2::geom_smooth(method = "lm", se = FALSE)
 ```
 
+```{r}
+car::scatterplot(Petal.Width ~ Petal.Length, data = iris, smooth = FALSE)
+```
+
 　このように**R**を用いることで比較的簡単にデータを可視化したり統計量を求めることができるのが分かったのではないでしょうか？なお、ここで利用した出力（計算結果）の読み方は別途解説しますので、こういうことができるという点だけは憶えておいてください。
 
-\newpage
-
-　前ページまでの例のような〈探索的〉データ分析では、対象のデータの確認や変形（Transform）、可視化（Visualize）、モデルの作成（Model or Modeling）を繰り返すことで最適な（予測）モデルを探ります。この流れが分析プロセスの基本で下図のように表すことができます。
+　このような〈探索的〉データ分析では、対象のデータの確認や変形（Transform）、可視化（Visualize）、モデルの作成（Model or Modeling）を繰り返すことで最適な（予測）モデルを探ります。この流れが分析プロセスの基本で下図のように表すことができます。
 
 ```{r, echo=FALSE, fig.cap="基本となる分析プロセス"}
 # Visualize <-> Transform <-> Model
 knitr::include_graphics("./fig/DSWF/data_science_workflow_step1.png")
 ```
+
+\newpage
 
 　実際には対象となるデータを読み込み（Import）、処理がしやすいように整形（Tidy）してから可視化などを行います。最後に分析結果を報告（Communicate）しますので、分析プロセスの全体像下図のようになります。
 
@@ -177,7 +205,6 @@ knitr::include_graphics("./fig/DSWF/data_science_workflow_step1.png")
 knitr::include_graphics("./fig/DSWF/data_science_workflow_step2.png")
 ```
 
-\newpage
 
 ## Data Science Workflow {.unnumbered}
 　分析プロセスを円滑に回すためにはプログラム（統計的プログラミング）などの補助的な仕組みが必要です。全ページの分析プロセスにプログラム（統計的プログラミング）を加えたものが「Data Science Workflow」と呼ばれるフロー図です。
@@ -186,6 +213,8 @@ knitr::include_graphics("./fig/DSWF/data_science_workflow_step2.png")
 # Import -> Tidy -> Visualize <-> Transform <-> Model -> Infer -> Communicate/Automate
 knitr::include_graphics("./fig/DSWF/data_science_workflow.png")
 ```
+
+\newpage
 
 　「Data Science Workflow」自体は**R**コミュニティに多大な貢献をしている[Hadley Wickham](http://hadley.nz/){target="_blank" title=""}が著書[『R for Data Science』](https://r4ds.had.co.nz/){target="_blank" title=""}において提唱している概念です。
 
@@ -196,7 +225,6 @@ knitr::include_graphics("fig/data-science.png")
 
 　Hadlyの図には**Infer**と**Automate**というプロセスが入っていますが、本書では**Infer**は**Model**に、**Automate**は**Communicate**に含まれるものとして整理しています。
 
-\newpage
 
 ### Program {.unnumbered}
 　データ分析のすべてのプロセス（**Import**〜**Communicate**）で必要となるツール（分析環境）が**Program**です。**R**では様々なパッケージを使うことで外部アプリケーションとの連動を図り、**R**を中心に用いることで全てのプロセスを完結させることができるEcosystem（後述）と呼べる体系が出来ています。
@@ -205,6 +233,7 @@ knitr::include_graphics("fig/data-science.png")
 ### Import {.unnumbered}
 　分析対象となるデータを分析環境に取り込むのが**Import**プロセスです。データは様々な形式（文字コード、ファイル形式など）で保存されていますので、それらに見合った方法で取り込む必要があります。
 
+\newpage
 
 ### Tidy {.unnumbered}
 　インポートしたデータは必ずしもデータ分析に適した形式になっているとは限りませんので、扱いやすいような形式（Tidy Data）に整形します。[Tidy Data](https://www.jstatsoft.org/article/view/v059i10){target="_blank" title="Jounal of Statistical Software"}[@R-TidyData]\index{Tidy Data}はデータ分析において非常に有用で重要な概念で、以下の条件を満たしたデータを意味します。
