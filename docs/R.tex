@@ -15,7 +15,7 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2022-03-26}
+\date{2022-03-27}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -2396,8 +2396,86 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 \newpage
 
-\hypertarget{ux8981ux7d04ux7d71ux8a08ux91cfux306eux30b0ux30e9ux30d5ux5316}{%
-\section{要約統計量のグラフ化}\label{ux8981ux7d04ux7d71ux8a08ux91cfux306eux30b0ux30e9ux30d5ux5316}}
+\hypertarget{ux8981ux7d04ux7d71ux8a08ux91cfux306eux53efux8996ux5316}{%
+\section{要約統計量の可視化}\label{ux8981ux7d04ux7d71ux8a08ux91cfux306eux53efux8996ux5316}}
+
+　前節では基本的な要約統計量と\textbf{R}を使った求め方を紹介しました。本節では求めた要約統計量を可視化（グラフ化）する方法を紹介します。対象となるデータはフィッシャーのあやめ（\texttt{iris}データセット）で、前出のように4つの数値型（実数型）ベクトルと1つの因子型ベクトルから成り立っているデータです。このようなデータ形式を\textbf{R}ではデータフレーム型と呼びます。データフレーム型はすべてのベクトルの長さ（行数）が同じでなければなりません。また、行方向単位で一組のデータになります。データフレーム型のデータはデータセットと呼ばれます。\\
+　全データを表示すると冗長ですので\texttt{head()}関数を用いて先頭から10行を表示します。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{head}\NormalTok{(}\AttributeTok{x =}\NormalTok{ iris, }\AttributeTok{n =}\NormalTok{ 10L)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+\end{verbatim}
+
+　\texttt{head()}関数は引数\texttt{n}を省略した場合、\texttt{x}で指定したデータの先頭から6行（6個）の値を表示する関数です。\texttt{x\ =}や\texttt{n\ =}といった引数名の表記は省略可能です。詳細は\texttt{?head()}でヘルプを表示して確認してください。
+
+　では、\texttt{iris}データセットを用いて要約統計量をどのように可視化するのかを説明していきます。
+
+\hypertarget{ux7bb1ux3072ux3052ux56f3}{%
+\subsection{箱ひげ図}\label{ux7bb1ux3072ux3052ux56f3}}
+
+　箱ひげ図（boxplot）は、五数要約と呼ばれる要約統計量を可視化するグラフです。五数要約は前節で説明した最小値、第一四分位数、中央値（第二四分位数）、第三四分位数、最大値の5つを意味し\texttt{fivenum()}関数を使って求められます。四分位数を求める\texttt{quantile()}関数とは異なります。
+
+\newpage
+
+　\texttt{iris}データセットの五数要約は下記のようになります。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{apply}\NormalTok{(}\AttributeTok{X =}\NormalTok{ iris[}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{], }\AttributeTok{MARGIN =} \DecValTok{2}\NormalTok{, }\AttributeTok{FUN =}\NormalTok{ fivenum)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Sepal.Length Sepal.Width Petal.Length Petal.Width
+## [1,]          4.3         2.0         1.00         0.1
+## [2,]          5.1         2.8         1.60         0.3
+## [3,]          5.8         3.0         4.35         1.3
+## [4,]          6.4         3.3         5.10         1.8
+## [5,]          7.9         4.4         6.90         2.5
+\end{verbatim}
+
+　ここで\texttt{iris{[}-5{]}}は5列目を除いた4列を取り出すことを意味します。\texttt{apply()}関数は演習解答例でも記載していますように繰り返し処理（任意の関数を繰り返して適用する）を行う関数で、\texttt{X}で指定した変数に対して列方向（\texttt{MARGIN\ =\ 2}）に\texttt{FUN}で指定した関数を適用します。\\
+　五数要約を可視化するには\texttt{boxplot()}関数を使います。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{boxplot}\NormalTok{(iris[}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-88-1} \end{center}
+
+　\textbf{R}の箱ひげ図で注意しなければならない点は、\textbf{外れ値（Outliers）}というものを考慮している点にあります。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{boxplot}\NormalTok{(iris[}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{], }\AttributeTok{outline =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-89-1} \end{center}
+
+\hypertarget{ux30d2ux30b9ux30c8ux30b0ux30e9ux30e0}{%
+\subsection{ヒストグラム}\label{ux30d2ux30b9ux30c8ux30b0ux30e9ux30e0}}
+
+\hypertarget{ux6563ux5e03ux56f3}{%
+\subsection{散布図}\label{ux6563ux5e03ux56f3}}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -4767,7 +4845,7 @@ NA & データ型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-147}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-151}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -4786,7 +4864,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-148}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-152}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -4800,7 +4878,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-149}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-153}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -4818,7 +4896,7 @@ NA & データ型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-150}
+\caption{Warning dialog}\label{fig:unnamed-chunk-154}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -4844,7 +4922,7 @@ NA & データ型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-151}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-155}
 \end{figure}
 
 　\\
@@ -4877,7 +4955,7 @@ NA & データ型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-152}
+\caption{Initial View}\label{fig:unnamed-chunk-156}
 \end{figure}
 
 　
@@ -4894,7 +4972,7 @@ NA & データ型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-153}
+\caption{Packages Manager}\label{fig:unnamed-chunk-157}
 \end{figure}
 
 　\\
@@ -4907,7 +4985,7 @@ NA & データ型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-154}
+\caption{Install Dialog}\label{fig:unnamed-chunk-158}
 \end{figure}
 
 　\\
@@ -5307,7 +5385,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-162}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-166}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -5318,7 +5396,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-163}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-167}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -5388,7 +5466,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-164}
+\caption{R Notebook file}\label{fig:unnamed-chunk-168}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -5399,7 +5477,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-165}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-169}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -5410,7 +5488,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-166}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-170}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -5421,7 +5499,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-167}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-171}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -5432,7 +5510,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-168}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-172}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -5443,7 +5521,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-169}
+\caption{R Notebook option}\label{fig:unnamed-chunk-173}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -5729,7 +5807,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-170}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-174}
 \end{figure}
 
 　
@@ -5755,7 +5833,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-171}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-175}
 \end{figure}
 
 　
