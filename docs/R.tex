@@ -15,7 +15,7 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2022-03-27}
+\date{2022-03-29}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -2402,6 +2402,8 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 　前節では基本的な要約統計量と\textbf{R}を使った求め方を紹介しました。本節では求めた要約統計量を可視化（グラフ化）する方法を紹介します。対象となるデータはフィッシャーのあやめ（\texttt{iris}データセット）で、前出のように4つの数値型（実数型）ベクトルと1つの因子型ベクトルから成り立っているデータです。このようなデータ形式を\textbf{R}ではデータフレーム型と呼びます。データフレーム型はすべてのベクトルの長さ（行数）が同じでなければなりません。また、行方向単位で一組のデータになります。データフレーム型のデータはデータセットと呼ばれます。\\
 　全データを表示すると冗長ですので\texttt{head()}関数を用いて先頭から10行を表示します。
 
+: irisデータセット（先頭10行）
+
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \FunctionTok{head}\NormalTok{(}\AttributeTok{x =}\NormalTok{ iris, }\AttributeTok{n =}\NormalTok{ 10L)}
@@ -2459,9 +2461,16 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 \end{Highlighting}
 \end{Shaded}
 
-\begin{center}\includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-88-1} \end{center}
+\begin{figure}[H]
 
-　\textbf{R}の箱ひげ図で注意しなければならない点は、\textbf{外れ値（Outliers）}というものを考慮している点にあります。
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-88-1} 
+
+}
+
+\caption{箱ひげ図}\label{fig:unnamed-chunk-88}
+\end{figure}
+
+　箱ひげ図は、その名の通り箱（長方形）とひげ（線）からなるグラフです。箱の下辺と上辺が第一四分位数と第三四分位数、箱の中の線が中央値（第二四分位数）を上下のひげが最小値と最大値を表しています。ただし、\texttt{boxplot()}関数で描く箱ひげ図で注意しなければならない点は、\textbf{外れ値（Outliers）}を考慮している点にあります。外れ値とは四分位範囲（第一四分数から第三四分位までの範囲）の\textbf{1.5倍}の範囲を超える値を意味しています。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
