@@ -42,9 +42,10 @@
 \usepackage{fontawesome5}               % fontawesomeを使うために必要
 \usepackage{subfig}
 \usepackage{xeCJK}                      % 以下、日本語フォント用に必要
+\usepackage{zxjatype}
 \usepackage[noto]{zxjafont}             % Linux環境ではこちを指定
 % \usepackage[haranoaji]{zxjafont}      % Windows環境ではこちらを指定する
-\usepackage{zxjatype}
+% \usepackage[nopreset]{zxjafont}         % メイン設定を何も行わない場合
 \usepackage{pxrubrica}                  % ルビ用
 \usepackage{hyperref}                   % ハイパーリンク用必要？
 
@@ -66,9 +67,11 @@
 
 % --- Fonts -------------------------------------------------------------------
 % フォントしては index.html でも可能（pandoc用オプションは index.htmlにて）
-% \setCJKmonofont{Source Han Code JP}
 \setmonofont{Source Han Code JP}
+\setCJKmonofont{Source Han Code JP}
 % \setjamonofont{Source Han Code JP}
+% \setmonofont{UDEV Gothic JPDOC}  % BIZ UD + JetBrais Mono
+% \setCJKmonofont{UDEV Gothic JPDOC}
 
 % ## 日本語フォントの扱いについてはzxjafontパッケージの解説を参照のこと
 % # https://mirror.las.iastate.edu/tex-archive/language/japanese/zxjafont/zxjafont.pdf
@@ -85,6 +88,14 @@
 % # \setmonofont{NotoSansMonoCJKjp-Regular.otf}[BoldFont=NotoSansMonoCJKjp-Bold.otf]
 % ## モノフォントは源ノ角コード(Source Code Proの日本語版)がおすゝめ
 % # \setmonofont{SourceHanCodeJP-Regular.otf}[BoldFont=SourceHanCodeJPS-Bold.otf]
+% BIZ UDフォントを利用したい…
+% \setmainfont{BIZ UDPMincho}
+% \setsansfont{BIZ UDPGothic}
+% \setCJKmainfont{BIZ UDPMincho}      % 現在、Boldは提供されていない
+% \setCJKsansfont{BIZ UDPGothic}      % Bold書体あり
+% BoldFontを指定するとエラーになるためBoldが使えない...
+% \setCJKsansfont{BIZ UDPGothic}[BoldFont=BIZUPDGothic-Bold.ttf]
+% \setCJKmonofont{UDEV Gothic JPDOC}[BoldFont=UDEV Gothic JPDOC]
 
 % --- Fonts -------------------------------------------------------------------
 % https://teastat.blogspot.com/2019/01/bookdown.html

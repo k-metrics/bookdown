@@ -15,7 +15,7 @@
 \makeatother
 \subtitle{〜 Rによるデータ分析事始め 〜}
 \author{Sampo Suzuki, CC 4.0 BY-NC-SA}
-\date{2022-03-29}
+\date{2022-04-03}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -172,9 +172,10 @@
 \usepackage{fontawesome5}               % fontawesomeを使うために必要
 \usepackage{subfig}
 \usepackage{xeCJK}                      % 以下、日本語フォント用に必要
+\usepackage{zxjatype}
 \usepackage[noto]{zxjafont}             % Linux環境ではこちを指定
 % \usepackage[haranoaji]{zxjafont}      % Windows環境ではこちらを指定する
-\usepackage{zxjatype}
+% \usepackage[nopreset]{zxjafont}         % メイン設定を何も行わない場合
 \usepackage{pxrubrica}                  % ルビ用
 \usepackage{hyperref}                   % ハイパーリンク用必要？
 
@@ -196,9 +197,11 @@
 
 % --- Fonts -------------------------------------------------------------------
 % フォントしては index.html でも可能（pandoc用オプションは index.htmlにて）
-% \setCJKmonofont{Source Han Code JP}
 \setmonofont{Source Han Code JP}
+\setCJKmonofont{Source Han Code JP}
 % \setjamonofont{Source Han Code JP}
+% \setmonofont{UDEV Gothic JPDOC}  % BIZ UD + JetBrais Mono
+% \setCJKmonofont{UDEV Gothic JPDOC}
 
 % ## 日本語フォントの扱いについてはzxjafontパッケージの解説を参照のこと
 % # https://mirror.las.iastate.edu/tex-archive/language/japanese/zxjafont/zxjafont.pdf
@@ -215,6 +218,14 @@
 % # \setmonofont{NotoSansMonoCJKjp-Regular.otf}[BoldFont=NotoSansMonoCJKjp-Bold.otf]
 % ## モノフォントは源ノ角コード(Source Code Proの日本語版)がおすゝめ
 % # \setmonofont{SourceHanCodeJP-Regular.otf}[BoldFont=SourceHanCodeJPS-Bold.otf]
+% BIZ UDフォントを利用したい…
+% \setmainfont{BIZ UDPMincho}
+% \setsansfont{BIZ UDPGothic}
+% \setCJKmainfont{BIZ UDPMincho}      % 現在、Boldは提供されていない
+% \setCJKsansfont{BIZ UDPGothic}      % Bold書体あり
+% BoldFontを指定するとエラーになるためBoldが使えない...
+% \setCJKsansfont{BIZ UDPGothic}[BoldFont=BIZUPDGothic-Bold.ttf]
+% \setCJKmonofont{UDEV Gothic JPDOC}[BoldFont=UDEV Gothic JPDOC]
 
 % --- Fonts -------------------------------------------------------------------
 % https://teastat.blogspot.com/2019/01/bookdown.html
@@ -2396,13 +2407,13 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 \newpage
 
-\hypertarget{ux8981ux7d04ux7d71ux8a08ux91cfux306eux53efux8996ux5316}{%
-\section{要約統計量の可視化}\label{ux8981ux7d04ux7d71ux8a08ux91cfux306eux53efux8996ux5316}}
+\hypertarget{ux30c7ux30fcux30bfux306eux53efux8996ux5316}{%
+\section{データの可視化}\label{ux30c7ux30fcux30bfux306eux53efux8996ux5316}}
 
-　前節では基本的な要約統計量と\textbf{R}を使った求め方を紹介しました。本節では求めた要約統計量を可視化（グラフ化）する方法を紹介します。対象となるデータはフィッシャーのあやめ（\texttt{iris}データセット）で、前出のように4つの数値型（実数型）ベクトルと1つの因子型ベクトルから成り立っているデータです。このようなデータ形式を\textbf{R}ではデータフレーム型と呼びます。データフレーム型はすべてのベクトルの長さ（行数）が同じでなければなりません。また、行方向単位で一組のデータになります。データフレーム型のデータはデータセットと呼ばれます。\\
-　全データを表示すると冗長ですので\texttt{head()}関数を用いて先頭から10行を表示します。
-
-: irisデータセット（先頭10行）
+　前節では基本的な要約統計量と\textbf{R}を使った求め方を紹介しました。本節ではデータの特徴を視覚的に把握するために使われるグラフの描画方法を紹介します。\\
+　対象となるデータはフィッシャーのあやめ（\texttt{iris}データセット）で、前出のように4つの数値型（実数型）ベクトルと1つの因子型ベクトルから成り立っているデータです。このようなデータ形式を\textbf{R}ではデータフレーム型と呼びます。データフレーム型はすべてのベクトルの長さ（行数）が同じでなければなりません。また、行方向単位で一組のデータになります。データフレーム型のデータはデータセットと呼ばれます。\\
+　全データを表示すると冗長ですので\texttt{head()}関数を用いて先頭から10行を表示します。\\
+　
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2426,62 +2437,82 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 
 　\texttt{head()}関数は引数\texttt{n}を省略した場合、\texttt{x}で指定したデータの先頭から6行（6個）の値を表示する関数です。\texttt{x\ =}や\texttt{n\ =}といった引数名の表記は省略可能です。詳細は\texttt{?head()}でヘルプを表示して確認してください。
 
-　では、\texttt{iris}データセットを用いて要約統計量をどのように可視化するのかを説明していきます。
+\hypertarget{ux30d2ux30b9ux30c8ux30b0ux30e9ux30e0}{%
+\subsection{ヒストグラム}\label{ux30d2ux30b9ux30c8ux30b0ux30e9ux30e0}}
 
-\hypertarget{ux7bb1ux3072ux3052ux56f3}{%
-\subsection{箱ひげ図}\label{ux7bb1ux3072ux3052ux56f3}}
-
-　箱ひげ図（boxplot）は、五数要約と呼ばれる要約統計量を可視化するグラフです。五数要約は前節で説明した最小値、第一四分位数、中央値（第二四分位数）、第三四分位数、最大値の5つを意味し\texttt{fivenum()}関数を使って求められます。四分位数を求める\texttt{quantile()}関数とは異なります。
+　ヒストグラム（histgram）は量的データの分布を見る際に利用するグラフです。横軸にデータが取る範囲（階級）を縦軸に階級に含まれるデータの個数（度数）をとります。度数分布図と呼ばれることもあります。ヒストグラムを描くには、まず、度数の分布表を作成する必要があります。\\
+　度数分布表を作成するには、最初に階級を決める必要があります。階級の決め方は任意なのできりの良い数値を使うことが多いですが、以下のような計算方法も提案されています。
 
 \newpage
 
-　\texttt{iris}データセットの五数要約は下記のようになります。
+\begin{longtable}[]{@{}ll@{}}
+\caption{階級数の計算方法}\tabularnewline
+\toprule
+計算方法 & 説明 \\
+\midrule
+\endfirsthead
+\toprule
+計算方法 & 説明 \\
+\midrule
+\endhead
+Squre-root choice & データ\texttt{x}の数（\texttt{n}）の平方根を用いる方法 \\
+Sturges's formula & データ\texttt{x}の数（\texttt{n}）が、\(n \ge 30\)を満たす場合に使える方法 \\
+Scott's choice & データ\texttt{x}の標準偏差を用いる方法 \\
+Freedman-Diaconis choice & データ\texttt{x}の四分位範囲に基づく方法 \\
+\bottomrule
+\end{longtable}
+
+　\textbf{R}では、度数分布表を作成せずもとヒストグラムを描くことが可能です。ヒストグラムを描くには\texttt{hist()}関数を用います。ヒストグラムは単一データの可視化に用いるものですがから、\texttt{iris}データセットにある量的データから任意の１データを指定しなければなりません。
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\FunctionTok{apply}\NormalTok{(}\AttributeTok{X =}\NormalTok{ iris[}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{], }\AttributeTok{MARGIN =} \DecValTok{2}\NormalTok{, }\AttributeTok{FUN =}\NormalTok{ fivenum)}
+\FunctionTok{hist}\NormalTok{(}\AttributeTok{x =}\NormalTok{ iris}\SpecialCharTok{$}\NormalTok{Sepal.Width)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-87-1} \end{center}
+
+　\texttt{\$}はデータフレームから任意の列のデータを取り出す演算子です。\texttt{hist()}関数はデーフォルトではSturges's formulaを用いて階級幅を決めています。\texttt{pretty()}関数に求めた階級数を指定することで単なる割り算ではない適切な階級幅を求めることができます。 　
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{pretty}\NormalTok{(}\AttributeTok{x =}\NormalTok{ iris}\SpecialCharTok{$}\NormalTok{Sepal.Width, }\AttributeTok{n =} \FunctionTok{nclass.Sturges}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Width))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##      Sepal.Length Sepal.Width Petal.Length Petal.Width
-## [1,]          4.3         2.0         1.00         0.1
-## [2,]          5.1         2.8         1.60         0.3
-## [3,]          5.8         3.0         4.35         1.3
-## [4,]          6.4         3.3         5.10         1.8
-## [5,]          7.9         4.4         6.90         2.5
+##  [1] 2.0 2.2 2.4 2.6 2.8 3.0 3.2 3.4 3.6 3.8 4.0 4.2 4.4
 \end{verbatim}
 
-　ここで\texttt{iris{[}-5{]}}は5列目を除いた4列を取り出すことを意味します。\texttt{apply()}関数は演習解答例でも記載していますように繰り返し処理（任意の関数を繰り返して適用する）を行う関数で、\texttt{X}で指定した変数に対して列方向（\texttt{MARGIN\ =\ 2}）に\texttt{FUN}で指定した関数を適用します。\\
-　五数要約を可視化するには\texttt{boxplot()}関数を使います。
+\newpage
 
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{boxplot}\NormalTok{(iris[}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{])}
-\end{Highlighting}
-\end{Shaded}
+　この階級幅を元に度数分布表を作成すると下表のようになります。
 
-\begin{figure}[H]
+\begin{table}[H]
 
-{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-88-1} 
-
-}
-
-\caption{箱ひげ図}\label{fig:unnamed-chunk-88}
-\end{figure}
-
-　箱ひげ図は、その名の通り箱（長方形）とひげ（線）からなるグラフです。箱の下辺と上辺が第一四分位数と第三四分位数、箱の中の線が中央値（第二四分位数）を上下のひげが最小値と最大値を表しています。ただし、\texttt{boxplot()}関数で描く箱ひげ図で注意しなければならない点は、\textbf{外れ値（Outliers）}を考慮している点にあります。外れ値とは四分位範囲（第一四分数から第三四分位までの範囲）の\textbf{1.5倍}の範囲を超える値を意味しています。
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{boxplot}\NormalTok{(iris[}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{], }\AttributeTok{outline =} \ConstantTok{FALSE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{center}\includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-89-1} \end{center}
-
-\hypertarget{ux30d2ux30b9ux30c8ux30b0ux30e9ux30e0}{%
-\subsection{ヒストグラム}\label{ux30d2ux30b9ux30c8ux30b0ux30e9ux30e0}}
+\caption{\label{tab:unnamed-chunk-89}Sepal.Widthの度数分布表}
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+階級 & 度数 & 累積度数\\
+\midrule
+\cellcolor{gray!6}{{}[2,2.2]} & \cellcolor{gray!6}{4} & \cellcolor{gray!6}{4}\\
+(2.2,2.4] & 7 & 11\\
+\cellcolor{gray!6}{(2.4,2.6]} & \cellcolor{gray!6}{13} & \cellcolor{gray!6}{24}\\
+(2.6,2.8] & 23 & 47\\
+\cellcolor{gray!6}{(2.8,3]} & \cellcolor{gray!6}{36} & \cellcolor{gray!6}{83}\\
+\addlinespace
+(3,3.2] & 24 & 107\\
+\cellcolor{gray!6}{(3.2,3.4]} & \cellcolor{gray!6}{18} & \cellcolor{gray!6}{125}\\
+(3.4,3.6] & 10 & 135\\
+\cellcolor{gray!6}{(3.6,3.8]} & \cellcolor{gray!6}{9} & \cellcolor{gray!6}{144}\\
+(3.8,4] & 3 & 147\\
+\addlinespace
+\cellcolor{gray!6}{(4,4.2]} & \cellcolor{gray!6}{2} & \cellcolor{gray!6}{149}\\
+(4.2,4.4] & 1 & 150\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \hypertarget{ux6563ux5e03ux56f3}{%
 \subsection{散布図}\label{ux6563ux5e03ux56f3}}
@@ -2522,6 +2553,48 @@ Docker Desktopの商用利用は有料です。営利組織内で利用する場
 ## 3   1     1.6  4.35   5.1    6.9
 ## 4   0.1   0.3  1.3    1.8    2.5
 \end{verbatim}
+
+\hypertarget{ux7bb1ux3072ux3052ux56f3}{%
+\subsection{箱ひげ図}\label{ux7bb1ux3072ux3052ux56f3}}
+
+　箱ひげ図（boxplot）は、五数要約と呼ばれる要約統計量を可視化するグラフです。五数要約は前節で説明した最小値、第一四分位数、中央値（第二四分位数）、第三四分位数、最大値の5つを意味し\texttt{fivenum()}関数を使って求められます。四分位数を求める\texttt{quantile()}関数とは異なります。
+
+　\texttt{iris}データセットの五数要約は下記のようになります。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{apply}\NormalTok{(}\AttributeTok{X =}\NormalTok{ iris[}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{], }\AttributeTok{MARGIN =} \DecValTok{2}\NormalTok{, }\AttributeTok{FUN =}\NormalTok{ fivenum)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Sepal.Length Sepal.Width Petal.Length Petal.Width
+## [1,]          4.3         2.0         1.00         0.1
+## [2,]          5.1         2.8         1.60         0.3
+## [3,]          5.8         3.0         4.35         1.3
+## [4,]          6.4         3.3         5.10         1.8
+## [5,]          7.9         4.4         6.90         2.5
+\end{verbatim}
+
+　ここで\texttt{iris{[}-5{]}}は5列目を除いた4列を取り出すことを意味します。\texttt{apply()}関数は演習解答例でも記載していますように繰り返し処理（任意の関数を繰り返して適用する）を行う関数で、\texttt{X}で指定した変数に対して列方向（\texttt{MARGIN\ =\ 2}）に\texttt{FUN}で指定した関数を適用します。\\
+　五数要約を可視化するには\texttt{boxplot()}関数を使います。
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{boxplot}\NormalTok{(iris[}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth,]{R_files/figure-latex/unnamed-chunk-92-1} 
+
+}
+
+\caption{箱ひげ図}\label{fig:unnamed-chunk-92}
+\end{figure}
+
+　箱ひげ図は、その名の通り箱（長方形）とひげ（線）からなるグラフです。箱の下辺と上辺が第一四分位数と第三四分位数、箱の中の線が中央値（第二四分位数）を上下のひげが最小値と最大値を表しています。ただし、\texttt{boxplot()}関数で描く箱ひげ図で注意しなければならない点は、\textbf{外れ値（Outliers）}を考慮している点にあります。外れ値とは四分位範囲（第一四分数から第三四分位までの範囲）の\textbf{1.5倍}の範囲を超える値を意味しています。
 
 \hypertarget{ux63a8ux5b9a}{%
 \section{推定}\label{ux63a8ux5b9a}}
@@ -4854,7 +4927,7 @@ NA & データ型 \\
 
 }
 
-\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-151}
+\caption{Google Colab, Theme: dark}\label{fig:unnamed-chunk-153}
 \end{figure}
 
 　画面テーマは右上の歯車ボタンから変更できます。
@@ -4873,7 +4946,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload notebook file}\label{fig:unnamed-chunk-152}
+\caption{Upload notebook file}\label{fig:unnamed-chunk-154}
 \end{figure}
 
 　アップロード用のダイアログが開きますので［GitHub］タブをクリックし、上段のライン（画像の青線部分）に下記の URL を入力します。入力後、右端にある虫眼鏡アイコンをクリックします。
@@ -4887,7 +4960,7 @@ NA & データ型 \\
 
 }
 
-\caption{Upload from GitHub}\label{fig:unnamed-chunk-153}
+\caption{Upload from GitHub}\label{fig:unnamed-chunk-155}
 \end{figure}
 
 　テンプレートがアップロードされ表示されます。
@@ -4905,7 +4978,7 @@ NA & データ型 \\
 
 }
 
-\caption{Warning dialog}\label{fig:unnamed-chunk-154}
+\caption{Warning dialog}\label{fig:unnamed-chunk-156}
 \end{figure}
 
 　サーバ（ホスト型ランタイム）との接続するため実行までに多少時間がかかります。
@@ -4931,7 +5004,7 @@ NA & データ型 \\
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-155}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-157}
 \end{figure}
 
 　\\
@@ -4964,7 +5037,7 @@ NA & データ型 \\
 
 }
 
-\caption{Initial View}\label{fig:unnamed-chunk-156}
+\caption{Initial View}\label{fig:unnamed-chunk-158}
 \end{figure}
 
 　
@@ -4981,7 +5054,7 @@ NA & データ型 \\
 
 }
 
-\caption{Packages Manager}\label{fig:unnamed-chunk-157}
+\caption{Packages Manager}\label{fig:unnamed-chunk-159}
 \end{figure}
 
 　\\
@@ -4994,7 +5067,7 @@ NA & データ型 \\
 
 }
 
-\caption{Install Dialog}\label{fig:unnamed-chunk-158}
+\caption{Install Dialog}\label{fig:unnamed-chunk-160}
 \end{figure}
 
 　\\
@@ -5394,7 +5467,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-166}
+\caption{RStudio Desktop, Windows}\label{fig:unnamed-chunk-168}
 \end{figure}
 
 　各エリアのサイズ（ウィンドウ内での比率）は任意に調整できますが、横幅に関しては A と B 、 C と D が常に同サイズとなります。各エリアにはペインと呼ばれるタブ切り替え型のサブエリアが表示されます。ペインは常時表示されるペイン（下図の黒文字）と機能が呼び出されたり利用を設定している場合にのみ表示されるペイン（下図の灰文字）があります。
@@ -5405,7 +5478,7 @@ Image & Description \\
 
 }
 
-\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-167}
+\caption{RStudio Pane Layout, Windows}\label{fig:unnamed-chunk-169}
 \end{figure}
 
 　RStudio のバージョンにより多少ペイン構成が異なりますが以下のペインが用意されています。これらのペインはグローバルオプションで表示位置の変更や表示・非表示の切り替えができます。\\
@@ -5475,7 +5548,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook file}\label{fig:unnamed-chunk-168}
+\caption{R Notebook file}\label{fig:unnamed-chunk-170}
 \end{figure}
 
 　この時点ではファイルとして保存されていませんので、メニューから［File］-［Save As\ldots］を実行して適当な場所に適当な名前で保存しておきます。ここでは \texttt{test} という名前を入力して保存します。ファイルの拡張子が自動的に付与されますのでタブの表示は \texttt{test.Rmd} となります。
@@ -5486,7 +5559,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook saved file}\label{fig:unnamed-chunk-169}
+\caption{R Notebook saved file}\label{fig:unnamed-chunk-171}
 \end{figure}
 
 　ファイルを保存したら 6 行目の「This is an　\ldots」から 18 行目の「in the editor is displayed.」までを削除し、カーソルの位置（6 行目）でキーボードショートカット［Ctrl/Cmd］+［Alt/Option］+［I］を押下してコードを記述するためのブロックを挿入します。
@@ -5497,7 +5570,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-170}
+\caption{R Notebook insert chunk}\label{fig:unnamed-chunk-172}
 \end{figure}
 
 　すると上図のように三連のバッククォート（\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}}）で囲まれたブロックが挿入されます。このブロックはコードチャンクと呼ばれる R のコードを記述する部分です。コードチャンクの前後は自由な記述が出来ますので、以下のように入力してみてください。
@@ -5508,7 +5581,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook first code}\label{fig:unnamed-chunk-171}
+\caption{R Notebook first code}\label{fig:unnamed-chunk-173}
 \end{figure}
 
 　上図のように R Notebook では説明とコードを混在することができます。では、コードチャンクの右上にある緑色の三角マークをクリックしてコードを実行してみましょう。
@@ -5519,7 +5592,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook run code}\label{fig:unnamed-chunk-172}
+\caption{R Notebook run code}\label{fig:unnamed-chunk-174}
 \end{figure}
 
 　コードチャンクの下と \textbf{Console} ペインに実行結果が表示されます。コードチャンクの下に実行結果が表示されない場合は下図のように歯車アイコンをクリックし表示したメニューから \texttt{Chunk\ Output\ Inline} にチェックをつけ、再度、緑色の三角マークをクリックしてコードを実行してください。コードチャンクの下に実行結果が表示されます。
@@ -5530,7 +5603,7 @@ Keyboard Shortcuts & Description \\
 
 }
 
-\caption{R Notebook option}\label{fig:unnamed-chunk-173}
+\caption{R Notebook option}\label{fig:unnamed-chunk-175}
 \end{figure}
 
 　最後にフロッピーディスクアイコンをクリックするかキーボードショートカットの［Ctrl/Cmd］+［S］を押下してファイルを保存しておきます。
@@ -5816,7 +5889,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-174}
+\caption{RStudio Cloud, beta}\label{fig:unnamed-chunk-176}
 \end{figure}
 
 　
@@ -5842,7 +5915,7 @@ Build Tools & N/A & Re-knit current preview when supporting files change & Check
 
 }
 
-\caption{Exploratory Public}\label{fig:unnamed-chunk-175}
+\caption{Exploratory Public}\label{fig:unnamed-chunk-177}
 \end{figure}
 
 　
